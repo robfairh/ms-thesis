@@ -3,7 +3,6 @@ Outlet Temperature: 630$^{\circ}$C
 Power Density: 1.24 $W/cm^3$
 \cite{usnc_mmr_2019}
 
-
 Analysis with three axial power profiles.
 A- Continuous cosine profile.
 B- Discontinuous and uniform.
@@ -13,3 +12,21 @@ Sharp drops due to non fuel zones at the interfaces between the fuel blocks (gra
 
 The presence of crossflow is due to the nonuniform graphite contraction of the individual fuel blocks caused by irradiation.
 \cite{malek_analysis_1968}
+
+Equations to solve:
+
+\begin{equation}
+\rho c_p \frac{\partial T_F}{\partial t} = k \nabla^2 T_F + \dot{q}
+\end{equation}
+
+\begin{equation}
+\rho c_p \frac{\partial T_M}{\partial t} = k \nabla^2 T_M
+\end{equation}
+
+\begin{equation}
+\rho c_p (\frac{\partial T_C}{\partial t} + \vec{v} \nabla T_C) = k \nabla^2 T_C
+\end{equation}
+
+\begin{equation}
+c_p  \frac{\dot{m}}{A} \frac{\partial T_C}{\partial z} = k \nabla^2 T_C
+\end{equation}
