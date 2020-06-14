@@ -1,0 +1,128 @@
+\documentclass[11pt,letterpaper]{article}
+
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage{caption} % for table captions
+\usepackage{amsmath} % for multi-line equations and piecewises
+\DeclareMathOperator{\sign}{sign}
+\usepackage{graphicx}
+\usepackage{relsize}
+\usepackage{xspace}
+\usepackage{verbatim} % for block comments
+\usepackage{subcaption} % for subfigures
+\usepackage{enumitem} % for a) b) c) lists
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
+\newcommand{\Cycamore}{\textsc{Cycamore}\xspace}%
+\newcommand{\deploy}{\texttt{d3ploy}\xspace}%
+\newcommand{\Deploy}{\texttt{D3ploy}\xspace}%
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage[acronym,toc]{glossaries}
+%\include{acros}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\newcolumntype{b}{X}
+\newcolumntype{f}{>{\hsize=.15\hsize}X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcolumntype{m}{>{\hsize=.75\hsize}X}
+\newcolumntype{r}{>{\hsize=1.1\hsize}X}
+\usepackage{titling}
+\usepackage[hang,flushmargin]{footmisc}
+\renewcommand*\footnoterule{}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric,arrows}
+\tikzstyle{process} = [rectangle, rounded corners, 
+minimum width=1cm, minimum height=1cm,text centered, draw=black, 
+fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\graphicspath{}
+
+\begin{document}
+
+\section{Serpent model}
+
+	\begin{figure}[]
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/radial-layout.png}
+			\caption{XY-plane.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/axial-layout.png}
+			\caption{YZ-plane.}
+		\end{subfigure}
+		\hfill
+		\caption{MHTGR reactor layout.}
+		\label{fig:layout}
+	\end{figure}
+
+	\begin{figure}[]
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/fullcore.png}
+			\caption{XY-plane.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/fullcore2.png}
+			\caption{YZ-plane.}
+		\end{subfigure}
+		\hfill
+		\caption{MHTGR full core model.}
+		\label{fig:fullcore}
+	\end{figure}
+
+\subsection{Flux detectors}
+
+	\begin{figure}[]
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/axial-detector.png}
+			\caption{Flux detector applied in this fuel assembly.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/axial-detector2.png}
+			\caption{Flux detector applied in this fuel channel.}
+		\end{subfigure}
+		\hfill
+		\caption{MHTGR full core model.}
+		\label{fig:detector}
+	\end{figure}
+
+	\begin{figure}[]
+		\centering
+		\includegraphics[width=\linewidth]{figures/axial1.png}
+		\hfill
+		\caption{Neutron flux on the specified fuel channel.}
+		\label{fig:axial}
+	\end{figure}
+
+Notes:
+	\begin{itemize}
+		\item are flux detectors properly defined?
+		\item maybe try surface detectors?
+	\end{itemize}
+
+\section{Moltres model}
+
+
+
+\pagebreak
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}
