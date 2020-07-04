@@ -12,6 +12,7 @@ Chapter 1: Introduction
 Chapter 2: Tools
 - MOOSE ??
 - Moltres
+- Serpent
 
 Chapter 3: Preliminar studies
 	* Neutronics from Serpent

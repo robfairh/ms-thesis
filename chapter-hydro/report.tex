@@ -508,7 +508,87 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
         \label{tab:hydro-fleet}
 	\end{table}
 
-	\column[t]{5cm}
+	\begin{table}[!htb]
+		\centering
+	    \caption{Microreactor designs.}
+		\begin{tabular}{lrr}
+		\hline
+		Reactor                                      & P[MW$_{th}$] & T$_o$[$^\circ$C] \\ \hline
+		MMR \cite{usnc_mmr_2019}  		             & 15           & 640              \\
+		eVinci \cite{hernandez_micro_2019}           & 5            & 650              \\
+		ST-OTTO \cite{harlan_x-energy_2018}          & 30           & 750              \\
+		U-battery \cite{ding_design_2011}            & 10           & 750              \\
+		Starcore \cite{star_core_nuclear_star_2015}  & 36           & 850              \\ \hline
+        \end{tabular}
+        \label{tab:hydro-micro}
+	\end{table}
+
+	% need to re-do this figure: SI only feasible for T > 800
+	\begin{figure}[htbp!]
+	    \centering
+		\includegraphics[height=4.3cm]{images/reactors-by-hour1}
+		\hfill
+		\caption{Hydrogen production rate by the different microreactor designs.}
+		\label{fig:hydro-micro}
+	\end{figure}
+
+\subsection{Electricity Generation}
+
+	\begin{figure}[htbp!]
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/us-prediction1}
+			\caption{Total electricity generation.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{figures/us-prediction2}
+			\caption{Solar electricity generation.}
+		\end{subfigure}
+		\hfill
+		\caption{Prediction of the electricity generation in the \gls{US} for 2050. Data from \cite{us_energy_information_administration_electric_2020}.}
+		\label{fig:prediction}
+	\end{figure}
+
+	\begin{figure}[htbp!]
+	    \centering
+		\includegraphics[height=4.3cm]{figures/uiuc-duck}
+		\hfill
+		\caption{Prediction of \gls{UIUC}'s net demand for 2050.}
+		\label{fig:uiuc-duck1}
+	\end{figure}
+
+	\begin{figure}[htbp!]
+	    \centering
+		\includegraphics[height=4.3cm]{figures/uiuc-hydro2B}
+		\hfill
+		\caption{Hydrogen production with the excess of energy due to a net demand decrease.}
+		\label{fig:uiuc-duck2}
+	\end{figure}
+
+	\begin{figure}[htbp!]
+	    \centering
+		\includegraphics[height=4.3cm]{figures/uiuc-hydro3B}
+		\hfill
+		\caption{Peak reduction by using the produced H$_2$.}
+		\label{fig:uiuc-duck3}
+	\end{figure}
+
+
+
+
+\section{Conclusions}
+
+The University of Illinois is actively working to reduce GHG emissions on its campus. 
+
+A few microreactor designs could produce enough hydrogen to meet MTD and UIUC fleet fuel demand.
+
+Increased solar penetration worsens the duck curve.
+
+Hydrogen introduces a way to store energy that reduces the reliance on dispatchable sources.
+
+Nuclear energy and hydrogen production present an approach to mitigate the negative implications of the duck curve.
 
 
 \pagebreak
