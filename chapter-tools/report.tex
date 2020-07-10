@@ -134,6 +134,20 @@ We introduce the parameter $k_{eff}$ that divides the fission term obtaining equ
 \label{eq:eigenvalue}
 \end{align}
 
+% Boundary conditions
+
+Vacuum boundary conditions:
+
+There are no incoming neutrons at a vacuum boundary.
+The incoming current density $J^-(r_s, t) = 0$.
+In diffusion theory $J^-(r_s, t)$ is defined as
+
+\begin{align}
+    J^-(r_s, t) = \frac{1}{4} \phi(r_s, t) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi (r_s, t) = 0
+\label{eq:vacuumbc1}
+\end{align}
+
+
 % This might change: if I add the validation in the thesis
 The cross sections are input data that has to be previously generated.
 In this work, we use \textbf{Serpent} to generate the cross sections.
@@ -262,8 +276,16 @@ The validity of \ref{eq:fick} relies on the following approximations:
 \begin{itemize}
 	\item The angular flux does not depend strongly on the angular variables.
 	\item The fission source is isotropic.
-	\item The time derivative of the current density is small compared to the gradient of the flux.
-	\item The anisotropic
+	\item The time derivative of the current density is small compared to the mean collision time.
+	\item The anisotropic energy-transfer contribution can be ignored in group-to-group scattering.
+\end{itemize}
+
+% Section 4.IV.C \cite{duderstadt_nuclear_1976}
+More detailed studies of the transport equation itself indicate that the assumption of weak angular dependence is violated in the following cases:
+\begin{itemize}
+    \item near boundaries or where material properties change dramatically
+    \item near localized sources
+    \item near strongly absorbing media
 \end{itemize}
 
 The first item in the list imposes the requirement that scattering be the dominant interaction process, and not highly anisotropic.
@@ -285,6 +307,9 @@ The geometrical scale of a system must be compared to the neutron mean free path
 collisions.
 In \glspl{LWR}, this is typically less that 1 cm for thermal neutrons and 5-10 cm for fast fission neutrons.
 % Look for those numbers for HTGRs
+% mean free path: \lambda = \Sigma_t^{-1}
+% Migration length in a LWR is 6 cm while in a HTGR is 57 cm\cite{shenoy_htgr_2010} this could be wrong
+In \glspl{HTGR} the mean free path in graphite is 3.9 cm. 0.3 cm in \glspl{LWR} \cite{gougar_high_2019}.
 
 The neutron flux in such a complicated system is not a smoothly varying function of the spatial co-ordinates, especially at low energy.
 The thermal flux reaches a peak near reflector regions at the core periphery.
@@ -293,7 +318,6 @@ The above difficulties make it impossible to use diffusion theory for detailed f
 A widely used practical solution to the problem is to reduce the spatial detail of the geometry to a level where diffusion theory is applicable. The reduction has to be carried out in such a way that the diffusion calculation gives consistent results with the detailed transport theory calculation.
 This procedure is known as homogenization [10].
 The reactor core is described as a three-dimensional array of homogeneous macro-regions.
-
 \cite{leppanen_development_2007}
 
 % Heterogeneous calculations using moltres
@@ -302,12 +326,28 @@ It is well established that lattice fuel block calculations for HTRs with low-en
 Instead, the preferred way to alleviate some of the error in the cross-sections is to allow better spectrum information to be transferred in the full core calculations through the use of a large number of coarse energy groups, for example with 26 groups.
 \cite{oecd_nea_coupled_2020}
 
+For the cross-section generation good agreement can be obtained using more groups (8-26).
+Discretize in the axial dimension.
+\cite{gougar_high_2019}.
+
 % Impact of delayed neutrons in the calculations
+% Section 4.3.2 of \cite{leppanen_development_2007}
 
-Section 4.3.2 of \cite{leppanen_development_2007}
+Some small fraction of fission neutrons, typically 0.1-1.7\% is not emitted instantly, but after the radioactive decay of certain precursor fission product isotopes.
+Despite their small flux contribution, the impact of delayed neutrons on reactor kinetics is essential.
 
-% Results in moltres
 
+\cite{leppanen_development_2007}
+
+% Comparison in moltres
+
+
+% Results
+% The presence of graphite causes relatively large uncertainties in neutronic calculations.
+% \cite{gougar_high_2019}
+
+% Important data
+% Flow reverses during LOFC \cite{gougar_high_2019}
 
 \pagebreak
 \bibliographystyle{plain}
