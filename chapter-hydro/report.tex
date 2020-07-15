@@ -455,7 +455,13 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
 \section{Results}
 \label{sec:Results}
 
+This section holds the results of the different analysis.
+
 \subsection{Transportation}
+
+Figure \ref{fig:fuel} displays the fuel consumed per day by \gls{MTD} and \gls{UIUC} fleet.
+Using the values shown in Table \ref{tab:equiv}, we calculate the hydrogen requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
+Table \ref{tab:hydro-fleet} summarizes the most important results.
 
 	\begin{figure}[htbp!]
 		\centering
@@ -477,14 +483,15 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
     \column[t]{5cm}
 	\begin{table}[!htb]
 		\centering
-	    \caption{GGE, DGE, and E85GE \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
+	    \caption{Hydrogen mass necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
 		\begin{tabular}{lr}
 		\hline
 		                 & Hydrogen Mass [kg] \\ \hline
-		GGE              & 1                  \\
-		DGE              & 1.13               \\
-		E85GE            & 0.78               \\ \hline
+		Gasoline         & 1                  \\
+		Diesel           & 1.13               \\
+		E85              & 0.78               \\ \hline
         \end{tabular}
+        \label{tab:equiv}
 	\end{table}
 
 	\begin{figure}[htbp!]
@@ -507,6 +514,39 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
         \end{tabular}
         \label{tab:hydro-fleet}
 	\end{table}
+
+Using Table \ref{tab:co2-eq}, we calculate the \gls{CO2} savings caused by replacing all the fossil fuels by \gls{H2}.
+Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
+
+    \column[t]{5cm}
+	\begin{table}[!htb]
+		\centering
+	    \caption{\gls{CO2} savings in lbs per gallon of fuel burned \cite{energy_information_administration_how_2014}.}
+		\begin{tabular}{lr}
+		\hline
+		              & \gls{CO2} produced [lbs/gallon] \\ \hline
+		Gasoline      & 19.64           \\
+		Diesel        & 22.38           \\
+		E85           & 13.76           \\ \hline
+        \end{tabular}
+        \label{tab:co2-eq}
+	\end{table}
+
+    \column[t]{5cm}
+	\begin{table}[!htb]
+		\centering
+	    \caption{\gls{CO2} yearly savings.}
+		\begin{tabular}{lr}
+		\hline
+		            & \gls{CO2} mass [tonnes] \\ \hline
+		MTD      	& 7306           \\
+		UIUC        & 1143           \\
+		Total       & 8449           \\ \hline
+        \end{tabular}
+        \label{tab:co2}
+	\end{table}
+
+% I stopped here
 
 	\begin{table}[!htb]
 		\centering
