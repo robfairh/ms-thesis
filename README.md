@@ -1,31 +1,35 @@
 # ms-thesis
 
 Chapter 1: Introduction
-- Background
-	* HTGRs
-	* Multyphisics
-		- Other studies and other codes
+* HTGRs
+* Motivation
+* Objectives
 
-- Motivation
-- Objectives
+Chapter 2: Lit. Review
+* Neutronics
+* Thermal-hydraulics
 
-Chapter 2: Tools
-- MOOSE ??
-- Moltres
-- Serpent
+Chapter 3: Methods
+* MOOSE
+* Moltres
+* Serpent
 
-Chapter 3: Preliminar studies
-	* Neutronics from Serpent
-	* Neutronics in Moltres
-	* Limitations in moltres/diffusion
-
-Chapter 4: Bechmark
-	* Neutronics
+Chapter 4: Results
+* OECD/NEA MHTGR 350 Bechmark
+* Neutronics from Serpent
+* Neutronics in Moltres
+* Moltres thermo-hydraulics
+	* PMR comparison
+	* MHTGR350 calculation
+* Moltres thermo-mecanics??
 
 Chapter 5: Hydrogen
-	* Introduction
-	* Hydrogen production methods
-	* Hydrogen requirements in UC
-	* Duck curve
+* Introduction
+* Hydrogen production methods
+* Results:
+	- Hydrogen requirements in UC
+	- Duck curve
 
-Chapter 6: Conclusions and future work
+Chapter 6: Conclusions
+* Contribution
+* Future work
