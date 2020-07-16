@@ -48,6 +48,7 @@ fill=blue!30]
 
 \begin{document}
 
+% --------- INTRO
 % \section{Introduction}
 
 \section{\glspl{HTGR}}
@@ -88,6 +89,9 @@ Another advantage of \glspl{HTGR} is their proliferation resistance.
 %\cite{huning_steady_2014}
 
 \section{Motivation}
+
+HTGR reactors require core simulation techniques not typically utilized in Light Water Reactor (LWR) analysis due to several unique features, such as double heterogeneous fuel design including tristructural isotropic (TRISO) fuel particles, large graphite quantities, and high operational temperatures.
+\cite{bostelmann_criticality_2016}.
 
 % explain what is the operator splitting approach, see ragusa's paper
 
@@ -155,6 +159,35 @@ The objective of this work is to conduct Exercise 1 of Phase I of the benchmark 
 Finally, we will compare the results to the already published results from the benchmark.
 
 \section{Objectives}
+
+
+% --------- LIT REVIEW
+% \section{Introduction}
+
+% More on Benchmarks
+OECD PBMR400 Coupled Code Benchmark % ref ?
+OECD/NEA MHTGR-350 Benchmark % ref ?
+CRP on Uncertainty Analysis in HTRs % ref ?
+\cite{gougar_htgr_2016}
+
+% More on codes: Core neutronics & Depletion
+PHISICS (INL) % ref ?
+Computes the time-dependent flux and power distribution in the core.
+Depletes and shuffles fuel elements.
+
+User-specified P n nodal transport (INSTANT). Coupled to
+RELAP5-D for thermal-fluid analysis.
+
+SPH treatment?
+Diffusion codes may work if the cross sections are properly prepared using a lattice code that captures all layers of heterogeneity including spectral penetration between blocks. Monte Carlo codes are suitable for steady state design and high fidelity reference solutions (SERPENT, MCNP-ORIGEN, MONTEBURN)
+
+Others: PARCS (NRC), DIF3D-REBUS (ANL), APOLLO-CRONOS (AREVA)
+\cite{gougar_htgr_2016}
+
+% More on codes: Lattice Physics/Cross Section Generation
+
+
+\cite{gougar_htgr_2016}
 
 \pagebreak
 \bibliographystyle{plain}
