@@ -1,0 +1,188 @@
+\documentclass[11pt,letterpaper]{article}
+
+\addtolength{\oddsidemargin}{-.875in}
+\addtolength{\evensidemargin}{-.875in}
+\addtolength{\textwidth}{1.75in}
+
+\addtolength{\topmargin}{-.875in}
+\addtolength{\textheight}{1.75in}
+
+\usepackage[utf8]{inputenc}
+\usepackage{caption} % for table captions
+\usepackage{amsmath} % for multi-line equations and piecewises
+\DeclareMathOperator{\sign}{sign}
+\usepackage{graphicx}
+\usepackage{relsize}
+\usepackage{xspace}
+\usepackage{verbatim} % for block comments
+\usepackage{subcaption} % for subfigures
+\usepackage{enumitem} % for a) b) c) lists
+\newcommand{\Cyclus}{\textsc{Cyclus}\xspace}%
+\newcommand{\Cycamore}{\textsc{Cycamore}\xspace}%
+\newcommand{\deploy}{\texttt{d3ploy}\xspace}%
+\newcommand{\Deploy}{\texttt{D3ploy}\xspace}%
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage[acronym,toc]{glossaries}
+%\include{acros}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\newcolumntype{b}{X}
+\newcolumntype{f}{>{\hsize=.15\hsize}X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcolumntype{m}{>{\hsize=.75\hsize}X}
+\newcolumntype{r}{>{\hsize=1.1\hsize}X}
+\usepackage{titling}
+\usepackage[hang,flushmargin]{footmisc}
+\renewcommand*\footnoterule{}
+\usepackage{tikz}
+
+\usetikzlibrary{shapes.geometric,arrows}
+\tikzstyle{process} = [rectangle, rounded corners, 
+minimum width=1cm, minimum height=1cm,text centered, draw=black, 
+fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\graphicspath{}
+
+\begin{document}
+
+% \section{Introduction}
+
+\section{\glspl{HTGR}}
+
+The history of prismatic \glspl{HTGR} begins in the 1960s with the deployment of the Dragon reactor (1965) in the \gls{UK} and Peach Bottom (1966) in the \gls{US}\cite{huning_steady_2014}.
+The Fort St. Vrain Generating Station (1976) in the \gls{US} laid the foundation for future prismatic \gls{HTGR} designs.
+Modern \gls{HTGR} designs still use variants of its fuel assembly block.
+Despite these plants did not demonstrate the commercial capabilities of the \glspl{HTGR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}.
+
+The \gls{HTGR} reactor concept uses uranium fuel, graphite as the moderator, and helium as coolant\cite{breeze_nuclear_2014}.
+The combination of graphite core structure, ceramic fuel and inert helium permits very high operating temperature \cite{ballinger_balance_2004}.
+
+In \glspl{HTGR}, the coolant outlet temperatures go up to 850 $^{\circ}$C.
+The \gls{VHTR} is distinct from the \gls{HTGR} as the coolant outlet temperature ranges from 850 $^{\circ}$C to 1000 $^{\circ}$C.
+Because many conceptual designs assume outlet temperatures close to 850°C, the terms \gls{VHTR} and \gls{HTGR} are often used interchangeably\cite{huning_steady_2014}.
+
+% HTGR advantages: high temperatures
+The early \glspl{HTGR} would convert their heat into electricity using the Rankine steam cycle \cite{herranz_power_2009}.
+The helium coolant passes through a heat exchanger that generates steam to drive a steam turbine.
+This arrangement is around 38\% efficient \cite{breeze_nuclear_2014}.
+Some of these designs would superheat the steam to increase efficiencies, but this complicates the plant layout \cite{ballinger_balance_2004}.
+A practical temperature limit is around 300-400 $^{\circ}$C.
+To take advantage of the high core outlet temperature of the \gls{HTGR}, a more advanced system uses the helium directly to drive a gas turbine.
+Such system, Brayton cycle, can achieve an energy conversion efficiency of 48\% \cite{breeze_nuclear_2014}.
+
+% Co-generation applications:
+Higher outlet temperatures offer increased cycle efficiency and enable many coupled process heat applications.
+HTGR driven process heat applications remain a promising option as global energy demand increases and as increasingly strict emission limitations restrict fossil fuel heat sources\cite{huning_steady_2014}.
+
+% Hydrogen? See CEA
+
+% Proliferation resistance:
+Another advantage of \glspl{HTGR} is their proliferation resistance.
+\gls{TRISO} fuel particles increase the assurance that they are a very unattractive and the least desirable route for diversion or theft of weapons-usable materials, and provides increased physical protection against acts of terrorism \cite{huning_steady_2014}.
+
+%Materials:
+%The coolant is \gls{He} and has the advantage oh having inert nuclear and chemical properties.
+%\cite{huning_steady_2014}
+
+\section{Motivation}
+
+% explain what is the operator splitting approach, see ragusa's paper
+
+Systems of \glspl{PDE} describe the behavior of nuclear reactor processes.
+Historically, linking a neutronics solver to a thermal-hydraulics solver allowed for the simulation of an entire reactor.
+Nonetheless, \glspl{HTGR} have a strong temperature feedback, causing increased coupling between the different physics phenomena.
+Because of the large time-scale separation, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
+\gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems and allows for great flexibility even with large variance in time scales.
+
+
+The history of \glspl{PMR} begins in the 1960s with the deployment of the Dragon reactor (1965) in the \gls{UK} and Peach Bottom (1966) in the \gls{US}.
+Later, the Fort St. Vrain Generating Station (1976) in the \gls{US} laid the foundation for future prismatic \gls{HTGR} designs \cite{aris_iaea_general_2013}.
+Modern \gls{HTGR} designs still use variants of its fuel assembly block.
+
+The \gls{PMR} design concept has existed for some time.
+However, the computational tools available for the analysis of \glspl{HTGR} have lagged behind, compared to the state of the art of other reactor technologies.
+% However, the computational tools available for the analysis of \glspl{PMR} are a technology still under development.
+% Compared to the state of the art of other reactor technologies, the tools available for \gls{PMR} have lagged behind.
+% Nowadays there are several codes to solve \glspl{PMR}.
+% They rely on different methods such as \gls{MC}, deterministic transport, and deterministic diffusion.
+% We focus our interest in the last type.
+% Deterministic diffusion solvers have lower computational requirements than other methods reference ??
+% LINK
+The history of deterministic diffusion solvers begins in the late 1950s with the \gls{FDM} applied to \glspl{LWR}.
+Using \gls{FDM} causes the mesh points to reach intractable numbers when large multi-dimensional problems are under consideration \cite{lewis_finite_1986}.
+The computational expense associated with these calculations motivated the development of more computationally efficient techniques \cite{lawrence_progress_1985}.
+The most common methods fall into two broad categories: nodal methods and \gls{FEM}.
+% NODAL
+In the 1970s, nodal methods proved to be a highly efficient and accurate technique in Cartesian geometries.
+In 1981, a formulation based on \gls{NEM} first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
+Nevertheless, this method introduces non-physical singular terms that requires the utilization of discontinuous polynomials.
+This motivated the development of HEXNOD \cite{wagner_three-dimensional_1989} and HEXPEDITE \cite{fitzpatrick_hexpedite_1992}, more effective formulations introduced in the late 1980s and early 1990s.
+HEXPEDITE's use still prevails in the analysis of \glspl{HTGR} \cite{ortensi_deterministic_2010-1}.
+Some modern codes still use this technique.
+DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are examples of those codes.
+% FEM
+The \gls{FEM} is a well-established method in applied mathematics and engineering.
+Most applications make \gls{FEM} preferable due to its flexibility in the treatment of curved or irregular geometries.
+Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
+The first prototype engineering application of \gls{FEM} was in the field structural engineering and dates back to 1956.
+In the 1960s, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
+In 1981, \cite{lewis_finite_1981} described the first application of \gls{FEM} to the neutron diffusion theory.
+Some examples of current \gls{FEM} diffusion solvers are Rattlesnake \cite{wang_rattlesnake_2019} and CAPP \cite{lee_development_2011}.
+
+Historically, linking a stand-alone neutronics solver to a thermal-hydraulics solver allowed for the simulation of an entire reactor.
+For example, coupling PARCS, DIREKT, and THERMIX \cite{seker_analysis_2006} allowed for solving a \gls{PBMR}-400 Benchmark \cite{reitsma_oecdneansc_2006}.
+Nonetheless, \glspl{HTGR} have a strong temperature feedback, causing increased coupling between the different physics phenomena.
+Because of the large time-scale separation, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
+\gls{MOOSE} \cite{gaston_moose_2009} \cite{gaston_physics-based_2015} is a computational framework targeted at solving fully coupled systems.
+All the software built on the \gls{MOOSE} framework shares a common code base.
+This facilitates relatively easy coupling \cite{novak_pronghorn_2018} between different phenomena and allows for great flexibility even with large variance in time scales.
+% RattleS$_n$ake \cite{wang_nonlinear_2013} has become the primary tool for solving the linearized Boltzmann neutron transport equation within \gls{MOOSE} \cite{strydom_inl_2013}. 
+% RattleS$_n$ake counts with a variety of solvers available including low-order multigroup diffusion.
+% Pronghorn \cite{bingham_pronghorn_2012} \cite{novak_pronghorn_2018} is a \gls{FEM} porous media thermal-hydraulics simulation code built on the \gls{MOOSE} framework.
+\textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{FEM} simulation code built on the \gls{MOOSE} framework.
+It solves arbitrary-group neutron diffusion, precursor, and temperature governing equations on a single mesh.
+Moltres can solve the equations in a fully-coupled way or solve each system independently allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
+% All codes use MPI for parallel communication and allow for deployement on massively-parallel cluster-computing platforms.
+% MOOSE applications by default use monolithic and implicit methods ideal for closely-coupled and multi-scale physics.
+
+In addition to the development of new methods, it is essential to define appropriate benchmarks to compare the capabilities of various computer codes.
+The \gls{OECD} \gls{NEA} defined such benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
+The scope of the benchmark is twofold: 1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, 2) to test the depletion capabilities of various lattice physics codes available for \glspl{PMR}.
+The objective of this work is to conduct Exercise 1 of Phase I of the benchmark with Moltres.
+Finally, we will compare the results to the already published results from the benchmark.
+
+\section{Objectives}
+
+\pagebreak
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+\end{document}
+
+	% \begin{figure}[htbp!]
+	% 	\centering
+	% 	\begin{subfigure}[t]{0.4\textwidth}
+	% 		\centering
+	% 		\includegraphics[width=\linewidth]{figures/radial-layout.png}
+	% 		\caption{XY-plane.}
+	% 	\end{subfigure}
+	% 	\begin{subfigure}[t]{0.4\textwidth}
+	% 		\centering
+	% 		\includegraphics[width=\linewidth]{figures/axial-layout.png}
+	% 		\caption{YZ-plane.}
+	% 	\end{subfigure}
+	% 	\hfill
+	% 	\caption{MHTGR reactor layout.}
+	% 	\label{fig:layout}
+	% \end{figure}
+
+	% \begin{figure}[htbp!]
+	% 	\centering
+	% 	\includegraphics[width=0.6\linewidth]{figures/axial1.png}
+	% 	\hfill
+	% 	\caption{Neutron flux on the specified fuel channel.}
+	% 	\label{fig:axial}
+	% \end{figure}
