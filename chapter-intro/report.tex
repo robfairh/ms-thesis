@@ -53,6 +53,7 @@ fill=blue!30]
 
 \section{\glspl{PMR}}
 
+% History
 The history of prismatic \glspl{HTGR} or simply \glspl{PMR} begins in the 1960s with the deployment of the Dragon reactor in the \gls{UK}.
 Its initial objective was to demonstrate the feasibility of the \gls{HTGR} and to launch the development of the technology which had already begun at a low level in various national laboratories.
 The Dragon Reactor Experiment first operated in July 1965 and reached full power of 20 MW(t) in April 1966.
@@ -66,21 +67,20 @@ Its electric power generation started in December 1976, reaching full-power oper
 The \gls{FSV} generated 842 MW(t) to achieve a net output of 330 MW(e).
 This reactor laid the foundation for future \gls{PMR} designs.
 Beginning with \gls{FSV}, the \gls{US} core design included ceramic coated \gls{TRISO} particles embedded within rods placed in large hexagonal shaped graphite elements \cite{brey_development_2001}.
-% Despite these plants did not demonstrate the commercial capabilities of the \glspl{PMR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}
+% Despite these plants did not demonstrate the commercial capabilities of the \glspl{PMR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}.
 
-% Advantages of HTGRs, TRISO particles, 
+% Safety characteristics of HTGRs
 The most fundamental characteristic of the \gls{PMR} is the unique safety philosophy embodied in its design \cite{iaea_current_2001}.
 The control of radionuclides does not rely on active systems or operator actions.
 \gls{TRISO} particles, Figure \ref{fig:triso}, consist of various layers acting in concert to provide a containment structure that limits radioactive product release.
-The fuel particle is a microsphere of about 0.8 mm diameter.
-It includes a fuel kernel surrounded by a porous carbon layer (or buffer), followed successively by an \gls{IPyC} layer, \gls{SiC} layer, and an \gls{OPyC} layer.
-
-% Explantion of the layer functions
-% The buffer layer allows for limited kernel migration and provides some retention of gas compounds \cite{oecd_nea_benchmark_2017}.
-% The \gls{IPyC} layer protects the kernel from chloride during \gls{SiC} decomposition.
-% It also contributes to fission gas retention \cite{demkowicz_triso_2019}.
-% The \gls{SiC} layer ensures the structural integrity of the particle under constant pressure and helps retain non-gaseous fission products.
-% The \gls{OPyC} layer contributes to fission gas retention and protecst \gls{SiC} layer during handling.
+A \gls{TRISO} particle is a microsphere of about 0.8 mm diameter.
+It includes a fuel kernel surrounded by a porous carbon layer (or buffer), followed successively by an \gls{IPyC} layer, a \gls{SiC} layer, and an \gls{OPyC} layer.
+The buffer layer allows for limited kernel migration and provides some retention of gas compounds \cite{oecd_nea_benchmark_2017}.
+The \gls{IPyC} layer protects the kernel from chloride during the \gls{SiC} decomposition and contributes to fission gas retention \cite{demkowickz_paul_triso_2019}.
+The \gls{SiC} layer ensures the structural integrity of the particle under constant pressure and helps retain non-gaseous fission products.
+The \gls{OPyC} layer contributes to fission gas retention and protects the \gls{SiC} layer during handling.
+Additionally, \gls{TRISO} particles increase the proliferation resistance of \glspl{HTGR}.
+They are a very unattractive and the least desirable route for diversion or theft of weapons-usable materials \cite{huning_steady_2014}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -89,75 +89,60 @@ It includes a fuel kernel surrounded by a porous carbon layer (or buffer), follo
 	\label{fig:triso}
 \end{figure}
 
+The combination of graphite core structure, ceramic fuel, and inert helium permits very high operating temperatures \cite{ballinger_balance_2004}.
+Graphite has a high heat capacity and maintains its strength at temperatures beyond 2760 $^{\circ}$C.
+As a result, temperature changes in the core occur very slowly and without damage to the core structure during transients.
+Besides, the annular core geometry and low core power density enable the passive removal of the decay heat generated in the core by passive heat transfer mechanisms following postulated accidents \cite{neylan_modular_1988}.
+These passive heat transfer mechanisms rely primarily on the natural processes of conduction, thermal radiation, and convection.
 
-The approach to safety relies primarily on the natural processes of thermal radiation, conductio
-
-
-
-
-
-
-
-
-
-The modular HTGR adds the unique characteristic of being able to cool the reactor entirely by
-passive heat transfer mechanisms following postulated accidents without exceeding the failure
-temperature of the coated particles. This characteristic has been achieved by deliberately
-decreasing the core power level and configuring the reactor so that natural heat removal
-processes can limit fuel temperatures to levels at which the release of fission products from
-the reactor system to the environment is insignificant for postulated accidents. Even for
-extreme accidents having very low probabilities of occurrence, the cumulative fission product
-release at the site boundary is estimated to be below those acceptable under defined protective
-action guidelines [2].
-\cite{brey_development_2001}
-
-
-History of the MHTGR 
-\cite{brey_development_2001}
-
-
-
-\glspl{PMR} use uranium fuel, graphite as the moderator, and helium as coolant
-\cite{breeze_nuclear_2014}.
-
-The combination of graphite core structure, ceramic fuel and inert helium permits very high operating temperature \cite{ballinger_balance_2004}.
-
-In \glspl{HTGR}, the coolant outlet temperatures go up to 850 $^{\circ}$C.
-The \gls{VHTR} is distinct from the \gls{HTGR} as the coolant outlet temperature ranges from 850 $^{\circ}$C to 1000 $^{\circ}$C.
-Because many conceptual designs assume outlet temperatures close to 850°C, the terms \gls{VHTR} and \gls{HTGR} are often used interchangeably\cite{huning_steady_2014}.
-
-% HTGR advantages: high temperatures
-The early \glspl{HTGR} would convert their heat into electricity using the Rankine steam cycle \cite{herranz_power_2009}.
-The helium coolant passes through a heat exchanger that generates steam to drive a steam turbine.
+% Co-generation applications
+A desirable feature of the \gls{HTGR} is its higher operating temperature because it offers increased cycle efficiencies.
+The early \gls{HTGR} designs converted their heat into electricity using the Rankine steam cycle \cite{herranz_power_2009}.
+In such system, the helium coolant passes through a heat exchanger that generates steam and drives a steam turbine.
 This arrangement is around 38\% efficient \cite{breeze_nuclear_2014}.
 Some of these designs would superheat the steam to increase efficiencies, but this complicates the plant layout \cite{ballinger_balance_2004}.
 A practical temperature limit is around 300-400 $^{\circ}$C.
-To take advantage of the high core outlet temperature of the \gls{HTGR}, a more advanced system uses the helium directly to drive a gas turbine.
-Such system, Brayton cycle, can achieve an energy conversion efficiency of 48\% \cite{breeze_nuclear_2014}.
+To take advantage of the high core outlet temperature of the \gls{HTGR}, the Brayton cycle is a better option, where the helium coolant directly drives a gas turbine in a closed cycle.
+With this cycle, the system can achieve an energy conversion efficiency of 48\% \cite{breeze_nuclear_2014}.
+Additionally, having helium circulating in a closed cycle removes external sources of contamination of the nuclear circuit.
+Thus, the need for on-line clean up systems is largely reduced \cite{iaea_current_2001}.
 
-% Co-generation applications:
-Higher outlet temperatures offer increased cycle efficiency and enable many coupled process heat applications.
-HTGR driven process heat applications remain a promising option as global energy demand increases and as increasingly strict emission limitations restrict fossil fuel heat sources\cite{huning_steady_2014}.
+Higher outlet temperatures and increased cycle efficiencies enable a wide range of process heat applications.
+
+Production of Hydrogen
 
 % Hydrogen? See CEA
 
-% Proliferation resistance:
-Another advantage of \glspl{HTGR} is their proliferation resistance.
-\gls{TRISO} fuel particles increase the assurance that they are a very unattractive and the least desirable route for diversion or theft of weapons-usable materials, and provides increased physical protection against acts of terrorism \cite{huning_steady_2014}.
 
-%Materials:
-%The coolant is \gls{He} and has the advantage oh having inert nuclear and chemical properties.
-%\cite{huning_steady_2014}
+
+
+History of the MHTGR 
+\cite{neylan_modular_1988}
+\cite{brey_development_2001}
+
+
+\section{MHTGR}
+
+
+
+
+
 
 \section{MHTGR-350 Reactor Summary}
 
 
-
-
 \section{Motivation}
 
-HTGR reactors require core simulation techniques not typically utilized in Light Water Reactor (LWR) analysis due to several unique features, such as double heterogeneous fuel design including tristructural isotropic (TRISO) fuel particles, large graphite quantities, and high operational temperatures.
-\cite{bostelmann_criticality_2016}.
+The focus of this report is on utilization of the modular high temperature gas cooled
+reactor (HTGR) to support the goal of meeting the energy demands of the future in an
+efficient, safe and more economic and environmentally acceptable manner than the present
+methods of energy production and utilization. The international status and planning associated
+with development of the HTGR for the production of electricity and utilization in achieving a
+wide range of process heat applications is examined herein as an advanced source of energy
+for the twenty-first century.
+\cite{iaea_current_2001}
+
+HTGR reactors require core simulation techniques not typically utilized in Light Water Reactor (LWR) analysis due to several unique features, such as double heterogeneous fuel design including \gls{TRISO} fuel particles, large graphite quantities, and high operational temperatures \cite{bostelmann_criticality_2016}.
 
 % explain what is the operator splitting approach, see ragusa's paper
 
