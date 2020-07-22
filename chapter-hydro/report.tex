@@ -60,7 +60,7 @@ As \gls{CO2} is the main component in \glspl{GHG}, decarbonizing electricity gen
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{figures/total-ghg-2017.png}
+	\includegraphics[width=0.5\linewidth]{figures/total-ghg-2017.png}
 	\hfill
 	\caption{Total \gls{US} \gls{GHG} emissions by economic Sector in 2017. Image reproduced from \cite{us_epa_sources_2020}.}
 	\label{fig:ghg}
@@ -80,7 +80,7 @@ As a consequence, the market would experience sustained zero or negative prices 
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=1.0\linewidth]{figures/caiso-duck.png}
+	\includegraphics[width=0.8\linewidth]{figures/caiso-duck.png}
 	\hfill
 	\caption{The duck curve. Image reproduced from \cite{bouillon_prepared_2014}.}
 	\label{fig:duck}
@@ -174,7 +174,7 @@ In terms of transportation, it will eliminate carbon emissions completely.
 
 %Mention the choice of reactor
 In both analysis, many reactor choices can satisfy our needs.
-It could be one Microreactor, a series of Microreactors, or a \gls{SMR}.
+It could be one microreactor, a series of microreactors, or a \gls{SMR}.
 Section \ref{sec:reactors} discusses their characteristics.
 
 \section{Hydrogen production methods}
@@ -269,6 +269,7 @@ In \gls{LTE}, electricity generates the thermal energy.
 In \gls{HTE}, a high temperature heat source is necessary to provide the thermal energy.
 The latter has the advantage that $\Delta G$ decreases with increasing temperature, Figure \ref{fig:electro1}.
 Since heat-engine-based electrical work is limited to a production thermal efficiency of 50$\%$ or less, decreasing the electricity requirement results in higher overall production efficiencies \cite{j_e_obrien_high_2010}.
+In Figure \ref{fig:electro1}, $T \Delta S$ accounts for the latent heat of water vaporization.
 
 \begin{align}
 	\Delta H &= \Delta G + T \Delta S
@@ -276,41 +277,37 @@ Since heat-engine-based electrical work is limited to a production thermal effic
     \intertext{where}
     \Delta H &= \mbox{Total specific energy [kWh/kg-H$_2$]} \\
     \Delta G &= \mbox{Specific electrical energy [kWh/kg-H$_2$]} \\
-    T \Delta S &= \mbox{Specific thermal energy [kWh/kg-H$_2$]}
+    T \Delta S &= \mbox{Specific thermal energy [kWh/kg-H$_2$].}
 \end{align}
 
-Equation \ref{eq:electrolysis2} determines the electrical $P_{EH2}$ and thermal power $P_{TH2}$ required by the hydrogen plant.
+Equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the electrical $P_{EH2}$ and thermal power $P_{TH2}$ required by the hydrogen plant.
 
 \begin{align}
-	P_{EH2} &= \dot{m}_{H2} \Delta G \\
-	P_{TH2} &= \dot{m}_{H2} T \Delta S
-	\label{eq:electrolysis2}
+	P_{EH2} &= \dot{m}_{H2} \Delta G \label{eq:electrolysis2a} \\
+	P_{TH2} &= \dot{m}_{H2} T \Delta S \label{eq:electrolysis2b}
 	\intertext{where}
 	P_{EH2} &= \mbox{Total electrical power [kW]} \\
 	P_{TH2} &= \mbox{Total thermal power [kW]} \\
-	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h]}
+	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h].}
 \end{align}
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.8\linewidth]{figures/hte-energy.png}
 	\hfill
-	\caption{Energy required by an ideal \gls{HTE} process. Data from \cite{yildiz_efficiency_2006}.}
+	\caption{Energy required by an ideal \gls{HTE} process at 1 atm. Data from \cite{yildiz_efficiency_2006}.}
 	\label{fig:electro1}
 \end{figure}
 
 \subsection{Sulfur-Iodine Thermo-chemical cycle}
 
-The Sulfur-Iodine cycle consists of the three chemical reactions represented in Figure \ref{fig:sulfur1}.
+The \gls{SI} cycle consists of the three chemical reactions represented in Figure \ref{fig:sulfur1}.
 The chemical reactions are:
 
 \begin{align}
-	& I_2 + SO_2 + 2H_2O \rightarrow 2HI + H_2SO_4 \\
-	\label{eq:sulfur1}
-	& H_2SO4 \rightarrow SO_2 + H_2O + 1/2O_2 \\
-	\label{eq:sulfur2}
-	& 2HI \rightarrow I_2 + H_2. \\
-	\label{eq:sulfur3}
+	I_2 + SO_2 + 2H_2O &\rightarrow 2HI + H_2SO_4 \\
+	H_2SO4 &\rightarrow SO_2 + H_2O + 1/2O_2 \\
+	2HI &\rightarrow I_2 + H_2.
 \end{align}
 
 The whole process takes in water and high temperature heat, and releases hydrogen and oxygen.
@@ -318,24 +315,24 @@ The process does not use any electricity.
 The process recycles all reagents and does not have any effluents \cite{yildiz_efficiency_2006}.
 
 Figure \ref{fig:sulfur2} presents the specific energy requirements of the cycle $\Delta H$.
-Equation \ref{eq:sulfur4} determines the thermal energy required by the hydrogen plant $P_{TH2}$.
+Equation \ref{eq:sulfur4} determines the thermal power required by the hydrogen plant $P_{TH2}$.
 
 \begin{align}
-	P_{TH2} &= \dot{m}_{H2} \Delta H\\
+	P_{TH2} &= \dot{m}_{H2} \Delta H
 	\label{eq:sulfur4}
 	\intertext{where}
-	P_{TH2} &= \mbox{total thermal energy} \\
-	\dot{m}_{H2} &= \mbox{\gls{H2} production rate} \\
-	\Delta H &= \mbox{specific energy} \\
+	P_{TH2} &= \mbox{total thermal power [kW]} \\
+	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h]} \\
+	\Delta H &= \mbox{specific energy [kWh/kg-H$_2$].}
 \end{align}
 
-Note the discrepancy between Figure \ref{fig:sulfur1} and Figure \ref{fig:sulfur2} of the high temperature required.
+Note the discrepancy between Figure \ref{fig:sulfur1} and Figure \ref{fig:sulfur2} of the highest temperature required by the process.
 Other sources seem to disagree in that number too.
 Our analysis considers the process viable only for temperatures above 800 $^{\circ}$C.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/sulfur1.png}
+	\includegraphics[width=0.5\linewidth]{figures/sulfur1.png}
 	\hfill
 	\caption{Diagram of the Sulfur-Iodine Thermochemical process. Image reproduced from \cite{benjamin_russ_sulfur_2009}.}
 	\label{fig:sulfur1}
@@ -343,7 +340,7 @@ Our analysis considers the process viable only for temperatures above 800 $^{\ci
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/si-energy.png}
+	\includegraphics[width=0.6\linewidth]{figures/si-energy.png}
 	\hfill
 	\caption{Energy required by the Sulfur-Iodine Cycle. Image reproduced from \cite{yildiz_efficiency_2006}.}
 	\label{fig:sulfur2}
@@ -377,57 +374,41 @@ The \gls{DOE} defines a microreactor as a reactor that generates from 1 to 20 MW
 The \gls{IAEA} describes a \gls{SMR} as a reactor whose power is under 300 MWe.
 However, it adds another definition.
 It defines a very small modular reactor as a reactor that produces less than 15 MWe \cite{world_nuclear_association_small_2020}.
-There is clearly an overlap in the definitions, but we will not discuss it.
-We will consider reactors of less than 100 MW$_{th}$ regardless of their classification.
+As there is clearly an overlap in the definitions, we will consider reactors of less than 100 MW$_{th}$ regardless of their classification.
 
 \section{Methodology}
 \label{sec:metho}
 
 In this analysis, the energy source (both electric and thermal) is a nuclear reactor with co-generation capabilities.
-The nuclear reactor supplies the grid with electricity ($P_E$) while providing a hydrogen plant with electricity ($P_{EH2}$) and thermal energy ($P_{TH2}$), Figure \ref{fig:cogen}.
+The nuclear reactor supplies the grid with electricity $P_E$ while providing a hydrogen plant with electricity $P_{EH2}$ and thermal energy $P_{TH2}$, Figure \ref{fig:cogen}.
 $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$, see Equations \ref{eq:cogen1} to \ref{eq:cogen6}.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[height=3.6cm]{figures/hte-figure0.png}
+	\includegraphics[height=4.5cm]{figures/hte-figure0.png}
 	\hfill
 	\caption{Diagram of a reactor coupled to hydrogen plant.}
 	\label{fig:cogen}
 \end{figure}
 
-\begin{equation}
-\begin{split}
-	P_{E} &= \eta \beta P_{th}
-	\\
-	P_{EH2} &= \eta \gamma (1-\beta) P_{th}
-	\\
-	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
-	\\
-	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}
-	\\
-	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}.
-\end{split}
-\label{eq:hydro}
-\end{equation}
-
 \begin{align}
-	P_{E} &= \eta \beta P_{th} \\
-	\label{eq:cogen1}
-	P_{EH2} &= \eta \gamma (1-\beta) P_{th}\\
-	\label{eq:cogen2}
-	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}\\
+	P_{E} &= \eta \beta P_{th} 	\label{eq:cogen1} \\
+	P_{EH2} &= \eta \gamma (1-\beta) P_{th} \\
+	% \label{eq:cogen2}
+	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
 	\label{eq:cogen3}
+	%\label{eq:cogen3}
 	\intertext{where}
     \eta &= \mbox{thermal-to-electric conversion efficiency} \\
-	\label{eq:cogen4}
-	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}\\
-	\label{eq:cogen5}
-	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}\\
+	% \label{eq:cogen4}
+	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)} \\
+	% \label{eq:cogen5}
+	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}.
 	\label{eq:cogen6}
 \end{align}
 
 If $\beta = 1$, the reactor only supplies the grid with electricity $P_E$ and the hydrogen plant does not produce \gls{H2}.
-If $\beta = 0$, the reactor only supplies the hydrogen plant and now electricity goes into the grid.
+If $\beta = 0$, the reactor only supplies the hydrogen plant and no electricity goes into the grid.
 Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the different methods.
 
 \begin{table}[htbp!]
@@ -486,7 +467,7 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 
 	\begin{figure}[htbp!]
 	    \centering
-		\includegraphics[height=6.0cm]{figures/hydro-fleet}
+		\includegraphics[height=7.0cm]{figures/hydro-fleet}
 		\hfill
 		\caption{Hydrogen requirement for MTD and UIUC fleets.}
 		\label{fig:hydro-fleet}
@@ -494,7 +475,7 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 
 	\begin{table}[htbp!]
 		\centering
-	    \caption{Hydrogen requirements.}
+	    \caption{Hydrogen requirement for MTD and UIUC fleets.}
 		\begin{tabular}{|l|c|}
 		\hline
 		Total [tonnes/year]     & 943    \\
@@ -551,10 +532,9 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
         \label{tab:hydro-micro}
 	\end{table}
 
-	% need to re-do this figure: SI only feasible for T > 800
 	\begin{figure}[htbp!]
 	    \centering
-		\includegraphics[height=4.3cm]{figures/reactors-by-hour1}
+		\includegraphics[height=6.0cm]{figures/reactors-by-hour1}
 		\hfill
 		\caption{Hydrogen production rate by the different microreactor designs.}
 		\label{fig:hydro-micro}
