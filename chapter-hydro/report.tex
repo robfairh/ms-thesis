@@ -26,7 +26,7 @@
 \usepackage{multirow}
 \usepackage{float} 
 \usepackage[acronym,toc]{glossaries}
-%\include{acros}
+\include{acros}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \newcolumntype{b}{X}
 \newcolumntype{f}{>{\hsize=.15\hsize}X}
@@ -70,8 +70,8 @@ As \gls{CO2} is the main component in \glspl{GHG}, decarbonizing electricity gen
 To address these concerns, utility companies are relying more and more on renewable energy resources, such as wind and solar \cite{ming_resource_2019}.
 However, high solar adoption creates a challenge.
 The need for electricity generators to quickly ramp up increases when the sun sets and the contribution from the \gls{PV} falls \cite{us_department_of_energy_confronting_2017}.
-The "duct chart" (or duck curve) depicts this phenomenon, Figure \ref{fig:duck}.
-The California ISO developed the duck curve to illustrate the net load \cite{bouillon_prepared_2014}.
+The "duck curve" (or duct chart) depicts this phenomenon, Figure \ref{fig:duck}.
+The \gls{CAISO} developed the duck curve to illustrate the net load of the grid \cite{bouillon_prepared_2014}.
 We define the net load as the difference between forecasted load and expected electricity production from solar.
 
 Moreover, the duck curve reveals another issue.
@@ -103,7 +103,7 @@ In the transportation sector, Japan is planning to deploy fuel cell vehicles, tr
 Although \gls{H2} technologies do not release CO$_2$, any \gls{H2} production method is only as carbon-free as the source of energy it relies on (electric, heat, or both).
 Nuclear reactors present a clean energy option to manufacture \gls{H2}.
 
-The \gls{UIUC} is leading by example and actively working to reduce \gls{GHG} emissions on its campus produced by both economic sectors, electricity generation and transportation.
+The \gls{UIUC} is leading by example and actively working to reduce \gls{GHG} emissions on its campus produced by both economic sectors, electricity generation and transportation (among other sectors).
 In pursuance of those efforts, the university has developed a climate action plan described in the following section.
 
 \section{\gls{UIUC} case}
@@ -283,10 +283,9 @@ Since heat-engine-based electrical work is limited to a production thermal effic
 Equation \ref{eq:electrolysis1} determines the energy required by the hydrogen plant $P_{EH2}$ and $P_{TH2}$.
 
 \begin{align}
-	P_{EH2} &= \dot{m}_{H2} \Delta G\\
-	P_{TH2} &= \dot{m}_{H2} T \Delta S\\
+	P_{EH2} &= \dot{m}_{H2} \Delta G \\
+	P_{TH2} &= \dot{m}_{H2} T \Delta S \\
 	\label{eq:electrolysis2}
-
 	\intertext{where}
 	P_{EH2} &= \mbox{Total electrical energy} \\
 	P_{TH2} &= \mbox{Total thermal energy} \\
@@ -308,13 +307,11 @@ The chemical reactions are:
 
 \begin{align}
 	& I_2 + SO_2 + 2H_2O \rightarrow 2HI + H_2SO_4 \\
-\label{eq:sulfur1}
-
+	\label{eq:sulfur1}
 	& H_2SO4 \rightarrow SO_2 + H_2O + 1/2O_2 \\
-\label{eq:sulfur2}
-
+	\label{eq:sulfur2}
 	& 2HI \rightarrow I_2 + H_2. \\
-\label{eq:sulfur3}
+	\label{eq:sulfur3}
 \end{align}
 
 The whole process takes in water and high temperature heat, and releases hydrogen and oxygen.
@@ -327,7 +324,6 @@ Equation \ref{eq:sulfur4} determines the thermal energy required by the hydrogen
 \begin{align}
 	P_{TH2} &= \dot{m}_{H2} \Delta H\\
 	\label{eq:sulfur4}
-
 	\intertext{where}
 	P_{TH2} &= \mbox{total thermal energy} \\
 	\dot{m}_{H2} &= \mbox{\gls{H2} production rate} \\
@@ -394,7 +390,7 @@ $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[height=3.6cm]{images/hte-figure0.png}
+	\includegraphics[height=3.6cm]{figures/hte-figure0.png}
 	\hfill
 	\caption{Diagram of a reactor coupled to hydrogen plant.}
 	\label{fig:cogen}
@@ -402,15 +398,15 @@ $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_
 
 \begin{equation}
 \begin{split}
-P_{E} &= \eta \beta P_{th}
-\\
-P_{EH2} &= \eta \gamma (1-\beta) P_{th}
-\\
-P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
-\\
-\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}
-\\
-\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}.
+	P_{E} &= \eta \beta P_{th}
+	\\
+	P_{EH2} &= \eta \gamma (1-\beta) P_{th}
+	\\
+	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
+	\\
+	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}
+	\\
+	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}.
 \end{split}
 \label{eq:hydro}
 \end{equation}
@@ -418,20 +414,15 @@ P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
 \begin{align}
 	P_{E} &= \eta \beta P_{th} \\
 	\label{eq:cogen1}
-
 	P_{EH2} &= \eta \gamma (1-\beta) P_{th}\\
 	\label{eq:cogen2}
-
 	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}\\
 	\label{eq:cogen3}
-
 	\intertext{where}
     \eta &= \mbox{thermal-to-electric conversion efficiency} \\
 	\label{eq:cogen4}
-
 	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}\\
 	\label{eq:cogen5}
-
 	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}\\
 	\label{eq:cogen6}
 \end{align}
@@ -441,12 +432,13 @@ If $\beta = 0$, the reactor only supplies the hydrogen plant and now electricity
 Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the different methods.
 
 \begin{table}[htbp!]
-    \begin{tabular}{|llll|}
+    \centering
+    \begin{tabular}{|lccc|}
         \hline
-        Method    & $\gamma$   & P_{EH2} & P_{TH2} \\ \hline
-        \gls{LTE} & 1          & \ne 0   & 0       \\
-        \gls{HTE} & \in (0, 1) & \ne 0   & \ne 0   \\
-        \gls{SI}  & 0          & 0       & \ne 0   \\ \hline
+        Method    & $\gamma$         & $P_{EH2}$ & $P_{TH2}$ \\ \hline
+        \gls{LTE} & 1                & $\ne$ 0   & 0         \\
+        \gls{HTE} & $0 < \gamma < 1$ & $\ne$ 0   & $\ne$ 0   \\
+        \gls{SI}  & 0                & 0         & $\ne$ 0   \\ \hline
     \end{tabular}
     \caption{Energy requirements of the different methods.}
     \label{tab:cogen1}
@@ -480,32 +472,31 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 		\label{fig:fuel}
 	\end{figure}
 
-    \column[t]{5cm}
-	\begin{table}[!htb]
-		\centering
-	    \caption{Hydrogen mass necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
-		\begin{tabular}{lr}
-		\hline
-		                 & Hydrogen Mass [kg] \\ \hline
-		Gasoline         & 1                  \\
-		Diesel           & 1.13               \\
-		E85              & 0.78               \\ \hline
-        \end{tabular}
-        \label{tab:equiv}
+	\begin{table}[htbp!]
+	\centering
+	\caption{Hydrogen mass necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
+	\begin{tabular}{|l|c|}
+	    \hline
+	 	                 & Hydrogen Mass [kg] \\ \hline
+	 	Gasoline         & 1                  \\
+	 	Diesel           & 1.13               \\
+	 	E85              & 0.78               \\ \hline
+	\end{tabular}
+	\label{tab:equiv}
 	\end{table}
 
 	\begin{figure}[htbp!]
 	    \centering
-		\includegraphics[height=4.3cm]{images/hydro-fleet}
+		\includegraphics[height=6.0cm]{figures/hydro-fleet}
 		\hfill
 		\caption{Hydrogen requirement for MTD and UIUC fleets.}
 		\label{fig:hydro-fleet}
 	\end{figure}
 
-	\begin{table}[!htb]
+	\begin{table}[htbp!]
 		\centering
 	    \caption{Hydrogen requirements.}
-		\begin{tabular}{lr}
+		\begin{tabular}{|l|c|}
 		\hline
 		Total [tonnes/year]     & 943    \\
 		Average [kg/day] 	    & 2584   \\
@@ -518,11 +509,10 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 Using Table \ref{tab:co2-eq}, we calculate the \gls{CO2} savings caused by replacing all the fossil fuels by \gls{H2}.
 Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
-    \column[t]{5cm}
-	\begin{table}[!htb]
+	\begin{table}[htbp!]
 		\centering
 	    \caption{\gls{CO2} savings in lbs per gallon of fuel burned \cite{energy_information_administration_how_2014}.}
-		\begin{tabular}{lr}
+		\begin{tabular}{|l|c|}
 		\hline
 		              & \gls{CO2} produced [lbs/gallon] \\ \hline
 		Gasoline      & 19.64           \\
@@ -532,11 +522,10 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
         \label{tab:co2-eq}
 	\end{table}
 
-    \column[t]{5cm}
-	\begin{table}[!htb]
+	\begin{table}[htbp!]
 		\centering
 	    \caption{\gls{CO2} yearly savings.}
-		\begin{tabular}{lr}
+		\begin{tabular}{|l|c|}
 		\hline
 		            & \gls{CO2} mass [tonnes] \\ \hline
 		MTD      	& 7306           \\
@@ -548,10 +537,10 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 % I stopped here
 
-	\begin{table}[!htb]
+	\begin{table}[htbp!]
 		\centering
 	    \caption{Microreactor designs.}
-		\begin{tabular}{lrr}
+		\begin{tabular}{|lcc|}
 		\hline
 		Reactor                                      & P[MW$_{th}$] & T$_o$[$^\circ$C] \\ \hline
 		MMR \cite{usnc_mmr_2019}  		             & 15           & 640              \\
@@ -566,7 +555,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 	% need to re-do this figure: SI only feasible for T > 800
 	\begin{figure}[htbp!]
 	    \centering
-		\includegraphics[height=4.3cm]{images/reactors-by-hour1}
+		\includegraphics[height=4.3cm]{figures/reactors-by-hour1}
 		\hfill
 		\caption{Hydrogen production rate by the different microreactor designs.}
 		\label{fig:hydro-micro}
@@ -576,12 +565,12 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 	\begin{figure}[htbp!]
 		\centering
-		\begin{subfigure}[t]{0.4\textwidth}
+		\begin{subfigure}[t]{0.38\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{figures/us-prediction1}
 			\caption{Total electricity generation.}
 		\end{subfigure}
-		\begin{subfigure}[t]{0.4\textwidth}
+		\begin{subfigure}[t]{0.40\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{figures/us-prediction2}
 			\caption{Solar electricity generation.}
