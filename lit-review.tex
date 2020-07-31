@@ -1,3 +1,4 @@
+% tak_numerical_2008
 
 The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile  without elaborate numerical calculations.
 
@@ -5,23 +6,56 @@ The unit cell model is an effective approach that reduces the computational effo
 However, such model neglects the effects of the bypass gap flow and the radial power distribution within the fuel assembly.
 
 HTGR advantages are an inherent safety, high thermal efficiency, and a high temperature process heat potential.
-Higher fuel temperature achieve higher outlet temperature.
+Higher fuel temperature achieves higher outlet temperature.
 However, undesirably high temperatures jeopardize the integrity of the TRISO particles (as well as the fission products release).
 The design limit in HTGR is 1250 C. (check)
 
-Complex geomtry of the fuel blocks hinders accurate evaluations of the fuel temperatures requiring elaborate numerical calculations.
+Complex geometry of the fuel blocks hinders accurate evaluations of the fuel temperatures requiring elaborate numerical calculations.
+
+The analyses and design of prismatic reactors has widely used simplified computational models, among which we find the equivalent cylinder model and the unit cell model.
+
+Both one-dimensional and multi-dimensional codes have used the equivalent cylinder model.
+NO et al. 2007 % no_multi-component_2007
+Reza et al. 2006 % reza_design_2006
+Nakano et al. 2007 % nakano_conceptual_2008
 
 
-
-(To do)
-Simplified computational models have been widely used for the analyses and designs of prismatic reactors. 
-Popular simplified models are the equivalent cylinder model and the unit cell model.
-The equivalent cylinder models, based on one-dimensional assumptions, have been widely adopted in
+, based on one-dimensional assumptions, have been widely adopted in
 
 
-
-\cite{tak_numerical_2008}
-
-What they did: \cite{tak_numerical_2008}
+What they did:
 * three-dimensional computational fluid dynamics (CFD) analysis carried out on a typical fuel assembly of a prismatic HTGR
 * accuracy of the unit cell approach assessed against the CFD solutions
+
+% no_multi-component_2007
+The VHTR faces some technical and economical challenges, particularly reactor safety and costs.
+The air ingress event following a LOCA is a cause of concern.
+Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
+
+What they did:
+* Development of the code GAMMA
+* Solves equations for both the gas and the solid parts.
+* Use porous media model (Nield and Bejan, 1999) to consider heat transport in solid-fluid components.
+* Gas flow medium: multi-dimensional governing equations for a chemically reacting flow (Poinsot and Veynante,
+2001) that consist of the spatially-averaged conservation equations for continuity, momentum, energy of the gas mixture, and the mass of each species.
+* Heat transfer between the fluid and the solid: h(TWall - TFluid)
+* The boundary condition for the enclosure (recinto) is the radiative heat transfer. It uses the irradiation/radiosity method (Holman, 1986). The radiation exchange between surfaces is gray and diffuse.
+* Improvement of RELAP5
+* They added the capability to simulate air ingress following LOCAs due to the effects of molecular diffusion.
+
+% reza_design_2006
+The temperatures required for efficient hydrogen production present a unique design challenge for the reactor pressure vessel during steady-state operation.
+
+What they did:
+* Use ATHENA (that relies on RELAP5-3D) to solve MHRs
+* peak steady state reactor vessel temperature of 541 C
+* Propose an alternative coolant inlet flow configuration
+* Calculated peak temperatures in HPCC and LPCC accidents with the new config
+high pressure conduction cooldown (HPCC): 5.03 MPa
+low pressure conduction cooldown (LPCC): 1 atm
+* Max core velocity ~53 m/s
+* Total pressure drop 57.87 kPa
+* Peak fuel temperature around ~1106C at SS
+* Design fuel temperature limit of 1600C
+
+% nakano_conceptual_2008
