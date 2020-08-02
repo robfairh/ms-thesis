@@ -1,0 +1,143 @@
+Most important ones are:
+% tak_numerical_2008
+
+
+% tak_numerical_2008
+
+The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile  without elaborate numerical calculations.
+
+The unit cell model is an effective approach that reduces the computational efforts.
+However, such model neglects the effects of the bypass gap flow and the radial power distribution within the fuel assembly.
+
+HTGR advantages are an inherent safety, high thermal efficiency, and a high temperature process heat potential.
+Higher fuel temperature achieves higher outlet temperature.
+However, undesirably high temperatures jeopardize the integrity of the TRISO particles (as well as the fission products release).
+The design limit in HTGR is 1250 C. (check)
+
+Complex geometry of the fuel blocks hinders accurate evaluations of the fuel temperatures requiring elaborate numerical calculations.
+
+The analyses and design of prismatic reactors has widely used simplified computational models, among which we find the equivalent cylinder model and the unit cell model.
+
+The equivalent cylinder model has been widely adopted in the thermo-fluid analyses using one-dimensional and multi-dimensional system codes:
+* NO et al. 2007 % no_multi-component_2007
+* Reza et al. 2006 % reza_design_2006
+* Nakano et al. 2007 % nakano_conceptual_2008
+
+Solved the multi-dimensional head conduction based on the unit cell model:
+* Bays et al. 2006
+* In et al. 2006 % in_three-dimensional_2006
+* Richards et al. 2007 % richards_thermal_2007
+The unit cell model assumes that the heat generated in the fuel is only removed by the coolant.
+
+Such simplified approaches are helpful to understand some basic aspects of a heat transfer in prismatic fuel blocks, and they are economical by reducing the computational efforts.
+However, the simplified approaches cannot consider a heat transfer within a fuel assembly as well as a coolant flow through a gap between the fuel assemblies, which may significantly affect the fuel temperature.
+
+Evaluations of the thermal behavior of prismatic fuels using more detailed thermo-fluid models than the unit cell model are rare, particularly in the open literatures.
+General Atomics analyzed detailed thermal behaviors of the fuel blocks of HTGRs using a model named DEMISE but limited information is available in the book written by Melese and Katz (1984).
+* Melese and Katz 1984
+
+Using a CFD code named Trio_U, Cioni et al. (2004) made three-dimensional thermo-fluid simulations of prismatic fuel assemblies of a HTGR.
+They modeled seven fuel assemblies in detail and paid attention to a heat transfer between the fuel assemblies with/without a blockage of the coolant channels.
+* Cioni et al. 2004
+
+Simoneau et al. (2005) numerically analyzed the passive heat removal characteristics of a prismatic VHTR using a commercial CFD code.
+They applied a simplified three-dimensional reactor model.
+They used homogenized triangular posts since they were interested in the overall system behavior.
+* Simoneau et al. 2005
+
+PMR600: the reference reactor is GT-MHR.
+The heat generated in the fuel compacts is conducted through the graphite block and it is finally removed by the helium coolant.
+
+Considering the effects of the dowel holes to be negligible, a 1/12 section of the fuel is enough to simulate the fuel assembly due to its symmetry.
+The model includes the graphite plugs.
+Uniform power density profile.
+The burnup flattens out the axial power profile making it close to uniform at the end of cycle.
+Amount of heat generation in the graphite plugs is negligibly small.
+
+Re = 40000 in coolant channel and 2000 in bypass gap.
+Increasing the bypass flow gap increases the fuel temperature.
+The unit cell model is a reasonable approximation if the bypass flow is small and the radial power profile within the assembly is uniform.
+
+What they did:
+* three-dimensional computational fluid dynamics (CFD) analysis carried out on a typical fuel assembly of a prismatic HTGR
+* results used to assess the accuracy of the unit cell model
+* examine the deviation from the results by the unit cell approach due to the bypass flow between fuel assemblies and radial power variations within the fuel assembly
+* flow split a the upper plenum into the flow channels is obtained by a 1D calculation by assuming the same pressure drop across the entire height of the reactor core including top and bottom reflector blocks.
+* calculated flow rate is used as an inlet boundary condition for the CFD analysis.
+* CFD analysis using CFX 11 (ANSYS Inc.)
+* Highest temperature: 1119 C.
+* Max coolant velocity 51 m/s
+* Pressure drop: 25 kPa
+
+% no_multi-component_2007
+The VHTR faces some technical and economical challenges, particularly reactor safety and costs.
+The air ingress event following a LOCA is a cause of concern.
+Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
+
+What they did:
+* Development of the code GAMMA
+* Solves equations for both the gas and the solid parts.
+* Use porous media model (Nield and Bejan, 1999) to consider heat transport in solid-fluid components.
+* Gas flow medium: multi-dimensional governing equations for a chemically reacting flow (Poinsot and Veynante,
+2001) that consist of the spatially-averaged conservation equations for continuity, momentum, energy of the gas mixture, and the mass of each species.
+* Heat transfer between the fluid and the solid: h(TWall - TFluid)
+* The boundary condition for the enclosure (recinto) is the radiative heat transfer. It uses the irradiation/radiosity method (Holman, 1986). The radiation exchange between surfaces is gray and diffuse.
+* Improvement of RELAP5
+* They added the capability to simulate air ingress following LOCAs due to the effects of molecular diffusion.
+
+% reza_design_2006
+The temperatures required for efficient hydrogen production present a unique design challenge for the reactor pressure vessel during steady-state operation.
+
+What they did:
+* Use ATHENA (that relies on RELAP5-3D) to solve MHRs
+* peak steady state reactor vessel temperature of 541 C
+* Propose an alternative coolant inlet flow configuration
+* Calculated peak temperatures in HPCC and LPCC accidents with the new config
+high pressure conduction cooldown (HPCC): 5.03 MPa
+low pressure conduction cooldown (LPCC): 1 atm
+* Max core velocity ~53 m/s
+* Total pressure drop 57.87 kPa
+* Peak fuel temperature around ~1106C at SS
+* Design fuel temperature limit of 1600C
+
+% nakano_conceptual_2008
+At the beginning of burnup, the deep insertion of control rods makes the power density larger in the bottom region.
+The withdrawal of control rods at the end of cycle leads larger power density at the top of the core.
+
+The heat transfer areas are different between the actual unit cell and the analytical model.
+The unit cell is asymmetric making the temperature distribution asymmetric in the graphite block.
+It leads to temperature difference between actual and analytical model.
+
+What they did:
+* The fuel has a temp profile when the outlet coolant temp is 850.
+* The idea is to restrain the bypass flow to leave that temp profile unchanged while increasing the outlet temp to 950.
+* 3D FEM model developed on ANSYS v.10 code.
+* It calculates the pressure and flow rate distribution using the Bernoulli equation.
+* The 3D model includes RPV and core internals and core fuels.
+* Calculates 1/3rd of the reactor: 120 degrees.
+* Nuclear analysis using DELIGHT-8 to make macro cross-section sets at various burnup points.
+* CITATION for the code analysis.
+* Flow distribution analysis using FLOWNET: to obtain the fuel channel flow rate and pressure drop/
+* Fuel temperature analysis with TAC-2D:
+	- Power density from the nuclear analysis.
+	- flow rate calculated in the flow distribution analysis.
+	- calculation model: 2D cylindrical model for a hot channel fuel pin cell
+	- the coolant channel is modeled into an annular channel around the graphite block
+* FP release: Diffusion in the particles, sorption, and diffusion in the fuel matrix and in the graphite region, evaporation and mass transfer on the graphite surface into the coolant.
+
+% in_three-dimensional_2006
+What they did:
+* Predict hot-spot fuel temperature distributions in a PMR at a steady state
+* CFD code: CFX-10 used to perform a 3D analysis
+* GT-MHR600 is the reference design
+* unit cell model
+* uniform cooling and constant pressure assumed at the inlet and the exit of the coolant channel
+* helium mass flow rate in a coolant channel is 0.0176 kg/s
+* inlet/outlet helium temperatures are 399C and 950C.
+* q''' = 33.3, 33.1, 35.0 MW/m3 at BOC, MOC, and EOC
+* Tmax in the fuel is 1295.3 C at EOC at the exit
+* The temperature difference between the coolant (bulk temperature) and the fuel is approx 150C
+
+% richards_thermal_2007
+
+% simoneau_three-dimensional_2007
