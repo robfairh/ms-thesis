@@ -1,3 +1,13 @@
+%% Objectives
+
+This thesis focuses on steady-state calculations and also intends to set a roadmap for the transient simulations.
+
+%%%%%%%%%%%%%%%%%%%% Neutronics %%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%% TH %%%%%%%%%%%%%%%%%%%%
+
 Most important ones are:
 % tak_numerical_2008
 
@@ -141,3 +151,150 @@ What they did:
 % richards_thermal_2007
 
 % simoneau_three-dimensional_2007
+
+% huning_steady_2014
+Modeling and prediction of core thermal hydraulic behavior is essential for both normal operation and transient safety.
+Thermal hydraulic modeling studies for early gas-cooled reactor designs such as Fort Saint Vrain and Peach Bottom Unit 1 are limited and consist mainly of support calculations for NRC safety analysis reports.
+
+Thermal analysis methods for these early HTGRs relied on sets of independent codes that employed simplistic approximations for flow, core, assembly and fuel heat transfer modeling.
+
+Early thermal analysis codes:
+Shenoy and McEarchern 1974 % see shenoy_htgr_1974
+
+Later reactor designs including the MHTGR and GT-MHR used the same or similar set of codes as those listed above to perform thermal analysis for safety analysis and conceptual design reports.
+The central modeling technique of these analyses is the equivalent fuel-moderator-coolant triangular unit cell.
+The disadvantage is that explicit fuel and graphite temperatures are not computed.
+
+Specifically, it is of interest whether 1-D flow modeling of coolant and bypass channels provides sufficient accuracy for convective heat transfer coefficient prediction.
+The issue of unit cell nodal heat transfer methods as compared to more detailed CFD was investigated in a study by Tak et al. (2008) % tak_numerical_2008
+
+Recent studies of HTGR core thermal hydraulics can be divided into two principal categories: core heat transfer, and reactor fluid flow.
+In most cases, no experimental data are available to fully benchmark the results of a particular study; therefore, design results used are mostly from the MHTGR, GT-MHR, and NGNP (VHTR).
+
+While most of the studies discussed assume consistent sets of key design parameters such as assembly block and fuel dimensions, there is significant variation in operational parameters such as inlet coolant temperature, core flow rate or desired average coolant outlet temperature, and core power.
+Graphite and fuel material properties can also be different depending on the author or study.
+
+* Core heat transfer:
+MacDonald et al. 2003 % macdonald_ngnp_2003
+
+Study to support the NGNP.
+The purpose was to quantify the impact of variations to key design parameters such as core power, power density, assembly geometry, fuel configuration and others.
+They performed both steady state and transient analyses.
+Analysis of maximum core temperatures by varying the bypass flow fraction, flow distribution, and reactor power.
+The steady state method employed the POKE code to simulate one third of the core.
+The code approximates core transfer using triangular unit cells.
+The core power profile was determined from Monte Carlo reactor physics calculations.
+The bypass and coolant flow distribution was fixed and not explicitly determined.
+
+First observation: the maximum fuel temperature increases when bypass flow is increased.
+
+
+% shenoy_htgr_1974
+3.2.1 Kernel Migration
+
+4. Analytical methods
+Based on the principles of conservation of mass, momentum, and energy.
+
+Steady-state analysis: (Table 4-1)
+* FLAC:
+Determines the coolant flow distribution in the coolant channels and gaps.
+Solves the 1-D Momentum Equation for incompressible flow.
+Solves continuity eqs of mass and energy. 
+Models the density changes in the gas.
+
+* POKE:
+It solves the coolant mass flow, coolant temperature, and fuel temperature distribution in an HTGR core.
+Steady-state mass and momentum conservation equations for parallel channels, solved using finite differences.
+Imposes the power distribution.
+
+* DEMISE/DEMICE: determines the steady state 3D temperature distribution in 1/2 columns of standard elements (DEMISE) and control elments (DEMICE).
+It solves the temperature distribution in a network model using a successive point iteration.
+It calculates the flow distribution by balancing pressure drop in coolant passages.
+
+* BACH:
+It calculates the steady-state core power/flow ratio to achieve a desired maximum fuel temperature.
+It calculates the coolant channel mass flow by balancing the pressure drop for a single channel.
+It calculates the gas temperatures from energy balance equations.
+
+* HEXT:
+To determine steady-state temperature distribution and equivalent thermal conductances in fuel, fuel-mdoerator gap, and moderator in a unit cell of HTGR type fuel elements.
+It solves the heat conduction equation in 2D geometries.
+
+* TREVER:
+To determine from given power distributions the steady-state coolant, graphite, and fuel temperatures.
+TO determine time and space distribution of coating failure.
+It solves 1D (radial) steady-state heat transfer.
+
+* TAC-2D:
+It is a general purpose 2D thermal analysis code.
+Solves the 2D heat conduction equation by finite differences using an implicit iteration method.
+
+* DETRAC:
+Solves 1D nodal transient heat transfer equations with no axial or radial conduction between channels.
+
+1D unit cell code BACH and HEXT
+BACH 1D describes heat and coolant flow in a single coolant channel in the core.
+
+Transient analysis:
+* TAP code:
+To study the overall plant transient behavior of HTGRs.
+It incorporates models of all major components of the nuclear steam supply.
+The reactor and primary coolant model in the program accounts for all helium temperature changes in the primary coolant system including heating in the core and cooling in the steam generator.
+The reactor core model in TAP consists of one average coolant channel surrounded by graphite and fuel.
+It computes the average heat generation rate in the core and computes the average coolant, graphite, and fuel temperatures in the core.
+
+* Single Channel Analysis TAC Model:
+Coolant, graphite, and fuel temperature profiles within a unit cell.
+Signle rod stacj surrounded by a gap and volume of graphite with a heat capacity and conductance equal to that of a unit cell.
+The model extends the entire active core length with five axial nodes per fuel block and includes the top reflector, bottom reflector, and core support blocks.
+The cose uses time and temperature dependent material properties such as density, thermal conductivity, and heat capacity.
+
+* DETRAC Code:
+It calculates fuel and graphite temperatures within each refueling region.
+It calculates the graphite and coolant temperatures at top and bottom reflector, and for each fuel block.
+
+* RECA Code:
+Preferred code when the radial conduction of energy between refueling regions is significant.
+It calculates the axial distribution of average coolant, graphite, and fuel temperatures for each refueling region.
+Reverse flow is possible for low-flow conditions and is accounted for by the core.
+Cross-flow is not considered.
+
+% macdonald_ngnp_2003
+Next Generation Nuclear Plant (NGNP) presented to possible designs: one for a prismatic fuel type helium gas-cooled reactor and one for a pebble bed fuel helium gas reactor.
+Both with three basic requirements: a coolant outlet temperature of 1000C, passive safety, and a total power output consistent with that expected for commercial HTGRs.
+
+The prismatic NGNP is a design directly based on the General Atomics Very High Temperature Gas-cooled Reactor (VHTR) submittal to the Generation IV Roadmap, which was based of their gas turbine-modular helium reactor (GT-MHR) design.
+
+An important issue involving the performance of the fuel particles is the power peaking of the fuel rods.
+The areas of biggest concern are the annular core interfaces with the inner and outer graphite reflectors, but primarily the inner reflector interface.
+The possible solutions are:
+(1) use of allocated B4C burnable poison rod locations in the fuel blocks
+(2) graded particle packing fractions in the fuel rod Rows 1, 2, 3, and 4 nearest the interface
+(3) graded fuel enrichments in these same Rows 1-4
+(4) replacement of specific fuel rods with burnable poisons (e.g. B 4 C)
+(5) B 4 C loaded in the graphite reflector blocks in Rings 5 and 9 near the reflector/core interfaces.
+
+What they did:
+* They made parametric thermal-hydraulic design studies using POKE.
+* Investigate design options that would allow 1000C outlet temperature, the highest possible overall core power, while maintaining the fuel temperature below 1250 C
+* They studied the 600 MWt GT-MHR design with Tin 491 C and Tout 850 C:
+	- evaluated two design modifications: reducing the bypass flow and better controlling the inlet coolant flow distribution.
+* Evaluation of taller and higher power reactor cores with the POKE computer core:
+	- 10 block 600 MWt, 12 block 720 MWt, and 14 block high 840 MWt
+* Thermal-hydraulic model of the NGNP reactor vessel and reactor cavity developed with the RELAP5-3D/ATHENA.
+	- The code and model were used to perform analyses of the transient response of the NGNP design and determine the effects of the core geometry on the peak reactor vessel and fuel temperatures.
+* Sensibility calculations to determine the power that could be obtained for different core heights without exceeding a peak transient fuel temperature of 1600C.
+	- 10 block 686 MWt, 12 block 786 MWt, and 14 block 889 MWt.
+* Parametric analyses of the limiting temperature transient, the depressurized conduction cooldown design basis event using the TAC2D code.
+	- Power and core temperature profiles from POKE
+	- for 10 block, 621 MWt will limit the peak core temperature during the cooldown event to 1600 C.
+
+Neutronic Results:
+- Cool results: I could add that in my thesis.
+Reactivity effects of Helium Gas insignificant
+
+The annual fluence estimates are based on a capacity factor of 90\% and one year is assumed to be 365.25 days in length. (It is the flux * 3600*24*365.25 * 0.9).
+
+
+%%%%%%%%%%%%%%%%%%%% Multi physics maybe %%%%%%%%%%%%%%%%%%%%
+
