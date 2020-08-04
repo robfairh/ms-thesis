@@ -187,7 +187,64 @@ The core power profile was determined from Monte Carlo reactor physics calculati
 The bypass and coolant flow distribution was fixed and not explicitly determined.
 
 First observation: the maximum fuel temperature increases when bypass flow is increased.
+Another observation: the maximum fuel temperatures could be reduced by 100C if flow could be increased in hot coolant channels and decreased in channels next to lower power or cooler fuel compacts.
+Another one: Increasing core power by adding active fuel blocks above the existing active core could be achieved without increasing maximum fuel temperatures.
 
+While these parametric studies revealed promising design modifications for the VHTR, a high degree of uncertainty remains due to the lack of explicit flow prediction and equivalent triangular unit cell modeling.
+
+Since the NGNP point design study, there have been limited core heat transfer parametric design studies for HTGRs.
+One parametric core heat transfer study was conducted by Damian 2008:
+Damian 2008 % damian_vhtr_2008
+* The 3D thermal hydraulic code CAST3M and neutronics calculation scheme NEPHTIS were used to determine maximum fuel temperature for a peak assembly.
+* Several fuel and assembly geometry configuration changes were investigated, but none were found to offer significant advantage over the originally proposed core assembly configuration.
+* Reducing radial power peaking was the most promising method for reducing peak fuel temperatures.
+* Coarse discretization of porous media homogenized cells formed the basis for the core heat transfer calculations.
+* Parameters such as bypass flow fraction, reflector material, power density, and control rod operation were varied to examine the impact on maximum fuel temperature
+* Replacing the outer graphite reflector with magnesium oxide (MgO) could reduce the maximum transient fuel temperatures by 50C.
+* Both studies macdonald_ngnp_2003 and damian_vhtr_2008 found that employing fuel management techniques reduces maximum fuel temperatures.
+
+In addition to unit cell methods, CFD has also been used to analyze block or assembly level thermal hydraulics.
+CFD code Trio_U Bieder and Graffard, 2008 % bieder_qualification_2008
+Analyzed partial helium channel blocking
+The code uses a hybrid finite volume finite element method for unstructured 3D grids, and supports both RANS and LES modeling.
+Various RANS turbulence models can be used including the k-epsilon model, k-w based SST model, or a Reynolds stress model.
+
+Cioni et al. 2006 examined the impact of helium channel blocking on maximum fuel temperatures.
+Cioni et al. 2006 % cioni_3d_2006
+24 blocked coolant channels were modeled.
+The maximum steady state fuel temperatures were found to reach 1925 C.
+
+Tak et al. 2008 compare the unit cell and CFD methods in detail.
+Tak et al. % tak_numerical_2008
+A flat power distribution was assumed for the axial length of the core.
+Bypass flow was calculated assuming a 1 mm reference gap.
+The max fuel temperature was found to be 1119 C.
+The similar unit cell model maximum temperature was found to be 1099 C.
+For cases with larger bypass gaps, CFD simulations indicate that maximum fuel temperatures could be up to 79C higher than the triangular cell prediction.
+Conclusion: triangular unit cell methods can be safely applied to cases with low bypass flow.
+
+This work (huning_steady_2014) presents a remedy for the triangular unit cell method to better estimate the intra-assembly heat conduction rates.
+
+* Coolant flow:
+The Nuclear Regulatory Commission (US-NRC) Office of Nuclear Regulatory Research published a Phenomena Identification and Ranking Table (PIRT) on NGNP (VHTR) safety-relevant phenomena (Ball, 2008).
+Ball, 2008 % ball_next_2008
+
+Expert panels were tasked with identifying and ranking phenomena critical to both steady state and accident conditions.
+Core bypass flow was judged to be of high importance with a low or medium knowledge level.
+This means that more research is needed to measure bypass flow across the core, and to develop reactor analysis tools that can predict bypass flow.
+One of the modeling challenges is that since graphite changes physical shape under irradiation, bypass flow will vary axially along the core.
+
+
+
+
+
+
+
+Several codes employed a number of simplifications such as fixed flow fractions in coolant and bypass channels, 1/3rd fraction of whole core analysis, and neglected axial conduction.
+Fine mesh CFD methods are more accurate but have not been applied to the whole core due to computational cost.
+
+Some approaches couple system analysis code such as RELAP for large core domains and CFD for local or detailed regions.
+This could be computationally efficient and provide accurate maximum fuel temperature and bypass flow predictions.
 
 % shenoy_htgr_1974
 3.2.1 Kernel Migration
@@ -295,6 +352,45 @@ Reactivity effects of Helium Gas insignificant
 
 The annual fluence estimates are based on a capacity factor of 90\% and one year is assumed to be 365.25 days in length. (It is the flux * 3600*24*365.25 * 0.9).
 
+Thermal-Hydraulic Results:
+- They used POKE to perform the parametric studies.
+- Analysis for a reactor configuration consisting of a number of regions. Individual columns (fuel columns) are the regions.
+- For each region, POKE models an average coolant channel that is coupled to an adiabatic unit cell.
+- using the coolant channel temperature as a boundary condition for convective heat transfer, 2D calculations are performed at each axial location to determine the moderator and fuel temperatures.
+- gap between the fuel compact and the graphite moderator is modeled.
+- conduction and radiation are assumed to occur across the gap.
+- POKE calculates the flow distribution among the fuel columns nad the temperatures of the coolant, graphite, and fuel at each axial location
+- POKE also calculates the axial pressure dsitribution in each column and the overall pressure drop across the core
+- the temperature rise of the bypassflow is a 30\% of the overall coolant temperature rise
+- the core power distribution is an input for POKE. The power distribution is based on care-physics calculations perfromed for the reference GT-MHR.
+Burnable posion is zoned axially.
+- Local power density is determined by multiplying the average power density by the product of a column-averaged power factor and axial power factor.
+The axial power factor is a strong function of control rod position
+- Power distribution at time point between the middle and end of cycle when the control rods are inserted to the axial midpoint of the active core.
+This type of power distribution generally results in higher fuel temperatures since more power is shifted toward the bottom where coolant temperatures are also the highest.
+- Power distributions can be flattened if a concept referred to as fuel placement is used. With this method, each column contains both new and old fuel at the beginning of an equilibrium cycle.
+
+* RELAP5-3D/ATHENA model:
+	- (Figure 60) illustrates the heat transfer mechanisms modeled between the various structures and the coolant
+	- Inner reflector and core: conduction, He: convection, Outer reflector to reactor vessel and reactor vessel to RCCS: convection and radiation
+	- Transient analysis: HPCC and LPCC
+
+Decay Heat
+* ANS-5.1 is not appropriate for this reactor
+
+* TAC2D for carrying parametric studies during a LPCC event
+
+% damian_vhtr_2008
+
+% bieder_qualification_2008
+
+% cioni_3d_2006
+
+% ball_next_2008
+
+Expert panels identified safety-relevant phenomena, ranked their importance, and assessed
+the knowledge levels in the areas of accidents and thermal fluids, fission-product transport and dose,
+high-temperature materials, graphite, and process heat for hydrogen production.
 
 %%%%%%%%%%%%%%%%%%%% Multi physics maybe %%%%%%%%%%%%%%%%%%%%
 
