@@ -234,17 +234,44 @@ Core bypass flow was judged to be of high importance with a low or medium knowle
 This means that more research is needed to measure bypass flow across the core, and to develop reactor analysis tools that can predict bypass flow.
 One of the modeling challenges is that since graphite changes physical shape under irradiation, bypass flow will vary axially along the core.
 
+ANL
+Lee et al, 2006 % lee_status_2006
+Performed core flow modeling and sensitivity studies for prismatic modular reactors.
+Modeling of coolant flow based on a 2D flow path and resistance network approach.
+Each fuel assembly modeled as a single channel with additional channels for axial bypass flow and lateral cross flow.
+The conservation equations for mass and momentum are solved using an assumed temperature profile based on the anticipated power profile predicted in the same study.
+Objective was to identify flow paths that contribute to bypass flow the most.
+Vertical assembly gaps in the replaceable reflector region and near the permanent side reflector were identified as main bypass flow contributors.
+Cross flow was not found to play a substantial role in coolant flow distribution under normal operating conditions.
 
+Sato et al. 2010 % sato_computational_2010
+CFD work using FLUENT indicates that bypass flow is a complex phenomenon that is inherently coupled to neutronics, heat transfer, and fluid dynamics.
+Studies using the standard k-epsilon and the Wilcox k-w model show discrepancies.
+The study suggested that these turbulence models need more verification against prismatic HTGR experiments.
+Another key insight was that radial power distribution has a larger effect on maximum fuel temperatures that axial power distribution.
 
+Johnson 2008 % johnson_development_2008
+CFD Analysis of the lower plenum flow.
+Computations performed using FLUENT.
+The simulations address several questions: whether 2D or 3D calculations, fine or coarse grids are necessary. And what boundary conditions result more appropriate.
 
+Anderson et al. 2008 % anderson_analysis_2007
+CFD model of the lower plenum.
+Goal to determine the degree of mixing in the lower plenum.
 
-
-
+* Summary
 Several codes employed a number of simplifications such as fixed flow fractions in coolant and bypass channels, 1/3rd fraction of whole core analysis, and neglected axial conduction.
+Triangular unit cells where a fraction of fuel, graphite and coolant were homogenized.
 Fine mesh CFD methods are more accurate but have not been applied to the whole core due to computational cost.
 
 Some approaches couple system analysis code such as RELAP for large core domains and CFD for local or detailed regions.
 This could be computationally efficient and provide accurate maximum fuel temperature and bypass flow predictions.
+
+What they did:
+* redevelop the unit cell method to adequately predict the axial and radial heat conduction within each assembly block
+
+Thermal fluid properties for graphite, helium, and fuel compact material are taken from Johnson et al, 2009.
+Johnson et al. 2009 % johnson_cfd_2009
 
 % shenoy_htgr_1974
 3.2.1 Kernel Migration
@@ -264,7 +291,7 @@ It solves the coolant mass flow, coolant temperature, and fuel temperature distr
 Steady-state mass and momentum conservation equations for parallel channels, solved using finite differences.
 Imposes the power distribution.
 
-* DEMISE/DEMICE: determines the steady state 3D temperature distribution in 1/2 columns of standard elements (DEMISE) and control elments (DEMICE).
+* DEMISE/DEMICE: determines the steady state 3D temperature distribution in 1/2 columns of standard elements (DEMISE) and control elements (DEMICE).
 It solves the temperature distribution in a network model using a successive point iteration.
 It calculates the flow distribution by balancing pressure drop in coolant passages.
 
@@ -391,6 +418,14 @@ Decay Heat
 Expert panels identified safety-relevant phenomena, ranked their importance, and assessed
 the knowledge levels in the areas of accidents and thermal fluids, fission-product transport and dose,
 high-temperature materials, graphite, and process heat for hydrogen production.
+
+% lee_status_2006
+
+% sato_computational_2010
+
+% johnson_development_2008
+
+% anderson_analysis_2007
 
 %%%%%%%%%%%%%%%%%%%% Multi physics maybe %%%%%%%%%%%%%%%%%%%%
 
