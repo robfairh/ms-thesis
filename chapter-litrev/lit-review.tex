@@ -482,13 +482,27 @@ Full core configuration show that the radial positioning of the fuel elements al
 Other modifications were addressed such as the increase of the bypass fraction and the replacement of a part of the graphite reflector by material with better thermal properties.
 
 First part: thermal calculations on the steady-state configurations.
-Calculations performed on a fuel column geometry at the core hot spot location.
+Calculations performed on the fuel cell geometry and the fuel column geometry at the core hot spot location.
 Calculations using CAST3M code: 3D thermal coupled with 1D hydraulic modeling.
 Pin power distribution come from 2D core calculations performed with the transport code APOLLO2.
-Parametric studies to increase the outlet temperature.
+Parametric studies to increase the outlet temperature: reduce helium flow, increase the average power density, and increase the active core height.
 
-Second part: 
+Second part:
+2D core configuration.
+Neutronic analysis dedicated to the minimization of the radial power peaking factor.
+Various options: impact of fuel enrichment, fuel loading, and fuel management scheme.
 
+Last part:
+Analysis of the 3D core model using the coupled neutronic/thermal-hydraulic tool developed by CEA.
+NEPTHIS/CAST3M.
+Design parameters influence evaluated:helium bypass fraction, average power density, core geometry, reflector materials properties and fuel loading strategy.
+Core depletion calculations including control rods modeling are performed in order to evaluate the impact on the power distribution.
+
+NEPTHIS is based on a transport-diffusion calculation scheme using the transport code APOLLO2 and the transport-diffusion code CRONOS2.
+Transport code calculates the fuel element in an infinite medium and provides condensed and homogenized cross-sections libraries.
+The CAST3M/Arcturus model uses a two level approach:
+- singularities of fuel particles, fuel compacts, and helium cooling channels with inter-assembly helium cavity are homogenized to obtain equivalent thermal properties for the porous media and the cooling gas.
+- Thermal-hydraulics is solved on the homogenized geometry using CAST3M.
 
 % bieder_qualification_2008
 
@@ -518,3 +532,6 @@ https://www.researchgate.net/scientific-contributions/82618217_Nam-il_Tak
 
 % damian_vhtr_2008
 
+%%%%%%%%%%%%%%%%%%%% Mechanics maybe %%%%%%%%%%%%%%%%%%%%
+
+% kang_thermo-mechanical_2012
