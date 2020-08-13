@@ -24,7 +24,7 @@
 \usepackage{tabularx}
 \usepackage{color}
 \usepackage{multirow}
-\usepackage{float} 
+\usepackage{float}
 \usepackage[acronym,toc]{glossaries}
 \include{acros}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
@@ -39,14 +39,19 @@
 \usepackage{tikz}
 
 \usetikzlibrary{shapes.geometric,arrows}
-\tikzstyle{process} = [rectangle, rounded corners, 
-minimum width=1cm, minimum height=1cm,text centered, draw=black, 
+\tikzstyle{process} = [rectangle, rounded corners,
+minimum width=1cm, minimum height=1cm,text centered, draw=black,
 fill=blue!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
 \graphicspath{}
 
 \begin{document}
+
+% Introduction or Objectives
+% Efficient hydrogen production by \glspl{HTGR} motivates the last chapter of the thesis.
+% We analyze several hydrogen production methods coupled to different nuclear reactor desings.
+% In order to find the most efficient method, we not only consider \glspl{HTGR} but also other type of reactors.
 
 \section{Introduction}
 
@@ -60,9 +65,9 @@ As \gls{CO2} is the main component in \glspl{GHG}, decarbonizing electricity gen
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{figures/total-ghg-2017.png}
+	\includegraphics[width=0.4\linewidth]{figures/total-ghg-2017.png}
 	\hfill
-	\caption{Total \gls{US} \gls{GHG} emissions by economic Sector in 2017. Image reproduced from \cite{us_epa_sources_2020}.}
+	\caption{Total \gls{US} \gls{GHG} emissions by economic sector in 2017. Image reproduced from \cite{us_epa_sources_2020}.}
 	\label{fig:ghg}
 \end{figure}
 
@@ -80,7 +85,7 @@ As a consequence, the market would experience sustained zero or negative prices 
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{figures/caiso-duck.png}
+	\includegraphics[width=0.7\linewidth]{figures/caiso-duck.png}
 	\hfill
 	\caption{The duck curve. Image reproduced from \cite{bouillon_prepared_2014}.}
 	\label{fig:duck}
@@ -103,10 +108,10 @@ In the transportation sector, Japan is planning to deploy fuel cell vehicles, tr
 Although \gls{H2} technologies do not release CO$_2$, any \gls{H2} production method is only as carbon-free as the source of energy it relies on (electric, heat, or both).
 Nuclear reactors present a clean energy option to manufacture \gls{H2}.
 
-The \gls{UIUC} is leading by example and actively working to reduce \gls{GHG} emissions on its campus produced by both economic sectors, electricity generation and transportation (among other sectors).
-In pursuance of those efforts, the university has developed a climate action plan described in the following section.
+The \gls{UIUC} is leading by example and actively working to reduce \gls{GHG} emissions from electricity generation and transportation (among other sectors) on its campus.
+In pursuance of those efforts, the university has developed the \gls{icap}.
 
-\section{\gls{UIUC} case}
+\section{\gls{icap}}
 % ICAPP
 In 2008, \gls{UIUC} signed the American College and University Presidents' Climate Commitment, formally committing to become carbon neutral as soon as possible, no later than 2050.
 The university developed the first \gls{icap} in 2010 as a comprehensive roadmap toward a sustainable campus environment \cite{university_of_illinois_at_urbana-champaign_illlinois_2015}.
@@ -115,114 +120,75 @@ The \gls{icap} defines a list of goals, objectives, and potential strategies for
 \begin{itemize}
 	\item Energy Conservation and Building Standards:
 \end{itemize}
-This area focuses on maintaining or reducing campus gross square footage, strengthen centralized conservation efforts, and engage the campus community in energy conservation.
+Focuses on maintaining or reducing campus gross square footage, strengthen conservation efforts, and engage the campus community in energy conservation.
 
 \begin{itemize}
 	\item Energy Generation, Purchasing, and Distribution:
 \end{itemize}
-This area directs its efforts towards the exploration of 100\% clean campus energy options.
+Efforts towards the exploration of 100\% clean campus energy options.
 This includes the expansion of on-campus solar energy production, the expansion of the purchase of clean energy from low-carbon energy sources, and the offset of all emissions from the National Petascale Computing Facility.
 
 \begin{itemize}
 	\item Transportation:
 \end{itemize}
-This area comprises the efforts on reducing air travel emissions, Urbana-Champaign campus fleet emissions, study scenarios for complete conversion of the campus fleet to renewable fuels, and implementing the Campus Bike Plan.
+This area comprises the efforts on reducing air travel emissions, reducing Urbana-Champaign campus fleet emissions, and also studying scenarios for complete conversion of the campus fleet to renewable fuels.
 
 \begin{itemize}
 	\item Water and Stormwater:
 \end{itemize}
-This area focuses on improving water efficiency of cooling towers, perform a water audit to establish water conservation targets, determine upper limits for water demand by end-use, and implement pilot projects to showcase the potential of water and stormwater reuse.
+This area focuses on improving water efficiency of cooling towers, perform a water audit to establish water conservation targets, determine upper limits for water demand by end-use, and implement projects to showcase the potential of water and stormwater reuse.
 
 \begin{itemize}
 	\item Purchasing, Waste, and Recycling:
 \end{itemize}
-This area attempts to standardize the purchases of office paper, cleaning products, computers, other electronics, and freight delivery services. It also attempts to fomenting recycling by reducing nondurable goods purchases and reducing municipal solid waste going to landfills.
+Attempt to standardize the purchases of office paper, cleaning products, computers, other electronics, and freight delivery services.
+It also attempts to foment recycling by reducing non-durable goods purchases and reducing municipal solid waste going to landfills.
 
 \begin{itemize}
 	\item Agriculture, Land Use, Food, and Sequestration:
 \end{itemize}
 This area will perform a comprehensive assessment of \gls{GHG} emissions from agricultural operations, and develop a plan to reduce them, implement a project that examines the food service carbon footprint for Dining, and increase carbon sequestration in campus soils.
 
-% Description of current grid ??
-% Description of current fleet ??
-
 \section{Objectives}
 
-As mentioned earlier, we place our attention on two topics: electricity generation and transportation.
-Consequently, the objective of this work aligns with the efforts in two of the six target areas defined on the \gls{icap} by turning our attention to electricity generation and transportation in the \gls{UIUC} campus.
+As mentioned earlier, we place our attention on two areas: electricity generation and transportation.
+We will turn our attention to the electricity generation and transportation in the \gls{UIUC} campus.
+Consequently, the objective of this work aligns with the efforts in two of the six target areas defined on the \gls{icap}.
 
 Regarding electricity generation, our analysis focuses on the \gls{UIUC} grid.
-One of the objectives of the \gls{icap} is the expansion of on-campus solar energy production.
-As described earlier, an excess of solar energy integration to the grid makes the duck curve phenomenon likely to occur.
-The present work studies the magnitude of the duck curve in \gls{UIUC} grid.
-As noted earlier, the duck curve reveals a risk of over-generation due to high levels of non-dispatchable capacity.
-To mitigate this issue, we propose to use the over-generated energy to manufacture \gls{H2}.
-As one of the objectives of the \gls{icap} is the exploration of 100\% clean campus energy options, we chose a nuclear reactor to be one of the main sources of energy.
-With the duck curve magnitude determined and an a reactor size chosen, the next step is to quantify how much \gls{H2} our method is able to produce.
+The present work quantifies the magnitude of the duck curve in such grid.
+To mitigate the risk of over-generation, we propose to use the over-generated energy to manufacture \gls{H2}.
+We chose a nuclear reactor to be the main source of energy.
+The next step is to quantify how much \gls{H2} different production methods are able to produce.
 Section \ref{sec:hydro} discusses a few hydrogen production methods considered for our analysis.
-The last step determines how much electricity we would generate using the \gls{H2} produced.
+Finally, we will calculate how much electricity we would generate using the \gls{H2} produced.
 
-Regarding transportation, we study the complete conversion to \glspl{FCEV} of the \gls{UIUC} fleet that works on campus.
-This objective aligns with the interests of the \gls{icap}.
-Additionally, the analysis includes the complete conversion of the \gls{MTD} fleet as well.
+Regarding transportation, we study the conversion of the \gls{UIUC} fleet on campus to \glspl{FCEV}.
+Additionally, the analysis includes the conversion of the \gls{MTD} fleet as well.
 The first step is to determine the fuel consumed by both fleets and how much \gls{H2} enables the complete conversion of the fleets.
 Finally, we consider a few reactor designs and analyze which of them could produce enough \gls{H2} to fulfill both fleet requirements.
 
 Both studies propose the same solution, a nuclear reactor coupled to a hydrogen plant.
-In terms of electricity generation, this solution will decrease the need for dispatchable sources and, consequently, reduce the carbon emissions of the electricity generation sector.
-In terms of transportation, it will eliminate carbon emissions completely.
+In terms of electricity generation, this solution will decrease the need for dispatchable sources and, consequently, reduce the carbon emissions.
+In terms of transportation, it will eliminate carbon emissions.
 
 %Mention the choice of reactor
 In both analysis, many reactor choices can satisfy our needs.
-It could be one microreactor, a series of microreactors, or a \gls{SMR}.
+The typical \gls{UIUC}'s grid demand is smaller than 80 MW \cite{dotson_optimal_2020}.
+Accordingly, we consider reactors of small capacities, such as microreactors and \glspl{SMR}.
 Section \ref{sec:reactors} discusses their characteristics.
 
 \section{Hydrogen production methods}
 \label{sec:hydro}
 
-This section introduces some hydrogen production processes.
-The following subsections describe the energy requirements of some of the methods that could be coupled to a nuclear reactor.
+This section introduces several hydrogen production processes and their energy requirements.
 
-\begin{itemize}
-	\item Steam-Methane Reforming:
-\end{itemize}
-
-Steam reforming is a catalytic process that involves a reaction between natural gas (or other light hydrocarbons) and steam.
-The result of a series of reactions is a mixture of hydrogen, carbon monoxide, carbon dioxide, and water.
-The first reforming step catalytically reacts methane with steam to form hydrogen and carbon monoxide in an endothermic reaction.
-A second reaction, an exothermic reaction, shifts the carbon monoxide with steam to form additional hydrogen and carbon dioxide.
-Finally, an adsorption process could remove the carbon dioxide \cite{harper_us_2012}.
-This process is currently the least expensive way to produce hydrogen \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020}.
-
-A \gls{HTGR} can substitute the natural gas burning furnaces as a heat source.
-This approach reduces the \gls{CO2} emissions to the atmosphere in large quantities.
-Nevertheless, due to the nature of the chemical reforming and shifting processes, this method still needs a natural gas feedstock \cite{yildiz_efficiency_2006}. 
-Consequently, the method still emits \gls{CO2}, unless it includes a sequestration method.
-A sequestration process complicates the plant layout and makes the process more expensive.
-For this reason, we will not include this method in the analysis.
-Further studies could consider it.
-
-\begin{itemize}
-	\item Coal Gasification:
-\end{itemize}
-
-The gasification of coal is one method that can produce power, liquid fuels, chemicals, and hydrogen.
-Specifically, reacting coal with oxygen and steam under high pressures and temperatures forms a synthesis gas, a mixture consisting primarily of carbon monoxide and hydrogen \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020}.
-After removing the impurities from the synthesis gas, the water-gas shift reaction produces additional hydrogen and carbon dioxide form the carbon monoxide in the gas mixture.
-A separation system removes the hydrogen.
-This method still emits \gls{CO2} requiring a carbon sequestration system. 
-We will not consider this process in the analysis.
-
-\begin{itemize}
-	\item Electrolysis: 
-\end{itemize}
+\subsection{Electrolysis}
 
 The electrolysis of water is a well-known method whose commercial use began in 1890.
 This process produces approximately a 4\% of \gls{H2} worldwide.
-The process is ecologically clean because it does not emit \glspl{GHG}, and the oxygen
-produced has further industrial applications.
-However, in comparison with other methods, electrolysis is a highly energy-demanding technology 
-\cite{kalamaras_hydrogen_2013}.
+The process is ecologically clean because it does not emit \glspl{GHG}.
+However, in comparison with other methods, electrolysis is a highly energy-demanding technology \cite{kalamaras_hydrogen_2013}.
 
 Three electrolysis technologies exist.
 Alkaline-based is the most common, the most developed, and the lowest in capital cost.
@@ -232,44 +198,9 @@ Proton exchange membrane electrolyzers are more efficient but more expensive tha
 \gls{SOEC} technology has challenges with corrosion, seals, thermal cycling, and chrome migration \cite{kalamaras_hydrogen_2013}.
 As the first two technologies work with liquid water and the latter requires high temperature steam, we will refer to the first two as \gls{LTE} and the latter as \gls{HTE}.
 
-\begin{itemize}
-	\item Thermo-chemical Water Splitting:
-\end{itemize}
-
-Thermochemical water-splitting is the conversion of water into hydrogen and oxygen by a series of thermally driven chemical reactions.
-The direct thermolysis of water requires temperatures in excess of 2500 $^{\circ}$C for significant hydrogen generation.
-At this temperature, the process is able to decompose a 10\% of the water.
-A thermochemical water-splitting cycle accomplishes the same overall result using much lower temperatures.
-
-In \cite{brown_high_2003}, General Atomics, Sandia National Laboratories, and the University of Kentucky compared 115 cycles that would use high temperature heat from an advanced nuclear reactor.
-The reports specifies a set of objective screening criteria used to rate each cycle.
-The highest scoring method was the \gls{SI} Cycle.
-
-In 1978 and 1980, the process was coupled to a nuclear reactor.
-The latter flowsheet indicated that hydrogen could be produced at 52\% efficiency.
-This is the highest efficiency reported for any water-splitting process, based on an integrated flowsheet \cite{brown_high_2003}.
-
-\begin{itemize}
-	\item Photobiological processes:
-\end{itemize}
-
-In photolytic biological systems, microorganisms—such as green microalgae or cyanobacteria—use sunlight to split water into oxygen and hydrogen.
-Challenges for this pathway include low rates of hydrogen production, low solar-to-hydrogen efficiency, and the fact that splitting water also produces oxygen \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020}.
-The latter inhibits the hydrogen production reaction and can be a safety issue.
-All these challenges make it a commercially unviable pathway at this time.
-We will not consider this method for the analysis.
-
-\subsection{Electrolysis}
-
-Water electrolysis converts electric and thermal energy into chemical energy stored in hydrogen \cite{hi2h2_highly_2007}.
+Water electrolysis converts electric and thermal energy into chemical energy stored in hydrogen.
 The process enthalpy change $\Delta H$ determines the required energy for the electrolysis reaction to take place.
 Part of the energy corresponds to electric energy $\Delta G$ and the rest of it to thermal energy $T \cdot \Delta S$, Equation \ref{eq:electrolysis1}.
-
-In \gls{LTE}, electricity generates the thermal energy.
-In \gls{HTE}, a high temperature heat source is necessary to provide the thermal energy.
-The latter has the advantage that $\Delta G$ decreases with increasing temperature, Figure \ref{fig:electro1}.
-Since heat-engine-based electrical work is limited to a production thermal efficiency of 50$\%$ or less, decreasing the electricity requirement results in higher overall production efficiencies \cite{j_e_obrien_high_2010}.
-In Figure \ref{fig:electro1}, $T \Delta S$ accounts for the latent heat of water vaporization.
 
 \begin{align}
 	\Delta H &= \Delta G + T \Delta S
@@ -279,6 +210,34 @@ In Figure \ref{fig:electro1}, $T \Delta S$ accounts for the latent heat of water
     \Delta G &= \mbox{Specific electrical energy [kWh/kg-H$_2$]} \\
     T \Delta S &= \mbox{Specific thermal energy [kWh/kg-H$_2$].}
 \end{align}
+
+In \gls{LTE}, electricity generates the thermal energy.
+Hence, $\Delta H$ alone determines the required energy.
+$\Delta H$ is equal to 60 kWh/kg-H$_2$ considering a 67$\%$ efficiency \cite{usdrive_hydrogen_2017}.
+
+In \gls{HTE}, a high temperature heat source is necessary to provide the thermal energy.
+$\Delta G$ decreases with increasing temperature, Figure \ref{fig:electro1}.
+Decreasing the electricity requirement results in higher overall production efficiencies since heat-engine-based electrical work has a thermal efficiency of 50$\%$ or less \cite{j_e_obrien_high_2010}.
+
+
+We will consider the SOEC performance to achieve a 88$\%$ electrical efficiency \cite{helmeth_high_2020}.
+
+In Figure \ref{fig:electro1}, $T \Delta S$ accounts for the latent heat of water vaporization.
+
+
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{figures/hte-energy.png}
+	\hfill
+	\caption{Energy required by an ideal \gls{HTE} process at 1 atm. Data from \cite{yildiz_efficiency_2006}.}
+	\label{fig:electro1}
+\end{figure}
+
+
+
+
+
 
 Equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the electrical $P_{EH2}$ and thermal power $P_{TH2}$ required by the hydrogen plant.
 
@@ -291,13 +250,9 @@ Equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the elec
 	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h].}
 \end{align}
 
-\begin{figure}[htbp!]
-	\centering
-	\includegraphics[width=0.8\linewidth]{figures/hte-energy.png}
-	\hfill
-	\caption{Energy required by an ideal \gls{HTE} process at 1 atm. Data from \cite{yildiz_efficiency_2006}.}
-	\label{fig:electro1}
-\end{figure}
+
+
+
 
 \subsection{Sulfur-Iodine Thermo-chemical cycle}
 
@@ -348,10 +303,6 @@ Our analysis considers the process viable only for temperatures above 800 $^{\ci
 
 \section{Microreactors and \glspl{SMR}}
 \label{sec:reactors}
-
-% shared characteristics of SMRs and Micro-R
-The typical \gls{UIUC}'s grid demand is smaller than 80 MW \cite{dotson_optimal_2020}.
-Accordingly, we consider reactors of small capacities, such as microreactors and \glspl{SMR}.
 
 % Microreactor features
 A microreactor has three main features: it is factory fabricated, transportable, and self-regulating.
@@ -590,7 +541,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 \section{Conclusions}
 
-The University of Illinois is actively working to reduce GHG emissions on its campus. 
+The University of Illinois is actively working to reduce GHG emissions on its campus.
 
 A few microreactor designs could produce enough hydrogen to meet MTD and UIUC fleet fuel demand.
 
