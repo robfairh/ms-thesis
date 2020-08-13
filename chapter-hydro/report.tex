@@ -85,7 +85,7 @@ As a consequence, the market would experience sustained zero or negative prices 
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/caiso-duck.png}
+	\includegraphics[width=0.75\linewidth]{figures/caiso-duck.png}
 	\hfill
 	\caption{The duck curve. Image reproduced from \cite{bouillon_prepared_2014}.}
 	\label{fig:duck}
@@ -212,34 +212,28 @@ Part of the energy corresponds to electric energy $\Delta G$ and the rest of it 
 \end{align}
 
 In \gls{LTE}, electricity generates the thermal energy.
-Hence, $\Delta H$ alone determines the required energy.
+Hence, $\Delta H$ alone determines the process required energy.
 $\Delta H$ is equal to 60 kWh/kg-H$_2$ considering a 67$\%$ efficiency \cite{usdrive_hydrogen_2017}.
 
 In \gls{HTE}, a high temperature heat source is necessary to provide the thermal energy.
 $\Delta G$ decreases with increasing temperature, Figure \ref{fig:electro1}.
 Decreasing the electricity requirement results in higher overall production efficiencies since heat-engine-based electrical work has a thermal efficiency of 50$\%$ or less \cite{j_e_obrien_high_2010}.
-
-
-We will consider the SOEC performance to achieve a 88$\%$ electrical efficiency \cite{helmeth_high_2020}.
-
-In Figure \ref{fig:electro1}, $T \Delta S$ accounts for the latent heat of water vaporization.
-
-
+Figure \ref{fig:electro1} shows $\Delta G$ and $T \Delta$S.
+$\Delta G$ considers the \gls{SOEC} to have an electrical efficiency of an 88$\%$ \cite{helmeth_high_2020}.
+$T \Delta S$ accounts for the latent heat of water vaporization.
+Note that the process is at 3.5 MPa.
+$\Delta G$ increases with pressure.
+However, we chose a high pressure to save energy, as compressing liquid water is cheaper than compressing the hydrogen \cite{obrien_status_2019}.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.8\linewidth]{figures/hte-energy.png}
+	\includegraphics[width=0.8\linewidth]{figures/hte-energy-P.png}
 	\hfill
-	\caption{Energy required by an ideal \gls{HTE} process at 1 atm. Data from \cite{yildiz_efficiency_2006}.}
+	\caption{Energy required by \gls{HTE} at 3.5 MPa.}
 	\label{fig:electro1}
 \end{figure}
 
-
-
-
-
-
-Equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the electrical $P_{EH2}$ and thermal power $P_{TH2}$ required by the hydrogen plant.
+Finally, equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the electrical $P_{EH2}$ and thermal power $P_{TH2}$ required by the hydrogen plant.
 
 \begin{align}
 	P_{EH2} &= \dot{m}_{H2} \Delta G \label{eq:electrolysis2a} \\
@@ -250,13 +244,21 @@ Equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine the elec
 	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h].}
 \end{align}
 
+\subsection{Sulfur-Iodine Thermochemical cycle}
 
+Thermochemical water-splitting is the conversion of water into hydrogen and oxygen by a series of thermally driven chemical reactions.
+The direct thermolysis of water requires temperatures above 2500 $^{\circ}$C for significant hydrogen generation.
+At this temperature, the process can decompose a 10\% of the water.
+A thermochemical water-splitting cycle accomplishes the same overall result using much lower temperatures.
 
-
-
-\subsection{Sulfur-Iodine Thermo-chemical cycle}
+General Atomics, Sandia National Laboratories, and the University of Kentucky compared 115 cycles that would use high temperature heat from an advanced nuclear reactor \cite{brown_high_2003}.
+The report specifies a set of objective screening criteria used to rate each cycle.
+The highest scoring method was the \gls{SI} Cycle.
 
 The \gls{SI} cycle consists of the three chemical reactions represented in Figure \ref{fig:sulfur1}.
+The whole process takes in water and high temperature heat, and releases hydrogen and oxygen.
+The process does not use any electricity.
+The process recycles all reagents and does not have any effluents \cite{yildiz_efficiency_2006}.
 The chemical reactions are:
 
 \begin{align}
@@ -264,26 +266,6 @@ The chemical reactions are:
 	H_2SO4 &\rightarrow SO_2 + H_2O + 1/2O_2 \\
 	2HI &\rightarrow I_2 + H_2.
 \end{align}
-
-The whole process takes in water and high temperature heat, and releases hydrogen and oxygen.
-The process does not use any electricity.
-The process recycles all reagents and does not have any effluents \cite{yildiz_efficiency_2006}.
-
-Figure \ref{fig:sulfur2} presents the specific energy requirements of the cycle $\Delta H$.
-Equation \ref{eq:sulfur4} determines the thermal power required by the hydrogen plant $P_{TH2}$.
-
-\begin{align}
-	P_{TH2} &= \dot{m}_{H2} \Delta H
-	\label{eq:sulfur4}
-	\intertext{where}
-	P_{TH2} &= \mbox{total thermal power [kW]} \\
-	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h]} \\
-	\Delta H &= \mbox{specific energy [kWh/kg-H$_2$].}
-\end{align}
-
-Note the discrepancy between Figure \ref{fig:sulfur1} and Figure \ref{fig:sulfur2} of the highest temperature required by the process.
-Other sources seem to disagree in that number too.
-Our analysis considers the process viable only for temperatures above 800 $^{\circ}$C.
 
 \begin{figure}[htbp!]
 	\centering
@@ -293,6 +275,9 @@ Our analysis considers the process viable only for temperatures above 800 $^{\ci
 	\label{fig:sulfur1}
 \end{figure}
 
+Figure \ref{fig:sulfur2} presents the specific energy requirements of the cycle $\Delta H$.
+Equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ required by the hydrogen plant.
+
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{figures/si-energy.png}
@@ -300,6 +285,22 @@ Our analysis considers the process viable only for temperatures above 800 $^{\ci
 	\caption{Energy required by the Sulfur-Iodine Cycle. Image reproduced from \cite{yildiz_efficiency_2006}.}
 	\label{fig:sulfur2}
 \end{figure}
+
+\begin{align}
+	P_{TH2} &= \dot{m}_{H2} \Delta H
+	\label{eq:sulfur4}
+	\intertext{where}
+	P_{TH2} &= \mbox{Total thermal power [kW]} \\
+	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h]} \\
+	\Delta H &= \mbox{Specific energy [kWh/kg-H$_2$].}
+\end{align}
+
+%this will be eliminated
+Note the discrepancy between Figure \ref{fig:sulfur1} and Figure \ref{fig:sulfur2} of the highest temperature required by the process.
+Other sources seem to disagree in that number too.
+Our analysis considers the process viable only for temperatures above 800 $^{\circ}$C.
+
+
 
 \section{Microreactors and \glspl{SMR}}
 \label{sec:reactors}
