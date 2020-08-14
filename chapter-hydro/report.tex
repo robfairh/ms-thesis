@@ -459,7 +459,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 	\end{table}
 
 We have determined the \gls{H2} requirement by the fleets, now we seek for a microreactor design that is capable of meeting such demand.
-For our analysis we chose a few microreactor designs summarized in Table \gls{tab:hydro-micro}.
+For our analysis we chose a few microreactor designs summarized in Table \ref{tab:hydro-micro}.
 Further studies could include other designs as well.
 
 Figure \ref{fig:hydro-micro} shows the hourly production rates for the different reactors and the different \gls{H2} production processes.
@@ -498,7 +498,7 @@ As the \gls{icap} main objective is to become carbon neutral before 2050, we do 
 To go around this barrier, we use the available data for the whole \gls{US}.
 Figure \ref{fig:prediction} displays the prediction for 2050.
 We carry out the prediction by means of a linear regression that produces the worst scenario.
-In scenario the total load does not increase considerably whereas the solar generation does.
+In such scenario the total load does not increase considerably whereas the solar generation does.
 
 \begin{figure}[htbp!]
 	\centering
@@ -521,39 +521,88 @@ The next step was to apply the same growth factor from the predictions to the lo
 We apply the growth factor to the hourly data of a day in the spring of 2019 to obtain a prediction for 2050.
 We choose the spring when the solar production is higher, as it is sunny, but the total load is low since people are not using electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
 Finally, we substract the solar production from the total load, obtaining the net load or demand ($D_{NET}$).
+We narrowed the focus of our analysis to April 4th, when the net demand reached the lowest value in the spring.
 Figure {fig:uiuc-duck1} shows these results.
+In 2050, the peak net demand will be 46.9 MWh at 5 PM.
+The lowest net demand will be 15 MWh at 11 AM.
+This yields a demand ramp of 31.9 MWh in 4 hours.
+These results show that the grid requires an available capacity of dispatchable sources of at least 31.9 MW.
 
 \begin{figure}[htbp!]
 		\centering
-	\includegraphics[height=4.3cm]{figures/uiuc-duck}
+	\includegraphics[height=5cm]{figures/uiuc-duck}
 	\hfill
 	\caption{Prediction of \gls{UIUC}'s net demand for 2050.}
 	\label{fig:uiuc-duck1}
 \end{figure}
 
+% Big part of this should go in the methodology section
+Once we calculated the net demand, the next step was to calculate the over-generated electricty.
+For that, we arbitrarily chose a reactor of 25 MW.
+For the \gls{LTE} case, any type of reactor is a valid option.
+We chose an $\eta$ of 33$\%$
+This yields a reactor power of 75.8 MW$_{th}$.
 
+For the \gls{HTE} case, the choice of a reactor is a \gls{HTGR} with an outlet temperature of 850$^{\circ}$C.
+We consider an $\eta$ of 49.8$\%$.
+This yields a reactor of 50.2 MW$_{th}$.
 
+We consider that the reactor operates at full capacity at all times.
+However, the reactor electricity ($P_{E}$) equals the net demand ($D_{NET}$) once it is smaller than 25 MW.
+Note that $P_{E}$ has power units while $D_{NET}$ has energy units.
+We chose time steps of 1 hour for our analysis, hence $P_{E}$ and $D_{NET}$ differ by the constant $h$.
+As $P_{E}$ is lower than 25 MW, and the reactor is at full thermal capacity, the excess of thermal energy is directed to the hydrogen plant.
+We use equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen6} to calculate the hydrogen produced.
+Figure \ref{fig:uiuc-duck2} displays the results.
+The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{HTE}, and \gls{SI}, respectively.
 
-% This last step enables us to decrease the need for dispatchable sources.
+\begin{align}
+	P_{E} &= D_{NET}  \notag \\
+  \frac{P_{E}}{25 MW} &= \frac{\eta \beta P_{th}}{\eta P_{th}} = \beta  \label{eq:demand}
+\end{align}
 
-	\begin{figure}[htbp!]
-	    \centering
-		\includegraphics[height=4.3cm]{figures/uiuc-hydro2B}
-		\hfill
-		\caption{Hydrogen production with the excess of energy due to a net demand decrease.}
-		\label{fig:uiuc-duck2}
-	\end{figure}
+% \begin{align}
+	% P_{E} &= $D_{NET}$  \notag \\
+  % \frac{P_{E}}{25 MW} &= \frac{\eta \beta P_{th}}{\eta P_{th}} = \beta  \label{eq:demand}
+% \end{align}
 
-	\begin{figure}[htbp!]
-	    \centering
-		\includegraphics[height=4.3cm]{figures/uiuc-hydro3B}
-		\hfill
-		\caption{Peak reduction by using the produced H$_2$.}
-		\label{fig:uiuc-duck3}
-	\end{figure}
+\begin{figure}[htbp!]
+		\centering
+	\includegraphics[height=5cm]{figures/uiuc-hydro2B}
+	\hfill
+	\caption{\gls{H2} production.}
+	\label{fig:uiuc-duck2}
+\end{figure}
 
+% This should definitely be in Methodology
+The last step in our analysis is to calculate the reduction of the peak demand by using the hydrogen to produce electricity.
+The energy produced by hydrogen is $285 kJ/mol$, which is equal to 40 kWh/kg \cite{ursua_hydrogen_2012}.
+However, convetional fuel cells can use up to a 60$\%$ of that energy \cite{doe_energy_efficiency_and_renewable_energy_fuel_2015}.
+Knowing the mass of hydrogen produced, we calculate the total electricity produced.
+We know reduce the peak demand by distributing the electricity over a certain range of hours.
+We chose to distribute the electricity produced over the course of 6 hours.
+We calculate the new peak using equation \ref{eq:newpeak}.
+Figure \ref{fig:uiuc-duck3} shows these results.
+The different \gls{H2} processes are able to generate 15.84 MWh, 24.2 MWh, and 19.6 MWh, respectively.
+This accounts for a peak reduction of 5 MW, 6.4 MW, and 5.6 MW, respectively.
 
+\begin{align}
+	NP &= \frac{\sum_{i=0}^{N} D_{NET, i} - TH}{N} \\
+	\label{eq:newpeak}
+	\intertext{where}
+		NP &= \mbox{New peak magnitude} \\
+		D_{NET, i} &= \mbox{Hourly net demant} \\
+		TH &= \mbox{Total mass oh hydrogen} \\
+		N &= \mbox{Total number of hours when we use the \gls{H2}}
+\end{align}
 
+\begin{figure}[htbp!]
+    \centering
+	\includegraphics[height=5cm]{figures/uiuc-hydro3}
+	\hfill
+	\caption{Peak reduction by using the produced H$_2$.}
+	\label{fig:uiuc-duck3}
+\end{figure}
 
 \section{Conclusions}
 
@@ -565,7 +614,10 @@ Increased solar penetration worsens the duck curve.
 
 Hydrogen introduces a way to store energy that reduces the reliance on dispatchable sources.
 
+% This last step enables us to decrease the need for dispatchable sources.
+
 Nuclear energy and hydrogen production present an approach to mitigate the negative implications of the duck curve.
+
 
 
 \pagebreak
@@ -573,28 +625,3 @@ Nuclear energy and hydrogen production present an approach to mitigate the negat
 \bibliography{bibliography}
 
 \end{document}
-
-	% \begin{figure}[htbp!]
-	% 	\centering
-	% 	\begin{subfigure}[t]{0.4\textwidth}
-	% 		\centering
-	% 		\includegraphics[width=\linewidth]{figures/radial-layout.png}
-	% 		\caption{XY-plane.}
-	% 	\end{subfigure}
-	% 	\begin{subfigure}[t]{0.4\textwidth}
-	% 		\centering
-	% 		\includegraphics[width=\linewidth]{figures/axial-layout.png}
-	% 		\caption{YZ-plane.}
-	% 	\end{subfigure}
-	% 	\hfill
-	% 	\caption{MHTGR reactor layout.}
-	% 	\label{fig:layout}
-	% \end{figure}
-
-	% \begin{figure}[htbp!]
-	% 	\centering
-	% 	\includegraphics[width=0.6\linewidth]{figures/axial1.png}
-	% 	\hfill
-	% 	\caption{Neutron flux on the specified fuel channel.}
-	% 	\label{fig:axial}
-	% \end{figure}
