@@ -73,3 +73,34 @@ Challenges for this pathway include low rates of hydrogen production, low solar-
 The latter inhibits the hydrogen production reaction and can be a safety issue.
 All these challenges make it a commercially unviable pathway at this time.
 We will not consider this method for the analysis.
+
+\section{Microreactors and \glspl{SMR}}
+\label{sec:reactors}
+
+These reactor concepts share several features.
+The reactors require limited on-site prepariton as their compones are factory fabricated.
+This feature reduces up-front capital costs and expedites start-up times.
+
+
+% Microreactor features
+Three main features define a microreactor: it is factory fabricated, transportable, and self-regulating.
+All of the components are fully assembled in a factory and shipped out to the generation site, reducing capital costs and enabling rapid deployment.
+
+Small designs make it easy for vendors to ship the entire reactor by truck, shipping vessel, or railcar.
+Simplified design concepts enhance self-regulating capabilities and eliminate the need for many specialized operators and maintenance staff.
+Moreover, they utilize passive safety systems that prevent overheating or meltdown.
+These main features make the technology appealing for a wide range of applications, such as deployment in remote residential locations and military bases \cite{us-doe_ultimate_2019}.
+
+% SMR features
+\glspl{SMR} require limited on-site preparation as their components are factory fabricated, reducing up-front capital costs and expediting start-up times.
+This reactor concept allows for black starts and islanding operation mode.
+They can start up from a completely de-energized state without receiving power from the grid.
+They can also operate connected to the grid or independently.
+Moreover, they minimize electrical parts and use passive cooling features to safely shutdown.
+Other benefits include underground construction, which makes reactors less vulnerable to extreme weather and physical attacks \cite{us-doe_ultimate_2019}.
+
+The \gls{DOE} defines a microreactor as a reactor that generates from 1 to 20 MW$_{th}$ \cite{us-doe_ultimate_2019}.
+The \gls{IAEA} describes a \gls{SMR} as a reactor whose power is under 300 MWe.
+However, it adds another definition.
+It defines a very small modular reactor as a reactor that produces less than 15 MWe \cite{world_nuclear_association_small_2020}.
+As the definitions of these reactor concepts overlap, we will consider reactors of less than 100 MW$_{th}$ regardless of their classification.
