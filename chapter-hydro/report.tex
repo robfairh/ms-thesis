@@ -244,7 +244,7 @@ Finally, equations \ref{eq:electrolysis2a} and \ref{eq:electrolysis2b} determine
 	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h].}
 \end{align}
 
-\subsection{Sulfur-Iodine Thermochemical cycle}
+\subsection{Sulfur-Iodine Thermochemical Cycle}
 
 Thermochemical water-splitting is the conversion of water into hydrogen and oxygen by a series of thermally driven chemical reactions.
 The direct thermolysis of water requires temperatures above 2500 $^{\circ}$C for significant hydrogen generation.
@@ -252,7 +252,7 @@ At this temperature, the process can decompose a 10\% of the water.
 A thermochemical water-splitting cycle accomplishes the same overall result using much lower temperatures.
 
 General Atomics, Sandia National Laboratories, and the University of Kentucky compared 115 cycles that would use high temperature heat from an advanced nuclear reactor \cite{brown_high_2003}.
-The report specifies a set of objective screening criteria used to rate each cycle.
+The report specifies a set of screening criteria used to rate each cycle.
 The highest scoring method was the \gls{SI} Cycle.
 
 The \gls{SI} cycle consists of the three chemical reactions represented in Figure \ref{fig:sulfur1}.
@@ -276,13 +276,15 @@ The chemical reactions are:
 \end{figure}
 
 Figure \ref{fig:sulfur2} presents the specific energy requirements of the cycle $\Delta H$.
-Equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ required by the hydrogen plant.
+Several sources disagree on the minimum temperature for the process to be viable.
+Our analysis considers the process viable only for temperatures above 800 $^{\circ}$C.
+Finally, equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ required by the hydrogen plant.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{figures/si-energy.png}
+	\includegraphics[width=0.6\linewidth]{figures/si-energy2.png}
 	\hfill
-	\caption{Energy required by the Sulfur-Iodine Cycle. Image reproduced from \cite{yildiz_efficiency_2006}.}
+	\caption{Energy required by the Sulfur-Iodine Thermochemical Cycle.}
 	\label{fig:sulfur2}
 \end{figure}
 
@@ -294,13 +296,6 @@ Equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ required by the
 	\dot{m}_{H2} &= \mbox{\gls{H2} production rate [kg/h]} \\
 	\Delta H &= \mbox{Specific energy [kWh/kg-H$_2$].}
 \end{align}
-
-%this will be eliminated
-Note the discrepancy between Figure \ref{fig:sulfur1} and Figure \ref{fig:sulfur2} of the highest temperature required by the process.
-Other sources seem to disagree in that number too.
-Our analysis considers the process viable only for temperatures above 800 $^{\circ}$C.
-
-
 
 \section{Microreactors and \glspl{SMR}}
 \label{sec:reactors}
