@@ -173,7 +173,7 @@ In terms of electricity generation, this solution will decrease the need for dis
 In terms of transportation, it will eliminate carbon emissions.
 
 %Mention the choice of reactor
-In both analysis, many reactor choices can satisfy our needs.
+In both analyses, many reactor choices can satisfy our needs.
 The typical \gls{UIUC}'s grid demand is smaller than 80 MW \cite{dotson_optimal_2020}.
 Accordingly, we consider reactors of small capacities, such as microreactors and \glspl{SMR}.
 Section \ref{sec:reactors} discusses their characteristics.
@@ -282,7 +282,7 @@ Finally, equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ requir
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.6\linewidth]{figures/si-energy2.png}
+	\includegraphics[width=0.7\linewidth]{figures/si-energy2.png}
 	\hfill
 	\caption{Energy required by the Sulfur-Iodine Thermochemical Cycle.}
 	\label{fig:sulfur2}
@@ -306,8 +306,8 @@ This feature reduces up-front capital costs, enables rapid deployment, and exped
 This reactor concept allows for black starts and islanding operation mode.
 They can start up from a completely de-energized state without receiving power from the grid.
 They can also operate connected to the grid or independently.
-These types of reactors are self-regulating.
-Moreover, they minimize electrical parts and use passive safety systems features to prevent overheating and safely shutdown.
+Moreover, these type of reactors are self-regulating.
+They minimize electrical parts and use passive safety systems to prevent overheating and safely shutdown.
 
 Microreactors have the distinction that are transportable.
 Small designs make it easy for vendors to ship the entire reactor by truck, shipping vessel, or railcar.
@@ -322,7 +322,7 @@ As the definitions of these reactor concepts overlap, we will consider reactors 
 \label{sec:metho}
 
 In this analysis, the energy source (both electric and thermal) is a nuclear reactor with co-generation capabilities.
-The nuclear reactor supplies the grid with electricity $P_E$ while providing a hydrogen plant with electricity $P_{EH2}$ and thermal energy $P_{TH2}$, Figure \ref{fig:cogen}.
+The nuclear reactor supplies the grid with electricity $P_E$ while providing a hydrogen plant with electricity $P_{EH2}$ and thermal energy $P_{TH2}$, see the diagram in Figure \ref{fig:cogen}.
 $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$, see Equations \ref{eq:cogen1} to \ref{eq:cogen6}.
 
 \begin{figure}[htbp!]
@@ -355,7 +355,7 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
 
 \begin{table}[htbp!]
     \centering
-    \begin{tabular}{|lccc|}
+    \begin{tabular}{l|ccc}
         \hline
         Method    & $\gamma$         & $P_{EH2}$ & $P_{TH2}$ \\ \hline
         \gls{LTE} & 1                & $\ne$ 0   & 0         \\
@@ -369,12 +369,13 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the differe
 \section{Results}
 \label{sec:Results}
 
-This section holds the results of the different analysis.
+This section holds the results of the different analyses.
 
 \subsection{Transportation}
 
+This subsection centers its focus on the transportation sector.
 Figure \ref{fig:fuel} displays the fuel consumed per day by \gls{MTD} and \gls{UIUC} fleet.
-Using the values shown in Table \ref{tab:equiv}, we calculate the hydrogen requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
+Using the values shown in Table \ref{tab:equiv}, we calculate the \gls{H2} requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
 Table \ref{tab:hydro-fleet} summarizes the most important results.
 
 	\begin{figure}[htbp!]
@@ -382,12 +383,12 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 		\begin{subfigure}[t]{0.4\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{figures/mtd2}
-			\caption{\gls{MTD} fleet. Data goes from July 1, 2018, until June 30, 2019 \cite{mtd_irecords_2019}.}
+			\caption{\gls{MTD} fleet. Data go from July 1, 2018, until June 30, 2019 \cite{mtd_irecords_2019}.}
 		\end{subfigure}
 		\begin{subfigure}[t]{0.4\textwidth}
 			\centering
 			\includegraphics[width=\linewidth]{figures/uiuc}
-			\caption{\gls{UIUC} fleet. Data goes from January 1, 2019, until December 31, 2019 \cite{uiuc_personnal_communication}.}
+			\caption{\gls{UIUC} fleet. Data go from January 1, 2019, until December 31, 2019 \cite{uiuc_personnal_communication}.}
 		\end{subfigure}
 		\hfill
 		\caption{Fuel consumption.}
@@ -396,8 +397,8 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 
 	\begin{table}[htbp!]
 	\centering
-	\caption{Hydrogen mass necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
-	\begin{tabular}{|l|c|}
+	\caption{\gls{H2} necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
+	\begin{tabular}{l|c}
 	    \hline
 	 	                 & Hydrogen Mass [kg] \\ \hline
 	 	Gasoline         & 1                  \\
@@ -411,14 +412,14 @@ Table \ref{tab:hydro-fleet} summarizes the most important results.
 	    \centering
 		\includegraphics[height=7.0cm]{figures/hydro-fleet}
 		\hfill
-		\caption{Hydrogen requirement for MTD and UIUC fleets.}
+		\caption{\gls{H2} requirement for MTD and UIUC fleets.}
 		\label{fig:hydro-fleet}
 	\end{figure}
 
 	\begin{table}[htbp!]
 		\centering
-	    \caption{Hydrogen requirement for MTD and UIUC fleets.}
-		\begin{tabular}{|l|c|}
+	    \caption{\gls{H2} requirement for MTD and UIUC fleets.}
+		\begin{tabular}{l|c}
 		\hline
 		Total [tonnes/year]     & 943    \\
 		Average [kg/day] 	    & 2584   \\
@@ -434,7 +435,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 	\begin{table}[htbp!]
 		\centering
 	    \caption{\gls{CO2} savings in lbs per gallon of fuel burned \cite{energy_information_administration_how_2014}.}
-		\begin{tabular}{|l|c|}
+		\begin{tabular}{l|c}
 		\hline
 		              & \gls{CO2} produced [lbs/gallon] \\ \hline
 		Gasoline      & 19.64           \\
@@ -447,17 +448,23 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 	\begin{table}[htbp!]
 		\centering
 	    \caption{\gls{CO2} yearly savings.}
-		\begin{tabular}{|l|c|}
+		\begin{tabular}{l|c}
 		\hline
-		            & \gls{CO2} mass [tonnes] \\ \hline
-		MTD      	& 7306           \\
+		            & \gls{CO2} mass [tonnes/year] \\ \hline
+		MTD      	  & 7306           \\
 		UIUC        & 1143           \\
 		Total       & 8449           \\ \hline
         \end{tabular}
         \label{tab:co2}
 	\end{table}
 
-% I stopped here
+We have determined the \gls{H2} requirement by the fleets, now we seek for a microreactor design that is capable of meeting such demand.
+For our analysis we chose a few microreactor designs summarized in Table \gls{tab:hydro-micro}.
+Further studies could include other designs as well.
+
+Figure \ref{fig:hydro-micro} shows the hourly production rates for the different reactors and the different \gls{H2} production processes.
+The figure includes a continuous line that represents the hydrogen requirement of both fleets.
+Note that the high temperatures required by the \gls{SI} process allow for the coupling with only one microreactor design which has an outlet temperature of more than 800$[^{\circ}]$C.
 
 	\begin{table}[htbp!]
 		\centering
@@ -465,7 +472,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 		\begin{tabular}{|lcc|}
 		\hline
 		Reactor                                      & P[MW$_{th}$] & T$_o$[$^\circ$C] \\ \hline
-		MMR \cite{usnc_mmr_2019}  		             & 15           & 640              \\
+		MMR \cite{usnc_mmr_2019}  		               & 15           & 640              \\
 		eVinci \cite{hernandez_micro_2019}           & 5            & 650              \\
 		ST-OTTO \cite{harlan_x-energy_2018}          & 30           & 750              \\
 		U-battery \cite{ding_design_2011}            & 10           & 750              \\
@@ -484,32 +491,50 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 \subsection{Electricity Generation}
 
-% This last step enables us to decrease the need for dispatchable sources.
+This subsection centers its focus on the electricity generation sector and the duck curve problem.
+In order to quantify the magnitude of the duck curve, we have to predict the load of the \gls{UIUC} grid and the expected electricity production from solar.
+As the \gls{icap} main objective is to become carbon neutral before 2050, we do our prediction for that year.
+\gls{UIUC} solar farm is relatively new, and the data available is not enough for producing a reliable prediction.
+To go around this barrier, we use the available data for the whole \gls{US}.
+Figure \ref{fig:prediction} displays the prediction for 2050.
+We carry out the prediction by means of a linear regression that produces the worst scenario.
+In scenario the total load does not increase considerably whereas the solar generation does.
 
-	\begin{figure}[htbp!]
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.38\textwidth}
 		\centering
-		\begin{subfigure}[t]{0.38\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{figures/us-prediction1}
-			\caption{Total electricity generation.}
-		\end{subfigure}
-		\begin{subfigure}[t]{0.40\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{figures/us-prediction2}
-			\caption{Solar electricity generation.}
-		\end{subfigure}
-		\hfill
-		\caption{Prediction of the electricity generation in the \gls{US} for 2050. Data from \cite{us_energy_information_administration_electric_2020}.}
-		\label{fig:prediction}
-	\end{figure}
+		\includegraphics[width=\linewidth]{figures/us-prediction1}
+		\caption{Total electricity generation.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.40\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/us-prediction2}
+		\caption{Solar electricity generation.}
+	\end{subfigure}
+	\hfill
+	\caption{Prediction of the electricity generation in the \gls{US} for 2050. Data from \cite{us_energy_information_administration_electric_2020}.}
+	\label{fig:prediction}
+\end{figure}
 
-	\begin{figure}[htbp!]
-	    \centering
-		\includegraphics[height=4.3cm]{figures/uiuc-duck}
-		\hfill
-		\caption{Prediction of \gls{UIUC}'s net demand for 2050.}
-		\label{fig:uiuc-duck1}
-	\end{figure}
+The next step was to apply the same growth factor from the predictions to the load of the \gls{UIUC} grid and the solar electricity.
+We apply the growth factor to the hourly data of a day in the spring of 2019 to obtain a prediction for 2050.
+We choose the spring when the solar production is higher, as it is sunny, but the total load is low since people are not using electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
+Finally, we substract the solar production from the total load, obtaining the net load or demand ($D_{NET}$).
+Figure {fig:uiuc-duck1} shows these results.
+
+\begin{figure}[htbp!]
+		\centering
+	\includegraphics[height=4.3cm]{figures/uiuc-duck}
+	\hfill
+	\caption{Prediction of \gls{UIUC}'s net demand for 2050.}
+	\label{fig:uiuc-duck1}
+\end{figure}
+
+
+
+
+% This last step enables us to decrease the need for dispatchable sources.
 
 	\begin{figure}[htbp!]
 	    \centering
