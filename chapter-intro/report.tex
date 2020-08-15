@@ -26,7 +26,7 @@
 \usepackage{multirow}
 \usepackage{float} 
 \usepackage[acronym,toc]{glossaries}
-%\include{acros}
+\include{acros}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
 \newcolumntype{b}{X}
 \newcolumntype{f}{>{\hsize=.15\hsize}X}
@@ -55,16 +55,16 @@ fill=blue!30]
 
 % History
 The history of prismatic \glspl{HTGR} or simply \glspl{PMR} begins in the 1960s with the deployment of the Dragon reactor in the \gls{UK}.
-Its initial objective was to demonstrate the feasibility of the \gls{HTGR} and to launch the development of the technology which had already begun at a low level in various national laboratories.
-The Dragon Reactor Experiment first operated in July 1965 and reached full power of 20 MW(t) in April 1966.
+Its initial objective was to demonstrate the feasibility of the \gls{HTGR} and to launch the development of the technology.
+The Dragon eeactor experiment first operated in July 1965 and reached full power of 20 MW$_t$ in April 1966.
 The reactor operated for long periods at full power, demonstrated the successful operation of many components, and provided information on fuel and material irradiation tests.
-Simultaneously, interest in the \gls{US} led to the 40 MW(e) \gls{HTGR} at Peach Bottom.
+Simultaneously, interest in the \gls{US} led to the 40 MW$_e$ \gls{HTGR} at Peach Bottom.
 The reactor achieved initial criticality on March 1966 and went into commercial operation in June 1967.
 Peach Bottom provided a valuable demonstration of the \gls{HTGR} concept by confirming the core physics calculations, verifying the design analysis methods, and providing a data base for further design activities.
 Most importantly, the plant demonstrated the ability of \glspl{HTGR} to function in a load-following manner \cite{brey_development_2001}.
 After the deployment of these two prototype reactors came the first \gls{HTGR} demonstration plant, the \gls{FSV} Generating Station.
 Its electric power generation started in December 1976, reaching full-power operation in November 1981.
-The \gls{FSV} generated 842 MW(t) to achieve a net output of 330 MW(e).
+The \gls{FSV} plant generated 842 MW$_t$ to achieve a net output of 330 MW$_e$.
 This reactor laid the foundation for future \gls{PMR} designs.
 Beginning with \gls{FSV}, the \gls{US} core design included ceramic coated \gls{TRISO} particles embedded within rods placed in large hexagonal shaped graphite elements \cite{brey_development_2001}.
 % Despite these plants did not demonstrate the commercial capabilities of the \glspl{PMR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}.
@@ -72,15 +72,16 @@ Beginning with \gls{FSV}, the \gls{US} core design included ceramic coated \gls{
 % Safety characteristics of HTGRs
 The most fundamental characteristic of the \gls{PMR} is the unique safety philosophy embodied in its design \cite{iaea_current_2001}.
 The control of radionuclides does not rely on active systems or operator actions.
-\gls{TRISO} particles, Figure \ref{fig:triso}, consist of various layers acting in concert to provide a containment structure that limits radioactive product release.
+\gls{TRISO} particles, Figure \ref{fig:triso}, play a big role in this task.
+They consist of various layers acting in concert to provide a containment structure that limits radioactive product release.
 A \gls{TRISO} particle is a microsphere of about 0.8 mm diameter.
 It includes a fuel kernel surrounded by a porous carbon layer (or buffer), followed successively by an \gls{IPyC} layer, a \gls{SiC} layer, and an \gls{OPyC} layer.
-The buffer layer allows for limited kernel migration and provides some retention of gas compounds \cite{oecd_nea_benchmark_2017}.
-The \gls{IPyC} layer protects the kernel from chloride during the \gls{SiC} decomposition and contributes to fission gas retention \cite{demkowickz_paul_triso_2019}.
-The \gls{SiC} layer ensures the structural integrity of the particle under constant pressure and helps retain non-gaseous fission products.
-The \gls{OPyC} layer contributes to fission gas retention and protects the \gls{SiC} layer during handling.
-Additionally, \gls{TRISO} particles increase the proliferation resistance of \glspl{HTGR}.
+An additional advantage of the \gls{TRISO} particles is that they increase the proliferation resistance of \glspl{HTGR}.
 They are a very unattractive and the least desirable route for diversion or theft of weapons-usable materials \cite{huning_steady_2014}.
+% The buffer layer allows for limited kernel migration and provides some retention of gas compounds \cite{oecd_nea_benchmark_2017}.
+% The \gls{IPyC} layer protects the kernel from chloride during the \gls{SiC} decomposition and contributes to fission gas retention \cite{demkowickz_paul_triso_2019}.
+% The \gls{SiC} layer ensures the structural integrity of the particle under constant pressure and helps retain non-gaseous fission products.
+% The \gls{OPyC} layer contributes to fission gas retention and protects the \gls{SiC} layer during handling.
 
 \begin{figure}[htbp!]
 	\centering
@@ -89,12 +90,14 @@ They are a very unattractive and the least desirable route for diversion or thef
 	\label{fig:triso}
 \end{figure}
 
-The combination of graphite core structure, ceramic fuel, and inert helium permits very high operating temperatures \cite{ballinger_balance_2004}.
+Another contributor to the passive safety of the \gls{HTGR} design is its materials.
+The combination of a graphite core structure, ceramic fuel, and inert helium permits very high operating temperatures \cite{ballinger_balance_2004}.
 Graphite has a high heat capacity and maintains its strength at temperatures beyond 2760 $^{\circ}$C.
 As a result, temperature changes in the core occur very slowly and without damage to the core structure during transients.
-Besides, the annular core geometry and low core power density enable the passive removal of the decay heat generated in the core by passive heat transfer mechanisms following postulated accidents \cite{neylan_modular_1988}.
+Besides, the annular core geometry and a low core power density enable passive heat transfer mechanisms to remove the decay heat following postulated accidents \cite{neylan_modular_1988}.
 These passive heat transfer mechanisms rely primarily on the natural processes of conduction, thermal radiation, and convection.
 
+% ---> Left here <---
 % Co-generation applications
 A desirable feature of the \gls{HTGR} is its higher operating temperature because it offers increased cycle efficiencies.
 The early \gls{HTGR} designs converted their heat into electricity using the Rankine steam cycle \cite{herranz_power_2009}.
