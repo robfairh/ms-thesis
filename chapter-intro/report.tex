@@ -123,7 +123,161 @@ They designed the basic module to deliver superheated steam at 17.3 MPa and 538 
 Based on both economical and technological considerations, a 350 MW(t) modular reactor defines the optimal configuration.
 The team completed in 1986 the preliminary safety information document for the \gls{MHTGR} and the complete draft pre-application in 1989 \cite{huning_steady_2014}.
 
-\section{MHTGR Reactor Summary}
+\section{MHTGR-350 Reactor Description}
+
+This section provides a description of the MHTGR-350 reactor.
+Table \ref{tab:maincharac} lists its main characteristics.
+The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, Figure \ref{fig:layout}.
+Nineteen graphite replaceable reflector elements compose the inner reflector region.
+A ring of identically sized graphite replaceable reflector elements surrounds the fuel elements.
+Then, a region of permanent reflector elements follows the replaceable reflectors.
+The reactor vessel encases all the elements.
+
+\begin{table}[htbp!]
+	\centering
+    \caption{MHTGR350 Characteristics \cite{oecd_nea_benchmark_2017}.}
+	\begin{tabular}{l|l}
+	\hline
+	Characteristics               & Value               \\ \hline
+	Installed Thermal Capacity    & 350 MW(t)           \\
+	Installed Electric Capacity   & 165 MW(e)           \\
+	Fuel                          & UCO 15.5 wt\%       \\
+	Core inlet/outlet Temperature & 259/687 $^{\circ}$C \\
+	Reactor Vessel Height         & 22 m                \\
+	Reactor Vessel Inner diam.    & 6.55 m              \\ 
+	Reactor Vessel Outside diam.  & 6.8 m               \\ 
+	Power Density                 & 5.9 MW/m$^3$        \\ \hline
+	\end{tabular}
+    \label{tab:maincharac}
+\end{table}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{figures/radial-layout.png}
+		\caption{Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{figures/axial-layout.png}
+		\caption{Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
+		\label{fig:layoutb}
+	\end{subfigure}
+	\hfill
+	\caption{MHTGR reactor layout.}
+	\label{fig:layout}
+\end{figure}
+
+Ten fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
+Figure \ref{fig:layoutb} shows an axial view of the reactor.
+The core has two types of fuel elements: a standard element, and a reserve shutdown element that contains a channel for \gls{RSC}.
+Table \ref{tab:corecharac} contains the main characteristics of the core.
+Twelve columns in the core contain \gls{RSC} channels for reserve shutdown borated graphite pellets.
+Hoppers above the core house the pellets, and if the \glspl{CR} become inoperable, the pellets drop into the channels \cite{oecd_nea_benchmark_2017}.
+Thirty reflector columns contain channels for \glspl{CR}.
+% which ones are startup and which ones are for control?
+
+\begin{table}[]
+% I think I can get rid of this table
+	\centering
+    \caption{MHTGR350 Core Characteristics \cite{oecd_nea_benchmark_2017}.}
+	\begin{tabular}{l|l}
+	\hline
+	Core Parameter                    & Value      \\ \hline
+	Number of fuel columns            & 66         \\
+	Number of standard fuel columns   & 54         \\
+	Number of RSC fuel columns        & 12         \\
+	Number of inner reflector columns & 19         \\
+	Number of outer reflector columns & 78         \\
+	Core radius                       & 297.3 cm   \\
+	Height of the active core         & 7.9 m      \\ \hline
+	\end{tabular}
+	\label{tab:corecharac}
+\end{table}
+
+
+Control rods fabricated from natural boron in annular graphite compacts with metal cladding carry out the reactivity control.
+Lumped burnable poison (LBP) contributes to the reactivity control.
+
+The active core consists of hexagonal graphite fuel elements containing blind holes for fuel compacts and full-length channels for helium coolant flow.
+
+\section{Fuel Compact}
+
+Table \ref{tab:compact} specifies details of the TRISO particle and fuel compact designs of the MHTGR-350.
+
+	\begin{table}[htbp!]
+	\centering
+	    \caption{TRISO and Fuel Compact Characteristics \cite{oecd_nea_benchmark_2017}.}
+	    \label{tab:compact}
+	  	\begin{tabular}{@{}l S[table-format=2.1] c}
+	    \toprule
+	    \multicolumn{1}{c}{Characteristic} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} \\
+	    \midrule
+		Fuel                             & UC$_{0.5}$O$_{1.5}$   & -        \\
+		Enrichment (average)             & 15.5                  & wt\%     \\
+		Kernel radius                    & 0.02125               & cm       \\
+		Buffer radius                    & 0.03125               & cm       \\
+		IPyC radius                      & 0.03475               & cm       \\
+		SiC radius                       & 0.03825               & cm       \\
+		OPyC radius                      & 0.04225               & cm       \\
+    	Kernel density                   & 10.50                 & g/cm$^3$ \\
+		Buffer density                   & 1.00                  & g/cm$^3$ \\
+		IPyC density                     & 1.90                  & g/cm$^3$ \\
+		SiC density                      & 3.20                  & g/cm$^3$ \\
+		OPyC density                     & 1.90                  & g/cm$^3$ \\
+		Packing Fraction (average)       & 0.35                  & -        \\
+		Compact radius                   & 0.6223                & cm       \\
+		Compact Gap radius               & 0.6350                & cm       \\
+		Compact length                   & 4.9280                & cm       \\
+        Helium density           		 & 4.19                  & $10^{-3}$ g/cm$^3$ \\
+        Block graphite density           & 1.85                  & g/cm$^3$ \\
+	    \bottomrule
+	  	\end{tabular}
+	\end{table}
+
+\section{Fuel Assembly}
+
+Table \ref{tab:core-characteristics} specifies details of the fuel elements of the MHTGR-350.
+
+	\begin{table}[htbp!]
+	\centering
+        \caption{MHTGR350 fuel element characteristics \cite{oecd_nea_benchmark_2017}.}
+        \label{tab:core-characteristics}
+	  	\begin{tabular}{@{}l S[table-format=2.2] c}
+	    \toprule
+	    \multicolumn{1}{c}{Shared characteristics} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} \\
+	    \midrule
+		Block pitch (flat-to-flat)       & 36 		& cm       \\
+		Fuel length                      & 79.3 	& cm       \\
+		Fuel handling diameter           & 3.5 		& cm       \\ 
+		Fuel handling length             & 26.4 	& cm       \\ 
+		RSC hole diameter                & 9.525 	& cm       \\
+		RSC center to assembly center    & 9.756 	& cm       \\
+		Fuel/coolant pitch               & 1.879 	& cm       \\
+		Fuel hole radius                 & 0.635 	& cm       \\
+		Large coolant hole radius        & 0.794 	& cm       \\
+		Small coolant hole radius        & 0.635 	& cm       \\
+		Compacts per hole                & \multicolumn{1}{c@{}}{15}   	& -        \\
+		\midrule
+
+        \multicolumn{1}{c}{Standard element} &  &  \\
+
+		\midrule
+		Number of large coolant holes    & \multicolumn{1}{c@{}}{120}   & -        \\
+		Number of small coolant holes    & \multicolumn{1}{c@{}}{6}   	& -        \\
+		Number of fuel holes             & \multicolumn{1}{c@{}}{210}  	& -        \\
+		\midrule
+
+        \multicolumn{1}{c}{RSC element} &  &  \\
+
+		\midrule
+		Number of large coolant holes    & \multicolumn{1}{c@{}}{88}    & -        \\
+		Number of small coolant holes    & \multicolumn{1}{c@{}}{7}   	& -        \\
+		Number of fuel holes             & \multicolumn{1}{c@{}}{186}  	& -        \\
+	    \bottomrule
+	  	\end{tabular}
+	\end{table}
 
 
 
