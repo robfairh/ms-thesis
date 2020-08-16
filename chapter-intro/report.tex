@@ -24,7 +24,7 @@
 \usepackage{tabularx}
 \usepackage{color}
 \usepackage{multirow}
-\usepackage{float} 
+\usepackage{float}
 \usepackage[acronym,toc]{glossaries}
 \include{acros}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
@@ -37,10 +37,14 @@
 \usepackage[hang,flushmargin]{footmisc}
 \renewcommand*\footnoterule{}
 \usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs,mathptmx,siunitx}
+\sisetup{input-symbols = {()},  % do not treat "(" and ")" in any special way
+         group-digits  = false} % no grouping of digits
 
 \usetikzlibrary{shapes.geometric,arrows}
-\tikzstyle{process} = [rectangle, rounded corners, 
-minimum width=1cm, minimum height=1cm,text centered, draw=black, 
+\tikzstyle{process} = [rectangle, rounded corners,
+minimum width=1cm, minimum height=1cm,text centered, draw=black,
 fill=blue!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
 
@@ -56,15 +60,15 @@ fill=blue!30]
 % History
 The history of prismatic \glspl{HTGR} or simply \glspl{PMR} begins in the 1960s with the deployment of the Dragon reactor in the \gls{UK}.
 Its initial objective was to demonstrate the feasibility of the \gls{HTGR} and to launch the development of the technology.
-The Dragon eeactor experiment first operated in July 1965 and reached full power of 20 MW$_t$ in April 1966.
+The Dragon eeactor experiment first operated in July 1965 and reached full power of 20 MWt in April 1966.
 The reactor operated for long periods at full power, demonstrated the successful operation of many components, and provided information on fuel and material irradiation tests.
-Simultaneously, interest in the \gls{US} led to the 40 MW$_e$ \gls{HTGR} at Peach Bottom.
+Simultaneously, interest in the \gls{US} led to the 40 MWe \gls{HTGR} at Peach Bottom.
 The reactor achieved initial criticality on March 1966 and went into commercial operation in June 1967.
 Peach Bottom provided a valuable demonstration of the \gls{HTGR} concept by confirming the core physics calculations, verifying the design analysis methods, and providing a data base for further design activities.
 Most importantly, the plant demonstrated the ability of \glspl{HTGR} to function in a load-following manner \cite{brey_development_2001}.
 After the deployment of these two prototype reactors came the first \gls{HTGR} demonstration plant, the \gls{FSV} Generating Station.
 Its electric power generation started in December 1976, reaching full-power operation in November 1981.
-The \gls{FSV} plant generated 842 MW$_t$ to achieve a net output of 330 MW$_e$.
+The \gls{FSV} plant generated 842 MWt to achieve a net output of 330 MWe.
 This reactor laid the foundation for future \gls{PMR} designs.
 Beginning with \gls{FSV}, the \gls{US} core design included ceramic coated \gls{TRISO} particles embedded within rods placed in large hexagonal shaped graphite elements \cite{brey_development_2001}.
 % Despite these plants did not demonstrate the commercial capabilities of the \glspl{PMR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}.
@@ -97,24 +101,23 @@ As a result, temperature changes in the core occur very slowly and without damag
 Besides, the annular core geometry and a low core power density enable passive heat transfer mechanisms to remove the decay heat following postulated accidents \cite{neylan_modular_1988}.
 These passive heat transfer mechanisms rely primarily on the natural processes of conduction, thermal radiation, and convection.
 
-% ---> Left here <---
 % Co-generation applications
 A desirable feature of the \gls{HTGR} is its higher operating temperature.
 Higher temperatures offer increased cycle efficiencies.
 The early \gls{HTGR} designs converted their heat into electricity using the Rankine steam cycle \cite{herranz_power_2009}.
-In such system, the helium coolant passes through a heat exchanger generating steam to drive a steam turbine.
+In such system, the helium coolant passes through a heat exchanger generating steam to drive a  turbine.
 This arrangement is around 38\% efficient \cite{breeze_nuclear_2014}.
 Some of these designs would superheat the steam to increase their efficiency, but this complicates the plant layout \cite{ballinger_balance_2004}.
 A practical temperature limit is around 300-400 $^{\circ}$C.
 To take advantage of the high core outlet temperature of the \gls{HTGR}, the Brayton cycle is a better option, where the helium coolant directly drives a gas turbine in a closed cycle.
-With such configuration, the system can achieve an energy conversion efficiency of 48\% \cite{breeze_nuclear_2014}.
+With such configuration, the system can achieve an energy conversion efficiency of around 48\% \cite{breeze_nuclear_2014}.
 Additionally, having helium circulating in a closed cycle removes external sources of contamination of the nuclear circuit.
 Thus, the need for on-line clean up systems is largely reduced \cite{iaea_current_2001}.
 
 Another advantage of the \gls{HTGR} over other reactor designs is that higher outlet temperatures and increased cycle efficiencies enable a wide range of process heat applications.
-Some applications use steam for coal gasification processes, oil refinery processes, production of synthesis gas, methanol, and hydrogen.
-Several hydrogen production processes benefit from high temperatures, such as high temperature electrolysis or thermochemical splitting of water.
-Utilizing the \gls{HTGR} as the energy source of the process eliminates the need to burn fossil fuels to produce the steam \cite{iaea_current_2001}.
+Some applications use steam for coal gasification processes, oil refinery processes, and  production of synthesis gas, methanol, and hydrogen.
+Several hydrogen production processes benefit from high temperatures, such as high temperature electrolysis or the thermochemical splitting of water.
+Utilizing the \gls{HTGR} as the energy source of the process eliminates the need to burn fossil fuels to generate the steam \cite{iaea_current_2001}.
 
 % Maybe this paragraph should be in objectives
 This thesis focuses primarily on the \gls{MHTGR}-350 \cite{neylan_modular_1988} \cite{silady_licensing_1988}.
@@ -123,9 +126,9 @@ They designed the basic module to deliver superheated steam at 17.3 MPa and 538 
 Based on both economical and technological considerations, a 350 MW(t) modular reactor defines the optimal configuration.
 The team completed in 1986 the preliminary safety information document for the \gls{MHTGR} and the complete draft pre-application in 1989 \cite{huning_steady_2014}.
 
-\section{MHTGR-350 Reactor Description}
+\section{\gls{MHTGR}-350 Reactor Description}
 
-This section provides a description of the MHTGR-350 reactor.
+This section provides a description of the \gls{MHTGR}-350 reactor.
 Table \ref{tab:maincharac} lists its main characteristics.
 The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, Figure \ref{fig:layout}.
 Nineteen graphite replaceable reflector elements compose the inner reflector region.
@@ -136,19 +139,23 @@ The reactor vessel encases all the elements.
 \begin{table}[htbp!]
 	\centering
     \caption{MHTGR350 Characteristics \cite{oecd_nea_benchmark_2017}.}
-	\begin{tabular}{l|l}
-	\hline
-	Characteristics               & Value               \\ \hline
-	Installed Thermal Capacity    & 350 MW(t)           \\
-	Installed Electric Capacity   & 165 MW(e)           \\
-	Fuel                          & UCO 15.5 wt\%       \\
-	Core inlet/outlet Temperature & 259/687 $^{\circ}$C \\
-	Reactor Vessel Height         & 22 m                \\
-	Reactor Vessel Inner diam.    & 6.55 m              \\ 
-	Reactor Vessel Outside diam.  & 6.8 m               \\ 
-	Power Density                 & 5.9 MW/m$^3$        \\ \hline
+	\begin{tabular}{ll}
+  \toprule
+	Characteristics                   & Value               \\ \midrule
+	Installed Thermal Capacity        & 350 MWt             \\
+	Installed Electric Capacity       & 165 MWe             \\
+	Core inlet/outlet Temperature     & 259/687$^{\circ}$C  \\
+	Power Density                     & 5.9 MW/m$^3$        \\
+  Reactor Vessel Outside diam.      & 6.8 m               \\
+	Reactor Vessel Height             & 22 m                \\
+	Active core radius                & 2.973 m             \\
+	Height of the active core         & 7.93 m              \\
+	Number of RSC fuel columns        & 12                  \\
+	Number of inner reflector columns & 19                  \\
+	Number of outer reflector columns & 78                  \\
+  \bottomrule
 	\end{tabular}
-    \label{tab:maincharac}
+  \label{tab:maincharac}
 \end{table}
 
 \begin{figure}[htbp!]
@@ -172,39 +179,33 @@ The reactor vessel encases all the elements.
 Ten fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
 Figure \ref{fig:layoutb} shows an axial view of the reactor.
 The core has two types of fuel elements: a standard element, and a reserve shutdown element that contains a channel for \gls{RSC}.
-Table \ref{tab:corecharac} contains the main characteristics of the core.
 Twelve columns in the core contain \gls{RSC} channels for reserve shutdown borated graphite pellets.
 Hoppers above the core house the pellets, and if the \glspl{CR} become inoperable, the pellets drop into the channels \cite{oecd_nea_benchmark_2017}.
-Thirty reflector columns contain channels for \glspl{CR}.
+
+% Reactivity control
+A combination of \gls{LBP} and \glspl{CR} controls the core reactivity.
+The \gls{LBP} is in the form of particles encased in graphite compacts distributed in the active core.
+The \gls{CR}'s material is natural boron in annular graphite compacts.
+Thirty reflector columns contain channels for the \glspl{CR}.
+Twenty-four \glspl{CR} located in the outer reflector control the reactivity during power operation.
+
+
+
+operation and drop into the core in case of a reactor trip.
+
+
+
 % which ones are startup and which ones are for control?
-
-\begin{table}[]
-% I think I can get rid of this table
-	\centering
-    \caption{MHTGR350 Core Characteristics \cite{oecd_nea_benchmark_2017}.}
-	\begin{tabular}{l|l}
-	\hline
-	Core Parameter                    & Value      \\ \hline
-	Number of fuel columns            & 66         \\
-	Number of standard fuel columns   & 54         \\
-	Number of RSC fuel columns        & 12         \\
-	Number of inner reflector columns & 19         \\
-	Number of outer reflector columns & 78         \\
-	Core radius                       & 297.3 cm   \\
-	Height of the active core         & 7.9 m      \\ \hline
-	\end{tabular}
-	\label{tab:corecharac}
-\end{table}
-
 
 Control rods fabricated from natural boron in annular graphite compacts with metal cladding carry out the reactivity control.
 Lumped burnable poison (LBP) contributes to the reactivity control.
 
-The active core consists of hexagonal graphite fuel elements containing blind holes for fuel compacts and full-length channels for helium coolant flow.
 
-\section{Fuel Compact}
+% Fuel assemblys and triso particles
+The fuel elements contain blind holes for fuel compacts and full-length channels for helium coolant flow.
 
-Table \ref{tab:compact} specifies details of the TRISO particle and fuel compact designs of the MHTGR-350.
+Table \ref{tab:compact} specifies details of the TRISO particle and fuel compact designs of the \gls{MHTGR}-350.
+Table \ref{tab:element-characteristics} specifies details of the fuel elements of the MHTGR-350.
 
 	\begin{table}[htbp!]
 	\centering
@@ -236,22 +237,18 @@ Table \ref{tab:compact} specifies details of the TRISO particle and fuel compact
 	  	\end{tabular}
 	\end{table}
 
-\section{Fuel Assembly}
-
-Table \ref{tab:core-characteristics} specifies details of the fuel elements of the MHTGR-350.
-
 	\begin{table}[htbp!]
 	\centering
         \caption{MHTGR350 fuel element characteristics \cite{oecd_nea_benchmark_2017}.}
-        \label{tab:core-characteristics}
+        \label{tab:element-characteristics}
 	  	\begin{tabular}{@{}l S[table-format=2.2] c}
 	    \toprule
 	    \multicolumn{1}{c}{Shared characteristics} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} \\
 	    \midrule
 		Block pitch (flat-to-flat)       & 36 		& cm       \\
 		Fuel length                      & 79.3 	& cm       \\
-		Fuel handling diameter           & 3.5 		& cm       \\ 
-		Fuel handling length             & 26.4 	& cm       \\ 
+		Fuel handling diameter           & 3.5 		& cm       \\
+		Fuel handling length             & 26.4 	& cm       \\
 		RSC hole diameter                & 9.525 	& cm       \\
 		RSC center to assembly center    & 9.756 	& cm       \\
 		Fuel/coolant pitch               & 1.879 	& cm       \\
@@ -278,10 +275,6 @@ Table \ref{tab:core-characteristics} specifies details of the fuel elements of t
 	    \bottomrule
 	  	\end{tabular}
 	\end{table}
-
-
-
-
 
 
 
@@ -361,7 +354,7 @@ Because of the large time-scale separation, multiphysics transient simulations c
 \gls{MOOSE} \cite{gaston_moose_2009} \cite{gaston_physics-based_2015} is a computational framework targeted at solving fully coupled systems.
 All the software built on the \gls{MOOSE} framework shares a common code base.
 This facilitates relatively easy coupling \cite{novak_pronghorn_2018} between different phenomena and allows for great flexibility even with large variance in time scales.
-% RattleS$_n$ake \cite{wang_nonlinear_2013} has become the primary tool for solving the linearized Boltzmann neutron transport equation within \gls{MOOSE} \cite{strydom_inl_2013}. 
+% RattleS$_n$ake \cite{wang_nonlinear_2013} has become the primary tool for solving the linearized Boltzmann neutron transport equation within \gls{MOOSE} \cite{strydom_inl_2013}.
 % RattleS$_n$ake counts with a variety of solvers available including low-order multigroup diffusion.
 % Pronghorn \cite{bingham_pronghorn_2012} \cite{novak_pronghorn_2018} is a \gls{FEM} porous media thermal-hydraulics simulation code built on the \gls{MOOSE} framework.
 \textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{FEM} simulation code built on the \gls{MOOSE} framework.
