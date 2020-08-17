@@ -315,6 +315,7 @@ As the introduction has already described, the \gls{HTGR} technology has several
 To recapitulate, the \gls{HTGR} relies on passive heat transfer mechanisms, uses TRISO particles as its fuel, has a high proliferation resistance, has the ability to achieve high temperatures and increased cycle efficiencies.
 Other beneficial characteristics are that high temperatures enable a wide range of process heat applications, among which we find hydrogen production.
 
+
 %Why computational modeling?
 * Transient analysis
 Modeling and prediction of core thermal hydraulic behavior is essential for both normal operation and transient safety.
@@ -322,9 +323,8 @@ More detailed core modeling are needed to help certify the \gls{HTGR}’s passiv
 
 * Heaxagonal shaped fuel elements require computational approaches
 
-* the computational tools available for the analysis of \glspl{HTGR} have lagged behind, compared to the state of the art of other reactor technologies.
+* Compared to the state of the art of other reactor technologies, the tools available for \gls{PMR} have lagged behind.
 * \glspl{HTGR} require core simulation techniques not typically utilized in \gls{LWR} analysis due to several unique features, such as double heterogeneous fuel design including \gls{TRISO} fuel particles, large graphite quantities, and high operational temperatures \cite{bostelmann_criticality_2016}.
-
 
 
 %Why Moltres
@@ -335,18 +335,20 @@ Historically, the operator splitting approach ...
 linking a neutronics solver to a thermal-hydraulics solver allowed for the simulation of an entire reactor.
 
 
+
 Nonetheless, \glspl{HTGR} have a strong temperature feedback, causing increased coupling between the different physics phenomena.
 Because of the large time-scale separation, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
-\gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems and allows for great flexibility even with large variance in time scales.
-
-
-
+\gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
+All the software built on the \gls{MOOSE} framework shares a common code base.
+This facilitates relatively easy coupling \cite{novak_pronghorn_2018} between different phenomena and allows for great flexibility even with large variance in time scales.
+\textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{FEM} simulation code built on the \gls{MOOSE} framework.
 
 
 
 \section{Objectives}
 % This will be filled out later I guess
 
+This thesis focuses on steady-state calculations and also intends to set a roadmap for the transient simulations.
 
 \pagebreak
 \bibliographystyle{plain}
