@@ -298,50 +298,8 @@ The remaining 24 are operating \glspl{CR} and control the reactivity during powe
 
 \section{Motivation}
 
-% Intro
-This work focuses on the computational modeling of \glspl{HTGR} using \textit{Moltres}.
-This work's ultimate goal is to support the development of \glspl{HTGR}.
-
-%Why HTGRs?
-The Generation IV Roadmap project identified reactor system concepts that could meet the energy demands of the future in an efficient, economic, and environmentally safe manner \cite{macdonald_ngnp_2003}.
-One of these reactor system concepts is the \gls{VHTR}.
-\gls{VHTR} is distinct from \gls{HTGR} as its coolant outlet temperature reaches higher temperatures.
-However, the literature often uses these terms interchangeably.
-In this work, the term \gls{HTGR} encompasses both terms.
-The \gls{DOE} had selected this system for the canceled \gls{NGNP} Project, a project to demonstrate emissions-free nuclear-assisted electricity and hydrogen production by 2015.
-% What happened to the project, should I talk about it?
-
-As the introduction has already described, the \gls{HTGR} technology has several favorable characteristics.
-To recapitulate, the \gls{HTGR} relies on passive heat transfer mechanisms, uses TRISO particles as its fuel, has a high proliferation resistance, has the ability to achieve high temperatures and increased cycle efficiencies.
-Other beneficial characteristics are that high temperatures enable a wide range of process heat applications, among which we find hydrogen production.
 
 
-%Why computational modeling?
-* Transient analysis
-Modeling and prediction of core thermal hydraulic behavior is essential for both normal operation and transient safety.
-More detailed core modeling are needed to help certify the \gls{HTGR}’s passive safety features for the design safety basis cases.
-
-* Heaxagonal shaped fuel elements require computational approaches
-
-* Compared to the state of the art of other reactor technologies, the tools available for \gls{PMR} have lagged behind.
-* \glspl{HTGR} require core simulation techniques not typically utilized in \gls{LWR} analysis due to several unique features, such as double heterogeneous fuel design including \gls{TRISO} fuel particles, large graphite quantities, and high operational temperatures \cite{bostelmann_criticality_2016}.
-
-
-%Why Moltres
-Systems of \glspl{PDE} describe the behavior of nuclear reactor processes.
-
-Historically, the operator splitting approach ...
-% explain what is the operator splitting approach, see ragusa's paper
-linking a neutronics solver to a thermal-hydraulics solver allowed for the simulation of an entire reactor.
-
-
-
-Nonetheless, \glspl{HTGR} have a strong temperature feedback, causing increased coupling between the different physics phenomena.
-Because of the large time-scale separation, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
-\gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
-All the software built on the \gls{MOOSE} framework shares a common code base.
-This facilitates relatively easy coupling \cite{novak_pronghorn_2018} between different phenomena and allows for great flexibility even with large variance in time scales.
-\textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{FEM} simulation code built on the \gls{MOOSE} framework.
 
 
 

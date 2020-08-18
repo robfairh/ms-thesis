@@ -1,0 +1,38 @@
+
+
+
+It solves arbitrary-group neutron diffusion, precursor, and temperature governing equations on a single mesh.
+Moltres can solve the equations in a fully-coupled way or solve each system independently allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
+
+All codes use MPI for parallel communication and allow for deployement on massively-parallel cluster-computing platforms.
+MOOSE applications by default use monolithic and implicit methods ideal for closely-coupled and multi-scale physics.
+
+
+\Chapter{Tools}
+\section{MOOSE}
+
+\gls{MOOSE} purpose is to support the development of engineering analysis applications.
+It provides a framework where the applications share a common code base, which facilitates relatively easy coupling \cite{novak_pronghorn_2018}.
+\gls{MOOSE} utilizes the mathematical structure present in \gls{JFNK} methods.
+\gls{JFNK} methods are synergistic combinations of Newton-type methods for superlinearly convergent solution of nonlinear equations and Krylov subspace methods for solving the Newton correction equations.
+The link between the two methods is the Jacobian-vector product.
+\gls{JFNK} methods compute such product approximately without forming and storing the elements of the true Jacobian \cite{knoll_jacobian-free_2004}.
+
+\gls{MOOSE} modularizes physics expressions into "Kernels".
+Kernels are C++ classes that contain methods for computing residual and Jacobian contributions corresponding to individual pieces of governing equations \cite{lindsay_introduction_2018}.
+This modularization allows for rapid production of new simulation tools.
+
+% All codes use MPI for parallel communication and allow for deployement on massively-parallel cluster-computing platforms.
+% MOOSE applications by default use monolithic and implicit methods ideal for closely-coupled and multi-scale physics.
+
+\section{Moltres}
+
+Moltres \cite{lindsay_introduction_2018} is a \gls{MOOSE} based application originally designed for modeling fluid-fuelled \glspl{MSR}.
+
+This simulation tool is open source and solves arbitrary-group neutron diffusion, precursor, and temperature governing equations.
+
+Its openness is a defining characteristic and promotes quality through transparency and ease of peer review.
+It uses git for version control, integration testing to protect developed physics capabilities, and a C++ object-oriented design to enable extension and code reuse.
+
+Being a \gls{MOOSE} based application allows it to run on a single mesh in anywhere from one to three dimensions.
+The code uses MPI for parallel communication and allows for deployment on massively-parallel cluster-computing platforms.

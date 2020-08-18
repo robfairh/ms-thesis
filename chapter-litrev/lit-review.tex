@@ -3,7 +3,7 @@
 % yuk_time-dependent_2020
 Reactor analysis tool should be capable of carrying out transient calculations for a reactivity insertion accident.
 Time dependent neutron diffusion equation solved by the FEM.
-SImplified thermal fluid analysis tool implemented to consider thermal feedback.
+Simplified thermal fluid analysis tool implemented to consider thermal feedback.
 New method introduced to resolve control rod cusping effect without additional computation or mesh reconstruction.
 These methods are applied to the reactor physiscs code CAPP.
 
@@ -61,7 +61,7 @@ Thermal-fluid analysis:
 CAPP code has a simplified thermal fluid analysis solver
 Lee et al. 2011
 
-The geometry details are simplified in the analysis. 
+The geometry details are simplified in the analysis.
 The unit of the thermal calculation is the triangular prism as in a neutron diffusion solver.
 (The fuel assembly is represented by 6 triangles)
 Each triangular prism has a representative coolant channel (Fig. 2)
@@ -428,7 +428,7 @@ Steady-state analysis: (Table 4-1)
 * FLAC:
 Determines the coolant flow distribution in the coolant channels and gaps.
 Solves the 1-D Momentum Equation for incompressible flow.
-Solves continuity eqs of mass and energy. 
+Solves continuity eqs of mass and energy.
 Models the density changes in the gas.
 
 * POKE:
@@ -659,7 +659,7 @@ These principally fall into three different categories: (a) CFD, (b) system leve
 
 CFD techniques are well equipped to compute the detailed assembly temperature profiles but are unable to perform whole-core calculations due to computational costs.
 
-System-level codes such as RELAP are well equipped to compute core-level temperature profiles but it is also difficult to approximate the assembly geometry correctly using simple equivalent cylinder or slab models. 
+System-level codes such as RELAP are well equipped to compute core-level temperature profiles but it is also difficult to approximate the assembly geometry correctly using simple equivalent cylinder or slab models.
 
 Unit cell and intermediate level techniques have he highest potential since whole-core calculations are possible with computed pin or near-pin-level temperature gradients for the hexagonal fuel assembly geometry.
 
@@ -668,7 +668,7 @@ Due to the significantly different flow and core geometry for gas reactors, typi
 Some options are to couple CFD core heat transfer calculations to system level calculations by relap.
 Another option is using MELCOR-H2 for modeling secondary side transient analysis.
 GAMMA+ code:
-Kim et al 2010 % 
+Kim et al 2010 %
 GAMMA+ code is a code developed specifically to analyze air ingress events and hydrogen plant transients.
 It solves the conservation equations for a mixture of many gas species and solid nodes.
 
