@@ -768,6 +768,32 @@ Alternative method to whole core analysis:
 In a prismatic fuel block, the geometry of a solid is very complex whereas the geometry of the fluid channel is simple.
 Uses finite volumes and unit cells.
 
+% gougar_htgr_2016
+RELAP-3D
+Coupled to PHISICS for prismatic reactor steady-state and transient analysis.
+Others: GRSAC (ORNL), GRSAC (ORNL), FLOWNEX (flownex.com), RELAP-7(INL), AGREE(NRC), MGT (FZ-Jülich),
+THERMIX-DIREKT (FZ-Jülich).
+
+% melese_thermal_1984
+Ideally, all core cavity components should be designed to discharge coolant at the same helium temperature into the lower plenum.
+If components such as the side reflector are designed to require a large quantity of coolant that is heated relatively little, other components such as the core will necessarily have to supply helium at temperatures above the average hot helium temperature.
+This leads to temperature differences ("hot streaks") entering a steam generator, thus complicating its design.
+
+A method for describing the power distribution in the fuel rods in the core
+is needed for the thermal design calculations.
+Examples:
+* GATT: 3D diffusion tool
+* 2D radial diffusion GAUGE: radial power distribution + 1D axial power shapes using BUGTRI.
+
+Studies on 3000 MWt HTGR based on the Fort St Vrain design.
+
+The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce structural material weakness, and lead to excessive chemical reaction rates.
+
+* Unit cell models:
+To understand some basic aspects of heat transfer in the prismatic HTGR
+fuel element, simple models are helpful.
+Various correction factors to this basic model have been devised to account for these special effects (like radial peaking factor).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 https://www.researchgate.net/scientific-contributions/82618217_Nam-il_Tak
@@ -778,4 +804,8 @@ https://www.researchgate.net/scientific-contributions/82618217_Nam-il_Tak
 
 %%%%%%%%%%%%%%%%%%%% Mechanics maybe %%%%%%%%%%%%%%%%%%%%
 
+% melese_thermal_1984
+Talks about thermal stresses
+
 % kang_thermo-mechanical_2012
+

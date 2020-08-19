@@ -21,6 +21,7 @@ Other beneficial characteristics are that high temperatures enable a wide range 
 Modeling and prediction of core thermal-hydraulic behavior is necessary for assessing the safety characteristics of a reactor.
 Determining the temperature inside a reactor, for both normal and transient operation, is of paramount importance as the integrity of several materials depends on it.
 Most importantly, undesirably high temperatures endanger the integrity of the TRISO particles and, consequently, jeopardize a fission product release \cite{tak_numerical_2008}.
+% The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce stmctural material weakness, and lead to excessive chemical reaction rates.
 Furthermore, the complex geometry of the fuel blocks hinders accurate evaluations of the fuel temperatures requiring elaborate numerical calculations.
 
 The characteristics of a \gls{HTGR} are different from those of conventional \glspl{LWR}.
