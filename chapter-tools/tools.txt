@@ -1,0 +1,38 @@
+﻿\section{MOOSE}
+
+% intro
+\gls{MOOSE}\cite{gaston_moose_2009} is a computational framework whose purpose is to support the development of engineering analysis applications.
+In a nuclear reactor, several \glspl{PDE} describe its physical behavior.
+These equations are typically nonlinear and they are often strongly coupled to each other.
+\gls{MOOSE} targets such systems and solves them in a fully coupled manner.
+
+% more details about MOOSE
+\gls{MOOSE} is an open source code under a \gls{LGPL}.
+The code itself relies on LibMesh \cite{kirk_libmesh_2006}, an LGPL finite element library, and PetSc, a \gls{BSD}-licensed toolkit for solving nonlinear equations \cite{balay_petsc_2016}.
+MOOSE applications define weak forms of the governing equations.
+They modularize the physics expressions into "Kernels".
+Kernels are C++ classes that contain methods for computing the residual and Jacobian contributions of individual pieces of the governing equations.
+\gls{MOOSE} and LibMesh translate them into residual and Jacobian functions.
+These functions become inputs into PetSc solution routines.
+
+\gls{MOOSE} utilizes the mathematical structure present in \gls{JFNK} methods \cite{knoll_jacobian-free_2004}.
+\gls{JFNK} methods are synergistic combinations of Newton-type methods for superlinearly convergent solution of nonlinear equations and Krylov subspace methods for solving the Newton correction equations.
+The link between the two methods is the Jacobian-vector product.
+\gls{JFNK} methods compute such product approximately without forming and storing the elements of the true Jacobian.
+The ability to perform a Newton iteration without forming the Jacobian gives \gls{JFNK} methods potential for application throughout problems governed by nonlinear partial differential equations.
+
+All the software built on the \gls{MOOSE} framework shares a common code base.
+The applications by default use monolithic and implicit methods.
+This feature facilitates relatively easy coupling between different phenomena and allows for great flexibility even with large variance in time scales \cite{novak_pronghorn_2018}.
+Additionally, all codes use MPI for parallel communication and allow for deployment on massively-parallel cluster-computing platforms.
+
+\section{Moltres}
+
+Moltres \cite{lindsay_introduction_2018} is a \gls{MOOSE} based application originally designed for modeling fluid-fuelled \glspl{MSR}.
+This simulation tool is open source and counts with an LGPL license.
+It uses \texttt{git} for version control, emphasizing its openness and promoting quality through peer review.
+
+Moltres solves arbitrary-group neutron diffusion, precursors, and temperature governing equations.
+It can solve the equations in a fully-coupled way or solve each system independently allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
+
+\subsection{Diffusion and precursors equations}
