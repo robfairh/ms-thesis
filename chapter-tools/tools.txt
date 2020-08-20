@@ -36,3 +36,97 @@ Moltres solves arbitrary-group neutron diffusion, precursors, and temperature go
 It can solve the equations in a fully-coupled way or solve each system independently allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
 
 \subsection{Diffusion and precursors equations}
+
+% Equations
+Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent behavior of the neutronics.
+
+\begin{align}
+  \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g &= \nabla \cdot D_g \nabla \phi_g -
+  \Sigma_g^r \phi_g + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
+  \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} +
+  \chi_g^d \sum_i^I \lambda_i C_i
+\label{eq:diffusion}
+        \intertext{where}
+        v_g &= \mbox{group $g$ neutron speed} \notag \\
+        \phi_g &= \mbox{group $g$ neutron flux} \notag \\
+        t &= \mbox{time} \notag \\
+        D_g &= \mbox{group $g$ diffusion coefficient} \notag \\
+        \Sigma_g^r &= \mbox{group $g$ macroscopic removal cross-section} \notag \\
+        \Sigma_{g'\rightarrow g}^s &= \mbox{group $g'$ to group $g$ macroscopic scattering} \notag \\
+		&\phantom{{}=1} \mbox{cross-section} \notag \\
+        \chi_g^p &= \mbox{group $g$ prompt fission spectrum} \notag\\
+        G &= \mbox{number of discrete energy groups} \notag \\
+        \nu &= \mbox{number of neutrons produced per fission} \notag \\
+        \Sigma_g^f &= \mbox{group $g$ macroscopic fission cross-section} \notag \\
+        \chi_g^d &= \mbox{group $g$ delayed fission spectrum} \notag \\
+        I &= \mbox{number of delayed neutron precursor groups} \notag \\
+        \beta &= \mbox{delayed neutron fraction} \notag \\
+        \lambda_i &= \mbox{average decay constant of delayed neutron} \notag \\
+        &\phantom{{}=1} \mbox{precursors in precursor group $i$} \notag \\
+        C_i &= \mbox{concentration of delayed neutron precursors} \notag \\
+        &\phantom{{}=1} \mbox{in precursor group $i$}. \notag
+\end{align}
+
+\begin{align}
+        \frac{\partial}{\partial t} C_i &= \sum_{g'= 1}^G \beta_i \nu
+        \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i
+\label{eq:precursors}
+\end{align}
+
+For the eigenvalue calculations, the equations lose the time dependency.
+Using \ref{eq:chit} we combine both equations.
+We introduce the parameter $k_{eff}$ that divides the fission term obtaining equation \ref{eq:eigenvalue}.
+
+\begin{align}
+ 	\chi_g^t &= \chi_g^p (1 - \beta) + \chi_g^d \sum_i^I \beta_i  \label{eq:chit} \\
+  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g &+
+  \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0
+  \label{eq:eigenvalue}
+\end{align}
+
+% Boundary conditions
+We apply the vacuum boundary condition to the diffusion equation for both transient and eigenvalue problems.
+The vacuum boundary condition states that no neutrons penetrate the boundary in the inward direction.
+In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, equation \ref{eq:vacuumbc1}.
+
+\begin{align}
+   J^-(r_s, t) = \frac{1}{4} \phi(r_s, t) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi (r_s, t) = 0
+\label{eq:vacuumbc1}
+\end{align}
+
+% Precursor BC?
+% The precursors equation is an IVP, so it doesn't require the definition of BC
+% When accounting for the precursors drift, that's a different story.
+
+\subsection{Thermal-Hydraulics}
+
+The governing equation for the temperature of the solids is the 3-D heat conduction equation \cite{melese_thermal_1984}.
+Equations \ref{eq:tempfuel} and \ref{eq:heatsource} allow for solving the temperature in the fuel.
+
+\begin{align}
+	\rho_f c_{p,f} \frac{\partial}{\partial t} T_f &= k_f \nabla^2 T_f + Q_f \label{eq:tempfuel} \\
+ 	Q_f &= \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource}
+  \intertext{where}
+  \rho_f &= \mbox{fuel density} \notag \\
+  c_{p,f} &= \mbox{fuel specific heat capacity} \notag \\
+  k_f &= \mbox{fuel thermal conductivity } \notag \\
+  T_f &= \mbox{fuel temperature} \notag \\
+  Q_f &= \mbox{volumetric heat source} \notag \\
+  \epsilon_g^f &= \mbox{energy released per fission} \notag \\
+  \Sigma_g^f &= \mbox{group $g$ macroscopic fission cross-section} \notag \\
+  \phi_g &= \mbox{group $g$ neutron flux.} \notag
+\end{align}
+
+Equations \ref{eq:tempgraphite} solve the temperature of the moderator and reflector.
+
+\begin{align}
+	\rho_i c_{p,i} \frac{\partial}{\partial t} T_i &= k_i \nabla^2 T_i \label{eq:tempgraphite}
+  \intertext{where}
+  i &= \mbox{m (moderator) or r (reflector)} \notag \\
+  \rho_i &= \mbox{material $i$ density} \notag \\
+  c_{p,i} &= \mbox{material $i$ specific heat capacity} \notag \\
+  k_i &= \mbox{material $i$ thermal conductivity} \notag \\
+  T_i &= \mbox{material $i$ temperature.} \notag
+\end{align}
+
+% coolant
