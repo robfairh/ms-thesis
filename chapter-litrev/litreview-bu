@@ -1,5 +1,22 @@
 %%%%%%%%%%%%%%%%%%%% Neutronics %%%%%%%%%%%%%%%%%%%
 
+% wagner_three-dimensional_1989
+The code HEXNOD calculates three-dimensional problems for fast reactors and high converter light water reactors.
+It implements a nodal mehtod for solving the multigroup neutron diffusion equation.
+
+They demonstrated the accuracy of nodal methods by comparison with the finite difference methods and Monte Carlo calculations for a number of benchmark problems.
+
+Earlier heaxagonal nodal diffusion methods that apply the transverse integration procedure are based on the nodal expansion method (NEM).
+In this paper they use an approximate analytic solution for the transverse-averaged group fluxes.
+
+Nodal methods explanation:
+The transverse integration procedure is used for deriving auxiliary one-dimensional diffusion equations.
+In the case of a hexagonal prismatic node, this leads to a set of coupled one-dimensional equations for three spatial directions in the radial plane plus one equation for the axial direction.
+These equations are then solved simultaneously.
+
+
+
+
 % yuk_time-dependent_2020
 Reactor analysis tool should be capable of carrying out transient calculations for a reactivity insertion accident.
 Time dependent neutron diffusion equation solved by the FEM.
