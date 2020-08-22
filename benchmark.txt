@@ -41,4 +41,8 @@ stagnant helium at reactor pressure.
 By-pass flow:
 Table I.11
 
+II. Steady state benchmark calculation cases
 
+Exercise 1:
+Power generated per fission event: 200 MeV
+Cross sections of the control rod blocks should be weighted
