@@ -1,0 +1,44 @@
+notes on the benchmark:
+
+% oecd_nea_coupled_2020
+
+% for tools: benchmark definition
+The deterministic neutronic thermal-fluids and transient analysis tools and methods available to design and analyse PMRs have, in many cases, lagged behind the state of the art compared to other reactor technologies.
+This has motivated the testing of existing methods for HTGRs but also the development of more accurate and efficient tools to analyse the neutronics and thermal-fluids behaviour for the design and safety evaluations of the PMR.
+In addition to the development of new methods, this includes defining appropriate benchmarks to perform code comparisons of these new methods.
+
+Effective inner diameter of the core: 1.65 m
+Effective outer diameter of the core: 3.5 m
+
+Volume correction of the cross sections:
+The cross-sections for the control rod regions in the inner and replaceable reflectors should be volume corrected, if possible.
+The cross-sections should be multiplied by 0.9278 for a hexagonal representation of the CR region.
+Not performing a volume correction for those regions is also acceptable since the effect on the neutronic solution is very small.
+
+Cross sections:
+The purpose of the simplified macroscopic cross-section set is to provide a reference that can be used to test and compare stand-alone neutronic predictions by using the same cross-sections with no thermal-fluids feedback.
+
+Appendix VIII: explanation of code xslook: code to load cross sections.
+Appendix II: cross section tabulation
+
+Thermal fluids definition:
+
+Flow inlet is at the bootm of the RPV and oriented along the vertical axis of the reactor.
+The helium from the coolant chanels (in the risers) flows directly into the upper plenum and is then directed through the fuel blocks.
+Presence of stagnant helium at reactor pressure between the core barrel and RPV.
+
+Other simplifications:
+
+* The RSC and handling holes in fuel regions are not considered flow regions; they contain
+stagnant helium at reactor pressure.
+* The control rod holes are considered part of the by-pass flow in CR regions. The flow through them is limited.
+* No cross flow is modeled.
+* RCCS is not modeled.
+* Radiation heat transfer from the RPV to the RCCS through the outside air (assumed stagnant) should be modeled with an RCCS emissivity of 0.8. Emissivity of 0.74 to represent the RPV and air between the RPV and RCCS.
+* Roughness factor for the flow channels is assumed to be 0.
+* Fuel block graphite density: 1.85 kg/cm3
+
+By-pass flow:
+Table I.11
+
+
