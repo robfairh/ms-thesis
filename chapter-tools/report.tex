@@ -260,6 +260,42 @@ Equations \ref{eq:tempgraphite} solve the temperature of the moderator and refle
 
 
 
+\subsection{Cross section handling}
+
+\subsection{Homogenization}
+
+\begin{align}
+  \phi &= \frac{\sum_i \phi_i V_i}{\sum_i V_i}  \\
+  \Sigma_x &= \frac{\sum_i \Sigma_{x,i} \phi_i V_i}{\sum_i \phi_i V_i}  \\
+  \chi_t &= \frac{\sum_{t,i} \chi_i \nu \Sigma_{f,i} \phi_i V_i}{\sum_i \nu \Sigma_{f,i} \phi_i V_i}
+  \intertext{where}
+  \phi &= \mbox{neutron flux} \notag \\
+  V_i &= \mbox{volume $i$} \notag \\
+  \Sigma_x &= \{\Sigma_t, \Sigma_s^{g \rightarrow g'}, \nu\Sigma_f\} \notag
+\end{align}
+
+\subsection{Collapsing}
+
+\begin{align}
+  \phi_{G} &= \sum_g \phi_g \\
+  \Sigma_x^G &= \frac{\sum_g \Sigma_x^g \phi_g}{\sum_g \phi_g} \\
+  \Sigma_s^{G \rightarrow G'} &= \frac{\sum_g \sum_{g'} \Sigma_s^{g \rightarrow g'} \phi_g}{\sum_g \phi_g} \\
+  \chi_t^G &= \sum_g \chi_t^g
+  \intertext{where}
+  \Sigma_x &= \{\Sigma_t, \nu\Sigma_f\} \notag \\
+  \phi_{G} &= \mbox{group G neutron flux} \notag
+\end{align}
+
+\subsection{Translate to Moltres format}
+
+% Info provided by the benchmark
+Normalized flux, \Sigma_t, D, \nu\Sigma_f, \Sigma_f, \chi_T, P0 Scattering Matrix \Sigma_{s0, g \rightarrow g'}, P1 Scattering Matrix \Sigma_{s1, g \rightarrow g'}, \Kappa = 200 MeV
+
+% Info required by Moltres
+\Sigma_r, \nu\Sigma_f, D, \beta_{eff}, \Sigma_f, \Kappa, v^{-1}, \chi_T, \chi_D, P0 Scattering Matrix \Sigma_{s0, g \rightarrow g'}, \lambda
+
+% Translation
+\Sigma_r^g= \Sigma_t^g-\Sigma_s^{g \rightarrow g}
 
 \pagebreak
 \bibliographystyle{plain}
