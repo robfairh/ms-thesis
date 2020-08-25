@@ -1,0 +1,172 @@
+%%%%%%%%%%%%%%%%%%%% Neutronics %%%%%%%%%%%%%%%%%%%
+
+% wagner_three-dimensional_1989
+
+The nodal methods developed for hexagonal geometry are similar to the analogous Cartesian geometry
+nodal diffusion theory developed earlier at Siemens/KWU. %finnermann_new_1975 %finnemann_atomkernenergie_1977
+
+The code HEXNOD calculates three-dimensional problems for fast reactors and high converter light water reactors.
+It implements a nodal mehtod for solving the multigroup neutron diffusion equation.
+
+They demonstrated the accuracy of nodal methods by comparison with the finite difference methods and Monte Carlo calculations for a number of benchmark problems.
+
+They conclude that the code HEXNOD is well suited for 3D routine analysis of fast reactors.
+
+Earlier heaxagonal nodal diffusion methods that apply the transverse integration procedure are based on the nodal expansion method (NEM).
+In this paper they use an approximate analytic solution for the transverse-averaged group fluxes.
+
+Nodal methods explanation:
+The transverse integration procedure is used for deriving auxiliary one-dimensional diffusion equations.
+In the case of a hexagonal prismatic node, this leads to a set of coupled one-dimensional equations for three spatial directions in the radial plane plus one equation for the axial direction.
+These equations are then solved simultaneously.
+
+
+% fitzpatrick_developments_1995
+
+Introduces solution techniques for the time-dependence of the diffusion equations and couples it to spatial nodal algorithms.
+The solution in 1D problems is compared against finite-difference solutions.
+
+
+----> Done until here <-----
+
+% ortensi_deterministic_2010-1
+
+INL conducted a benchmark exercise based on modeling the High Temperature Test Reactor (HTTR).
+
+
+
+%lee_status_2006
+
+* Energy Group Study:
+HTGR analyses require more energy groups than conventional LWR analysis because the spectral interactions between fuels and fuel and reflector are significant due to a much longer neutron mean free path.
+In this work, the number of energy groups versus accuracy has been studied using the one-dimensional fuel-reflector problem.
+
+Fuel block cross sections are normally generated from a single fuel block calculation with reflective boundary condition, assuming that the spectrum of the single block configuration is not much different from the actual one in the core.
+The effects of energy group structure on the accuracy of homogenized nodal cross sections were examined by changing the number of energy groups from 4 to 23 groups.
+Cross sections were generates with DRAGON at 300 K.
+
+One of their conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled HTGR.
+The accuracy is sensitive to the energy group boundaries.
+
+Table 12 shows results.
+
+-----> To read: Some of this should go into the lit review when I mention the choice of method.
+
+In parallel to developing a suite of codes based on the conventional two-step lattice and
+whole-core calculation approach, it is important to envision and develop analysis tools for the
+future. These tools should eliminate the approximations inherent in the multi-step approach for
+whole-core analysis and be of higher accuracy and also less cumbersome to use. These attributes
+indicate that the future codes be based on a spatially-heterogeneous capability that eliminates the
+various stages used in current state-of-the-art tools. One obvious choice of a code would be that
+based on the stochastic Monte Carlo approach. The Monte Carlo techniques provide detailed
+solution of the neutron transport problem in space, energy, and angle and could be applied with
+great accuracy to the VHTR if fuel particles are modeled explicitly in the core calculation. The
+utilization of the Monte Carlo codes is however currently unattractive because of the tremendous
+problem size and the need for a large number of neutron histories required for resolution of fuelelement power distribution and small reactivity effects. Furthermore, several important
+phenomena such as thermal feedback at power generating conditions, flux uncertainty
+propagation in the depletion calculation and fission product build up are not properly addressed
+in these tools at the current time. In contrast, the direct three-dimensional whole-core transport
+calculation employing deterministic solution techniques provides a possibility for resolving all
+these problems as long as the double heterogeneity modeling capability is properly incorporated. 
+
+
+
+
+
+
+
+
+
+
+
+
+% yuk_time-dependent_2020
+Reactor analysis tool should be capable of carrying out transient calculations for a reactivity insertion accident.
+Time dependent neutron diffusion equation solved by the FEM.
+Simplified thermal fluid analysis tool implemented to consider thermal feedback.
+New method introduced to resolve control rod cusping effect without additional computation or mesh reconstruction.
+These methods are applied to the reactor physiscs code CAPP.
+
+The characteristics of a VHTR are different from those of conventional light water reactors.
+This has led to the demand for a new reactor analysis tool.
+Neutronics/thermal-fluid coupled analysis is also required due to the strong interaction between the temperature and the power in a VHTR core.
+Benchmark problem based on the MHTGR350:
+- ORTENSI et al. 2015
+definition of the Benchamrk
+- Strydom et al. 2016
+PHISICS deterministic transport code coupled to RELAP5-3D
+- Lemaire et al. 2017
+Monte Carlo transport code MCS and GAMMA+
+
+CAPP code for the reactor physics analysis of VHTRs
+Lee et al. 2008, 2011, 2014
+CAPP code performs a neutron diffusion calculation based on FEM
+Becker et al. 1981
+The code seeems to have its own thermal fluid analysis solver.
+This paper expands upon ealier conference papers
+Yuk et al 2018a, 2018b
+and it extends the functionality of the CAPP code to the transient analysis.
+Thermal fluid analysis code developed to consider the thermal feedback effect.
+Reduction of the control rod cusping effec.
+
+Control rod cusping effect:
+Joo, 1984 % joo_resolution_1984
+
+During the transient calculation with the control rod movements, partially rodded computation nodes (PRNs) usually appear.
+The homogenization of PRNs is necessary for conventional diffusion nodal methods.
+When the conservation of the reaction rates in PRNs is not considered, such homogenization induces a large error.
+
+Various method to reduce this effect:
+- Flux volume weighted homogenization
+- Homogeneous flux volume weighted homogenization
+- Heterogeneous flux volume weighted homogenization
+This methods require to solve the whole core problem repeatedly updated cross sections.
+
+Mesh reconstruction is used to remove such partially rodded cases and removes the control rod cusping effect.
+The reconstruction should be performed at each time step.
+
+I need to re read this.
+...
+
+This code system has different characteristics from those of the light
+water reactors.
+A prismatic VHTR has a large flux gradient.
+Hence, a single assembly block calculation with the reflective boundary condition cannot give a reliable homogenized group constant set.
+(I say this: Also that doesn't get the cross sections in the inner and outer reflectors.)
+
+Due to the graphite, the resonance and up-scattering treatment are more important in a VHTR.
+A conventional two energy group structure has limitations when it comes to handling such phenomena.
+
+Thermal-fluid analysis:
+CAPP code has a simplified thermal fluid analysis solver
+Lee et al. 2011
+
+The geometry details are simplified in the analysis.
+The unit of the thermal calculation is the triangular prism as in a neutron diffusion solver.
+(The fuel assembly is represented by 6 triangles)
+Each triangular prism has a representative coolant channel (Fig. 2)
+
+Once the temperature in the coolant was calculated. then a 2D model calculates the temperature in the moderator and fuel.
+It is necessary to know the temperature in the reflector due to the core/reflector spectrum interference effect.
+
+% joo_resolution_1984
+ABTRACT
+Research to develop an accurate, systematic, inexpensive, and reliable procedure for resolving the control rod cusping problem for nodal methods in light water reactor calculations.
+The cusping problem arises if the presence of a control rod partially inserted in a large spatial mesh node is represented by homogeneous cross sections of magnitudes proportional to the volume of control rod material present.
+A plot of reactivity vs control rod position then exhibits unphysical cusps as the rod is withdrawn from node to node.
+This effect causes conventional procedures to yield incorrect nodal power distribution and reactor eigenvalue.
+
+CHAPTER 1
+When using a nodal model, the cross sections are homogenized over a whole node.
+The presence of control rods partially inserted in a node causes an axial heterogeneity.
+The cross sections are then homogenized for the node.
+If such homogenization is found by a simple volume averaging procedure, the resultant nodal power distribution and reactor multiplication factor are incorrect.
+
+It is possible to circumvent this difficulty by requiring that there be horizontal nodal interface planes positioned at every control rod tip position.
+For reactor transients during which control rods are moving and power dependent feedback effects are being accounted for, complications become more severe.
+To solve the issue, the partially roded node is homogenized.
+Volume weighted cross sections causes the control rod cusping problem.
+Other models: flux-weighted cross sections.
+
+Chapter 3:
+A partially roded node PRN is present whenever the control rod tip locations do not match exactly the axial nodal interfaces.

@@ -55,27 +55,57 @@ fill=blue!30]
 \section{\gls{PMR} neutronic solvers}
 
 Nowadays there are several codes to solve the neutronics of \glspl{PMR}.
-Most of them rely on the following methods: \gls{MC}, deterministic transport, and deterministic diffusion.
+Most of them rely on the following methods: Monte Carlo, deterministic transport, and deterministic diffusion.
 We focus our interest in the last method.
 % Why? Deterministic diffusion solvers have lower computational requirements than other methods reference ??
 
 The history of deterministic diffusion solvers begins in the late 1950s with the \gls{FDM} applied to the analysis of \glspl{LWR}.
 In \gls{FDM}, mesh spacings are usually of the order of the diffusion length.
-When solving large multi-dimensional problems, this limitation causes the mesh points to reach intractable numbers \cite{lewis_finite_1986}.
-The computational expense of these calculations motivated the development of more computationally efficient techniques \cite{lawrence_progress_1985}.
+When solving large multi-dimensional problems, this feature causes the mesh points to reach intractable numbers \cite{lewis_finite_1986}.
+The computational expense of these calculations motivated the generation of more computationally efficient techniques \cite{lawrence_progress_1986}.
 Although there are substantial overlaps, the most common techniques fall into two broad categories: nodal methods and \gls{FEM}.
 
-% --------------> LEFT HERE <----------------
 % NODAL
-From the 1970s, nodal methods proved to be a highly efficient and accurate technique in Cartesian geometries.
-In 1981, a formulation based on \gls{NEM} first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
+FLARE \cite{delp_flare_1964} is a three-dimensional boiling water reactor simulator and it is representative of the first generation of nodal schemes.
+Such approach involved using adjusted parameters to match actual operating data or the results of more accurate calculations. 
+Most of these methods implement the so-called 1.5 group theory.
 
+A second generation of nodal schemes derives spatial coupling relationships by applying the \gls{TIP}.
+Integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis, such procedure obtains equivalent one-dimensional equations \cite{lawrence_progress_1986}.
+This approach proved to be highly efficient and accurate in Cartesian geometries.
+
+In 1981, a formulation based on nodal expansion methods first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
 Nevertheless, this method would introduce non-physical singular terms that required the utilization of discontinuous polynomials.
-This motivated the development of HEXNOD \cite{wagner_three-dimensional_1989} and HEXPEDITE \cite{fitzpatrick_hexpedite_1992}, more effective formulations introduced in the late 1980s and early 1990s.
+This motivated the development of more effective formulations.
+The code HEXNOD, introduced in 1988 \cite{wagner_three-dimensional_1989}, is an example of such formulations.
+This algorithm uses the \gls{TIP} and, in contrast to the nodal expansion method, solves the resulting differential equation analytically.
+The article demonstrates the accuracy of the method by comparison with the \gls{FDM} and Monte Carlo calculations for a number of benchmark problems.
 
+Another example of more effective methods is the code HEXPEDITE \cite{fitzpatrick_hexpedite_1992}.
+The HEXPEDITE approach uses the \gls{TIP} to derive a pseudo-one-dimensional equation.
+The resulting differential equation is solved analytically.
+The difference from HEXNOD is that, HEXPEDITE uses a global coupling solution scheme different that is simpler and more efficient.
+Fitzpatrick's thesis \cite{fitzpatrick_developments_1995} tests the method and compares it against other nodal solvers on several benchmark problems.
+
+% --------------> LEFT HERE <----------------
 HEXPEDITE's use still prevails in the analysis of \glspl{HTGR} \cite{ortensi_deterministic_2010-1}.
 Some modern codes still use this technique.
 DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are examples of those codes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 % FEM
 The \gls{FEM} is a well-established method in applied mathematics and engineering.
