@@ -33,6 +33,15 @@ The solution in 1D problems is compared against finite-difference solutions.
 
 INL conducted a benchmark exercise based on modeling the High Temperature Test Reactor (HTTR).
 
+26 energ group structure from IAEA benchmark.
+
+Previous work on the HEXPEDITE methodology has tested the approach against other spatial discretizations for the neutron diffusion equation in hexagonal and triangular geometry, such as the nodal expansion method (NEM) and finite difference method (FDM). These studies have established HEXPEDITE’s superiority in terms of accuracy and runtime over NEM and FDM.
+
+Cross sections generated with DRAGON 4.
+Cross sections used in the HEXPEDITE runs.
+
+HEXPEDITE results for different configurations compared against MCNP5 and Serpent.
+%Brown, F. B., et al., 2002, MCNP Version 5, LA-UR-02-3935, Los Alamos National Laboratory.
 
 
 %lee_status_2006
