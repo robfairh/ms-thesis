@@ -1,0 +1,13 @@
+
+Moltres has a limited capability to represent the burnup dependency of cross sections.
+The cross sections of VHTR fuel elements vary significantly with burnup and fuel and moderator temperatures \cite{lee_status_2006}.
+Thus, a more general capability to represent the cross sections as a function of burnup and temperatures needs to be implemented.
+
+% Biblio:
+
+@misc{lee_status_2006,
+	title = {Status of {Reactor} {Physics} {Activities} on {Cross} {Section} {Generation} and {Functionalization} for the {Prismatic} {Very} {High} {Temperature} {Reactor}, and {Development} of {Spatially}-{Heterogeneous} {Codes}},
+	author = {Lee and Zhong and Taiwo and Yang and Smith and Palmiotti},
+	month = aug,
+	year = {2006}
+}

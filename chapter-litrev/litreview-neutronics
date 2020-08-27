@@ -21,13 +21,13 @@ In the case of a hexagonal prismatic node, this leads to a set of coupled one-di
 These equations are then solved simultaneously.
 
 
+
 % fitzpatrick_developments_1995
 
 Introduces solution techniques for the time-dependence of the diffusion equations and couples it to spatial nodal algorithms.
 The solution in 1D problems is compared against finite-difference solutions.
 
 
-----> Done until here <-----
 
 % ortensi_deterministic_2010-1
 
@@ -40,9 +40,25 @@ Previous work on the HEXPEDITE methodology has tested the approach against other
 Cross sections generated with DRAGON 4.
 Cross sections used in the HEXPEDITE runs.
 
-HEXPEDITE results for different configurations compared against MCNP5 and Serpent.
+HEXPEDITE results for different critical configurations compared against MCNP5 and Serpent.
 %Brown, F. B., et al., 2002, MCNP Version 5, LA-UR-02-3935, Los Alamos National Laboratory.
 
+The results obtained with DRAGON-HEXPEDITE are compared against the results from other codes.
+other codes: JAR (diffusion nodal), CITATION (diffusion FDM), CRONOS2 (diffusion-transport)
+Results from the CRP-5 benchmark.
+
+I say this: disadvantages of HEXPEDITE over FEM
+A correction has to be applied to the multiplication factor.
+HEXPEDITE cannnot accurately model the cylindrical periphery of the permanent reflector.
+
+
+% for methods (tools):
+One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
+This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
+In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects.
+
+
+----> Done until here <-----
 
 %lee_status_2006
 
@@ -78,11 +94,21 @@ in these tools at the current time. In contrast, the direct three-dimensional wh
 calculation employing deterministic solution techniques provides a possibility for resolving all
 these problems as long as the double heterogeneity modeling capability is properly incorporated. 
 
+The DIF3D core solves the three-dimensional multigroup diffusion or transport equations for given core configurations.
+It has several solution options such as the finite difference diffusion theory method (FDM), the nodal expansion diffusion theory method based on the transverse integration procedure, and the VARIANT nodal transport method.
+
+% for conclusions
+Moltres has a limited capability to represent the burnup dependency of cross sections.
+The cross sections of VHTR fuel elements vary significantly with burnup and fuel and moderator temperatures.
+Thus, a more general capability to represent the cross sections as a function of burnup and temperatures needs to be implemented.
 
 
 
 
 
+
+Continue here:
+%lewis_finite_1981
 
 
 

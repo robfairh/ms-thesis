@@ -19,6 +19,9 @@ Applying a simple volume homogenization has proven inaccurate due to the resonan
 Although, the explicit modeling is time consuming, costly, and impractical for the majority of applications, it results necessary.
 
 % Data from? Model?
+% One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
+% This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
+% In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects \cite{ortensi_deterministic_2010-1}.
 
 \section{Benchmark specification}
 

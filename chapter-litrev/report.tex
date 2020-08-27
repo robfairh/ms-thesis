@@ -74,56 +74,68 @@ A second generation of nodal schemes derives spatial coupling relationships by a
 Integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis, such procedure obtains equivalent one-dimensional equations \cite{lawrence_progress_1986}.
 This approach proved to be highly efficient and accurate in Cartesian geometries.
 
-In 1981, a formulation based on nodal expansion methods first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
+In 1981, a formulation based on the \gls{NEM} first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
 Nevertheless, this method would introduce non-physical singular terms that required the utilization of discontinuous polynomials.
 This motivated the development of more effective formulations.
 The code HEXNOD, introduced in 1988 \cite{wagner_three-dimensional_1989}, is an example of such formulations.
-This algorithm uses the \gls{TIP} and, in contrast to the nodal expansion method, solves the resulting differential equation analytically.
+This algorithm uses the \gls{TIP} and, in contrast to the \gls{NEM}, solves the resulting differential equation analytically.
 The article demonstrates the accuracy of the method by comparison with the \gls{FDM} and Monte Carlo calculations for a number of benchmark problems.
 
 Another example of more effective methods is the code HEXPEDITE \cite{fitzpatrick_hexpedite_1992}.
 The HEXPEDITE approach uses the \gls{TIP} to derive a pseudo-one-dimensional equation.
 The resulting differential equation is solved analytically.
 The difference from HEXNOD is that, HEXPEDITE uses a global coupling solution scheme different that is simpler and more efficient.
-Fitzpatrick's thesis \cite{fitzpatrick_developments_1995} tests the method and compares it against other nodal solvers on several benchmark problems.
+Different works \cite{fitzpatrick_hexpedite_1992}\cite{fitzpatrick_developments_1995} on the HEXPEDITE methodology tested the approach against the \gls{NEM} and the \gls{FDM}.
+These studies established HEXPEDITE’s superiority in terms of accuracy and runtime.
+HEXPEDITE's use still prevailed until recently in the analysis of \glspl{HTGR}.
+INL conducted a study \cite{ortensi_deterministic_2010-1} where they compared HEXPEDITE's results against other diffusion codes: JAR, CITATION, and CRONOS2, and the Monte Carlo codes MCNP5 and Serpent.
 
-% --------------> LEFT HERE <----------------
-HEXPEDITE's use still prevails in the analysis of \glspl{HTGR} \cite{ortensi_deterministic_2010-1}.
-Some modern codes still use this technique.
-DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are examples of those codes.
+Other examples of nodal diffusion codes whose use prevailed until the present are DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004}.
+DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
+% VARIANT: variational nodal \cite{palmiotti_variant_1995}
+PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport Simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+% from ortensi_deterministic_2010-1 and wang_modified_2018
+Overall, nodal methods are efficient and allow for solving hexagonal geometries.
+However, they do not do it in a flexible way as different geomtries require the application of different coordinate systems.
+Additionally, this lack of flexibility limits the applications of nodal methods to regular geometries only.
 
 % FEM
 The \gls{FEM} is a well-established method in applied mathematics and engineering.
 Most applications make \gls{FEM} preferable due to its flexibility in the treatment of curved or irregular geometries.
 Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
 The first prototype engineering application of \gls{FEM} was in the field structural engineering and dates back to 1956.
-In the 1960s, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
+In the successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
+
+% ----> Left here <----
 In 1981, \cite{lewis_finite_1981} described the first application of \gls{FEM} to the neutron diffusion theory.
 Some examples of current \gls{FEM} diffusion solvers are Rattlesnake \cite{wang_rattlesnake_2019} and CAPP \cite{lee_development_2011}.
 
-% More codes:
-PHISICS (INL) % ref ?
-Computes the time-dependent flux and power distribution in the core.
-Is it FEM based?
 
-% SPH treatment:
-Others: PARCS (NRC), DIF3D-REBUS (ANL), APOLLO-CRONOS (AREVA)
-\cite{gougar_htgr_2016}
+
+
+% Number of energy groups impact over the calculations
+\gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analysis.
+The spectral interactions between elements are significant due to a longer neutron mean free path.
+\gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of whole-core calculations versus the number of energy groups employed for generating homogenized cross-sections.
+The codes used in such study were DRAGON for the cross-section homogenization and DIF3D for the whole-core calculations.
+For the study, they implemented a one-dimensional fuel-reflector model in which they changed the number of energy groups from 4 to 23 groups.
+They generated all the cross-sections at 300 K.
+One of the conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
+Another concluison is that the accuracy is sensitive to the energy group boundaries as well.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Thermo-Hydraulics}
 
