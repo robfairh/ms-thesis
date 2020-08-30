@@ -33,7 +33,7 @@ The solution in 1D problems is compared against finite-difference solutions.
 
 INL conducted a benchmark exercise based on modeling the High Temperature Test Reactor (HTTR).
 
-26 energ group structure from IAEA benchmark.
+26 energy group structure from IAEA benchmark.
 
 Previous work on the HEXPEDITE methodology has tested the approach against other spatial discretizations for the neutron diffusion equation in hexagonal and triangular geometry, such as the nodal expansion method (NEM) and finite difference method (FDM). These studies have established HEXPEDITE’s superiority in terms of accuracy and runtime over NEM and FDM.
 
@@ -58,7 +58,6 @@ This strong coupling invalidates the assumption made in the lattice physics calc
 In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects.
 
 
-----> Done until here <-----
 
 %lee_status_2006
 
@@ -77,22 +76,15 @@ Table 12 shows results.
 
 -----> To read: Some of this should go into the lit review when I mention the choice of method.
 
-In parallel to developing a suite of codes based on the conventional two-step lattice and
-whole-core calculation approach, it is important to envision and develop analysis tools for the
-future. These tools should eliminate the approximations inherent in the multi-step approach for
-whole-core analysis and be of higher accuracy and also less cumbersome to use. These attributes
-indicate that the future codes be based on a spatially-heterogeneous capability that eliminates the
-various stages used in current state-of-the-art tools. One obvious choice of a code would be that
-based on the stochastic Monte Carlo approach. The Monte Carlo techniques provide detailed
-solution of the neutron transport problem in space, energy, and angle and could be applied with
-great accuracy to the VHTR if fuel particles are modeled explicitly in the core calculation. The
-utilization of the Monte Carlo codes is however currently unattractive because of the tremendous
-problem size and the need for a large number of neutron histories required for resolution of fuelelement power distribution and small reactivity effects. Furthermore, several important
-phenomena such as thermal feedback at power generating conditions, flux uncertainty
-propagation in the depletion calculation and fission product build up are not properly addressed
-in these tools at the current time. In contrast, the direct three-dimensional whole-core transport
-calculation employing deterministic solution techniques provides a possibility for resolving all
-these problems as long as the double heterogeneity modeling capability is properly incorporated. 
+In parallel to developing a suite of codes based on the conventional two-step lattice and whole-core calculation approach, it is important to envision and develop analysis tools for the future.
+These tools should eliminate the approximations inherent in the multi-step approach for whole-core analysis and be of higher accuracy and also less cumbersome to use.
+These attributes indicate that the future codes be based on a spatially-heterogeneous capability that eliminates the various stages used in current state-of-the-art tools.
+One obvious choice of a code would be that based on the stochastic Monte Carlo approach.
+The Monte Carlo techniques provide detailed solution of the neutron transport problem in space, energy, and angle and could be applied with great accuracy to the VHTR if fuel particles are modeled explicitly in the core calculation.
+The utilization of the Monte Carlo codes is however currently unattractive because of the tremendous problem size and the need for a large number of neutron histories required for resolution of fuel element power distribution and small reactivity effects.
+Furthermore, several important phenomena such as thermal feedback at power generating conditions, flux uncertainty propagation in the depletion calculation and fission product build up are not properly addressed
+in these tools at the current time.
+In contrast, the direct three-dimensional whole-core transport calculation employing deterministic solution techniques provides a possibility for resolving all these problems as long as the double heterogeneity modeling capability is properly incorporated.
 
 The DIF3D core solves the three-dimensional multigroup diffusion or transport equations for given core configurations.
 It has several solution options such as the finite difference diffusion theory method (FDM), the nodal expansion diffusion theory method based on the transverse integration procedure, and the VARIANT nodal transport method.
@@ -102,13 +94,11 @@ Moltres has a limited capability to represent the burnup dependency of cross sec
 The cross sections of VHTR fuel elements vary significantly with burnup and fuel and moderator temperatures.
 Thus, a more general capability to represent the cross sections as a function of burnup and temperatures needs to be implemented.
 
-
-
-
-
+----> Done until here <-----
 
 Continue here after doing "lee_status_2006":
 %lewis_finite_1981
+
 
 
 
