@@ -37,6 +37,10 @@
 \usepackage[hang,flushmargin]{footmisc}
 \renewcommand*\footnoterule{}
 \usepackage{tikz}
+\usepackage{array}
+\usepackage{booktabs,mathptmx,siunitx}
+\sisetup{input-symbols = {()},  % do not treat "(" and ")" in any special way
+         group-digits  = false} % no grouping of digits
 
 \usetikzlibrary{shapes.geometric,arrows}
 \tikzstyle{process} = [rectangle, rounded corners,
@@ -124,7 +128,7 @@ Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent
 \end{align}
 
 For the eigenvalue calculations, the equations lose the time dependency.
-Using \ref{eq:chit} we combine both equations.
+Using equation \ref{eq:chit} we combine both equations.
 We introduce the parameter $k_{eff}$ that divides the fission term obtaining equation \ref{eq:eigenvalue}.
 
 \begin{align}
@@ -254,89 +258,81 @@ Equations \ref{eq:tempgraphite} solve the temperature of the moderator and refle
 
 \section{Serpent}
 
+The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code.
+It was developed at the VTT Technical Research Centre of Finland an has been in public distribution since 2009.
+Monte Carlo neutron transport codes have several reactor physics applications, traditionally related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
+The main advantage of the Monte Carlo method is its capability to model geometry and interaction physics without major approximations.
+The main disadvantage is that modeling complex systems is very computing-intensive restricting the applications to some extent.
 
+Serpent serves two main purposes: (1) reactor modeling, and (2) group constant generation.
+In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
+In group constant generation, the transport simulation produces input parameters for a deterministic reactor simulation code.
+Based on a few group diffusion methods, these codes allow for carrying out coupled full-core analyses.
+
+In this work, Serpent’s objective is to produce cross section that will be an input for Moltres and generate results for validation of the neutronic calculations in Moltres.
+For carrying out the calculations we used the version 2.1.31 of Serpent and the cross section library JEFF3.1.2.
+The choice of Serpent as the cross section generation tool comes from one of its capabilities.
+Serpent allows for the explicit modeling of TRISO particles.
+Applying a simple volume homogenization has proven inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
+Although, the explicit modeling is time consuming, costly, and impractical for the majority of applications, it results necessary.
+
+% Data from? Model?
+% One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
+% This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
+% In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects \cite{ortensi_deterministic_2010-1}.
 
 \section{Benchmark specification}
 
+The deterministic neutronic thermal-fluids and transient analysis methods available for \glspl{PMR} have lagged behind the state of the art of other reactor technologies.
+This has motivated the development of more accurate tools for the design and safety evaluations of \glspl{PMR}.
+In addition to the development of new methods, it is essential to define appropriate benchmarks to compare the capabilities of these new methods.
+The \gls{OECD}/\gls{NEA} defined such benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
+The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) to test the depletion capabilities of various lattice physics codes available for \glspl{PMR}.
+The objective of this work is to conduct Exercise 1 of Phase I of the benchmark with Moltres and compare the results with the already published results of the benchmark\cite{oecd_nea_coupled_2019}.
+
+% The MHTGR-350 is the base of the reference design.
+% The benchmark specifies the fuel at the \gls{EOEC} core state.
+% Such state leads to the highest decay heat load and narrowest safety margins.
+
+The benchmark defines several Phases and Exercises:
+
+\begin{itemize}
+        \item Phase I: Steady State
+        \begin{enumerate}
+            \item Neutronics solution with fixed cross-sections. 
+            \item Thermal fluids solution with given heat sources.
+            \item Coupled neutronics-thermal fluids steady state solution.
+        \end{enumerate}
+
+        \item Phase II: Transient Cases
+        \begin{enumerate}
+            \item Depressurized Conduction Cooldown without reactor trip.
+            \item Pressurized Conduction Cooldown with reactor trip.
+            \item Water ingress with reactor trip.
+            \item Power 100-80-100 load follow.
+        \end{enumerate}
+
+        \item Phase III: Lattice Depletion Case
+\end{itemize}
+
+As mentioned earlier, the scope of this work is Exercise 1 of Phase I.
+Future studies will focus on the rest of the exercises of Phase I and, potentially, Phase II.
+Phase III examines variations in lattice calculations.
+We do not plan to conduct studies of such phase in the future.
 
 
-\subsection{Cross section handling}
+% \subsection{Phase I Exercise 1}
 
-\subsection{Homogenization}
 
-\begin{align}
-  \phi &= \frac{\sum_i \phi_i V_i}{\sum_i V_i}  \\
-  \Sigma_x &= \frac{\sum_i \Sigma_{x,i} \phi_i V_i}{\sum_i \phi_i V_i}  \\
-  \chi_t &= \frac{\sum_{t,i} \chi_i \nu \Sigma_{f,i} \phi_i V_i}{\sum_i \nu \Sigma_{f,i} \phi_i V_i}
-  \intertext{where}
-  \phi &= \mbox{neutron flux} \notag \\
-  V_i &= \mbox{volume $i$} \notag \\
-  \Sigma_x &= \{\Sigma_t, \Sigma_s^{g \rightarrow g'}, \nu\Sigma_f\} \notag
-\end{align}
+% \subsection{Cross section handling}
 
-\subsection{Collapsing}
 
-\begin{align}
-  \phi_{G} &= \sum_g \phi_g \\
-  \Sigma_x^G &= \frac{\sum_g \Sigma_x^g \phi_g}{\sum_g \phi_g} \\
-  \Sigma_s^{G \rightarrow G'} &= \frac{\sum_g \sum_{g'} \Sigma_s^{g \rightarrow g'} \phi_g}{\sum_g \phi_g} \\
-  \chi_t^G &= \sum_g \chi_t^g
-  \intertext{where}
-  \Sigma_x &= \{\Sigma_t, \nu\Sigma_f\} \notag \\
-  \phi_{G} &= \mbox{group G neutron flux} \notag
-\end{align}
 
-\subsection{Translate to Moltres format}
 
-% Info provided by the benchmark
-Normalized flux, \Sigma_t, D, \nu\Sigma_f, \Sigma_f, \chi_T, P0 Scattering Matrix \Sigma_{s0, g \rightarrow g'}, P1 Scattering Matrix \Sigma_{s1, g \rightarrow g'}, \Kappa = 200 MeV
 
-% Info required by Moltres
-\Sigma_r, \nu\Sigma_f, D, \beta_{eff}, \Sigma_f, \Kappa, v^{-1}, \chi_T, \chi_D, P0 Scattering Matrix \Sigma_{s0, g \rightarrow g'}, \lambda
 
-% Translation
-\Sigma_r^g= \Sigma_t^g-\Sigma_s^{g \rightarrow g}
 
-\section{Energy groups}
 
-\begin{table}[htbp!]
-  \centering
-    \caption{Energy group structure \cite{gougar_prismatic_2010}.}
-  \begin{tabular}{ll}
-    \toprule
-  Group   & Upper Energy (eV) \\ \midrule
-  1   & 1.49E+07      \\
-  2   & 7.41E+06      \\
-  3   & 3.68E+06      \\
-  4   & 6.72E+05      \\
-  5   & 1.11E+05      \\
-  6   & 1.93E+04      \\
-  7   & 3.35E+03      \\
-  8   & 1.58E+03      \\
-  9   & 7.48E+02      \\
-  10    & 2.75E+02      \\
-  11    & 1.30E+02      \\
-  12    & 6.14E+01      \\
-  13    & 2.90E+01      \\
-  14    & 1.37E+01      \\
-  15    & 8.32E+00      \\
-  16    & 5.04E+00      \\
-  17    & 2.38E+00      \\
-  18    & 1.29E+00      \\
-  19    & 6.50E-01      \\
-  20    & 3.50E-01      \\
-  21    & 2.00E-01      \\
-  22    & 1.20E-01      \\
-  23    & 8.00E-02      \\
-  24    & 5.00E-02      \\
-  25    & 2.00E-02      \\
-  26    & 1.00E-02      \\
-    \bottomrule
-  \end{tabular}
-    \label{tab:energygroups}
-\end{table}
-
-\cline{1-2}
 
 \pagebreak
 \bibliographystyle{plain}

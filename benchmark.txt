@@ -134,7 +134,13 @@ Groups:
 
 Description of Exercise 2:
 Exercise 2 is a thermal fluids standalone calculation drive by a specified power desnity profile.
+4 cases:
+a- no bypass flow, fixed thermophysical properties
+b- bypass flow type I, fixed thermophysical properties
+c- bypass flow type I, variable thermophysical properties
+d- bypass flow type II, variable thermophysical properties
 
+Table 10 and 11 for the bypass and the thermophysical
 
 
 
