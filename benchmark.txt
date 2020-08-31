@@ -132,6 +132,10 @@ Groups:
 19) [0.625-0.325]
 26) [7.15e-3, 1.1e-4]
 
+Description of Exercise 2:
+Exercise 2 is a thermal fluids standalone calculation drive by a specified power desnity profile.
+
+
 
 
 
