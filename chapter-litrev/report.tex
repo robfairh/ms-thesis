@@ -58,6 +58,12 @@ Nowadays there are several codes to solve the neutronics of \glspl{PMR}.
 Most of them rely on the following methods: Monte Carlo, deterministic transport, and deterministic diffusion.
 We focus our interest in the last method.
 % Why? Deterministic diffusion solvers have lower computational requirements than other methods reference ??
+% The utilization of the Monte Carlo codes is unattractive because of the tremendous problem size and the need for a large number of neutron histories \cite{lee_status_2006}.
+% It is one of the simplest means to solve neutron transport problems \cite{leppanen_development_2007}.
+% Here I say the following
+% The neutron diffusion equation is one of the simplest means to solve neutron transport problems \cite{leppanen_development_2007}.
+% Deterministic diffusion methods are computationally cheaper than the other methods.
+% This characteristic makes it a good candidate for coupled calculations.
 
 The history of deterministic diffusion solvers begins in the late 1950s with the \gls{FDM} applied to the analysis of \glspl{LWR}.
 In \gls{FDM}, mesh spacings are usually of the order of the diffusion length.
@@ -106,9 +112,17 @@ Most applications make \gls{FEM} preferable due to its flexibility in the treatm
 Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
 The first prototype engineering application of \gls{FEM} was in the field structural engineering and dates back to 1956.
 In the successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
-
-% ----> Left here <----
 In 1981, \cite{lewis_finite_1981} described the first application of \gls{FEM} to the neutron diffusion theory.
+
+
+
+
+
+
+
+
+
+
 Some examples of current \gls{FEM} diffusion solvers are Rattlesnake \cite{wang_rattlesnake_2019} and CAPP \cite{lee_development_2011}.
 Also INSTANT-P1
 
