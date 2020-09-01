@@ -1,0 +1,13 @@
+﻿\section{Serpent-Moltres validation}
+
+% Intro: objectives
+
+% Description of the problem
+% figure
+
+% energy groups
+
+% serpent output statistics, maybe a table with the different conditions
+% moltres mesh # of elements and dofs
+
+% Plot: keff vs # energy, line with keff from serpent

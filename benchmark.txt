@@ -1,6 +1,6 @@
 notes on the benchmark:
 
-% oecd_nea_coupled_2020
+% oecd_nea_benchmark_2017
 
 % for tools: benchmark definition
 The deterministic neutronic thermal-fluids and transient analysis tools and methods available to design and analyse PMRs have, in many cases, lagged behind the state of the art compared to other reactor technologies.
