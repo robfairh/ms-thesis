@@ -94,14 +94,27 @@ Moltres has a limited capability to represent the burnup dependency of cross sec
 The cross sections of VHTR fuel elements vary significantly with burnup and fuel and moderator temperatures.
 Thus, a more general capability to represent the cross sections as a function of burnup and temperatures needs to be implemented.
 
-----> Done until here <-----
 
-Continue here after doing "lee_status_2006":
+
 %lewis_finite_1981
 
+Discretization of the spatial variables of multi-dimensional neutron diffusion equation [4].
+In this work, the author places their efforts on reducing the number of patial nodes required in the simulations.
+
+The author applies the diffusion approximation with the finite element discretization to a variety of transport problem classes.
+
+Concluding section with the limitations of the work to date and suggests possible future directions.
+
+Ref 10-15
 
 
 
+% kang_finite_1973
+
+
+
+----> Done until here <-----
+And now what? try to continue with yuk and cia
 
 
 

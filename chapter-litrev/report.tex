@@ -102,17 +102,25 @@ DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \g
 PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport Simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
 
 % from ortensi_deterministic_2010-1 and wang_modified_2018
-Overall, nodal methods are efficient and allow for solving hexagonal geometries.
-However, they do not do it in a flexible way as different geomtries require the application of different coordinate systems.
-Additionally, this lack of flexibility limits the applications of nodal methods to regular geometries only.
+Nodal methods solve quite coarse meshes for approximate solutions.
+This characteristic makes the method efficient.
+On the other hand, the method does not provide detailed point-wise accurate solutions \cite{kang_finite_1973}.
+Additionally, the application to complex problems is not flexible as different geometries require the integration over different coordinate systems.
+This lack of flexibility limits the applications of nodal methods to regular geometries only.
 
 % FEM
 The \gls{FEM} is a well-established method in applied mathematics and engineering.
 Most applications make \gls{FEM} preferable due to its flexibility in the treatment of curved or irregular geometries.
 Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
-The first prototype engineering application of \gls{FEM} was in the field structural engineering and dates back to 1956.
+The first prototype engineering application of \gls{FEM} was in the field of structural engineering and dates back to 1956.
 In the successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
-In 1981, \cite{lewis_finite_1981} described the first application of \gls{FEM} to the neutron diffusion theory.
+In 1973, an article by Kang \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
+The main motivation for this development was the impractical application of finite differences to three-dimensional problems.
+In this early work, the author compares different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
+The studies showed the higher order of convergence achieved by \gls{FEM}.
+
+--------> Left here
+
 
 
 
