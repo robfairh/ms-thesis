@@ -119,20 +119,33 @@ The main motivation for this development was the impractical application of fini
 In this early work, the author compares different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
 The studies showed the higher order of convergence achieved by \gls{FEM}.
 
+
+
+
+
+% yuk_time-dependent_2020
+A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to the reactor physics code CAPP \cite{lee_development_2011}.
+This capability solves the time dependent neutron diffusion equation with the \gls{FEM}.
+The main motivation behind this feature is to enable the code to conduct reactivity insertion accidents.
+To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
+Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
+
+
+
+
+
+
+
+
+
+
+
+
+
 --------> Left here
-
-
-
-
-
-
-
-
-
-
-
 Some examples of current \gls{FEM} diffusion solvers are Rattlesnake \cite{wang_rattlesnake_2019} and CAPP \cite{lee_development_2011}.
 Also INSTANT-P1
+
 
 
 
@@ -145,11 +158,6 @@ For the study, they implemented a one-dimensional fuel-reflector model in which 
 They generated all the cross-sections at 300 K.
 One of the conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
 Another concluison is that the accuracy is sensitive to the energy group boundaries as well.
-
-
-
-
-
 
 
 

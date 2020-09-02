@@ -112,12 +112,7 @@ Ref 10-15
 % kang_finite_1973
 
 
-
 ----> Done until here <-----
-And now what? try to continue with yuk and cia
-
-
-
 % yuk_time-dependent_2020
 Reactor analysis tool should be capable of carrying out transient calculations for a reactivity insertion accident.
 Time dependent neutron diffusion equation solved by the FEM.
