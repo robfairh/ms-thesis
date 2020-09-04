@@ -280,8 +280,8 @@ FEM is also very efficient compared to the nodal methods which utilize analytic 
 
 NUMERICAL RESULTS
 IAEA PWR benchmark problem
-Results for differnet number of elements per fuel assembly and for different order of shape functions.
-IAEA PWR benchamrk problems in 2D and 3D.
+Results for different number of elements per fuel assembly and for different order of shape functions.
+IAEA PWR benchmark problems in 2D and 3D.
 
 OECD/NEA PBMR400 benchmark problem
 Phase I Exercise 1 is a neutronics stand-alone case with fixed cross-sections
@@ -293,10 +293,30 @@ CONCLUSIONS
 The solutions converge to the reference solution as the number of elements or the order of shape functions  increases.
 The higher order FEM is much more efficient than a low order FEM or a fine mesh FDM.
 
-
-
 --------> Left here
 % lee_development_2011
+The same authors published another article \cite{lee_development_2011} in 2011, where they extend the functionalities of the CAPP code to prismatic \glspl{HTGR}.
+
+The code uses a simplified scheme to solve the thermo-fluid equations.
+The thermo-fluid solver divides fuel column in six triangles that host a representative coolant channel.
+Solving the energy equation, the code calculates the axial coolant temperature distribution.
+With a two-dimensional conduction model, the code solves the moderator temperature.
+The model obtains the fuel temperature by means of a TRISO particle conduction model.
+Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
+The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
+
+Additionally, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
+
+VERIFICATION RESULTS
+To validate their model, the authors solve a two-dimensional model of the PMR200 at BOC.
+They compared the results against the results obtained with HELIOS.
+
+The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR200.
+They compared the results against the results obtained with HELIOS.
+The maximum error is less than 200 pcm.
+
+CONCLUSIONS
+The results showed a good accuracy of the CAPP code for the 2D PMR200 core.
 
 
 

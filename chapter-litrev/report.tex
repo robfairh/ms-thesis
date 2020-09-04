@@ -148,17 +148,29 @@ The higher order \gls{FEM} solution required much less CPU time than the other m
 
 
 
+%More on CAPP
+The same authors published another article \cite{lee_development_2011} in 2011, where they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
+To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
+The thermo-fluid solver divides fuel column in six triangular prisms.
+Each of them hosts a representative coolant channel.
+Solving the energy equation, the code calculates the axial coolant temperature distribution.
+After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
+By means of a TRISO particle conduction model, the model obtains the fuel temperature.
+Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
+% The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
+To validate their model, the authors solved a two-dimensional model of the PMR200 at \gls{BOC}.
+They compared the results against the results obtained with HELIOS.
+The results showed good accuracy.
+
+Moreover, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
+% Cross sections generated with HELIOS.
+The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR200.
+They compared the results against the results obtained with HELIOS.
+The maximum error was less than 200 pcm.
+
+
+
 --------> Left here
-
-
-
-
-
-%\cite{lee_development_2011}
-
-
-
-
 % tak_cappgamma_2016
 
 
@@ -168,8 +180,8 @@ The higher order \gls{FEM} solution required much less CPU time than the other m
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to the reactor physics code CAPP \cite{lee_development_2011}.
 This capability solves the time dependent neutron diffusion equation with the \gls{FEM}.
 The main motivation behind this feature is to enable the code to conduct reactivity insertion accidents.
-To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
 Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
+% To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
 % The thermal calculations consider a fuel assembly divided into six triangular prisms.
 % Each triangular prism has one representative coolant channel.
 % After calculating the coolant temperature, a two-dimensional model calculates the temperature in the fuel and the moderator.
