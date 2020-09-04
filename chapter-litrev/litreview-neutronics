@@ -1,7 +1,6 @@
 %%%%%%%%%%%%%%%%%%%% Neutronics %%%%%%%%%%%%%%%%%%%
 
 % wagner_three-dimensional_1989
-
 The nodal methods developed for hexagonal geometry are similar to the analogous Cartesian geometry
 nodal diffusion theory developed earlier at Siemens/KWU. %finnermann_new_1975 %finnemann_atomkernenergie_1977
 
@@ -22,15 +21,15 @@ These equations are then solved simultaneously.
 
 
 
-% fitzpatrick_developments_1995
 
+% fitzpatrick_developments_1995
 Introduces solution techniques for the time-dependence of the diffusion equations and couples it to spatial nodal algorithms.
 The solution in 1D problems is compared against finite-difference solutions.
 
 
 
-% ortensi_deterministic_2010-1
 
+% ortensi_deterministic_2010-1
 INL conducted a benchmark exercise based on modeling the High Temperature Test Reactor (HTTR).
 
 26 energy group structure from IAEA benchmark.
@@ -51,7 +50,6 @@ I say this: disadvantages of HEXPEDITE over FEM
 A correction has to be applied to the multiplication factor.
 HEXPEDITE cannnot accurately model the cylindrical periphery of the permanent reflector.
 
-
 % for methods (tools):
 One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
 This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
@@ -59,8 +57,8 @@ In an ideal situation one would attempt to generate the cross sections from a 12
 
 
 
-%lee_status_2006
 
+%lee_status_2006
 * Energy Group Study:
 HTGR analyses require more energy groups than conventional LWR analysis because the spectral interactions between fuels and fuel and reflector are significant due to a much longer neutron mean free path.
 In this work, the number of energy groups versus accuracy has been studied using the one-dimensional fuel-reflector problem.
@@ -96,8 +94,8 @@ Thus, a more general capability to represent the cross sections as a function of
 
 
 
-%lewis_finite_1981
 
+%lewis_finite_1981
 Discretization of the spatial variables of multi-dimensional neutron diffusion equation [4].
 In this work, the author places their efforts on reducing the number of patial nodes required in the simulations.
 
@@ -109,10 +107,12 @@ Ref 10-15
 
 
 
+
 % kang_finite_1973
 
 
-----> Done until here <-----
+
+
 % yuk_time-dependent_2020
 Reactor analysis tool should be capable of carrying out transient calculations for a reactivity insertion accident.
 Time dependent neutron diffusion equation solved by the FEM.
@@ -149,7 +149,7 @@ During the transient calculation with the control rod movements, partially rodde
 The homogenization of PRNs is necessary for conventional diffusion nodal methods.
 When the conservation of the reaction rates in PRNs is not considered, such homogenization induces a large error.
 
-Various method to reduce this effect:
+Various methods to reduce this effect:
 - Flux volume weighted homogenization
 - Homogeneous flux volume weighted homogenization
 - Heterogeneous flux volume weighted homogenization
@@ -160,10 +160,16 @@ The reconstruction should be performed at each time step.
 
 
 Reference:
-VW: Flux volume weighted homogenization
+VW: volume weighted homogenization
 HFVW: Homogeneous flux volume weighted homogenization
-iPRN: (their method)
+However, this memethods solve the whole core problem with repeatedly updated cross sections.
+The mesh reconstruction method removes the control rod cusping effect.
+The method requires a mesh reconstruction at each time step.
 
+The article introduces a method that integrates over partially rodded computation nodes (iPRN).
+With this method, the control rod cusping effect cannot occur.
+
+The article compares this methods taking the results from the mesh reconstruction method as the reference results.
 
 I need to re read this.
 ...
@@ -206,6 +212,21 @@ The variation of fluid temeprature during the transient calculation is rather sm
 The equation for a coolant channel is then the same as that for a steady-state calculation.
 Solid regions incorporate the time derivative term.
 
+Results:
+* 3D block-type VHTR reactor based on the MHTGR-350
+* AER-1A benchmark problem
+To test the iPRN method
+iPRN method yielded more accurate results than other homogenization
+methods for the partially rodded nodes.
+
+To test the transient analysis solver they solve a reduced version of the MHTGR-350
+Two scenarios considered:
+- control rod ejection: ejection inserts 1.5$ of reactivity in 0.1 sec
+- control rod withdrawal: ejection inserts 1.5$ of reactivity in 200 sec.
+For verification of the transient thermal fluid analysis solver, the numerical results were compared to those of the CAPP/GAMMA+ coupled code.
+
+
+
 
 % joo_resolution_1984
 ABTRACT
@@ -232,8 +253,55 @@ A partially roded node PRN is present whenever the control rod tip locations do 
 
 
 
----> here2
+% CAPP
+% lee_development_2008
+ABSTRACT
+Development of a neutron diffusion equation solver based on the finite element method for CAPP code.
+The diffusion equation solver was validated against two benchmark problems: IAEA PWR benchmark problem and OECD/NEA PBMR 400 benchmark problem.
+Implementation of different shapes of elements in 2 and 3D to allow the code to solve complex geometries.
+The solution converged to the reference solution as the finite elements are refined and as the order of the finite elements increases.
+Numerical tests showed that the higher order finite element method is more efficient than lower order finite element method or finite difference method.
 
+INTRODUCTION
+Korea Atomic Energy Research Institute (KAERI) developed the Core Analyzer for Pebble and Prism type VHTRs (CAPP) code.
+The code's purpose is to conduct steady state core physics analysis, core depletion analysis, and core transient analysis.
+
+% on the choice of FEM vs FDM and Nodal methods
+FDM-based solvers have a drawback of a long computation time and huge memory requirement.
+FEM has several advantages over the nodal methods. 
+It provides flexibility in geometry, firm mathematical basis, ease in extension to multi-group application, and high computational efficiency.
+
+It is possible for us to define finite elements (FEs) with nearly arbitrary shapes and sizes.
+Nodal methods are applicable for the nodes of a specific shape on which the nodal method was derived.
+
+FEM provide mathematically well established finite element approximation in discretizing space variables while transverse-integrated nodal methods on non-cubic nodes introduce extra approximations during the transverse integration procedure.
+It is straight forward to apply FEM to the multi-group neutron diffusion equations.
+FEM is also very efficient compared to the nodal methods which utilize analytic functions on non-cubic nodes.
+
+NUMERICAL RESULTS
+IAEA PWR benchmark problem
+Results for differnet number of elements per fuel assembly and for different order of shape functions.
+IAEA PWR benchamrk problems in 2D and 3D.
+
+OECD/NEA PBMR400 benchmark problem
+Phase I Exercise 1 is a neutronics stand-alone case with fixed cross-sections
+Results obtained for different order of shape functions.
+The values reported are the keff and the power density distribution in different zones of the reactor.
+The higher order FEM solution method requires much less CPU time than the lower order FEM or fine mesh finite difference method.
+
+CONCLUSIONS
+The solutions converge to the reference solution as the number of elements or the order of shape functions  increases.
+The higher order FEM is much more efficient than a low order FEM or a fine mesh FDM.
+
+
+
+--------> Left here
+% lee_development_2011
+
+
+
+
+% tak_cappgamma_2016
 
 
 
