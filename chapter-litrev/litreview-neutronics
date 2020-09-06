@@ -323,14 +323,57 @@ The results showed a good accuracy of the CAPP code for the 2D PMR200 core.
 --------> Left here
 
 
-
 % tak_cappgamma_2016
+INTRODUCTION
+Only a few studies on the coupled analysis of prismatic \glspl{HTGR} are available.
+* Damian et al. 2008:
+Coupled analysis using NEPHTIS3/CAST3M for a 600 MWth \gls{HTGR}.
+He focused on the possibility to improve the reactor performance by changing some design parameters.
+* Rohde et al. 2012:
+Development of the coupled three-dimensional neutronics and thermo-fluid code DYN3D-HTR.
+A reduced core was the focus of the coupled analysis.
+* Connolly et al. 2013:
+Neutronics and thermal-fluid calculations using two existing solvers, COMET and a thermo-fluid module.
+Whole core calculation including detailed temperature information at the fuel pin level and explicit power calculations of individual pins.
 
+This work:
+Development of a code system for coupled neutronics and thermo-fluid simulations using CAPP and GAMMA+ codes.
+GAMMA+ is a system code for thermo-fluid analysis and system transients.
+Previous publications related to CAPP and GAMMA+: Lee et al, Jun et al., Kim and Lim.
+In this work, the code CAPP/GAMMA+ analyses the PMR-200 which was pre-conceptually designed by KAERI.
+The authors paid special attention to the effect of the bypass flow modeling.
+They analyzed its effect on the coupled behavior.
 
+GAMMA+ CODE
+The GAMMA+ code has the capability of multi-dimensional multi-component mixture analysis.
+It is capable of investigating various phenomena occurring in a HTGR such as pressurized or depressurized conduction cool down and air/water-ingress accidents.
+The fluid governing equations use the 1-D form of the mass, momentum, energy, and species conservation equations.
+For solids, GAMMA+ uses three different scales of heat conduction models:
+(1) heat conduction model to calculate the temperature profile in TRISO particles
+(2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle
+(3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks
 
+The GAMMA+ code solves both compressible and incompressible flows.
+It uses the \gls{FDM} for the momentum equation and the \gls{FVM} for the scalar equations.
+More detailed description in Liam and No, 2006 and Lim 2014.
 
+APLICATION to PMR-200
+HELIOS generated the cross sections
+Heat transfer through the helium gap between the fuel compact and the graphite block was modeled with solid heat conduction and radiation.
+Radiation heat transfer across the bypass gaps was neglected.
+Heat loss by convection and radiation at the reactor pressure vessel to the reactor cavity cooling system (RCCS) was also neglected.
 
+STEADY-STATE PERFORMANCE ANALYSIS
+They performed a steady-state performance analysis.
+They generated 10-group cross sections using HELIOS and DeCART code.
 
+CORE DEPLETION CALCULATION WITH REACTIVITY SEARCH
+They calculated the multiplication factor of the core at every burnup step of the equilibrium cycle of the PMR-200.
+
+LEFT at: 3.4.2. Core depletion calculation with critical control rod position
+search
+
+Check: Lee et al, Jun et al., Kim and Lim. for a validation of CAPP/GAMMA+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Multi-physics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
