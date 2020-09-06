@@ -293,7 +293,7 @@ CONCLUSIONS
 The solutions converge to the reference solution as the number of elements or the order of shape functions  increases.
 The higher order FEM is much more efficient than a low order FEM or a fine mesh FDM.
 
---------> Left here
+
 % lee_development_2011
 The same authors published another article \cite{lee_development_2011} in 2011, where they extend the functionalities of the CAPP code to prismatic \glspl{HTGR}.
 
@@ -320,8 +320,14 @@ The results showed a good accuracy of the CAPP code for the 2D PMR200 core.
 
 
 
+--------> Left here
+
+
 
 % tak_cappgamma_2016
+
+
+
 
 
 
