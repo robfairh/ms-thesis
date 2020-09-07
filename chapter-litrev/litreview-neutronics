@@ -320,8 +320,6 @@ The results showed a good accuracy of the CAPP code for the 2D PMR200 core.
 
 
 
---------> Left here
-
 
 % tak_cappgamma_2016
 INTRODUCTION
@@ -339,7 +337,10 @@ Whole core calculation including detailed temperature information at the fuel pi
 This work:
 Development of a code system for coupled neutronics and thermo-fluid simulations using CAPP and GAMMA+ codes.
 GAMMA+ is a system code for thermo-fluid analysis and system transients.
-Previous publications related to CAPP and GAMMA+: Lee et al, Jun et al., Kim and Lim.
+Previous publications related to CAPP and GAMMA+: 
+* Lee et al, 2010a, 2012, 2014
+* Jun et al, 2009, 2011
+* Kim and Lim, 2011
 In this work, the code CAPP/GAMMA+ analyses the PMR-200 which was pre-conceptually designed by KAERI.
 The authors paid special attention to the effect of the bypass flow modeling.
 They analyzed its effect on the coupled behavior.
@@ -355,7 +356,9 @@ For solids, GAMMA+ uses three different scales of heat conduction models:
 
 The GAMMA+ code solves both compressible and incompressible flows.
 It uses the \gls{FDM} for the momentum equation and the \gls{FVM} for the scalar equations.
-More detailed description in Liam and No, 2006 and Lim 2014.
+More detailed description in:
+* Lim and No, 2006
+* Lim 2014
 
 APLICATION to PMR-200
 HELIOS generated the cross sections
@@ -368,12 +371,78 @@ They performed a steady-state performance analysis.
 They generated 10-group cross sections using HELIOS and DeCART code.
 
 CORE DEPLETION CALCULATION WITH REACTIVITY SEARCH
-They calculated the multiplication factor of the core at every burnup step of the equilibrium cycle of the PMR-200.
+They calculated the multiplication factor of the core at every burnup step of the equilibrium cycle of the PMR-200 from BOC to EOC.
 
-LEFT at: 3.4.2. Core depletion calculation with critical control rod position
-search
+CORE DEPLETION CALCULATION WITH CRITICAL CONTROL ROD POSITION SEARCH
+They conducted a control rod position search for each burnup step of the equilibrium cycle of the PMR-200 from BOC to EOC.
+One of their presented results is the variation of the radially averaged axial power density profile at BOC, MOC, and EOC.
+The power density peak shifts towards the top of the core throughout the cycle due to the combined effect of the control rod movement and the burn out of the burnable poison in the fresh fuel.
+They also present results on the variation of the radial temperature profile at BOC, MOC, and EOC.
+For BOC and MOC, the fuel temperature of the inner ring is higher.
+At MOC there is a steep temperature gradient.
+At EOC the temperature profile is relatively flat.
+One of the results shows the maximum fuel temperature throughout the reactor cycle.
+The temperature reaches the maximum value near MOC.
 
-Check: Lee et al, Jun et al., Kim and Lim. for a validation of CAPP/GAMMA+
+EFFECT OF BYPASS FLOW:
+Examples of other studies: 
+* Bays et al 2006
+* Nakano et al 2007
+* Jo et al 2008
+* Rohde et al 2012.
+Other codes: MASTER-GCR (Jo et al, 2008), DYN3D-HTR
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Multi-physics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In order to examine the effect of bypass flow, the GAMMA+ model considered and did not consider the bypass gap in separate runs for the BOC of the PMR-200 equilibrium cycle.
+In the case of no bypass gaps, the temperatures of the active core region were lower since more coolant flows through the coolant channels.
+The temperatures of the central and side reflectors were higher because of the lack of convection flow.
+The combined effect of the temperature changes increases the multiplication factor by approximately 300 pcm.
+However, the power density changes are not appreciable.
 
+
+
+%strydom_inl_2013
+
+MOOSE neutronics kernel library Yak.
+The neutron diffusion models initially developed for Pronghorn have been either rendered obsolete or incorporated into Yak.
+RattleSnake has become the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on the use of Yak.
+There are a variety of solvers available under RattleSnake including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport all solved with the \gls{FEM}.
+
+
+
+
+%wang_rattlesnake_2019
+
+Rattlesnake is the MOOSE \cite{gaston_moose_2009} based application for simulating the physics of radiation transport.
+
+Rattlesnake is a deterministic transport solver.
+
+Rattlesnake is a transport solver based on the finite element method (FEM) discretization of the spatial independent variables.
+FEM is a numerical technique for finding approximate solutions to PDEs by deriving their weak or variational form.
+The variational form of the PDE can then be converted into a system of algebraic equations that can be solved numerically.
+The advantages of FEM include an accurate representation of complex geometries, the ability to capture local effects and more.
+
+A uniform multiphysics FEM framework can facilitate the data transfer for coupling multiple physics.
+
+
+
+--------> Left here
+
+
+
+
+--------> Left here
+- To search on coupled analysis of HTGRs:
+Damian, F., 2008. VHTR core preliminary analysis using NEPHTIS3/CAST3M coupled
+modelling. In: Proceedings of the 4th International Topical Meeting on High
+Temperature Reactor Technology (HTR2008), Washington, DC, USA, Sep. 28–
+Oct. 1.
+
+Rohde, U., Baier, S., Duerigen, S., Fridman, E., Kliem, S., Merk, B., 2012. Development
+and verification of the coupled 3D neutron kinetics/thermal-hydraulics code
+DYN3D-HTR for the simulation of transients in block-type HTGR. Nucl. Eng. Des.
+251, 412–422.
+
+Connolly, K. J., Hunning, A. J., Rahnema, F., Garimella, S., 2013. Coupled neutron
+transport and thermal fluids calculations for the VHTR. In: Joint International
+Conference on Supercomputing in Nuclear Applications and Monte Carlo 2013
+(SNA+MC2013), Paris, France, Oct. 27–31.
