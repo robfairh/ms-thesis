@@ -427,6 +427,29 @@ A uniform multiphysics FEM framework can facilitate the data transfer for coupli
 
 --------> Left here
 %j_ortensi_relap-7_2012
+ABSTRACT
+This work couples the reactor analysis code Pronghorn to RELAP-7.
+The report details the mathematical models, type of coupling, and testing of the integrated system.
+RELAP-7 is a MOOSE-based application that solves the continuity, momentum, and energy equations in 1-D for a compressible fluid.
+Pronghorn solves the coupled equations that define the neutron diffusion, fluid flow, and heat transfer in a 3-D code model.
+
+INTRODUCTION
+RELAP-7 focuses on system analysis-type simulations.
+
+SYSTEM INTEGRATION AND TESTING
+The integration of RELAP-7 and PRONGHORN will be a loose coupling, where each application will use an independent mesh.
+
+To carry out the testing, the system will carry out the OECD/NEA Coupled Neutronics-Thermal Fluids Benchmark.
+The Pronghorn geometry will entail 1/3rd core symmetry in 3-D of the MHTGR-350.
+
+34 cross section regions.
+The modeling of the riser flow channels is ommitted from this test.
+The steady state neutron diffusion equation will be solved for 26 groups.
+Non-local heating effects and radiation heat transfer will be neglected.
+
+
+
+Look for RELAP-7 and PRONGHORN Coupling
 
 
 

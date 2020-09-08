@@ -1,76 +1,7 @@
-%%%%%%%%%%%%%%%%%%%% TH %%%%%%%%%%%%%%%%%%%%
-
-Most important ones are:
-% tak_numerical_2008
-% huning_steady_2014
+All the things here will end up in 'litreview-th2'.
+This file will be eventually deleted.
 
 
-% tak_numerical_2008
-
-The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile  without elaborate numerical calculations.
-
-The unit cell model is an effective approach that reduces the computational efforts.
-However, such model neglects the effects of the bypass gap flow and the radial power distribution within the fuel assembly.
-
-HTGR advantages are an inherent safety, high thermal efficiency, and a high temperature process heat potential.
-Higher fuel temperature achieves higher outlet temperature.
-However, undesirably high temperatures jeopardize the integrity of the TRISO particles (as well as the fission products release).
-The design limit in HTGR is 1250 C. (check)
-
-Complex geometry of the fuel blocks hinders accurate evaluations of the fuel temperatures requiring elaborate numerical calculations.
-
-The analyses and design of prismatic reactors has widely used simplified computational models, among which we find the equivalent cylinder model and the unit cell model.
-
-The equivalent cylinder model has been widely adopted in the thermo-fluid analyses using one-dimensional and multi-dimensional system codes:
-* NO et al. 2007 % no_multi-component_2007
-* Reza et al. 2006 % reza_design_2006
-* Nakano et al. 2007 % nakano_conceptual_2008
-
-Solved the multi-dimensional head conduction based on the unit cell model:
-* Bays et al. 2006
-* In et al. 2006 % in_three-dimensional_2006
-* Richards et al. 2007 % richards_thermal_2007
-The unit cell model assumes that the heat generated in the fuel is only removed by the coolant.
-
-Such simplified approaches are helpful to understand some basic aspects of a heat transfer in prismatic fuel blocks, and they are economical by reducing the computational efforts.
-However, the simplified approaches cannot consider a heat transfer within a fuel assembly as well as a coolant flow through a gap between the fuel assemblies, which may significantly affect the fuel temperature.
-
-Evaluations of the thermal behavior of prismatic fuels using more detailed thermo-fluid models than the unit cell model are rare, particularly in the open literatures.
-General Atomics analyzed detailed thermal behaviors of the fuel blocks of HTGRs using a model named DEMISE but limited information is available in the book written by Melese and Katz (1984).
-* Melese and Katz 1984
-
-Using a CFD code named Trio_U, Cioni et al. (2004) made three-dimensional thermo-fluid simulations of prismatic fuel assemblies of a HTGR.
-They modeled seven fuel assemblies in detail and paid attention to a heat transfer between the fuel assemblies with/without a blockage of the coolant channels.
-* Cioni et al. 2004
-
-Simoneau et al. (2005) numerically analyzed the passive heat removal characteristics of a prismatic VHTR using a commercial CFD code.
-They applied a simplified three-dimensional reactor model.
-They used homogenized triangular posts since they were interested in the overall system behavior.
-* Simoneau et al. 2005
-
-PMR600: the reference reactor is GT-MHR.
-The heat generated in the fuel compacts is conducted through the graphite block and it is finally removed by the helium coolant.
-
-Considering the effects of the dowel holes to be negligible, a 1/12 section of the fuel is enough to simulate the fuel assembly due to its symmetry.
-The model includes the graphite plugs.
-Uniform power density profile.
-The burnup flattens out the axial power profile making it close to uniform at the end of cycle.
-Amount of heat generation in the graphite plugs is negligibly small.
-
-Re = 40000 in coolant channel and 2000 in bypass gap.
-Increasing the bypass flow gap increases the fuel temperature.
-The unit cell model is a reasonable approximation if the bypass flow is small and the radial power profile within the assembly is uniform.
-
-What they did:
-* three-dimensional computational fluid dynamics (CFD) analysis carried out on a typical fuel assembly of a prismatic HTGR
-* results used to assess the accuracy of the unit cell model
-* examine the deviation from the results by the unit cell approach due to the bypass flow between fuel assemblies and radial power variations within the fuel assembly
-* flow split a the upper plenum into the flow channels is obtained by a 1D calculation by assuming the same pressure drop across the entire height of the reactor core including top and bottom reflector blocks.
-* calculated flow rate is used as an inlet boundary condition for the CFD analysis.
-* CFD analysis using CFX 11 (ANSYS Inc.)
-* Highest temperature: 1119 C.
-* Max coolant velocity 51 m/s
-* Pressure drop: 25 kPa
 
 % no_multi-component_2007
 The VHTR faces some technical and economical challenges, particularly reactor safety and costs.
