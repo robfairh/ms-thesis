@@ -400,6 +400,7 @@ However, the power density changes are not appreciable.
 
 
 
+
 %strydom_inl_2013
 
 MOOSE neutronics kernel library Yak.
@@ -425,7 +426,7 @@ A uniform multiphysics FEM framework can facilitate the data transfer for coupli
 
 
 
---------> Left here
+
 %j_ortensi_relap-7_2012
 ABSTRACT
 This work couples the reactor analysis code Pronghorn to RELAP-7.
@@ -449,12 +450,106 @@ Non-local heating effects and radiation heat transfer will be neglected.
 
 
 
-Look for RELAP-7 and PRONGHORN Coupling
+
+% j_ortensi_initial_2012
+INTRODUCTION
+INL has initially developed the PRONGHORN code to model gas cooled pebble bed reactors.
+The code solves the neutron diffusion equation, with a Darcy fluid flow model, and a conjugate heat transfer model for solid and fluid energy transfer.
+
+GEOMETRY DESCRIPTION
+The original model required significant modifications to perform this initial coupling study due to the complexity of the benchmark and shortcomings in both PRONGHORN and the RELAP-7 applications.
+The simplified models retains the essential features of the General Atomics MHTGR-350 MW th design.
+
+The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
+This exercise collapses the 26 groups into two groups.
+With two groups there is a loss of accuracy in the neutronic calculations for HTRs.
+The expected error is near 2000 pcm.
+Nevertheless, the lower number of groups decreases the calculation time by a factor of ten or more and greatly simplifies debugging, which is the primary focus of this initial coupling.
+
+The original 3-D geometry with 1/3rd core symmetry was simplified to a 2-D cylindircal (R-Z) model.
+The model is 11.1 m tall and 2.97 m in radius.
+The active core measures 7.9 m in height and radially 0.92 m for the annular region width.
+
+The coolant flows directly into the top reflector, followed by the active core, and, finally, the bottom reflector.
+Non-local heating effects and radiation heat transfer are neglected
+
+The RELAP-7 model consists of 1-D pipes and junctions.
+This model represents the plant system layout, which includes the hot and cold ducts, the helium circulator, and the steam generator.
+
+SYSTEM TESTING
+For the testing of PRONGHORN solved each physics (neutronics, heat conduction, pressure, and momentum, and fluid energy) separately.
+Study of the spatial convergence using first order and second order lagrange polynomials.
+A finer mesh in the regions directly above and below the core have a stronger impact than refinements in the resto of the geometry.
+Second order lagrange functions showed much better convergence.
+
+Another study focues on the convergence behavior of the eigenvalue and thermal fluid properties as a function of the Newton steps taken.
+
+The testing includes 2 stages: (1) both codes working independently uderwent several convergence studies, and (2) the codes solve the steady-state problem in an integrated manner.
+
+CONCLUSIONS
+The RELAP-7 and PRONGHORN applications have been successfully coupled using an operator split approach.
+
+
+
+--------> Left here
+% ellis_initial_2014
+In this study, INL used an PWR benchmark to validate RattleSnake low order diffusion solver.
+
+ABSTRACT
+The INL team decided to use the Benchmark for Evaluation and Validation of Reactor Simulations assembled by the MIT.
+The data of the benchmark includes two cycles of detailed measured PWR operational data.
+The results from this initial study show the current INL analysis procedure with DRAGON4 and the low order diffusion solver in RattleSnake yield encouraging results for PWR analysis.
+
+
+
+
+% strydom_inl_2013
+In this study, INL used an HTGR benchmark to validate RattleSnake low order diffusion solver...
+
+ABSTRACT
+The INSTANT, Pronghorn, and RattleSnake codes were used for the standalone core neutronics modeling of Exercise 1.
+Section 4 compares the results from the different codes.
+The Exercise 2 of Phase I requires the standalone steady-state thermal fluids modeling.
+RELAP5-3D performed this exercise.
+Section 5 presents and discuss its results.
+Section 6 reports the coupled neutronics and thermal fluids steady-state solution for Exercise 3 using the PHISICS/RELAP5-3D code suit.
+
+INTRODUCTION
+Another validation study:
+Study on the Very High Temperature Reactor Critical (VHTRC) experimental dataset [4]:
+[4] OECD/NEA. International Handbook of Evaluated Reactor Physics Benchmark Experiments. 2013.
+Conducted with stochastic and deterministic codes (Helios, DRAGON, Pronghorn).
+
+As part of the benchmark simulation activities, INL coupled the PHISICS reactor physics package to the system thermal fluid code RELAP5-3D to enable temperature feedback in core simulations.
+The INL team performed a detailed study on the spatial resolution required by flux and temperature profiles to support accurate transient analyses.
+This study compares the traditional ring model approach with a more detailed triangular geometry model.
+
+The report also includes the results from Pronghorn applied to the Phase I Exercise 1.
+
+% This summary will be missing a more detailed description of the solution of the benchmark using PHISICS/RELAP coupling.
+
+EXERCISE 4
+The benchmark provides the macroscopic cross-sections for 232 sub-domains that have a 26 energy group structure.
+Both RattleSnake and Pronghorn yield the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RAttleSnake.
+26,195,806 DoFs.
+
+Section 4 presents the results from Rattlesnake, Pronghorn, and INSTANT.
+
+
+
 
 
 
 
 --------> Left here
+To look into: other diffusion solvers:
+- NESTLE (up to 4 groups)
+- PHISCS framework (INSTANT-P1 maybe?): has transport and diffusion solvers.
+see if they have been applied to HTGRs
+
+
+
+
 - To search on coupled analysis of HTGRs:
 Damian, F., 2008. VHTR core preliminary analysis using NEPHTIS3/CAST3M coupled
 modelling. In: Proceedings of the 4th International Topical Meeting on High
@@ -470,3 +565,9 @@ Connolly, K. J., Hunning, A. J., Rahnema, F., Garimella, S., 2013. Coupled neutr
 transport and thermal fluids calculations for the VHTR. In: Joint International
 Conference on Supercomputing in Nuclear Applications and Monte Carlo 2013
 (SNA+MC2013), Paris, France, Oct. 27–31.
+
+- Things that moltres is missing:
+% j_ortensi_initial_2012
+Neutron leakage corrections:
+With two groups there is a loss of accuracy in the neutronic calculations for HTRs unless neutron leakage corrections are employed.
+Leakage corrections are currently not available in PRONGHORN.

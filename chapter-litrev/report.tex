@@ -210,14 +210,32 @@ Both methods show similar results.
 
 % Rattlesnake
 Rattlesnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the physics of radiation transport.
-The neutron diffusion models initially in Pronghorn have been incorporated into Yak, the MOOSE neutronics kernel library.
+\gls{INL} has initially developed the PRONGHORN code to model gas cooled pebble bed reactors.
+The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models originally in PRONGHORN.
 RattleSnake has become the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on the use of Yak.
 There are a variety of solvers available under Rattlesnake including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport all solved with the \gls{FEM}.
 
 
 
 --------> Left here
+% j_ortensi_relap-7_2012 j_ortensi_initial_2012
+In 2012, \gls{INL} published a work \cite{j_ortensi_initial_2012} that coupled PRONGHORN and RELAP-7.
+PRONGHORN solved the coupled equations that define the neutron diffusion, fluid flow, and heat transfer in a 3-D  model.
+RELAP-7 is a MOOSE-based application that solves the continuity, momentum, and energy equations in 1-D for a compressible fluid.
+It focuses on system analysis-type simulations.
+This study integrated PRONGHORN and RELAP-7 with the operator split approach (or loose coupling) where each application used an independent mesh.
 
+To carry out the testing, the integrated system carried out the OECD/NEA Coupled Neutronics-Thermal Fluids Benchmark \cite{oecd_nea_benchmark_2017}.
+The original model required significant modifications to perform the initial coupling study due to the complexity of the benchmark and shortcomings in both PRONGHORN and the RELAP-7 applications.
+The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
+This exercise collapsed the 26 groups into two groups.
+Although using two groups reduces the accuracy of the model, the lower number of groups decreases the calculation time by a factor of ten or more.
+The lower number of groups simplifies the debugging, which was the primary focus of this initial coupling.
+In this study, a 2-D cylindrical (R-Z) model replaced the 3-D geometry with 1/3rd core defined by the benchmark.
+RELAP-7 was responsible for modeling the plant system layout, which includes the hot and cold ducts, the helium circulator, and the steam generator.
+
+The testing of the integrated system included 2 stages: (1) both codes working independently underwent several convergence studies, and (2) the codes solved the steady-state problem in an integrated manner.
+The authors concluded that PRONGHORN and RELAP-7 applications were successfully coupled using the operator split approach.
 
 
 
