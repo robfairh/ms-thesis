@@ -52,8 +52,84 @@ fill=blue!30]
 
 \begin{document}
 
+\section{OECD/NEA Benchmark}
 
-\section{Energy groups}
+\ref{tab:globalparam}
+\ref{fig:axialpower}
+\ref{fig:radialpower}
+
+6978218 Dofs
+Dofs/Group = 268393
+time (1024 cores) = 4.33 and 4.11 hours
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Global parameters.}
+  \begin{tabular}{l|l|l}
+  \toprule
+  Parameter &  Benchmark  &  Moltres    \\
+  \midrule
+  K$_{eff}$ &  1.06691    &  1.06804    \\
+  $\Delta \rho_{CR}$ (pcm)  & 822.1 & 509.8 \\
+  AO        &  0.168      &  0.1753     \\
+  \bottomrule
+  \end{tabular}
+  \label{tab:globalparam}
+\end{table}
+
+\begin{figure}[htbp!]
+  \centering
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/3D-fullcore26G-axialpower.png}
+    \caption{.}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/benchmark-axialpower.png}
+    \caption{.}
+  \end{subfigure}
+  \hfill
+  \caption{Radially averaged axial power distribution.}
+  \label{fig:axialpower}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/3D-fullcore26G-radialpower.png}
+    \caption{.}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{figures/benchmark-radialpower.png}
+    \caption{.}
+  \end{subfigure}
+  \hfill
+  \caption{Axially averaged radial power distribution.}
+  \label{fig:radialpower}
+\end{figure}
+
+\section{Periodic vs Neumann boundary conditions}
+
+% results for 3 and 6G
+\begin{table}[htbp!]
+  \centering
+  \caption{.}
+  \begin{tabular}{l|l|l}
+  \toprule
+
+  \midrule
+
+  \bottomrule
+  \end{tabular}
+  \label{tab:}
+\end{table}
+
+
+
+\section{Assembly}
 
 \begin{table}[htbp!]
   \centering
@@ -92,6 +168,8 @@ fill=blue!30]
   \end{tabular}
   \label{tab:energygroups}
 \end{table}
+
+\section{Fullcore}
 
 \pagebreak
 \bibliographystyle{plain}
