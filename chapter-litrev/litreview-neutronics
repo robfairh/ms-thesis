@@ -491,7 +491,6 @@ The RELAP-7 and PRONGHORN applications have been successfully coupled using an o
 
 
 
---------> Left here
 % ellis_initial_2014
 In this study, INL used an PWR benchmark to validate RattleSnake low order diffusion solver.
 
@@ -534,28 +533,37 @@ Both RattleSnake and Pronghorn yield the same exact results when using the conti
 26,195,806 DoFs.
 
 Section 4 presents the results from Rattlesnake, Pronghorn, and INSTANT.
-
-
-
-
+The cross-sections used in INSTANT were modified to return the diffusion solution.
 
 
 
 --------> Left here
-To look into: other diffusion solvers:
-- NESTLE (up to 4 groups)
-- PHISCS framework (INSTANT-P1 maybe?): has transport and diffusion solvers.
-see if they have been applied to HTGRs
+% damian_vhtr_2008
 
 
 
+NEUTRONIC AND THERMAL-HYDRAULIC COUPLING MODEL
+
+The advanced coupling system for block type HTGR is an external coupling system.
+It is composed of the neutronic calculation scheme NEPHTIS and the thermal-hydraulics model Arcturus
+\cite{boer_assessment_2008}.
+
+NEPHTIS is based on a transport-diffusion calculation scheme using the transport code APOLLO2 and the diffusion code CRONOS2.
+
+The CRONOS code is a 3D neutronics \gls{FEM} diffusion and simplified transport code developed at \gls{CEA} \cite{ragusa_feasibility_2001}.
+
+It combines finite difference and various levels of finite elements diffusion approximations with discrete ordinate transport capabilities \cite{iaea_advanced_1992}.
+
+left of p42 of iaea_advanced_1992
+
+
+
+
+
+other validations of Pronghorn:
+- Very High Temperature Reactor Critical experiment %strydom_inl_2013
 
 - To search on coupled analysis of HTGRs:
-Damian, F., 2008. VHTR core preliminary analysis using NEPHTIS3/CAST3M coupled
-modelling. In: Proceedings of the 4th International Topical Meeting on High
-Temperature Reactor Technology (HTR2008), Washington, DC, USA, Sep. 28–
-Oct. 1.
-
 Rohde, U., Baier, S., Duerigen, S., Fridman, E., Kliem, S., Merk, B., 2012. Development
 and verification of the coupled 3D neutron kinetics/thermal-hydraulics code
 DYN3D-HTR for the simulation of transients in block-type HTGR. Nucl. Eng. Des.

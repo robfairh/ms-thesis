@@ -132,7 +132,7 @@ Throughout the last four decades many codes have use the \gls{FEM} to solve the 
 Some of those codes are:
 * CAPP \cite{lee_development_2011}
 * Rattlesnake \cite{wang_rattlesnake_2019}
-* INSTANT-P1 ???
+
 
 
 
@@ -214,10 +214,8 @@ Rattlesnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} b
 The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models originally in PRONGHORN.
 RattleSnake has become the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on the use of Yak.
 There are a variety of solvers available under Rattlesnake including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport all solved with the \gls{FEM}.
+Both RattleSnake and Pronghorn yield the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RattleSnake.
 
-
-
---------> Left here
 % j_ortensi_relap-7_2012 j_ortensi_initial_2012
 In 2012, \gls{INL} published a work \cite{j_ortensi_initial_2012} that coupled PRONGHORN and RELAP-7.
 PRONGHORN solved the coupled equations that define the neutron diffusion, fluid flow, and heat transfer in a 3-D  model.
@@ -225,7 +223,7 @@ RELAP-7 is a MOOSE-based application that solves the continuity, momentum, and e
 It focuses on system analysis-type simulations.
 This study integrated PRONGHORN and RELAP-7 with the operator split approach (or loose coupling) where each application used an independent mesh.
 
-To carry out the testing, the integrated system carried out the OECD/NEA Coupled Neutronics-Thermal Fluids Benchmark \cite{oecd_nea_benchmark_2017}.
+To carry out the testing, the integrated system carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_benchmark_2017}.
 The original model required significant modifications to perform the initial coupling study due to the complexity of the benchmark and shortcomings in both PRONGHORN and the RELAP-7 applications.
 The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
 This exercise collapsed the 26 groups into two groups.
@@ -237,6 +235,17 @@ RELAP-7 was responsible for modeling the plant system layout, which includes the
 The testing of the integrated system included 2 stages: (1) both codes working independently underwent several convergence studies, and (2) the codes solved the steady-state problem in an integrated manner.
 The authors concluded that PRONGHORN and RELAP-7 applications were successfully coupled using the operator split approach.
 
+% strydom_inl_2013
+Another work by \gls{INL} \cite{strydom_inl_2013} conducted the OECD/NEA MHTGR-350 Benchmark.
+The \gls{INL} team solved exercise 1 of Phase 1 using INSTANT-P1, Pronghorn, and RattleSnake.
+They solved exercises 2 and 3 using RELAP5-3D and PHISICS/RELAP5-3D code suit.
+Pronghorn and RattleSnake results are identical.
+By modifying the cross-sections, INSTANT-P1 returns the diffusion solution.
+Its results are within 30 pcm from Pronghorn and RattleSnake results.
+All presented results show good agreement with the benchmark results.
+
+--------> Left here
+% damian_vhtr_2008
 
 
 
