@@ -538,10 +538,27 @@ The cross-sections used in INSTANT were modified to return the diffusion solutio
 
 
 --------> Left here
+
+
+Things looking at rn:
+CALCULATIONAL METHODS FOR PWRs (p 136 of iaea_advanced_1992)
+
+lautard_cronos_1990 : p42 of iaea_advanced_1992
+
+damian_vhtr_2008
+
+
+
+% lautard_cronos_1990 / iaea_advanced_1992
+The CRONOS code's original purpose was the calculation of \glspl{PWR}, including design, fuel managment, and accidents.
+CRONOS allows steady state and transient multigroup calculations taking into account the thermal-hydraulic feedback effects.
+The code solves either the diffusion equation or the even parity transport equation.
+The code uses the \gls{FDM} and the \gls{FEM} discretization.
+A three-dimensional heaxagonal geometry solver is available in the code.
+
+
+
 % damian_vhtr_2008
-
-
-
 NEUTRONIC AND THERMAL-HYDRAULIC COUPLING MODEL
 
 The advanced coupling system for block type HTGR is an external coupling system.
@@ -559,6 +576,17 @@ left of p42 of iaea_advanced_1992
 
 
 
+
+
+
+
+
+MORE
+
+on the few groups structure:
+Determination of the optimal few-energy group structure for the Canadian Super Critical Water-cooled Reactor
+A.Moghrabi D.R.Novog 2018
+https://www.sciencedirect.com/science/article/pii/S0306454918300100
 
 other validations of Pronghorn:
 - Very High Temperature Reactor Critical experiment %strydom_inl_2013
@@ -579,3 +607,25 @@ Conference on Supercomputing in Nuclear Applications and Monte Carlo 2013
 Neutron leakage corrections:
 With two groups there is a loss of accuracy in the neutronic calculations for HTRs unless neutron leakage corrections are employed.
 Leakage corrections are currently not available in PRONGHORN.
+
+* on heterogeneous diffusion calculations:
+Deterministic full reactor core simulators require homogenized group constants covering the operating and transient conditions over the entire lifetime of the core.
+In the case of prismatic HTGRs, the homogenized group constants are generated using lattice physics code over a block.
+\cite{sen_super-homogenization-corrected_2017}
+
+PWR core calcualtions using diffusion theory necessitate the condensation in space of the cross-sections pin-by-pin or per assembly.
+CALCULATIONAL METHODS FOR PWRs (p 136 of iaea_advanced_1992)
+
+
+
+For methods:
+
+Using Monte Carlo lattice physics codes for generating the homogenized group constants also allows running transport simulations for the full-scale heterogeneous system, which provides the reference solutions for the validation of the calculation scheme \cite{sen_super-homogenization-corrected_2017}
+
+
+@misc{sen_super-homogenization-corrected_2017,
+	title = {Super-{Homogenization}-{Corrected} {Cross}-{Section} {Generation} for {High}-{Temperature} {Reactors}},
+	author = {Sen, S. and Hummel, A. and Hiruta, H.},
+	month = mar,
+	year = {2017}
+}
