@@ -54,13 +54,22 @@ fill=blue!30]
 
 \section{OECD/NEA Benchmark}
 
-\ref{tab:globalparam}
-\ref{fig:axialpower}
-\ref{fig:radialpower}
+Figure \ref{fig:mesh}
+Table \ref{tab:globalparam}
+Figure \ref{fig:axialpower}
+Figure \ref{fig:radialpower}
 
 6978218 Dofs
 Dofs/Group = 268393
 time (1024 cores) = 4.33 and 4.11 hours
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{figures/oecd-fullcore-legend}
+	\hfill
+	\caption{1/3$^{rd}$ MHTGR-350 geometry.}
+	\label{fig:mesh}
+\end{figure}
 
 \begin{table}[htbp!]
   \centering
@@ -81,13 +90,13 @@ time (1024 cores) = 4.33 and 4.11 hours
   \centering
   \begin{subfigure}[t]{0.4\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{figures/3D-fullcore26G-axialpower.png}
-    \caption{.}
+    \includegraphics[height=5cm]{figures/3D-fullcore26G-axialpower}
+    \caption{Moltres result.}
   \end{subfigure}
   \begin{subfigure}[t]{0.4\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{figures/benchmark-axialpower.png}
-    \caption{.}
+    \includegraphics[height=5cm]{figures/benchmark-axialpower}
+    \caption{Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.}
   \end{subfigure}
   \hfill
   \caption{Radially averaged axial power distribution.}
@@ -98,38 +107,93 @@ time (1024 cores) = 4.33 and 4.11 hours
   \centering
   \begin{subfigure}[t]{0.4\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{figures/3D-fullcore26G-radialpower.png}
-    \caption{.}
+    \includegraphics[width=\linewidth]{figures/3D-fullcore26G-radialpower}
+    \caption{Moltres result.}
   \end{subfigure}
   \begin{subfigure}[t]{0.4\textwidth}
     \centering
-    \includegraphics[width=\linewidth]{figures/benchmark-radialpower.png}
-    \caption{.}
+    \includegraphics[width=\linewidth]{figures/benchmark-radialpower}
+    \caption{Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.}
   \end{subfigure}
   \hfill
   \caption{Axially averaged radial power distribution.}
   \label{fig:radialpower}
 \end{figure}
 
-\section{Periodic vs Neumann boundary conditions}
+\subsection{Periodic vs Neumann BCs}
 
-% results for 3 and 6G
+Table \ref{tab:benchmark-bc}
+
+3G)
+62118 dofs/group = 186354 dofs
+
+6G)
+16898 dofs/group = 101388 dofs
+
 \begin{table}[htbp!]
   \centering
-  \caption{.}
-  \begin{tabular}{l|l|l}
+  \caption{Global parameters comparison for different types of BCs.}
+  \begin{tabular}{l|l|l|l|l|l}
   \toprule
-
+  Energy groups       & Type of BCs & K$_{eff, out}$ & K$_{eff, in}$ & $\Delta \rho_{CR}$ (pcm) & AO \\
   \midrule
-
+  \multirow{2}{*}{3}  & Periodic    & 1.07571		& 1.06776		& 692.6		& 0.237		\\
+                      & Neumann     & 1.07586	  & 1.07021   & 490.5		& 0.237	  \\ \hline
+  \multirow{2}{*}{6}  & Periodic    & 1.07182		& 1.06356		& 724.3	  & 0.185  	\\
+                      & Neumann     & 1.07197   & 1.06610 	& 513.3		& 0.186		\\  
   \bottomrule
   \end{tabular}
-  \label{tab:}
+  \label{tab:benchmark-bc}
 \end{table}
 
 
 
 \section{Assembly}
+
+Moltres DOFs: 
+N of elements: 37120
+Nodes (DOFs/group): 22862
+
+Serpent Keff:
+noLBP-600: 1.43800
+noLBP-1200: 1.37771
+LBP-600: 1.12861
+LBP-1200: 1.06554
+
+Table \ref{tab:energygroups}
+
+Figure \ref{fig:assembly-noLBP-600-flux}
+Figure \ref{fig:assembly-noLBP-600}
+
+Figure \ref{fig:assembly-noLBP-1200-flux}
+Figure \ref{fig:assembly-noLBP-1200}
+
+Figure \ref{fig:assembly-LBP-600-flux}
+Figure \ref{fig:assembly-LBP-600}
+
+Figure \ref{fig:assembly-LBP-1200-flux}
+Figure \ref{fig:assembly-LBP-1200}
+
+Figure \ref{fig:assembly-time}
+
+Table \ref{tab:accuracy15}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/fuel-assembly}
+		\caption{Fuel column geometry. Image reproduced form \cite{tak_numerical_2008}.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/oecd-standard-column-legend}
+		\caption{Serpent model geometry.}
+	\end{subfigure}
+	\hfill
+	\caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
+	\label{fig:}
+\end{figure}
 
 \begin{table}[htbp!]
   \centering
@@ -169,7 +233,209 @@ time (1024 cores) = 4.33 and 4.11 hours
   \label{tab:energygroups}
 \end{table}
 
+% No LBP 600
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/3D-assembly-noLBP-600-26G}
+		\caption{Moltres.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/serpent26G-noLBP-600-collapse}
+		\caption{Serpent.}
+	\end{subfigure}
+	\hfill
+	\caption{Axial neutron flux for 3 groups.}
+	\label{fig:assembly-noLBP-600-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/keff-noLBP-600}
+		\caption{Multiplication factor.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/noLBP-600-er-final}
+		\caption{L$_2$-norm relative error.}
+	\end{subfigure}
+	\hfill
+	\caption{Effect of different number of energy group structures over different parameters.}
+	\label{fig:assembly-noLBP-600}
+\end{figure}
+
+% No LBP 1200
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/3D-assembly-noLBP-1200-26G}
+		\caption{Moltres.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/serpent26G-noLBP-1200-collapse}
+		\caption{Serpent.}
+	\end{subfigure}
+	\hfill
+	\caption{Axial neutron flux for 3 groups.}
+	\label{fig:assembly-noLBP-1200-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/keff-noLBP-1200}
+		\caption{Multiplication factor.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/noLBP-1200-er-final}
+		\caption{L$_2$-norm relative error.}
+	\end{subfigure}
+	\hfill
+	\caption{Effect of different number of energy group structures over different parameters.}
+	\label{fig:assembly-noLBP-1200}
+\end{figure}
+
+% LBP 600 
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/3D-assembly-LBP-600-26G}
+		\caption{Moltres.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/serpent26G-LBP-600-collapse}
+		\caption{Serpent.}
+	\end{subfigure}
+	\hfill
+	\caption{Axial neutron flux for 3 groups.}
+	\label{fig:assembly-LBP-600-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/keff-LBP-600}
+		\caption{Multiplication factor.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/LBP-600-er-final}
+		\caption{L$_2$-norm relative error.}
+	\end{subfigure}
+	\hfill
+	\caption{Effect of different number of energy group structures over different parameters.}
+	\label{fig:assembly-LBP-600}
+\end{figure}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/3D-assembly-LBP-1200-26G}
+		\caption{Moltres.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/serpent26G-LBP-1200-collapse}
+		\caption{Serpent.}
+	\end{subfigure}
+	\hfill
+	\caption{Axial neutron flux for 3 groups.}
+	\label{fig:assembly-LBP-1200-flux}
+\end{figure}
+
+% LBP 1200 
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/keff-LBP-1200}
+		\caption{Multiplication factor.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/LBP-1200-er-final}
+		\caption{L$_2$-norm relative error.}
+	\end{subfigure}
+	\hfill
+	\caption{Effect of different number of energy group structures over different parameters.}
+	\label{fig:assembly-LBP-1200}
+\end{figure}
+
+% Time and memory
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/time-noLBP-600}
+		\caption{No LBP and 600 K.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/time-LBP-1200}
+		\caption{LBP and 1200 K.}
+	\end{subfigure}
+	\hfill
+	\caption{Effect of different number of energy group structures over computational time and memory requirements.}
+	\label{fig:assembly-time}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Parametric study on the energy group limits. Values expressed in percentage.}
+  \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
+  \toprule
+	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
+	\midrule
+	\multirow{6}{*}{No}  & \multirow{3}{*}{600}  & Fast       & 7.9  & 8.0  & 8.2  & 8.1  & 9.1  \\
+	                     &                       & Epithermal & 6.6  & 6.5  & 8.6  & 8.2  & 9.2  \\
+	                     &                       & Thermal    & 8.8  & 8.5  & 10.6 & 10.7 & 12.9 \\ \cline{2-8}
+	                     & \multirow{3}{*}{1200} & Fast       & 7.1  & 7.7  & 5.7  & 5.1  & 4.5  \\
+	                     &                       & Epithermal & 3.3  & 3.9  & 6.2  & 5.1  & 3.4  \\
+	                     &                       & Thermal    & 5.0  & 4.7  & 8.5  & 8.2  & 8.4  \\ \hline
+	\multirow{6}{*}{Yes} & \multirow{3}{*}{600}  & Fast       & 24.0 & 24.8 & 2.6  & 2.3  & 3.7  \\
+	                     &                       & Epithermal & 21.0 & 21.7 & 2.0  & 1.6  & 2.7  \\
+	                     &                       & Thermal    & 18.1 & 18.8 & 5.2  & 5.5  & 5.7  \\ \cline{2-8}
+	                     & \multirow{3}{*}{1200} & Fast       & 36.2 & 37.3 & 6.9  & 6.6  & 25.9 \\
+	                     &                       & Epithermal & 33.2 & 34.2 & 6.9  & 6.5  & 25.1 \\
+	                     &                       & Thermal    & 29.6 & 30.6 & 8.5  & 8.3  & 20.3 \\
+	\midrule
+	\multicolumn{2}{l}{Average}                  &            & 17.3 & 17.8 & 6.3  & 6.0  & 10.8 \\
+	\bottomrule
+  \end{tabular}
+  \label{tab:accuracy15}
+\end{table}
+
+
 \section{Fullcore}
+
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/oecd-fullcore}
+		\caption{Serpent model geometry.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures/}
+		\caption{1/6$^{th}$ geometry for Moltres.}
+	\end{subfigure}
+	\hfill
+	\caption{MHTGR-350 full core models.}
+	\label{fig:}
+\end{figure}
 
 \pagebreak
 \bibliographystyle{plain}
