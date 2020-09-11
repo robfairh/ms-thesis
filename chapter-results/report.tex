@@ -428,7 +428,7 @@ Moltres: keff =
 
 Figure \ref{fig:fullcoremodel}
 Figure \ref{fig:fullcore-power}
-Figure \ref{fig:fullcore-spectrum}
+Figure \ref{fig:fullcore-detectors}
 
 Figure \ref{fig:fullcore-axial1}
 Figure \ref{fig:fullcore-axial2}
@@ -451,7 +451,25 @@ Figure \ref{fig:fullcore-radial1}
 	\label{fig:fullcoremodel}
 \end{figure}
 
-%Power distribution
+%Power distribution at 600K
+\begin{figure}[htbp!]
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures-fullcore/serpent26G-600-power}
+		\caption{Moltres.}
+	\end{subfigure}
+	\begin{subfigure}[t]{0.4\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{figures-fullcore/3D-fullcore-600-15Gd-power}
+		\caption{Serpent.}
+	\end{subfigure}
+	\hfill
+	\caption{Radial power distribution at 600 K.}
+	\label{fig:fullcore-power}
+\end{figure}
+
+%Power distribution at 1200K
 \begin{figure}[htbp!]
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
@@ -469,22 +487,23 @@ Figure \ref{fig:fullcore-radial1}
 	\label{fig:fullcore-power}
 \end{figure}
 
-%Spectrums
+
+%Detectors
 \begin{figure}[htbp!]
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/oecd-fullcore-detectorsB}
 		\caption{Moltres.}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/3D-fullcore-60-detectors}
 		\caption{Serpent.}
 	\end{subfigure}
 	\hfill
-	\caption{Neutron spectrum.}
-	\label{fig:fullcore-spectrum}
+	\caption{Flux detector locations.}
+	\label{fig:fullcore-detectors}
 \end{figure}
 
 %Axial flux1
@@ -492,16 +511,16 @@ Figure \ref{fig:fullcore-radial1}
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/serpent26G-600-collapse-Axial1}
 		\caption{Moltres.}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/3D-fullcore15Gd-axial1}
 		\caption{Serpent.}
 	\end{subfigure}
 	\hfill
-	\caption{Axial flux.}
+	\caption{Flux in axial detector 1 at 600 K.}
 	\label{fig:fullcore-axial1}
 \end{figure}
 
@@ -510,16 +529,16 @@ Figure \ref{fig:fullcore-radial1}
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/serpent26G-600-collapse-Axial2}
 		\caption{Moltres.}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/3D-fullcore15Gd-axial3}
 		\caption{Serpent.}
 	\end{subfigure}
 	\hfill
-	\caption{Axial flux.}
+	\caption{Flux in axial detector 2 at 600 K.}
 	\label{fig:fullcore-axial2}
 \end{figure}
 
@@ -528,16 +547,16 @@ Figure \ref{fig:fullcore-radial1}
 	\centering
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/serpent26G-600-collapse-Radial}
 		\caption{Moltres.}
 	\end{subfigure}
 	\begin{subfigure}[t]{0.4\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{figures-fullcore/}
+		\includegraphics[width=\linewidth]{figures-fullcore/3D-fullcore15Gd-radial1}
 		\caption{Serpent.}
 	\end{subfigure}
 	\hfill
-	\caption{Radial flux.}
+	\caption{Radial flux at 600 K.}
 	\label{fig:fullcore-radial1}
 \end{figure}
 
