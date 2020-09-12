@@ -613,7 +613,7 @@ It combines finite difference and various levels of finite elements diffusion ap
 
 
 --------> Left here
-
+I am going to leave this here, and I will continue looking for sources on the energy group structure influence over the diffusion calculations.
 
 
 
@@ -640,16 +640,7 @@ https://www.sciencedirect.com/science/article/pii/S0306454918300100
 other validations of Pronghorn:
 - Very High Temperature Reactor Critical experiment %strydom_inl_2013
 
-- To search on coupled analysis of HTGRs:
-Rohde, U., Baier, S., Duerigen, S., Fridman, E., Kliem, S., Merk, B., 2012. Development
-and verification of the coupled 3D neutron kinetics/thermal-hydraulics code
-DYN3D-HTR for the simulation of transients in block-type HTGR. Nucl. Eng. Des.
-251, 412–422.
 
-Connolly, K. J., Hunning, A. J., Rahnema, F., Garimella, S., 2013. Coupled neutron
-transport and thermal fluids calculations for the VHTR. In: Joint International
-Conference on Supercomputing in Nuclear Applications and Monte Carlo 2013
-(SNA+MC2013), Paris, France, Oct. 27–31.
 
 - Things that moltres is missing:
 % j_ortensi_initial_2012
@@ -674,10 +665,8 @@ The diffusion calculation produces a global neutronic assembly representation.
 The diffusion code averages in space and energy the information from the transport calculation.
 
 
-For methods:
-
+* For methods:
 Using Monte Carlo lattice physics codes for generating the homogenized group constants also allows running transport simulations for the full-scale heterogeneous system, which provides the reference solutions for the validation of the calculation scheme \cite{sen_super-homogenization-corrected_2017}
-
 
 @misc{sen_super-homogenization-corrected_2017,
 	title = {Super-{Homogenization}-{Corrected} {Cross}-{Section} {Generation} for {High}-{Temperature} {Reactors}},
@@ -686,5 +675,5 @@ Using Monte Carlo lattice physics codes for generating the homogenized group con
 	year = {2017}
 }
 
-On Porous media model (validation):
+* on Porous media model (validation):
 Studer et al. CAST3M/ARCTURUS: A coupled heat transfer CFD code for thermal–hydraulic analyzes of gas cooled reactors. 2006.
