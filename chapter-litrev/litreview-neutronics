@@ -539,17 +539,13 @@ The cross-sections used in INSTANT were modified to return the diffusion solutio
 
 --------> Left here
 
-
-Things looking at rn:
-CALCULATIONAL METHODS FOR PWRs (p 136 of iaea_advanced_1992)
-
-lautard_cronos_1990 : p42 of iaea_advanced_1992
+lautard_cronos_1990: p42 of iaea_advanced_1992
 
 damian_vhtr_2008
 
 
 
-% lautard_cronos_1990 / iaea_advanced_1992
+%lautard_cronos_1990 / iaea_advanced_1992
 The CRONOS code's original purpose was the calculation of \glspl{PWR}, including design, fuel managment, and accidents.
 CRONOS allows steady state and transient multigroup calculations taking into account the thermal-hydraulic feedback effects.
 The code solves either the diffusion equation or the even parity transport equation.
@@ -558,7 +554,7 @@ A three-dimensional heaxagonal geometry solver is available in the code.
 
 
 
-% damian_vhtr_2008
+%damian_vhtr_2008
 NEUTRONIC AND THERMAL-HYDRAULIC COUPLING MODEL
 
 The advanced coupling system for block type HTGR is an external coupling system.
@@ -571,7 +567,6 @@ The CRONOS code is a 3D neutronics \gls{FEM} diffusion and simplified transport 
 
 It combines finite difference and various levels of finite elements diffusion approximations with discrete ordinate transport capabilities \cite{iaea_advanced_1992}.
 
-left of p42 of iaea_advanced_1992
 
 
 
@@ -581,7 +576,7 @@ left of p42 of iaea_advanced_1992
 
 
 
-MORE
+MORE:
 
 on the few groups structure:
 Determination of the optimal few-energy group structure for the Canadian Super Critical Water-cooled Reactor
@@ -609,13 +604,20 @@ With two groups there is a loss of accuracy in the neutronic calculations for HT
 Leakage corrections are currently not available in PRONGHORN.
 
 * on heterogeneous diffusion calculations:
+%sen_super-homogenization-corrected_2017
 Deterministic full reactor core simulators require homogenized group constants covering the operating and transient conditions over the entire lifetime of the core.
 In the case of prismatic HTGRs, the homogenized group constants are generated using lattice physics code over a block.
-\cite{sen_super-homogenization-corrected_2017}
 
+%krebs_calculational_1990 (p 136 of iaea_advanced_1992)
 PWR core calcualtions using diffusion theory necessitate the condensation in space of the cross-sections pin-by-pin or per assembly.
-CALCULATIONAL METHODS FOR PWRs (p 136 of iaea_advanced_1992)
-
+The generation of cross section libraries usable in the diffusion calculation necessarily leads to space and energy condensations.
+We differenciate two types of calculation methods:
+* pin-by-pin calculation:
+It yields a detailed neutronic representation of the pins.
+This makes possible the treatment of pin or assembly heterogeneities and spatial discretization.
+* homogeneous calculation:
+The diffusion calculation produces a global neutronic assembly representation.
+The diffusion code averages in space and energy the information from the transport calculation.
 
 
 For methods:
