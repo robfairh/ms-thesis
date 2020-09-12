@@ -132,6 +132,7 @@ Throughout the last four decades many codes have use the \gls{FEM} to solve the 
 Some of those codes are:
 * CAPP \cite{lee_development_2011}
 * Rattlesnake \cite{wang_rattlesnake_2019}
+* CRONOS2
 
 
 
@@ -245,10 +246,11 @@ Its results are within 30 pcm from Pronghorn and RattleSnake results.
 All presented results show good agreement with the benchmark results.
 
 --------> Left here
-% damian_vhtr_2008
 
 
 
+
+\subsection{Energy group structure analysis}
 
 % Number of energy groups impact over the calculations
 \gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analysis.
@@ -261,13 +263,7 @@ One of the conclusions is that the number of energy groups should be more than 4
 Another conclusion is that the accuracy is sensitive to the energy group boundaries as well.
 
 
-
-
-
-
-
-
-\section{Thermo-Hydraulics}
+\section{HTGR Thermo-Hydraulics}
 
 % tak_numerical_2008
 
@@ -277,25 +273,47 @@ Another conclusion is that the accuracy is sensitive to the energy group boundar
 
 
 
+\section{Coupled Neutronics/Thermal-Hydraulics}
+
+% damian_vhtr_2008
+Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
+They performed the analysis of various geometrical scales: fuel cell and fuel column located at the core hot spot, 2D and 3D core configurations including the coupling between neutronics and thermal-hydraulics.
+
+The first part of the assessment concerns thermal calculations on steady-state core configurations.
+Such study used CAST3M \cite{studer_cast3marcturus_2007} code considering a 3D thermal coupled with 1D hydraulic modeling.
+The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
+An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
+
+The second part of the assessment used a 2D core configuration using the transport code APOLLO2 \cite{sanchez_apollo2_1999} to minimize the radial power peaking factor.
+The analysis included the variation of various parameters such as fuel enrichment, fuel loading, and the fuel management scheme.
+The fuel enrichment variation had the strongest impact.
+
+The last part of the study analyzed a 3D core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
+The study varies several design parameters and studies the impact on the power distribution.
+Such parameters are the helium by-pass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
+The codes NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-hydraulics, respectively.
+NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2 \cite{lautard_cronos_1990}.
+The CRONOS2 code solves either the diffusion equation or the even parity transport equation, and it uses a \gls{FDM} or a \gls{FEM} discretization.
+The CAST3M/Arcturus model uses a two-level approach.
+On the first level, the porous media model solves the homogenized system and the coolant.
+On the second level, the CAST3M code solves the thermal-hydraulics on the homogenized geometry.
+Some of the conclusions of this last part of the study were that although the reduction of the bypass fraction decreases the maximum fuel temperature, the average reflector temperature rises.
+Another conclusion showed that using magnesium oxide for the reflector material yields lower temperatures for both normal operation and transients.
 
 
 
-\section{Multi-physics}
+
+
+
+
+
 % HTGR benchmarks
-
 Historically, linking a stand-alone neutronics solver to a thermal-hydraulics solver allowed for the simulation of an entire reactor.
 For example, coupling PARCS, DIREKT, and THERMIX \cite{seker_analysis_2006} allowed for solving a \gls{PBMR}-400 Benchmark \cite{reitsma_oecdneansc_2006}.
 
-RattleS$_n$ake \cite{wang_nonlinear_2013} has become the primary tool for solving the linearized Boltzmann neutron transport equation within \gls{MOOSE} \cite{strydom_inl_2013}.
-RattleS$_n$ake counts with a variety of solvers available including low-order multigroup diffusion.
-Pronghorn \cite{bingham_pronghorn_2012} \cite{novak_pronghorn_2018} is a \gls{FEM} porous media thermal-hydraulics simulation code built on the \gls{MOOSE} framework.
-
 % More on Benchmarks
-OECD PBMR400 Coupled Code Benchmark % ref ?
-OECD/NEA MHTGR-350 Benchmark % ref ?
 CRP on Uncertainty Analysis in HTRs % ref ?
 \cite{gougar_htgr_2016}
-
 
 \pagebreak
 \bibliographystyle{plain}

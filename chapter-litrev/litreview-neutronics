@@ -491,6 +491,7 @@ The RELAP-7 and PRONGHORN applications have been successfully coupled using an o
 
 
 
+
 % ellis_initial_2014
 In this study, INL used an PWR benchmark to validate RattleSnake low order diffusion solver.
 
@@ -537,35 +538,88 @@ The cross-sections used in INSTANT were modified to return the diffusion solutio
 
 
 
---------> Left here
-
-lautard_cronos_1990: p42 of iaea_advanced_1992
-
-damian_vhtr_2008
-
-
 
 %lautard_cronos_1990 / iaea_advanced_1992
 The CRONOS code's original purpose was the calculation of \glspl{PWR}, including design, fuel managment, and accidents.
 CRONOS allows steady state and transient multigroup calculations taking into account the thermal-hydraulic feedback effects.
 The code solves either the diffusion equation or the even parity transport equation.
-The code uses the \gls{FDM} and the \gls{FEM} discretization.
-A three-dimensional heaxagonal geometry solver is available in the code.
+The code uses the \gls{FDM} or the \gls{FEM} discretization.
+A three-dimensional hexagonal geometry solver is available in the code.
 
 
 
 %damian_vhtr_2008
+ABSTRACT
+Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
+They performed the analysis of various geometrical scales: fuel cell and fuel column located at the core hot spot, 2D and 3D core configurations including the coupling between neutronics and thermal-hydraulics.
+
+The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometry.
+For the fuel compact analysis, an annular fuel compact yields the best performance.
+For the fuel element analysis, a reduction of the number of fuel compacts in the outer ring reduces the maximum temperature by up to 70$^{\circ}$C.
+Another parametric study consisted in the reduction of the power peaking factor and the maximum fuel temperature by modifying the fuel element location.
+% results?
+Other studies included the variation of the bypass fraction and the replacement of the graphite in the reflector by other materials.
+
+INTRODUCTION
+The first part of the assessment concerns thermal calculations on steady-state core configurations.
+Such study uses CAST3M code considering a 3D thermal coupled with 1D hydraulic modeling.
+Transport code APOLLO2 calculates the pin power distribution.
+Such power distribution serves as input for the thermal calculations.
+
+The second part of the assessment uses a 2D core configuration using the APOLLO2 code to minimize the radial power peaking factor.
+The analysis includes the variation of various parameters such as fuel enrichment, fuel loading, and the fuel management scheme.
+
+The last part of the study analyzes a 3D core model using the coupled code NEPTHIS/CAST3M.
+The study varies several design parameters and studies the impact on the power distribution.
+Such parameters are the helium by-pass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
+
 NEUTRONIC AND THERMAL-HYDRAULIC COUPLING MODEL
-
 The advanced coupling system for block type HTGR is an external coupling system.
-It is composed of the neutronic calculation scheme NEPHTIS and the thermal-hydraulics model Arcturus
-\cite{boer_assessment_2008}.
+The codes NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-hydraulics, respectively.
+NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2.
+The CAST3M/Arcturus model uses a two-level approach.
+On the first level, the porous media model solves the homogenized system and the coolant.
+On the second level, the CAST3M code solves the thermal-hydraulics on the homogenized geometry.
 
-NEPHTIS is based on a transport-diffusion calculation scheme using the transport code APOLLO2 and the diffusion code CRONOS2.
+The initial coupling model was unable to accurately calculate the thermal coefficient in the fuel because it did not take into account the difference between the moderator and the fuel temperature.
+A major improvement of the model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.
 
+FUEL ELEMENT ANALYSIS
+The reduction of the peaking factor decreases the maximum fuel temperature.
+
+NEUTRONIC ANALYSIS
+The fuel enrichment has the strongest impact over the peaking factor.
+
+INFLUENCE OF BYPASS FRACTION
+The increase of the fluid fraction in the active core reduces the maximum fuel temperature.
+However, such reduction has a limit.
+The reduction of the bypass fraction leads to and increase of the average reflector temperature.
+
+INFLUENCE OF THE REFLECTOR MATERIAL
+The magnesium oxide (MgO) has better thermal properties than graphite (the $\rho c_p$ ratio is about 1.8).
+The results showed that the magnesium oxide (MgO) reduces the maximum fuel temperature during the Loss of Forced Convection (LOFC) transient.
+The analysis also showed that during normal operation, the presence of MgO in the inner and outer reflectors decreases the maximum fuel temperature.
+
+CONCLUSIONS
+The full core calculations showed that the radial positioning of the fuel elements yields fuel temperature gains of up to 150$^{\circ}$C.
+
+
+
+ABOUT CRONOS (This is just for myself. I wanted to make sure that CRONOS2 was diffusion solver)
 The CRONOS code is a 3D neutronics \gls{FEM} diffusion and simplified transport code developed at \gls{CEA} \cite{ragusa_feasibility_2001}.
 
 It combines finite difference and various levels of finite elements diffusion approximations with discrete ordinate transport capabilities \cite{iaea_advanced_1992}.
+
+
+
+--------> Left here
+
+
+
+
+
+
+
 
 
 
@@ -631,3 +685,6 @@ Using Monte Carlo lattice physics codes for generating the homogenized group con
 	month = mar,
 	year = {2017}
 }
+
+On Porous media model (validation):
+Studer et al. CAST3M/ARCTURUS: A coupled heat transfer CFD code for thermal–hydraulic analyzes of gas cooled reactors. 2006.
