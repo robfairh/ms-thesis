@@ -267,8 +267,40 @@ Another conclusion is that the accuracy is sensitive to the energy group boundar
 
 \section{HTGR Thermo-Hydraulics}
 
-% tak_numerical_2008
+% sort of intro: tak_numerical_2008
+The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile without elaborate numerical calculations.
+The analysis of prismatic \gls{HTGR} has widely used simplified computational models to reduce the computational time.
+Among those models we find the equivalent cylinder model and the unit cell model.
+Such simplified approaches are helpful to understand some basic aspects of prismatic fuel blocks but they may affect the maximum fuel temperature.
+The unit cell model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
+More detailed thermal-hydraulic evaluations were rare in the open literature until the last two decades.
 
+
+
+% tak_numerical_2008
+In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic HTGR fuel assembly.
+The commercial code CFX 11 (citation) performed the calculations.
+The fuel assembly that the authors chose for the study was from the PMR600, whose reference design is the GT-MHR (citation).
+The study considered a 1/12th section of the fuel due to its symmetry.
+The model determined the coolant distribution using the one-dimensional hydraulic equations.
+Such coolant distribution served as input to the CFD code.
+
+The results of the study showed that the temperature of the bypass region is close to that of the adjacent graphite block.
+The presence of a large temperature gradient at the top and bottom of the active core suggest that the axial conduction through the reflectors is not significant.
+
+In order to asses the accuracy of the unit cell model, the authors compared their results against the unit cell model results.
+Such comparison indicates that the unit cell model predictions are reasonable.
+However, by neglecting the heat transfer within the assembly, it undepredicts the maximum fuel temperature by 20$^{\circ}$C.
+
+The fast neutron irradiation causes dimensional changes in graphite.
+Therefore, the bypass gap size varies with the fuel burn-up.
+The authors conducted a parametric study in which they analyzed the impact of the bypass gap size on the maximum fuel temperature.
+By increasing the bypass gap, the maximum fuel temperature grows.
+The results of this study indicate that the accuracy of the unit cell worsens for larger gaps.
+
+The last study imposed different radial peaking factors for the different fuel channels.
+Such a study showed the effects of considering a non-flat radial power distribution.
+The authors considered a radial power distribution that did not have a strong impact on the maximum fuel temperature.
 
 
 

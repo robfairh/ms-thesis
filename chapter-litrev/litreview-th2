@@ -68,7 +68,7 @@ The fast neutron irradiation causes dimensional changes in graphite.
 Therefore, the bypass gap size varies with the fuel burn-up.
 The authors conducted a parametric study in which they analyzed the impact of the bypass gap size on the maximum fuel temperature.
 Increasing the bypass flow gap increases the maximum fuel temperature.
-The results of this study indicates that the accuracy of the unit cell worsens for larger gaps.
+The results of this study indicate that the accuracy of the unit cell worsens for larger gaps.
 
 The last study imposes different radial peaking factors for the different fuel channels.
 Such a study shows the effects of considering a non-flat radial power distribution.
@@ -83,3 +83,59 @@ The unit cell model is a reasonable approximation if the bypass flow is small an
 
 ----> NEXT
 Continue with sato_computational_2010 or johnson_cfd_2009
+
+
+% sato_computational_2010
+3D CFD calculations of a typical VHTR
+FLUENT
+Parametric studies on 1/12th of the fuel assembly
+Factors: gap width, turbulence model, axial heat generation profile, geometry changes due to irradiation-induced shrinkage
+
+Maximum fuel and coolant channel temperatures increase with the gap width increase.
+The bypass flow causes a large lateral temperature gradient.
+
+The flow bias can cause large temperature gradients in graphite fuel blocks, which raises potential structural issues because of excessive thermal stresses.
+
+Flow network calculations and unit cell models applied in:
+Takada et al 2004
+Nakano et al 2008
+However,
+The distribution of temperature in the fuel pins and graphite blocks as well as coolant outlet temperatures are strongly coupled with the local heat generation rate within the fuel blocks which is not uniformly distributed in the core.
+
+Tak et al. 2008, coolant mass flow computed using a separate 1D code.
+In this study, the mass flow rates are determined as part of the solution.
+
+Calculation on the GT-MHR.
+number of mesh cells is 7.6 x 10^6
+Pressure-velocity coupling: SIMPLE
+
+Tak calculates flow rates separately and uses it as the BC.
+However, the flow rates in the channels and gaps are a function of the friction, which is dependent on viscosity whihc is highly temperature dependent.
+The mass flow rates are a function of the thermal characteristics of the problem, which are not known a priori.
+
+Fuel compact properties: MacDonald et al. 2003 and Johnson et al. 2010.
+
+
+
+
+
+
+
+On the equivalent cylinder model:
+* NO et al. 2007 % no_multi-component_2007
+* Reza et al. 2006 % reza_design_2006
+* Nakano et al. 2007 % nakano_conceptual_2008
+
+On the unit cell model:
+* Bays et al. 2006
+* In et al. 2006 % in_three-dimensional_2006
+* Richards et al. 2007 % richards_thermal_2007
+
+Other studies:
+* Cioni et al. (2004)
+Cioni, C., Marchand, M., Geffraye, G., Ducros, F., 2004. Thermal hydraulic 3D
+calculations on the core of a high temperature gas-cooled reactor. In: Second
+International Topical Meeting on High Temperature Reactor Technology,
+Beijing, China, September 22–24, 2004.
+
+* Simoneau et al. 2005

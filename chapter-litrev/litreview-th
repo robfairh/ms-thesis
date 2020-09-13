@@ -453,35 +453,6 @@ high-temperature materials, graphite, and process heat for hydrogen production.
 
 % lee_status_2006
 
-% sato_computational_2010
-3D CFD calculations of a typical VHTR
-FLUENT
-Parametric studies on 1/12th of the fuel assembly
-Factors: gap width, turbulence model, axial heat generation profile, geometry changes due to irradiation-induced shrinkage
-
-Maximum fuel and coolant channel temperatures increase with the gap width increase.
-The bypass flow causes a large lateral temperature gradient.
-
-The flow bias can cause large temperature gradients in graphite fuel blocks, which raises potential structural issues because of excessive thermal stresses.
-
-Flow network calculations and unit cell models applied in:
-Takada et al 2004
-Nakano et al 2008
-However,
-The distribution of temperature in the fuel pins and graphite blocks as well as coolant outlet temperatures are strongly coupled with the local heat generation rate within the fuel blocks which is not uniformly distributed in the core.
-
-Tak et al. 2008, coolant mass flow computed using a separate 1D code.
-In this study, the mass flow rates are determined as part of the solution.
-
-Calculation on the GT-MHR.
-number of mesh cells is 7.6 x 10^6
-Pressure-velocity coupling: SIMPLE
-
-Tak calculates flow rates separately and uses it as the BC.
-However, the flow rates in the channels and gaps are a function of the friction, which is dependent on viscosity whihc is highly temperature dependent.
-The mass flow rates are a function of the thermal characteristics of the problem, which are not known a priori.
-
-Fuel compact properties: MacDonald et al. 2003 and Johnson et al. 2010.
 
 
 % johnson_development_2008
