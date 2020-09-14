@@ -82,7 +82,7 @@ The unit cell model is a reasonable approximation if the bypass flow is small an
 
 
 ----> NEXT
-Continue with sato_computational_2010 or johnson_cfd_2009
+
 
 
 % sato_computational_2010
@@ -92,7 +92,7 @@ They conducted three-dimensional \gls{CFD} calculations of a typical prismatic \
 They used the commercial CFD code FLUENT.
 They carry out parametric calculations changing several factors on a one-twelfth portion of a fuel column.
 Factors include bypass gap-width, turbulence model, axial heat generation profile and geometry change due to irradiation-induced shrinkage in the graphite block region.
-The bypass flow provides a significant cooling effect on the prismatic block
+The bypass flow provides a significant cooling effect on the prismatic block.
 The maximum fuel and coolant channel outlet temperatures increases with an increase in gap-width.
 Applying a peak radial factor to the heat generation rate affects the outlet temperature.
 The presence of bypass flow causes a large lateral temperature gradient in the block.
@@ -114,22 +114,74 @@ The GT-MHR (GA citation 1996) is the reference reactor for the calculations.
 The non-uniform neutron fluences and temperature distributions in the actual core cause non-uniform deformations in the graphite block over its lifetime, creating complex bypass flow pathways.
 
 CORE BYPASS MODELING
+The flow rates in the coolant channels are strong functions of the wall friction.
+Parametric studies modify the following factors: gap-width, turbulence model, heat generation profile, geometry change of the blocks resulting from irradiations.
+
+Reynolds-averaged Navier–Stokes approach.
+Finite volume method.
+Momentum, energy, and viscous terms are discretized using the second-order upwind scheme.
+They used the algorithm SIMPLE for the Pressure-velocity coupling.
+
+Tak et al set mass flow rates for each channel and gap as determined from a separate one-dimensional code.
+However, the friction in the channels is dependent on the viscosity which is highly dependent on the temperature.
+Therefore the mass flow rates are a function of the thermal characteristics of the problem, which are not known a priori.
+
+THERMAL PROPERTIES:
+Graphite: H-451 graphite.
+Fuel compact properties:
+* MacDonald et al. 2003
+* Johnson et al. 2010
+
+VALIDATION STUDY:
+The study used two turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
+
+The friction factor is a major factor affecting flow distribution in the fuel column.
+They compared the computed wall shear stress for the turbulence models with empirical correlations.
+
+Past studies:
+* Shehata and McEligot 1995
+* Mikielewicz et al 2002
+* McEligot and Jackson 2004
+have shown that the heat transfer and wall friction of strongly heated internal gas flow can be significantly affected by buoyancy or acceleration because of property variation.
+Some turbulence models cannot predict well the correct velocity and temperature profiles in such situations.
+In the present study, representative acceleration parameters (kV) and Jackson buoyancy parameters (Bo) are less thatn 1e-6 and 1e-7, respectively.
+Hence, those effects are considered negligible.
+
+The friction factors are corrected for variable fluid properties by the expression given by Schlichting and Gersten (2000).
+(It seems that this will be useful).
+
+RESULTS AND DISCUSSIONS
+COMPARATIVE STUDY OF TURBULENCE MODELS
+Bulk mean temperatures for the k–omega model case are considerably lower than those for the k–epsilon model.
+Differences go up to 49$^{\circ}$C.
+The overall mass flow rate is about 10% greater for the k–omega model compared to the k– e model.
+
+COMPARATIVE STUDY OF HEAT GENERATION PROFILES
+In a prismatic \gls{HTGR}, the heat generation rate is not uniform.
+They apply a non-uniform heat generation rates in the axial direction at average and peak radial factors.
+The profile is a chopped sine.
+Comparison against the uniform profile case.
+Bulk mean temperatures and mass flow rates for the cases of uniform and axial variation at the average radial factor are almost the same.
+The differences in maximum fuel temperatures between the cases of uniform and axial variation at the peak radial factor are 160 $^{\circ}$C.
+Mass flow rates for the case of axial variation at the peak radial factor are significantly lower than for the other cases.
+
+COMPARATIVE STUDY OF GEOMTRY CHANGES IN BLOCK REGION
+Fuel column including upper and lower reflectors, is shrunk by 1.23% in the radial direction and by 2.35% in axial direction uniformly.
+These are the maximum dimensional changes experienced by H-451 graphite from irradiation.
+The shrinkage increases the gap-width, decreases the diameter of the coolant channels, and decreases the length of the column.
+
+Significantly higher temperatures are ob served in the solid region for the no-shrinkage case (max fuel temperature decreases by 63 C), although temperatures in the coolant regions show only small differences between the two cases (within 9 C).
+A lower gap outlet temperature is observed for the shrinkage case because the gap flow is higher.
+Mass flow rates for the two cases are also not significantly different except in the gap region where the case with shrinkage is considerably higher.
 
 
 
 
-number of mesh cells is 7.6 x 10^6
-Pressure-velocity coupling: SIMPLE
-
-Tak calculates flow rates separately and uses it as the BC.
-However, the flow rates in the channels and gaps are a function of the friction, which is dependent on viscosity whihc is highly temperature dependent.
-The mass flow rates are a function of the thermal characteristics of the problem, which are not known a priori.
-
-Fuel compact properties: MacDonald et al. 2003 and Johnson et al. 2010.
 
 
-
-
+--> GO BACK TO REFERENCES FROM
+* tak_numerical_2008
+* sato_computational_2010
 
 
 
