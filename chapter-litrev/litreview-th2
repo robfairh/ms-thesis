@@ -86,26 +86,38 @@ Continue with sato_computational_2010 or johnson_cfd_2009
 
 
 % sato_computational_2010
-3D CFD calculations of a typical VHTR
-FLUENT
-Parametric studies on 1/12th of the fuel assembly
-Factors: gap width, turbulence model, axial heat generation profile, geometry changes due to irradiation-induced shrinkage
+ABSTRACT
+The geometry of the graphite blocks changes over the lifetime of the reactor because of thermal expansion and irradiation damage.
+They conducted three-dimensional \gls{CFD} calculations of a typical prismatic \gls{HTGR} to better understand the bypass flow phenomena.
+They used the commercial CFD code FLUENT.
+They carry out parametric calculations changing several factors on a one-twelfth portion of a fuel column.
+Factors include bypass gap-width, turbulence model, axial heat generation profile and geometry change due to irradiation-induced shrinkage in the graphite block region.
+The bypass flow provides a significant cooling effect on the prismatic block
+The maximum fuel and coolant channel outlet temperatures increases with an increase in gap-width.
+Applying a peak radial factor to the heat generation rate affects the outlet temperature.
+The presence of bypass flow causes a large lateral temperature gradient in the block.
+Large temperature gradients cause excessive thermal stresses which raise potential structural issues.
 
-Maximum fuel and coolant channel temperatures increase with the gap width increase.
-The bypass flow causes a large lateral temperature gradient.
+INTRODUCTION
+Reactor core design has widely applied simplified approaches such as flow network calculations and unit cell models.
+* Takada et al 2004
+* Nakano et al 2008
 
-The flow bias can cause large temperature gradients in graphite fuel blocks, which raises potential structural issues because of excessive thermal stresses.
+Tak et al. 2008
+The coolant mass flow was computed using a separate one-dimensional code.
+The mass flow rates are determined as part of the solution in the present study.
 
-Flow network calculations and unit cell models applied in:
-Takada et al 2004
-Nakano et al 2008
-However,
-The distribution of temperature in the fuel pins and graphite blocks as well as coolant outlet temperatures are strongly coupled with the local heat generation rate within the fuel blocks which is not uniformly distributed in the core.
+FLUENT (citation)
 
-Tak et al. 2008, coolant mass flow computed using a separate 1D code.
-In this study, the mass flow rates are determined as part of the solution.
+REFERENCE PRISMATIC VHTR
+The GT-MHR (GA citation 1996) is the reference reactor for the calculations.
+The non-uniform neutron fluences and temperature distributions in the actual core cause non-uniform deformations in the graphite block over its lifetime, creating complex bypass flow pathways.
 
-Calculation on the GT-MHR.
+CORE BYPASS MODELING
+
+
+
+
 number of mesh cells is 7.6 x 10^6
 Pressure-velocity coupling: SIMPLE
 
@@ -114,6 +126,8 @@ However, the flow rates in the channels and gaps are a function of the friction,
 The mass flow rates are a function of the thermal characteristics of the problem, which are not known a priori.
 
 Fuel compact properties: MacDonald et al. 2003 and Johnson et al. 2010.
+
+
 
 
 
@@ -131,7 +145,11 @@ On the unit cell model:
 * In et al. 2006 % in_three-dimensional_2006
 * Richards et al. 2007 % richards_thermal_2007
 
-Other studies:
+On simplified approches:
+* Nakano et al 2008
+* Takada et al 2004
+
+Other detailed studies:
 * Cioni et al. (2004)
 Cioni, C., Marchand, M., Geffraye, G., Ducros, F., 2004. Thermal hydraulic 3D
 calculations on the core of a high temperature gas-cooled reactor. In: Second
