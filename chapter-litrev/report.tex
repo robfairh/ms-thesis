@@ -279,8 +279,8 @@ More detailed thermal-hydraulic evaluations were rare in the open literature unt
 
 % tak_numerical_2008
 In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic HTGR fuel assembly.
-The commercial code CFX 11 (citation) performed the calculations.
-The fuel assembly that the authors chose for the study was from the PMR600, whose reference design is the GT-MHR (citation).
+The commercial code CFX 11 \cite{ansys_incorporated_cfx_2006} performed the calculations.
+The fuel assembly that the authors chose for the study was from the PMR-600, whose reference design is the GT-MHR \cite{general_atomics_gas_1996}.
 The study considered a 1/12th section of the fuel due to its symmetry.
 The model determined the coolant distribution using the one-dimensional hydraulic equations.
 Such coolant distribution served as input to the CFD code.
@@ -305,6 +305,25 @@ The authors considered a radial power distribution that did not have a strong im
 
 
 % sato_computational_2010
+Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
+Their model considered a one-twelfth section of the fuel column of the GT-MHR.
+The authors conducted parametric studies changing several factors, such as bypass gap-width, turbulence model, axial heat generation profile, and geometry changes due to irradiation.
+Their most relevant results show that an increase on the gap-width increases the maximum fuel temperature.
+The presence of bypass flow causes a large lateral temperature gradient in the block.
+Large temperature gradients cause excessive thermal stresses which raise potential structural issues.
+The authors emphasize that their study obtains the mass flow rates as part of the solution.
+The friction in the channels is dependent on the viscosity which is highly dependent on the temperature.
+Therefore, obtaining the mass flow rates from a separate solver may introduce errors.
+The authors compared the results from different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
+The $k \sim \omega$ model predicts bulk temperatures that are considerably lower than those from the $k \sim \varepsilon$ model.
+The differences go up to 49$^{\circ}$C.
+The overall mass flow rate is about 10$\%$ greater for the former  compared to the latter.
+
+Another study analyzes the effect of considering different peak radial factors. Such consideration introduced variations of the maximum fuel temperature of up to 160 $^{\circ}$C.
+
+Their last study focused on the effects of the graphite dimensional changes on the temperature profile.
+The no-shinkrage case showed considerably higher temperatures in the fuel.
+
 
 
 

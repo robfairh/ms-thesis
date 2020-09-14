@@ -90,6 +90,7 @@ ABSTRACT
 The geometry of the graphite blocks changes over the lifetime of the reactor because of thermal expansion and irradiation damage.
 They conducted three-dimensional \gls{CFD} calculations of a typical prismatic \gls{HTGR} to better understand the bypass flow phenomena.
 They used the commercial CFD code FLUENT.
+
 They carry out parametric calculations changing several factors on a one-twelfth portion of a fuel column.
 Factors include bypass gap-width, turbulence model, axial heat generation profile and geometry change due to irradiation-induced shrinkage in the graphite block region.
 The bypass flow provides a significant cooling effect on the prismatic block.
@@ -170,7 +171,7 @@ Fuel column including upper and lower reflectors, is shrunk by 1.23% in the radi
 These are the maximum dimensional changes experienced by H-451 graphite from irradiation.
 The shrinkage increases the gap-width, decreases the diameter of the coolant channels, and decreases the length of the column.
 
-Significantly higher temperatures are ob served in the solid region for the no-shrinkage case (max fuel temperature decreases by 63 C), although temperatures in the coolant regions show only small differences between the two cases (within 9 C).
+Significantly higher temperatures are observed in the solid region for the no-shrinkage case (max fuel temperature decreases by 63 C), although temperatures in the coolant regions show only small differences between the two cases (within 9 C).
 A lower gap outlet temperature is observed for the shrinkage case because the gap flow is higher.
 Mass flow rates for the two cases are also not significantly different except in the gap region where the case with shrinkage is considerably higher.
 
