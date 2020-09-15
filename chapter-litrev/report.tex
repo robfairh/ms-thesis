@@ -274,13 +274,16 @@ Such simplified approaches are helpful to understand some basic aspects of prism
 Among those models we find the flow network model, the equivalent cylinder model, and the unit cell model.
 
 
+% flow network model
+% reza_design_2006
+Efficient hydrogen production requires higher coolant temperatures, which in turn increases the temperature of the reactor pressure vessel.
+The presence of high temperatures introduces a unique design challenge for the reactor pressure vessel during steady-state operation.
+Reza el al. \cite{reza_design_2006} conducted a thermal hydraulic study of the GT-MHR design \cite{general_atomics_gas_1996} with increased outlet temperature to enable hydrogen production.
+Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, the authors evaluated alternative coolant inflow paths in an attempt to reduce the reactor vessel temperatures.
+After finding an optimal configuration, they evaluated the maximum temperatures in the fuel and the reactor vessel during the \gls{LPCC} and the \gls{HPCC} events.
+
 % equivalent cylinder model
 % no_multi-component_2007
-tak says: equivalent cylinder model and 1D system codes.
-sato says: network model??
-no says
-
-
 An example of codes using such approach is GAMMA \cite{no_multi-component_2007}.
 The motivation of such development was the air ingress event following a LOCA.
 Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
@@ -289,15 +292,27 @@ The GAMMA code solves heat conduction, fluid flow, chemical reactions, and multi
 The code couples the solid and gas equations using the porous media model.
 Together with the multi-dimensional analysis feature, GAMMA has one-dimensional analysis capability modeling a general network of pipe flow.
 
-
 % unit cell model
 The unit cell model assumes that the coolant removes all the heat generated in the fuel.
 The model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
 
+% nakano_conceptual_2008
+Nakano et al. \cite{nakano_conceptual_2008} studied different fuel assembly configurations.
+For determining the fuel temperature, they used TAC-2D code \cite{peterson_tac2d_1969} using as input the power density and the flow distribution.
+A previous nuclear analysis calculated the power density.
+And a previous study calculated the flow distribution using the flow network code FLOWNET \cite{maruyama_verification_1988}.
+The fuel temperature calculation used a two-dimensional cylindrical model for a hot channel unit cell.
+However, the asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block.
+As a consequence, the calculated temperature differs from the actual temperature.
+A \gls{FEM} obtains the detailed temperature distribution in the 2D unit cell.
+Such calculation adjusts the temperature from the cylindrical model.
+
+% in_three-dimensional_2006
 
 
 
-% no_multi-component_2007
+
+
 
 
 
@@ -307,7 +322,7 @@ More detailed thermal-hydraulic evaluations were rare in the open literature unt
 % tak_numerical_2008
 In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic HTGR fuel assembly.
 The commercial code CFX 11 \cite{ansys_incorporated_cfx_2006} performed the calculations.
-The fuel assembly that the authors chose for the study was from the PMR-600, whose reference design is the GT-MHR \cite{general_atomics_gas_1996}.
+The fuel assembly that the authors chose for the study was from the PMR-600, whose reference design is the GT-MHR.
 The study considered a 1/12th section of the fuel due to its symmetry.
 The model determined the coolant distribution using the one-dimensional hydraulic equations.
 Such coolant distribution served as input to the CFD code.

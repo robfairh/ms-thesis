@@ -252,38 +252,67 @@ They also calculated the peak reactor vessel temperature and the peak fuel tempe
 
 
 
-
-
-
-
-
-
 % nakano_conceptual_2008
+The \gls{VHTR} uses higher temperatures to enable higher efficiencies for hydrogen and electricity production.
+To attain such temperatures the reactor requires an increase of the fuel flow and consequently a reduction of the core bypass flow.
+The authors conducted three-dimensional thermal hydraulic analyses to determine the fuel and bypass flow fractions.
+They also propose different alternative designs to achieve the higher fuel flow.
+
+CORE INTERNAL AND BY-PASS FLOW
+They evaluated the effect of restricting the core bypass flow on the fuel temperature in normal operation.
+
+3D FEM model to calculate the effect of the core bypass flow.
+They ANSYS v.10 code (citation ?) 
+
+The 3D model includes RPV and core internals and core fuels, but it is limited to 120 
+degree sector.
+
+CORE AND FP RELEASE ANALYSES
 At the beginning of burnup, the deep insertion of control rods makes the power density larger in the bottom region.
 The withdrawal of control rods at the end of cycle leads larger power density at the top of the core.
 
-The heat transfer areas are different between the actual unit cell and the analytical model.
-The unit cell is asymmetric making the temperature distribution asymmetric in the graphite block.
-It leads to temperature difference between actual and analytical model.
+They used the FLOWNET code to obtain the fuel channel flow rate.
+The model consists of a flow network and heat transport path network.
 
-What they did:
-* The fuel has a temp profile when the outlet coolant temp is 850.
-* The idea is to restrain the bypass flow to leave that temp profile unchanged while increasing the outlet temp to 950.
-* 3D FEM model developed on ANSYS v.10 code.
-* It calculates the pressure and flow rate distribution using the Bernoulli equation.
-* The 3D model includes RPV and core internals and core fuels.
-* Calculates 1/3rd of the reactor: 120 degrees.
-* Nuclear analysis using DELIGHT-8 to make macro cross-section sets at various burnup points.
-* CITATION for the code analysis.
-* Flow distribution analysis using FLOWNET: to obtain the fuel channel flow rate and pressure drop/
-* Fuel temperature analysis with TAC-2D:
-	- Power density from the nuclear analysis.
-	- flow rate calculated in the flow distribution analysis.
-	- calculation model: 2D cylindrical model for a hot channel fuel pin cell
-	- the coolant channel is modeled into an annular channel around the graphite block
-* FP release: Diffusion in the particles, sorption, and diffusion in the fuel matrix and in the graphite region, evaporation and mass transfer on the graphite surface into the coolant.
+For the fuel temperature, they used TAC-2D (citation) code with the power density calculated in the nuclear analysis and the flow rate calculated in the flow distribution analysis.
+The calculation model is the two-dimensional cylindrical model for a hot channel fuel pin cell.
+
+Asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block and it leads to a temperature difference between the actual and the analytical coolant model.
+
+FP RELEASE CALCULATION:
+Diffusion in the particles, sorption, and diffusion in the fuel matrix and in the graphite region, evaporation and mass transfer on the graphite surface into the coolant.
 
 
+
+% in_three-dimensional_2006
+INTRODUCTION
+The maximum fuel temperature in the core hot spot is one of the important design parameters for a PMR.
+The objective of this study is to predict the hot-spot fuel temperature distribution in a PMR at a steady-state.
+The CFD code CFX-10 (citation) calculated the three-dimensional temperature distribution in a PMR at steady-state.
+The analysis focused on the GT-MHR600.
+
+CFD MODEL
+The model includes only a one-sixth of the two fuel channels and a single coolant channel due to the symmetry of the fuel block.
+
+DESIGN OPERATING CONDITIONS
+P = 70 bar
+Mass flow rate per coolant channel: 0.0176 kg/s
+Core average inlet temp = 399 C
+
+* q'''_average = 33.3, 33.1, 35.0 MW/m3 at BOC, MOC, and EOC
+
+The thermal conductivities of the fuel compact, fuel gap, and graphite vary with temperature.
+The physical properties of helium also depend on the temperature.
+
+RESULTS AND DISCUSSIONS
+Temperature profile at EOC.
+Max fuel temperature is 1295 C
+The bulk exit coolant temperature is 1144 C
+Fuel temperature design limit = 1250 C
+
+CONCLUSIONS
+It was also found that either the power density or the axial power peak should be
+decreased by more than 5% and 10%, respectively, for the PMR core in order to meet the fuel temperature limit.
 
 
 
@@ -297,22 +326,20 @@ What they did:
 * tak_numerical_2008
 * sato_computational_2010
 
+% takada_core_2004
 
 
 
 
-On the equivalent cylinder model:
-* Reza et al. 2006 % reza_design_2006
-* Nakano et al. 2007 % nakano_conceptual_2008
+
+
+
+
 
 On the unit cell model:
 * Bays et al. 2006
 * In et al. 2006 % in_three-dimensional_2006
 * Richards et al. 2007 % richards_thermal_2007
-
-On simplified approches:
-* Nakano et al 2008
-* Takada et al 2004
 
 Other detailed studies:
 * Cioni et al. (2004)

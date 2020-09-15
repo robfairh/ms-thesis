@@ -3,19 +3,6 @@ This file will be eventually deleted.
 
 
 
-% in_three-dimensional_2006
-What they did:
-* Predict hot-spot fuel temperature distributions in a PMR at a steady state
-* CFD code: CFX-10 used to perform a 3D analysis
-* GT-MHR600 is the reference design
-* unit cell model
-* uniform cooling and constant pressure assumed at the inlet and the exit of the coolant channel
-* helium mass flow rate in a coolant channel is 0.0176 kg/s
-* inlet/outlet helium temperatures are 399C and 950C.
-* q''' = 33.3, 33.1, 35.0 MW/m3 at BOC, MOC, and EOC
-* Tmax in the fuel is 1295.3 C at EOC at the exit
-* The temperature difference between the coolant (bulk temperature) and the fuel is approx 150C
-
 % richards_thermal_2007
 What they did:
 * Modified fuel element design
