@@ -79,12 +79,6 @@ The unit cell model is a reasonable approximation if the bypass flow is small an
 
 
 
-
-
-----> NEXT
-
-
-
 % sato_computational_2010
 ABSTRACT
 The geometry of the graphite blocks changes over the lifetime of the reactor because of thermal expansion and irradiation damage.
@@ -174,6 +168,64 @@ The shrinkage increases the gap-width, decreases the diameter of the coolant cha
 Significantly higher temperatures are observed in the solid region for the no-shrinkage case (max fuel temperature decreases by 63 C), although temperatures in the coolant regions show only small differences between the two cases (within 9 C).
 A lower gap outlet temperature is observed for the shrinkage case because the gap flow is higher.
 Mass flow rates for the two cases are also not significantly different except in the gap region where the case with shrinkage is considerably higher.
+
+
+
+
+---> LEFT HERE
+
+
+% no_multi-component_2007
+ABSTRACT
+The air ingress event following a LOCA is a cause of concern.
+Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
+This study developed the code GAMMA.
+The authors assessed its performance using a two-bulb experiment.
+Following, they investigated the guillotine break of the main pipe between the reactor vessel and the power conversion unit.
+As part of the study, they improved the code RELAP5 for the \gls{HTGR} air ingress analysis.
+
+DEVELOPMENT AND ASSESMENT OF GAMMA CODE
+The GAMMA code solves multi-dimensional heat conduction, multi-dimensional fluid flow, chemical reactions, and multi-component molecular diffusion, fluid heat transfer and pressure drop, and radiation heat transfer.
+
+GENERAL FEATURES OF GAMMA CODE
+The code solves two set of equations for both the gas and the solid parts.
+The basic equations use the porous media model formulation to consider the heat transport in solid-fluid mixed components.
+Porous media:
+* Nield and Bejan 1999
+
+Together with the multi-dimensional analysis feature, GAMMA has one-dimensional analysis capability modeling a general network of pipe flow.
+
+The code solves the fueled zone one-dimensional heat conduction equation.
+The heat transport between the fluid and the solid uses the hea transper relation: qsf = h(TWall - TFluid).
+
+The code also considers the radiative heat transfer by using an irradiation/radiosity method
+* Holman 1986
+which assumes that the radiation exchange between surfaces is gray and diffuse.
+
+ASSESSMENT OF THE ONSET TIME OF NATURAL CIRCULATION (OTNC)
+They used GAMMA to predict the onset time of the natural circulation in the inverse U-tube experiment.
+
+Another study chose the GT-MHR reactor as a reference plant.
+Assesment that considers different reactor cavity free volumes and different average temperatures for the RCCS surface.
+2D geometry models to consider the multi-dimensional flow and heat transport.
+They compared the OTNC and the naturual circulation flow for each case.
+
+
+RELAP5/ATHENA CODE IMPROVEMENTS:
+They improved the code RELAP5/ATHENA (INEEL, 2005) by implementing models for molecular diffusion and graphite oxidation.
+The molecular diffusion model calculates the diffusion of several species of gas using a network of control volumes.
+They conducted the validation of the models using theoretical and experimental results.
+
+RELAP5 ASSESSMENT
+The code was validated using molecular data from an inverted U-tube experiment and natural circulation data for flow through a pebble bed.
+
+CONCLUSIONS
+The RELAP5 code has been improved significantly for the analysis of the VHTR.
+The improvements allow the code to simulate air ingress following LOCAs due to the effects of molecular diffusion.
+
+
+
+% reza_design_2006
 
 
 

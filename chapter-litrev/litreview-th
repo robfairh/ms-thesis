@@ -3,22 +3,6 @@ This file will be eventually deleted.
 
 
 
-% no_multi-component_2007
-The VHTR faces some technical and economical challenges, particularly reactor safety and costs.
-The air ingress event following a LOCA is a cause of concern.
-Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
-
-What they did:
-* Development of the code GAMMA
-* Solves equations for both the gas and the solid parts.
-* Use porous media model (Nield and Bejan, 1999) to consider heat transport in solid-fluid components.
-* Gas flow medium: multi-dimensional governing equations for a chemically reacting flow (Poinsot and Veynante,
-2001) that consist of the spatially-averaged conservation equations for continuity, momentum, energy of the gas mixture, and the mass of each species.
-* Heat transfer between the fluid and the solid: h(TWall - TFluid)
-* The boundary condition for the enclosure (recinto) is the radiative heat transfer. It uses the irradiation/radiosity method (Holman, 1986). The radiation exchange between surfaces is gray and diffuse.
-* Improvement of RELAP5
-* They added the capability to simulate air ingress following LOCAs due to the effects of molecular diffusion.
-
 % reza_design_2006
 The temperatures required for efficient hydrogen production present a unique design challenge for the reactor pressure vessel during steady-state operation.
 
