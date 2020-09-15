@@ -270,12 +270,39 @@ Another conclusion is that the accuracy is sensitive to the energy group boundar
 % sort of intro: tak_numerical_2008
 The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile without elaborate numerical calculations.
 The analysis of prismatic \gls{HTGR} has widely used simplified computational models to reduce the computational time.
-Among those models we find the equivalent cylinder model and the unit cell model.
 Such simplified approaches are helpful to understand some basic aspects of prismatic fuel blocks but they may affect the maximum fuel temperature.
-The unit cell model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
+Among those models we find the flow network model, the equivalent cylinder model, and the unit cell model.
+
+
+% equivalent cylinder model
+% no_multi-component_2007
+tak says: equivalent cylinder model and 1D system codes.
+sato says: network model??
+no says
+
+
+An example of codes using such approach is GAMMA \cite{no_multi-component_2007}.
+The motivation of such development was the air ingress event following a LOCA.
+Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
+The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a major concern.
+The GAMMA code solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
+The code couples the solid and gas equations using the porous media model.
+Together with the multi-dimensional analysis feature, GAMMA has one-dimensional analysis capability modeling a general network of pipe flow.
+
+
+% unit cell model
+The unit cell model assumes that the coolant removes all the heat generated in the fuel.
+The model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
+
+
+
+
+% no_multi-component_2007
+
+
+
+% more detailed calculations
 More detailed thermal-hydraulic evaluations were rare in the open literature until the last two decades.
-
-
 
 % tak_numerical_2008
 In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic HTGR fuel assembly.
@@ -325,14 +352,12 @@ Their last study focused on the effects of the graphite dimensional changes on t
 The no-shrinkage case showed considerably higher temperatures in the fuel.
 
 
-% no_multi-component_2007
+
 
 
 
 ---> here
-tak says: equivalent cylinder model and 1D system codes.
-sato says: network model??
-no says
+
 
 
 

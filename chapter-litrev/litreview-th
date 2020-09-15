@@ -3,46 +3,6 @@ This file will be eventually deleted.
 
 
 
-% reza_design_2006
-The temperatures required for efficient hydrogen production present a unique design challenge for the reactor pressure vessel during steady-state operation.
-
-What they did:
-* Use ATHENA (that relies on RELAP5-3D) to solve MHRs
-* peak steady state reactor vessel temperature of 541 C
-* Propose an alternative coolant inlet flow configuration
-* Calculated peak temperatures in HPCC and LPCC accidents with the new config
-high pressure conduction cooldown (HPCC): 5.03 MPa
-low pressure conduction cooldown (LPCC): 1 atm
-* Max core velocity ~53 m/s
-* Total pressure drop 57.87 kPa
-* Peak fuel temperature around ~1106C at SS
-* Design fuel temperature limit of 1600C
-
-% nakano_conceptual_2008
-At the beginning of burnup, the deep insertion of control rods makes the power density larger in the bottom region.
-The withdrawal of control rods at the end of cycle leads larger power density at the top of the core.
-
-The heat transfer areas are different between the actual unit cell and the analytical model.
-The unit cell is asymmetric making the temperature distribution asymmetric in the graphite block.
-It leads to temperature difference between actual and analytical model.
-
-What they did:
-* The fuel has a temp profile when the outlet coolant temp is 850.
-* The idea is to restrain the bypass flow to leave that temp profile unchanged while increasing the outlet temp to 950.
-* 3D FEM model developed on ANSYS v.10 code.
-* It calculates the pressure and flow rate distribution using the Bernoulli equation.
-* The 3D model includes RPV and core internals and core fuels.
-* Calculates 1/3rd of the reactor: 120 degrees.
-* Nuclear analysis using DELIGHT-8 to make macro cross-section sets at various burnup points.
-* CITATION for the code analysis.
-* Flow distribution analysis using FLOWNET: to obtain the fuel channel flow rate and pressure drop/
-* Fuel temperature analysis with TAC-2D:
-	- Power density from the nuclear analysis.
-	- flow rate calculated in the flow distribution analysis.
-	- calculation model: 2D cylindrical model for a hot channel fuel pin cell
-	- the coolant channel is modeled into an annular channel around the graphite block
-* FP release: Diffusion in the particles, sorption, and diffusion in the fuel matrix and in the graphite region, evaporation and mass transfer on the graphite surface into the coolant.
-
 % in_three-dimensional_2006
 What they did:
 * Predict hot-spot fuel temperature distributions in a PMR at a steady state
