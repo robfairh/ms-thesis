@@ -375,11 +375,16 @@ The temperature rises to 1920 C exceeding the design limit (1600 C).
 
 
 
+---> left here
+
 % simoneau_three-dimensional_2007
+ABSTRACT
+Three dimensional model to simulate the passive heat removal in a \gls{PMR} during \gls{LPCC} and \gls{HPCC} events.
+Model used the CFD code STAR-CD.
+Solves conductive, convective, and radiative heat transfer within a 30deg section of the core and reactor vessel.
+To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
 
-
-
-
+INTRODUCTION
 
 
 
