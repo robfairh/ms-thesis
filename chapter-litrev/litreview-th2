@@ -316,9 +316,63 @@ decreased by more than 5% and 10%, respectively, for the PMR core in order to me
 
 
 
+% richards_thermal_2007 (This one won't we included in the lit review for the moment)
+ABSTRACT
+The authors compared different fuel element designs for the GT-MHR using RELAP-3D/ATHENA, POKE, and CFX computer codes.
+Other proposed design modifications include reduction of the bypass flow and alternative inlet-flow configurations.
+
+* see if conventional LWR materials could be used for a VHTR vessel
+
+ATHENA: Advanced Thermal Energy Network Analysis (Carlson, 1986)
+To asses the impact of higher coolant temperatures on steady-state vessel temperatures, parasitic RCCS heat losses, and peak fuel temperatures during LOCAs.
+GT-MHR inlet configuration and two alternative inlet flow configurations evaluated.
+Routing the inlet flow through the inner reflector resulted in a greater loss of heat capacity, increasing fuel temperatures by 40 C during a LOCA.
+
+POKE (Kapernick, 1993), calculations on the unit cell:
+Two designs: Fort St Vrain: 10 row (10 row of fuel holes across the flats)
+increased to 12 row. Also reduction of the fuel coolant holes and coolant holes.
+This reduces the max temperatures by 34 C.
+
+POKE and ATHENA:
+Study the effects of lowering the coolant inlet temperature and also decrease the total coolant flow rate
 
 
 
+% cioni_3d_2006
+ABSTRACT
+This work presents the results from 3D numerical simulations of assemblies of a \gls{HTGR}.
+The objective of the study was to investigate an emergency situation due to the blocking of He channels in the core.
+They investigated two configurations.
+In one configuration, six fuel elements surround the fuel element with the blockage.
+In the other one, five fuel elements and one reflector element surround it.
+The CFD code Trio_U performed the numerical study.
+The model included a 3D conduction problem for the solid coupled to a simplified 1D thermal-hydraulic modeling for the coolant.
+The results suggested that the blockage increases the temperature on the blocked fuel assembly only and it does not affect the surrounding elements due to the bypass flow.
+
+PRELIMINARY WORK
+Analysis of the effects of the bypass flow. Two configurations: 0% and 19% of the total He flow rate.
+Analysis of the consequences of two different blocking in a portion of a fuel assembly.
+Central and peripheral blocking. The central blocking causes a larger temperature increase.
+
+PHYSICAL AND NUMERICAL MODELING
+The spatial discretization uses the \gls{FVM}.
+
+The fuel and graphite use the same material properties (the ones from graphite).
+
+Helium model:
+\rho (T(x), x) * u (x) = \dot{qo}
+
+Energy Balance: Advection-diffusion equation.
+
+Fluid/solid coupling: Nusselt number correlation (Colburn correlation)
+Nu_x = 0.023 Rex^0.8 Prx^0.33
+Rex = Re number at position x
+Prx = Pr number at position x
+
+
+RESULTS
+The analysis blocks 24 channels.
+The temperature rises to 1920 C exceeding the design limit (1600 C).
 
 
 
@@ -336,10 +390,6 @@ decreased by more than 5% and 10%, respectively, for the PMR core in order to me
 
 
 
-On the unit cell model:
-* Bays et al. 2006
-* In et al. 2006 % in_three-dimensional_2006
-* Richards et al. 2007 % richards_thermal_2007
 
 Other detailed studies:
 * Cioni et al. (2004)

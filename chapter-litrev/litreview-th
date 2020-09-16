@@ -361,22 +361,6 @@ The CAST3M/Arcturus model uses a two level approach:
 % bieder_qualification_2008
 Sort of validation of the code applied to a PWR.
 
-% cioni_3d_2006
-Investigation of the effects of channel blockage.
-2 configurations investigated:
-- 1 blocked assemblies surrounded by 6 unblocked
-- 1 blocked assembly surrounded by 5 unblocked assemblies and 1 reflector assembly.
-CFD Code Trio_U: (Bieder et al. 2000)
-- 3D conduction problem in the solid
-- 1D thermal-hydraulic model for Helium
-
-Fluid-solid coupling:
-Colburn correlation: Nux = 0.023 Re**0.8 Pr**0.33
-
-Graphite and fuel compacts are modeled using the same physical properties.
-The power in the fuel is a chopped cosine:
-P(x) = Po * 1.2 * cos(1.0267 (2x/H-1))
-
 % ball_next_2008
 Expert panels identified safety-relevant phenomena, ranked their importance, and assessed
 the knowledge levels in the areas of accidents and thermal fluids, fission-product transport and dose,
