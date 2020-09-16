@@ -3,69 +3,6 @@ This file will be eventually deleted.
 
 
 
-% richards_thermal_2007
-What they did:
-* Modified fuel element design
-	- analyzes using RELAP5-3D/ATHENA, POKE, and CFX.
-	- 30C reduction
-* reduction of the bypass flow to reduce peak fuel temperatures
-* alternative inlet-flow configurations to reduce reactor vessel temperatures
-* see if conventional LWR materials could be used for a VHTR vessel
-
-ATHENA: Advanced Thermal Energy Network Analysis (Carlson, 1986)
-Carlson, 1986
-To asses the impact of higher coolant temperatures on steady-state vessel temperatures, parasitic RCCS heat losses, and peak fuel temperatures during LOCAs.
-GT-MHR inlet configuration and two alternative inlet flow configurations evaluated
-Routing the inlet flow through the inner reflector resulted in a greater loss of heat capacity, increasing fuel temperatures by 40 C during a LOCA.
-
-POKE (Kapernick, 1993), calculations on the unit cell:
-Two designs: Fort St Vrain: 10 row (10 row of fuel holes across the flats)
-increased to 12 row. Also reduction of the fuel coolant holes and coolant holes.
-This reduces the max temperatures by 34 C.
-
-POKE and ATHENA:
-Study the effects of lowering the coolant inlet temperature and also decrease the total coolant flow rate
-
-% simoneau_three-dimensional_2007
-3D model to simulate the passive heat removal in a MHR during a loss of active cooling accident.
-Model developed using STAR-CD solves the conductive, convective, and radiative heat transfer within a 30 deg section of the core and reactor vessel.
-To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
-
-Two accident scenarios: despressurized conduction cooldown and pressurized conduction cooldown.
-Results compared to assess the effect of internal natural convection which is neglible during the depressurized event.
-Evolution of natural convection flow through the core is examined and discussed.
-
-If the circuit is depressurized (depressurized conduction cooldown DCC) the convective heat transfer from natural convection is negligible.
-The helium pressure is on the order of atmospheric pressure due to equilibrium with air in the reactor cavity volume.
-If the circuit remains pressurized (pressurized conduction cooldown PCC) then the internal natural convection provides noticeable heat transfer.
-
-Timeline for both scenarios is the same:
-- Reactor operates at 600 MW
-- Primary helium circulation is stopped
-- protection system drops the rods automatically
-In the DCC scenraio, the system rapidly depressurizes and the transient begins at a completely depressurized state.
-After the loss of forced flow, natural circulation develops in the reactor as a result of the buoyancy forces.
-Natural convection occurs in both the DCC and PCC scenarios. In the first case it is ignored since it is weak and the amount of heat transfer is negligible.
-
-Partial differential equations discretized by the finite volume method, using the first order upwind differences for the spatial temrs and a first order, fully implicit scheme for the temporal discretization.
-To solve pressure linked equations: SIMPLE algorithm (Patankar, 1980) and PISO algorithm (Issa et al., 1991) for the steady-state and transient calculations respectively.
-
-During the steady-state calculations, turbulence is modeled using STAR-CD's standard linear k-e model and wall functions for high Reynolds number flow.
-Heat transfer by thermal radiation modeled by face-to-face exchanges using a discrete beam method to calculate the view factors.
-All surfaces are gray an diffuse.
-
-The blocks are represented by a homogeneous equivalent solid medium, which includes both the fuel compacts and the graphite web.
-The gaps between the core blocks are explicitly modeled by mesh cells.
-The gap size is assumed to be 2 mm.
-
-A distributed resistance model (porous medium) is used to represent the coolant channels in the fuel blocks.
-The graphite of the fuel blocks is represented by a separate set of mesh cells.
-Because the solid parts and fluid parts of the model are coupled, the two sets of cells are overlaid.
-The overlapping fluid and solid cells are coupled by calculating the heat flux form the fluid to the solid: Q = K(Tf-Ts).
-K represents the heat transfer by a combination of conduction, radiation, and convection.
-Its values is obtained from a separate detailed, explicit model of a single fuel block.
-Comparison of homogeneous and explicit model of the fuel block during a pressurized conduction cooldown.
-
 % huning_steady_2014
 Modeling and prediction of core thermal hydraulic behavior is essential for both normal operation and transient safety.
 Thermal hydraulic modeling studies for early gas-cooled reactor designs such as Fort Saint Vrain and Peach Bottom Unit 1 are limited and consist mainly of support calculations for NRC safety analysis reports.

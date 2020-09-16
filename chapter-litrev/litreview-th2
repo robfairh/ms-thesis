@@ -338,7 +338,7 @@ Study the effects of lowering the coolant inlet temperature and also decrease th
 
 
 
-% cioni_3d_2006
+% cioni_3d_2005
 ABSTRACT
 This work presents the results from 3D numerical simulations of assemblies of a \gls{HTGR}.
 The objective of the study was to investigate an emergency situation due to the blocking of He channels in the core.
@@ -369,33 +369,69 @@ Nu_x = 0.023 Rex^0.8 Prx^0.33
 Rex = Re number at position x
 Prx = Pr number at position x
 
-
 RESULTS
 The analysis blocks 24 channels.
 The temperature rises to 1920 C exceeding the design limit (1600 C).
 
 
 
+% simoneau_three-dimensional_2007
+
+
+
+
+
+
+
+
+
+
+3D model to simulate the passive heat removal in a MHR during a loss of active cooling accident.
+Model developed using STAR-CD solves the conductive, convective, and radiative heat transfer within a 30 deg section of the core and reactor vessel.
+To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
+
+Two accident scenarios: despressurized conduction cooldown and pressurized conduction cooldown.
+Results compared to assess the effect of internal natural convection which is neglible during the depressurized event.
+Evolution of natural convection flow through the core is examined and discussed.
+
+If the circuit is depressurized (depressurized conduction cooldown DCC) the convective heat transfer from natural convection is negligible.
+The helium pressure is on the order of atmospheric pressure due to equilibrium with air in the reactor cavity volume.
+If the circuit remains pressurized (pressurized conduction cooldown PCC) then the internal natural convection provides noticeable heat transfer.
+
+Timeline for both scenarios is the same:
+- Reactor operates at 600 MW
+- Primary helium circulation is stopped
+- protection system drops the rods automatically
+In the DCC scenraio, the system rapidly depressurizes and the transient begins at a completely depressurized state.
+After the loss of forced flow, natural circulation develops in the reactor as a result of the buoyancy forces.
+Natural convection occurs in both the DCC and PCC scenarios. In the first case it is ignored since it is weak and the amount of heat transfer is negligible.
+
+Partial differential equations discretized by the finite volume method, using the first order upwind differences for the spatial temrs and a first order, fully implicit scheme for the temporal discretization.
+To solve pressure linked equations: SIMPLE algorithm (Patankar, 1980) and PISO algorithm (Issa et al., 1991) for the steady-state and transient calculations respectively.
+
+During the steady-state calculations, turbulence is modeled using STAR-CD's standard linear k-e model and wall functions for high Reynolds number flow.
+Heat transfer by thermal radiation modeled by face-to-face exchanges using a discrete beam method to calculate the view factors.
+All surfaces are gray an diffuse.
+
+The blocks are represented by a homogeneous equivalent solid medium, which includes both the fuel compacts and the graphite web.
+The gaps between the core blocks are explicitly modeled by mesh cells.
+The gap size is assumed to be 2 mm.
+
+A distributed resistance model (porous medium) is used to represent the coolant channels in the fuel blocks.
+The graphite of the fuel blocks is represented by a separate set of mesh cells.
+Because the solid parts and fluid parts of the model are coupled, the two sets of cells are overlaid.
+The overlapping fluid and solid cells are coupled by calculating the heat flux form the fluid to the solid: Q = K(Tf-Ts).
+K represents the heat transfer by a combination of conduction, radiation, and convection.
+Its values is obtained from a separate detailed, explicit model of a single fuel block.
+Comparison of homogeneous and explicit model of the fuel block during a pressurized conduction cooldown.
+
+
+
+
+
+
 --> GO BACK TO REFERENCES FROM
-* tak_numerical_2008
 * sato_computational_2010
 
 % takada_core_2004
-
-
-
-
-
-
-
-
-
-
-Other detailed studies:
-* Cioni et al. (2004)
-Cioni, C., Marchand, M., Geffraye, G., Ducros, F., 2004. Thermal hydraulic 3D
-calculations on the core of a high temperature gas-cooled reactor. In: Second
-International Topical Meeting on High Temperature Reactor Technology,
-Beijing, China, September 22–24, 2004.
-
-* Simoneau et al. 2005
+% melese_thermal_1984
