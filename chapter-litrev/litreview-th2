@@ -385,6 +385,10 @@ Solves conductive, convective, and radiative heat transfer within a 30deg sectio
 To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
 
 INTRODUCTION
+The objective of this paper is to present the implementation of a 3-D PCC computation and the resulting thermal response of the reactor.
+
+KEY FEATURES OF THE REACTOR DESIGN
+
 
 
 
