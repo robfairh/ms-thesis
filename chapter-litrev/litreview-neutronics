@@ -640,14 +640,6 @@ https://www.sciencedirect.com/science/article/pii/S0306454918300100
 other validations of Pronghorn:
 - Very High Temperature Reactor Critical experiment %strydom_inl_2013
 
-
-
-- Things that moltres is missing:
-% j_ortensi_initial_2012
-Neutron leakage corrections:
-With two groups there is a loss of accuracy in the neutronic calculations for HTRs unless neutron leakage corrections are employed.
-Leakage corrections are currently not available in PRONGHORN.
-
 * on heterogeneous diffusion calculations:
 %sen_super-homogenization-corrected_2017
 Deterministic full reactor core simulators require homogenized group constants covering the operating and transient conditions over the entire lifetime of the core.
@@ -677,3 +669,12 @@ Using Monte Carlo lattice physics codes for generating the homogenized group con
 
 * on Porous media model (validation):
 Studer et al. CAST3M/ARCTURUS: A coupled heat transfer CFD code for thermal–hydraulic analyzes of gas cooled reactors. 2006.
+
+- Things that moltres is missing:
+% j_ortensi_initial_2012
+Neutron leakage corrections:
+With two groups there is a loss of accuracy in the neutronic calculations for HTRs unless neutron leakage corrections are employed.
+Leakage corrections are currently not available in PRONGHORN.
+
+% simoneau_three-dimensional_2007
+The thermal conductivity of graphite depends on its temperature and irradiation history.

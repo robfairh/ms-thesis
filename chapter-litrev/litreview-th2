@@ -171,10 +171,6 @@ Mass flow rates for the two cases are also not significantly different except in
 
 
 
-
----> LEFT HERE
-
-
 % no_multi-component_2007
 ABSTRACT
 The air ingress event following a LOCA is a cause of concern.
@@ -375,72 +371,117 @@ The temperature rises to 1920 C exceeding the design limit (1600 C).
 
 
 
----> left here
-
 % simoneau_three-dimensional_2007
+They call the transients depressurized and pressurized, I believe these are LPCC and HPCC.
+
 ABSTRACT
 Three dimensional model to simulate the passive heat removal in a \gls{PMR} during \gls{LPCC} and \gls{HPCC} events.
 Model used the CFD code STAR-CD.
-Solves conductive, convective, and radiative heat transfer within a 30deg section of the core and reactor vessel.
+Solves conductive, convective, and radiative heat transfer within a 30d eg section of the core and reactor vessel.
 To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
 
 INTRODUCTION
-The objective of this paper is to present the implementation of a 3-D PCC computation and the resulting thermal response of the reactor.
+The objective of this paper is to present the implementation of a 3-D HPCC computation and the resulting thermal response of the reactor.
 
 KEY FEATURES OF THE REACTOR DESIGN
+During reactor operation, however, the blocks experience size changes due to the effects of thermal expansion, which reduces the gap size, and irradiation of the graphite, which tends to shrink the graphite, increasing the gap size.
+Thus, the bypass flow behavior changes greatly from fresh to used blocks.
 
-
-
-
-
-
-
-3D model to simulate the passive heat removal in a MHR during a loss of active cooling accident.
-Model developed using STAR-CD solves the conductive, convective, and radiative heat transfer within a 30 deg section of the core and reactor vessel.
-To accommodate the different spatial scales, it uses homogeneous equivalent media to represent the coolant flow and the prismatic fuel blocks.
-
-Two accident scenarios: despressurized conduction cooldown and pressurized conduction cooldown.
-Results compared to assess the effect of internal natural convection which is neglible during the depressurized event.
-Evolution of natural convection flow through the core is examined and discussed.
-
-If the circuit is depressurized (depressurized conduction cooldown DCC) the convective heat transfer from natural convection is negligible.
+ASSUMPTION FOR DECAY HEAT REMOVAL TRANISENTS
+LPCC: Conduction mostly, some radiation, and some convection contribute to the heat removal process.
 The helium pressure is on the order of atmospheric pressure due to equilibrium with air in the reactor cavity volume.
-If the circuit remains pressurized (pressurized conduction cooldown PCC) then the internal natural convection provides noticeable heat transfer.
+HPCC: natural convection has a larger contribution than in the previous case.
 
-Timeline for both scenarios is the same:
-- Reactor operates at 600 MW
-- Primary helium circulation is stopped
-- protection system drops the rods automatically
-In the DCC scenraio, the system rapidly depressurizes and the transient begins at a completely depressurized state.
-After the loss of forced flow, natural circulation develops in the reactor as a result of the buoyancy forces.
-Natural convection occurs in both the DCC and PCC scenarios. In the first case it is ignored since it is weak and the amount of heat transfer is negligible.
+THE NUMERICAL MODEL AND CODE
+The code STAR-CD (citation) performed the calculations.
+It solves the equations of fluid flow and heat transfer using a \gls{FVM} discretization.
+The algorithms SIMPLE and PISO link the pressure to the velocity for the steady state and transient cases, respectively.
+They modeled turbulence only during steady-state using the standard linear k-epsilon model and wall functions.
+Heat transfer by thermal radiation is modeled by face-to-face exchanges of energy using a discrete beam method to calculate the view factors.
+The model assumes all the surfaces to be gray and diffuse.
 
-Partial differential equations discretized by the finite volume method, using the first order upwind differences for the spatial temrs and a first order, fully implicit scheme for the temporal discretization.
-To solve pressure linked equations: SIMPLE algorithm (Patankar, 1980) and PISO algorithm (Issa et al., 1991) for the steady-state and transient calculations respectively.
+Important: the transient calculations assume laminar flow, and avoid calculating turbulence.
 
-During the steady-state calculations, turbulence is modeled using STAR-CD's standard linear k-e model and wall functions for high Reynolds number flow.
-Heat transfer by thermal radiation modeled by face-to-face exchanges using a discrete beam method to calculate the view factors.
-All surfaces are gray an diffuse.
+The blocks are modeled by a homogeneous equivalent solid medium.
+The solid-fluid heat transfer and the pressure drop across the core are prescribed via coefficients (the boundary layer is not resolved).
 
-The blocks are represented by a homogeneous equivalent solid medium, which includes both the fuel compacts and the graphite web.
-The gaps between the core blocks are explicitly modeled by mesh cells.
-The gap size is assumed to be 2 mm.
+The helium properties are assumed to be temperature independent.
+The thermal conductivity of graphite depends on its temperature and irradiation history.
 
-A distributed resistance model (porous medium) is used to represent the coolant channels in the fuel blocks.
-The graphite of the fuel blocks is represented by a separate set of mesh cells.
-Because the solid parts and fluid parts of the model are coupled, the two sets of cells are overlaid.
-The overlapping fluid and solid cells are coupled by calculating the heat flux form the fluid to the solid: Q = K(Tf-Ts).
-K represents the heat transfer by a combination of conduction, radiation, and convection.
-Its values is obtained from a separate detailed, explicit model of a single fuel block.
-Comparison of homogeneous and explicit model of the fuel block during a pressurized conduction cooldown.
+The code uses the porous medium model to represent the coolant channels in the fuel blocks.
+The graphite of the fuel blocks themselves is represented by a separate set of mesh cells.
+Because the solid parts and fluid parts of the model in this region are coupled, the two sets of cells are overlaid in the model.
+The overlapping fluid and solid cells are coupled by calculating the heat flux from the fluid to the solid: q = K(T f − T s ).
+K includes conduction, radiation, and convection. 
+It was calculated from a explicit model of a single fuel block.
+
+Validation of the porous media model using a single fuel block.
+Comparison against the explicit model.
+
+The Courant number yields time steps of 10^-3 to 10^-1 s.
+The heat transfer in the solid requires the simulation of tens of hours, with 100 h being typical.
+The model uses a method to alternate between small and large time steps.
+
+CONCLUSIONS
+The LPCC case has been examined by many investigators.
+The HPCC case has not been investigated as widely.
+
+The extra convective heat transfer reduced the peak temperature of both the fuel and the pressure vessel.
+It leads to thermal stratification in the surrounding air and higher temperature in the upper reactor structures.
 
 
-
-
-
-
---> GO BACK TO REFERENCES FROM
-* sato_computational_2010
 
 % takada_core_2004
+ABSTRACT
+They carried out the thermal-hydraulic design of the HTTR.
+To evaluate coolant flow distribution and maximum fuel temperature, they used the experimental results such as heat transfer coefficient and pressure loss coefficient.
+
+DESIGN DETAILS
+The flow  network analysis code FLOWNET calculated the coolant flow rate and temperature distributions.
+The calculation model consists of one-dimensional flow branches and pressure nodes.
+
+The code TEMDIM calculates the fuel temperature using a cylindrical model, based on the power distribution.
+
+CONCLUSIONS
+The authors carried out the validation of the thermal-hydraulic design code by comparing the results with the experimental data from the HTTR.
+
+
+
+---> left here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % melese_thermal_1984
+
+
+
+On the advantages/disadvantages of the porous media model.
+
+% wu_investigating_2010
+ABSTRACT
+Therefore, this study investigates the thermal-hydraulic behaviors in a segment of pebbles predicted by the Reynolds-averaged Navier–Stokes (RANS) computational fluid dynamics (CFD) model using porous and realistic approaches for the complicated geometry.
+A CFD simulation with the porous approach for the pebble geometry can quickly and reasonably capture the averaged behaviors of the thermal-hydraulic parameters as the gas flows through the core, including the pressure drop and temperature increase.
+However, it is necessary to utilize the realistic approach for this complicated geometry to obtain the detailed and localized characteristics within the fluid and solid fuel regions.
+The RANS CFD model with the realistic approach can simulate the flow anisotropic characteristics within the pores, which include flow separation, oscillation phenomena, and vortex formation.
+The computation time needed for the simulation with the realistic approach is about 3000 times that needed for the porous approach.
+
+CONCLUSIONS
+Advantages of porous media model:
+The number of meshes and computation time needed for a CFD simulation using the porous
+approach are considerably lower than those needed for the CFD simulation using the realistic approach.
+
+Disadvantages:
+The RANS CFD model with the realistic approach can reasonably simulate the anisotropic thermal-hydraulic characteristics within the closely packed pebble geometry, including the vortices and flow separation in the pores, temperature variation around the pebble surface, and the variation in the Nu number with the azimuth and zenith angles.
+
+It is necessary to utilize the realistic approach for this pebble geometry in order for the CFD modeling to capture the detailed and localized characteristics within the fluid and solid fuel regions.

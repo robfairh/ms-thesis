@@ -284,13 +284,21 @@ After finding an optimal configuration, they evaluated the maximum temperatures 
 
 % equivalent cylinder model
 % no_multi-component_2007
-An example of codes using such approach is GAMMA \cite{no_multi-component_2007}.
+An example of codes using equivalent cylinder approach is GAMMA \cite{no_multi-component_2007}.
 The motivation of such development was the air ingress event following a LOCA.
 Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
 The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a major concern.
 The GAMMA code solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
 The code couples the solid and gas equations using the porous media model.
 Together with the multi-dimensional analysis feature, GAMMA has one-dimensional analysis capability modeling a general network of pipe flow.
+
+% takada_core_2004
+Takada et al. \cite{takada_core_2004} carried out another study using a simplified approach.
+Focusing on the \gls{HTTR}, they developed a thermal-hydraulic design code.
+The code used the flow network analysis code FLOWNET for calculating the coolant flow and temperature distributions.
+The calculation model consisted of one-dimensional flow branches and pressure nodes.
+The code TEMDIM solved the fuel temperatures using the equivalent cylindrical model.
+Finally, the authors validated the calculation scheme by comparing its results with the experimental data from the \gls{HTTR}.
 
 % unit cell model
 The unit cell model assumes that the coolant removes all the heat generated in the fuel.
@@ -315,9 +323,6 @@ The analysis focused on the GT-MHR-600 at \gls{EOC}.
 Although the unit cell model simplifies the analysis, it is a helpful tool to determine some basic parameters of the reactor under surveying.
 In such a study, the results showed that the maximum fuel temperature surpassed the design limits and the authors propose accordingly a countermeasure.
 
-
-
-
 % more detailed calculations
 More detailed thermal-hydraulic evaluations were rare in the open literature until the last two decades.
 
@@ -336,9 +341,14 @@ The results suggested that the blockage increases the temperature on the blocked
 The results also showed that the fuel temperature surpassed the design limits, and that the reactor operators should counteract these effects with active systems.
 
 % simoneau_three-dimensional_2007
-
-
-
+Simoneau et al. \cite{simoneau_three-dimensional_2007} analyzed the transient behavior of an \gls{HTGR} during the \gls{DCC} and \gls{HPCC} event.
+The CFD code STAR-CD \cite{computational_dynamics_limited_star-cd_2004} performed the calculations.
+The code solved conductive, convective, and radiation heat transfer in a 30$^{\circ}$ section of the core and reactor vessel.
+To accommodate the different spatial scales, the code uses the porous media model to represent the coolant flow and the prismatic fuel blocks.
+The model does not resolve the boundary layer and the use of coefficients prescribe the solid-fluid heat transfer and pressure drop across the core.
+The authors validate their porous media model against explicit calculations using a single fuel block.
+One of their most results shows that the maximum temperature in the \gls{HPCC} event is lower than in the \gls{DCC} event.
+However, the extra convective heat transfer causes a thermal stratification in the surrounding air, causing higher temperatures in the upper reactor structures.
 
 % tak_numerical_2008
 In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic HTGR fuel assembly.
@@ -364,8 +374,6 @@ The results of this study indicate that the accuracy of the unit cell worsens fo
 The last study imposed different radial peaking factors for the different fuel channels.
 Such a study showed the effects of considering a non-flat radial power distribution.
 The authors considered a radial power distribution that did not have a strong impact on the maximum fuel temperature.
-
-
 
 % sato_computational_2010
 Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
