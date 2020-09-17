@@ -447,8 +447,6 @@ The authors carried out the validation of the thermal-hydraulic design code by c
 
 
 
----> left here
-
 
 % huning_steady_2014
 LITERATURE REVIEW
@@ -643,6 +641,87 @@ Validation of Trio_U applied to a PWR.
 
 
 
+---> left here
+
+
+
+
+% tak_practical_2012
+ABSTRACT
+Several studies have conducted local analyses on a unit cell or a single assembly instead of the whole-core geometry.
+In spite of the recent rapid development inf CFD tools, a whole-core CFD analysis for a prismatic reactor still requires a tremendous computational expense.
+This paper presents a practical method for the whole-core thermal analysis of a prismatic gas-cooled reactor.
+The method solves the 3D heat conduction equation in the solid and the 1D conservation equation in the fluid.
+The method adopts the basic unit cell concept which eliminates an elaborate grid generation process.
+The method achieves a significant computational expense reduction.
+
+INTRODUCTION
+Because of the complex geometry of the HTGR, local analyses have been widely used for thermal analysis and design.
+The most popular approach is the unit cell method.
+6-12
+
+More detailed analyses on fuel assemblies:
+* Cioni et al. 2006
+* Tak et al 2008
+* Sato et al. 2010
+* Kim et al. : analyzed the 1/2 section of a single control fuel assembly
+
+The applications of the CFD technology were also expanded to an entire core analysis:
+* Simoneau et al. 2005
+* Tochio and Nakagawa performed CFD analysis for the 1/6 of a 30 MW HTTR in 2005
+* Pointer and Thomas 2010. 1/6 of the reactor using CFD. Internal structures of the reactor core, fuel, control fuel, and reflector blocks as well as bypass flow gaps were precisely modeled.
+Their objective was a coupled analysis with a nuclear physics code.
+
+-- Important
+A whole-core thermal analysis has many advantages over local models.
+In general, more accurate boundary conditions can be applied.
+Whole core models are desirable for transient analyses.
+A coupled analysis with a nuclear physics code requires full core models.
+
+Difficulties in whole-core analysis using a CFD code lie in the huge burden of computational effort.
+A whole-core CFD analysis with geometric details is still challenging.
+The other alternative method for a whole-core analysis might be a system calculation that uses simplified models.
+* Lim and Kim: system calculation.
+Fuel block temperatures have to be sacrificed because of the simplification of the geometries.
+
+The present method intends to overcome the difficulties in CFD calculation as well as in system calculations.
+The method solves the 3D heat conduction equation in solids and adopts the 1D fluid assumption for the coolant.
+* cioni et al. 2006
+* Takada et al. 2004
+
+The application of the idea is still limited.
+One of the main reasons seems to be another heavy burden to prepare the computational grids to model the entire core.
+In order to enhance practicability, the present method adopts the basic unit cell concept, which eliminates an elaborate grid generation process.
+
+DESCRIPTION OF PRISMATIC CORE DESIGN
+The study focuses on the PMR200, whose reference design is the GT-MHR.
+
+NUMERICAL METHOD
+The present method focuses on the fact that a whole-core CFD analysis consumes most of the computing time in solving fluid conservation equations rather than solid.
+In addition, the geometry of a solid is very complex whereas the geometry of the fluid channel is simple.
+
+Uses finite volumes and unit cells.
+The concept of a basic unit cell provides an efficient generation of unstructured computational grids for modeling the solid region of an entire fuel block.
+The present method may be considered as an extension of the traditional unit cell method, which uses a single triangular unit cell.
+In contrast to the existing unit cell method, the present method considers various shapes of the unit cells as well as the heat transfer be tween unit cells.
+
+ONE DIMENSIONAL FLUID MODEL
+The analysis of prismatic cores has widely applied one-dimensional models due to simple flow channel geometries.
+The one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations.
+
+VALIDATIONS USING SINGLE FUEL ASSEMBLY
+The carried out the validation of the method by analyzing a fuel assembly and comparing the results to the commercial code CFX results.
+
+WHOLE CORE ANALYSIS
+Model of 1/6th of the reactor
+The bypass gaps between the assemblies were also modeled using 1-D fluid channels.
+
+
+
+
+
+----> Tak et al. DEVELOPMENT OF A CORE THERMO-FLUID ANALYSIS CODE FOR PRISMATIC GAS COOLED REACTORS. 2014
+
 
 
 
@@ -654,10 +733,7 @@ Validation of Trio_U applied to a PWR.
 
 
 
-
-
-On the advantages/disadvantages of the porous media model.
-
+On the advantages/disadvantages of the porous media model:
 % wu_investigating_2010
 ABSTRACT
 Therefore, this study investigates the thermal-hydraulic behaviors in a segment of pebbles predicted by the Reynolds-averaged Navier–Stokes (RANS) computational fluid dynamics (CFD) model using porous and realistic approaches for the complicated geometry.

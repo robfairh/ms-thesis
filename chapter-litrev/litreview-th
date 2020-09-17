@@ -67,54 +67,8 @@ Decay Heat
 
 * TAC2D for carrying parametric studies during a LPCC event
 
-% damian_vhtr_2008
-What they did:
-- fuel cell and fuel column analyses
-- 2D and 3D core configurations
-- including the coupling between neutronic and thermal-hydraulic
-
-Thermal analysis at the core hot spot.
-Capability to reduce the maximum fuel temperature by modifying the design parameters.
-Best performance for an annular fuel compact with coolant flowing inside and outside the compact.
-Changes in the fuel compact distribution: reduction of the number of fuel compact in the outer ring of the fuel element.
-
-Full core configuration show that the radial positioning of the fuel elements allows to reduce significantly the power peaking factor and the maximum fuel temperature.
-Other modifications were addressed such as the increase of the bypass fraction and the replacement of a part of the graphite reflector by material with better thermal properties.
-
-First part: thermal calculations on the steady-state configurations.
-Calculations performed on the fuel cell geometry and the fuel column geometry at the core hot spot location.
-Calculations using CAST3M code: 3D thermal coupled with 1D hydraulic modeling.
-Pin power distribution come from 2D core calculations performed with the transport code APOLLO2.
-Parametric studies to increase the outlet temperature: reduce helium flow, increase the average power density, and increase the active core height.
-
-Second part:
-2D core configuration.
-Neutronic analysis dedicated to the minimization of the radial power peaking factor.
-Various options: impact of fuel enrichment, fuel loading, and fuel management scheme.
-
-Last part:
-Analysis of the 3D core model using the coupled neutronic/thermal-hydraulic tool developed by CEA.
-NEPTHIS/CAST3M.
-Design parameters influence evaluated:helium bypass fraction, average power density, core geometry, reflector materials properties and fuel loading strategy.
-Core depletion calculations including control rods modeling are performed in order to evaluate the impact on the power distribution.
-
-NEPTHIS is based on a transport-diffusion calculation scheme using the transport code APOLLO2 and the transport-diffusion code CRONOS2.
-Transport code calculates the fuel element in an infinite medium and provides condensed and homogenized cross-sections libraries.
-The CAST3M/Arcturus model uses a two level approach:
-- singularities of fuel particles, fuel compacts, and helium cooling channels with inter-assembly helium cavity are homogenized to obtain equivalent thermal properties for the porous media and the cooling gas.
-- Thermal-hydraulics is solved on the homogenized geometry using CAST3M.
-
-% ball_next_2008
-Expert panels identified safety-relevant phenomena, ranked their importance, and assessed
-the knowledge levels in the areas of accidents and thermal fluids, fission-product transport and dose,
-high-temperature materials, graphite, and process heat for hydrogen production.
 
 
-
-
-% johnson_development_2008
-
-% anderson_analysis_2007
 
 % huning_novel_2016
 One major step for licensing is the demonstration of successful passive safety operation of HTGRs for the design safety basis cases.
@@ -128,7 +82,6 @@ CFD techniques are well equipped to compute the detailed assembly temperature pr
 System-level codes such as RELAP are well equipped to compute core-level temperature profiles but it is also difficult to approximate the assembly geometry correctly using simple equivalent cylinder or slab models.
 
 Unit cell and intermediate level techniques have he highest potential since whole-core calculations are possible with computed pin or near-pin-level temperature gradients for the hexagonal fuel assembly geometry.
-
 
 Due to the significantly different flow and core geometry for gas reactors, typical LWR codes may not be suitable for the analysis of HTGRs.
 Some options are to couple CFD core heat transfer calculations to system level calculations by relap.
@@ -174,7 +127,7 @@ The parametric studies investigated the impact of bypass flow, flow distribution
 Some recomendations of such study are to switch to annlar fuel compacts to reduce the compact thermal resistance, reduce the gap space between the compact and graphite block, reduce the diameter of the compacts while increasing the number of compacts per assembly.
 
 One other design study was performed by Damian 2008
-Damian, 2008 % damian_vhtr_2008
+* damian_vhtr_2008
 Thermal hydraulic and neutronic trade-off studies were performed using the 3D thermal hydraulic code CAST3M and neutronics calculation scheme NEPHTIS
 Cavalier et al. 2006
 Detailed thermal calculations on a hot spot assembly
@@ -199,57 +152,10 @@ However such approach would increase fuel temperatures.
 
 Fine mesh CFD methods are not equipped to simulate the whole core and primary system over the course of a long transient (100+ hours), and  realistic power profiles have not been fully employed in the various LOFC safety studies
 
-% tak_practical_2012
-Local analyses widely used by modeling a unit cell or single assembly instead of a whole-core geometry.
-In spite of the recent rapid development of the computational fluid dynamics (CFD) technology, a whole-core CFD analysis for a prismatic reactor still requires tremendous computational expense.
-This paper presents a practical method for the whole-core thermal analysis of a prismatic gas-cooled reactor.
-
-3D heat conduction equation for a solid as in a CFD code.
-1D conservation equations adopted for a fluid as in a system code.
-Significant computational expense reduction.
-The method adopts the basic unit cell concept which eliminates an elaborate grid generation process.
-
-Because of the complex geometry of the HTGR, local analyses have been widely used for thermal analysis and design.
-The most popular approach is the unit cell method.
-6-12:
-
-The unit cell model ignores the heat transfer within the fuel block.
-- Cioni et al. 2006. CFD analysis of one fuel assembly surrounded by six half-fuel assemblies.
-They focused on the ability of the coolant to cool down the fuel under blockages of different fuel channels.
-- Tak et al 2008. CFD analysis of 1/12 of the fuel assembly
-- Sato et al. 2010
-- Kim et al. analyzed the 1/2 section of a single control fuel assembly
-
-- Simoneau et al 2005 CFD of an entire reactor (30 deg). The fuel blocks were homogenized into triangular posts.
-- Tochio and Nakagawa performed CFD analysis for the 1/6 of a 30 MW HTTR in 2005
-- Pointer and Thomas 2010. 1/6 of the reactor using CFD. Internal structures of the reactor core, fuel, control fuel, and reflector blocks as well as bypass flow gaps were precisely modeled.
-
-Whole core models are desirable for transient analyses.
-Coupled analysis require full core models.
-
-Alternative method to whole core analysis:
-- system calculation: however the accuracy of the fuel block temperatures is sacrificed because of the simplification of the geometries.
-3D in solids and 1D in coolant:
-13,21
-In a prismatic fuel block, the geometry of a solid is very complex whereas the geometry of the fluid channel is simple.
-Uses finite volumes and unit cells.
-
-% gougar_htgr_2016
-RELAP-3D
-Coupled to PHISICS for prismatic reactor steady-state and transient analysis.
-Others: GRSAC (ORNL), GRSAC (ORNL), FLOWNEX (flownex.com), RELAP-7(INL), AGREE(NRC), MGT (FZ-Jülich),
-THERMIX-DIREKT (FZ-Jülich).
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-https://www.researchgate.net/scientific-contributions/82618217_Nam-il_Tak
-
-%%%%%%%%%%%%%%%%%%%% Multi physics maybe %%%%%%%%%%%%%%%%%%%%
-
-% damian_vhtr_2008
-
-%%%%%%%%%%%%%%%%%%%% Mechanics maybe %%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% Thermo-mechanics maybe %%%%%%%%%%%%%%%%%%%%
 
 % melese_thermal_1984
 Talks about thermal stresses
