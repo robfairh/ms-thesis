@@ -267,11 +267,36 @@ Another conclusion is that the accuracy is sensitive to the energy group boundar
 
 \section{HTGR Thermo-Hydraulics}
 
-% sort of intro: tak_numerical_2008
-The complex geometry of the hexagonal fuel assembly hinders accurate evaluations of the temperature profile without elaborate numerical calculations.
-The analysis of prismatic \gls{HTGR} has widely used simplified computational models to reduce the computational time.
+% sort of intro: tak_numerical_2008 and huning_steady_2014
+The complex geometry of the hexagonal fuel assembly needs elaborate numerical calculations for obtaining accurate evaluations.
+Thermal-hydraulic modeling studies for early \glspl{HTGR} consisted mainly of support calculations for NRC safety analysis reports.
+The analysis methods relied on sets of independent codes that employed simplistic approximations.
+Simplified models have the advantage to reduce the computational expense of the calculations.
 Such simplified approaches are helpful to understand some basic aspects of prismatic fuel blocks but they may affect the maximum fuel temperature.
 Among those models we find the flow network model, the equivalent cylinder model, and the unit cell model.
+
+% shenoy_htgr_1974
+General Atomics \cite{shenoy_htgr_1974} developed the first set of simplistic codes.
+The following list introduces and summarizes some of those codes and their features:
+
+\begin{itemize}
+\item FLAC: It determines the coolant flow distribution in the coolant channels and gaps.
+It solves the one-dimensional momentum equation for incompressible flow, the continuity equations for mass and energy.
+
+\item POKE: It determines the coolant mass flow, coolant temperature, and fuel temperature distribution.
+It solves the steady-state mass and momentum conservation equations for parallel channels.
+
+\item DEMISE: It determines the steady-state three-dimensional temperature distribution in a standard element.
+It solves the temperature in a network model.
+
+\item TAC-2D: It is a general purpose two-dimensional thermal analysis code.
+It solves the two-dimensional heat conduction equation.
+\end{itemize}
+
+
+
+
+
 
 
 % flow network model
@@ -329,7 +354,7 @@ More detailed thermal-hydraulic evaluations were rare in the open literature unt
 % cioni_3d_2005
 Cioni et al. \cite{cioni_3d_2006} presented an article in 2005 in which they conducted three-dimensional numerical simulations of fuel assemblies of an \gls{HTGR}.
 The objective of the study was to investigate an emergency situation due to the blocking of cooling channels in the core.
-They used the \gls{CFD} code Trio_U (citation) to carry out the analysis.
+They used the \gls{CFD} code Trio_U \cite{bieder_priceles_2000} to carry out the analysis.
 The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the one-dimensional thermal-hydraulic modeling of the coolant.
 In the preliminary work, the authors conducted a study of the influence of the bypass flow on the maximum coolant and fuel temperature.
 Another preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
@@ -388,7 +413,8 @@ Therefore, obtaining the mass flow rates from a separate solver may introduce er
 The authors compared the results from different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
 The $k \sim \omega$ model predicts bulk temperatures that are considerably lower than those from the $k \sim \varepsilon$ model.
 The differences go up to 49$^{\circ}$C.
-The overall mass flow rate is about 10$\%$ greater for the former  compared to the latter.
+The overall mass flow rate is about 10$\%$ greater for the former compared to the latter.
+The study suggested that these turbulence models need more verification against prismatic HTGR experiments.
 
 Another study analyzes the effect of considering different peak radial factors. Such consideration introduced variations of the maximum fuel temperature of up to 160 $^{\circ}$C.
 

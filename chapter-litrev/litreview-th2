@@ -457,32 +457,35 @@ Thermal hydraulic modeling studies for early gas-cooled reactor designs such as 
 Thermal analysis methods for these early HTGRs relied on sets of independent codes that employed simplistic approximations for flow, core, assembly and fuel heat transfer modeling.
 
 Early thermal analysis codes:
-Shenoy and McEarchern 1974 % see shenoy_htgr_1974
+* shenoy_htgr_1974
 
 Later reactor designs including the MHTGR and GT-MHR used the same or similar set of codes as those listed above to perform thermal analysis for safety analysis and conceptual design reports.
-The central modeling technique of these analyses is the equivalent fuel-moderator-coolant triangular unit cell.
+The central modeling technique of these analyses is the equivalent fuel-moderator-coolant triangular unit cell or node.
+A simple homogeneous geometry is formed.
 The disadvantage is that explicit fuel and graphite temperatures are not computed.
+(I think he is confusing things here. In the unit cell model, the fuel and graphite are modeled explicitly.)
 
-Specifically, it is of interest whether 1-D flow modeling of coolant and bypass channels provides sufficient accuracy for convective heat transfer coefficient prediction.
-The issue of unit cell nodal heat transfer methods as compared to more detailed CFD was investigated in a study by Tak et al. (2008) % tak_numerical_2008
-
-Recent studies of HTGR core thermal hydraulics can be divided into two principal categories: core heat transfer, and reactor fluid flow.
-In most cases, no experimental data are available to fully benchmark the results of a particular study; therefore, design results used are mostly from the MHTGR, GT-MHR, and NGNP (VHTR).
+It is of interest whether 1-D flow modeling of coolant and bypass channels provides sufficient accuracy for convective heat transfer coefficient prediction.
 
 While most of the studies discussed assume consistent sets of key design parameters such as assembly block and fuel dimensions, there is significant variation in operational parameters such as inlet coolant temperature, core flow rate or desired average coolant outlet temperature, and core power.
 Graphite and fuel material properties can also be different depending on the author or study.
 
-* Core heat transfer:
-MacDonald et al. 2003 % macdonald_ngnp_2003
-
-Study to support the NGNP.
-The purpose was to quantify the impact of variations to key design parameters such as core power, power density, assembly geometry, fuel configuration and others.
+CORE HEAT TRANSFER
+* macdonald_ngnp_2003
+INL performed a neutronic and thermal-hydraulic point design study in support for the NGNP.
+They conducted parametric studies varying key design parameters such as core power, power density, assembly geometry, fuel configuration and others.
 They performed both steady state and transient analyses.
 Analysis of maximum core temperatures by varying the bypass flow fraction, flow distribution, and reactor power.
 The steady state method employed the POKE code to simulate one third of the core.
 The code approximates core transfer using triangular unit cells.
-The core power profile was determined from Monte Carlo reactor physics calculations.
 The bypass and coolant flow distribution was fixed and not explicitly determined.
+
+I say this {
+I think the 3D unit cell model divides all the reactor in triangles that homogenize coolant, graphite, and fuel.
+It calculates the coolant distribution and temperatures.
+Then uses that as a boundary condition for the unit cell.
+Maybe it solves one unit cell for each assembly.
+}
 
 First observation: the maximum fuel temperature increases when bypass flow is increased.
 Another observation: the maximum fuel temperatures could be reduced by 100C if flow could be increased in hot coolant channels and decreased in channels next to lower power or cooler fuel compacts.
@@ -490,50 +493,25 @@ Another one: Increasing core power by adding active fuel blocks above the existi
 
 While these parametric studies revealed promising design modifications for the VHTR, a high degree of uncertainty remains due to the lack of explicit flow prediction and equivalent triangular unit cell modeling.
 
+
 Since the NGNP point design study, there have been limited core heat transfer parametric design studies for HTGRs.
 One parametric core heat transfer study was conducted by Damian 2008:
-Damian 2008 % damian_vhtr_2008
-* The 3D thermal hydraulic code CAST3M and neutronics calculation scheme NEPHTIS were used to determine maximum fuel temperature for a peak assembly.
-* Several fuel and assembly geometry configuration changes were investigated, but none were found to offer significant advantage over the originally proposed core assembly configuration.
-* Reducing radial power peaking was the most promising method for reducing peak fuel temperatures.
-* Coarse discretization of porous media homogenized cells formed the basis for the core heat transfer calculations.
-* Parameters such as bypass flow fraction, reflector material, power density, and control rod operation were varied to examine the impact on maximum fuel temperature
-* Replacing the outer graphite reflector with magnesium oxide (MgO) could reduce the maximum transient fuel temperatures by 50C.
-* Both studies macdonald_ngnp_2003 and damian_vhtr_2008 found that employing fuel management techniques reduces maximum fuel temperatures.
+* damian_vhtr_2008
 
 In addition to unit cell methods, CFD has also been used to analyze block or assembly level thermal hydraulics.
-CFD code Trio_U Bieder and Graffard, 2008 % bieder_qualification_2008
+* bieder_qualification_2008
 Analyzed partial helium channel blocking
 The code uses a hybrid finite volume finite element method for unstructured 3D grids, and supports both RANS and LES modeling.
 Various RANS turbulence models can be used including the k-epsilon model, k-w based SST model, or a Reynolds stress model.
 
-Cioni et al. 2006 examined the impact of helium channel blocking on maximum fuel temperatures.
-Cioni et al. 2006 % cioni_3d_2006
-24 blocked coolant channels were modeled.
-The maximum steady state fuel temperatures were found to reach 1925 C.
+* cioni_3d_2005
 
-Tak et al. 2008 compare the unit cell and CFD methods in detail.
-Tak et al. % tak_numerical_2008
-A flat power distribution was assumed for the axial length of the core.
-Bypass flow was calculated assuming a 1 mm reference gap.
-The max fuel temperature was found to be 1119 C.
-The similar unit cell model maximum temperature was found to be 1099 C.
-For cases with larger bypass gaps, CFD simulations indicate that maximum fuel temperatures could be up to 79C higher than the triangular cell prediction.
-Conclusion: triangular unit cell methods can be safely applied to cases with low bypass flow.
+* tak_numerical_2008
 
 This work (huning_steady_2014) presents a remedy for the triangular unit cell method to better estimate the intra-assembly heat conduction rates.
 
-* Coolant flow:
-The Nuclear Regulatory Commission (US-NRC) Office of Nuclear Regulatory Research published a Phenomena Identification and Ranking Table (PIRT) on NGNP (VHTR) safety-relevant phenomena (Ball, 2008).
-Ball, 2008 % ball_next_2008
-
-Expert panels were tasked with identifying and ranking phenomena critical to both steady state and accident conditions.
-Core bypass flow was judged to be of high importance with a low or medium knowledge level.
-This means that more research is needed to measure bypass flow across the core, and to develop reactor analysis tools that can predict bypass flow.
-One of the modeling challenges is that since graphite changes physical shape under irradiation, bypass flow will vary axially along the core.
-
-ANL
-Lee et al, 2006 % lee_status_2006
+COOLANT FLOW
+* lee_status_2006
 Performed core flow modeling and sensitivity studies for prismatic modular reactors.
 Modeling of coolant flow based on a 2D flow path and resistance network approach.
 Each fuel assembly modeled as a single channel with additional channels for axial bypass flow and lateral cross flow.
@@ -542,47 +520,139 @@ Objective was to identify flow paths that contribute to bypass flow the most.
 Vertical assembly gaps in the replaceable reflector region and near the permanent side reflector were identified as main bypass flow contributors.
 Cross flow was not found to play a substantial role in coolant flow distribution under normal operating conditions.
 
-Sato et al. 2010 % sato_computational_2010
-CFD work using FLUENT indicates that bypass flow is a complex phenomenon that is inherently coupled to neutronics, heat transfer, and fluid dynamics.
-Studies using the standard k-epsilon and the Wilcox k-w model show discrepancies.
-The study suggested that these turbulence models need more verification against prismatic HTGR experiments.
-Another key insight was that radial power distribution has a larger effect on maximum fuel temperatures that axial power distribution.
+* sato_computational_2010
 
-Johnson 2008 % johnson_development_2008
-CFD Analysis of the lower plenum flow.
+* johnson_development_2008
+CFD analysis of the lower plenum flow.
 Computations performed using FLUENT.
-The simulations address several questions: whether 2D or 3D calculations, fine or coarse grids are necessary. And what boundary conditions result more appropriate.
+The simulations address several questions: whether 2D or 3D calculations, fine or coarse grids are necessary.
+And what boundary conditions result more appropriate.
 
-Anderson et al. 2008 % anderson_analysis_2007
+* anderson_analysis_2007
 CFD model of the lower plenum.
 Goal to determine the degree of mixing in the lower plenum.
 
-* Summary
-Several codes employed a number of simplifications such as fixed flow fractions in coolant and bypass channels, 1/3rd fraction of whole core analysis, and neglected axial conduction.
-Triangular unit cells where a fraction of fuel, graphite and coolant were homogenized.
+SUMMARY AND PATH FORWARD
 Fine mesh CFD methods are more accurate but have not been applied to the whole core due to computational cost.
 
 Some approaches couple system analysis code such as RELAP for large core domains and CFD for local or detailed regions.
 This could be computationally efficient and provide accurate maximum fuel temperature and bypass flow predictions.
 
-What they did:
-* redevelop the unit cell method to adequately predict the axial and radial heat conduction within each assembly block
+Huning redeveloped the unit cell method to adequately predict the axial and radial heat conduction within each assembly block.
 
-Thermal fluid properties for graphite, helium, and fuel compact material are taken from Johnson et al, 2009.
-Johnson et al. 2009 % johnson_cfd_2009
-
+Thermal fluid properties for graphite, helium, and fuel compact material are taken from:
+* johnson_cfd_2009
 
 
 
 
+% shenoy_htgr_1974
+ANALYTICAL METHODS
+Based on the principles of conservation of mass, momentum, and energy.
 
+Steady-state analysis: (Table 4-1)
+* FLAC:
+Determines the coolant flow distribution in the coolant channels and gaps.
+Solves the 1-D Momentum Equation for incompressible flow.
+Solves continuity eqs of mass and energy.
+Models the density changes in the gas.
 
+* POKE:
+It solves the coolant mass flow, coolant temperature, and fuel temperature distribution in an HTGR core.
+Steady-state mass and momentum conservation equations for parallel channels, solved using finite differences.
+Imposes the power distribution.
 
+* DEMISE/DEMICE: determines the steady state 3D temperature distribution in 1/2 columns of standard elements (DEMISE) and control elements (DEMICE).
+It solves the temperature distribution in a network model using a successive point iteration.
+It calculates the flow distribution by balancing pressure drop in coolant passages.
 
+* BACH:
+It calculates the steady-state core power/flow ratio to achieve a desired maximum fuel temperature.
+It calculates the coolant channel mass flow by balancing the pressure drop for a single channel.
+It calculates the gas temperatures from energy balance equations.
+
+* HEXT:
+To determine steady-state temperature distribution and equivalent thermal conductances in fuel, fuel-mdoerator gap, and moderator in a unit cell of HTGR type fuel elements.
+It solves the heat conduction equation in 2D geometries.
+
+* TREVER:
+To determine from given power distributions the steady-state coolant, graphite, and fuel temperatures.
+TO determine time and space distribution of coating failure.
+It solves 1D (radial) steady-state heat transfer.
+
+* TAC-2D:
+It is a general purpose 2D thermal analysis code.
+Solves the 2D heat conduction equation by finite differences using an implicit iteration method.
+
+* DETRAC:
+Solves 1D nodal transient heat transfer equations with no axial or radial conduction between channels.
+
+1D unit cell code BACH and HEXT
+BACH 1D describes heat and coolant flow in a single coolant channel in the core.
+
+Transient analysis:
+* TAP code:
+To study the overall plant transient behavior of HTGRs.
+It incorporates models of all major components of the nuclear steam supply.
+The reactor and primary coolant model in the program accounts for all helium temperature changes in the primary coolant system including heating in the core and cooling in the steam generator.
+The reactor core model in TAP consists of one average coolant channel surrounded by graphite and fuel.
+It computes the average heat generation rate in the core and computes the average coolant, graphite, and fuel temperatures in the core.
+
+* Single Channel Analysis TAC Model:
+Coolant, graphite, and fuel temperature profiles within a unit cell.
+Signle rod stacj surrounded by a gap and volume of graphite with a heat capacity and conductance equal to that of a unit cell.
+The model extends the entire active core length with five axial nodes per fuel block and includes the top reflector, bottom reflector, and core support blocks.
+The code uses time and temperature dependent material properties such as density, thermal conductivity, and heat capacity.
+
+* DETRAC Code:
+It calculates fuel and graphite temperatures within each refueling region.
+It calculates the graphite and coolant temperatures at top and bottom reflector, and for each fuel block.
+
+* RECA Code:
+Preferred code when the radial conduction of energy between refueling regions is significant.
+It calculates the axial distribution of average coolant, graphite, and fuel temperatures for each refueling region.
+Reverse flow is possible for low-flow conditions and is accounted for by the core.
+Cross-flow is not considered.
 
 
 
 % melese_thermal_1984
+Ideally, all core cavity components should be designed to discharge coolant at the same helium temperature into the lower plenum.
+If components such as the side reflector are designed to require a large quantity of coolant that is heated relatively little, other components such as the core will necessarily have to supply helium at temperatures above the average hot helium temperature.
+This leads to temperature differences ("hot streaks") entering a steam generator, thus complicating its design.
+
+A method for describing the power distribution in the fuel rods in the core
+is needed for the thermal design calculations.
+Examples:
+* GATT: 3D diffusion tool
+* 2D radial diffusion GAUGE: radial power distribution + 1D axial power shapes using BUGTRI.
+
+Studies on 3000 MWt HTGR based on the Fort St Vrain design.
+
+The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce structural material weakness, and lead to excessive chemical reaction rates.
+
+* Unit cell models:
+To understand some basic aspects of heat transfer in the prismatic HTGR
+fuel element, simple models are helpful.
+Various correction factors to this basic model have been devised to account for these special effects (like radial peaking factor).
+
+
+
+% bieder_qualification_2008
+Validation of Trio_U applied to a PWR.
+
+
+
+
+
+
+
+----> go back to references from: huning_steady_2014
+% macdonald_ngnp_2003
+% lee_status_2006
+
+
+
 
 
 

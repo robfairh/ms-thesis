@@ -3,78 +3,6 @@ This file will be eventually deleted.
 
 
 
-
-
-% shenoy_htgr_1974
-3.2.1 Kernel Migration
-
-4. Analytical methods
-Based on the principles of conservation of mass, momentum, and energy.
-
-Steady-state analysis: (Table 4-1)
-* FLAC:
-Determines the coolant flow distribution in the coolant channels and gaps.
-Solves the 1-D Momentum Equation for incompressible flow.
-Solves continuity eqs of mass and energy.
-Models the density changes in the gas.
-
-* POKE:
-It solves the coolant mass flow, coolant temperature, and fuel temperature distribution in an HTGR core.
-Steady-state mass and momentum conservation equations for parallel channels, solved using finite differences.
-Imposes the power distribution.
-
-* DEMISE/DEMICE: determines the steady state 3D temperature distribution in 1/2 columns of standard elements (DEMISE) and control elements (DEMICE).
-It solves the temperature distribution in a network model using a successive point iteration.
-It calculates the flow distribution by balancing pressure drop in coolant passages.
-
-* BACH:
-It calculates the steady-state core power/flow ratio to achieve a desired maximum fuel temperature.
-It calculates the coolant channel mass flow by balancing the pressure drop for a single channel.
-It calculates the gas temperatures from energy balance equations.
-
-* HEXT:
-To determine steady-state temperature distribution and equivalent thermal conductances in fuel, fuel-mdoerator gap, and moderator in a unit cell of HTGR type fuel elements.
-It solves the heat conduction equation in 2D geometries.
-
-* TREVER:
-To determine from given power distributions the steady-state coolant, graphite, and fuel temperatures.
-TO determine time and space distribution of coating failure.
-It solves 1D (radial) steady-state heat transfer.
-
-* TAC-2D:
-It is a general purpose 2D thermal analysis code.
-Solves the 2D heat conduction equation by finite differences using an implicit iteration method.
-
-* DETRAC:
-Solves 1D nodal transient heat transfer equations with no axial or radial conduction between channels.
-
-1D unit cell code BACH and HEXT
-BACH 1D describes heat and coolant flow in a single coolant channel in the core.
-
-Transient analysis:
-* TAP code:
-To study the overall plant transient behavior of HTGRs.
-It incorporates models of all major components of the nuclear steam supply.
-The reactor and primary coolant model in the program accounts for all helium temperature changes in the primary coolant system including heating in the core and cooling in the steam generator.
-The reactor core model in TAP consists of one average coolant channel surrounded by graphite and fuel.
-It computes the average heat generation rate in the core and computes the average coolant, graphite, and fuel temperatures in the core.
-
-* Single Channel Analysis TAC Model:
-Coolant, graphite, and fuel temperature profiles within a unit cell.
-Signle rod stacj surrounded by a gap and volume of graphite with a heat capacity and conductance equal to that of a unit cell.
-The model extends the entire active core length with five axial nodes per fuel block and includes the top reflector, bottom reflector, and core support blocks.
-The cose uses time and temperature dependent material properties such as density, thermal conductivity, and heat capacity.
-
-* DETRAC Code:
-It calculates fuel and graphite temperatures within each refueling region.
-It calculates the graphite and coolant temperatures at top and bottom reflector, and for each fuel block.
-
-* RECA Code:
-Preferred code when the radial conduction of energy between refueling regions is significant.
-It calculates the axial distribution of average coolant, graphite, and fuel temperatures for each refueling region.
-Reverse flow is possible for low-flow conditions and is accounted for by the core.
-Cross-flow is not considered.
-
 % macdonald_ngnp_2003
 Next Generation Nuclear Plant (NGNP) presented to possible designs: one for a prismatic fuel type helium gas-cooled reactor and one for a pebble bed fuel helium gas reactor.
 Both with three basic requirements: a coolant outlet temperature of 1000C, passive safety, and a total power output consistent with that expected for commercial HTGRs.
@@ -176,15 +104,11 @@ The CAST3M/Arcturus model uses a two level approach:
 - singularities of fuel particles, fuel compacts, and helium cooling channels with inter-assembly helium cavity are homogenized to obtain equivalent thermal properties for the porous media and the cooling gas.
 - Thermal-hydraulics is solved on the homogenized geometry using CAST3M.
 
-% bieder_qualification_2008
-Sort of validation of the code applied to a PWR.
-
 % ball_next_2008
 Expert panels identified safety-relevant phenomena, ranked their importance, and assessed
 the knowledge levels in the areas of accidents and thermal fluids, fission-product transport and dose,
 high-temperature materials, graphite, and process heat for hydrogen production.
 
-% lee_status_2006
 
 
 
@@ -225,9 +149,9 @@ CFD:
 - STAR-CCM+, CD-adapco
 
 Most interesting:
-Sato et al. (2010). FLUENT.  0, 3, and 5 mm bypass gap width
-Tak et al. (2008). CFX 11, ANSYS Inc. (2006). 1 and 5 mm bypass gap width
-Wang et al. (2014). STAR-CCM+. Bypass and cross-flow estimation.
+* Sato et al. (2010). FLUENT.  0, 3, and 5 mm bypass gap width
+* Tak et al. (2008). CFX 11, ANSYS Inc. (2006). 1 and 5 mm bypass gap width
+* Wang et al. (2014). STAR-CCM+. Bypass and cross-flow estimation.
 
 Important conclusions:
 - Without whole-core modeling, computed individual mass flow distributions for partial assembly cases were based on average core assembly flow rates instead of their exact values.
@@ -316,25 +240,6 @@ Coupled to PHISICS for prismatic reactor steady-state and transient analysis.
 Others: GRSAC (ORNL), GRSAC (ORNL), FLOWNEX (flownex.com), RELAP-7(INL), AGREE(NRC), MGT (FZ-Jülich),
 THERMIX-DIREKT (FZ-Jülich).
 
-% melese_thermal_1984
-Ideally, all core cavity components should be designed to discharge coolant at the same helium temperature into the lower plenum.
-If components such as the side reflector are designed to require a large quantity of coolant that is heated relatively little, other components such as the core will necessarily have to supply helium at temperatures above the average hot helium temperature.
-This leads to temperature differences ("hot streaks") entering a steam generator, thus complicating its design.
-
-A method for describing the power distribution in the fuel rods in the core
-is needed for the thermal design calculations.
-Examples:
-* GATT: 3D diffusion tool
-* 2D radial diffusion GAUGE: radial power distribution + 1D axial power shapes using BUGTRI.
-
-Studies on 3000 MWt HTGR based on the Fort St Vrain design.
-
-The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce structural material weakness, and lead to excessive chemical reaction rates.
-
-* Unit cell models:
-To understand some basic aspects of heat transfer in the prismatic HTGR
-fuel element, simple models are helpful.
-Various correction factors to this basic model have been devised to account for these special effects (like radial peaking factor).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
