@@ -649,7 +649,7 @@ Validation of Trio_U applied to a PWR.
 % tak_practical_2012
 ABSTRACT
 Several studies have conducted local analyses on a unit cell or a single assembly instead of the whole-core geometry.
-In spite of the recent rapid development inf CFD tools, a whole-core CFD analysis for a prismatic reactor still requires a tremendous computational expense.
+In spite of the recent rapid development in CFD tools, a whole-core CFD analysis for a prismatic reactor still requires a tremendous computational expense.
 This paper presents a practical method for the whole-core thermal analysis of a prismatic gas-cooled reactor.
 The method solves the 3D heat conduction equation in the solid and the 1D conservation equation in the fluid.
 The method adopts the basic unit cell concept which eliminates an elaborate grid generation process.
@@ -719,7 +719,6 @@ The bypass gaps between the assemblies were also modeled using 1-D fluid channel
 
 
 
-
 ----> Tak et al. DEVELOPMENT OF A CORE THERMO-FLUID ANALYSIS CODE FOR PRISMATIC GAS COOLED REACTORS. 2014
 
 
@@ -733,7 +732,7 @@ The bypass gaps between the assemblies were also modeled using 1-D fluid channel
 
 
 
-On the advantages/disadvantages of the porous media model:
+ON THE ADVANTAGES/DISADVANTAGES OF THE POROUS MEDIA MODEL:
 % wu_investigating_2010
 ABSTRACT
 Therefore, this study investigates the thermal-hydraulic behaviors in a segment of pebbles predicted by the Reynolds-averaged Navier–Stokes (RANS) computational fluid dynamics (CFD) model using porous and realistic approaches for the complicated geometry.
@@ -751,3 +750,9 @@ Disadvantages:
 The RANS CFD model with the realistic approach can reasonably simulate the anisotropic thermal-hydraulic characteristics within the closely packed pebble geometry, including the vortices and flow separation in the pores, temperature variation around the pebble surface, and the variation in the Nu number with the azimuth and zenith angles.
 
 It is necessary to utilize the realistic approach for this pebble geometry in order for the CFD modeling to capture the detailed and localized characteristics within the fluid and solid fuel regions.
+
+ON THERMO_MECHANICS:
+% melese_thermal_1984
+Talks about thermal stresses
+
+% kang_thermo-mechanical_2012

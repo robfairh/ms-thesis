@@ -152,13 +152,3 @@ However such approach would increase fuel temperatures.
 
 Fine mesh CFD methods are not equipped to simulate the whole core and primary system over the course of a long transient (100+ hours), and  realistic power profiles have not been fully employed in the various LOFC safety studies
 
-
-
-
-%%%%%%%%%%%%%%%%%%%% Thermo-mechanics maybe %%%%%%%%%%%%%%%%%%%%
-
-% melese_thermal_1984
-Talks about thermal stresses
-
-% kang_thermo-mechanical_2012
-

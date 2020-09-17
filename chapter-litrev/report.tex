@@ -423,7 +423,25 @@ The no-shrinkage case showed considerably higher temperatures in the fuel.
 
 
 % tak_practical_2012
+% this needs some reorganization
+In spite of the recent developments in CFD tools, a detailed whole core CFD analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
+Tak et al. \cite{tak_practical_2012} developed a practical method for the whole core analysis.
 
+This method solves the three-dimensional heat conduction equation in the solid and the one-dimensional conservation equation in the fluid.
+The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations.
+
+In order to enhance practicability, the method adopts the basic unit cell concept, which eliminates an elaborate grid generation process.
+The basic unit cell concept is an extension of the traditional unit cell method, which uses a single triangular unit cell.
+This method considers varios shapes of unit cells as well as the heat transfer between then.
+The method provides a way for generating computational grids for modeling the solid regions.
+
+The alternative for a whole-core analysis are system codes that use simplified models.
+However, the simplification of the geometries reduces the fuel block temperature resolution.
+The present method intends to overcome the difficulties in CFD calculation as well as in system calculations.
+
+A whole-core thermal analysis has many advantages over local models.
+In general, the problem set up includes more accurate boundary conditions.
+A coupled analysis with a reactor physics code requires a full core model.
 
 
 
