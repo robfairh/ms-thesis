@@ -423,7 +423,7 @@ The no-shrinkage case showed considerably higher temperatures in the fuel.
 
 
 % tak_practical_2012
-% this needs some reorganization
+% this needs some reorganization, and combination with tak_development_2014
 In spite of the recent developments in CFD tools, a detailed whole core CFD analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
 Tak et al. \cite{tak_practical_2012} developed a practical method for the whole core analysis.
 
@@ -442,6 +442,43 @@ The present method intends to overcome the difficulties in CFD calculation as we
 A whole-core thermal analysis has many advantages over local models.
 In general, the problem set up includes more accurate boundary conditions.
 A coupled analysis with a reactor physics code requires a full core model.
+
+
+% tak_development_2014
+Tak et al. \cite{tak_development_2014} presented an article that developed CORONA a whole-core thermo-fluid tool.
+The code intends to combine the accuracy from CFD tools and the light computational expense of system analysis codes.
+The code solves the three-dimensional solid heat conduction equation combined with one-dimensional fluid flow network equations.
+The code uses the basic unit cell concept to generate the whole-core computational grid.
+
+The fine mesh requirement for a whole core CFD analysis restricts the use of such methods.
+Most of the CFD studies limit their application to the local behavior of a fuel column.
+
+The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in a whole core CFD analysis of a prismatic core.
+
+To validate the new code, the authors compared the results using CORONA against the results using the commercial code CFX and experimental results.
+
+The results of the verification and validation studies showed that CORONA code provides a reasonably accurate results for the thermo-fluid analysis of prismatic fuel blocks.
+
+% I think this should be in Coupled Neutronics/Thermal-Hydraulics
+This work laid the foundation for the neutronics/thermal-hydraulics coupling of DeCART (citation) and CORONA discussed in the following section (?)
+
+% I think this should go int Coupled Neutronics/Thermal-hydraulics
+% tak_coupled_2016
+Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-hydraulics coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
+To validate the new code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
+The main objectives of the calculation are to validate the code and also identify technical challenges for future development.
+
+DeCART is a whole-core neutron transport code and it is responsible for calculating the power distribution and the fast neutron fluence.
+CORONA calculates the temperature distribution.
+
+The authors present an interesting analysis where they compared the results from the coupled simulation and the stand-alone simulations.
+The difference in the multiplication factor was as high as 2597 pcm.
+The axial offset and maximum fuel temperature exhibited significant differences as well.
+Such result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
+
+
+
+---> left here
 
 
 

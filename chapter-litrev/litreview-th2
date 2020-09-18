@@ -768,6 +768,45 @@ DeCART/CORONA is capable of obtaining a detailed pin-by-pin power distribution.
 
 
 % travis_thermalhydraulics_2013
+ABSTRACT
+They conducted thermal-hydraulics analyses for a VHTR fuel element and a VHTR full core.
+The performed the calculations with and without the bypass flow.
+The complexity and size of a VHTR require extensive computation capabilities.
+This requirement is mostly due to the 3D computations fluid dynamics simulation of the helium flow.
+
+They present results of 1-D helium flow in the channels with a 3-D heat conduction in the graphite and fuel compacts.
+The simplified thermal-hydraulics analysis markedly reduces computation time and memory requirements while maintaining accurate results.
+
+The bypass flow between elements provides additional cooling of the edge regions but increases the temperature near the center of the fuel element.
+
+The results also show that the helium through the control rod channels minimally affects the temperature distribution within the fuel elements.
+
+INTRODUCTION
+
+results
+Results for:
+- fuel elements
+- one element high VHTR 1/6 core with helium bypass flow
+- full height VHTR 1/6 core thermal-hydraulics analysis without helium bypass flow.
+
+
+SUMMARY AND CONCLUSIONS
+The simplified methodology is accurate and fast running.
+The methodology thermally couples the 1-D helium flow in the coolant channels to the 3-D conduction in the solid graphite and fuel compacts in the core fuel elements using a recently developed turbulent convection correlation.
+This methodology thermally couples the 1-D helium flow in the coolant channels to the 3-D conduction in the solid graphite and fuel compacts in the core fuel elements using a recently developed turbulent convection correlation.
+
+The simulation of a prismatic fuel element took 100h to the full 3D simulation, while it took 3h to the simplified methodology.
+
+The calculated temperature fields in the fuel element using the full 3-D and the simplified methodology thermal-hydraulics analysis are similar and the values are within a few degrees (<4 K).
+
+In general, decreasing the helium bypass flow in the interstitial gaps is desirable in terms of lowering the temperature and the differential thermal expansion of the fuel elements in a VHTR core.
+
+Thermal–hydraulics analyses are also performed for one element (0.793 m) and full height (9.73 m) VHTR 1/6 core using the simplified methodology.
+
+
+
+
+
 
 
 
