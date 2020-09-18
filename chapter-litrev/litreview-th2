@@ -723,10 +723,23 @@ The method uses an efficient numerical method and an efficient grid generation m
 The code solves the three-dimensional solid heat conduction euqation combined with one-dimensional fluid flow network equations.
 The code uses the basic unit cell concept to generate the whole-core computational grid.
 
-INTRODUCTION
+DEVELOPMENT MOTIVATION AND STRATEGY
+In spite of the remarkable development of CFD technology, however, a whole prismatic core CFD analysis with geometric details is still a challenging task.
+Since fine meshes are required for accurate CFD calculations.
+Most CFD studies limit their application to the local behavior of a fuel column.
 
+Numerical method: 3D heat conduction in solid, 1D conservation equation in fluid.
+* Travis and El-Genk 2012 verified the efficiency of this method using STAR-CD
 
+NUMERICAL APPROACHES
+The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in a whole core CFD analysis of a prismatic core.
 
+VERIFICATION AND VALIDATION
+To validate the heat conduction model, the authors compared the results using CORONA against the results using the commercial code CFX.
+The study cases were a single unit cell, and a combination of seven unit cells.
+To validate the one-dimensional fluid flow model, they also compared the results from CORONA against experimental results.
+To validate the conjugate heat transfer in a fuel block, they modeled a one-twelth of a standard fuel column, and a half of a \gls{RSC} fuel column.
+The verification used a comparison with results from CFX.
 
 CONCLUSIONS
 The results of the verification and validation studies showed that CORONA code provides a reasonably accurate result for the thermo-fluid analysis of prismatic fuel blocks.
@@ -734,15 +747,20 @@ Future work: coupling with the reactor physics code DeCART.
 
 
 
-
---->
-Tak et al. Coupled Neutronics and Thermo-Fluid Simulation of Full-Core Prismatic Gas-Cooled Reactor Using DeCART/CORONA Code System. 2016
+% tak_coupled_2016
 
 
 
 
 
-----> go back to references from: huning_steady_2014
+
+
+
+----> missing:
+% huning_steady_2014
+% huning_novel_2016
+% travis_thermalhydraulics_2013
+
 % macdonald_ngnp_2003
 % lee_status_2006
 
