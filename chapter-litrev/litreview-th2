@@ -773,22 +773,32 @@ They conducted thermal-hydraulics analyses for a VHTR fuel element and a VHTR fu
 The performed the calculations with and without the bypass flow.
 The complexity and size of a VHTR require extensive computation capabilities.
 This requirement is mostly due to the 3D computations fluid dynamics simulation of the helium flow.
-
 They present results of 1-D helium flow in the channels with a 3-D heat conduction in the graphite and fuel compacts.
 The simplified thermal-hydraulics analysis markedly reduces computation time and memory requirements while maintaining accurate results.
-
 The bypass flow between elements provides additional cooling of the edge regions but increases the temperature near the center of the fuel element.
-
 The results also show that the helium through the control rod channels minimally affects the temperature distribution within the fuel elements.
 
 INTRODUCTION
+Thus, there is a need to develop and validate numerical analysis approaches that would simplify the computational task while maintaining accurate results.
+Recent results demonstrated that coupling a 1-D helium flow in the coolant channels to a 3-D heat conduction within the graphite and fuel compacts, decreases the computation time to 2.5% of that of the full 3D analysis, without compromising the accuracy (<2% difference).
+The simplified thermal–hydraulics analysis methodology provides good predictions of the global parameters such as the 3-D spatial temperature distribution and the axial variation of the helium bulk temperature.
+But not the velocity and temperature distributions within the boundary layer.
+
+Important:
+Useful correlation maybe: (1) and (2)
+
+Validation of the method on a hexagonal element.
+Comparison to the results of a full 3-D numerical analysis.
+Calculation of a 1/6 core.
+
+NUMERICAL ANALYSIS
+The full 3D CFD analysis used the commercial software STAR-CCM+ (citation).
 
 results
 Results for:
 - fuel elements
 - one element high VHTR 1/6 core with helium bypass flow
 - full height VHTR 1/6 core thermal-hydraulics analysis without helium bypass flow.
-
 
 SUMMARY AND CONCLUSIONS
 The simplified methodology is accurate and fast running.
