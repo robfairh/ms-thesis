@@ -723,11 +723,15 @@ The method uses an efficient numerical method and an efficient grid generation m
 The code solves the three-dimensional solid heat conduction euqation combined with one-dimensional fluid flow network equations.
 The code uses the basic unit cell concept to generate the whole-core computational grid.
 
+INTRODUCTION
+
+
 
 
 CONCLUSIONS
 The results of the verification and validation studies showed that CORONA code provides a reasonably accurate result for the thermo-fluid analysis of prismatic fuel blocks.
 Future work: coupling with the reactor physics code DeCART.
+
 
 
 
