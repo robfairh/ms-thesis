@@ -476,13 +476,23 @@ The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.
 Such result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
 
+% this should be located somewhere else
+% travis_thermalhydraulics_2013
+Travis et al. \cite{travis_thermalhydraulics_2013} developed a method to compute full core thermal-hydraulic analyses of \glspl{HTGR}.
+The complexity and size of an \gls{HTGR} require extensive computation capabilities.
+This requirement is mostly due to the three-dimensional CFD simulation of the coolant flow.
+The article presented a simplified method that reduces the computational time and memory requirements while maintaining accurate results.
+The method solves the three-dimensional heat conduction in the solid and the one-dimensional helium flow in the channels.
+The validation of the method analyzes fuel column and compares the new method's results to those of a full three-dimensional CFD simulation.
+The CFD analysis used the commercial software STAR-CCM+ \cite{cd-adapco_star-ccm_2012}.
+The new computational scheme reduced the computation time to a 2.5\% of the time required by the full three-dimensional CFD simulations.
+The methodology provides good predictions of the global parameters such as the three-dimensional spatial temperature distribution and the axial variation of the helium bulk temperature.
+However, it fails to resolve properly the velocity and temperature distribution within the boundary layer.
+Overall, the method showed good accuracy, and less than a 2\% difference to the full three-dimensional CFD simulations.
+
 
 
 ---> left here
-
-% travis_thermalhydraulics_2013
-
-
 
 
 
