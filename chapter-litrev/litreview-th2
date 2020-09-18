@@ -641,11 +641,6 @@ Validation of Trio_U applied to a PWR.
 
 
 
----> left here
-
-
-
-
 % tak_practical_2012
 ABSTRACT
 Several studies have conducted local analyses on a unit cell or a single assembly instead of the whole-core geometry.
@@ -718,8 +713,26 @@ The bypass gaps between the assemblies were also modeled using 1-D fluid channel
 
 
 
+---> left here
 
-----> Tak et al. DEVELOPMENT OF A CORE THERMO-FLUID ANALYSIS CODE FOR PRISMATIC GAS COOLED REACTORS. 2014
+% tak_development_2014
+ABSTRACT
+The work developed the code CORONA, a thermo-fluid network analysis tool.
+The code targets whole-core thermo-fluid analyses.
+The method uses an efficient numerical method and an efficient grid generation method.
+The code solves the three-dimensional solid heat conduction euqation combined with one-dimensional fluid flow network equations.
+The code uses the basic unit cell concept to generate the whole-core computational grid.
+
+
+
+CONCLUSIONS
+The results of the verification and validation studies showed that CORONA code provides a reasonably accurate result for the thermo-fluid analysis of prismatic fuel blocks.
+Future work: coupling with the reactor physics code DeCART.
+
+
+
+--->
+Tak et al. Coupled Neutronics and Thermo-Fluid Simulation of Full-Core Prismatic Gas-Cooled Reactor Using DeCART/CORONA Code System. 2016
 
 
 
