@@ -912,6 +912,7 @@ Fine mesh CFD methods are not equipped to simulate the whole core and primary sy
 
 
 % macdonald_ngnp_2003
+EXECUTIVE SUMMARY
 Next Generation Nuclear Plant (NGNP) presented to possible designs: one for a prismatic fuel type helium gas-cooled reactor and one for a pebble bed fuel helium gas reactor.
 Both with three basic requirements: a coolant outlet temperature of 1000C, passive safety, and a total power output consistent with that expected for commercial HTGRs.
 
@@ -926,20 +927,23 @@ The possible solutions are:
 (4) replacement of specific fuel rods with burnable poisons (e.g. B 4 C)
 (5) B 4 C loaded in the graphite reflector blocks in Rings 5 and 9 near the reflector/core interfaces.
 
-What they did:
-* They made parametric thermal-hydraulic design studies using POKE.
-* Investigate design options that would allow 1000C outlet temperature, the highest possible overall core power, while maintaining the fuel temperature below 1250 C
-* They studied the 600 MWt GT-MHR design with Tin 491 C and Tout 850 C:
-	- evaluated two design modifications: reducing the bypass flow and better controlling the inlet coolant flow distribution.
-* Evaluation of taller and higher power reactor cores with the POKE computer core:
-	- 10 block 600 MWt, 12 block 720 MWt, and 14 block high 840 MWt
-* Thermal-hydraulic model of the NGNP reactor vessel and reactor cavity developed with the RELAP5-3D/ATHENA.
-	- The code and model were used to perform analyses of the transient response of the NGNP design and determine the effects of the core geometry on the peak reactor vessel and fuel temperatures.
-* Sensibility calculations to determine the power that could be obtained for different core heights without exceeding a peak transient fuel temperature of 1600C.
-	- 10 block 686 MWt, 12 block 786 MWt, and 14 block 889 MWt.
-* Parametric analyses of the limiting temperature transient, the depressurized conduction cooldown design basis event using the TAC2D code.
-	- Power and core temperature profiles from POKE
-	- for 10 block, 621 MWt will limit the peak core temperature during the cooldown event to 1600 C.
+Their work included parametric thermal-hydraulic design studies using POKE.
+The focus of the analyses was the GT-MHR 600.
+The objective of the parametric study was to investigate options of the NGNP that increase the coolant temperature, with the lowest possible inlet temperature, and the highest overall core power.
+They evaluated two major design modifications: reducing the bypass flow and better controlling the inlet coolant flow distribution.
+Reducing the bypass flow fraction from 20 to 10% reduces the peak fuel temperatures by about 50C.
+Controlling the inlet flow distribution has a stronger effect.
+The results indicate that the NGNP can achieve an outlet temperature of 1000C.
+
+Other studies focusing in the dimensions of the reactor and their impact on the maximum fuel temperature.
+Using the computer codes POKE and TAC2D, the authors evaluated taller and higher power reactor cores.
+The evaluation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and 14-block-high 840 MWt.
+
+Another study developed a thermal-hydraulic model of the NGNP reactor vessel and reactor cavity using the RELAP5-3D/ATHENA code.
+The authors performed transient analyses to determine the effects of the core geometry on the peak reactor vessel and fuel temperatures.
+
+
+This needs reviewing:
 
 Neutronic Results:
 - Cool results: I could add that in my thesis.
@@ -977,10 +981,7 @@ Decay Heat
 
 
 
-
-
 % lee_status_2006
-
 
 
 
