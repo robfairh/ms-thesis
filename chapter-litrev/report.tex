@@ -52,11 +52,12 @@ fill=blue!30]
 
 \begin{document}
 
-\section{\gls{PMR} neutronic solvers}
+\section{Prismatic \gls{HTGR} neutronic solvers}
 
-Nowadays there are several codes to solve the neutronics of \glspl{PMR}.
-Most of them rely on the following methods: Monte Carlo, deterministic transport, and deterministic diffusion.
+Nowadays there are several codes to solve the neutronics of prismatic \glspl{HTGR}.
+Most of these codes rely on one of the following methods: stochastic transport (Monte Carlo), deterministic transport, or deterministic diffusion.
 We focus our interest in the last method.
+% If time permits work on a brief description of the Monte Carlo and deterministic transport maybe.
 % Why? Deterministic diffusion solvers have lower computational requirements than other methods reference ??
 % The utilization of the Monte Carlo codes is unattractive because of the tremendous problem size and the need for a large number of neutron histories \cite{lee_status_2006}.
 % It is one of the simplest means to solve neutron transport problems \cite{leppanen_development_2007}.
@@ -64,18 +65,17 @@ We focus our interest in the last method.
 % Deterministic diffusion methods are computationally cheaper than the other methods.
 % This characteristic makes it a good candidate for coupled calculations.
 
-The history of deterministic diffusion solvers begins in the late 1950s with the \gls{FDM} applied to the analysis of \glspl{LWR}.
+The history of deterministic diffusion solvers begins in the late 1950s with the application of the \gls{FDM} to the analysis of \glspl{LWR}.
 In \gls{FDM}, mesh spacings are usually of the order of the diffusion length.
 When solving large multi-dimensional problems, this feature causes the mesh points to reach intractable numbers \cite{lewis_finite_1986}.
 The computational expense of these calculations motivated the generation of more computationally efficient techniques \cite{lawrence_progress_1986}.
 Although there are substantial overlaps, the most common techniques fall into two broad categories: nodal methods and \gls{FEM}.
 
 % NODAL
-FLARE \cite{delp_flare_1964} is a three-dimensional boiling water reactor simulator and it is representative of the first generation of nodal schemes.
-Such approach involved using adjusted parameters to match actual operating data or the results of more accurate calculations. 
-Most of these methods implement the so-called 1.5 group theory.
-
-A second generation of nodal schemes derives spatial coupling relationships by applying the \gls{TIP}.
+FLARE \cite{delp_flare_1964} is a three-dimensional \gls{BWR} simulator and it is representative of the first generation of nodal schemes.
+Such approach used adjusted parameters to match actual operating data or the results of more accurate calculations.
+Most of these methods were implementations of the so-called 1.5 group theory.
+A second generation of nodal schemes derived spatial coupling relationships by applying the \gls{TIP}.
 Integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis, such procedure obtains equivalent one-dimensional equations \cite{lawrence_progress_1986}.
 This approach proved to be highly efficient and accurate in Cartesian geometries.
 
@@ -84,16 +84,16 @@ Nevertheless, this method would introduce non-physical singular terms that requi
 This motivated the development of more effective formulations.
 The code HEXNOD, introduced in 1988 \cite{wagner_three-dimensional_1989}, is an example of such formulations.
 This algorithm uses the \gls{TIP} and, in contrast to the \gls{NEM}, solves the resulting differential equation analytically.
-The article demonstrates the accuracy of the method by comparison with the \gls{FDM} and Monte Carlo calculations for a number of benchmark problems.
+The article demonstrated the accuracy of the method by comparison with the \gls{FDM} and Monte Carlo calculations for a few benchmark problems.
 
 Another example of more effective methods is the code HEXPEDITE \cite{fitzpatrick_hexpedite_1992}.
 The HEXPEDITE approach uses the \gls{TIP} to derive a pseudo-one-dimensional equation.
 The resulting differential equation is solved analytically.
-The difference from HEXNOD is that, HEXPEDITE uses a global coupling solution scheme different that is simpler and more efficient.
+The difference from HEXNOD is that, HEXPEDITE uses a different coupling scheme that is simpler and more efficient.
 Different works \cite{fitzpatrick_hexpedite_1992}\cite{fitzpatrick_developments_1995} on the HEXPEDITE methodology tested the approach against the \gls{NEM} and the \gls{FDM}.
 These studies established HEXPEDITE’s superiority in terms of accuracy and runtime.
 HEXPEDITE's use still prevailed until recently in the analysis of \glspl{HTGR}.
-INL conducted a study \cite{ortensi_deterministic_2010-1} where they compared HEXPEDITE's results against other diffusion codes: JAR, CITATION, and CRONOS2, and the Monte Carlo codes MCNP5 and Serpent.
+In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against the diffusion codes JAR, CITATION, and CRONOS2, and the Monte Carlo codes MCNP5 and Serpent.
 
 Other examples of nodal diffusion codes whose use prevailed until the present are DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004}.
 DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
@@ -104,8 +104,9 @@ PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffu
 Nodal methods solve quite coarse meshes for approximate solutions.
 This characteristic makes the method efficient.
 On the other hand, the method does not provide detailed point-wise accurate solutions \cite{kang_finite_1973}.
-Additionally, the application to complex problems is not flexible as different geometries require the integration over different coordinate systems.
-Nodal methods are applicable for the nodes of a specific shape on which the nodal method was derived.
+
+Additionally, nodal methods are applicable for the nodes of a specific shape on which the nodal method was derived.
+The application to complex problems is not flexible as different geometries require the integration over different coordinate systems.
 This lack of flexibility limits the applications of nodal methods to regular geometries only.
 
 % FEM
@@ -116,59 +117,54 @@ Also, the use of high order elements attains higher rates of convergence \cite{c
 The first prototype engineering application of \gls{FEM} was in the field of structural engineering and dates back to 1956.
 In the successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
 \glspl{FEM} have several advantages over the nodal methods.
-It provides flexibility in geometry, a firm mathematical basis, ease in extension to multi-group application, and high computational efficiency \cite{lee_development_2008}.
+It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to multi-group application, and high computational efficiency \cite{lee_development_2008}.
 
-In 1973, an article by Kang \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
+In 1973, an article by Kang et al. \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
 The main motivation for this development was the impractical application of the \gls{FDM} to three-dimensional problems.
-In this early work, the author compares different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
+In this early work, the author compared different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
 The studies showed a higher order of convergence achieved by the \gls{FEM}.
 
-
-
---------> Left here
-how to continue?
 Throughout the last four decades many codes have use the \gls{FEM} to solve the diffusion equation.
-Some of those codes are:
-* CAPP \cite{lee_development_2011}
-* Rattlesnake \cite{wang_rattlesnake_2019}
-* CRONOS2
+Some of the most recent codes are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
+The list of \gls{FEM} diffusion solvers is more extensive, but here we focus on the best documented codes in the open literature.
+We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
 
+% CRONOS
+\gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
+It allows for solving steady-state and transient multi-group calculations taking into account thermal-hydraulic feedback effects.
+The code solves either the diffusion equation or the transport equation by means of the SN method.
+In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
+For such study, the authors developed the code suit NEPTHIS/CAST3M.
+NEPHTIS uses a transport-diffusion calculation scheme that relies on CRONOS2.
 
-
-
-%CAPP
-\gls{KAERI} developed CAPP \cite{lee_development_2008}, a neutron diffusion code based on the \gls{FEM}.
-The code's purposes are to conduct steady state core physics analysis, core depletion analysis, and core transient analysis of \glspl{HTGR}.
+% CAPP
+In 2008, \gls{KAERI} published an article \cite{lee_development_2008} that presented the code CAPP.
+The code's purposes are to conduct steady state core physics analysis, core depletion analysis, and core transient analysis.
 The article validated the code with two benchmark problems.
 First, the IAEA PWR benchmark problem for two cases, a 2D exercise and a 3D exercise.
-Second, the OECD/NEA PBMR-400 benchmark problem.
-The authors carried out Phase I Exercise 1 which consists of a neutronics stand-alone case with fixed cross-sections.
+Second, Phase I Exercise 1 of the OECD/NEA PBMR-400 benchmark problem.
 The calculations of both problems used different number of elements and different orders of shape functions.
-The solutions converged to the reference solution as the number of elements or the order of shape functions increased.
-The higher order \gls{FEM} solution required much less CPU time than the other methods.
 
-
-% I should add somewhere around here something on the coupled simulations:
-% In order to consider the interaction between the neutronics and thermal-fluids behavior, a coupled analysis is necessary /cite{tak_cappgamma_2016}.
-%More on CAPP
-The same authors published another article \cite{lee_development_2011} in 2011, where they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
+In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
 To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
-The thermo-fluid solver divides fuel column in six triangular prisms.
-Each of them hosts a representative coolant channel.
-Solving the energy equation, the code calculates the axial coolant temperature distribution.
-After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
-By means of a TRISO particle conduction model, the model obtains the fuel temperature.
-Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
-% The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
 To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
 The PMR-200 is a pre-conceptual reactor that \gls{KAERI} has designed.
-They compared the results against the results obtained with HELIOS.
+They validation compared the results against the HELIOS results.
 The results showed good accuracy.
 Moreover, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
-% Cross sections generated with HELIOS.
 The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
 They compared the results against the results obtained with HELIOS.
 The maximum error was less than 200 pcm.
+
+
+---> Left here: More on CAPP
+
+
+
+
+
+
+
 
 % tak_cappgamma_2016
 Another article \cite{tak_cappgamma_2016} introduces a coupling between the CAPP code and the GAMMA+ code \cite{lim_gamma_2006}.
@@ -546,6 +542,33 @@ On the first level, the porous media model solves the homogenized system and the
 On the second level, the CAST3M code solves the thermal-hydraulics on the homogenized geometry.
 Some of the conclusions of this last part of the study were that although the reduction of the bypass fraction decreases the maximum fuel temperature, the average reflector temperature rises.
 Another conclusion showed that using magnesium oxide for the reflector material yields lower temperatures for both normal operation and transients.
+
+
+
+
+
+% I should add somewhere around here something on the coupled simulations:
+% In order to consider the interaction between the neutronics and thermal-fluids behavior, a coupled analysis is necessary /cite{tak_cappgamma_2016}.
+
+% CAPP
+In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
+To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
+The thermo-fluid solver divides fuel column in six triangular prisms.
+Each of them hosts a representative coolant channel.
+Solving the energy equation, the code calculates the axial coolant temperature distribution.
+After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
+By means of a TRISO particle conduction model, the model obtains the fuel temperature.
+Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
+% The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
+To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
+The PMR-200 is a pre-conceptual reactor that \gls{KAERI} has designed.
+They compared the results against the results obtained with HELIOS.
+The results showed good accuracy.
+Moreover, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
+% Cross sections generated with HELIOS.
+The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
+They compared the results against the results obtained with HELIOS.
+The maximum error was less than 200 pcm.
 
 
 
