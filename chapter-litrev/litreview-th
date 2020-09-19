@@ -1015,6 +1015,9 @@ The RANS CFD model with the realistic approach can reasonably simulate the aniso
 
 It is necessary to utilize the realistic approach for this pebble geometry in order for the CFD modeling to capture the detailed and localized characteristics within the fluid and solid fuel regions.
 
+
+
+
 ON THERMO_MECHANICS:
 % melese_thermal_1984
 Talks about thermal stresses

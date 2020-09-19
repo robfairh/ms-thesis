@@ -1,5 +1,3 @@
-%%%%%%%%%%%%%%%%%%%% Neutronics %%%%%%%%%%%%%%%%%%%
-
 % wagner_three-dimensional_1989
 The nodal methods developed for hexagonal geometry are similar to the analogous Cartesian geometry
 nodal diffusion theory developed earlier at Siemens/KWU. %finnermann_new_1975 %finnemann_atomkernenergie_1977
@@ -59,18 +57,21 @@ In an ideal situation one would attempt to generate the cross sections from a 12
 
 
 %lee_status_2006
-* Energy Group Study:
-HTGR analyses require more energy groups than conventional LWR analysis because the spectral interactions between fuels and fuel and reflector are significant due to a much longer neutron mean free path.
+ENERGY GROUP STUDY
+Analyses of HTGRs require more energy groups than conventional LWR analysis because the spectral interactions between fuels and fuel and reflector are significant due to a much longer neutron mean free path.
 In this work, the number of energy groups versus accuracy has been studied using the one-dimensional fuel-reflector problem.
 
 Fuel block cross sections are normally generated from a single fuel block calculation with reflective boundary condition, assuming that the spectrum of the single block configuration is not much different from the actual one in the core.
-The effects of energy group structure on the accuracy of homogenized nodal cross sections were examined by changing the number of energy groups from 4 to 23 groups.
+The effects of energy group structure on the accuracy of homogenized nodal cross sections were examined by changing the number of energy groups from 4 to 23 groups (Energy group structure in Table 12).
+For simplicity, the authors used the homogenized fuel compact model.
 Cross sections were generates with DRAGON at 300 K.
+The study compares the multiplication factors obtained using DRAGON and using the nodal diffusion code DIF3D.
 
 One of their conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled HTGR.
 The accuracy is sensitive to the energy group boundaries.
 
-Table 12 shows results.
+Table 13 shows results.
+
 
 -----> To read: Some of this should go into the lit review when I mention the choice of method.
 
@@ -80,8 +81,7 @@ These attributes indicate that the future codes be based on a spatially-heteroge
 One obvious choice of a code would be that based on the stochastic Monte Carlo approach.
 The Monte Carlo techniques provide detailed solution of the neutron transport problem in space, energy, and angle and could be applied with great accuracy to the VHTR if fuel particles are modeled explicitly in the core calculation.
 The utilization of the Monte Carlo codes is however currently unattractive because of the tremendous problem size and the need for a large number of neutron histories required for resolution of fuel element power distribution and small reactivity effects.
-Furthermore, several important phenomena such as thermal feedback at power generating conditions, flux uncertainty propagation in the depletion calculation and fission product build up are not properly addressed
-in these tools at the current time.
+Furthermore, several important phenomena such as thermal feedback at power generating conditions, flux uncertainty propagation in the depletion calculation and fission product build up are not properly addressed in these tools at the current time.
 In contrast, the direct three-dimensional whole-core transport calculation employing deterministic solution techniques provides a possibility for resolving all these problems as long as the double heterogeneity modeling capability is properly incorporated.
 
 The DIF3D core solves the three-dimensional multigroup diffusion or transport equations for given core configurations.
@@ -604,7 +604,6 @@ CONCLUSIONS
 The full core calculations showed that the radial positioning of the fuel elements yields fuel temperature gains of up to 150$^{\circ}$C.
 
 
-
 ABOUT CRONOS (This is just for myself. I wanted to make sure that CRONOS2 was diffusion solver)
 The CRONOS code is a 3D neutronics \gls{FEM} diffusion and simplified transport code developed at \gls{CEA} \cite{ragusa_feasibility_2001}.
 
@@ -612,17 +611,26 @@ It combines finite difference and various levels of finite elements diffusion ap
 
 
 
---------> Left here
-I am going to leave this here, and I will continue looking for sources on the energy group structure influence over the diffusion calculations.
+
+% han_sensitivity_2008
+Han's MS thesis \cite{han_sensitivity_2008} focused on the selection of energy groups for the reactor analysis of the \gls{PBMR}.
+The author used the code COMBINE6 for cross section generation and the Penn State nodal diffusion code NEM for the reactor analysis.
+To arrive at an optimal group structure, the author compared many series of combinations of group structures.
+The analysis used MCNP5 results as the reference values.
+
+The model used in this study uses uniformly distributed isotopes for each material set.
+
+Studies conducted at 300K and 1000K.
+
+Comparison of multiplication factor and the average radial power shape.
 
 
+GENERAL GUIDELINES FOR ENERGY GROUP STRUCTURES FROM LITERATURE
 
+Gulf General Atomic (citation) recommends dividing energy regions into regions of similar characteristics for significant reactions.
+The justification to this strategy is on the reactor's energy spectrum shape.
 
-
-
-
-
-
+Duderstadt & Hamilton (citation) supports a spectrum based group structure emphasizing that “neutron energy spectrum is the key to the generation of group constants that yeild an accurate few-group description of nuclear reactor behavior.”
 
 
 
@@ -678,3 +686,8 @@ Leakage corrections are currently not available in PRONGHORN.
 
 % simoneau_three-dimensional_2007
 The thermal conductivity of graphite depends on its temperature and irradiation history.
+
+The IAEA Coordinated Research Program on HTGR Reactor Physics, Thermal-hydraulics and Depletion Uncertainty Analysis: Description of the Benchmark Test Cases and Phases.pdf
+
+THERMAL-HYDRAULIC ANALYSIS OF GASCOOLED REACTOR CORE FLOWS
+

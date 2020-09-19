@@ -61,7 +61,6 @@ We focus our interest in the last method.
 % The utilization of the Monte Carlo codes is unattractive because of the tremendous problem size and the need for a large number of neutron histories \cite{lee_status_2006}.
 % It is one of the simplest means to solve neutron transport problems \cite{leppanen_development_2007}.
 % Here I say the following
-% The neutron diffusion equation is one of the simplest means to solve neutron transport problems \cite{leppanen_development_2007}.
 % Deterministic diffusion methods are computationally cheaper than the other methods.
 % This characteristic makes it a good candidate for coupled calculations.
 
@@ -247,22 +246,29 @@ All presented results show good agreement with the benchmark results.
 
 
 
---------> Left here
-
-
-
 
 \subsection{Energy group structure analysis}
 
 % Number of energy groups impact over the calculations
-\gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analysis.
-The spectral interactions between elements are significant due to a longer neutron mean free path.
-\gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of whole-core calculations versus the number of energy groups employed for generating homogenized cross-sections.
-The codes used in such study were DRAGON for the cross-section homogenization and DIF3D for the whole-core calculations.
-For the study, they implemented a one-dimensional fuel-reflector model in which they changed the number of energy groups from 4 to 23 groups.
+\gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analysis as the spectral interactions between elements are significant due to a longer neutron mean free path.
+\gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations versus the number of energy groups employed for generating homogenized cross-sections.
+The codes used in such study were DRAGON for the cross-section homogenization and DIF3D for the diffusion calculations.
+For the study, they implemented a one-dimensional fuel-reflector model in which they used 4, 7, 8, 14, and 23 energy groups.
+They also used alternative energy group structure for the same number of groups.
+For simplicity, the authors used the homogenized fuel compact model.
 They generated all the cross-sections at 300 K.
 One of the conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
 Another conclusion is that the accuracy is sensitive to the energy group boundaries as well.
+
+% han_sensitivity_2008
+Han's MS thesis \cite{han_sensitivity_2008} focused on the selection of energy groups for the reactor analysis of the \gls{PBMR}.
+The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross section generation, the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis, and MCNP5 to obtain reference results.
+To simplify the set up, the model used uniformly distributed isotopes for each material set.
+The author performed the calculations at two different temperatures 300 and 1000 K.
+To arrive at an optimal group structure, the author compared many series of combinations of group structures using a trial and error strategy.
+One of the conclusion of this work agrees with previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} on the fact that the energy spectrum is key tp yield accurate description of a nuclear reactor using few groups.
+
+
 
 
 \section{HTGR Thermo-Hydraulics}
