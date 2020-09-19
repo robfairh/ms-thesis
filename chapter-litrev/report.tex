@@ -206,33 +206,45 @@ By modifying the cross-sections, INSTANT-P1 returns the diffusion solution.
 Its results were within 30 pcm from Pronghorn and RattleSnake results.
 All presented results exhibited good agreement with the benchmark results.
 
-
-----> Left here
-
-
 \subsection{Energy group structure analysis}
 
 % yuk_time-dependent_2020
+% The authors recommend homogenizing the group constants using at least 10 energy groups.
 
 % Number of energy groups impact over the calculations
-\gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analysis as the spectral interactions between elements are significant due to a longer neutron mean free path.
-\gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations versus the number of energy groups employed for generating homogenized cross-sections.
-The codes used in such study were DRAGON for the cross-section homogenization and DIF3D for the diffusion calculations.
-For the study, they implemented a one-dimensional fuel-reflector model in which they used 4, 7, 8, 14, and 23 energy groups.
-They also used alternative energy group structure for the same number of groups.
+The longer neutron mean free path in \glspl{HTGR} compared to \gls{LWR} increases the spectral interactions between elements.
+For this reason, \gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analyses.
+\gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations employing different energy group structures to generate the homogenized cross-sections.
+The cross-section homogenization used the code DRAGON and the diffusion calculations utilized the code DIF3D.
+For the study, the ANL team implemented a one-dimensional fuel-reflector model in which they used 4, 7, 8, 14, and 23 energy groups.
+They also used alternative energy group structures for the same number of groups.
 For simplicity, the authors used the homogenized fuel compact model.
 They generated all the cross-sections at 300 K.
-One of the conclusions is that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
-Another conclusion is that the accuracy is sensitive to the energy group boundaries as well.
+One of their conclusions was that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
+Another conclusion was that the accuracy of the diffusion calculation is sensitive to the energy group boundaries.
+% Mention something about the metrics of the study? To asses the accuracy, they compared the multiplication factor.
 
 % han_sensitivity_2008
 Han's MS thesis \cite{han_sensitivity_2008} focused on the selection of energy groups for the reactor analysis of the \gls{PBMR}.
-The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross section generation, the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis, and MCNP5 to obtain reference results.
-To simplify the set up, the model used uniformly distributed isotopes for each material set.
-The author performed the calculations at two different temperatures 300 and 1000 K.
+The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
+The author compared the results against reference results obtained with the code MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003}.
+To simplify the set up, the model used uniformly distributed isotopes for the compact.
+The study performed the calculations at two different temperatures: 300 and 1000 K.
 To arrive at an optimal group structure, the author compared many series of combinations of group structures using a trial and error strategy.
-One of the conclusion of this work agrees with previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} on the fact that the energy spectrum is key tp yield accurate description of a nuclear reactor using few groups.
+One of the conclusion of this work agrees with previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} on the fact that the energy spectrum is key to yield an accurate description of a nuclear reactor using a few groups.
 
+
+
+----> Left here
+
+% Mention here or maybe in a summary by the end of the chapter that the first study focused only on the temperature of 300K.
+% The second study included 1000K in the analyses but focused on the PBMR.
+% Both studies used the homogenized fuel compact model ... 
+
+Both studies used an homogenized fuel compact model.
+Such model reduces the complexity of the study.
+However, 
+Mention CRP
 
 
 
