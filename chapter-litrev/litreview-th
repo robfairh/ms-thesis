@@ -913,7 +913,7 @@ Fine mesh CFD methods are not equipped to simulate the whole core and primary sy
 
 % macdonald_ngnp_2003
 EXECUTIVE SUMMARY
-Next Generation Nuclear Plant (NGNP) presented to possible designs: one for a prismatic fuel type helium gas-cooled reactor and one for a pebble bed fuel helium gas reactor.
+Next Generation Nuclear Plant (NGNP) presented two possible designs: one for a prismatic fuel type helium gas-cooled reactor and one for a pebble bed fuel helium gas reactor.
 Both with three basic requirements: a coolant outlet temperature of 1000C, passive safety, and a total power output consistent with that expected for commercial HTGRs.
 
 The prismatic NGNP is a design directly based on the General Atomics Very High Temperature Gas-cooled Reactor (VHTR) submittal to the Generation IV Roadmap, which was based of their gas turbine-modular helium reactor (GT-MHR) design.
@@ -935,7 +935,7 @@ Reducing the bypass flow fraction from 20 to 10% reduces the peak fuel temperatu
 Controlling the inlet flow distribution has a stronger effect.
 The results indicate that the NGNP can achieve an outlet temperature of 1000C.
 
-Other studies focusing in the dimensions of the reactor and their impact on the maximum fuel temperature.
+Other studies focused on the dimensions of the reactor and their impact on the maximum fuel temperature.
 Using the computer codes POKE and TAC2D, the authors evaluated taller and higher power reactor cores.
 The evaluation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and 14-block-high 840 MWt.
 
@@ -982,6 +982,7 @@ Decay Heat
 
 
 % lee_status_2006
+
 
 
 
