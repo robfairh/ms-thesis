@@ -228,23 +228,23 @@ Another conclusion was that the accuracy of the diffusion calculation is sensiti
 Han's MS thesis \cite{han_sensitivity_2008} focused on the selection of energy groups for the reactor analysis of the \gls{PBMR}.
 The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
 The author compared the results against reference results obtained with the code MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003}.
-To simplify the set up, the model used uniformly distributed isotopes for the compact.
+To simplify the set up, the model used uniformly distributed isotopes in the fuel.
 The study performed the calculations at two different temperatures: 300 and 1000 K.
 To arrive at an optimal group structure, the author compared many series of combinations of group structures using a trial and error strategy.
 One of the conclusion of this work agrees with previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} on the fact that the energy spectrum is key to yield an accurate description of a nuclear reactor using a few groups.
 
+ANL's study is helpful for setting up properly nodal diffusion calculations for an \gls{HTGR}.
+Although the conclusions could be extrapolated to \gls{FEM} diffusion solvers, such study might be valuable.
+ANL's team conducted the study at 300 K, which is not in the operational range of any \glspl{HTGR}.
+In the contrary, Han's thesis included an analysis at 1000 K, and his results showed that the temperature changes have a non-negligible impact.
+Additionally, ANL's study used the simplified model of the homogenized fuel compact.
+Han's highlighted that homogenized fuel models of the \gls{PBMR} underestimate criticality calculations.
+In 2015, \gls{INL} presented their results for an \gls{IAEA} Coordinated Research Program and showed that the homogenization of the compact material underestimates notably the eigenvalue.
+On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross sections.
 
 
-----> Left here
 
-% Mention here or maybe in a summary by the end of the chapter that the first study focused only on the temperature of 300K.
-% The second study included 1000K in the analyses but focused on the PBMR.
-% Both studies used the homogenized fuel compact model ... 
-
-Both studies used an homogenized fuel compact model.
-Such model reduces the complexity of the study.
-However, 
-Mention CRP
+--->
 
 
 
