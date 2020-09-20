@@ -1,0 +1,170 @@
+notes on the benchmark:
+
+% oecd_nea_benchmark_2017
+
+% for tools: benchmark definition
+The deterministic neutronic thermal-fluids and transient analysis tools and methods available to design and analyse PMRs have, in many cases, lagged behind the state of the art compared to other reactor technologies.
+This has motivated the testing of existing methods for HTGRs but also the development of more accurate and efficient tools to analyse the neutronics and thermal-fluids behaviour for the design and safety evaluations of the PMR.
+In addition to the development of new methods, this includes defining appropriate benchmarks to perform code comparisons of these new methods.
+
+Effective inner diameter of the core: 1.65 m
+Effective outer diameter of the core: 3.5 m
+
+Volume correction of the cross sections:
+The cross-sections for the control rod regions in the inner and replaceable reflectors should be volume corrected, if possible.
+The cross-sections should be multiplied by 0.9278 for a hexagonal representation of the CR region.
+Not performing a volume correction for those regions is also acceptable since the effect on the neutronic solution is very small.
+
+Cross sections:
+The purpose of the simplified macroscopic cross-section set is to provide a reference that can be used to test and compare stand-alone neutronic predictions by using the same cross-sections with no thermal-fluids feedback.
+
+Appendix VIII: explanation of code xslook: code to load cross sections.
+Appendix II: cross section tabulation
+
+Thermal fluids definition:
+
+Flow inlet is at the bootm of the RPV and oriented along the vertical axis of the reactor.
+The helium from the coolant chanels (in the risers) flows directly into the upper plenum and is then directed through the fuel blocks.
+Presence of stagnant helium at reactor pressure between the core barrel and RPV.
+
+Other simplifications:
+
+* The RSC and handling holes in fuel regions are not considered flow regions; they contain
+stagnant helium at reactor pressure.
+* The control rod holes are considered part of the by-pass flow in CR regions. The flow through them is limited.
+* No cross flow is modeled.
+* RCCS is not modeled.
+* Radiation heat transfer from the RPV to the RCCS through the outside air (assumed stagnant) should be modeled with an RCCS emissivity of 0.8. Emissivity of 0.74 to represent the RPV and air between the RPV and RCCS.
+* Roughness factor for the flow channels is assumed to be 0.
+* Fuel block graphite density: 1.85 kg/cm3
+
+By-pass flow:
+Table I.11
+
+II. Steady state benchmark calculation cases
+
+Exercise 1:
+Power generated per fission event: 200 MeV
+Cross sections of the control rod blocks should be weighted
+
+
+Requested files:
+
+Global parameters:
+- keff
+- AO
+- \Delta \rho_{CR} = (kout-kin)/(kout kin)
+k out = eigenvalue with CR at position 1184.8 cm (where it is now)
+k in = eigenvalue with CR at position 391.81 cm (100 cm under the bottom reflector/active core interface)
+- Pden-avg-core MW/m3
+
+- Neutron-flux-map
+- Pden-avg map: The average power density is the average homogenised value within the 1/6 single block reporting region. [MW/m3]
+
+% oecd_nea_coupled_2020
+
+Benchmark exercises provide some of the best avenues for better understanding current analysis tools. A very good example was the pebble-bed modular reactor (PBMR) coupled neutronics/thermal hydraulics transient benchmark for the PBMR-400 core design 0, which served as the foundation for this report.
+The purpose of this exercise is to identify significant differences between neutronics models used in determining key integral parameters and between distributions in prismatic HTRs.
+
+The benchmark employs a three-dimensional one-third symmetric representation of the core.
+The cross-sections for the model were developed with DRAGON-4 0 using fine group libraries based on the ENDF/B-VII.r0 data set.
+General Atomics provided the end of equilibrium cycle (EOEC) core number densities.
+
+There are separate cross-sections for each of the 220 active core regions, 11 reflector regions, and 1 CR region.
+The power generated is assumed at 200 MeV per fission event.
+
+It is well established that lattice fuel block calculations for HTRs with low-enriched uranium produce cross-sections that lead to larger errors in regions near the reflectors and, in this reactor design, a significant number of fuel blocks are located next to the reflectors.
+Instead, the preferred way to alleviate some of the error in the cross-sections is to allow better spectrum information to be transferred in the full core calculations through the use of a large number of coarse energy groups, for example with 26 groups in this case.
+
+3 group energy structure:
+* Fast: 		1-4) 	[1.96e7, 9.47e4]
+* Epithermal: 	5-15) 	[9.47e4, 4.93]
+* Thermal: 		16-26) 	[4.93, 1.1e-4]
+
+Diffusion solvers that rely on FEM: INSTANT-P1, Rattlesnake, and CAPP.
+
+- keff: 1.06691 +/- 4.19e-4
+- CR worth: 822.1 +/- 2.05
+- Axial offset 0.168 +/- 3.66e-3
+
+radially average axial power distribution [MW/m3] (Fig 8)
+axially averaged radial power distribution [MW/m3] (Fig 9)
+
+* Thermal flux in active core average: 4*10^13 n/cm2/sec
+* Epithermal: 4/3*10^13 n/cm2/sec
+* Fast: 4/6*10^13 n/cm2/sec
+
+radially averaged axial fast flux distribution
+radially averaged axial epithermal flux distribution
+radially averaged axial thermal flux distribution
+
+axially averaged (active core region) radial thermal flux distribution
+
+
+% strydom_inl_2013
+
+A final OECD/NEA comparison report compared the Phase I results of all the international participants in 2014 (is it actually 2014?)
+
+The treatment of both neutron scattering and resonance capture in graphite are complex and not adequately caputred by using the methods commonly used in LWRs.
+
+% to add in lit review
+As part of the benchmark simulation activities, the Parallel and Highly Innovative Simulation for INL Code System (PHISICS) reactor physics package was coupled to the system thermal fluid code RELAP5-3D to enable temperature feedback in core simulations.
+The PHISICS framework relies on the transport core solver INSTANT (Intelligent Nodal and Semi-structured Treatment for Advanced Neutron Transport).
+
+RELAP5-3D does not provide the spatial resolution of higher fidelity thermal fluid codes but it does have a powerful plant simulation capability.
+They conducted a detailed study on the spatial resolution required in flux and temperature profiles to support accurate depletion and transient analyses by comparing the traditional ring model approach with a more detailed triangular geometry model.
+
+The benchmark was developed in cooperation with General Atomics to compare different codes and methods, since validation data from current or past prismatic VHTR experimental facilities or reactors are severely limited.
+The benchmark was launched on MArch 1, 2012 for international participation after formal approval from NEA of the OECD.
+
+The MHTGR-350 MW benchmark is based on the approach followed for the OECD/NEA PBMR-400 MW benchmark.
+Good description of the Phases and exercises.
+
+Final OECD/NEA report is expected to be completed by September 2015.
+
+- Reported results:
+* keff, CRworth, axial offset, Avg. power density (total core), and Max power density
+
+* axial distribution of the radially averaged power density at each active core layer
+
+Groups:
+1) 	[1.96e7-6.7e6]
+19) [0.625-0.325]
+26) [7.15e-3, 1.1e-4]
+
+Description of Exercise 2:
+Exercise 2 is a thermal fluids standalone calculation drive by a specified power desnity profile.
+4 cases:
+a- no bypass flow, fixed thermophysical properties
+b- bypass flow type I, fixed thermophysical properties
+c- bypass flow type I, variable thermophysical properties
+d- bypass flow type II, variable thermophysical properties
+
+Table 10 and 11 for the bypass and the thermophysical
+
+
+
+
+
+
+
+% This will go somewhere else: methods (tools)
+TH modeling:
+
+% strydom_inl_2013
+PHISICS/RELAP5-3D Benchmark Model:
+Primary system radial representation.
+The inner reflector, core region, and outer reflector are modeled as nine rigns in cylindrical coordinates.
+It has three additional rings representing the core barrel, reactor pressure vessel, and outer air boundary layer.
+
+The radii of rings are calculated to represent the correct graphite volumes in each of the structures, and it includes corrections for the 2mm gaps between the reflector blocks and the 3mm gap between the outer reflector and the core barrel.
+
+Sub-channel unit-cell approach for the three fuel rings to distinguish between the fuel and moderator temperatures.
+
+Another approach is to use a more detailed block model.
+A hexagonal block can be explicitly represented by dividing it into six triangular elements.
+Heat transfer between the triangular elemnts occurs in two ways: internally via conduction, and externally via radiation across the 2-mm gap between the block faces.
+
+
+
+% hawari_development_2018

@@ -1,0 +1,262 @@
+@misc{novak_pronghorn_2018,
+	title = {Pronghorn: {A} {Porous} {Media} {Thermal}-{Hydraulics} {Core} {Simulator} and its {Validation} with the {SANA} {Experiments}},
+	url = {https://www.osti.gov/servlets/purl/1478375},
+	language = {en},
+	publisher = {INL},
+	author = {Novak, A J and Zou, L and Peterson, J W and Martineau, R C and Slaybaugh, R N},
+	month = apr,
+	year = {2018},
+	file = {Novak et al. - 2018 - Pronghorn A Porous Media Thermal-Hydraulics Core .pdf:/home/roberto/Zotero/storage/SPF7BG2M/Novak et al. - 2018 - Pronghorn A Porous Media Thermal-Hydraulics Core .pdf:application/pdf}
+}
+
+@article{gaston_moose_2009,
+	title = {{MOOSE}: {A} parallel computational framework for coupled systems of nonlinear equations},
+	volume = {239},
+	issn = {00295493},
+	shorttitle = {{MOOSE}},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0029549309002635},
+	doi = {10.1016/j.nucengdes.2009.05.021},
+	abstract = {Systems of coupled, nonlinear partial differential equations (PDEs) often arise in simulation of nuclear processes. MOOSE: Multiphysics Object Oriented Simulation Environment, a parallel computational framework targeted at the solution of such systems, is presented. As opposed to traditional data-ﬂow oriented computational frameworks, MOOSE is instead founded on the mathematical principle of Jacobian-free Newton–Krylov (JFNK). Utilizing the mathematical structure present in JFNK, physics expressions are modularized into “Kernels,” allowing for rapid production of new simulation tools. In addition, systems are solved implicitly and fully coupled, employing physics-based preconditioning, which provides great ﬂexibility even with large variance in time scales. A summary of the mathematics, an overview of the structure of MOOSE, and several representative solutions from applications built on the framework are presented.},
+	language = {en},
+	number = {10},
+	urldate = {2020-07-04},
+	journal = {Nuclear Engineering and Design},
+	author = {Gaston, Derek and Newman, Chris and Hansen, Glen and Lebrun-Grandié, Damien},
+	month = oct,
+	year = {2009},
+	pages = {1768--1778},
+	file = {Gaston et al. - 2009 - MOOSE A parallel computational framework for coup.pdf:/home/roberto/Zotero/storage/AVRAX8JV/Gaston et al. - 2009 - MOOSE A parallel computational framework for coup.pdf:application/pdf}
+}
+
+@article{kirk_libmesh_2006,
+	title = {{libMesh} : a {C}++ library for parallel adaptive mesh refinement/coarsening simulations},
+	volume = {22},
+	issn = {0177-0667, 1435-5663},
+	shorttitle = {{libMesh}},
+	url = {http://link.springer.com/10.1007/s00366-006-0049-3},
+	doi = {10.1007/s00366-006-0049-3},
+	abstract = {In this paper we describe the libMesh (http://libmesh.sourceforge.net)framework for parallel adaptive ﬁnite element applications. libMesh is an open-source software library that has been developed to facilitate serial and parallel simulation of multiscale, multiphysics applications using adaptive mesh reﬁnement and coarsening strategies. The main software development is being carried out in the CFDLab (http://cfdlab.ae.utexas.edu) at the University of Texas, but as with other open-source software projects; contributions are being made elsewhere in the US and abroad. The main goals of this article are: (1) to provide a basic reference source that describes libMesh and the underlying philosophy and software design approach; (2) to give sufﬁcient detail and references on the adaptive mesh reﬁnement and coarsening (AMR/ C) scheme for applications analysts and developers; and (3) to describe the parallel implementation and data structures with supporting discussion of domain decomposition, message passing, and details related to dynamic repartitioning for parallel AMR/C. Other aspects related to C++ programming paradigms, reusability for diverse applications, adaptive modeling, physics-independent error indicators, and similar concepts are brieﬂy discussed. Finally, results from some applications using the library are presented and areas of future research are discussed.},
+	language = {en},
+	number = {3-4},
+	urldate = {2020-08-20},
+	journal = {Engineering with Computers},
+	author = {Kirk, Benjamin S. and Peterson, John W. and Stogner, Roy H. and Carey, Graham F.},
+	month = dec,
+	year = {2006},
+	pages = {237--254},
+	file = {Kirk et al. - 2006 - libMesh  a C++ library for parallel adaptive mesh.pdf:/home/roberto/Zotero/storage/A94AUHE5/Kirk et al. - 2006 - libMesh  a C++ library for parallel adaptive mesh.pdf:application/pdf}
+}
+
+@misc{balay_petsc_2016,
+	title = {{PETSc} {Users} {Manual}},
+	url = {https://publications.anl.gov/anlpubs/2016/05/127241.pdf},
+	publisher = {Argonne National Laboratory (ANL)},
+	author = {Balay and Brune and Buschelman and Gropp and Karpeyev and Knepley and Curfman McInnes and Rupp and Smith and Zhang},
+	month = apr,
+	year = {2016}
+}
+
+@article{knoll_jacobian-free_2004,
+	title = {Jacobian-free {Newton}–{Krylov} methods: a survey of approaches and applications},
+	volume = {193},
+	issn = {00219991},
+	shorttitle = {Jacobian-free {Newton}–{Krylov} methods},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0021999103004340},
+	doi = {10.1016/j.jcp.2003.08.010},
+	abstract = {Jacobian-free Newton–Krylov (JFNK) methods are synergistic combinations of Newton-type methods for superlinearly convergent solution of nonlinear equations and Krylov subspace methods for solving the Newton correction equations. The link between the two methods is the Jacobian-vector product, which may be probed approximately without forming and storing the elements of the true Jacobian, through a variety of means. Various approximations to the Jacobian matrix may still be required for preconditioning the resulting Krylov iteration. As with Krylov methods for linear problems, successful application of the JFNK method to any given problem is dependent on adequate preconditioning. JFNK has potential for application throughout problems governed by nonlinear partial diﬀerential equations and integro-diﬀerential equations. In this survey paper, we place JFNK in context with other nonlinear solution algorithms for both boundary value problems (BVPs) and initial value problems (IVPs). We provide an overview of the mechanics of JFNK and attempt to illustrate the wide variety of preconditioning options available. It is emphasized that JFNK can be wrapped (as an accelerator) around another nonlinear ﬁxed point method (interpreted as a preconditioning process, potentially with signiﬁcant code reuse). The aim of this paper is not to trace fully the evolution of JFNK, nor to provide proofs of accuracy or optimal convergence for all of the constituent methods, but rather to present the reader with a perspective on how JFNK may be applicable to applications of interest and to provide sources of further practical information.},
+	language = {en},
+	number = {2},
+	urldate = {2020-07-04},
+	journal = {Journal of Computational Physics},
+	author = {Knoll, D.A. and Keyes, D.E.},
+	month = jan,
+	year = {2004},
+	pages = {357--397},
+	file = {Knoll and Keyes - 2004 - Jacobian-free Newton–Krylov methods a survey of a.pdf:/home/roberto/Zotero/storage/YXT3BD8A/Knoll and Keyes - 2004 - Jacobian-free Newton–Krylov methods a survey of a.pdf:application/pdf}
+}
+
+@article{gaston_physics-based_2015,
+	title = {Physics-based multiscale coupling for full core nuclear reactor simulation},
+	volume = {84},
+	issn = {03064549},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S030645491400543X},
+	doi = {10.1016/j.anucene.2014.09.060},
+	abstract = {Numerical simulation of nuclear reactors is a key technology in the quest for improvements in efﬁciency, safety, and reliability of both existing and future reactor designs. Historically, simulation of an entire reactor was accomplished by linking together multiple existing codes that each simulated a subset of the relevant multiphysics phenomena. Recent advances in the MOOSE (Multiphysics Object Oriented Simulation Environment) framework have enabled a new approach: multiple domain-speciﬁc applications, all built on the same software framework, are efﬁciently linked to create a cohesive application. This is accomplished with a ﬂexible coupling capability that allows for a variety of different data exchanges to occur simultaneously on high performance parallel computational hardware. Examples based on the KAIST-3A benchmark core, as well as a simpliﬁed Westinghouse AP-1000 conﬁguration, demonstrate the power of this new framework for tackling—in a coupled, multiscale manner—crucial reactor phenomena such as CRUD-induced power shift and fuel shufﬂe.},
+	language = {en},
+	urldate = {2020-07-04},
+	journal = {Annals of Nuclear Energy},
+	author = {Gaston, Derek R. and Permann, Cody J. and Peterson, John W. and Slaughter, Andrew E. and Andrš, David and Wang, Yaqi and Short, Michael P. and Perez, Danielle M. and Tonks, Michael R. and Ortensi, Javier and Zou, Ling and Martineau, Richard C.},
+	month = oct,
+	year = {2015},
+	pages = {45--54},
+	file = {Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:/home/roberto/Zotero/storage/YCBH9985/Gaston et al. - 2015 - Physics-based multiscale coupling for full core nu.pdf:application/pdf}
+}
+
+@article{lindsay_introduction_2018,
+	title = {Introduction to {Moltres}: {An} application for simulation of {Molten} {Salt} {Reactors}},
+	volume = {114},
+	issn = {03064549},
+	shorttitle = {Introduction to {Moltres}},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0306454917304760},
+	doi = {10.1016/j.anucene.2017.12.025},
+	abstract = {Moltres is a new physics application for modeling coupled physics in ﬂuid-fuelled, molten salt reactors. This paper describes its neutronics model, thermal hydraulics model, and their coupling in the MOOSE framework. Neutron and precursor equations are implemented using an action system that allows use of an arbitrary number of groups with no change in the input card. Results for many-channel conﬁgurations in 2D-axisymmetric and 3D coordinates are presented and compared against other coupled models as well as the Molten Salt Reactor Experiment.},
+	language = {en},
+	urldate = {2020-07-04},
+	journal = {Annals of Nuclear Energy},
+	author = {Lindsay, Alexander and Ridley, Gavin and Rykhlevskii, Andrei and Huff, Kathryn},
+	month = apr,
+	year = {2018},
+	pages = {530--540},
+	file = {Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:/home/roberto/Zotero/storage/RMVLJEUY/Lindsay et al. - 2018 - Introduction to Moltres An application for simula.pdf:application/pdf}
+}
+
+@book{melese_thermal_1984,
+	address = {La Grange Park, Ill., USA},
+	title = {Thermal and flow design of helium-cooled reactors},
+	isbn = {978-0-89448-027-0},
+	language = {en},
+	publisher = {American Nuclear Society},
+	author = {Melese, Gilbert and Katz, Robert},
+	collaborator = {American Nuclear Society and United States},
+	year = {1984},
+	keywords = {Design and construction, Gas cooled reactors, Helium},
+	file = {Melese and Katz - 1984 - Thermal and flow design of helium-cooled reactors.pdf:/home/roberto/Zotero/storage/BYXWYJGD/Melese and Katz - 1984 - Thermal and flow design of helium-cooled reactors.pdf:application/pdf}
+}
+
+@misc{tak_practical_2012,
+	title = {A practical method for {Whole}-{Core} {Thermal} {Analysis} of a {Prismatic} {Gas}-{Cooled} {Reactor}},
+	author = {Tak and Kim and Lim and Noh},
+	month = mar,
+	year = {2012}
+}
+
+@article{leppanen_development_2007,
+	title = {Development of a {New} {Monte} {Carlo} {Reactor} {Physics} {Code}},
+	abstract = {Monte Carlo neutron transport codes are widely used in various reactor physics applications, traditionally related to criticality safety analyses, radiation shielding problems, detector modelling and validation of deterministic transport codes. The main advantage of the method is the capability to model geometry and interaction physics without major approximations. The disadvantage is that the modelling of complicated systems is very computing-intensive, which restricts the applications to some extent. The importance of Monte Carlo calculation is likely to increase in the future, along with the development in computer capacities and parallel calculation.},
+	language = {en},
+	author = {Leppänen, Jaakko},
+	month = jun,
+	year = {2007},
+	pages = {241},
+	file = {Leppänen - Development of a New Monte Carlo Reactor Physics C.pdf:/home/roberto/Zotero/storage/PFB9JB6W/Leppänen - Development of a New Monte Carlo Reactor Physics C.pdf:application/pdf}
+}
+
+@misc{leppanen_serpent_2015,
+	title = {Serpent – a {Continuous}-energy {Monte} {Carlo} {Reactor} {Physics} {Burnup} {Calculation} {Code}},
+	shorttitle = {User's {Manual}},
+	url = {http://montecarlo.vtt.fi/download/Serpent_manual.pdf},
+	author = {Leppänen, Jaakko},
+	month = jun,
+	year = {2015},
+	file = {Leppänen - 2015 - Serpent – a Continuous-energy Monte Carlo Reactor .pdf:/home/roberto/Zotero/storage/F45I2E7H/Leppänen - 2015 - Serpent – a Continuous-energy Monte Carlo Reactor .pdf:application/pdf}
+}
+
+@article{oecd_nea_benchmark_2017,
+	title = {Benchmark of the {Modular} {High}-{Temperature} {Gas}-{Cooled} {Reactor} ({MHTGR})-350 {MW} {Core} {Design} {Volumes} {I} and {II}},
+	language = {en},
+	author = {OECD NEA},
+	year = {2017},
+	pages = {110},
+	file = {2017 - Benchmark of the Modular High-Temperature Gas-Cool.pdf:/home/roberto/Zotero/storage/6IZJVFUD/2017 - Benchmark of the Modular High-Temperature Gas-Cool.pdf:application/pdf}
+}
+
+@book{duderstadt_nuclear_1976,
+	title = {Nuclear {Reactor} {Analysis}},
+	isbn = {0-471-22363-8},
+	publisher = {John Wiley and Sons},
+	author = {Duderstadt, James J. and Hamilton, Louis J.},
+	year = {1976}
+}
+
+@misc{shenoy_htgr_2010,
+	title = {{HTGR} {Technology} {Coursefor} the {Nuclear} {Regulatory} {Commission}},
+	url = {https://art.inl.gov/NGNP/Training%20Modules%20%20HTGR%20Fundamentals/Module%202a%20-%20History%20and%20Evolution%20of%20HTGRs.pdf},
+	author = {Shenoy, Arkal},
+	month = may,
+	year = {2010}
+}
+
+@misc{gougar_high_2019,
+	title = {High {Temperature} {Gas}-cooled {Reactor} {Technology} {Training} {Curriculum}},
+	url = {https://www.nrc.gov/docs/ML1921/ML19214A096.pdf},
+	language = {en},
+	publisher = {INL},
+	author = {Gougar, Hans and Demkowickz, Paul and Kinsey, Jim and Bright, Richard},
+	month = jul,
+	year = {2019}
+}
+
+@article{leppanen_calculation_2014,
+	title = {Calculation of effective point kinetics parameters in the {Serpent} 2 {Monte} {Carlo} code},
+	volume = {65},
+	issn = {0306-4549},
+	url = {http://www.sciencedirect.com/science/article/pii/S0306454913005628},
+	doi = {10.1016/j.anucene.2013.10.032},
+	abstract = {This paper presents the methodology developed for the Serpent 2 Monte Carlo code for the calculation of adjoint-weighted reactor point kinetics parameters: effective generation time and delayed neutron fractions. The calculation routines were implemented at the Politecnico di Milano, and they are based on the iterated fission probability (IFP) method. The developed methodology is mainly intended for the modeling of small research reactor cores, and the results are validated by comparison to experimental data and MCNP5 calculations in 31 critical configurations.},
+	urldate = {2016-09-14},
+	journal = {Annals of Nuclear Energy},
+	author = {Leppänen, Jaakko and Aufiero, Manuele and Fridman, Emil and Rachamin, Reuven and van der Marck, Steven},
+	month = mar,
+	year = {2014},
+	keywords = {Adjoint-weighted time constants, Effective delayed neutron fraction, Effective generation time, Monte Carlo},
+	pages = {272--279},
+	file = {ScienceDirect Full Text PDF:/home/roberto/Zotero/storage/JIC4MNVB/Leppänen et al. - 2014 - Calculation of effective point kinetics parameters.pdf:application/pdf;ScienceDirect Snapshot:/home/roberto/Zotero/storage/YF2RDBXU/S0306454913005628.html:text/html}
+}
+
+@misc{gougar_prismatic_2010,
+	title = {{PRISMATIC} {COUPLED} {NEUTRONICS}/{THERMAL} {FLUIDS} {TRANSIENT} {BENCHMARK} {OF} {THE} {MHTGR}-350 {MW} {CORE} {DESIGN}},
+	author = {Gougar, Hans and Pope, Michael and Strydom, Gerhard and Baxter, Alan},
+	year = {2010},
+	file = {Gougar et al. - 2010 - PRISMATIC COUPLED NEUTRONICSTHERMAL FLUIDS TRANSI.pdf:/home/roberto/Zotero/storage/V5J54QP3/Gougar et al. - 2010 - PRISMATIC COUPLED NEUTRONICSTHERMAL FLUIDS TRANSI.pdf:application/pdf}
+}
+
+
+@misc{oecd_nea_coupled_2020,
+	title = {Coupled {Neutronic}/{Thermal}- {Fluid} {Benchmark} of the {MHTGR}-350 {MW} {Core} {Design}: {Results} for {Phase} {I} {Exercise} 1},
+	author = {OECD NEA},
+	month = feb,
+	year = {2020}
+}
+
+@misc{strydom_inl_2013,
+	title = {{INL} {Results} for {Phase} {I} and {III} of the {OECD}/{NEA} {MHTGR}-350 {Benchmark}},
+	author = {Strydom, Gerhard and Ortensi, Javier and Sen, Sonat and Hammer, Hans},
+	month = sep,
+	year = {2013}
+}
+
+@techreport{hawari_development_2018,
+	title = {Development and {Deployment} {Assessment} of a {Melt}-{Down} {Proof} {Modular} {Micro} {Reactor} ({MDP}-{MMR})},
+	url = {http://www.osti.gov/servlets/purl/1431209/},
+	language = {en},
+	number = {14--6782, 1431209},
+	urldate = {2019-08-01},
+	institution = {North Carolina State University},
+	author = {Hawari, Ayman I. and Venneri, Francesco},
+	month = apr,
+	year = {2018},
+	doi = {10.2172/1431209},
+	pages = {14--6782, 1431209},
+	file = {Hawari and Venneri - 2018 - Development and Deployment Assessment of a Melt-Do.pdf:/home/roberto/Zotero/storage/VP7KT3D2/Hawari and Venneri - 2018 - Development and Deployment Assessment of a Melt-Do.pdf:application/pdf}
+}
+
+@incollection{massimo_basic_1976,
+	title = {{BASIC} {ASPECTS} {OF} {TRANSPORT} {AND} {DIFFUSION} {THEORY}},
+	isbn = {978-0-08-019616-9},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/B9780080196169500111},
+	language = {en},
+	urldate = {2020-08-31},
+	booktitle = {Physics of {High}-{Temperature} {Reactors}},
+	publisher = {Elsevier},
+	author = {Massimo, Luigi},
+	year = {1976},
+	doi = {10.1016/B978-0-08-019616-9.50011-1},
+	pages = {18--42}
+}
+
+@book{duderstadt_nuclear_1975,
+	title = {Nuclear {Reactor} {Analysis}},
+	author = {Duderstadt, James J. and Hamilton, Louis J.},
+	month = feb,
+	year = {1975}
+}
