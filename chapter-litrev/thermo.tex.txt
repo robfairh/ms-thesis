@@ -145,32 +145,47 @@ Such consideration introduced variations of the maximum fuel temperature of up t
 Their last study focused on the effects of the graphite dimensional changes on the temperature profile.
 The shrunk column showed considerably lower temperatures in the fuel.
 
+% travis_thermalhydraulics_2013
+In spite of the recent developments in CFD tools, a detailed full core explicit analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
+This requirement is mostly due to the three-dimensional CFD simulation of the coolant flow.
+Travis et al. \cite{travis_thermalhydraulics_2013} developed a method to compute full core thermal-hydraulic analyses of \glspl{HTGR}.
+The article presented a simplified method that reduces the computational time and memory requirements while maintaining accurate results.
+The method solves the three-dimensional heat conduction in the solid and the one-dimensional thermal-hydraulic equations in the channels.
+The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations \cite{tak_development_2014}.
+The validation of the method analyzed a fuel column and compared the results to those of a three-dimensional CFD simulation.
+The CFD simulation used the commercial software STAR-CCM+ \cite{cd-adapco_star-ccm_2012}.
+The new computational scheme reduced the computation time to a 2.5\% of the time required by the three-dimensional CFD simulation.
+The new method provided good predictions of the temperature distribution and the axial variation of the helium bulk temperature.
+However, it failed to resolve properly the velocity and temperature distribution within the boundary layer.
+Overall, the method showed good accuracy, and less than a 2\% difference to the three-dimensional CFD simulation.
+
 % tak_practical_2012 / tak_development_2014
-In spite of the recent developments in CFD tools, a detailed whole core explicit analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
 Tak et al. \cite{tak_practical_2012} \cite{tak_development_2014} developed CORONA, which uses a practical method for the whole core analysis.
 The code intends to combine the accuracy from CFD tools and the light computational expense of system analysis codes.
 The method solves the three-dimensional heat conduction equation in the solid and the one-dimensional thermal-hydraulic equations in the fluid.
-The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in CFD analyses.
-The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations.
 In order to enhance practicability, the code adopts a basic unit cell concept, which eliminates an elaborate grid generation process.
 The basic unit cell concept is an extension of the traditional unit cell method, which uses a single triangular unit cell.
-This method considers various shapes of unit cells as well as the heat transfer between then.
+This method considers various shapes of unit cells as well as the heat transfer between them.
 The method provides a way for fast generating computational grids for modeling the solid regions.
 To validate the new code, the authors compared the results using CORONA against the results using the commercial code CFX and experimental results.
-The results of the verification and validation studies showed that CORONA code provided a reasonably accurate results for the thermo-fluid analysis of prismatic \glspl{HTGR}.
-
-
-
-
+The results of the verification and validation studies showed that the CORONA code provides reasonably accurate results.
 
 % end of section
-A whole-core thermal analysis has many advantages over local models.
+CFD techniques allow to compute the detailed temperature profile over local models.
+The fine mesh requirement imposes high computational costs for a whole core CFD analysis, restricting the use of such methods.
+However, a whole-core thermal analysis has many advantages over local models.
 In general, the problem set up includes more accurate boundary conditions.
-A coupled analysis with a reactor physics code requires a full core model \cite{tak_practical_2012}.
+Without whole-core modeling, the mass flow distributions in local models are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
+This leads to under predicted fuel temperatures for the assemblies with a lower flow rate than the average.
+Additionally, a coupled analysis with a reactor physics code requires a full core model \cite{tak_practical_2012}.
 
-% this might appear in a summary of the chapter
+% this might appear in a summary of the chapter: see travis_thermalhydraulics_2013 / tak_practical_2012 / tak_development_2014 
 % The fine mesh requirement for a whole core CFD analysis restricts the use of such methods.
 % Most of the CFD studies limit their application to the local behavior of a fuel column.
 % The alternative for an explicit whole-core analysis are system codes that use simplified models.
 % However, the simplification of the geometries reduces the fuel block temperature resolution.
 % The present method intends to overcome the difficulties in CFD calculation as well as in system calculations.
+% The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in CFD analyses .
+% This requirement is mostly due to the three-dimensional CFD simulation of the coolant flow.
+% The methodology provides good predictions of the global parameters such as the three-dimensional spatial temperature distribution and the axial variation of the helium bulk temperature \cite{travis_thermalhydraulics_2013}.
+% The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations \cite{tak_development_2014}.
