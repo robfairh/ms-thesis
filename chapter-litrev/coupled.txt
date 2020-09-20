@@ -3,32 +3,38 @@ Historically, stand-alone simulations have solved the neutronics and thermal-hyd
 Nonetheless, these physical aspects describe processes that rely heavily on one another.
 Hence, to consider the interaction between the neutronics and thermal-fluids behavior, a coupled analysis is necessary /cite{tak_cappgamma_2016}.
 
-
-
-
-
-
 % damian_vhtr_2008
-Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
-They performed the analysis of various geometrical scales: fuel cell and fuel column located at the core hot spot, 2D and 3D core configurations including the coupling between neutronics and thermal-hydraulics.
-
+In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
+They performed analyses on various geometrical scales: unit cell and fuel column located at the core hot-spot, two-dimensional and three-dimensional core configurations including the coupling between neutronics and thermal-hydraulics.
 The first part of the assessment concerns thermal calculations on steady-state core configurations.
-Such study used CAST3M \cite{studer_cast3marcturus_2007} code considering a 3D thermal coupled with 1D hydraulic modeling.
-The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
-An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
-
-The second part of the assessment used a 2D core configuration using the transport code APOLLO2 \cite{sanchez_apollo2_1999} to minimize the radial power peaking factor.
-The analysis included the variation of various parameters such as fuel enrichment, fuel loading, and the fuel management scheme.
+Such study used CAST3M \cite{studer_cast3marcturus_2007} code to solve the three-dimensional heat conduction in the solid coupled to the one-dimensional thermal-hydraulic equations in the coolant.
+% The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
+% An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
+The second part of the assessment used the transport code APOLLO2 \cite{sanchez_apollo2_1999} on a two-dimensional core configuration to minimize the radial power peaking factor.
+The analysis included the variation of several parameters such as fuel enrichment, fuel loading, and the fuel management scheme.
 The fuel enrichment variation had the strongest impact.
-
-The last part of the study analyzed a 3D core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
-The study varies several design parameters and studies the impact on the power distribution.
-Such parameters are the helium by-pass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
+The last part of the study analyzed a three-dimensional core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
 The codes NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-hydraulics, respectively.
-NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2 \cite{lautard_cronos_1990}.
+NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2.
 The CRONOS2 code solves either the diffusion equation or the even parity transport equation, and it uses a \gls{FDM} or a \gls{FEM} discretization.
 The CAST3M/Arcturus model uses a two-level approach.
 On the first level, the porous media model solves the homogenized system and the coolant.
 On the second level, the CAST3M code solves the thermal-hydraulics on the homogenized geometry.
-Some of the conclusions of this last part of the study were that although the reduction of the bypass fraction decreases the maximum fuel temperature, the average reflector temperature rises.
-Another conclusion showed that using magnesium oxide for the reflector material yields lower temperatures for both normal operation and transients.
+The authors conducted several parametric studies and assessed their impact on the power distribution.
+The studies included the variation of the helium by-pass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
+One of their results exhibited that with the reduction of the bypass fraction the average reflector temperature rises.
+Another result showed that using magnesium oxide as the reflector material yields lower temperatures for both normal operation and transients.
+
+% CAPP
+In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
+To take into account the thermal feedback, the authors integrated to CAPP a simplified thermal-hydraulics tool.
+This tool divides a fuel column into six triangular prisms.
+Each of them hosts a representative coolant channel.
+Solving the energy equation, the code calculates the axial coolant temperature distribution.
+After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
+By means of a TRISO particle conduction model, the model obtains the fuel temperature.
+Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
+% The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
+To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
+They compared the results against the HELIOS reference results.
+The results showed good accuracy.
