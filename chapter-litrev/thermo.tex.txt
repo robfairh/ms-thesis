@@ -80,19 +80,97 @@ In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed an
 The objective of the study was to predict the maximum fuel temperature at steady-state.
 The analysis focused on the GT-MHR 600 at \gls{EOC}.
 The CFD code CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
+In such a study, the results showed that the maximum fuel temperature surpassed the design limits and the authors propose a countermeasure accordingly.
 
-
-
-
-
-
-
+% more detailed calculations
 Such simplified approaches are helpful to understand some basic aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
+More detailed thermal-hydraulic evaluations were rare in the open literature until the last 15 years.
 
-Although the unit cell model simplifies the analysis, it is a helpful tool to determine some basic parameters of the reactor under surveying.
-In such a study, the results showed that the maximum fuel temperature surpassed the design limits and the authors propose accordingly a countermeasure.
+% cioni_3d_2005
+Cioni et al. \cite{cioni_3d_2006} presented an article in 2005 in which they conducted three-dimensional simulations of fuel assemblies of an \gls{HTGR}.
+The objective of the study was to investigate an emergency situation due to the blocking of cooling channels in the core.
+They used the \gls{CFD} code Trio_U \cite{bieder_priceles_2000} to carry out the analysis.
+The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the one-dimensional thermal-hydraulic equations of the coolant.
+In the preliminary work, the authors conducted a study of the influence of the bypass flow on the maximum coolant and fuel temperature.
+Another preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
+A central blockage exhibits a stronger influence over the maximum temperatures of the assembly compared to a peripheral blockage.
+At last, they investigated two configurations.
+First, six fuel elements surrounded the fuel element with the blockage.
+Second, five fuel elements and one reflector element surrounded it.
+The results suggested that the blockage increases the temperature on the blocked fuel assembly only and it does not affect the surrounding elements due to the bypass flow.
+The results also showed that the fuel temperature surpassed the design limits, and that the reactor operators should counteract these effects with active systems.
+
+% simoneau_three-dimensional_2007
+Simoneau et al. \cite{simoneau_three-dimensional_2007} analyzed the transient behavior of an \gls{HTGR} during the \gls{DCC} and \gls{HPCC} event.
+The CFD code STAR-CD \cite{computational_dynamics_limited_star-cd_2004} performed the calculations.
+The code solved conductive, convective, and radiation heat transfer in a 30$^{\circ}$ section of the core and reactor vessel.
+To accommodate the different spatial scales, the code uses the porous media model to represent the coolant flow and the prismatic fuel blocks.
+The model does not resolve the boundary layer and the use of coefficients prescribe the solid-fluid heat transfer and pressure drop across the core.
+The authors validated their model against explicit calculations using a single fuel block.
+One of their results shows that the maximum temperature in the \gls{HPCC} event is lower than in the \gls{DCC} event.
+However, the extra convective heat transfer causes a thermal stratification in the surrounding air, causing higher temperatures in the upper reactor structures.
+
+% tak_numerical_2008
+In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic \gls{HTGR} fuel column.
+The commercial code CFX 11 \cite{ansys_incorporated_cfx_2006} performed the calculations.
+The fuel column under study was from the PMR-600, a pre-conceptual reactor that \gls{KAERI} has designed and whose reference design is the GT-MHR.
+The study considered a one-twelfth section of the fuel due to its symmetry.
+The model determined the coolant distribution using the one-dimensional thermal-hydraulic equations.
+Such coolant distribution served as input to the CFD code.
+Nevertheless, the friction in the channels is dependent on the viscosity which is highly dependent on the temperature.
+Therefore, obtaining the mass flow rates from a separate solver may introduce errors \cite{sato_computational_2010}.
+As mentioned earlier, the unit cell model may introduce errors in the maximum temperature prediction.
+In order to asses the accuracy of the unit cell model, the authors compared the CFD results against the unit cell model results.
+The unit cell model does not consider the bypass flow between assemblies or the radial power distribution within the fuel assembly.
+Tak et al. conducted a parametric study which analyzed the impact of the bypass gap size on the maximum fuel temperature.
+By increasing the bypass gap, the maximum fuel temperature grows.
+The results of this study indicate that the accuracy of the unit cell worsens for larger gaps.
+Another study imposed different radial peaking factors for the different fuel channels.
+Such a study showed the effects of considering a non-flat radial power distribution.
+The authors considered a radial power distribution that did not have a strong impact on the maximum fuel temperature.
+
+% sato_computational_2010
+Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
+Their model considered a one-twelfth section of the fuel column of the GT-MHR.
+The authors conducted parametric studies changing several factors, such as bypass gap-width, turbulence model, axial heat generation profile, and geometry changes due to irradiation.
+Their most relevant results show the presence of bypass flow causes a large lateral temperature gradient in the block.
+Large temperature gradients cause excessive thermal stresses which raise potential structural issues.
+The authors compared the results from different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
+The $k \sim \omega$ model predicted bulk temperatures that are considerably lower than those from the $k \sim \varepsilon$ model.
+The differences went up to 49$^{\circ}$C.
+The overall mass flow rate is about 10$\%$ greater for the $k \sim \omega$ model.
+The study suggested that these turbulence models need more verification against prismatic \gls{HTGR} experiments.
+Another study analyzed the effect of considering different peak radial factors.
+Such consideration introduced variations of the maximum fuel temperature of up to 160 $^{\circ}$C.
+Their last study focused on the effects of the graphite dimensional changes on the temperature profile.
+The shrunk column showed considerably lower temperatures in the fuel.
+
+% tak_practical_2012 / tak_development_2014
+In spite of the recent developments in CFD tools, a detailed whole core explicit analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
+Tak et al. \cite{tak_practical_2012} \cite{tak_development_2014} developed CORONA, which uses a practical method for the whole core analysis.
+The code intends to combine the accuracy from CFD tools and the light computational expense of system analysis codes.
+The method solves the three-dimensional heat conduction equation in the solid and the one-dimensional thermal-hydraulic equations in the fluid.
+The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in CFD analyses.
+The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations.
+In order to enhance practicability, the code adopts a basic unit cell concept, which eliminates an elaborate grid generation process.
+The basic unit cell concept is an extension of the traditional unit cell method, which uses a single triangular unit cell.
+This method considers various shapes of unit cells as well as the heat transfer between then.
+The method provides a way for fast generating computational grids for modeling the solid regions.
+To validate the new code, the authors compared the results using CORONA against the results using the commercial code CFX and experimental results.
+The results of the verification and validation studies showed that CORONA code provided a reasonably accurate results for the thermo-fluid analysis of prismatic \glspl{HTGR}.
 
 
-% leave this for Tak et al 2008
-The unit cell model assumes that the coolant removes all the heat generated in the fuel.
-The model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
+
+
+
+% end of section
+A whole-core thermal analysis has many advantages over local models.
+In general, the problem set up includes more accurate boundary conditions.
+A coupled analysis with a reactor physics code requires a full core model \cite{tak_practical_2012}.
+
+% this might appear in a summary of the chapter
+% The fine mesh requirement for a whole core CFD analysis restricts the use of such methods.
+% Most of the CFD studies limit their application to the local behavior of a fuel column.
+% The alternative for an explicit whole-core analysis are system codes that use simplified models.
+% However, the simplification of the geometries reduces the fuel block temperature resolution.
+% The present method intends to overcome the difficulties in CFD calculation as well as in system calculations.
