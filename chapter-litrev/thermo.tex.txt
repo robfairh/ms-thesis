@@ -1,0 +1,98 @@
+﻿% sort of motivation
+Thermal-hydraulic calculations enable the correct design of \glspl{HTGR}.
+The ability to predict the maximum fuel temperature at steady-state is of paramount importance to succeed in such task.
+We emphasize this statement in the case hydrogen production is desirable.
+Efficient hydrogen production requires higher coolant temperatures, which in turn increases the temperature of the fuel and the reactor pressure vessel.
+
+% sort of intro to simplified models
+The complex geometry of the hexagonal fuel assembly requires elaborate numerical calculations for obtaining accurate evaluations.
+Thermal-hydraulic studies for early \glspl{HTGR} consisted mainly of support calculations for \gls{NRC} safety analysis reports.
+The analyses employed sets of independent codes that relied on simplistic approximations.
+Simplified models are helpful to understand some basic aspects of prismatic \glspl{HTGR} and have the advantage to reduce the computational expense of the calculations.
+
+% shenoy_htgr_1974
+General Atomics \cite{shenoy_htgr_1974} developed the first set of simplistic codes.
+The following list introduces and summarizes some of these codes and their features:
+
+\begin{itemize}
+\item FLAC: It determines the coolant flow distribution in the coolant channels and gaps.
+It solves the one-dimensional momentum equation for incompressible flow and the continuity equations for mass and energy.
+
+\item POKE: It determines the coolant mass flow, coolant temperature, and fuel temperature distribution.
+It solves the steady-state mass and momentum conservation equations for parallel channels.
+
+\item DEMISE: It determines the steady-state three-dimensional temperature distribution in a standard element.
+It solves the temperature in a network model.
+
+\item TAC-2D: It is a general purpose two-dimensional thermal analysis code.
+It solves the two-dimensional heat conduction equation.
+\end{itemize}
+
+Several studies have used these codes.
+% macdonald_ngnp_2003
+For example, \gls{INL} conducted in 2003 a design study \cite{macdonald_ngnp_2003} in support to the \gls{NGNP} project.
+The objective of such study was to investigate options for the NGNP that increased the coolant temperature, with the lowest possible inlet temperature, and the highest overall core power.
+The authors conducted several parametric studies whose reference reactor was the GT-MHR \cite{general_atomics_gas_1996}.
+Using the code POKE, they evaluated two major design modifications: reducing the bypass flow and better controlling the inlet coolant flow distribution.
+Reducing the bypass flow fraction from 20 to 10$\%$ reduces the peak fuel temperatures by about 50$^{\circ}$C.
+Controlling the inlet flow distribution has a stronger effect.
+Other studies focused on the dimensions of the reactor and their impact on the maximum fuel temperature.
+Using the computer codes POKE and TAC2D, the authors investigated taller and higher power reactor cores.
+The investigation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and 14-block-high 840 MWt.
+
+Among the simplified approaches we differentiate the flow network model, the equivalent cylindrical model, and the unit cell model.
+% flow network model
+% reza_design_2006
+Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal hydraulic study of the GT-MHR.
+Reza et al. increased the reactor outlet temperature to enable hydrogen production.
+Additionally, they evaluated alternative coolant inflow paths in an attempt to reduce the reactor vessel temperatures.
+After finding an optimal configuration, they evaluated the maximum temperatures in the fuel and the reactor vessel during the \gls{LPCC} and the \gls{HPCC} events.
+
+% equivalent cylindrical model
+% no_multi-component_2007
+An example of codes using the equivalent cylindrical approach is GAMMA \cite{no_multi-component_2007}.
+The code’s main objective is the modeling of the air ingress event following a LOCA.
+Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
+The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a major concern.
+The GAMMA code solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
+The code couples the solid and gas equations using the porous media model.
+Together with the multi-dimensional analysis feature, GAMMA has a one-dimensional analysis capability for  modeling a flow network.
+
+% takada_core_2004
+Takada et al. \cite{takada_core_2004} carried out another study using the flow network and the equivalent cylindrical model.
+Focusing on the \gls{HTTR}, they developed a thermal-hydraulic design code.
+The code used the flow network analysis code FLOWNET \cite{maruyama_verification_1988} for calculating the coolant flow and temperature distributions.
+The code TEMDIM \cite{maruyama_verification_1988} solved the fuel temperatures using the equivalent cylindrical model.
+Finally, the authors validated the calculation scheme by comparing its results with the experimental data from the \gls{HTTR}.
+
+% unit cell model
+% nakano_conceptual_2008
+Nakano et al. \cite{nakano_conceptual_2008} studied different fuel assembly configurations using several simplistic approximations.
+For determining the fuel temperature, they used the TAC-2D code.
+A previous nuclear analysis calculated the power density.
+And a previous study calculated the flow distribution using the code FLOWNET.
+The fuel temperature calculation used the equivalent cylindrical model for a hot channel unit cell.
+However, the asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block.
+The equivalent cylindrical model fails to capture this behavior.
+
+% in_three-dimensional_2006
+In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of an \gls{HTGR}.
+The objective of the study was to predict the maximum fuel temperature at steady-state.
+The analysis focused on the GT-MHR 600 at \gls{EOC}.
+The CFD code CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
+
+
+
+
+
+
+
+Such simplified approaches are helpful to understand some basic aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
+
+Although the unit cell model simplifies the analysis, it is a helpful tool to determine some basic parameters of the reactor under surveying.
+In such a study, the results showed that the maximum fuel temperature surpassed the design limits and the authors propose accordingly a countermeasure.
+
+
+% leave this for Tak et al 2008
+The unit cell model assumes that the coolant removes all the heat generated in the fuel.
+The model does not consider the radial power distribution within the fuel assembly or the bypass flow between assemblies.
