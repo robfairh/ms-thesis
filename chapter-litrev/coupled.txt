@@ -1,7 +1,7 @@
 ﻿% sort of intro
 Historically, stand-alone simulations have solved the neutronics and thermal-hydraulics of \glspl{HTGR}.
 Nonetheless, these physical aspects describe processes that rely heavily on one another.
-Hence, to consider the interaction between the neutronics and thermal-fluids behavior, a coupled analysis is necessary /cite{tak_cappgamma_2016}.
+Hence, to consider the interaction between the neutronics and thermal-hydraulics behavior, a coupled analysis is necessary /cite{tak_cappgamma_2016}.
 
 % damian_vhtr_2008
 In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
@@ -36,5 +36,45 @@ By means of a TRISO particle conduction model, the model obtains the fuel temper
 Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
 % The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
 To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
-They compared the results against the HELIOS reference results.
+They compared the results against the HELIOS code reference results.
 The results showed good accuracy.
+
+% tak_coupled_2016
+Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-hydraulics coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
+DeCART is a whole-core neutron transport code and it was responsible for calculating the power distribution and the fast neutron fluence.
+CORONA calculated the temperature distribution.
+To validate the new code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
+The main objective of the exercise was to validate the code and also identify technical challenges for future development.
+The authors presented an interesting analysis in which they compared the results from the coupled simulation and the stand-alone simulations.
+The difference in the multiplication factor was as high as 2597 pcm.
+The axial offset and maximum fuel temperature exhibited significant differences as well.
+Such result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
+
+% tak_cappgamma_2016
+Another article \cite{tak_cappgamma_2016} introduced a coupling between the CAPP code and the GAMMA+ code.
+GAMMA+ is a system code for thermo-fluids analysis and system transients.
+GAMMA+'s development main motivation was the analysis of the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
+The code uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the flow and temperature distribution of the fluid.
+For solids, the code uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
+In such study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
+They analyzed the bypass flow effects on the coupled calculations.
+Some of their most relevant results showed that the maximum fuel temperature reaches a peak near \gls{MOC}.
+Another result revealed that neglecting the bypass flow decreases the active core temperatures and increases the reflector temperatures.
+Consequently, the multiplication factor increased by approximately 300 pcm.
+On the other hand, the power density changes were not appreciable.
+
+% yuk_time-dependent_2020
+A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to the reactor physics code CAPP.
+To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
+The tool divides a fuel column into six triangular prisms.
+Each of them hosts a representative coolant channel.
+After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
+The CAPP code uses predetermined tables of thermal conductivity for each material.
+For a given fast neutron fluence and temperature, the code obtains the thermal conductivity by interpolation.
+To test the new transient capabilities, they analyzed two control rod ejection scenarios.
+They compared the results to those of the CAPP/GAMMA+ coupled code.
+Both methods showed similar results.
+
+
+% More on Benchmarks
+CRP on Uncertainty Analysis in HTRs % ref ?

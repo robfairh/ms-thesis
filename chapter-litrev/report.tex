@@ -146,10 +146,10 @@ Second, Phase I Exercise 1 of the OECD/NEA PBMR-400 benchmark problem.
 The calculations of both problems used different number of elements and different orders of shape functions.
 
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
+To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
 To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
 The PMR-200 is a pre-conceptual reactor that \gls{KAERI} has designed.
-They validation compared the results against the HELIOS results.
+They validation compared the results against the HELIOS\cite{stammler_helios_1998} results.
 The results showed good accuracy.
 Moreover, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
 The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
@@ -157,7 +157,7 @@ They compared the results against the results obtained with HELIOS.
 The maximum error was less than 200 pcm.
 
 Tak et al. \cite{tak_cappgamma_2016} developed a coupling between the CAPP code and the GAMMA+ code \cite{lim_gamma_2006}.
-GAMMA+ is a system code for thermo-fluids analysis and system transients.
+GAMMA+ is a system code for thermal-hydraulics analysis and system transients.
 In such study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
 They conducted several studies, such as a core depletion calculation, a core depletion calculation with critical control rod position search, and the analysis of the bypass flow effects on the coupled calculations.
 Their results revealed that neglecting the bypass flow decreases the active core temperatures and, consequently, the multiplication factor increases by approximately 300 pcm.
@@ -166,7 +166,7 @@ A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the 
 This capability solves the time dependent neutron diffusion equation with the \gls{FEM}.
 The main motivation behind this feature is to enable the code to conduct reactivity insertion accidents.
 Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
-To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
+To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
 The new method integrates over partially rodded computation nodes and they called it iPRN.
 To test its accuracy, the authors conducted two exercises with several methods that reduce the rod cusping effect.
 The authors used the mesh reconstruction method to obtain the reference results, as such method eliminates the rod cusping effect by updating the mesh at every time step.
@@ -239,7 +239,7 @@ ANL's team conducted the study at 300 K, which is not in the operational range o
 In the contrary, Han's thesis included an analysis at 1000 K, and his results showed that the temperature changes have a non-negligible impact.
 Additionally, ANL's study used the simplified model of the homogenized fuel compact.
 Han's highlighted that homogenized fuel models of the \gls{PBMR} underestimate criticality calculations.
-In 2015, \gls{INL} presented their results for an \gls{IAEA} Coordinated Research Program and showed that the homogenization of the compact material underestimates notably the eigenvalue.
+In 2015, \gls{INL} presented their results \cite{strydom_results_2015} for an \gls{IAEA} Coordinated Research Program \cite{tyobeka_htgr_2011} and showed that the homogenization of the compact material underestimates notably the eigenvalue.
 On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross sections.
 
 
@@ -472,8 +472,8 @@ Another conclusion showed that using magnesium oxide for the reflector material 
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors developed a simplified thermal fluid analysis tool.
-The thermo-fluid solver divides fuel column in six triangular prisms.
+To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
+The thermal-hydraulics solver divides fuel column in six triangular prisms.
 Each of them hosts a representative coolant channel.
 Solving the energy equation, the code calculates the axial coolant temperature distribution.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
@@ -489,18 +489,6 @@ Moreover, the authors implemented a depletion solver based on the one-group flux
 The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
 They compared the results against the results obtained with HELIOS.
 The maximum error was less than 200 pcm.
-
-
-
----> To here
-
-
-
-
-
-
-
-
 
 % tak_coupled_2016
 Tak et al. tak_development_2014
@@ -518,12 +506,10 @@ The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.
 Such result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
 
-
-
 % tak_cappgamma_2016
 Another article \cite{tak_cappgamma_2016} introduces a coupling between the CAPP code and the GAMMA+ code \cite{lim_gamma_2006}.
-GAMMA+ is a system code for thermo-fluids analysis and system transients.
-GAMMA+'s development main motivation was the analysis of the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
+GAMMA+ is a system code for thermal-hydraulics analysis and system transients.
+GAMMA+'s development main motivation was the analysis of the air ingress accident and thermal-hydraulics transients in \glspl{HTGR}.
 The code uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve for the fluid.
 For solids, the code uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
 In such study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
@@ -532,7 +518,6 @@ Some of their most relevant results show that the maximum fuel temperature reach
 Another result reveals that neglecting the bypass flow decreases the active core temperatures and increases the reflector temperatures.
 Consequently, the multiplication factor increases by approximately 300 pcm.
 On the other hand, the power density changes are not appreciable.
-
 
 % yuk_time-dependent_2020
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to the reactor physics code CAPP \cite{lee_development_2011}.
@@ -556,16 +541,19 @@ To test the new transient capabilities, they analyzed two control rod ejection s
 They compared the results to those of the CAPP/GAMMA+ coupled code.
 Both methods show similar results.
 
+---> To here
+
+% Benchmarks Intro
+Necessity to develop new benchamrk exercises to validate ...
+
+% oecd_nea_coupled_2020
+OECD/NEA MHTGR-350 Benchmark
+
+% tyobeka_htgr_2011 / strydom_results_2015
+CRP on Uncertainty Analysis in HTRs
 
 
 
-
-
-
-
-
-% More on Benchmarks
-CRP on Uncertainty Analysis in HTRs % ref ?
 
 
 \pagebreak
