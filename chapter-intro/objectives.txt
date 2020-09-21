@@ -1,0 +1,40 @@
+﻿\section{Objectives}
+
+As mentioned earlier, the ultimate goal of this work is to support the development of \gls{HTGR} technology.
+The following list of main objectives expands on that goal.
+
+\textbf{Extend Moltres modeling capabilities to \glspl{HTGR}.}
+Moltres is a multi-physics solver of \gls{MSR}.
+Enhancing Moltres will allow it to model \glspl{HTGR} as well.
+
+\textbf{Couple the different physics phenomena present in an \gls{HTGR}.}
+Moltres current capabilities allow for solving some of the physics in the \gls{HTGR} design.
+Nevertheless, the inherent physics in a \gls{HTGR} needs to be captured by the solver, and properly integrated to the current capabilities.
+
+\textbf{Develop safety analysis capabilities in Moltres.}
+Steady-state simulations are helpful to understand the basic behavior of an \gls{HTGR}.
+They are also necessary for reactor design.
+Transient simulations are also necessary for reactor design.
+Transient simulations assess the reactor response in design basis events.
+
+The main objectives are somewhat broad.
+The following list presents secondary objectives that will lead to the fulfillment of the main objectives:
+
+\textbf{Predict neutronics appropriately.}
+Moltres should have the ability to carry out eigenvalue calculations appropriately.
+Additionally, Moltres should predict the flux shape and magnitude accurately, during steady-state and transient simulations.
+
+\textbf{Understand impact of some simulation parameters.}
+The underlying physics of \glspl{HTGR} are different to the physics of other reactors.
+Consequently, the simulation results will be sensitive to different parameters from other reactor type simulations.
+In this work we will focus on the energy group structure and its effects over the diffusion calculations.
+We will also asses the effect of such parameters over the performance of the simulations.
+
+\textbf{Calculate power distribution properly.}
+The importance of an accurate neutronics behavior prediction lays on the accurate prediction of the power distribution.
+The power distribution is the most influential parameter over the thermal-hydraulics as it determines the temperature profile in the reactor.
+
+\textbf{Predict temperature profile accurately.}
+Undesirably high temperatures endanger the integrity of the TRISO particles.
+Additionally, the temperature influences the neutronics.
+Hence, an accurate neutronics calculation will not be accurate without an accurate thermal-hydraulics calculation, and vice versa.
