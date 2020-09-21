@@ -1,0 +1,30 @@
+﻿The world faces energy challenges that compromise the efforts to stop climate change.
+The electricity generation and transportation sectors are the largest issuers of \glspl{GHG} and, hence, the major contributors to climate change.
+These challenges underscores the need for cleaner sources.
+Nonetheless, the common belief that renewable energy is the solution to the problem presents several drawbacks.
+The duck curve is an example of such drawbacks.
+Moreover, a carbon neutral electric grid will be insufficient to halt climate change.
+The transportation sector needs to survey some possible alternatives to become carbon free as well.
+In this work, we proposed a combination between nuclear energy and hydrogen production that represents a possible solution to these challenges.
+
+To seek a solution for the challenge described above, we narrowed down out focus on a more particular case, the University of Illinois.
+Through the implementation of the \gls{icap}, the University of Illinois is actively working to reduce \gls{GHG} emissions on its campus.
+The objective of this work aligns with the efforts in two of the six target areas defined on the \gls{icap}, electricity generation and transportation.
+
+Regarding the hydrogen production methods, we surveyed three different processes: \gls{LTE}, \gls{HTE}, and \gls{SI}.
+We developed a tool to calculate their energy requirements, in terms of electricity and heat, and hydrogen production rates.
+This tool is not only applicable to a stand-alone hydrogen plant but also to a nuclear power plant that produces both electricity and hydrogen.
+
+On the transportation sector, we quantified the fuel requirements of \gls{MTD} and \gls{UIUC} fleets.
+With that fuel requirement we calculated the mass of hydrogen necessary to replace the fossil fuel usage by both fleets in a 100$\%$.
+Finally, we chose several microreactor designs and we calculated their hydrogen production rates.
+The microreactors that are able to meet both fleet hydrogen needs are the MMR, ST-OTTO, U-battery, and Starcore.
+Starcore design is the only one that could use the \gls{SI} process.
+
+On the electricity generation sector, we predicted the magnitude of the duck curve in UIUC's grid in 2050.
+This result exhibits how an increased solar penetration into the grid worsens the duck curve.
+We proposed a mitigation strategy that uses a microreactor of 25 MWe.
+With such reactor, we calculated the mass of hydrogen produced by the different methods during the day.
+Finally, we estimated a peak demand reduction by using the hydrogen produced during the day.
+This last result highlight the fact that hydrogen introduces a means to store energy that reduces the reliance on dispatchable sources.
+This analysis emphasize how nuclear energy and hydrogen production are an approach to mitigate climate change.
