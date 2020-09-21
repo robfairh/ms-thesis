@@ -185,33 +185,29 @@ Additionally, all codes use MPI for parallel communication and allow for deploym
 Besides, this simulation tool is open source.
 All these characteristics make \textit{Moltres} suitable for solving the type of physical phenomena described above.
 
+
 \section{Objectives}
 % This thesis focuses on steady-state calculations and also intends to set a roadmap for the transient simulations.
-% Finally, we will compare the results to the already published results from the benchmark.
-
-% This work's ultimate goal is to support the development of \gls{HTGR} technology.
-% More specifically, we focus on the development of computational methods for modeling \glspl{HTGR}.
-% We use \textit{Moltres} as our main analysis tool.
 
 As mentioned earlier, the ultimate goal of this work is to support the development of \gls{HTGR} technology.
-Keeping that goal in mind, we developed the following list main objectives.
-% I want to say something like the following main objectives ramify from the original goal.
+The following list of main objectives expands on that goal.
 
+\textbf{Extend Moltres modeling capabilities to \glspl{HTGR}.}
+Moltres is a multi-physics solver of \gls{MSR}.
+Enhancing Moltres will allow it to model \glspl{HTGR} as well.
 
-\textbf{Extend Moltres modeling capabilities to \glspl{HTGR}}
+\textbf{Couple the different physics phenomena present in an \gls{HTGR}.}
+Moltres current capabilities allow for solving some of the physics in the \gls{HTGR} design.
+Nevertheless, the inherent physics in a \gls{HTGR} needs to be captured by the solver, and properly integrated to the current capabilities.
 
-\textbf{Develop safety analysis capabilities in Moltres}
-steady-state: reactor design
-- Accurately predict reactor steady state temperatures
+\textbf{Develop safety analysis capabilities in Moltres.}
+Steady-state simulations are helpful to understand the basic behavior of an \gls{HTGR}.
+They are also necessary for reactor design.
+Transient simulations are also necessary for reactor design.
+Transient simulations assess the reactor response in design basis events.
 
-transient: analyze design basis events
-
-\textbf{Accurately coupling the different physics phenomena present in a HTGR}
-
-
-
-The main objective is somewhat broad.
-The following list presents secondary objectives that will lead to the fulfillment of the main objective:
+The main objectives are somewhat broad.
+The following list presents secondary objectives that will lead to the fulfillment of the main objectives:
 
 \textbf{Predict neutronics appropriately.}
 Moltres should have the ability to carry out eigenvalue calculations appropriately.
@@ -221,28 +217,16 @@ Additionally, Moltres should predict the flux shape and magnitude accurately, du
 The underlying physics of \glspl{HTGR} are different to the physics of other reactors.
 Consequently, the simulation results will be sensitive to different parameters from other reactor type simulations.
 In this work we will focus on the energy group structure and its effects over the diffusion calculations.
+We will also asses the effect of such parameters over the performance of the simulations.
 
 \textbf{Calculate power distribution properly.}
-The importance of an accurate neutronics behavior prediction lies on the accurate prediction of the power distribution.
-The power distribution is the most influential parameter over the thermal-hydraulics.
+The importance of an accurate neutronics behavior prediction lays on the accurate prediction of the power distribution.
+The power distribution is the most influential parameter over the thermal-hydraulics as it determines the temperature profile in the reactor.
 
 \textbf{Predict temperature profile accurately.}
 Undesirably high temperatures endanger the integrity of the TRISO particles.
 Additionally, the temperature influences the neutronics.
-Hence, an accurate neutronics calculation will not be accurate without an accurate thermal-hydraulics calculation.
-
-
-
-
-
-
-
-
-
-
-
-
-
+Hence, an accurate neutronics calculation will not be accurate without an accurate thermal-hydraulics calculation, and vice versa.
 
 
 \pagebreak
