@@ -75,6 +75,30 @@ To test the new transient capabilities, they analyzed two control rod ejection s
 They compared the results to those of the CAPP/GAMMA+ coupled code.
 Both methods showed similar results.
 
+% Benchmarks Intro
+The prismatic \gls{HTGR} tools available have lagged behind the state of the art compared to \glspl{LWR}.
+This delay drives the development of more accurate and efficient tools to analyze the reactor behavior for design and safety evaluations.
+In addition to the development of new methods, it is essential to define appropriate benchmarks to compare the capabilities of various tools.
+% oecd_nea_coupled_2020
+In 2012, the \gls{OECD}/\gls{NEA} defined a benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
+The purpose of this benchmark exercise is to compare various coupled reactor physics and thermal-hydraulic analysis methods.
+The MHTGR design serves as a basis for this benchmark.
+The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-hydraulic analysis, and (2) to test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
+The OECD/NEA MHTGR-350 MW benchmark subdivides the coupled system calculation into three phases.
+Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling, and the coupled neutronics/thermal-hydraulics steady-state modeling.
+Phase II consists of the transient cases.
+Phase III focuses on lattice depletion calculations.
 
-% More on Benchmarks
-CRP on Uncertainty Analysis in HTRs % ref ?
+% tyobeka_htgr_2011 / strydom_results_2015
+Sensitivity analysis and uncertainty analysis methods can assess the predictive capabilities of coupled neutronics/thermal-hydraulics simulations.
+In 2013, the IAEA launched a \gls{CRP} \cite{tyobeka_htgr_2011} on the \gls{HTGR} Uncertainty Analysis in Modeling.
+The objective of the \gls{CRP} was to determine the uncertainty in \gls{HTGR} calculations at all stages of coupled reactor physics/thermal-hydraulics and depletion calculations.
+This \gls{CRP} is a natural continuation of the previous IAEA and OECD/NEA international activities \cite{iaea_evaluation_2003}\cite{reitsma_oecd-neansc_2008} on Verification and Validation of available capabilities for \gls{HTGR} simulations.
+The technical approach is to establish and utilize a benchmark for uncertainty analysis.
+The benchmark defines a series of well defined problems with complete sets of input specifications and reference experimental data.
+The CRP adopted the MHTGR-350 as the reference design and the GT-MHR as a second reference design.
+The design specification uses the OECD/NEA MHTGR-350 MW benchmark \cite{oecd_nea_benchmark_2017} code design specifications.
+The CRP subdivides the coupled system calculation into three phases.
+Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling.
+Phase II consists of design calculations, which are the coupled steady-state neutronics/thermal-hydraulics calculations with and without a depletion calculation.
+Phase III focuses on safety calculations.
