@@ -54,9 +54,9 @@ fill=blue!30]
 
 \section{Prismatic \gls{HTGR} Neutronic Solvers}
 
-Nowadays there are several codes to solve the neutronics of prismatic \glspl{HTGR}.
+Nowadays, there are several codes to solve the neutronics of prismatic \glspl{HTGR}.
 Most of these codes rely on one of the following methods: stochastic transport (Monte Carlo), deterministic transport, or deterministic diffusion.
-We focus our interest in the last method.
+We focus our interest on the last method.
 % If time permits work on a brief description of the Monte Carlo and deterministic transport maybe.
 % Why? Deterministic diffusion solvers have lower computational requirements than other methods reference ??
 % The utilization of the Monte Carlo codes is unattractive because of the tremendous problem size and the need for a large number of neutron histories \cite{lee_status_2006}.
@@ -65,48 +65,47 @@ We focus our interest in the last method.
 % Deterministic diffusion methods are computationally cheaper than the other methods.
 % This characteristic makes it a good candidate for coupled calculations.
 
-The history of deterministic diffusion solvers begins in the late 1950s with the application of the \gls{FDM} to the analysis of \glspl{LWR}.
+The history of deterministic diffusion solvers begins in the late 1950s with the \gls{FDM} application to the analysis of \glspl{LWR}.
 In \gls{FDM}, mesh spacings are usually of the order of the diffusion length.
 When solving large multi-dimensional problems, this feature causes the mesh points to reach intractable numbers \cite{lewis_finite_1986}.
 The computational expense of these calculations motivated the generation of more computationally efficient techniques \cite{lawrence_progress_1986}.
 Although there are substantial overlaps, the most common techniques fall into two broad categories: nodal methods and \gls{FEM}.
 
 % NODAL
-FLARE \cite{delp_flare_1964} is a three-dimensional \gls{BWR} simulator and it is representative of the first generation of nodal schemes.
-Such approach used adjusted parameters to match actual operating data or the results of more accurate calculations.
+FLARE \cite{delp_flare_1964} is a three-dimensional \gls{BWR} simulator, and it is representative of the first generation of nodal schemes.
+Such an approach used adjusted parameters to match actual operating data or the results of more accurate calculations.
 Most of these methods were implementations of the so-called 1.5 group theory.
-A second generation of nodal schemes derived spatial coupling relationships by applying the \gls{TIP}.
-Integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis, such procedure obtains equivalent one-dimensional equations \cite{lawrence_progress_1986}.
+The second generation of nodal schemes derived spatial coupling relationships by applying the \gls{TIP}.
+Such a procedure obtains equivalent one-dimensional equations by integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis \cite{lawrence_progress_1986}.
 This approach proved to be highly efficient and accurate in Cartesian geometries.
 
 In 1981, a formulation based on the \gls{NEM} first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
 Nevertheless, this method would introduce non-physical singular terms that required the utilization of discontinuous polynomials.
-This motivated the development of more effective formulations.
+This drawback motivated the development of more effective formulations.
 The code HEXNOD, introduced in 1988 \cite{wagner_three-dimensional_1989}, is an example of such formulations.
 This algorithm uses the \gls{TIP} and, in contrast to the \gls{NEM}, solves the resulting differential equation analytically.
-The article demonstrated the accuracy of the method by comparison with the \gls{FDM} and Monte Carlo calculations for a few benchmark problems.
+The article demonstrated the method's accuracy by comparing the \gls{FDM} and Monte Carlo calculations for a few benchmark problems.
 
 Another example of more effective methods is the code HEXPEDITE \cite{fitzpatrick_hexpedite_1992}.
-The HEXPEDITE approach uses the \gls{TIP} to derive a pseudo-one-dimensional equation.
+HEXPEDITE uses the \gls{TIP} formulation to derive a pseudo-one-dimensional equation.
 The resulting differential equation is solved analytically.
-The difference from HEXNOD is that, HEXPEDITE uses a different coupling scheme that is simpler and more efficient.
+The difference from HEXNOD is that HEXPEDITE uses a different coupling scheme that is simpler and more efficient.
 Different works \cite{fitzpatrick_hexpedite_1992}\cite{fitzpatrick_developments_1995} on the HEXPEDITE methodology tested the approach against the \gls{NEM} and the \gls{FDM}.
 These studies established HEXPEDITE’s superiority in terms of accuracy and runtime.
 HEXPEDITE's use still prevailed until recently in the analysis of \glspl{HTGR}.
 In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against the diffusion codes JAR, CITATION, and CRONOS2, and the Monte Carlo codes MCNP5 and Serpent.
 
-Other examples of nodal diffusion codes whose use prevailed until the present are DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004}.
+DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are examples of other nodal diffusion codes whose use has prevailed until the present.
 DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
 % VARIANT: variational nodal \cite{palmiotti_variant_1995}
 PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport Simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
 
 % from ortensi_deterministic_2010-1 and wang_modified_2018
-Nodal methods solve quite coarse meshes for approximate solutions.
-This characteristic makes the method efficient.
+Nodal methods solve relatively coarse meshes for approximate solutions.
+This characteristic makes the process efficient.
 On the other hand, the method does not provide detailed point-wise accurate solutions \cite{kang_finite_1973}.
-
-Additionally, nodal methods are applicable for the nodes of a specific shape on which the nodal method was derived.
-The application to complex problems is not flexible as different geometries require the integration over different coordinate systems.
+Additionally, the derivation of nodal methods happens in a specific coordinate system for a particular node shape.
+The application to complex problems is not flexible as different geometries require the integration over other coordinate systems.
 This lack of flexibility limits the applications of nodal methods to regular geometries only.
 
 % FEM
@@ -114,40 +113,39 @@ The \gls{FEM} is a well-established method in applied mathematics and engineerin
 \gls{FEM} is a numerical technique for finding approximate solutions to \glspl{PDE} by deriving their weak or variational form.
 Most applications make \gls{FEM} preferable due to its flexibility in the treatment of curved or irregular geometries.
 Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
-The first prototype engineering application of \gls{FEM} was in the field of structural engineering and dates back to 1956.
-In the successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
+The first engineering application of \gls{FEM} was in the field of structural engineering and dated back to 1956.
+In successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
 \glspl{FEM} have several advantages over the nodal methods.
-It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to multi-group application, and high computational efficiency \cite{lee_development_2008}.
+It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to the multi-group application, and high computational efficiency \cite{lee_development_2008}.
 
-In 1973, an article by Kang et al. \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
-The main motivation for this development was the impractical application of the \gls{FDM} to three-dimensional problems.
+In 1973, Kang et al. \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
+The fundamental motivation for this development was the impractical application of the \gls{FDM} to three-dimensional problems.
 In this early work, the author compared different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
 The studies showed a higher order of convergence achieved by the \gls{FEM}.
 
-Throughout the last four decades many codes have use the \gls{FEM} to solve the diffusion equation.
+Throughout the last four decades, many codes have used the \gls{FEM} to solve the diffusion equation.
 Some of the most recent codes are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
-The list of \gls{FEM} diffusion solvers is more extensive, but here we focus on the best documented codes in the open literature.
+The list of \gls{FEM} diffusion solvers is more extensive, but we focus on the best-documented codes in the open literature.
 We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
 
 % CRONOS
 \gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
 It allows for solving steady-state and transient multi-group calculations taking into account thermal-hydraulic feedback effects.
-The code solves either the diffusion equation or the transport equation by means of the SN method.
+The code solves either the diffusion equation or the transport equation through the SN method.
 In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
-For such study, the authors developed the code suit NEPTHIS/CAST3M.
+For such a study, the authors developed the code suit NEPTHIS/CAST3M.
 NEPHTIS uses a transport-diffusion calculation scheme that relies on CRONOS2.
 
 % CAPP
-In 2008, \gls{KAERI} published an article \cite{lee_development_2008} that presented the code CAPP.
-The code's purposes are to conduct steady state core physics analysis, core depletion analysis, and core transient analysis.
-The article validated the code with two benchmark problems.
-First, the IAEA PWR benchmark problem for two cases, a 2D exercise and a 3D exercise.
-Second, Phase I Exercise 1 of the OECD/NEA PBMR-400 benchmark problem.
-The calculations of both problems used different number of elements and different orders of shape functions.
+In 2008, the \gls{KAERI} published an article \cite{lee_development_2008} that presented the code CAPP.
+The code's purposes are to conduct steady-state core physics analysis, core depletion analysis, and core transient analysis.
+The article validated the code with two benchmark problems: first, the IAEA PWR benchmark problem; 
+second, Phase I Exercise 1 of the OECD/NEA PBMR-400 Benchmark \cite{reitsma_oecd-neansc_2008}.
+The calculations of both problems changed the number of elements and the orders of shape functions.
 
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
 To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
-To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
+To validate their model, the authors solved a two-dimensional model of the PMR-200 at the \gls{BOC}.
 The PMR-200 is a pre-conceptual reactor that \gls{KAERI} has designed.
 They validation compared the results against the HELIOS\cite{stammler_helios_1998} results.
 The results showed good accuracy.
@@ -158,49 +156,49 @@ The maximum error was less than 200 pcm.
 
 Tak et al. \cite{tak_cappgamma_2016} developed a coupling between the CAPP code and the GAMMA+ code \cite{lim_gamma_2006}.
 GAMMA+ is a system code for thermal-hydraulics analysis and system transients.
-In such study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
-They conducted several studies, such as a core depletion calculation, a core depletion calculation with critical control rod position search, and the analysis of the bypass flow effects on the coupled calculations.
+In such a study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
+They conducted several studies, such as a core depletion calculation, a core depletion calculation with a critical control rod position search, and the analysis of the bypass flow effects on the coupled calculations.
 Their results revealed that neglecting the bypass flow decreases the active core temperatures and, consequently, the multiplication factor increases by approximately 300 pcm.
 
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
-This capability solves the time dependent neutron diffusion equation with the \gls{FEM}.
-The main motivation behind this feature is to enable the code to conduct reactivity insertion accidents.
+This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
+The primary motivation behind this feature is to enable the code to perform reactivity insertion accidents.
 Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
 To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
-The new method integrates over partially rodded computation nodes and they called it iPRN.
-To test its accuracy, the authors conducted two exercises with several methods that reduce the rod cusping effect.
-The authors used the mesh reconstruction method to obtain the reference results, as such method eliminates the rod cusping effect by updating the mesh at every time step.
-The iPRN method showed a higher accuracy than the other methods.
+The new method integrates over partially rodded computation nodes, and they called it iPRN.
+To test its accuracy, the authors conducted two exercises with several techniques that reduce the rod cusping effect.
+The authors used the mesh reconstruction method to obtain the reference results, as such a method eliminates the rod cusping effect by updating the mesh at every time step.
+The iPRN technique showed higher accuracy than the other methods.
 To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of CAPP/GAMMA+ coupled code.
 Both codes showed similar results.
 
 % Proghorn and Rattlesnake
 RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the transport equation.
-\gls{INL} has initially developed the Pronghorn code to model gas cooled pebble bed reactors.
-The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models originally in Pronghorn \cite{strydom_inl_2013}.
-Currently, RattleSnake is the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on the use of Yak.
-There are a variety of solvers available under RattleSnake including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport all solved with the \gls{FEM}.
+\gls{INL} has initially developed the Pronghorn code to model \glspl{PRMR}.
+The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models initially in Pronghorn \cite{strydom_inl_2013}.
+Currently, RattleSnake is the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on Yak's use.
+Various solvers are available under RattleSnake, including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport, all solved with the \gls{FEM}.
 % Both RattleSnake and Pronghorn yielded the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RattleSnake.
 
 % j_ortensi_relap-7_2012 j_ortensi_initial_2012
-In 2012, \gls{INL} published a work \cite{j_ortensi_initial_2012} that coupled Pronghorn and RELAP-7 \cite{andrs_relap-7_2012}.
-Pronghorn solved the coupled equations that define the neutron diffusion, fluid flow, and heat transfer in a three-dimensional model.
-RELAP-7 is a MOOSE-based system code and it solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
-It was responsible for modeling the plant system layout, which included the hot and cold ducts, the helium circulator, and the steam generator.
+In 2012, \gls{INL} published a study \cite{j_ortensi_initial_2012} that coupled Pronghorn and RELAP-7 \cite{andrs_relap-7_2012}.
+Pronghorn solved the coupled equations defining the neutron diffusion, fluid flow, and heat transfer in a three-dimensional model.
+RELAP-7 is a MOOSE-based system code, and it solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
+It was responsible for modeling the plant system layout, including the hot and cold ducts, the helium circulator, and the steam generator.
 % This study integrated PRONGHORN and RELAP-7 with the operator split approach (or loose coupling) where each application used an independent mesh.
-To test the coupling, the integrated system carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_coupled_2020}.
+To test the coupling, INL's team carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_coupled_2020}.
 The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
 To simplify the debugging, the authors collapsed the 26 groups into two groups.
 Although using two groups reduces the accuracy of the model, the lower number of groups decreases the calculation time by a factor of ten or more.
 In this study, a two-dimensional cylindrical model replaced the three-dimensional geometry defined by the benchmark.
-The testing of the integrated system included 2 stages: (1) both codes working independently underwent several convergence studies, and (2) the codes solved the steady-state problem in an integrated manner.
+The integrated system testing included two stages: (1) both stand-alone codes underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
 The authors concluded that the coupling between Pronghorn and RELAP-7 was successful.
 
 % strydom_inl_2013
 In 2013, \gls{INL} conducted the OECD/NEA MHTGR-350 Benchmark \cite{strydom_inl_2013} without further simplifications.
 The \gls{INL} team solved Exercise 1 of Phase I using INSTANT-P1 \cite{wang_krylov_2011}, Pronghorn, and RattleSnake.
 % They also solved exercises 2 and 3 using RELAP5-3D and PHISICS/RELAP5-3D code suit.
-INSTANT is transport solver that relies on the spherical harmonics discretization of angles.
+INSTANT is a transport solver that relies on the spherical harmonics discretization of angles.
 The results for Pronghorn and RattleSnake are identical.
 By modifying the cross-sections, INSTANT-P1 returns the diffusion solution.
 Its results were within 30 pcm from Pronghorn and RattleSnake results.
@@ -215,33 +213,32 @@ All presented results exhibited good agreement with the benchmark results.
 The longer neutron mean free path in \glspl{HTGR} compared to \gls{LWR} increases the spectral interactions between elements.
 For this reason, \gls{HTGR} analyses require more energy groups than conventional \gls{LWR} analyses.
 \gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations employing different energy group structures to generate the homogenized cross-sections.
-The cross-section homogenization used the code DRAGON and the diffusion calculations utilized the code DIF3D.
+The cross-section homogenization used the code DRAGON, and the diffusion calculations utilized the code DIF3D.
 For the study, the ANL team implemented a one-dimensional fuel-reflector model in which they used 4, 7, 8, 14, and 23 energy groups.
 They also used alternative energy group structures for the same number of groups.
 For simplicity, the authors used the homogenized fuel compact model.
 They generated all the cross-sections at 300 K.
 One of their conclusions was that the number of energy groups should be more than 4, and 7 or more would be sufficient for uranium fueled \glspl{HTGR}.
-Another conclusion was that the accuracy of the diffusion calculation is sensitive to the energy group boundaries.
+Another finding was that the accuracy of the diffusion calculation is sensitive to the energy group boundaries.
 % Mention something about the metrics of the study? To asses the accuracy, they compared the multiplication factor.
 
 % han_sensitivity_2008
-Han's MS thesis \cite{han_sensitivity_2008} focused on the selection of energy groups for the reactor analysis of the \gls{PBMR}.
-The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
+Han's MS thesis \cite{han_sensitivity_2008} focused on selecting energy groups for the reactor analysis of the \gls{PBMR}.
+The author used the code COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross-section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
 The author compared the results against reference results obtained with the code MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003}.
-To simplify the set up, the model used uniformly distributed isotopes in the fuel.
+To simplify the setup, the model used uniformly distributed isotopes in the fuel.
 The study performed the calculations at two different temperatures: 300 and 1000 K.
-To arrive at an optimal group structure, the author compared many series of combinations of group structures using a trial and error strategy.
-One of the conclusion of this work agrees with previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} on the fact that the energy spectrum is key to yield an accurate description of a nuclear reactor using a few groups.
+To arrive at an optimal group structure, the author compared many combinations of group structures using a trial and error strategy.
+One conclusion of this work agrees with the previous bibliography \cite{gulf_oil_company_nuclear_1973} \cite{duderstadt_nuclear_1976} that the energy spectrum is critical to yield an accurate description of a nuclear reactor using a few groups.
 
-ANL's study is helpful for setting up properly nodal diffusion calculations for an \gls{HTGR}.
-Although the conclusions could be extrapolated to \gls{FEM} diffusion solvers, such study might be valuable.
-ANL's team conducted the study at 300 K, which is not in the operational range of any \glspl{HTGR}.
-In the contrary, Han's thesis included an analysis at 1000 K, and his results showed that the temperature changes have a non-negligible impact.
+ANL's study helps set up properly nodal diffusion calculations for an \gls{HTGR}.
+Although we can extrapolate those conclusions to \gls{FEM} diffusion solvers, such a study might be valuable.
+ANL's team conducted the study at 300 K, not in the operational range of any \glspl{HTGR}.
+On the contrary, Han's thesis included an analysis at 1000 K, and his results showed that the temperature changes have a non-negligible impact.
 Additionally, ANL's study used the simplified model of the homogenized fuel compact.
 Han's highlighted that homogenized fuel models of the \gls{PBMR} underestimate criticality calculations.
 In 2015, \gls{INL} presented their results \cite{strydom_results_2015} for an \gls{IAEA} \gls{CRP} \cite{tyobeka_htgr_2011} and showed that the homogenization of the compact material underestimates notably the eigenvalue.
-On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross sections.
-
+On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross-sections.
 
 \section{Prismatic \gls{HTGR} Thermo-Hydraulics}
 
