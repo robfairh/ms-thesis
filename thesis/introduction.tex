@@ -1,9 +1,9 @@
-\section{The prismatic High-Temperature Gas-Cooled Reactor}
+\section{The Prismatic High-Temperature Gas-Cooled Reactor}
 
 % History
 The history of prismatic \glspl{HTGR} or simply \glspl{PMR} begins in the 1960s with the deployment of the Dragon reactor in the \gls{UK}.
 Its initial objective was to demonstrate the feasibility of the \gls{HTGR} and launch the technology development.
-The Dragon reactor experiment first operated in July 1965 and reached full power of 20 MWt in April 1966.
+The Dragon reactor experiment first operated in July 1965 and reached full-power operation of 20 MWt in April 1966.
 The reactor operated for long periods at full power, demonstrated the successful operation of many components, and provided information on fuel and material irradiation tests.
 Simultaneously, interest in the \gls{US} led to the 40 MWe \gls{HTGR} at Peach Bottom.
 The reactor achieved initial criticality in March 1966 and went into commercial operation in June 1967.
@@ -12,7 +12,7 @@ Most importantly, the plant demonstrated the ability of \glspl{HTGR} to function
 After the deployment of these two prototype reactors came the first \gls{HTGR} demonstration plant, the \gls{FSV} Generating Station.
 Its electric power generation started in December 1976, reaching full-power operation in November 1981.
 The \gls{FSV} plant generated 842 MWt to achieve a net output of 330 MWe.
-This reactor laid the foundation for future \gls{PMR} designs.
+This reactor laid the foundation for future prismatic designs.
 Beginning with \gls{FSV}, the \gls{US} core design included ceramic coated \gls{TRISO} particles embedded within rods placed in large hexagonal shaped graphite elements \cite{brey_development_2001}.
 % Despite these plants did not demonstrate the commercial capabilities of the \glspl{PMR}, they were  valuable in demonstrating attributes as the performance of the \gls{TRISO} fuel particles \cite{herranz_power_2009}.
 
@@ -101,7 +101,7 @@ Furthermore, the fuel blocks' complex geometry hinders accurate calculations of 
 
 The characteristics of an \gls{HTGR} are different from those of conventional \glspl{LWR}.
 Such differences create a demand for new reactor analysis tools.
-This new tools should take into account the following peculiarities of \glspl{HTGR} \cite{rohde_development_2012}\cite{bostelmann_criticality_2016}:
+These new tools should take into account the following peculiarities of \glspl{HTGR} \cite{rohde_development_2012}\cite{bostelmann_criticality_2016}:
 \begin{itemize}
 \item Hexagonal structure: the shape of the fuel blocks does not conform to any orthogonal coordinate system.
 \item Double heterogeneity: the TRISO particles form the first heterogeneity level, consisting of four
@@ -114,13 +114,13 @@ The second level arises from the fuel elements, as they encompass the compacts, 
 %Why use Moltres?
 Historically, linking a stand-alone neutronics solver to a thermal-hydraulics solver allowed for simulating an entire reactor.
 The coupling of the codes occurred in a black-box fashion, where one code's output served as the other's input, and vice versa.
-This coupling technique is commonly known as the operator-splitting technique.
+This coupling technique is commonly known as the operator-splitting technique \cite{ragusa_consistent_2009}.
 In such an approach, each individual physics isolates the action of the governing equations upon the variables.
 Nonetheless, these physical models describe processes that rely heavily on the solution of one another's.
 The neutron flux determines the power distribution.
 The power distribution has a strong influence on the temperature field.
 Due to the \gls{HTGR} strong temperature feedback, the temperature affects the neutron flux distribution in the core.
-Because of a large time-scale separation between the different phenomena, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors  \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
+Because of a large time-scale separation between the different phenomena, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
 
 \gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
 All the software built on the \gls{MOOSE} framework shares a joint code base.
@@ -153,8 +153,9 @@ Transient simulations are also necessary for reactor design.
 Transient simulations assess the reactor response in design basis events.
 
 \paragraph{Understand \gls{HTGR} contribution to stopping climate change.}
-\glspl{HTGR} are an attractive technology for being capable of attaining high temperatures.
-With such high temperatures, the efficiency of hydrogen production increases.
+\glspl{HTGR} are capable of attaining high temperatures.
+Such feature makes them attractive for deployment alongside hydrogen plants. 
+With high temperatures, the efficiency of hydrogen production increases.
 
 \vskip 0.6cm
 The main objectives are somewhat broad.
