@@ -165,6 +165,4 @@ Another approach is to use a more detailed block model.
 A hexagonal block can be explicitly represented by dividing it into six triangular elements.
 Heat transfer between the triangular elemnts occurs in two ways: internally via conduction, and externally via radiation across the 2-mm gap between the block faces.
 
-
-
 % hawari_development_2018
