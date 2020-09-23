@@ -52,7 +52,9 @@ fill=blue!30]
 
 \begin{document}
 
-\section{MOOSE}
+\section{Computational Tools}
+
+\subsection{MOOSE}
 
 % intro
 \gls{MOOSE}\cite{gaston_moose_2009} is a computational framework whose purpose is to support the development of engineering analysis applications.
@@ -80,14 +82,45 @@ The applications by default use monolithic and implicit methods.
 This feature facilitates relatively easy coupling between different phenomena and allows for great flexibility even with large variance in time scales \cite{novak_pronghorn_2018}.
 Additionally, all codes use MPI for parallel communication and allow for deployment on massively-parallel cluster-computing platforms.
 
-\section{Moltres}
+\subsection{Moltres}
 
-Moltres \cite{lindsay_introduction_2018} is a \gls{MOOSE} based application originally designed for modeling fluid-fuelled \glspl{MSR}.
+\textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{MOOSE} based application originally designed for modeling fluid-fuelled \glspl{MSR}.
 This simulation tool is open source and counts with an LGPL license.
 It uses \texttt{git} for version control, emphasizing its openness and promoting quality through peer review.
 
 Moltres solves arbitrary-group neutron diffusion, precursors, and temperature governing equations.
 It can solve the equations in a fully-coupled way or solve each system independently allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
+
+\section{Serpent}
+
+The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code.
+It was developed at the VTT Technical Research Centre of Finland an has been in public distribution since 2009.
+Monte Carlo neutron transport codes have several reactor physics applications, traditionally related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
+The main advantage of the Monte Carlo method is its capability to model geometry and interaction physics without major approximations.
+The main disadvantage is that modeling complex systems is very computing-intensive restricting the applications to some extent.
+
+Serpent serves two main purposes: (1) reactor modeling, and (2) group constant generation.
+In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
+In group constant generation, the transport simulation produces input parameters for a deterministic reactor simulation code.
+Based on a few group diffusion methods, these codes allow for carrying out coupled full-core analyses.
+
+In this work, Serpent’s objective is to produce cross section that will be an input for Moltres and generate results for validation of the neutronic calculations in Moltres.
+For carrying out the calculations we used the version 2.1.31 of Serpent and the cross section library JEFF3.1.2.
+The choice of Serpent as the cross section generation tool comes from one of its capabilities.
+Serpent allows for the explicit modeling of randomly located TRISO particles.
+Applying a simple volume homogenization has proven inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
+Although, the explicit modeling is time consuming, costly, and impractical for the majority of applications, it results necessary.
+
+% Data from? Model?
+% One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
+% This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
+% In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects \cite{ortensi_deterministic_2010-1}.
+
+% A prismatic VHTR has a large flux gradient.
+% Hence, a single assembly block calculation with the reflective boundary condition cannot give a reliable homogenized group constant set. \cite{yuk_time-dependent_2020}
+
+
+\section{Mathematical Basis}
 
 \subsection{Diffusion and precursors equations}
 
@@ -95,19 +128,21 @@ It can solve the equations in a fully-coupled way or solve each system independe
 Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent behavior of the neutronics.
 
 \begin{align}
+  % diffusion
   \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g &= \nabla \cdot D_g \nabla \phi_g -
   \Sigma_g^r \phi_g + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
   \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} +
-  \chi_g^d \sum_i^I \lambda_i C_i
-\label{eq:diffusion}
+  \chi_g^d \sum_i^I \lambda_i C_i \label{eq:diffusion} \\
+  % precursors
+  \frac{\partial}{\partial t} C_i &= \sum_{g'= 1}^G \beta_i \nu \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i
+  \label{eq:precursors}
         \intertext{where}
         v_g &= \mbox{group $g$ neutron speed} \notag \\
         \phi_g &= \mbox{group $g$ neutron flux} \notag \\
         t &= \mbox{time} \notag \\
         D_g &= \mbox{group $g$ diffusion coefficient} \notag \\
         \Sigma_g^r &= \mbox{group $g$ macroscopic removal cross-section} \notag \\
-        \Sigma_{g'\rightarrow g}^s &= \mbox{group $g'$ to group $g$ macroscopic scattering} \notag \\
-        &\phantom{{}=1} \mbox{cross-section} \notag \\
+        \Sigma_{g'\rightarrow g}^s &= \mbox{group $g'$ to group $g$ macroscopic scattering cross-section} \notag \\
         \chi_g^p &= \mbox{group $g$ prompt fission spectrum} \notag\\
         G &= \mbox{number of discrete energy groups} \notag \\
         \nu &= \mbox{number of neutrons produced per fission} \notag \\
@@ -115,33 +150,25 @@ Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent
         \chi_g^d &= \mbox{group $g$ delayed fission spectrum} \notag \\
         I &= \mbox{number of delayed neutron precursor groups} \notag \\
         \beta &= \mbox{delayed neutron fraction} \notag \\
-        \lambda_i &= \mbox{average decay constant of delayed neutron} \notag \\
-        &\phantom{{}=1} \mbox{precursors in precursor group $i$} \notag \\
-        C_i &= \mbox{concentration of delayed neutron precursors} \notag \\
-        &\phantom{{}=1} \mbox{in precursor group $i$}. \notag
+        \lambda_i &= \mbox{average decay constant of delayed neutron precursors in precursor group $i$} \notag \\
+        C_i &= \mbox{concentration of delayed neutron precursors in precursor group $i$.} \notag \\
 \end{align}
 
-\begin{align}
-        \frac{\partial}{\partial t} C_i &= \sum_{g'= 1}^G \beta_i \nu
-        \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i
-\label{eq:precursors}
-\end{align}
+% For the eigenvalue calculations, the equations lose the time dependency.
+% Using equation \ref{eq:chit} we combine both equations.
+% We introduce the parameter $k_{eff}$ that divides the fission term obtaining equation \ref{eq:eigenvalue}.
 
-For the eigenvalue calculations, the equations lose the time dependency.
-Using equation \ref{eq:chit} we combine both equations.
-We introduce the parameter $k_{eff}$ that divides the fission term obtaining equation \ref{eq:eigenvalue}.
-
-\begin{align}
-    \chi_g^t &= \chi_g^p (1 - \beta) + \chi_g^d \sum_i^I \beta_i  \label{eq:chit} \\
-  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g &+
-  \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0
-  \label{eq:eigenvalue}
-\end{align}
+% \begin{align}
+%     \chi_g^t &= \chi_g^p (1 - \beta) + \chi_g^d \sum_i^I \beta_i  \label{eq:chit} \\
+%   \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g &+
+%   \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0
+%   \label{eq:eigenvalue}
+% \end{align}
 
 % Boundary conditions
-We apply the vacuum boundary condition to the diffusion equation for both transient and eigenvalue problems.
+We apply the vacuum boundary condition to the diffusion equation.
 The vacuum boundary condition states that no neutrons penetrate the boundary in the inward direction.
-In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, equation \ref{eq:vacuumbc1}.
+In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, equation \ref{eq:vacuumbc1} \cite{duderstadt_nuclear_1976}.
 
 \begin{align}
    J^-(r_s, t) = \frac{1}{4} \phi(r_s, t) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi (r_s, t) = 0
@@ -152,56 +179,48 @@ In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, e
 % The precursors equation is an IVP, so it doesn't require the definition of BC
 % When accounting for the precursors drift, that's a different story.
 
-\subsection{Thermal-Hydraulics}
+\subsection{Thermal-hydraulics}
 
-The governing equation for the temperature of the solids is the 3-D heat conduction equation \cite{melese_thermal_1984}.
-Equations \ref{eq:tempfuel} and \ref{eq:heatsource} allow for solving the temperature in the fuel.
+The governing equation for the temperature of the solids is the three-dimensional heat conduction equation \cite{melese_thermal_1984}.
+Equations \ref{eq:tempsolid} to \ref{eq:heatsource2} allow for solving the temperature in the fuel, moderator, and reflector.
 
 \begin{align}
-    \rho_f c_{p,f} \frac{\partial}{\partial t} T_f &= k_f \nabla^2 T_f + Q_f \label{eq:tempfuel} \\
-    Q_f &= \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource}
+    \rho_i c_{p,i} \frac{\partial}{\partial t} T_i &= k_i \nabla^2 T_i + Q_i \label{eq:tempsolid} \\
+    Q_f &= \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource} \\
+    Q_m &= Q_r = 0 \label{eq:heatsource2}
   \intertext{where}
-  \rho_f &= \mbox{fuel density} \notag \\
-  c_{p,f} &= \mbox{fuel specific heat capacity} \notag \\
-  k_f &= \mbox{fuel thermal conductivity } \notag \\
-  T_f &= \mbox{fuel temperature} \notag \\
-  Q_f &= \mbox{volumetric heat source} \notag \\
+  i &= \mbox{f (fuel), m (moderator), r (reflector)} \notag \\
+  \rho_i &= \mbox{material $i$ density} \notag \\
+  c_{p,i} &= \mbox{material $i$ heat capacity} \notag \\
+  k_i &= \mbox{material $i$ thermal conductivity } \notag \\
+  T_i &= \mbox{material $i$ temperature} \notag \\
+  Q_i &= \mbox{material $i$ volumetric heat source} \notag \\
   \epsilon_g^f &= \mbox{energy released per fission} \notag \\
   \Sigma_g^f &= \mbox{group $g$ macroscopic fission cross-section} \notag \\
   \phi_g &= \mbox{group $g$ neutron flux.} \notag
 \end{align}
 
-Equations \ref{eq:tempgraphite} solve the temperature of the moderator and reflector.
-
+% coolant: need to do this section, several things missing
+The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:convection} \cite{melese_thermal_1984}.
 \begin{align}
-    \rho_i c_{p,i} \frac{\partial}{\partial t} T_i &= k_i \nabla^2 T_i \label{eq:tempgraphite}
+ 	\frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) &= 0 \label{eq:continuity} \\
+  \rho_c \left(\frac{\partial}{\partial t} u + u\frac{\partial}{\partial z}u \right) &= - \frac{\partial}{\partial z}p - \tau \frac{\epsilon}{A} - \rho_c g \label{eq:momentum} \\
+ 	\rho_c \left( \frac{\partial}{\partial t} (c_{p,c} T_c) + u\frac{\partial}{\partial z} (c_{p,c} T_c) \right) &= \frac{\partial}{\partial t} p + u\frac{\partial}{\partial z} p +  q'''_{conv} 	\label{eq:tempcool} \\
+  q'''_{conv} = \frac{h}{L} (T_i-T_c) \label{eq:convection}
   \intertext{where}
-  i &= \mbox{m (moderator) or r (reflector)} \notag \\
-  \rho_i &= \mbox{material $i$ density} \notag \\
-  c_{p,i} &= \mbox{material $i$ specific heat capacity} \notag \\
-  k_i &= \mbox{material $i$ thermal conductivity} \notag \\
-  T_i &= \mbox{material $i$ temperature.} \notag
+  \rho_c &= \mbox{coolant density} \notag \\
+  u &= \mbox{coolant velocity} \notag \\
+  p &= \mbox{coolant pressure} \notag \\
+  \tau &= \mbox{shear stress} \notag \\
+  \epsilon &= \mbox{wetted perimeter} \notag \\
+  A &= \mbox{cross-sectional area} \notag \\
+  g &= \mbox{gravity} \notag \\
+  c_{p,c} &= \mbox{coolant specific heat capacity} \notag \\
+  k_c &= \mbox{coolant thermal conductivity} \notag \\
+  T_c &= \mbox{coolant temperature} \notag \\
+  q'''_{conv} &= \mbox{convective heat transfer.} \notag
 \end{align}
 
-% coolant: need to do this section, several things missing
-% The governing equation of the coolant is the 1-D form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:temperature} \cite{melese_thermal_1984}.
-% \begin{align}
-%  	\frac{\partial}{\partial t} \rho + \nabla \cdot (\rho u) &= 0 \label{eq:continuity} \\
-%   \frac{\partial}{\partial t}(\rho u) + \frac{\partial}{\partial z}(\rho u^2) &= - \frac{\partial}{\partial z}p - \tau \frac{\epsilon}{A} - \rho g \label{eq:momentum} \\
-%  	\rho_c c_{p,c} \left( \frac{\partial}{\partial t} T_c + u \frac{\partial}{\partial z} T_c \right) &= q'''_{conv} 	\label{eq:temperature}
-%   \intertext{where}
-%   \rho_c &= \mbox{coolant density} \notag \\
-%   u &= \mbox{coolant velocity} \notag \\
-%   p &= \mbox{coolant pressure} \notag \\
-%   \tau &= \mbox{shear stress} \notag \\
-%   \epsilon &= \mbox{wetted perimeter} \notag \\
-%   A &= \mbox{cross-sectional area} \notag \\
-%   g &= \mbox{gravity} \notag \\
-%   c_{p,c} &= \mbox{coolant specific heat capacity} \notag \\
-%   k_c &= \mbox{coolant thermal conductivity} \notag \\
-%   T_c &= \mbox{coolant temperature} \notag \\
-%   q'''_{conv} &= \mbox{convective heat transfer.} \notag
-% \end{align}
 
 % In the steady-state limit, the continuity equation becomes:
 % \begin{align}
@@ -256,35 +275,7 @@ Equations \ref{eq:tempgraphite} solve the temperature of the moderator and refle
 
 % How to obtain the constants and the values ?
 
-\section{Serpent}
-
-The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code.
-It was developed at the VTT Technical Research Centre of Finland an has been in public distribution since 2009.
-Monte Carlo neutron transport codes have several reactor physics applications, traditionally related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
-The main advantage of the Monte Carlo method is its capability to model geometry and interaction physics without major approximations.
-The main disadvantage is that modeling complex systems is very computing-intensive restricting the applications to some extent.
-
-Serpent serves two main purposes: (1) reactor modeling, and (2) group constant generation.
-In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
-In group constant generation, the transport simulation produces input parameters for a deterministic reactor simulation code.
-Based on a few group diffusion methods, these codes allow for carrying out coupled full-core analyses.
-
-In this work, Serpent’s objective is to produce cross section that will be an input for Moltres and generate results for validation of the neutronic calculations in Moltres.
-For carrying out the calculations we used the version 2.1.31 of Serpent and the cross section library JEFF3.1.2.
-The choice of Serpent as the cross section generation tool comes from one of its capabilities.
-Serpent allows for the explicit modeling of TRISO particles.
-Applying a simple volume homogenization has proven inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
-Although, the explicit modeling is time consuming, costly, and impractical for the majority of applications, it results necessary.
-
-% Data from? Model?
-% One of the main issues with the generation of cross section in HTRs is the strong coupling between the blocks.
-% This strong coupling invalidates the assumption made in the lattice physics calculation (identical neighbors in an infinite domain).
-% In an ideal situation one would attempt to generate the cross sections from a 12th, 6th, or full core calculation that would consider all neighbor effects \cite{ortensi_deterministic_2010-1}.
-
-% A prismatic VHTR has a large flux gradient.
-% Hence, a single assembly block calculation with the reflective boundary condition cannot give a reliable homogenized group constant set. \cite{yuk_time-dependent_2020}
-
-\section{Benchmark specification}
+\section{OECD/NEA MHTGR-350 MW Benchmark}
 
 The deterministic neutronic thermal-fluids and transient analysis methods available for \glspl{PMR} have lagged behind the state of the art of other reactor technologies.
 This has motivated the development of more accurate tools for the design and safety evaluations of \glspl{PMR}.
@@ -345,7 +336,7 @@ We do not plan to conduct studies of such phase in the future.
 
 % \subsection{Cross section handling}
 
-\section{\gls{MHTGR}-350 Reactor Description}
+\section{MHTGR-350 Reactor Description}
 
 This section provides a description of the \gls{MHTGR}-350 reactor.
 Table \ref{tab:maincharac} lists its main characteristics.
