@@ -244,15 +244,15 @@ On the other hand, the open literature has not investigated the impact of such s
 
 % sort of motivation
 Thermal-hydraulic calculations enable the correct design of \glspl{HTGR}.
-The ability to predict the maximum fuel temperature at steady-state is of paramount importance to succeed in such task.
-We emphasize this statement in the case hydrogen production is desirable.
-Efficient hydrogen production requires higher coolant temperatures, which in turn increases the temperature of the fuel and the reactor pressure vessel.
+Predicting the maximum fuel temperature at a steady-state is of paramount importance to succeed in such a task.
+We emphasize this statement in the case that hydrogen production is desirable.
+Efficient hydrogen production requires higher coolant temperatures, which increases the temperature of the fuel and the reactor pressure vessel.
 
 % sort of intro to simplified models
 The complex geometry of the hexagonal fuel assembly requires elaborate numerical calculations for obtaining accurate evaluations.
 Thermal-hydraulic studies for early \glspl{HTGR} consisted mainly of support calculations for \gls{NRC} safety analysis reports.
 The analyses employed sets of independent codes that relied on simplistic approximations.
-Simplified models are helpful to understand some basic aspects of prismatic \glspl{HTGR} and have the advantage to reduce the computational expense of the calculations.
+Simplified models help understand some fundamental aspects of prismatic \glspl{HTGR} and have the advantage of reducing the computational expense of the calculations.
 
 % shenoy_htgr_1974
 General Atomics \cite{shenoy_htgr_1974} developed the first set of simplistic codes.
@@ -268,14 +268,14 @@ It solves the steady-state mass and momentum conservation equations for parallel
 \item DEMISE: It determines the steady-state three-dimensional temperature distribution in a standard element.
 It solves the temperature in a network model.
 
-\item TAC-2D: It is a general purpose two-dimensional thermal analysis code.
+\item TAC-2D: It is a general-purpose two-dimensional thermal analysis code.
 It solves the two-dimensional heat conduction equation.
 \end{itemize}
 
 Several studies have used these codes.
 % macdonald_ngnp_2003
-For example, \gls{INL} conducted in 2003 a design study \cite{macdonald_ngnp_2003} in support to the \gls{NGNP} project.
-The objective of such study was to investigate options for the NGNP that increased the coolant temperature, with the lowest possible inlet temperature, and the highest overall core power.
+For example, \gls{INL} conducted in 2003 a design study \cite{macdonald_ngnp_2003} in support of the \gls{NGNP} project.
+Such a study aimed to investigate options for the NGNP that increased the coolant temperature, with the lowest possible inlet temperature, and the highest overall core power.
 The authors conducted several parametric studies whose reference reactor was the GT-MHR \cite{general_atomics_gas_1996}.
 Using the code POKE, they evaluated two major design modifications: reducing the bypass flow and better controlling the inlet coolant flow distribution.
 Reducing the bypass flow fraction from 20 to 10$\%$ reduces the peak fuel temperatures by about 50$^{\circ}$C.
@@ -284,20 +284,20 @@ Other studies focused on the dimensions of the reactor and their impact on the m
 Using the computer codes POKE and TAC2D, the authors investigated taller and higher power reactor cores.
 The investigation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and 14-block-high 840 MWt.
 
-Among the simplified approaches we differentiate the flow network model, the equivalent cylindrical model, and the unit cell model.
+Among the simplified approaches, we differentiate the flow network model, the equivalent cylindrical model, and the unit cell model.
 % flow network model
 % reza_design_2006
-Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal hydraulic study of the GT-MHR.
+Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-hydraulic study of the GT-MHR.
 Reza et al. increased the reactor outlet temperature to enable hydrogen production.
 Additionally, they evaluated alternative coolant inflow paths in an attempt to reduce the reactor vessel temperatures.
-After finding an optimal configuration, they evaluated the maximum temperatures in the fuel and the reactor vessel during the \gls{LPCC} and the \gls{HPCC} events.
+After finding an optimal configuration, they evaluated the fuel and the reactor vessel's maximum temperatures during the \gls{LPCC} and the \gls{HPCC} events.
 
 % equivalent cylindrical model
 % no_multi-component_2007
 An example of codes using the equivalent cylindrical approach is GAMMA \cite{no_multi-component_2007}.
 The code’s main objective is the modeling of the air ingress event following a LOCA.
 Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
-The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a major concern.
+The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a significant concern.
 The GAMMA code solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
 The code couples the solid and gas equations using the porous media model.
 Together with the multi-dimensional analysis feature, GAMMA has a one-dimensional analysis capability for  modeling a flow network.
@@ -314,41 +314,41 @@ Finally, the authors validated the calculation scheme by comparing its results w
 Nakano et al. \cite{nakano_conceptual_2008} studied different fuel assembly configurations using several simplistic approximations.
 For determining the fuel temperature, they used the TAC-2D code.
 A previous nuclear analysis calculated the power density.
-And a previous study calculated the flow distribution using the code FLOWNET.
+Moreover, a previous study calculated the flow distribution using the code FLOWNET.
 The fuel temperature calculation used the equivalent cylindrical model for a hot channel unit cell.
 However, the asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block.
 The equivalent cylindrical model fails to capture this behavior.
 
 % in_three-dimensional_2006
 In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of an \gls{HTGR}.
-The objective of the study was to predict the maximum fuel temperature at steady-state.
-The analysis focused on the GT-MHR 600 at \gls{EOC}.
+The objective of the study was to predict the maximum fuel temperature at a steady-state.
+The analysis focused on the GT-MHR 600 at the \gls{EOC}.
 The CFD code CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
 In such a study, the results showed that the maximum fuel temperature surpassed the design limits and the authors propose a countermeasure accordingly.
 
 % more detailed calculations
-Such simplified approaches are helpful to understand some basic aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
+Such simplified approaches are helpful to understand some essential aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
 More detailed thermal-hydraulic evaluations were rare in the open literature until the last 15 years.
 
 % cioni_3d_2005
 Cioni et al. \cite{cioni_3d_2005} presented an article in 2005 in which they conducted three-dimensional simulations of fuel assemblies of an \gls{HTGR}.
-The objective of the study was to investigate an emergency situation due to the blocking of cooling channels in the core.
+The study's objective was to investigate an emergency situation due to the blocking of cooling channels in the core.
 They used the \gls{CFD} code Trio\_U \cite{bieder_priceles_2000} to carry out the analysis.
-The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the one-dimensional thermal-hydraulic equations of the coolant.
-In the preliminary work, the authors conducted a study of the influence of the bypass flow on the maximum coolant and fuel temperature.
+The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the coolant's one-dimensional thermal-hydraulic equations.
+In the preliminary work, the authors conducted a study of the bypass flow's influence on the maximum coolant and fuel temperature.
 Another preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
-A central blockage exhibits a stronger influence over the maximum temperatures of the assembly compared to a peripheral blockage.
+A central blockage exhibits a stronger influence over the assembly's maximum temperatures compared to a peripheral blockage.
 At last, they investigated two configurations.
 First, six fuel elements surrounded the fuel element with the blockage.
 Second, five fuel elements and one reflector element surrounded it.
-The results suggested that the blockage increases the temperature on the blocked fuel assembly only and it does not affect the surrounding elements due to the bypass flow.
-The results also showed that the fuel temperature surpassed the design limits, and that the reactor operators should counteract these effects with active systems.
+The results suggested that the blockage increases the temperature on the blocked fuel assembly only, and it does not affect the surrounding elements due to the bypass flow.
+The results also showed that the fuel temperature surpassed the design limits and that the reactor operators should counteract these effects with active systems.
 
 % simoneau_three-dimensional_2007
 Simoneau et al. \cite{simoneau_three-dimensional_2007} analyzed the transient behavior of an \gls{HTGR} during the \gls{DCC} and \gls{HPCC} event.
 The CFD code STAR-CD \cite{computational_dynamics_limited_star-cd_2004} performed the calculations.
 The code solved conductive, convective, and radiation heat transfer in a 30$^{\circ}$ section of the core and reactor vessel.
-To accommodate the different spatial scales, the code uses the porous media model to represent the coolant flow and the prismatic fuel blocks.
+The code uses the porous media model to accommodate the different spatial scales.
 The model does not resolve the boundary layer and the use of coefficients prescribe the solid-fluid heat transfer and pressure drop across the core.
 The authors validated their model against explicit calculations using a single fuel block.
 One of their results shows that the maximum temperature in the \gls{HPCC} event is lower than in the \gls{DCC} event.
@@ -361,24 +361,24 @@ The fuel column under study was from the PMR-600, a pre-conceptual reactor that 
 The study considered a one-twelfth section of the fuel due to its symmetry.
 The model determined the coolant distribution using the one-dimensional thermal-hydraulic equations.
 Such coolant distribution served as input to the CFD code.
-Nevertheless, the friction in the channels is dependent on the viscosity which is highly dependent on the temperature.
+Nevertheless, the friction in the channels is dependent on the viscosity, which is highly dependent on the temperature.
 Therefore, obtaining the mass flow rates from a separate solver may introduce errors \cite{sato_computational_2010}.
 As mentioned earlier, the unit cell model may introduce errors in the maximum temperature prediction.
-In order to asses the accuracy of the unit cell model, the authors compared the CFD results against the unit cell model results.
+To assess the accuracy of the unit cell model, the authors compared the CFD results against the unit cell model results.
 The unit cell model does not consider the bypass flow between assemblies or the radial power distribution within the fuel assembly.
-Tak et al. conducted a parametric study which analyzed the impact of the bypass gap size on the maximum fuel temperature.
+Tak et al. conducted a parametric study that analyzed the bypass gap size's impact on the maximum fuel temperature.
 By increasing the bypass gap, the maximum fuel temperature grows.
 The results of this study indicate that the accuracy of the unit cell worsens for larger gaps.
 Another study imposed different radial peaking factors for the different fuel channels.
 Such a study showed the effects of considering a non-flat radial power distribution.
-The authors considered a radial power distribution that did not have a strong impact on the maximum fuel temperature.
+The authors considered a radial power distribution that did not strongly impact on the maximum fuel temperature.
 
 % sato_computational_2010
 Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
 Their model considered a one-twelfth section of the fuel column of the GT-MHR.
 The authors conducted parametric studies changing several factors, such as bypass gap-width, turbulence model, axial heat generation profile, and geometry changes due to irradiation.
-Their most relevant results show the presence of bypass flow causes a large lateral temperature gradient in the block.
-Large temperature gradients cause excessive thermal stresses which raise potential structural issues.
+Their most relevant results show that the bypass flow causes a large lateral temperature gradient in the block.
+Large temperature gradients cause excessive thermal stresses, which raise potential structural issues.
 The authors compared the results from different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
 The $k \sim \omega$ model predicted bulk temperatures that are considerably lower than those from the $k \sim \varepsilon$ model.
 The differences went up to 49$^{\circ}$C.
@@ -390,24 +390,24 @@ Their last study focused on the effects of the graphite dimensional changes on t
 The shrunk column showed considerably lower temperatures in the fuel.
 
 % travis_thermalhydraulics_2013
-In spite of the recent developments in CFD tools, a detailed full core explicit analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
+Despite the recent developments in CFD tools, a detailed full-core analysis for a prismatic \gls{HTGR} still requires a tremendous computational expense.
 This requirement is mostly due to the three-dimensional CFD simulation of the coolant flow.
 Travis et al. \cite{travis_thermalhydraulics_2013} developed a method to compute full core thermal-hydraulic analyses of \glspl{HTGR}.
 The article presented a simplified method that reduces the computational time and memory requirements while maintaining accurate results.
 The method solves the three-dimensional heat conduction in the solid and the one-dimensional thermal-hydraulic equations in the channels.
 The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations \cite{tak_development_2014}.
-The validation of the method analyzed a fuel column and compared the results to those of a three-dimensional CFD simulation.
+The method's validation analyzed a fuel column and compared the results to those of a three-dimensional CFD simulation.
 The CFD simulation used the commercial software STAR-CCM+ \cite{cd-adapco_star-ccm_2012}.
-The new computational scheme reduced the computation time to a 2.5\% of the time required by the three-dimensional CFD simulation.
+The new computational scheme reduced the computation time to 2.5\% of the time required by the three-dimensional CFD simulation.
 The new method provided good predictions of the temperature distribution and the axial variation of the helium bulk temperature.
-However, it failed to resolve properly the velocity and temperature distribution within the boundary layer.
-Overall, the method showed good accuracy, and less than a 2\% difference to the three-dimensional CFD simulation.
+However, it failed to resolve the velocity and temperature distribution within the boundary layer properly.
+Overall, the method showed good accuracy and less than a 2\% difference to the three-dimensional CFD simulation.
 
 % tak_practical_2012 / tak_development_2014
 Tak et al. \cite{tak_practical_2012} \cite{tak_development_2014} developed CORONA, which uses a practical method for the whole core analysis.
 The code intends to combine the accuracy from CFD tools and the light computational expense of system analysis codes.
 The method solves the three-dimensional heat conduction equation in the solid and the one-dimensional thermal-hydraulic equations in the fluid.
-In order to enhance practicability, the code adopts a basic unit cell concept, which eliminates an elaborate grid generation process.
+To enhance practicability, the code adopts a basic unit cell concept, which eliminates an elaborate grid generation process.
 The basic unit cell concept is an extension of the traditional unit cell method, which uses a single triangular unit cell.
 This method considers various shapes of unit cells as well as the heat transfer between them.
 The method provides a way for fast generating computational grids for modeling the solid regions.
@@ -415,12 +415,12 @@ To validate the new code, the authors compared the results using CORONA against 
 The results of the verification and validation studies showed that the CORONA code provides reasonably accurate results.
 
 % end of section
-CFD techniques allow to compute the detailed temperature profile over local models.
-The fine mesh requirement imposes high computational costs for a whole core CFD analysis, restricting the use of such methods.
+CFD techniques allow computing the detailed temperature profile over local models.
+The fine mesh requirement imposes high computational costs for a whole-core CFD analysis, restricting such methods.
 However, a whole-core thermal analysis has many advantages over local models.
 In general, the problem set up includes more accurate boundary conditions.
-Without whole-core modeling, the mass flow distributions in local models are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
-This leads to under predicted fuel temperatures for the assemblies with a lower flow rate than the average.
+Without whole-core modeling, the local models' mass flow distributions are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
+This simplification leads to under predicted fuel temperatures for the assemblies with a lower flow rate than the average.
 Additionally, a coupled analysis with a reactor physics code requires a full core model \cite{tak_practical_2012}.
 
 % this might appear in a summary of the chapter: see travis_thermalhydraulics_2013 / tak_practical_2012 / tak_development_2014 
@@ -439,38 +439,38 @@ Additionally, a coupled analysis with a reactor physics code requires a full cor
 % sort of intro
 Historically, stand-alone simulations have solved the neutronics and thermal-hydraulics of \glspl{HTGR}.
 Nonetheless, these physical aspects describe processes that rely heavily on one another.
-Hence, to consider the interaction between the neutronics and thermal-hydraulics behavior, a coupled analysis is necessary \cite{tak_cappgamma_2016}.
+Hence, a coupled analysis is necessary to consider the interaction between the neutronics and thermal-hydraulics behavior \cite{tak_cappgamma_2016}.
 
 % damian_vhtr_2008
-In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
-They performed analyses on various geometrical scales: unit cell and fuel column located at the core hot-spot, two-dimensional and three-dimensional core configurations including the coupling between neutronics and thermal-hydraulics.
+In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed to understand the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
+They performed analyses on various geometrical scales: unit cell and fuel column located at the core hot-spot, two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-hydraulics.
 The first part of the assessment concerns thermal calculations on steady-state core configurations.
-Such study used CAST3M \cite{studer_cast3marcturus_2007} code to solve the three-dimensional heat conduction in the solid coupled to the one-dimensional thermal-hydraulic equations in the coolant.
+Suc a study used CAST3M \cite{studer_cast3marcturus_2007} code to solve the three-dimensional heat conduction in the solid coupled with the one-dimensional thermal-hydraulic equations in the coolant.
 % The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
 % An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
 The second part of the assessment used the transport code APOLLO2 \cite{sanchez_apollo2_1999} on a two-dimensional core configuration to minimize the radial power peaking factor.
-The analysis included the variation of several parameters such as fuel enrichment, fuel loading, and the fuel management scheme.
-The fuel enrichment variation had the strongest impact.
+The analysis included the variation of several parameters, such as fuel enrichment, fuel loading, and the fuel management scheme.
+The fuel enrichment variation had the most substantial impact.
 The last part of the study analyzed a three-dimensional core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
 The codes NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-hydraulics, respectively.
 NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2.
-The CRONOS2 code solves either the diffusion equation or the even parity transport equation, and it uses a \gls{FDM} or a \gls{FEM} discretization.
+The CRONOS2 code solves either the diffusion equation or the even parity transport equation, and it uses an \gls{FDM} or a \gls{FEM} discretization.
 The CAST3M/Arcturus model uses a two-level approach.
 On the first level, the porous media model solves the homogenized system and the coolant.
 On the second level, the CAST3M code solves the thermal-hydraulics on the homogenized geometry.
 The authors conducted several parametric studies and assessed their impact on the power distribution.
-The studies included the variation of the helium by-pass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
-One of their results exhibited that with the reduction of the bypass fraction the average reflector temperature rises.
-Another result showed that using magnesium oxide as the reflector material yields lower temperatures for both normal operation and transients.
+The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
+One of their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
+Another result showed that using magnesium oxide as the reflector material yields lower temperatures for normal operation and transients.
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of the CAPP code to prismatic \glspl{HTGR}.
 To take into account the thermal feedback, the authors integrated to CAPP a simplified thermal-hydraulics tool.
 This tool divides a fuel column into six triangular prisms.
 Each of them hosts a representative coolant channel.
-Solving the energy equation, the code calculates the axial coolant temperature distribution.
+The code calculates the axial coolant temperature distribution solving the energy equation.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
-By means of a TRISO particle conduction model, the model obtains the fuel temperature.
+Through a TRISO particle conduction model, the model obtains the fuel temperature.
 Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
 % The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
 To validate their model, the authors solved a two-dimensional model of the PMR-200 at \gls{BOC}.
@@ -479,24 +479,24 @@ The results showed good accuracy.
 
 % tak_coupled_2016
 Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-hydraulics coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
-DeCART is a whole-core neutron transport code and it was responsible for calculating the power distribution and the fast neutron fluence.
+DeCART is a whole-core neutron transport code, and it was responsible for calculating the power distribution and the fast neutron fluence.
 CORONA calculated the temperature distribution.
 To validate the new code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
-The main objective of the exercise was to validate the code and also identify technical challenges for future development.
-The authors presented an interesting analysis in which they compared the results from the coupled simulation and the stand-alone simulations.
+The exercise's main objective was to validate the code and identify technical challenges for future development.
+The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
 The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.
-Such result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
+Such a result highlights the importance of the integration of both neutronics and thermal-hydraulic solvers.
 
 % tak_cappgamma_2016
 Another article \cite{tak_cappgamma_2016} introduced a coupling between the CAPP code and the GAMMA+ code.
 GAMMA+ is a system code for thermo-fluids analysis and system transients.
-GAMMA+'s development main motivation was the analysis of the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
-The code uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the flow and temperature distribution of the fluid.
+GAMMA+'s primary motivation was to analyze the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
+The code uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the fluid's flow and temperature distribution.
 For solids, the code uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
-In such study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
+In such a study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
 They analyzed the bypass flow effects on the coupled calculations.
-Some of their most relevant results showed that the maximum fuel temperature reaches a peak near \gls{MOC}.
+Some of their most relevant results showed that the maximum fuel temperature reaches a peak near the \gls{MOC}.
 Another result revealed that neglecting the bypass flow decreases the active core temperatures and increases the reflector temperatures.
 Consequently, the multiplication factor increased by approximately 300 pcm.
 On the other hand, the power density changes were not appreciable.
@@ -514,31 +514,31 @@ They compared the results to those of the CAPP/GAMMA+ coupled code.
 Both methods showed similar results.
 
 % Benchmarks Intro
-The prismatic \gls{HTGR} tools available have lagged behind the state of the art compared to \glspl{LWR}.
+The prismatic \gls{HTGR} tools available have lagged behind state of the art compared to \glspl{LWR}.
 This delay drives the development of more accurate and efficient tools to analyze the reactor behavior for design and safety evaluations.
-In addition to the development of new methods, it is essential to define appropriate benchmarks to compare the capabilities of various tools.
+In addition to the development of new methods, it is essential to define appropriate benchmarks to compare various tools' capabilities.
 % oecd_nea_coupled_2020
 In 2012, the \gls{OECD}/\gls{NEA} defined a benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
-The purpose of this benchmark exercise is to compare various coupled reactor physics and thermal-hydraulic analysis methods.
+The purpose of this benchmarking exercise is to compare various coupled reactor physics and thermal-hydraulic analysis methods.
 The MHTGR design serves as a basis for this benchmark.
 The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-hydraulic analysis, and (2) to test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
 The OECD/NEA MHTGR-350 MW benchmark subdivides the coupled system calculation into three phases.
 Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling, and the coupled neutronics/thermal-hydraulics steady-state modeling.
-Phase II consists of the transient cases.
+Phase II consists of transient cases.
 Phase III focuses on lattice depletion calculations.
 
 % tyobeka_htgr_2011 / strydom_results_2015
 Sensitivity analysis and uncertainty analysis methods can assess the predictive capabilities of coupled neutronics/thermal-hydraulics simulations.
 In 2013, the IAEA launched a \gls{CRP} \cite{tyobeka_htgr_2011} on the \gls{HTGR} Uncertainty Analysis in Modeling.
-The objective of the \gls{CRP} was to determine the uncertainty in \gls{HTGR} calculations at all stages of coupled reactor physics/thermal-hydraulics and depletion calculations.
-This \gls{CRP} is a natural continuation of the previous IAEA and OECD/NEA international activities \cite{iaea_evaluation_2003}\cite{reitsma_oecd-neansc_2008} on Verification and Validation of available capabilities for \gls{HTGR} simulations.
+The \gls{CRP} objective was to determine the uncertainty in \gls{HTGR} calculations at all stages of coupled reactor physics/thermal-hydraulics and depletion calculations.
+This \gls{CRP} is a natural continuation of the previous IAEA and OECD/NEA international activities \cite{iaea_evaluation_2003}\cite{reitsma_oecd-neansc_2008} on Verification and Validation of available \gls{HTGR} simulations capabilities.
 The technical approach is to establish and utilize a benchmark for uncertainty analysis.
-The benchmark defines a series of well defined problems with complete sets of input specifications and reference experimental data.
+The benchmark defines a series of well-defined problems with complete sets of input specifications and reference experimental data.
 The CRP adopted the MHTGR-350 as the reference design and the GT-MHR as a second reference design.
 The design specification uses the OECD/NEA MHTGR-350 MW benchmark \cite{oecd_nea_benchmark_2017} code design specifications.
 The CRP subdivides the coupled system calculation into three phases.
 Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling.
-Phase II consists of design calculations, which are the coupled steady-state neutronics/thermal-hydraulics calculations with and without a depletion calculation.
+Phase II consists of design calculations, coupled with steady-state neutronics/thermal-hydraulics calculations with and without a depletion calculation.
 Phase III focuses on safety calculations.
 
 \pagebreak
