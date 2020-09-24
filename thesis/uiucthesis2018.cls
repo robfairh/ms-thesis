@@ -99,6 +99,7 @@
     \def\@committeename{Master's Committee:}
     }
 \def\department#1{\def\@dept{#1}}
+\def\concentration#1{\def\@concen{#1}}
 \def\college#1{\def\@college{#1}}
 \def\schools#1{\def\@schools{#1}}
 \def\degreeyear#1{\def\@degreeyear{#1}}
@@ -188,6 +189,7 @@
         {\lc@selectfont \@thesisname}\\[12pt]
         Submitted in partial fulfillment of the requirements\\
         for the degree of \@degree\ in \@dept\\
+        with a concentration in \@concen\\
         in the \@college\ of the\\
         University of Illinois at Urbana-Champaign, \@degreeyear\vfil}
  \vskip -2ex
