@@ -68,7 +68,7 @@ fill=blue!30]
 % The simulations took 1.73 and 2.21 minutes using 256 cores.
 % The heterogeneous calculations took a 28$\%$ more.
 
-% The multiplication factor was 1.17523 for the homogeneous case and 1.25106 for the heterogeneous case.
+% The \gls{Keff} was 1.17523 for the homogeneous case and 1.25106 for the heterogeneous case.
 % Using the heterogeneous case as the reference result, we calculated the relative error of the most relevant group constants in an eigenvalue calculation.
 % Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
 % The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see equation \ref{eq:diffusion}).
@@ -91,7 +91,7 @@ fill=blue!30]
 % \subsection{Moltres limitations}
 
 % Serpent run 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
-% The multiplication factor was 1.41933.
+% The \gls{Keff} was 1.41933.
 
 % Moltres
 % Mesh: dof/group ()
@@ -99,25 +99,11 @@ fill=blue!30]
 
 % Figures
 
-% \section{Conclusions}
-
-% % Preliminary studies: homogeneous vs heterogeneous
-% The preliminary studies focused on several aspects of the simulations.
-% The first aspect was the effect of distributing homogeneously the fuel compact isotopes in the Serpent model.
-% The heterogeneous calculation took 28$\%$ more time.
-% The results showed that the multiplication factor decreases considerably.
-% Additionally, the homogenization of the fuel compact appears not to have a strong impact over the group constants.
-% However, the considerable difference in the multiplication factor suggests that the combined effect of small variations in the group constants is significant.
-% Although the particles’ explicit modeling is time-consuming, it results necessary.
-
-
-
-
 % % Maybe here or next section
 % Based on these results and discussions, in the following sections, we obtain the homogenized group constants.
 % In the fuel block, the fuel, coolant, and moderator all share the same group constants.
 
-% \section{Serpent-Moltres validation}
+% \section{Serpent-Moltres comparison}
 
 % \subsection{Fuel column}
 
@@ -125,15 +111,16 @@ fill=blue!30]
 % We conducted two analyses.
 % First, we varied the number of energy groups.
 % Second, we tried different energy group structures for the same number of groups.
-% To reduce the computational expense we narrowed down our focus to a fuel column of the MHTGR, Figure \ref{fig:fuelcolumn}.
+% To reduce the computational expense we narrowed down our focus to a fuel column of the MHTGR-350, Figure \ref{fig:fuelcolumn}.
 % The fuel column includes the bottom and top reflectors.
 % Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
 
 % The first step in the calculation was to obtain the group constants using Serpent.
-% Figure \ref{fig:fuelcolumn} displays the xy-plane of the model.
+% Figure \ref{fig:fuelcolumn} displays the $xy$-plane of the model.
 % \glspl{HTGR} use \glspl{LBP} to reduce the peaking factors in different regions of the active core.
 % Some reactors could have \glspl{LBP} in the rings closer to the reflectors, and no \glspl{LBP} in the middle rings.
 % This motivated the analysis of two cases, a fuel column that does not have \glspl{LBP}, and one that has.
+% The LBP's locations are the six corners of the fuel assembly, Figure \ref{fig:fuelcolumn}.
 % The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 % Serpent ran 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
@@ -153,7 +140,7 @@ fill=blue!30]
 % Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
 
 % % Fluxes
-% To recapitulate, we simulated four operational cases: no \gls{LBP} and 600K, no \gls{LBP} and 1200K, \gls{LBP} and 600K, and \gls{LBP} and 1200K.
+% To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
 % Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
 % For the no LBP at 600K case, the fluxes are close in shape and magnitude.
 % For the no LBP at 1200K case, the fluxes look similar.
@@ -192,7 +179,7 @@ fill=blue!30]
 % We present only the cases at 600K because the change in temperature does not have a significant impact.
 % The computational requirements rises with an increase in the number of energy groups.
 % As the geometry uses a constant number of elements, the DoFs/energy-group is constant.
-% Thus, the number of DoFs is proportional to the number of energy groups.
+% Thus, the total number of DoFs is proportional to the number of energy groups.
 % We also discern that the overall time of the LBP cases is higher than the no LBP cases.
 
 % Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
@@ -409,8 +396,8 @@ Based on the previous analysis, we chose a the energy group structure $15d$ in T
 The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 Serpent ran 8$\times 10^5$ neutrons/cycle, 500 active cycles, and 100 inactive cycles for the calculations.
 
-% Anything else from serpent? Table to compare keff for serpent and moltres and 600 and 1200K.
-
+% Anything else from serpent? Table to compare keff for serpent and moltres at 600 and 1200K.
+Table \ref{tab:full-keff} exhibits the \gls{Keff}
 
 
 % We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
@@ -427,7 +414,6 @@ Serpent ran 8$\times 10^5$ neutrons/cycle, 500 active cycles, and 100 inactive c
 % Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
 % The last analysis is for the Moltres axial flux.
 % Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
-
 
 The fuel column includes the bottom and top reflectors.
 Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
@@ -487,7 +473,7 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
 % LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   & 25   \\
 %   \bottomrule
 %   \end{tabular}
-%   \label{tab:keff}
+%   \label{tab:full-keff}
 % \end{table}
 
 
@@ -712,9 +698,40 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
 %   \label{tab:benchmark-bc}
 % \end{table}
 
+\section{Conclusions}
 
+% Preliminary studies: homogeneous vs heterogeneous isotopic distribution
+The preliminary studies focused on several aspects of the simulations.
+The first aspect was the effect of distributing homogeneously the fuel compact isotopes in the Serpent model.
+The heterogeneous calculation took 28$\%$ more time.
+The results showed that the multiplication factor decreases considerably.
+Additionally, the homogenization of the fuel compact appears not to have a strong impact over the group constants.
+However, the considerable difference in the multiplication factor suggests that the combined effect of small variations in the group constants is significant.
+Although the particles’ explicit modeling is time-consuming, it results necessary.
 
+% Preliminary studies: homogeneous vs heterogeneous diffusion simulation
 
+% Serpent-Moltres: Fuel column
+Focusing on a fuel column of the MHTGR-350, we investigated the effects of the energy group structure on the diffusion calculations.
+We considered four different operational cases: a fuel column without LBPs and a fuel column with LBPs, both cases at 600K and 1200K.
+Serpent obtained the homogenized group constants of the fuel column.
+Moltres took such constants as input with a Gmsh mesh.
+The first study compared the Moltres axial flux to Serpent axial flux.
+Moltres used a 26 energy group structure to run the simulations.
+Overall, the axial fluxes were close in shape and magnitude.
+A different study focused on the effects of the energy group structure on the \gls{Keff}.
+We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
+We also compared the $L_2$-norm relative error of the axial flux in the active core using different energy group structures.
+For the four operational cases, the accuracy improves increasing the number of energy groups.
+Additionally, we presented the simulation computational expense for the different number of energy groups.
+The simulation time and memory requirement rises increasing the number of energy groups.
+We notice as well that the computational time increases for the fuel column with LBPs.
+Finally, we analyzed the impact of using different 15-group structures on the $L_2$-norm relative error of the axial flux.
+We chose the $15d$ structure as the best performing.
+
+% Serpent-Moltres: Full-core
+
+% OECD-Benchmark
 
 
 
