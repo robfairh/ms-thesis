@@ -585,103 +585,144 @@ This ensures a common dataset among various benchmark participants.
 The files \textit{OECD-MHTGR350\_Simplified.xs} \textit{xsmap.pdf} specify the group constants and the a detailed map of the constants numbering.
 The benchmark definition used DRAGON-4 \cite{marleau_user_2016} from a full block configuration.
 The dataset contains 26 energy groups.
-
 % What should be reported \cite{oecd_nea_benchmark_2017}
 The exercise requests the reporting of the global parameters: $K_{eff}$, \gls{CR} worth ($\Delta \rho_{CR}$), and axial offset ($AO$).
-Average core power density, neutron-flux map, and a average power density map should be reported as well \cite{oecd_nea_benchmark_2017}.
+It also requires the reporting of the power distribution and a neutron-flux map \cite{oecd_nea_benchmark_2017}.
+Equations \ref{eq:controlrod} and \ref{eq:ao} define $\Delta \rho_{CR}$ and $AO$.
+\begin{align}
+    \Delta \rho_{CR} &= \frac{k_{out}-k_{in}}{k_{out}k_{in}}
+		\label{eq:controlrod}
+    \intertext{where}
+    k_{out} &= \mbox{eigenvalue with \gls{CR} at position 1184.8 cm} \\
+    k_{in} &= \mbox{eigenvalue with \gls{CR} at position 391.81 cm}
+		\intertext{and}
+    AO &= (TP_{top}-TP_{bottom})/(TP_{top}+TP_{bottom})
+		\label{eq:ao}
+    \intertext{where}
+    TP_{top} &= \mbox{total power produced in the top half core} \\
+    TP_{bottom} &= \mbox{total power produced in the bottom half core.}
+\end{align}
 
+Figure \ref{fig:mesh} displays the geometry of the MHTGR-350.
+The model included a one-third of the reactor.
+The model considered the bottom and top reflectors.
+The fuel consisted of 220 assemblies.
+The simulations required two meshes. 
+One for the control rod out (equation \ref{eq:controlrod}) and one for the control rod in.
+The simulation with the control rod out had 268393 \glspl{DoF}/energy-group, and a total of 6978218 DoFs.
+The simulation with the control rod in had 227592 \glspl{DoF}/energy-group, and a total of 5917392 DoFs.
+The Moltres input files set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
 
-% Figure \ref{fig:mesh}
-% Table \ref{tab:globalparam}
-% Figure \ref{fig:axialpower}
-% Figure \ref{fig:radialpower}
+The benchmark exercise sets periodic boundary conditions on the the sides of the geometry.
+However, a memory issue did not allow for the implementation of those boundary conditions in our 26-group Moltres input file.
+We approximated the periodic boundary condition with the reflective boundary condition.
+Section \ref{sec:bench-bcs} discuss further on the use of periodic and reflective boundary conditions.
 
-% 6978218 Dofs
-% Dofs/Group = 268393
-% time (1024 cores) = 4.33 and 4.11 hours
+% 4.33 h and 4.11 h
+On average, the simulations took 4.22 hours using 1024 cores.
+Table \ref{tab:globalparam} shows the main results.
+Moltres predicted a \gls{Keff} larger than the reference result.
+The reactivity difference is of 99 pcm.
+Moltres yields a smaller control rod worth.
+The difference is of 312 pcm.
+The axial offset for the Moltres simulation is a 4$\%$ higher than the reference result.
+We attribute the discrepancies to the use of the reflective boundary conditions instead of the periodic boundary conditions.
+Once again, section \ref{sec:bench-bcs} discuss further on the use of periodic and reflective boundary conditions.
 
-% \begin{figure}[htbp!]
-% 	\centering
-% 	\includegraphics[width=0.6\linewidth]{figures/oecd-fullcore-legend}
-% 	\hfill
-% 	\caption{1/3$^{rd}$ MHTGR-350 geometry.}
-% 	\label{fig:mesh}
-% \end{figure}
+Figure \ref{fig:axialpower} shows the radially averaged axial power distribution.
+Moltres results look close in shape and magnitude to the reference results.
+Figure \ref{fig:radialpower} shows the axially averaged radial power distribution.
+Moltres results are close to the reference results.
+Moltres power distribution in the inner ring is larger.
+The differences are within 0.25 W/cm$^3$.
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{Global parameters.}
-%   \begin{tabular}{l|l|l}
-%   \toprule
-%   Parameter &  Benchmark  &  Moltres    \\
-%   \midrule
-%   K$_{eff}$ &  1.06691    &  1.06804    \\
-%   $\Delta \rho_{CR}$ (pcm)  & 822.1 & 509.8 \\
-%   AO        &  0.168      &  0.1753     \\
-%   \bottomrule
-%   \end{tabular}
-%   \label{tab:globalparam}
-% \end{table}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.55\linewidth]{figures-benchmark/oecd-fullcore-legend}
+	\hfill
+	\caption{1/3$^{rd}$ of the MHTGR-350 geometry.}
+	\label{fig:mesh}
+\end{figure}
 
-% \begin{figure}[htbp!]
-%   \centering
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[height=5cm]{figures/3D-fullcore26G-axialpower}
-%     \caption{Moltres result.}
-%   \end{subfigure}
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[height=5cm]{figures/benchmark-axialpower}
-%     \caption{Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.}
-%   \end{subfigure}
-%   \hfill
-%   \caption{Radially averaged axial power distribution.}
-%   \label{fig:axialpower}
-% \end{figure}
+\begin{table}[htbp!]
+  \centering
+  \caption{Global parameters.}
+  \begin{tabular}{l|l|l}
+  \toprule
+  Parameter 	&  Benchmark  &  Moltres    \\
+  \midrule
+  K$_{eff}$ 	&  1.06691    &  1.06804    \\
+  $\Delta \rho_{CR}$ [pcm]  & 822.1 	& 509.8 \\
+  AO        	&  0.168      &  0.1753     \\
+  \bottomrule
+  \end{tabular}
+  \label{tab:globalparam}
+\end{table}
 
-% \begin{figure}[htbp!]
-%   \centering
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=\linewidth]{figures/3D-fullcore26G-radialpower}
-%     \caption{Moltres result.}
-%   \end{subfigure}
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=\linewidth]{figures/benchmark-radialpower}
-%     \caption{Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.}
-%   \end{subfigure}
-%   \hfill
-%   \caption{Axially averaged radial power distribution.}
-%   \label{fig:radialpower}
-% \end{figure}
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Moltres result.]{
+        \includegraphics[width=0.42\textwidth]{figures-benchmark/3D-fullcore26G-axialpower}
+    }
+    \subfloat[Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.]{
+        \includegraphics[width=0.47\textwidth]{figures-benchmark/benchmark-axialpower}
+    }
+	\hfill
+	\caption{Radially averaged axial power distribution.}
+	\label{fig:axialpower}
+\end{figure}
 
-% \subsection{Periodic vs Neumann BCs}
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Moltres result.]{
+        \includegraphics[width=0.41\textwidth]{figures-benchmark/3D-fullcore26G-radialpower}
+    }
+    \subfloat[Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.]{
+        \includegraphics[width=0.49\textwidth]{figures-benchmark/benchmark-radialpower}
+    }
+	\hfill
+  \caption{Axially averaged radial power distribution.}
+  \label{fig:radialpower}
+\end{figure}
 
-% Table \ref{tab:benchmark-bc}
+\subsection{Periodic vs Neumann BCs}
+\label{sec:bench-bcs}
 
-% 3G)
-% 62118 dofs/group = 186354 dofs
+In the last section, we observed deviations in Moltres results.
+In this section, we analyzed the discrepancies that the reflective boundary condition approximation may introduce.
+As the last section mentioned, the memory requirements of the simulation limit the use of the periodic boundary conditions.
+To reduce the memory requirements, we collapsed the group constants to a smaller number of energy groups.
+We simulated two cases: one that uses a 3-group structure and one that uses a 6-group structure.
+The simulations required two meshes each.
 
-% 6G)
-% 16898 dofs/group = 101388 dofs
+The 3-group simulation had 62118 DoFs/energy-group (total of 186354 DoFs) and 61596 DoFs/energy-group (total of 184788 DoFs) for the control rod out and control rod in cases, respectively.
+The 6-group simulation had 16898 DoFs/energy-group (total of 101388 DoFs) and 19116 DoFs/energy-group (total of 114696 DoFs) for the control rod out and control rod in cases, respectively.
+We highlight that the 6-group simulation had to use a coarser mesh, otherwise it would not run.
+This confirms the suspicion that the simulation's memory requirements prevents it from running.
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{Global parameters comparison for different types of BCs.}
-%   \begin{tabular}{l|l|l|l|l|l}
-%   \toprule
-%   Energy groups       & Type of BCs & K$_{eff, out}$ & K$_{eff, in}$ & $\Delta \rho_{CR}$ (pcm) & AO \\
-%   \midrule
-%   \multirow{2}{*}{3}  & Periodic    & 1.07571		& 1.06776		& 692.6		& 0.237		\\
-%                       & Neumann     & 1.07586	  & 1.07021   & 490.5		& 0.237	  \\ \hline
-%   \multirow{2}{*}{6}  & Periodic    & 1.07182		& 1.06356		& 724.3	  & 0.185  	\\
-%                       & Neumann     & 1.07197   & 1.06610 	& 513.3		& 0.186		\\  
-%   \bottomrule
-%   \end{tabular}
-%   \label{tab:benchmark-bc}
-% \end{table}
+For both cases, we ran simulations with periodic and neumann boundary conditions and we compared their results.
+Table \ref{tab:benchmark-bc} presents the results.
+The neumann boundary condition increases the $K_{eff}$.
+For the control rod out case, the increase is small.
+However, for the control rod in case, the increase is considerable.
+The combined effect of both increases leads to a decrease in the control rod worth.
+The axial offset results almost unaffected by the boundary condition approximation.
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Global parameters comparison for different types of BCs.}
+  \begin{tabular}{l|l|l|l|l|l}
+  \toprule
+  Energy groups       & Type of BCs & K$_{eff, out}$ & K$_{eff, in}$ & $\Delta \rho_{CR}$ [pcm] & AO \\
+  \midrule
+  \multirow{2}{*}{3}  & Periodic    & 1.07571		& 1.06776		& 692.6		& 0.237		\\
+                      & Neumann     & 1.07586	  & 1.07021   & 490.5		& 0.237	  \\ \hline
+  \multirow{2}{*}{6}  & Periodic    & 1.07182		& 1.06356		& 724.3	  & 0.185  	\\
+                      & Neumann     & 1.07197   & 1.06610 	& 513.3		& 0.186		\\  
+  \bottomrule
+  \end{tabular}
+  \label{tab:benchmark-bc}
+\end{table}
 
 \section{Conclusions}
 
@@ -715,6 +756,22 @@ Finally, we analyzed the impact of using different 15-group structures on the $L
 We chose the $15d$ structure as the best performing.
 
 % Serpent-Moltres: Full-core
+Based on the results from the fuel column analysis, we compared Moltres full-core results to Serpent reference results.
+We considered two operational cases: 600K and 1200K.
+Serpent obtained the homogenized group constants of the different regions of the reactor.
+Moltres took such constants as input with a Gmsh mesh.
+The first analysis compared the Serpent and Moltres eigenvalues.
+Moltres results were bigger.
+The overall difference was less than 300 pcm.
+The second analysis compared the radial power distributions from both codes.
+These results showcase the symmetry of the problem.
+To reduce the computational expense other simulations could reduce the problem size by a half.
+Overall, Moltres radial power distribution shows close proximity to the Serpent's result.
+
+Fluxes ...
+
+
+
 
 % OECD-Benchmark
 
