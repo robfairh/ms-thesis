@@ -117,6 +117,7 @@ fill=blue!30]
 
 % The first step in the calculation was to obtain the group constants using Serpent.
 % Figure \ref{fig:fuelcolumn} displays the $xy$-plane of the model.
+% To simplify Serpent's model, we did not consider the fuel handling holes nor the coolant channels in the bottom and top reflectors.
 % \glspl{HTGR} use \glspl{LBP} to reduce the peaking factors in different regions of the active core.
 % Some reactors could have \glspl{LBP} in the rings closer to the reflectors, and no \glspl{LBP} in the middle rings.
 % This motivated the analysis of two cases, a fuel column that does not have \glspl{LBP}, and one that has.
@@ -391,59 +392,61 @@ fill=blue!30]
 
 In this section, we compared the results from Serpent and Moltres for a full-core simulation.
 The first step in the calculation was to obtain the group constants using Serpent.
-Figure \ref{fig:fullcoremodel} displays the xy-plane of the model.
-Based on the previous analysis, we chose a the energy group structure $15d$ in Table \ref{tab:energygroups}.
+Figure \ref{fig:fullcoremodel} displays the $xy$-plane of the model.
+The model includes the bottom and top reflectors.
+Tables \ref{tab:maincharac}, \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
+To simplify Serpent's model, all the fuel columns were standard fuel columns.
+Additionally, the model does not include the fuel handling holes nor the coolant channels in the bottom and top reflectors.
+The model considered a fresh core.
+Based on the previous analysis, we chose the energy group structure $15d$ in Table \ref{tab:energygroups}.
 The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 Serpent ran 8$\times 10^5$ neutrons/cycle, 500 active cycles, and 100 inactive cycles for the calculations.
 
-% Anything else from serpent? Table to compare keff for serpent and moltres at 600 and 1200K.
-Table \ref{tab:full-keff} exhibits the \gls{Keff}
+For the Moltres input file, we made the geometry and mesh using Gmsh.
+Taking advantage of the symmetry of the problem, the model included only a one-sixth of the full-core.
+The mesh had 300720 elements and 160035 nodes.
+The diffusion calculations had 160035 \glspl{DoF}/energy-group, and a total of 2400525 DoFs.
+The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
 
+% Keff
+Between Serpent and Moltres, we compared the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor.
+Table \ref{tab:full-keff} exhibits the \gls{Keff} from Serpent and Moltres.
+Moltres values are larger than Serpent's.
+The values are within a 300 pcm difference.
 
-% We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
-% Taking advantage of the symmetry of the problem, the model included only a one-twelfth of the fuel column.
-% The mesh had 37120 elements and 22862 nodes.
-% The diffusion calculations had 22862 \glspl{DoF}/energy-group.
-% The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
-% The calculations in Moltres used different energy group structures listed in Table \ref{tab:energygroups}.
+% Power distribution
+Figures \ref{fig:fullcore-600-power} and \ref{fig:fullcore-1200-power} show Serpent and Moltres radial power distributions.
+The following analysis applies for both temperatures.
+The first thing to came to our attention is the symmetry of the power distribution.
+The results are symmetric with respect to a 60$^{\circ}$ line.
+This result suggests that we could reduce the mesh size by a half by considering only a one-twelfth of the reactor.
+The next observation is that Moltres exhibits a higher power density than Serpent in the inner ring and outer rings.
+The power density in the middle ring is lower for Moltres case.
+The largest difference is in the inner ring.
+Overall, the results differ in less than 0.30 MW.
 
-% % This is very important and I should review it carefully
-% To compare the results from Serpent and Moltres, we present a figure comparing the three-group axial flux.
-% Moltres ran the calculations for 26 energy groups, and collapsed the results to three energy groups to facilitate the visualization of the results.
-% Note that the flux in Serpent is an average over the volume, while the flux in Moltres is the point-wise flux over a line.
-% Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
-% The last analysis is for the Moltres axial flux.
-% Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
-
-The fuel column includes the bottom and top reflectors.
-Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
-
-% Dof/group = 160035
-% total dof = 2400525
-
-% Serpent: 
-% keff (600K) = 1.10869
-% keff (1200K) = 1.06138
-
-% Moltres:
-% keff (600K) = 1.1115000683
-% keff (1200K) = 1.0646803289
-
-
-% Figure \ref{fig:fullcoremodel}
-
-% Figure \ref{fig:fullcore-600-power}
-% Figure \ref{fig:fullcore-1200-power}
-
-% Figure \ref{fig:fullcore-detectors}
-
-% Figure \ref{fig:fullcore-600-axial1}
-% Figure \ref{fig:fullcore-600-axial2}
-% Figure \ref{fig:fullcore-600-radial1}
-
-% Figure \ref{fig:fullcore-1200-axial1}
-% Figure \ref{fig:fullcore-1200-axial2}
-% Figure \ref{fig:fullcore-1200-radial1}
+% Fluxes
+To compare the fluxes, we placed an axial and a radial flux detectors in arbitrary regions of the reactor.
+Figure \ref{fig:fullcore-detectors} shows the location of the detectors.
+Note that the flux in Serpent is an average over the volume, while the flux in Moltres is the point-wise flux over a line.
+The Serpent axial detector's volume was the fuel column's volume.
+The Moltres axial detector's location was the center of the fuel column.
+The Serpent radial detector's volume had a 2$^{\circ}$-angle and a fuel assembly's height.
+Both Serpent and Moltres radial detector's location was the middle of the active core's height.
+Moltres ran the calculations for 15 energy groups, and collapsed the results to three groups to facilitate the visualization of the results.
+Figures \ref{fig:fullcore-600-axial1} and \ref{fig:fullcore-600-radial1} show the axial and radial fluxes at 600K.
+In Figure \ref{fig:fullcore-600-axial1}, the fast and epithermal fluxes in Moltres are larger while the thermal flux is smaller.
+The flux shapes very close.
+The epithermal and thermal fluxes are closer in magnitude in the active core in Serpent's simulation.
+In Figure \ref{fig:fullcore-600-radial1}, Serpent fluxes present some 'noise'.
+A higher number of generations/cycle in Serpent simulations would solve it.
+Another alternative is using a detector with a larger volume.
+Additionally, the flux in Serpent shows the location of the LBPs in the fuel assemblies.
+A diffusion solver fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
+Regarding the magnitude, the fast flux in Moltres is larger while the epithermal and thermal fluxes have almost the same magnitudes.
+Figures \ref{fig:fullcore-1200-axial1} and \ref{fig:fullcore-1200-radial1} display the fluxes at 1200K.
+These results are different from the 600K case.
+However, we observe the same behavior for both axial and radial fluxes.
 
 % Geometries
 \begin{figure}[htbp!]
@@ -459,23 +462,20 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
 	\label{fig:fullcoremodel}
 \end{figure}
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{Serpent and Moltres eigenvalues.}
-%   \begin{tabular}{l|l|llllllll}
-%   \toprule
-%               & Serpent 					& \multicolumn{8}{c}{$\Delta \rho$ [pcm]}            \\ \cline{3-10} 
-%               &              			& 3   & 6   & 9   & 12   & 15   & 18   & 21   & 26   \\
-%   \midrule
-% no LBP, 600K  & 1.43800           & 10  & 7   & 6   & 6    & 5    & 6    & 6    & 12   \\
-% no LBP, 1200K & 1.37771           & 23  & 15  & 4   & 3    & 2    & 2    & 1    & 11   \\
-% LBP, 600K     & 1.12861           & 44  & 21  & 24  & 25   & 25   & 24   & 19   & 9    \\
-% LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   & 25   \\
-%   \bottomrule
-%   \end{tabular}
-%   \label{tab:full-keff}
-% \end{table}
+\begin{table}[htbp!]
+  \centering
+  \caption{Serpent and Moltres eigenvalues.}
+  \begin{tabular}{l|lll}
+  \toprule
+              & Serpent			& Moltres  & $\Delta \rho$ [pcm] 	\\
+  \midrule
+			 600K  	& 1.10869     & 1.11150	 &	228		\\
+			1200K 	& 1.06138     & 1.06468	 &	292   \\
 
+  \bottomrule
+  \end{tabular}
+  \label{tab:full-keff}
+\end{table}
 
 %Power distribution at 600K
 \begin{figure}[htbp!]
@@ -509,10 +509,10 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
 \begin{figure}[htbp!]
 	\centering
     \subfloat[]{
-        \includegraphics[width=0.37\textwidth]{figures-fullcore/3D-fullcore-60-detectors}
+        \includegraphics[width=0.37\textwidth]{figures-fullcore/3D-fullcore-60-detectors2}
     }
     \subfloat[Serpent model geometry.]{
-        \includegraphics[width=0.52\textwidth]{figures-fullcore/oecd-fullcore-detectorsB}
+        \includegraphics[width=0.52\textwidth]{figures-fullcore/oecd-fullcore-detectorsC}
     }
 	\hfill
 	\caption{Flux detector locations.}
@@ -529,22 +529,8 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
         \includegraphics[width=0.45\textwidth]{figures-fullcore/serpent26G-600-collapse-Axial1}
     }
 	\hfill
-	\caption{Flux in axial detector 1 at 600 K.}
+	\caption{Axial flux at 600 K.}
 	\label{fig:fullcore-600-axial1}
-\end{figure}
-
-% Axial flux3 at 600 K
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-fullcore/3D-fullcore-600-15Gd-axial3}
-    }
-    \subfloat[Serpent.]{
-        \includegraphics[width=0.45\textwidth]{figures-fullcore/serpent26G-600-collapse-Axial2}
-    }
-	\hfill
-	\caption{Flux in axial detector 2 at 600 K.}
-	\label{fig:fullcore-600-axial2}
 \end{figure}
 
 %Radial flux at 600 K
@@ -571,22 +557,8 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
         \includegraphics[width=0.45\textwidth]{figures-fullcore/serpent26G-1200-collapse-Axial1}
     }
 	\hfill
-	\caption{Flux in axial detector 1 at 1200 K.}
+	\caption{Axial flux at 1200 K.}
 	\label{fig:fullcore-1200-axial1}
-\end{figure}
-
-% Axial flux3 at 1200 K
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-fullcore/3D-fullcore-1200-15Gc-axial3}
-    }
-    \subfloat[Serpent.]{
-        \includegraphics[width=0.45\textwidth]{figures-fullcore/serpent26G-600-collapse-Axial2}
-    }
-	\hfill
-	\caption{Flux in axial detector 2 at 1200 K.}
-	\label{fig:fullcore-1200-axial2}
 \end{figure}
 
 %Radial flux at 1200 K
@@ -604,7 +576,20 @@ Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model
 \end{figure}
 
 
-\section{OECD/NEA Benchmark}
+\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 1}
+
+% Exercise description
+This section conducted Phase I Exercise 1 of the benchmark with Moltres and compared the results with the already published results \cite{oecd_nea_coupled_2020}.
+The benchmark specifies the cross-sections required to conduct the exercise.
+This ensures a common dataset among various benchmark participants.
+The files \textit{OECD-MHTGR350\_Simplified.xs} \textit{xsmap.pdf} specify the group constants and the a detailed map of the constants numbering.
+The benchmark definition used DRAGON-4 \cite{marleau_user_2016} from a full block configuration.
+The dataset contains 26 energy groups.
+
+% What should be reported \cite{oecd_nea_benchmark_2017}
+The exercise requests the reporting of the global parameters: $K_{eff}$, \gls{CR} worth ($\Delta \rho_{CR}$), and axial offset ($AO$).
+Average core power density, neutron-flux map, and a average power density map should be reported as well \cite{oecd_nea_benchmark_2017}.
+
 
 % Figure \ref{fig:mesh}
 % Table \ref{tab:globalparam}
