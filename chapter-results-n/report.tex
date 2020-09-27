@@ -398,7 +398,7 @@ Tables \ref{tab:maincharac}, \ref{tab:element-characteristics} and \ref{tab:comp
 To simplify Serpent's model, all the fuel columns were standard fuel columns.
 Additionally, the model does not include the fuel handling holes nor the coolant channels in the bottom and top reflectors.
 The model considered a fresh core.
-Based on the previous analysis, we chose the energy group structure $15d$ in Table \ref{tab:energygroups}.
+Based on the previous section analyses, we chose the energy group structure $15d$ in Table \ref{tab:energygroups}.
 The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 Serpent ran 8$\times 10^5$ neutrons/cycle, 500 active cycles, and 100 inactive cycles for the calculations.
 
@@ -417,7 +417,7 @@ The values are within a 300 pcm difference.
 % Power distribution
 Figures \ref{fig:fullcore-600-power} and \ref{fig:fullcore-1200-power} show Serpent and Moltres radial power distributions.
 The following analysis applies for both temperatures.
-The first thing to came to our attention is the symmetry of the power distribution.
+The first thing that came to our attention is the symmetry of the power distribution.
 The results are symmetric with respect to a 60$^{\circ}$ line.
 This result suggests that we could reduce the mesh size by a half by considering only a one-twelfth of the reactor.
 The next observation is that Moltres exhibits a higher power density than Serpent in the inner ring and outer rings.
@@ -436,7 +436,7 @@ Both Serpent and Moltres radial detector's location was the middle of the active
 Moltres ran the calculations for 15 energy groups, and collapsed the results to three groups to facilitate the visualization of the results.
 Figures \ref{fig:fullcore-600-axial1} and \ref{fig:fullcore-600-radial1} show the axial and radial fluxes at 600K.
 In Figure \ref{fig:fullcore-600-axial1}, the fast and epithermal fluxes in Moltres are larger while the thermal flux is smaller.
-The flux shapes very close.
+The flux shapes are similar.
 The epithermal and thermal fluxes are closer in magnitude in the active core in Serpent's simulation.
 In Figure \ref{fig:fullcore-600-radial1}, Serpent fluxes present some 'noise'.
 A higher number of generations/cycle in Serpent simulations would solve it.
@@ -768,11 +768,11 @@ The second analysis compared the radial power distributions from both codes.
 These results showcase the symmetry of the problem.
 To reduce the computational expense other simulations could reduce the problem size by a half.
 Overall, Moltres radial power distribution shows close proximity to the Serpent's result.
-
-Fluxes ...
-
-
-
+We also compared the flux shape and magnitude.
+The axial fluxes show small discrepancies, mostly in their magnitude.
+The radial fluxes are close in shape and magnitude.
+However, the radial flux in the diffusion calculation fails to capture the steep flux close to the LBPs.
+Overall, the fluxes are similar.
 
 % OECD-Benchmark
 The simulation capabilities for HTGRs has not reached the state of the art of LWRs.
