@@ -53,339 +53,339 @@ fill=blue!30]
 
 \begin{document}
 
-% \section{Preliminary studies}
+\section{Preliminary studies}
 
-% \subsection{Homogeneous vs heterogeneous isotope distribution}
+\subsection{Homogeneous vs heterogeneous isotope distribution}
 
-% This study modeled two different isotope distributions in a fuel compact.
-% First, a homogeneous distribution of the isotopes.
-% Second, a heterogeneous distribution, in which we explicitly model the TRISO particles.
-% We modeled both cases using Serpent.
-% We used a hexagonal unit cell model that includes the fuel compact, a helium gap, and the surrounding graphite.
-% Table \ref{tab:compact} specifies the model input parameters.
-% The material temperature was 1200K, case that represents the \gls{HFP} core state.
-% Serpent ran 5$\times 10^4$ neutrons/cycle, 500 active cycles, and 50 inactive cycles for the calculations.
-% The simulations took 1.73 and 2.21 minutes using 256 cores.
-% The heterogeneous calculations took a 28$\%$ more.
+This study modeled two different isotope distributions in a fuel compact.
+First, a homogeneous distribution of the isotopes.
+Second, a heterogeneous distribution, in which we explicitly model the TRISO particles.
+We modeled both cases using Serpent.
+We used a hexagonal unit cell model that includes the fuel compact, a helium gap, and the surrounding graphite.
+Table \ref{tab:compact} specifies the model input parameters.
+The material temperature was 1200K, case that represents the \gls{HFP} core state.
+Serpent ran 5$\times 10^4$ neutrons/cycle, 500 active cycles, and 50 inactive cycles for the calculations.
+The simulations took 1.73 and 2.21 minutes using 256 cores.
+The heterogeneous calculations took a 28$\%$ more.
 
-% The \gls{Keff} was 1.17523 for the homogeneous case and 1.25106 for the heterogeneous case.
-% Using the heterogeneous case as the reference result, we calculated the relative error of the most relevant group constants in an eigenvalue calculation.
-% Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
-% The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see equation \ref{eq:diffusion}).
-% Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
-% The figure does not include relative errors for $D_g$ and $\chi^t_g$ because they were less than 1$\%$.
-% The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
+The \gls{Keff} was 1.17523 for the homogeneous case and 1.25106 for the heterogeneous case.
+Using the heterogeneous case as the reference result, we calculated the relative error of the most relevant group constants in an eigenvalue calculation.
+Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
+The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see equation \ref{eq:diffusion}).
+Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
+The figure does not include relative errors for $D_g$ and $\chi^t_g$ because they were less than 1$\%$.
+The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
 
-% % \cite{strydom_results_2015}
-% % The low multiplication factor in the homogeneous case is due to the fuel self-shielding .
-% % In the heterogeneous compact, the fuel self-shielding leads to a significantly decreased U-238 neutron absorption compared to the homogeneous fuel compact.
+% \cite{strydom_results_2015}
+% The low multiplication factor in the homogeneous case is due to the fuel self-shielding .
+% In the heterogeneous compact, the fuel self-shielding leads to a significantly decreased U-238 neutron absorption compared to the homogeneous fuel compact.
 
-% \begin{figure}[htbp!]
-% 	\centering
-% 	\includegraphics[width=0.45\linewidth]{figures/param-comparison}
-% 	\hfill
-% 	\caption{Relative error of the group constants generated with a homogeneous isotope distribution.}
-% 	\label{fig:param-comparison}
-% \end{figure}
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{figures/param-comparison}
+	\hfill
+	\caption{Relative error of the group constants generated with a homogeneous isotope distribution.}
+	\label{fig:param-comparison}
+\end{figure}
 
-% \subsection{Moltres limitations}
+\subsection{Moltres limitations}
 
-% Serpent run 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
-% The \gls{Keff} was 1.41933.
+Serpent run 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
+The \gls{Keff} was 1.41933.
 
-% Moltres
-% Mesh: dof/group ()
-% Keff = 
+Moltres
+Mesh: dof/group ()
+Keff = 
 
-% Figures
+Figures
 
-% % Maybe here or next section
-% Based on these results and discussions, in the following sections, we obtain the homogenized group constants.
-% In the fuel block, the fuel, coolant, and moderator all share the same group constants.
+% Maybe here or next section
+Based on these results and discussions, in the following sections, we obtain the homogenized group constants.
+In the fuel block, the fuel, coolant, and moderator all share the same group constants.
 
-% \section{Serpent-Moltres comparison}
+\section{Serpent-Moltres comparison}
 
-% \subsection{Fuel column}
+\subsection{Fuel column}
 
-% In this section, we investigated the effects of the choice of energy group structure on the diffusion simulations.
-% We conducted two analyses.
-% First, we varied the number of energy groups.
-% Second, we tried different energy group structures for the same number of groups.
-% To reduce the computational expense we narrowed down our focus to a fuel column of the MHTGR-350, Figure \ref{fig:fuelcolumn}.
-% The fuel column includes the bottom and top reflectors.
-% Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
+In this section, we investigated the effects of the choice of energy group structure on the diffusion simulations.
+We conducted two analyses.
+First, we varied the number of energy groups.
+Second, we tried different energy group structures for the same number of groups.
+To reduce the computational expense we narrowed down our focus to a fuel column of the MHTGR-350, Figure \ref{fig:fuelcolumn}.
+The fuel column includes the bottom and top reflectors.
+Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
 
-% The first step in the calculation was to obtain the group constants using Serpent.
-% Figure \ref{fig:fuelcolumn} displays the $xy$-plane of the model.
-% To simplify Serpent's model, we did not consider the fuel handling holes nor the coolant channels in the bottom and top reflectors.
-% \glspl{HTGR} use \glspl{LBP} to reduce the peaking factors in different regions of the active core.
-% Some reactors could have \glspl{LBP} in the rings closer to the reflectors, and no \glspl{LBP} in the middle rings.
-% This motivated the analysis of two cases, a fuel column that does not have \glspl{LBP}, and one that has.
-% The LBP's locations are the six corners of the fuel assembly, Figure \ref{fig:fuelcolumn}.
-% The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
-% Serpent ran 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
+The first step in the calculation was to obtain the group constants using Serpent.
+Figure \ref{fig:fuelcolumn} displays the $xy$-plane of the model.
+To simplify Serpent's model, we did not consider the fuel handling holes nor the coolant channels in the bottom and top reflectors.
+\glspl{HTGR} use \glspl{LBP} to reduce the peaking factors in different regions of the active core.
+Some reactors could have \glspl{LBP} in the rings closer to the reflectors, and no \glspl{LBP} in the middle rings.
+This motivated the analysis of two cases, a fuel column that does not have \glspl{LBP}, and one that has.
+The LBP's locations are the six corners of the fuel assembly, Figure \ref{fig:fuelcolumn}.
+The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
+Serpent ran 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
-% We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
-% Taking advantage of the symmetry of the problem, the model included only a one-twelfth of the fuel column.
-% The mesh had 37120 elements and 22862 nodes.
-% The diffusion calculations had 22862 \glspl{DoF}/energy-group.
-% The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
-% The calculations in Moltres used different energy group structures listed in Table \ref{tab:energygroups}.
+We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
+Taking advantage of the symmetry of the problem, the model included only a one-twelfth of the fuel column.
+The mesh had 37120 elements and 22862 nodes.
+The diffusion calculations had 22862 \glspl{DoF}/energy-group.
+The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
+The calculations in Moltres used different energy group structures listed in Table \ref{tab:energygroups}.
 
-% % This is very important and I should review it carefully
-% To compare the results from Serpent and Moltres, we present a figure comparing the three-group axial flux.
-% Moltres ran the calculations for 26 energy groups, and collapsed the results to three energy groups to facilitate the visualization of the results.
-% Note that the flux in Serpent is an average over the volume, while the flux in Moltres is the point-wise flux over a line.
-% Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
-% The last analysis is for the Moltres axial flux.
-% Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
+% This is very important and I should review it carefully
+To compare the results from Serpent and Moltres, we present a figure comparing the three-group axial flux.
+Moltres ran the calculations for 26 energy groups, and collapsed the results to three energy groups to facilitate the visualization of the results.
+Note that the flux in Serpent is an average over the volume, while the flux in Moltres is the point-wise flux over a line.
+Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
+The last analysis is for the Moltres axial flux.
+Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
 
-% % Fluxes
-% To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
-% Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
-% For the no LBP at 600K case, the fluxes are close in shape and magnitude.
-% For the no LBP at 1200K case, the fluxes look similar.
-% The flux in Moltres has a more straight shape.
-% The thermal flux peak in the bottom reflector has a bigger magnitude.
-% For the LBP at 600K case, the flux in Moltres has a bigger magnitude.
-% Additionally, the shape of the Moltres flux is concave while the Serpent flux is convex.
-% For the LBP at 1200K case, the flux in Moltres is bigger.
-% The Moltres flux is more concave than the Serpent flux.
-% Overall, the fluxes in Moltres and Serpent are close.
+% Fluxes
+To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
+Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
+For the no LBP at 600K case, the fluxes are close in shape and magnitude.
+For the no LBP at 1200K case, the fluxes look similar.
+The flux in Moltres has a more straight shape.
+The thermal flux peak in the bottom reflector has a bigger magnitude.
+For the LBP at 600K case, the flux in Moltres has a bigger magnitude.
+Additionally, the shape of the Moltres flux is concave while the Serpent flux is convex.
+For the LBP at 1200K case, the flux in Moltres is bigger.
+The Moltres flux is more concave than the Serpent flux.
+Overall, the fluxes in Moltres and Serpent are close.
 
-% % eigenvalues
-% Table \ref{tab:keff} exhibits the reactivity difference ($\Delta \rho$) between the Serpent and Moltres eigenvalues.
-% We used equation \ref{eq:delta-rho} to obtain $\Delta \rho$.
-% The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
-% Overall, the reactivity difference is less than 50 pcm.
-% We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
+% eigenvalues
+Table \ref{tab:keff} exhibits the reactivity difference ($\Delta \rho$) between the Serpent and Moltres eigenvalues.
+We used equation \ref{eq:delta-rho} to obtain $\Delta \rho$.
+The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
+Overall, the reactivity difference is less than 50 pcm.
+We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
 
-% \begin{align}
-% 	\Delta \rho &= \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
-%   \intertext{where}
-%   k_1 &= \mbox{Serpent eigenvalue} \notag \\
-%   k_2 &= \mbox{Moltres eigenvalue.} \notag
-% \end{align}
+\begin{align}
+	\Delta \rho &= \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
+  \intertext{where}
+  k_1 &= \mbox{Serpent eigenvalue} \notag \\
+  k_2 &= \mbox{Moltres eigenvalue.} \notag
+\end{align}
 
-% Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm relative error for the different energy group structures.
-% We note that the relative error for the no LBP case is smaller than the relative error of the LBP case.
-% Overall, the relative error decreases with an increase in the number of energy groups.
-% Nonetheless, this is not always the case.
-% For example, in Figure \ref{fig:assembly-noLBP-er-b}, going from 12 to 15 groups, the thermal flux improves, but the fast flux worsens.
-% Additionally, we observe that a low number of energy groups yields an error of more than a 100$\%$.
-% In which, case we can conclude that the solution is wrong.
+Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm relative error for the different energy group structures.
+We note that the relative error for the no LBP case is smaller than the relative error of the LBP case.
+Overall, the relative error decreases with an increase in the number of energy groups.
+Nonetheless, this is not always the case.
+For example, in Figure \ref{fig:assembly-noLBP-er-b}, going from 12 to 15 groups, the thermal flux improves, but the fast flux worsens.
+Additionally, we observe that a low number of energy groups yields an error of more than a 100$\%$.
+In which, case we can conclude that the solution is wrong.
 
-% We added to the analysis the computational time and the peak memory usage during the simulations, Figure \ref{fig:assembly-time}.
-% All the simulations used 128 cores.
-% We present only the cases at 600K because the change in temperature does not have a significant impact.
-% The computational requirements rises with an increase in the number of energy groups.
-% As the geometry uses a constant number of elements, the DoFs/energy-group is constant.
-% Thus, the total number of DoFs is proportional to the number of energy groups.
-% We also discern that the overall time of the LBP cases is higher than the no LBP cases.
+We added to the analysis the computational time and the peak memory usage during the simulations, Figure \ref{fig:assembly-time}.
+All the simulations used 128 cores.
+We present only the cases at 600K because the change in temperature does not have a significant impact.
+The computational requirements rises with an increase in the number of energy groups.
+As the geometry uses a constant number of elements, the DoFs/energy-group is constant.
+Thus, the total number of DoFs is proportional to the number of energy groups.
+We also discern that the overall time of the LBP cases is higher than the no LBP cases.
 
-% Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
-% We chose 15 energy groups, as it gives an overall good accuracy and a not so high computational expense.
+Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
+We chose 15 energy groups, as it gives an overall good accuracy and a not so high computational expense.
 
-% Table \ref{tab:energygroups} holds the different energy group structures.
-% Table \ref{tab:accuracy15} exhibits the $L_2$-norm relative error for the different energy group structures.
-% We see that the energy group structure has an impact over the accuracy.
-% Some energy groups structures yield better results for some cases while giving worse results for others.
-% For example, the structure $15d$ gives better results for the LBP at 600K case than for the no LBP case at 600K.
-% In order to choose the best performing structure, we used a weighted average for the different groups.
-% We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
-% Using this averaging scheme, we determined the group structure $15d$ to be the best one.
+Table \ref{tab:energygroups} holds the different energy group structures.
+Table \ref{tab:accuracy15} exhibits the $L_2$-norm relative error for the different energy group structures.
+We see that the energy group structure has an impact over the accuracy.
+Some energy groups structures yield better results for some cases while giving worse results for others.
+For example, the structure $15d$ gives better results for the LBP at 600K case than for the no LBP case at 600K.
+In order to choose the best performing structure, we used a weighted average for the different groups.
+We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
+Using this averaging scheme, we determined the group structure $15d$ to be the best one.
 
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Fuel column geometry. Image reproduced form \cite{tak_numerical_2008}.]{
-%         \includegraphics[width=0.51\textwidth]{figures-assembly/fuel-assembly}
-%     }
-%     \subfloat[Serpent model geometry.]{
-%         \includegraphics[width=0.34\textwidth]{figures-assembly/oecd-standard-column-legend}
-%     }
-% 	\hfill
-%     \caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
-% 	\label{fig:fuelcolumn}
-% \end{figure}
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Fuel column geometry. Image reproduced form \cite{tak_numerical_2008}.]{
+        \includegraphics[width=0.51\textwidth]{figures-assembly/fuel-assembly}
+    }
+    \subfloat[Serpent model geometry.]{
+        \includegraphics[width=0.34\textwidth]{figures-assembly/oecd-standard-column-legend}
+    }
+	\hfill
+    \caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
+	\label{fig:fuelcolumn}
+\end{figure}
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{Energy group structure.}
-%   \begin{tabular}{c|l|l|l|l|l|l|l|l|l|l|l|l}
-%   \toprule
-%   Upper boundary [eV] & 26    & 21   & 18   & 15a & 15b & 15c & 15d & 15e   & 12  & 9  & 6  & 3 \\
-%   \midrule
-%   1.49E+07            & 1     & 1    & 1    & 1   & 1   & 1   & 1   & 1     & 1   & 1  & 1  & 1 \\ \cline{1-2}
-%   7.41E+06            & 2     &      &      &     &     &     &     &       &     &    &    &   \\ \cline{1-10}
-%   3.68E+06            & 3     & 2    & 2    & 2   & 2   & 2   & 2   & 2     & 2   &    &    &   \\ \cline{1-2}
-%   6.72E+05            & 4     &      &      &     &     &     &     &       &     &    &    &   \\ \hline
-%   1.11E+05            & 5     & 3    & 3    & 3   & 3   & 3   & 3   & 3     & 3   & 2  & 2  & 2 \\ \cline{1-6} \cline{10-10}
-%   1.93E+04            & 6     & 4    & 4    & 4   & 4   &     &     &       & 4   &    &    &   \\ \cline{1-2}
-%   3.35E+03            & 7     &      &      &     &     &     &     &       &     &    &    &   \\ \cline{1-4} \cline{7-7}
-%   1.58E+03            & 8     & 5    & 5    &     &     & 4   &     &       &     &    &    &   \\ \cline{1-6} \cline{8-11}
-%   7.48E+02            & 9     & 6    & 6    & 5   & 5   &     & 4   & 4     & 5   & 3  &    &   \\ \cline{1-7} \cline{10-11}
-%   2.75E+02            & 10    & 7    & 7    & 6   & 6   & 5   &     &       & 6   & 4  &    &   \\ \cline{1-6} \cline{8-12}
-%   1.30E+02            & 11    & 8    & 8    & 7   & 7   &     & 5   & 5     & 7   & 5  & 3  &   \\ \cline{1-3} \cline{6-7}
-%   6.14E+01            & 12    & 9    &      &     & 8   & 6   &     &       &     &    &    &   \\ \cline{1-6} \cline{8-9}
-%   2.90E+01            & 13    & 10   & 9    & 8   & 9   &     & 6   & 6     &     &    &    &   \\ \cline{1-5} \cline{10-11}
-%   1.37E+01            & 14    & 11   & 10   & 9   &     &     &     &       & 8   & 6  &    &   \\ \cline{1-10}
-%   8.32E+00            & 15    & 12   & 11   & 10  & 10  & 7   & 7   & 7     & 9   &    &    &   \\ \cline{1-2}
-%   5.04E+00            & 16    &      &      &     &     &     &     &       &     &    &    &   \\ \hline
-%   2.38E+00            & 17    & 13   & 12   & 11  & 11  & 8   & 8   & 8     & 10  & 7  & 4  & 3 \\ \cline{1-3}
-%   1.29E+00            & 18    & 14   &      &     &     &     &     &       &     &    &    &   \\ \cline{1-12} 
-%   6.50E-01            & 19    & 15   & 13   & 12  & 12  & 9   & 9   & 9     & 11  & 8  & 5  &   \\ \cline{1-3} \cline{7-8}
-%   3.50E-01            & 20    & 16   &      &     &     & 10  & 10  &       &     &    &    &   \\ \cline{1-9}
-%   2.00E-01            & 21    & 17   & 14   & 13  & 13  & 11  & 11  & 10    &     &    &    &   \\ \cline{1-2} \cline{9-9}
-%   1.20E-01            & 22    &      &      &     &     &     &     & 11    &     &    &    &   \\ \cline{1-9} 
-%   8.00E-02            & 23    & 18   & 15   & 14  & 14  & 12  & 12  & 12    &     &    &    &   \\ \cline{1-4} \cline{7-9}
-%   5.00E-02            & 24    & 19   & 16   &     &     & 13  & 13  & 13    &     &    &    &   \\ \hline
-%   2.00E-02            & 25    & 20   & 17   & 15  & 15  & 14  & 14  & 14    & 12  & 9  & 6  &   \\ \cline{1-4} \cline{7-9}
-%   1.00E-02            & 26    & 21   & 18   &     &     & 15  & 15  & 15    &     &    &    &   \\
-%   \bottomrule
-%   \end{tabular}
-%   \label{tab:energygroups}
-% \end{table}
+\begin{table}[htbp!]
+  \centering
+  \caption{Energy group structure.}
+  \begin{tabular}{c|l|l|l|l|l|l|l|l|l|l|l|l}
+  \toprule
+  Upper boundary [eV] & 26    & 21   & 18   & 15a & 15b & 15c & 15d & 15e   & 12  & 9  & 6  & 3 \\
+  \midrule
+  1.49E+07            & 1     & 1    & 1    & 1   & 1   & 1   & 1   & 1     & 1   & 1  & 1  & 1 \\ \cline{1-2}
+  7.41E+06            & 2     &      &      &     &     &     &     &       &     &    &    &   \\ \cline{1-10}
+  3.68E+06            & 3     & 2    & 2    & 2   & 2   & 2   & 2   & 2     & 2   &    &    &   \\ \cline{1-2}
+  6.72E+05            & 4     &      &      &     &     &     &     &       &     &    &    &   \\ \hline
+  1.11E+05            & 5     & 3    & 3    & 3   & 3   & 3   & 3   & 3     & 3   & 2  & 2  & 2 \\ \cline{1-6} \cline{10-10}
+  1.93E+04            & 6     & 4    & 4    & 4   & 4   &     &     &       & 4   &    &    &   \\ \cline{1-2}
+  3.35E+03            & 7     &      &      &     &     &     &     &       &     &    &    &   \\ \cline{1-4} \cline{7-7}
+  1.58E+03            & 8     & 5    & 5    &     &     & 4   &     &       &     &    &    &   \\ \cline{1-6} \cline{8-11}
+  7.48E+02            & 9     & 6    & 6    & 5   & 5   &     & 4   & 4     & 5   & 3  &    &   \\ \cline{1-7} \cline{10-11}
+  2.75E+02            & 10    & 7    & 7    & 6   & 6   & 5   &     &       & 6   & 4  &    &   \\ \cline{1-6} \cline{8-12}
+  1.30E+02            & 11    & 8    & 8    & 7   & 7   &     & 5   & 5     & 7   & 5  & 3  &   \\ \cline{1-3} \cline{6-7}
+  6.14E+01            & 12    & 9    &      &     & 8   & 6   &     &       &     &    &    &   \\ \cline{1-6} \cline{8-9}
+  2.90E+01            & 13    & 10   & 9    & 8   & 9   &     & 6   & 6     &     &    &    &   \\ \cline{1-5} \cline{10-11}
+  1.37E+01            & 14    & 11   & 10   & 9   &     &     &     &       & 8   & 6  &    &   \\ \cline{1-10}
+  8.32E+00            & 15    & 12   & 11   & 10  & 10  & 7   & 7   & 7     & 9   &    &    &   \\ \cline{1-2}
+  5.04E+00            & 16    &      &      &     &     &     &     &       &     &    &    &   \\ \hline
+  2.38E+00            & 17    & 13   & 12   & 11  & 11  & 8   & 8   & 8     & 10  & 7  & 4  & 3 \\ \cline{1-3}
+  1.29E+00            & 18    & 14   &      &     &     &     &     &       &     &    &    &   \\ \cline{1-12} 
+  6.50E-01            & 19    & 15   & 13   & 12  & 12  & 9   & 9   & 9     & 11  & 8  & 5  &   \\ \cline{1-3} \cline{7-8}
+  3.50E-01            & 20    & 16   &      &     &     & 10  & 10  &       &     &    &    &   \\ \cline{1-9}
+  2.00E-01            & 21    & 17   & 14   & 13  & 13  & 11  & 11  & 10    &     &    &    &   \\ \cline{1-2} \cline{9-9}
+  1.20E-01            & 22    &      &      &     &     &     &     & 11    &     &    &    &   \\ \cline{1-9} 
+  8.00E-02            & 23    & 18   & 15   & 14  & 14  & 12  & 12  & 12    &     &    &    &   \\ \cline{1-4} \cline{7-9}
+  5.00E-02            & 24    & 19   & 16   &     &     & 13  & 13  & 13    &     &    &    &   \\ \hline
+  2.00E-02            & 25    & 20   & 17   & 15  & 15  & 14  & 14  & 14    & 12  & 9  & 6  &   \\ \cline{1-4} \cline{7-9}
+  1.00E-02            & 26    & 21   & 18   &     &     & 15  & 15  & 15    &     &    &    &   \\
+  \bottomrule
+  \end{tabular}
+  \label{tab:energygroups}
+\end{table}
 
-% % No LBP 600
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Moltres.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-noLBP-600-26G}
-%     }
-%     \subfloat[Serpent.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-noLBP-600-collapse}
-%     }
-% 	\hfill
-%     \caption{Case no LBP at 600K. 3-group axial neutron flux.}
-% 	\label{fig:assembly-noLBP-600-flux}
-% \end{figure}
+% No LBP 600
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Moltres.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-noLBP-600-26G}
+    }
+    \subfloat[Serpent.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-noLBP-600-collapse}
+    }
+	\hfill
+    \caption{Case no LBP at 600K. 3-group axial neutron flux.}
+	\label{fig:assembly-noLBP-600-flux}
+\end{figure}
 
-% % No LBP 1200
-% \begin{figure}[htbp!]
-%   \centering
-%     \subfloat[Moltres.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-noLBP-1200-26G}
-%     }
-%     \subfloat[Serpent.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-noLBP-1200-collapse}
-%     }
-%   \hfill
-%     \caption{Case no LBP at 1200K. 3-group axial neutron flux.}
-%   \label{fig:assembly-noLBP-1200-flux}
-% \end{figure}
+% No LBP 1200
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Moltres.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-noLBP-1200-26G}
+    }
+    \subfloat[Serpent.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-noLBP-1200-collapse}
+    }
+  \hfill
+    \caption{Case no LBP at 1200K. 3-group axial neutron flux.}
+  \label{fig:assembly-noLBP-1200-flux}
+\end{figure}
 
-% % LBP 600 
-% \begin{figure}[htbp!]
-%   \centering
-%     \subfloat[Moltres.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-LBP-600-26G}
-%     }
-%     \subfloat[Serpent.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-LBP-600-collapse}
-%     }
-%   \hfill
-%     \caption{Case LBP at 600K. 3-group axial neutron flux.}
-%   \label{fig:assembly-LBP-600-flux}
-% \end{figure}
+% LBP 600 
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Moltres.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-LBP-600-26G}
+    }
+    \subfloat[Serpent.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-LBP-600-collapse}
+    }
+  \hfill
+    \caption{Case LBP at 600K. 3-group axial neutron flux.}
+  \label{fig:assembly-LBP-600-flux}
+\end{figure}
 
-% % LBP 1200
-% \begin{figure}[htbp!]
-%   \centering
-%     \subfloat[Moltres.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-LBP-1200-26G}
-%     }
-%     \subfloat[Serpent.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-LBP-1200-collapse}
-%     }
-%   \hfill
-%     \caption{Case LBP at 1200K. 3-group axial neutron flux.}
-%   \label{fig:assembly-LBP-1200-flux}
-% \end{figure}
+% LBP 1200
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Moltres.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-LBP-1200-26G}
+    }
+    \subfloat[Serpent.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/serpent26G-LBP-1200-collapse}
+    }
+  \hfill
+    \caption{Case LBP at 1200K. 3-group axial neutron flux.}
+  \label{fig:assembly-LBP-1200-flux}
+\end{figure}
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{Serpent and Moltres eigenvalues.}
-%   \begin{tabular}{l|l|llllllll}
-%   \toprule
-%               & Serpent 					& \multicolumn{8}{c}{$\Delta \rho$ [pcm]}            \\ \cline{3-10} 
-%               &              			& 3   & 6   & 9   & 12   & 15   & 18   & 21   & 26   \\
-%   \midrule
-% no LBP, 600K  & 1.43800           & 10  & 7   & 6   & 6    & 5    & 6    & 6    & 12   \\
-% no LBP, 1200K & 1.37771           & 23  & 15  & 4   & 3    & 2    & 2    & 1    & 11   \\
-% LBP, 600K     & 1.12861           & 44  & 21  & 24  & 25   & 25   & 24   & 19   & 9    \\
-% LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   & 25   \\
-%   \bottomrule
-%   \end{tabular}
-%   \label{tab:keff}
-% \end{table}
+\begin{table}[htbp!]
+  \centering
+  \caption{Serpent and Moltres eigenvalues.}
+  \begin{tabular}{l|l|llllllll}
+  \toprule
+              & Serpent 					& \multicolumn{8}{c}{$\Delta \rho$ [pcm]}            \\ \cline{3-10} 
+              &              			& 3   & 6   & 9   & 12   & 15   & 18   & 21   & 26   \\
+  \midrule
+no LBP, 600K  & 1.43800           & 10  & 7   & 6   & 6    & 5    & 6    & 6    & 12   \\
+no LBP, 1200K & 1.37771           & 23  & 15  & 4   & 3    & 2    & 2    & 1    & 11   \\
+LBP, 600K     & 1.12861           & 44  & 21  & 24  & 25   & 25   & 24   & 19   & 9    \\
+LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   & 25   \\
+  \bottomrule
+  \end{tabular}
+  \label{tab:keff}
+\end{table}
 
-% % No LBP
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[600K.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/noLBP-600-er-final}
-%     }
-%     \subfloat[1200K.\label{fig:assembly-noLBP-er-b}]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/noLBP-1200-er-final}
-%     }
-% 	\hfill
-%     \caption{No LBP case. L$_2$-norm relative error for different number of energy group structures.}
-% 	\label{fig:assembly-noLBP-er}
-% \end{figure}
+% No LBP
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[600K.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/noLBP-600-er-final}
+    }
+    \subfloat[1200K.\label{fig:assembly-noLBP-er-b}]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/noLBP-1200-er-final}
+    }
+	\hfill
+    \caption{No LBP case. L$_2$-norm relative error for different number of energy group structures.}
+	\label{fig:assembly-noLBP-er}
+\end{figure}
 
-% % LBP
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[600K.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/LBP-600-er-final}
-%     }
-%     \subfloat[1200K.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/LBP-1200-er-final}
-%     }
-% 	\hfill
-%     \caption{LBP case. L$_2$-norm relative error for different number of energy group structures.}
-% 	\label{fig:assembly-LBP-er}
-% \end{figure}
+% LBP
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[600K.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/LBP-600-er-final}
+    }
+    \subfloat[1200K.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/LBP-1200-er-final}
+    }
+	\hfill
+    \caption{LBP case. L$_2$-norm relative error for different number of energy group structures.}
+	\label{fig:assembly-LBP-er}
+\end{figure}
 
-% % Time and memory
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[No LBP and 600 K.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/time-noLBP-600}
-%     }
-%     \subfloat[LBP and 600 K.]{
-%         \includegraphics[width=0.45\textwidth]{figures-assembly/time-LBP-600}
-%     }
-% 	\hfill
-% 	\caption{Computational time and memory requirements for different number of energy group structures.}
-% 	\label{fig:assembly-time}
-% \end{figure}
+% Time and memory
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[No LBP and 600 K.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/time-noLBP-600}
+    }
+    \subfloat[LBP and 600 K.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/time-LBP-600}
+    }
+	\hfill
+	\caption{Computational time and memory requirements for different number of energy group structures.}
+	\label{fig:assembly-time}
+\end{figure}
 
-% \begin{table}[htbp!]
-%   \centering
-%   \caption{$L_2$-norm relative error for various energy group structures. Values expressed in percentage.}
-%   \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
-%   \toprule
-% 	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
-% 	\midrule
-% 	\multirow{6}{*}{No}  & \multirow{3}{*}{600}  & Fast       & 7.9  & 8.0  & 8.2  & 8.1  & 9.1  \\
-% 	                     &                       & Epithermal & 6.6  & 6.5  & 8.6  & 8.2  & 9.2  \\
-% 	                     &                       & Thermal    & 8.8  & 8.5  & 10.6 & 10.7 & 12.9 \\ \cline{2-8}
-% 	                     & \multirow{3}{*}{1200} & Fast       & 7.1  & 7.7  & 5.7  & 5.1  & 4.5  \\
-% 	                     &                       & Epithermal & 3.3  & 3.9  & 6.2  & 5.1  & 3.4  \\
-% 	                     &                       & Thermal    & 5.0  & 4.7  & 8.5  & 8.2  & 8.4  \\ \hline
-% 	\multirow{6}{*}{Yes} & \multirow{3}{*}{600}  & Fast       & 24.0 & 24.8 & 2.6  & 2.3  & 3.7  \\
-% 	                     &                       & Epithermal & 21.0 & 21.7 & 2.0  & 1.6  & 2.7  \\
-% 	                     &                       & Thermal    & 18.1 & 18.8 & 5.2  & 5.5  & 5.7  \\ \cline{2-8}
-% 	                     & \multirow{3}{*}{1200} & Fast       & 36.2 & 37.3 & 6.9  & 6.6  & 25.9 \\
-% 	                     &                       & Epithermal & 33.2 & 34.2 & 6.9  & 6.5  & 25.1 \\
-% 	                     &                       & Thermal    & 29.6 & 30.6 & 8.5  & 8.3  & 20.3 \\
-% 	\midrule
-% 	\multicolumn{2}{l}{Weighted average}         &            & 17.3 & 17.8 & 6.3  & 6.0  & 10.8 \\
-% 	\bottomrule
-%   \end{tabular}
-%   \label{tab:accuracy15}
-% \end{table}
+\begin{table}[htbp!]
+  \centering
+  \caption{$L_2$-norm relative error for various energy group structures. Values expressed in percentage.}
+  \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
+  \toprule
+	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
+	\midrule
+	\multirow{6}{*}{No}  & \multirow{3}{*}{600}  & Fast       & 7.9  & 8.0  & 8.2  & 8.1  & 9.1  \\
+	                     &                       & Epithermal & 6.6  & 6.5  & 8.6  & 8.2  & 9.2  \\
+	                     &                       & Thermal    & 8.8  & 8.5  & 10.6 & 10.7 & 12.9 \\ \cline{2-8}
+	                     & \multirow{3}{*}{1200} & Fast       & 7.1  & 7.7  & 5.7  & 5.1  & 4.5  \\
+	                     &                       & Epithermal & 3.3  & 3.9  & 6.2  & 5.1  & 3.4  \\
+	                     &                       & Thermal    & 5.0  & 4.7  & 8.5  & 8.2  & 8.4  \\ \hline
+	\multirow{6}{*}{Yes} & \multirow{3}{*}{600}  & Fast       & 24.0 & 24.8 & 2.6  & 2.3  & 3.7  \\
+	                     &                       & Epithermal & 21.0 & 21.7 & 2.0  & 1.6  & 2.7  \\
+	                     &                       & Thermal    & 18.1 & 18.8 & 5.2  & 5.5  & 5.7  \\ \cline{2-8}
+	                     & \multirow{3}{*}{1200} & Fast       & 36.2 & 37.3 & 6.9  & 6.6  & 25.9 \\
+	                     &                       & Epithermal & 33.2 & 34.2 & 6.9  & 6.5  & 25.1 \\
+	                     &                       & Thermal    & 29.6 & 30.6 & 8.5  & 8.3  & 20.3 \\
+	\midrule
+	\multicolumn{2}{l}{Weighted average}         &            & 17.3 & 17.8 & 6.3  & 6.0  & 10.8 \\
+	\bottomrule
+  \end{tabular}
+  \label{tab:accuracy15}
+\end{table}
 
 
 \subsection{Full-core}
@@ -791,8 +791,6 @@ The use of a reflective boundary condition for the control rod out case does not
 On the other hand, the choice of boundary condition for the control rod in case has a substantial effect.
 The combined effect of the approximation leads to large error in the control rod worth.
 The approximation has a small influence on the axial offset.
-
-
 
 \pagebreak
 \bibliographystyle{plain}
