@@ -57,6 +57,7 @@ fill=blue!30]
 
 \subsection{Homogeneous vs heterogeneous isotope distribution}
 
+In this section, we conducted a study to determine the proper way to treat the heterogeneities in the fuel compact.
 This study modeled two different isotope distributions in a fuel compact.
 First, a homogeneous distribution of the isotopes.
 Second, a heterogeneous distribution, in which we explicitly model the TRISO particles.
@@ -90,6 +91,26 @@ The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
 
 \subsection{Moltres limitations}
 
+% Diffusion calculations in LWRs
+% krebs_calculational_1990
+PWR core calcualtions using diffusion theory necessitate the condensation in space of the cross-sections pin-by-pin or per assembly.
+
+* pin-by-pin calculation:
+It yields a detailed neutronic representation of the pins.
+This makes possible the treatment of pin or assembly heterogeneities and spatial discretization.
+* homogeneous calculation:
+The diffusion calculation produces a global neutronic assembly representation.
+The diffusion code averages in space and energy the information from the transport calculation.
+
+% Previous works using Moltres
+Previous works \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} 
+Moltres is a heterogeneous diffusion solver.
+A node in the mesh holds the information of the flux and the temperature.
+For a 2-group simulation, each node has 3 \glspl{DoF}.
+
+This simplifies the thermal-hydraulics of the problem ... 
+
+% What I did in this section:
 Serpent run 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
 The \gls{Keff} was 1.41933.
 
@@ -99,7 +120,11 @@ Keff =
 
 Figures
 
-% Maybe here or next section
+% Diffusion validity
+see bu1/tools-bu.txt
+
+
+% Conclusion
 Based on these results and discussions, in the following sections, we obtain the homogenized group constants.
 In the fuel block, the fuel, coolant, and moderator all share the same group constants.
 
