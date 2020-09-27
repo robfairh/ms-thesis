@@ -582,12 +582,13 @@ However, we observe the same behavior for both axial and radial fluxes.
 This section conducted Phase I Exercise 1 of the benchmark with Moltres and compared the results with the already published results \cite{oecd_nea_coupled_2020}.
 The benchmark specifies the cross-sections required to conduct the exercise.
 This ensures a common dataset among various benchmark participants.
-The files \textit{OECD-MHTGR350\_Simplified.xs} \textit{xsmap.pdf} specify the group constants and the a detailed map of the constants numbering.
+The files \textit{OECD-MHTGR350\_Simplified.xs} and \textit{xsmap.pdf} specify the group constants and the  constants numbering map.
 The benchmark definition used DRAGON-4 \cite{marleau_user_2016} from a full block configuration.
 The dataset contains 26 energy groups.
 % What should be reported \cite{oecd_nea_benchmark_2017}
 The exercise requests the reporting of the global parameters: $K_{eff}$, \gls{CR} worth ($\Delta \rho_{CR}$), and axial offset ($AO$).
-It also requires the reporting of the power distribution and a neutron-flux map \cite{oecd_nea_benchmark_2017}.
+% It also requires the reporting of a power distribution and a neutron-flux map \cite{oecd_nea_benchmark_2017}.
+It also requires the reporting of a power distribution map \cite{oecd_nea_benchmark_2017}.
 Equations \ref{eq:controlrod} and \ref{eq:ao} define $\Delta \rho_{CR}$ and $AO$.
 \begin{align}
     \Delta \rho_{CR} &= \frac{k_{out}-k_{in}}{k_{out}k_{in}}
@@ -616,7 +617,7 @@ The Moltres input files set an eigenvalue convergence tolerance of 1$\times$10$^
 The benchmark exercise sets periodic boundary conditions on the the sides of the geometry.
 However, a memory issue did not allow for the implementation of those boundary conditions in our 26-group Moltres input file.
 We approximated the periodic boundary condition with the reflective boundary condition.
-Section \ref{sec:bench-bcs} discuss further on the use of periodic and reflective boundary conditions.
+Section \ref{sec:bench-bcs} discusses further on the use of periodic and reflective boundary conditions.
 
 % 4.33 h and 4.11 h
 On average, the simulations took 4.22 hours using 1024 cores.
@@ -774,7 +775,19 @@ Fluxes ...
 
 
 % OECD-Benchmark
-
+The simulation capabilities for HTGRs has not reached the state of the art of LWRs.
+This delay in the development of such capabilities has motivated OECD/NEA to define a benchmark to carry out code-to-code comparisons.
+The benchmark uses the MHTGR-350 as the reference design.
+We conducted Phase I Exercise 1 with Moltres.
+The benchmark defines the group constants for the exercise.
+The group constants have a 26-energy group structure.
+The benchmark exercise sets periodic boundary conditions on the the sides of the geometry.
+Such implementation in Moltres has been challenged by the simulation high memory requirements.
+To go around such barrier, we approximated the periodic boundary condition with a reflective boundary condition.
+Two out of three global parameters exhibit good agreement with the reference results.
+However, the control rod worth presents a large discrepancy.
+Such a discrepancy rises from the approximation in the boundary conditions.
+The use of a reflective boundary condition for the control rod out case does not 
 
 
 \pagebreak
