@@ -155,18 +155,20 @@ The mean free path in the fuel and the moderator are in the order of the centime
 In the coolant, the mean free path has a comparable magnitude to the fuel column dimensions.
 This results suggest that a heterogeneous diffusion calculation of the prismatic fuel column violates the diffusion theory assumptions.
 
-Moving forward, we opt for a homogeneous representation of the fuel assembly.
-Serpent calculated the homogeneous group constants.
-
-
-In order to compare the solutions from both codes, we compare their results.
+As the next step, we conducted a feasibility study for the homogeneous representation of the fuel assembly.
+Serpent calculated the homogeneous group constants of the fuel assembly.
+We homogenized the fuel, coolant, and moderator, creating a homogeneous fuel.
+This material mean free path is in the order of the centimeters, Table \ref{tab:mfp}.
+Next, Moltres used the homogeneous group constants.
+We compare Moltres results to Serpent results.
 Serpent's \gls{Keff} was 1.41933 while Moltres' was 1.4078788.
+Moltres eigenvalue is smaller than Serpent's.
 Additionally, we obtained the axial flux in the fuel column.
-Serpent's flux is an average over the fuel column volume.
-Moltres flux is the point-wise flux over the $z$-axis.
 Figure \ref{fig:prelim} displays a comparison between Serpent and Moltres axial fluxes.
+Serpent's flux is the average over the fuel column volume.
+Moltres flux is the point-wise flux over the $z$-axis.
+The fluxes are close in shape and magnitude.
 We empathize that this was a feasibility study, and the following sections make a deeper analysis of similar results.
-
 
 % Conclusion
 Based on these results and discussion, in the following sections, we obtain the group constants using the homogeneous scheme.
