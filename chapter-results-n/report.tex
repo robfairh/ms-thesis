@@ -93,7 +93,7 @@ The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
 
 % Diffusion calculations: homo vs hetero in LWRs
 Diffusion calculations necessitate the homogenization in space of group constants.
-Depending on the desired level of detail, the homogenizations could vary.
+Depending on the desired level of detail, the type of homogenization could vary.
 For example, in PWR core calculations the homogenization in space could be per assembly or pin-by-pin \cite{krebs_calculational_1990}.
 In a per assembly homogenization, the diffusion code models a global neutronic representation of the assembly.
 A pin-by-pin calculation makes possible the treatment of pin or assembly heterogeneities.
@@ -101,32 +101,54 @@ This type of calculation yields a detailed neutronic representation of the fuel 
 As the former treats a larger region and gives a more homogeneous solution, it is often called homogeneous calculation.
 The latter allows for the treatment of some heterogeneities and we will refer to it as a heterogeneous calculation.
 
-
 % Previous works using Moltres
-Previous works \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} 
-Moltres is a heterogeneous diffusion solver.
-A node in the mesh holds the information of the flux and the temperature.
-For a 2-group simulation, each node has 3 \glspl{DoF}.
-
-This simplifies the thermal-hydraulics of the problem ... 
+Moltres is a heterogeneous solver and is capable of yielding detailed answers.
+Previous works \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} have analyzed \glspl{MSR}.
+In such calculations, Moltres input files defined essentially two materials: the moderator and the fuel.
+With such heterogeneous configuration, a node in the mesh representing the moderator holds the information of the neutronics and temperature only for the moderator.
+The same is true for the fuel.
+A homogeneous calculation does not differentiate between moderator and fuel and holds the information of both materials in each node.
 
 % What I did in this section:
+Keeping in mind the previous work in Moltres, we aimed for a heterogeneous calculation in a prismatic \gls{HTGR}.
+For such calculation, we modeled a fuel column of the MHTG-350.
+The first step in the calculation was to generate the group constants using Serpent.
+Figure \ref{fig:fuelcolumn} displays Serpent model geometry.
+We obtained the group constants for three materials: moderator, coolant, and fuel compact.
 Serpent run 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
 The \gls{Keff} was 1.41933.
+
+We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
+Taking advantage of the symmetry of the problem, the model included only a one-twelfth of the fuel column.
+The mesh had 37120 elements and 22862 nodes.
+The diffusion calculations had 22862 \glspl{DoF}/energy-group.
+The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
+The calculations in Moltres used a two energy group structure.
 
 Moltres
 Mesh: dof/group ()
 Keff = 
-
 Figures
 
-% Diffusion validity
-see bu1/tools-bu.txt
+% Diffusion validity see bu1/tools-bu.txt
 
 
 % Conclusion
-Based on these results and discussions, in the following sections, we obtain the homogenized group constants.
-In the fuel block, the fuel, coolant, and moderator all share the same group constants.
+Based on these results and discussion, in the following sections, we obtain the group constants using the homogeneous scheme.
+In the fuel assembly, the fuel, coolant, and moderator all share the same group constants.
+
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Serpent model geometry.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/oecd-standard-column-legend}
+    }
+    \subfloat[Moltres model geometry.]{
+        \includegraphics[width=0.45\textwidth]{figures-assembly/3D-assembly-30deg-reflec-meshB1}
+    }
+	\hfill
+    \caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
+	\label{fig:fuelcolumn}
+\end{figure}
 
 \section{Serpent-Moltres comparison}
 
@@ -219,19 +241,6 @@ For example, the structure $15d$ gives better results for the LBP at 600K case t
 In order to choose the best performing structure, we used a weighted average for the different groups.
 We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
 Using this averaging scheme, we determined the group structure $15d$ to be the best one.
-
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Fuel column geometry. Image reproduced form \cite{tak_numerical_2008}.]{
-        \includegraphics[width=0.51\textwidth]{figures-assembly/fuel-assembly}
-    }
-    \subfloat[Serpent model geometry.]{
-        \includegraphics[width=0.34\textwidth]{figures-assembly/oecd-standard-column-legend}
-    }
-	\hfill
-    \caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
-	\label{fig:fuelcolumn}
-\end{figure}
 
 \begin{table}[htbp!]
   \centering
