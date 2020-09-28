@@ -150,11 +150,14 @@ More detailed studies of the transport equation indicate that the following case
 
 The diffusion theory applies best to geometries consisting of large homogeneous material regions where the spatial dependence of the neutron flux is not too strong, i.e. where the flux gradient is small.
 This is the case for material regions whose geometrical scales are larger than the neutron mean free path.
-For this reason, we compared the neutron mean free path in the different fuel assembly materials, Table \ref{}.
+For this reason, we compared the neutron mean free path in the different fuel assembly materials, Table \ref{tab:mfp}.
+The mean free path in the fuel and the moderator are in the order of the centimeters.
+In the coolant, the mean free path has a comparable magnitude to the fuel column dimensions.
+This results suggest that a heterogeneous diffusion calculation of the prismatic fuel column violates the diffusion theory assumptions.
 
+Moving forward, we opt for a homogeneous representation of the fuel assembly.
+Serpent calculated the homogeneous group constants.
 
-
-We obtained the group constants using the homogeneous scheme.
 
 In order to compare the solutions from both codes, we compare their results.
 Serpent's \gls{Keff} was 1.41933 while Moltres' was 1.4078788.
@@ -162,7 +165,7 @@ Additionally, we obtained the axial flux in the fuel column.
 Serpent's flux is an average over the fuel column volume.
 Moltres flux is the point-wise flux over the $z$-axis.
 Figure \ref{fig:prelim} displays a comparison between Serpent and Moltres axial fluxes.
-We empathize that this was a feasibility study, and the following sections makes a deeper analysis of similar results.
+We empathize that this was a feasibility study, and the following sections make a deeper analysis of similar results.
 
 
 % Conclusion
@@ -195,14 +198,14 @@ In the fuel assembly, the fuel, coolant, and moderator all share the same group 
   \caption{Mean free path in different materials. Values expressed in $cm$.}
   \begin{tabular}{l|l|llllllll}
   \toprule
-              & Fuel compact  & Moderator  & Coolant  &     \\
+              & Fuel compact  & Moderator  & Coolant  & Homogeneous fuel \\
   \midrule
-  Thermal  		&               &    \\
-  Fast 				& 1.37771           &    \\
+  Fast  		& 2.71 & 2.70 & 1137.31 & 3.37 \\
+  Thermal		& 2.22 & 2.36 & 1945.49 & 2.89 \\
 
   \bottomrule
   \end{tabular}
-  \label{tab:keff}
+  \label{tab:mfp}
 \end{table}
 
 \begin{figure}[htbp!]
