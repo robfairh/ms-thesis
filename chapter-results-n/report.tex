@@ -91,16 +91,16 @@ The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
 
 \subsection{Moltres limitations}
 
-% Diffusion calculations in LWRs
-% krebs_calculational_1990
-PWR core calcualtions using diffusion theory necessitate the condensation in space of the cross-sections pin-by-pin or per assembly.
+% Diffusion calculations: homo vs hetero in LWRs
+Diffusion calculations necessitate the homogenization in space of group constants.
+Depending on the desired level of detail, the homogenizations could vary.
+For example, in PWR core calculations the homogenization in space could be per assembly or pin-by-pin \cite{krebs_calculational_1990}.
+In a per assembly homogenization, the diffusion code models a global neutronic representation of the assembly.
+A pin-by-pin calculation makes possible the treatment of pin or assembly heterogeneities.
+This type of calculation yields a detailed neutronic representation of the fuel pins.
+As the former treats a larger region and gives a more homogeneous solution, it is often called homogeneous calculation.
+The latter allows for the treatment of some heterogeneities and we will refer to it as a heterogeneous calculation.
 
-* pin-by-pin calculation:
-It yields a detailed neutronic representation of the pins.
-This makes possible the treatment of pin or assembly heterogeneities and spatial discretization.
-* homogeneous calculation:
-The diffusion calculation produces a global neutronic assembly representation.
-The diffusion code averages in space and energy the information from the transport calculation.
 
 % Previous works using Moltres
 Previous works \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} 
