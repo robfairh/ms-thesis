@@ -57,8 +57,7 @@ fill=blue!30]
 
 \subsection{Homogeneous vs. heterogeneous isotope distribution}
 
-This section conducted a study to determine the proper way to treat the fuel compact heterogeneities
-in Serpent.
+This section conducted a study to determine the proper way to treat the fuel compact heterogeneities in Serpent.
 This study modeled two different isotope distributions in a fuel compact.
 First, a homogeneous distribution of the isotopes.
 Second, a heterogeneous distribution, in which we explicitly modeled the TRISO particles.
@@ -296,7 +295,7 @@ Moltres ran the calculations for 26 energy groups and collapsed the results into
 Note that Serpent's flux is an average over the volume, while the Moltres' flux is the point-wise flux over a line.
 Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
 The last analysis is for the Moltres axial flux.
-Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the active core's axial flux.
+Considering the 26 group structure as the reference value, we obtained the $L_2$-norm of the active core's axial flux relative error.
 
 % Fluxes
 To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
@@ -469,7 +468,7 @@ Using this averaging scheme, we determined the group structure $15d$ to be the b
 
 \begin{table}[htbp!]
   \centering
-  \caption{Relative error $L_2$-norm for various energy group structures. Values expressed in percentage.}
+  \caption{Axial flux relative error $L_2$-norm for various energy group structures. Values expressed in percentage.}
   \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
   \toprule
 	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
@@ -855,19 +854,20 @@ The BC approximation barely affects the axial offset.
 
 % Preliminary studies: homogeneous vs heterogeneous isotopic distribution
 The preliminary studies focused on several aspects of the simulations.
-The first aspect was the effect of distributing homogeneously the fuel compact isotopes in the Serpent model.
+The first aspect was the effect of distributing the fuel compact isotopes homogeneously in the Serpent model.
+The results showed that the homogenization of the fuel compact isotopes decreased the multiplication factor considerably.
 The heterogeneous calculation took 28$\%$ more time.
-The results showed that the multiplication factor decreases considerably.
-Additionally, the homogenization of the fuel compact appears not to have a strong impact over the group constants.
-However, the considerable difference in the multiplication factor suggests that the combined effect of small variations in the group constants is significant.
+Additionally, the homogeneous distribution appeared not to have a substantial impact on the group constants.
+However, the multiplication factor's considerable difference suggested that the group constants’ small variations combined effect was significant.
 Although the particles’ explicit modeling is time-consuming, it results necessary.
 
 % Preliminary studies: homogeneous vs heterogeneous diffusion simulation
+The next section studied the problem set-up in Moltres.
 Different types of reactor technologies allow for homogeneous and heterogeneous diffusion calculations.
 Moltres uses a heterogeneous diffusion solver.
-In this work, we aim to use Moltres to solve an HTGR.
-Nevertheless, the diffusion approximation fails to model properly regions where the mean free path is comparable to the dimensions of the region.
-The presence of helium in the fuel assembly of a prismatic \gls{HTGR} prohibits heterogenous diffusion calculations.
+In this work, we aim to use Moltres to solve prismatic HTGRs.
+Nevertheless, the diffusion approximation fails to model properly regions where the mean free path is comparable to the region's dimensions.
+The presence of helium in the fuel assembly of a prismatic \gls{HTGR} prohibits heterogeneous diffusion calculations.
 Based on this discussion, we chose to use Moltres as a homogeneous diffusion solver.
 
 % Serpent-Moltres: Fuel column
@@ -879,50 +879,52 @@ The first study compared the Moltres axial flux to Serpent axial flux.
 Moltres used a 26 energy group structure to run the simulations.
 Overall, the axial fluxes were close in shape and magnitude.
 A different study focused on the effects of the energy group structure on the \gls{Keff}.
-We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
-We also compared the $L_2$-norm of the relative error of the axial flux in the active core using different energy group structures.
-For the four operational cases, the accuracy improves increasing the number of energy groups.
-Additionally, we presented the simulation computational expense for the different number of energy groups.
-The simulation time and memory requirement rises increasing the number of energy groups.
-We notice as well that the computational time increases for the fuel column with LBPs.
-Finally, we analyzed the impact of using different 15-group structures on the $L_2$-norm of the relative error of the axial flux.
-We chose the $15d$ structure as the best performing.
+The number of energy groups did not affect the accuracy of the Moltres eigenvalue calculations.
+We also compared the $L_2$-norm of the axial flux relative error in the active core using different energy group structures.
+For the four operational cases, increasing the number of energy groups improved the accuracy
+Additionally, we presented the simulation's computational expense for the different number of energy groups.
+The simulation time and memory requirement rose by increasing the number of energy groups.
+The computational time increased as well for the fuel column with LBPs.
+Finally, we analyzed the impact of using different 15-group structures on the $L_2$-norm of the axial flux relative error.
+We chose $15d$ as the best-performing energy group structure.
 
 % Serpent-Moltres: Full-core
-Based on the results from the fuel column analysis, we compared Moltres full-core results to Serpent reference results.
+Based on the fuel column analysis results, we compared Moltres full-core results with Serpent reference results.
 We considered two operational cases: 600K and 1200K.
 Serpent obtained the homogenized group constants of the different regions of the reactor.
 Moltres took such constants as input with a Gmsh mesh.
 The first analysis compared the Serpent and Moltres eigenvalues.
 Moltres results were bigger.
-The overall difference was less than 300 pcm.
+The overall differences were less than 300 pcm.
 The second analysis compared the radial power distributions from both codes.
-These results showcase the symmetry of the problem.
-To reduce the computational expense other simulations could reduce the problem size by a half.
-Overall, Moltres radial power distribution shows close proximity to the Serpent's result.
-We also compared the flux shape and magnitude.
-The axial fluxes show small discrepancies, mostly in their magnitude.
-The radial fluxes are close in shape and magnitude.
-However, the radial flux in the diffusion calculation fails to capture the steep flux close to the LBPs.
-Overall, the fluxes are similar.
+These results showcased the symmetry of the problem.
+Reducing the problem size by half other simulations could reduce the computational expense.
+For the most part, Moltres radial power distribution showed proximity to the Serpent's result.
+We also compared Moltres and Serpent fluxes in two directions (axial and radial) in arbitrary core regions.
+The axial fluxes showed small discrepancies, mostly in their magnitude.
+The radial fluxes were close in shape and magnitude.
+However, the radial flux in the diffusion calculation failed to capture the flux variation near the LBPs.
+Overall, the fluxes were similar.
 
 % OECD-Benchmark
-The simulation capabilities for HTGRs has not reached the state of the art of LWRs.
-This delay in the development of such capabilities has motivated OECD/NEA to define a benchmark to carry out code-to-code comparisons.
+The simulation capabilities for prismatic HTGRs have not reached the state of the art of LWRs.
+This development delay motivated OECD/NEA to define a benchmark to carry out code-to-code comparisons.
 The benchmark uses the MHTGR-350 as the reference design.
 We conducted Phase I Exercise 1 with Moltres.
 The benchmark defines the group constants for the exercise.
 The group constants have a 26-energy group structure.
-The benchmark exercise sets periodic boundary conditions on the the sides of the geometry.
-Such implementation in Moltres has been challenged by the simulation high memory requirements.
-To go around such barrier, we approximated the periodic boundary condition with a reflective boundary condition.
-Two out of three global parameters exhibit good agreement with the reference results.
-However, the control rod worth presents a large discrepancy.
-Such a discrepancy rises from the approximation in the boundary conditions.
-The use of a reflective boundary condition for the control rod out case does not have a strong impact over the \gls{Keff}.
-On the other hand, the choice of boundary condition for the control rod in case has a substantial effect.
-The combined effect of the approximation leads to large error in the control rod worth.
-The approximation has a small influence on the axial offset.
+The benchmark exercise sets periodic \glspl{BC} on the sides of the geometry.
+The simulation high memory requirements have challenged such implementation in Moltres. 
+To go around such a barrier, we approximated the periodic \gls{BC} with a reflective BC.
+Two out of three global parameters exhibited good agreement with the reference results.
+However, the control rod worth presented a large discrepancy.
+Such a difference was a consequence of the BC approximation.
+Reducing the problem's size by collapsing the group constants to 3 and 6-energy groups, we compared the \gls{Keff} using the periodic and reflective BCs.
+A reflective BC for the \gls{CR} out case did not substantially impact the \gls{Keff}.
+On the other hand, the BC choice for the CR in case had a significant effect.
+The combined effect of the approximation led to a large error in the CR worth.
+The BC approximation had a small influence on the axial offset.
+
 
 \pagebreak
 \bibliographystyle{plain}
