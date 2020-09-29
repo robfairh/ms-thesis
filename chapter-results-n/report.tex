@@ -118,12 +118,12 @@ A homogeneous calculation would not differentiate between moderator and fuel and
 
 % What I did in this section:
 Keeping in mind Moltres previous works, we aimed for a heterogeneous calculation in a prismatic \gls{HTGR}.
-For such a calculation, we modeled a fuel column of the MHTG-350 and generated the group constants using Serpent.
+For such a calculation, we modeled a fuel column of the MHTGR-350 and generated the group constants using Serpent.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
 We obtained the group constants for three materials: moderator, coolant, and fuel compact.
 Serpent ran 5$\times 10^5$ neutrons/cycle, 400 active cycles, and 100 inactive cycles for the calculations.
 % The \gls{Keff} was 1.41933.
-Taking advantage of the problem's symmetry, Moltres modeled only a one-twelfth of the fuel column, Figure \ref{fig:fuelcolumn}.
+Taking advantage of the problem's symmetry, Moltres modeled only one-twelfth of the fuel column, Figure \ref{fig:fuelcolumn}.
 We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
 The diffusion calculation had 183667 \glspl{DoF}/energy-group.
 The Moltres input file set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
@@ -148,7 +148,7 @@ Although several factors could contribute to this behavior, we focused on the va
         \includegraphics[width=0.25\textwidth]{figures-assembly/3D-assembly-30deg-reflec-meshB2}
     }
 	\hfill
-    \caption{Fuel column of the MHTGR-350. XY-plane in the active core region.}
+    \caption{Fuel column of the MHTGR-350. $xy$-plane in the active core region.}
 	\label{fig:fuelcolumn}
 \end{figure}
 
@@ -245,75 +245,12 @@ The LBP's locations are the six corners of the fuel assembly, Figure \ref{fig:fu
 The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 Serpent ran 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
-Taking advantage of the symmetry of the problem, the Moltres model included only a one-twelfth of the fuel column.
-We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
+Taking advantage of the problem's symmetry, Moltres modeled only one-twelfth of the fuel column.
+We made the geometry and mesh using Gmsh.
 The mesh had 37120 elements and 22862 nodes.
 The diffusion calculations had 22862 \glspl{DoF}/energy-group.
 The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
-The calculations in Moltres used different energy group structures listed in Table \ref{tab:energygroups}.
-
-% This is very important and I should review it carefully
-To compare the results from Serpent and Moltres, we present a figure comparing the three-group axial flux.
-Moltres ran the calculations for 26 energy groups, and collapsed the results to three energy groups to facilitate the visualization of the results.
-Note that the flux in Serpent is an average over the volume, while the flux in Moltres is the point-wise flux over a line.
-Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
-The last analysis is for the Moltres axial flux.
-Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the axial flux in the active core.
-
-% Fluxes
-To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
-Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
-For the no LBP at 600K case, the fluxes are close in shape and magnitude.
-For the no LBP at 1200K case, the fluxes look similar.
-The flux in Moltres has a more straight shape.
-The thermal flux peak in the bottom reflector has a bigger magnitude.
-For the LBP at 600K case, the flux in Moltres has a bigger magnitude.
-Additionally, the shape of the Moltres flux is concave while the Serpent flux is convex.
-For the LBP at 1200K case, the flux in Moltres is bigger.
-The Moltres flux is more concave than the Serpent flux.
-Overall, the fluxes in Moltres and Serpent are close.
-
-% eigenvalues
-Table \ref{tab:keff} exhibits the reactivity difference ($\Delta \rho$) between the Serpent and Moltres eigenvalues.
-We used equation \ref{eq:delta-rho} to obtain $\Delta \rho$.
-The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
-Overall, the reactivity difference is less than 50 pcm.
-We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
-
-\begin{align}
-	\Delta \rho &= \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
-  \intertext{where}
-  k_1 &= \mbox{Serpent eigenvalue} \notag \\
-  k_2 &= \mbox{Moltres eigenvalue.} \notag
-\end{align}
-
-Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm relative error for the different energy group structures.
-We note that the relative error for the no LBP case is smaller than the relative error of the LBP case.
-Overall, the relative error decreases with an increase in the number of energy groups.
-Nonetheless, this is not always the case.
-For example, in Figure \ref{fig:assembly-noLBP-er-b}, going from 12 to 15 groups, the thermal flux improves, but the fast flux worsens.
-Additionally, we observe that a low number of energy groups yields an error of more than a 100$\%$.
-In which, case we can conclude that the solution is wrong.
-
-We added to the analysis the computational time and the peak memory usage during the simulations, Figure \ref{fig:assembly-time}.
-All the simulations used 128 cores.
-We present only the cases at 600K because the change in temperature does not have a significant impact.
-The computational requirements rises with an increase in the number of energy groups.
-As the geometry uses a constant number of elements, the DoFs/energy-group is constant.
-Thus, the total number of DoFs is proportional to the number of energy groups.
-We also discern that the overall time of the LBP cases is higher than the no LBP cases.
-
-Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
-We chose 15 energy groups, as it gives an overall good accuracy and a not so high computational expense.
-
-Table \ref{tab:energygroups} holds the different energy group structures.
-Table \ref{tab:accuracy15} exhibits the $L_2$-norm relative error for the different energy group structures.
-We see that the energy group structure has an impact over the accuracy.
-Some energy groups structures yield better results for some cases while giving worse results for others.
-For example, the structure $15d$ gives better results for the LBP at 600K case than for the no LBP case at 600K.
-In order to choose the best performing structure, we used a weighted average for the different groups.
-We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
-Using this averaging scheme, we determined the group structure $15d$ to be the best one.
+Moltres calculations used different energy group structures listed in Table \ref{tab:energygroups}.
 
 \begin{table}[htbp!]
   \centering
@@ -352,6 +289,27 @@ Using this averaging scheme, we determined the group structure $15d$ to be the b
   \end{tabular}
   \label{tab:energygroups}
 \end{table}
+
+% This is very important and I should review it carefully
+To compare the results from Serpent and Moltres, we present figure comparing the three-group axial fluxes.
+Moltres ran the calculations for 26 energy groups and collapsed the results to three energy groups to facilitate the results' visualization.
+Note that Serpent's flux is an average over the volume, while the Moltres' flux is the point-wise flux over a line.
+Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
+The last analysis is for the Moltres axial flux.
+Considering the 26 group structure as the reference value, we obtained the L2-norm relative error for the active core's axial flux.
+
+% Fluxes
+To recapitulate, we simulated four operational cases: no \gls{LBP} at 600K, no \gls{LBP} at 1200K, \gls{LBP} at 600K, and \gls{LBP} at 1200K.
+Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
+For the no LBP at 600K case, the fluxes are close in shape and magnitude.
+For the no LBP at 1200K case, the fluxes look similar.
+The flux in Moltres has a straighter shape.
+The thermal flux peak in the bottom reflector is bigger.
+For the LBP at 600K case, the flux in Moltres has a larger magnitude.
+Additionally, the shape of the Moltres flux is concave, while the Serpent flux is convex.
+For the LBP at 1200K case, the flux in Moltres is larger.
+The Moltres flux is more concave than the Serpent flux.
+Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 
 % No LBP 600
 \begin{figure}[htbp!]
@@ -409,6 +367,20 @@ Using this averaging scheme, we determined the group structure $15d$ to be the b
   \label{fig:assembly-LBP-1200-flux}
 \end{figure}
 
+% eigenvalues
+Table \ref{tab:keff} exhibits the reactivity difference ($\Delta \rho$) between the Serpent and Moltres eigenvalues.
+We used equation \ref{eq:delta-rho} to obtain $\Delta \rho$.
+The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
+Overall, the reactivity difference is less than 50 pcm.
+We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
+
+\begin{align}
+	\Delta \rho &= \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
+  \intertext{where}
+  k_1 &= \mbox{Serpent eigenvalue} \notag \\
+  k_2 &= \mbox{Moltres eigenvalue.} \notag
+\end{align}
+
 \begin{table}[htbp!]
   \centering
   \caption{Serpent and Moltres eigenvalues.}
@@ -425,6 +397,14 @@ LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   
   \end{tabular}
   \label{tab:keff}
 \end{table}
+
+Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm of the relative error for the different energy group structures.
+The no LBP case's relative error is smaller than the LBP case's relative error.
+Overall, the relative error decreases with an increase in the number of energy groups.
+Nonetheless, this is not always the case.
+For example, in Figure \ref{fig:assembly-noLBP-er-b}, going from 12 to 15 groups, the thermal flux improves, but the fast flux worsens.
+Additionally, we observe that a low number of energy groups yields more than 100$\%$ error.
+In which case, we can conclude that the solution is wrong.
 
 % No LBP
 \begin{figure}[htbp!]
@@ -454,6 +434,14 @@ LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   
 	\label{fig:assembly-LBP-er}
 \end{figure}
 
+We added to the analysis the computational time and the peak memory usage during the simulations, Figure \ref{fig:assembly-time}.
+All the simulations used 128 cores.
+We present only the cases at 600K because the impact of the temperature change was not significant.
+The computational requirements rise with an increase in the number of energy groups.
+As the geometry uses a constant number of elements, the DoFs/energy-group is constant for all the simulations.
+Thus, the total number of DoFs is proportional to the number of energy groups.
+We also discern that the overall time of the LBP cases is higher than the no LBP cases.
+
 % Time and memory
 \begin{figure}[htbp!]
 	\centering
@@ -468,9 +456,20 @@ LBP, 1200K    & 1.06554           & 36  & 40  & 29  & 32   & 44   & 43   & 25   
 	\label{fig:assembly-time}
 \end{figure}
 
+Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
+We chose 15 energy groups, as it yields a good overall accuracy and a not so high computational expense.
+Table \ref{tab:energygroups} holds the different energy group structures.
+Table \ref{tab:accuracy15} exhibits the $L_2$-norm of the relative error for the different energy group structures.
+The energy group structure has an impact on accuracy.
+Some energy group structures yield better results for some cases while giving worse results for others.
+For example, the structure $15d$ gives better results for the LBP at 600K case than for the no LBP case at 600K.
+To choose the best performing structure, we used a weighted average for the different groups.
+We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
+Using this averaging scheme, we determined the group structure $15d$ to be the best one.
+
 \begin{table}[htbp!]
   \centering
-  \caption{$L_2$-norm relative error for various energy group structures. Values expressed in percentage.}
+  \caption{Relative error $L_2$-norm for various energy group structures. Values expressed in percentage.}
   \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
   \toprule
 	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
@@ -861,12 +860,12 @@ Moltres used a 26 energy group structure to run the simulations.
 Overall, the axial fluxes were close in shape and magnitude.
 A different study focused on the effects of the energy group structure on the \gls{Keff}.
 We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
-We also compared the $L_2$-norm relative error of the axial flux in the active core using different energy group structures.
+We also compared the $L_2$-norm of the relative error of the axial flux in the active core using different energy group structures.
 For the four operational cases, the accuracy improves increasing the number of energy groups.
 Additionally, we presented the simulation computational expense for the different number of energy groups.
 The simulation time and memory requirement rises increasing the number of energy groups.
 We notice as well that the computational time increases for the fuel column with LBPs.
-Finally, we analyzed the impact of using different 15-group structures on the $L_2$-norm relative error of the axial flux.
+Finally, we analyzed the impact of using different 15-group structures on the $L_2$-norm of the relative error of the axial flux.
 We chose the $15d$ structure as the best performing.
 
 % Serpent-Moltres: Full-core
