@@ -1,48 +1,5 @@
 ﻿\subsection{Phase I Exercise 1}
 
-The benchmark provides the cross-sections required to conduct the exercise in the separate file \textit{OECD-MHTGR350\_Simplified.xs}.
-This ensures a common data-set among various benchmark participants and allows to compare stand-alone neutronic predictions with no thermal-fluids feedback.
-A separate file \textit{xsmap.pdf} specifies a detailed map of the cross-section numbering for the different  layers of the core.
-The core comprises 232 hexagonal subdomains for which the benchmark provides their cross sections.
-We differentiate 6 different macroscopic regions listed in Table \ref{tab:mac-region}.
-
-\begin{table}[htbp!]
-  \centering
-  \caption{Macroscopic regions.}
-  \label{tab:mac-region}
-  \begin{tabular}{@{}l c}
-  \toprule
-  Macroscopic region    & Subdomains     \\
-  \midrule
-  Fuel              & 1 to 220      \\
-  Bottom reflector  & 221 to 224    \\
-  Inner reflector   & 225           \\
-  Outer reflector   & 226-227       \\
-  Top reflector     & 228 to 231    \\
-  Control Rod       & 232           \\
-  \bottomrule
-  \end{tabular}
-\end{table}
-
-The multi-group macroscopic cross-sections were obtained using DRAGON-4 \cite{marleau_user_2016} from a full block configuration with a double heterogeneity treatment of the fuel.
-The cross-sections are homogenized over the block and exhibit a 26 energy group structure.
-The cross-sections should be multiplied by 0.9278 for a hexagonal representation of the \gls{CR} region.
-
-% Results to report
-The exercise required the reporting of the global parameters: $K_{eff}$, \gls{CR} worth ($\Delta \rho_{CR}$), axial offset ($AO$), and average power density, equations \ref{eq:deltarho} and \ref{eq:axialoff}.
-The benchmark results also compare the average power density map and the neutron-flux distribution among participants.
-For the flux distribution reporting, we condense the 26-group fluxes to 3 groups shown in Table \ref{tab:group-struct}.
-
-\begin{align}
-  \Delta \rho_{CR} &= \frac{k_{out}-k_{in}}{k_{out}k_{in}}  \label{eq:deltarho} \\
-  AO &= (TP_{top}-TP_{bottom})/(TP_{top}+TP_{bottom})  \label{eq:axialoff} \\
-  \intertext{where}
-  k_{out} &= \mbox{eigenvalue with \gls{CR} at position 1184.8 cm} \notag \\
-  k_{in} &= \mbox{eigenvalue with \gls{CR} at position 391.81 cm} \notag \\
-  TP_{top} &= \mbox{total power produced in the top half core} \notag \\
-  TP_{bottom} &= \mbox{total power produced in the bottom half core}
-\end{align}
-
 \begin{table}[htbp!]
   \centering
   \caption{Energy boundaries.}
