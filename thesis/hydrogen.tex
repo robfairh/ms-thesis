@@ -201,7 +201,8 @@ A thermochemical water-splitting cycle accomplishes the same overall result usin
 
 General Atomics, Sandia National Laboratories, and the University of Kentucky compared 115 cycles that would use high-temperature heat from an advanced nuclear reactor \cite{brown_high_2003}.
 The report specifies a set of screening criteria used to rate each cycle.
-The highest scoring method was the \gls{SI} Cycle.
+Some of the cycles' desirable characteristics were minimal chemical reactions and separation steps, a high abundance of the elements, a minimal solids flow, and good compatibility between heat input temperature and the permitted materials high temperature.
+The highest scoring method was the \gls{SI} cycle.
 
 The \gls{SI} cycle consists of the three chemical reactions represented in Figure \ref{fig:sulfur1}.
 The whole process takes in water and high-temperature heat and releases hydrogen and oxygen.
@@ -271,7 +272,7 @@ As the definitions of these reactor concepts overlap, we will consider reactors 
 
 In this analysis, the energy source (electric and thermal) is a nuclear reactor with co-generation capabilities.
 The nuclear reactor supplies the grid with electricity $P_E$ while providing a hydrogen plant with electricity $P_{EH2}$ and thermal energy $P_{TH2}$, see the diagram in Figure \ref{fig:cogen}.
-$\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$, see Equations \ref{eq:cogen1} to \ref{eq:cogen6}.
+$\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$, see Equations \ref{eq:cogen1} to \ref{eq:cogen3}.
 
 \begin{figure}[htbp!]
 	\centering
@@ -294,7 +295,6 @@ $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_
 	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)} \notag \\
 	% \label{eq:cogen5}
 	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}. \notag
-	\label{eq:cogen6}
 \end{align}
 
 If $\beta = 1$, the reactor only supplies the grid with electricity $P_E$ and the hydrogen plant does not produce \gls{H2}.
@@ -496,7 +496,8 @@ The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{
 
 \begin{align}
 	P_{E} &= D_{NET}  \notag \\
-  \frac{P_{E}}{25 MW} &= \frac{\eta \beta P_{th}}{\eta P_{th}} = \beta  \label{eq:demand}
+  	\frac{P_E}{25 [MW]} &= \frac{\eta \beta P_{th}}{\eta P_{th}} = \beta
+  	\label{eq:demand}
 \end{align}
 
 % \begin{align}
