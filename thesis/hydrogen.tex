@@ -8,7 +8,7 @@
 % The energy problem
 Energy is one of the most vital contributors to economic growth.
 In the future, economies and populations will continue to expand, and their energy demand will accompany such change \cite{burke_impact_2018} \cite{el-shafie_hydrogen_2019}.
-Meeting these future needs requires the development of clean energy sources that combat the increasing environmental concerns.
+Meeting these future needs requires the development of clean energy sources to ease the increasing environmental concerns.
 As seen in Figure \ref{fig:ghg}, electricity generation was one of the economic sectors that released the most \glspl{GHG} in the \gls{US} in 2017.
 As \gls{CO2} is the main component in \glspl{GHG}, decarbonizing electricity generation will allow us to meet the increases in energy demand and address the environmental concerns simultaneously.
 
@@ -52,14 +52,13 @@ One possible strategy is to develop a hydrogen economy, as Japan is currently do
 Japan's strategy rests on the firm belief that \gls{H2} can be a decisive response to its energy and climate challenges.
 It could foster deep decarbonization of the transport, power, industry, and residential sectors while strengthening energy security \cite{nagashima_japans_2018}.
 In the transportation sector, Japan plans to deploy fuel cell vehicles, trucks, buses, trains, and ships.
-
 Although \gls{H2} technologies release zero CO$_2$, any \gls{H2} production method is only as carbon-free as the energy source it relies on (electric, heat, or both).
 Nuclear reactors introduce a clean energy option to manufacture \gls{H2}.
 
 The \gls{UIUC} is leading by example and actively working to reduce \gls{GHG} emissions from electricity generation and transportation (among other sectors) on its campus.
 In pursuance of those efforts, the university has developed the \gls{icap}.
 
-\section{\gls{icap}}
+\section{Illinois Climate Action Plan}
 % ICAPP
 In 2008, \gls{UIUC} signed the American College and University Presidents' Climate Commitment, formally committing to becoming carbon neutral as soon as possible, no later than 2050.
 The university developed the \gls{icap} in 2010 as a comprehensive roadmap toward a sustainable campus environment \cite{university_of_illinois_at_urbana-champaign_illlinois_2015}.
@@ -154,30 +153,30 @@ Part of the energy corresponds to electric energy $\Delta G$ and its rest to the
 	\Delta H &= \Delta G + T \Delta S
 \label{eq:electrolysis1}
     \intertext{where}
-    \Delta H &= \mbox{Total specific energy [kWh/kg-H$_2$]} \notag \\
+    \Delta H &= \mbox{Specific total energy [kWh/kg-H$_2$]} \notag \\
     \Delta G &= \mbox{Specific electrical energy [kWh/kg-H$_2$]} \notag \\
     T \Delta S &= \mbox{Specific thermal energy [kWh/kg-H$_2$].} \notag
 \end{align}
 
-In \gls{LTE}, electricity generates thermal energy.
+In \gls{LTE}, electricity generates the thermal energy.
 Hence, $\Delta H$ alone determines the process’s required energy.
-$\Delta H$ is equal to 60 kWh/kg-H$_2$ considering a 67$\%$ efficiency \cite{usdrive_hydrogen_2017}.
+$\Delta H$ is equal to 60 kWh/kg-H$_2$ considering a 67$\%$ electrical efficiency \cite{usdrive_hydrogen_2017}.
 
 In \gls{HTE}, a high-temperature heat source is necessary to provide thermal energy.
-$\Delta G$ decreases with increasing temperature as seen in Figure \ref{fig:electro1}.
+$\Delta G$ decreases with increasing temperatures as seen in Figure \ref{fig:electro1}.
 Decreasing the electricity requirement results in higher overall production efficiencies since heat-engine-based electrical work has a thermal efficiency of 50$\%$ or less \cite{j_e_obrien_high_2010}.
 Figure \ref{fig:electro1} shows $\Delta G$ and $T \Delta$S.
-$\Delta G$ considers the \gls{SOEC} to have an electrical efficiency of 88$\%$ \cite{helmeth_high_2020}.
+We considered the \gls{SOEC}'s $\Delta G$ to have an electrical efficiency of 88$\%$ \cite{helmeth_high_2020}.
 $T \Delta S$ accounts for the latent heat of water vaporization.
 Note that the process is at 3.5 MPa.
 $\Delta G$ increases with pressure.
-However, we chose a high pressure to save energy, as compressing liquid water is cheaper than compressing the hydrogen \cite{obrien_status_2010}.
+However, we chose a high pressure to save energy, as compressing liquid water is cheaper than compressing H$_2$ \cite{obrien_status_2010}.
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{figures-hydro/hte-energy-P.png}
 	\hfill
-	\caption{Energy required by \gls{HTE} at 3.5 MPa.}
+	\caption{Energy required by HTE at 3.5 MPa.}
 	\label{fig:electro1}
 \end{figure}
 
@@ -246,17 +245,16 @@ Finally, equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ requir
 	\Delta H &= \mbox{Specific energy [kWh/kg-H$_2$].} \notag
 \end{align}
 
-\section{Microreactors and \glspl{SMR}}
+\section{Microreactors and Small Modular Reactors}
 \label{sec:reactors}
 
 These reactor concepts share several features.
 The reactors require limited on-site preparation as their components are factory-fabricated and shipped out to the generation site.
 This feature reduces up-front capital costs, enables rapid deployment, and expedites start-up times.
-This reactor concept allows for black starts and islanding operation mode.
+These reactors allow for black starts and islanding operation mode.
 They can start up from an utterly de-energized state without receiving power from the grid.
 They can also operate connected to the grid or independently.
-Moreover, these types of reactors are self-regulating.
-They minimize electrical parts and use passive safety systems to prevent overheating and safely shutdown.
+Moreover, these types of reactors are self-regulating, minimize electrical parts, and use passive safety systems to prevent overheating and safely shutdown.
 
 Microreactors have the distinction that they are transportable.
 Small designs make it easy for vendors to ship the entire reactor by truck, shipping vessel, or railcar.
@@ -286,9 +284,7 @@ $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_
 	P_{E} &= \eta \beta P_{th} 	\label{eq:cogen1} \\
 	P_{EH2} &= \eta \gamma (1-\beta) P_{th} \\
 	% \label{eq:cogen2}
-	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
-	\label{eq:cogen3}
-	%\label{eq:cogen3}
+	P_{TH2} &= (1-\gamma) (1-\beta) P_{th} \label{eq:cogen3}
 	\intertext{where}
     \eta &= \mbox{thermal-to-electric conversion efficiency} \notag \\
 	% \label{eq:cogen4}
@@ -323,7 +319,7 @@ This section holds the results of the multiple analyses.
 
 This subsection centers its focus on the transportation sector.
 Figure \ref{fig:fuel} displays the fuel consumed per day by \gls{MTD} and \gls{UIUC} fleet.
-Using the values shown in Table \ref{tab:equiv}, we calculate the \gls{H2} requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
+Using the values shown in Table \ref{tab:equiv}, we calculated the \gls{H2} requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
 Table \ref{tab:hydro-fleet} summarizes the results.
 
 	\begin{figure}[htbp!]
@@ -341,7 +337,7 @@ Table \ref{tab:hydro-fleet} summarizes the results.
 
 	\begin{table}[htbp!]
 	\centering
-	\caption{\gls{H2} necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
+	\caption{H$_2$ necessary to replace a gallon of fuel \cite{doe_office_of_energy_efficiency_and_renewable_energy_hydrogen_2020} \cite{alternative_fuels_data_center_fuel_2014}.}
 	\begin{tabular}{l|c}
 	    \hline
 	 	                 & Hydrogen Mass [kg] \\ \hline
@@ -356,13 +352,13 @@ Table \ref{tab:hydro-fleet} summarizes the results.
 	    \centering
 		\includegraphics[height=7.0cm]{figures-hydro/hydro-fleet}
 		\hfill
-		\caption{\gls{H2} requirement for MTD and UIUC fleets.}
+		\caption{H$_2$ requirement for MTD and UIUC fleets.}
 		\label{fig:hydro-fleet}
 	\end{figure}
 
 	\begin{table}[htbp!]
 		\centering
-	    \caption{\gls{H2} requirement for MTD and UIUC fleets.}
+	    \caption{H$_2$ requirement for MTD and UIUC fleets.}
 		\begin{tabular}{l|c}
 		\hline
 		Total [tonnes/year]     & 943    \\
@@ -373,12 +369,12 @@ Table \ref{tab:hydro-fleet} summarizes the results.
         \label{tab:hydro-fleet}
 	\end{table}
 
-Using Table \ref{tab:co2-eq}, we calculate the \gls{CO2} savings caused by replacing all the fossil fuels with \gls{H2}.
+Using Table \ref{tab:co2-eq}, we calculated the \gls{CO2} savings caused by replacing all the fossil fuels with \gls{H2}.
 Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 	\begin{table}[htbp!]
 		\centering
-	    \caption{\gls{CO2} savings in pounds per gallon of fuel burned \cite{energy_information_administration_how_2014}.}
+	    \caption{CO$_2$ savings in pounds per gallon of fuel burned \cite{energy_information_administration_how_2014}.}
 		\begin{tabular}{l|c}
 		\hline
 		              & \gls{CO2} produced [lbs/gallon] \\ \hline
@@ -391,11 +387,11 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 	\begin{table}[htbp!]
 		\centering
-	    \caption{\gls{CO2} yearly savings.}
+	    \caption{CO$_2$ yearly savings.}
 		\begin{tabular}{l|c}
 		\hline
-		            & \gls{CO2} mass [tonnes/year] \\ \hline
-		MTD      	  & 7306           \\
+		            & CO$_2$ mass [tonnes/year] \\ \hline
+		MTD      	& 7306           \\
 		UIUC        & 1143           \\
 		Total       & 8449           \\ \hline
         \end{tabular}
@@ -408,7 +404,7 @@ Further studies could include other designs as well.
 
 Figure \ref{fig:hydro-micro} shows the hourly production rates for the different reactors and \gls{H2} production processes.
 The figure includes a continuous line that represents the hydrogen requirement of both fleets.
-Note that the \gls{SI} process' required high temperatures allow for the coupling with only one microreactor design, which has an outlet temperature of more than 800$^{\circ}$C.
+Note that the \gls{SI} process's required high temperatures allow for the coupling with only one microreactor design, which has an outlet temperature of more than 800$^{\circ}$C.
 
 	\begin{table}[htbp!]
 		\centering
@@ -458,9 +454,9 @@ In such a scenario, the total load increases minimally, whereas the solar genera
 \end{figure}
 
 The next step was to apply the same growth factor from the predictions to the \gls{UIUC} grid's load and solar electricity.
-To obtain a prediction for 2050, we apply the growth factor to the hourly data.
-We choose a spring day when solar production is higher, as it is sunny, but the total load is low since people are less likely to use electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
-Finally, we subtract the solar production from the total load, obtaining the net load or demand ($D_{NET}$).
+To obtain a prediction for 2050, we applied the growth factor to the hourly data.
+We chose a spring day when solar production is higher, as it is sunny, but the total load is low since people are less likely to use electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
+Finally, we subtracted the solar production from the total load, obtaining the net load or demand ($D_{NET}$).
 
 We narrowed our analysis' focus to April 4th, when the net demand reached the lowest value in the 2019's spring.
 Figure \ref{fig:uiuc-duck1} shows these results.
@@ -490,7 +486,7 @@ However, the reactor electricity ($P_{E}$) equals the net demand ($D_{NET}$) onc
 Note that $P_{E}$ has power units while $D_{NET}$ has energy units.
 We chose time steps of 1 hour for our analysis, hence $P_{E}$ and $D_{NET}$ differ by the constant $h$.
 As $P_{E}$ is lower than 25 MW, and the reactor is at full thermal capacity, the hydrogen plant takes the excess of thermal energy.
-We use equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen6} to calculate the hydrogen produced.
+We used equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen3} to calculate the hydrogen produced.
 Figure \ref{fig:uiuc-duck2} displays the results.
 The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{HTE}, and \gls{SI}.
 
@@ -514,13 +510,13 @@ The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{
 \end{figure}
 
 % This should definitely be in Methodology
-Our analysis's last step is to calculate the peak demand reduction by using the hydrogen to produce electricity.
+Our analysis' last step is to calculate the peak demand reduction by using the hydrogen to produce electricity.
 The energy produced by hydrogen is $285 kJ/mol$, equal to 40 kWh/kg \cite{ursua_hydrogen_2012}.
 However, conventional fuel cells can use up to 60$\%$ of that energy \cite{doe_energy_efficiency_and_renewable_energy_fuel_2015}.
-Knowing the mass of hydrogen produced, we calculate the total electricity produced.
-We now reduce the peak demand by distributing the electricity over a specific range of hours.
+Knowing the mass of hydrogen produced, we calculated the total electricity produced.
+We reduced the peak demand by distributing the electricity over a specific range of hours.
 We chose to distribute the electricity for over 6 hours.
-We calculate the new peak using equation \ref{eq:newpeak}.
+We calculated the new peak using equation \ref{eq:newpeak}.
 Figure \ref{fig:uiuc-duck3} shows these results.
 The different \gls{H2} processes can generate 15.84 MWh, 24.2 MWh, and 19.6 MWh, respectively.
 This generation accounts for a peak reduction of 5 MW, 6.4 MW, and 5.6 MW, respectively.
