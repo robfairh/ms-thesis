@@ -4,35 +4,35 @@
 \subsection{MOOSE}
 
 % intro
-\gls{MOOSE}\cite{gaston_moose_2009} is a computational framework whose purpose is to support engineering analysis applications.
-In a nuclear reactor, several \glspl{PDE} describe its physical behavior.
+\gls{MOOSE}\cite{gaston_moose_2009} is a computational framework that supports engineering analysis applications.
+In a nuclear reactor, several \glspl{PDE} describe the physical behavior.
 These equations are typically nonlinear, and they are often strongly coupled to each other.
 \gls{MOOSE} targets such systems and solves them in a fully coupled manner.
 
 % more details about MOOSE
 \gls{MOOSE} is an open-source code under a \gls{LGPL}.
 The code itself relies on LibMesh \cite{kirk_libmesh_2006}, an LGPL finite element library, and PetSc, a \gls{BSD}-licensed toolkit for solving nonlinear equations \cite{balay_petsc_2016}.
-MOOSE applications define weak forms of the governing equations.
-They modularize the physics expressions into "Kernels."
+MOOSE applications define weak forms of the governing equations and 
+modularize the physics expressions into "Kernels."
 Kernels are C++ classes containing methods for computing the residual and Jacobian contributions of individual pieces of the governing equations.
 \gls{MOOSE} and LibMesh translate them into residual and Jacobian functions.
 These functions become inputs into PetSc solution routines.
 
 \gls{MOOSE} utilizes the mathematical structure present in \gls{JFNK} methods \cite{knoll_jacobian-free_2004}.
 \gls{JFNK} methods are synergistic combinations of Newton-type methods for superlinearly convergence of nonlinear equations and Krylov subspace methods for solving the Newton correction equations.
-The link between the two methods is the Jacobian-vector product.
-\gls{JFNK} methods compute such products approximately without forming and storing the elements of the true Jacobian.
-The ability to perform a Newton iteration without forming the Jacobian gives \gls{JFNK} methods potential for application throughout problems governed by nonlinear partial differential equations.
+The Jacobian-vector product links the two methods.
+JFNK methods compute such products approximately without forming and storing the elements of the true Jacobian.
+The ability to perform a Newton iteration without forming the Jacobian gives JFNK methods potential for application throughout problems governed by nonlinear partial differential equations.
 
-All the software built on the \gls{MOOSE} framework shares a joint code base.
-The applications, by default, use monolithic and implicit methods.
-This feature facilitates relatively easy coupling between different phenomena and allows for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
-Additionally, all codes use MPI for parallel communication and allow for deployment on massively-parallel cluster-computing platforms.
+All the software built on the MOOSE framework shares a joint code base.
+The applications, by default, utilize monolithic and implicit methods.
+This feature facilitates relatively easy coupling between different phenomena and allows for great flexibility, even with a great variance in time scales \cite{novak_pronghorn_2018}.
+Additionally, all codes use \gls{MPI} for parallel communication and allows deployment on massively-parallel cluster-computing platforms.
 
 \subsection{Moltres}
 
-\textit{Moltres} \cite{lindsay_introduction_2018} is a \gls{MOOSE} based application initially designed for modeling fluid-fuelled \glspl{MSR}.
-This simulation tool is open source and counts with an LGPL license.
+\textit{Moltres} \cite{lindsay_introduction_2018} is a MOOSE-based application initially designed for modeling fluid-fuelled \glspl{MSR}.
+This simulation tool is open source and operates with an LGPL.
 It uses \texttt{git} for version control, emphasizing its openness and promoting quality through peer review.
 
 Moltres solves arbitrary-group neutron diffusion, precursors, and temperature governing equations.
@@ -40,11 +40,10 @@ It can solve the equations in a fully-coupled way or solve each system independe
 
 \subsection{Serpent}
 
-The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code.
-VTT Technical Research Centre of Finland developed it, and it has been in public distribution since 2009.
+The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code developed by the VTT Technical Research Centre of Finland, and it has been in public distribution since 2009.
 Monte Carlo neutron transport codes have several reactor physics applications related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
 The Monte Carlo method's main advantage is its capability to model geometry and interaction physics without significant approximations.
-The main disadvantage is that modeling complex systems are very computing-intensive, restricting the applications to some extent.
+The main disadvantage is that simulating complex systems is computing-intensive, restricting applications to some extent.
 
 Serpent serves two primary purposes: (1) reactor modeling, and (2) group constant generation.
 In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
@@ -53,11 +52,10 @@ Based on a few groups, deterministic codes allow for carrying out coupled full-c
 
 In this work, Serpent produces group constants that serve as an input for Moltres and solves the heterogeneous system.
 This last step provides the reference solutions for the validation of the Moltres calculation scheme.
-For the calculations, we used Serpent 2.1.31 and the cross-section library JEFF3.1.2. 
-The choice of Serpent as the cross-section generation tool comes from one of its capabilities.
-Serpent allows for the explicit modeling of randomly located TRISO particles.
-Applying a simple volume homogenization has proven inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
-Although the particles' explicit modeling is time-consuming, costly, and impractical for most applications, it results necessary.
+We used Serpent 2.1.31 and the cross-section library JEFF3.1.2 for the calculations.
+The reason for using Serpent to generate cross-sections is due to its ability to run explicit simulations of randomly located TRISO particles.
+Applying a simple volume homogenization proves inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
+Although the particles' explicit modeling is time-consuming, costly, and impractical for most applications, it is necessary.
 
 \section{Mathematical basis}
 
