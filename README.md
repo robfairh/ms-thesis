@@ -33,3 +33,29 @@ Chapter 5: Hydrogen
 Chapter 6: Conclusions
 * Contribution
 * Future work
+
+
+------ OR ------
+
+Chapter 1: Introduction
+* HTGRs
+* Objectives
+
+Chapter 2: MHTGR
+* Reactor Summary
+* Tools
+* Results
+
+Chapter 3: Fuel cycle analysis
+* Fuel cycle comparison: LWR, MHTGR, GT-MHR
+
+Chapter 4: Hydrogen
+* Introduction
+* Hydrogen production methods
+* Results:
+	- Hydrogen requirements in UC
+	- Duck curve
+
+Chapter 5: Conclusions
+* Contribution
+* Future work
