@@ -20,7 +20,7 @@ Although substantial overlaps exist, the most common techniques fall into two br
 % NODAL
 FLARE \cite{delp_flare_1964} is a three-dimensional \gls{BWR} simulator, and it is representative of the first generation of nodal methods.
 Such an approach used adjusted parameters to match actual operating data or the results of more accurate calculations.
-Most of these methods were implementations of the so-called "1.5 group theory."
+Most of these methods were implementations of the so-called "1.5 group theory" \cite{gupta_nodal_1981}.
 The second generation of nodal methods derived spatial coupling relationships by applying the \gls{TIP}.
 Such a procedure obtains equivalent one-dimensional equations by integrating the multi-dimensional diffusion equation over directions transverse to each coordinate axis \cite{lawrence_progress_1986}.
 This approach proved to be highly efficient and accurate in Cartesian geometries.
@@ -110,7 +110,7 @@ A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the 
 This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
 The primary motivation behind this feature is to enable the code to perform reactivity insertion accidents.
 Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
-To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
+% To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
 The new method integrates over partially rodded computation nodes, and they called it iPRN.
 To test its accuracy, the authors conducted two exercises with several techniques that reduce the rod cusping effect.
 The authors used the mesh reconstruction method to obtain the reference results, as such a method eliminates the rod cusping effect by updating the mesh at every time step.
