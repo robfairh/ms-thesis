@@ -28,23 +28,24 @@ This approach proved to be highly efficient and accurate in Cartesian geometries
 In 1981, a formulation based on the \gls{NEM} first demonstrated the feasibility of nodal methods in hexagonal geometries \cite{duracz_nodal_1981}.
 However, this method would introduce non-physical singular terms that required the utilization of discontinuous polynomials.
 This drawback motivated the development of more effective formulations.
-HEXNOD, introduced in 1988 \cite{wagner_three-dimensional_1989}, is an example of such formulations.
+HEXNOD, introduced in 1988 by Wagner \cite{wagner_three-dimensional_1989}, is an example of such formulations.
 This algorithm uses the \gls{TIP} and, in contrast to the \gls{NEM}, solves the resulting differential equation analytically.
-The article demonstrated the method's accuracy by comparing the \gls{FDM} and Monte Carlo calculations for a few benchmark problems.
+Wagner's article demonstrated the method's good accuracy by comparing to \gls{FDM} and Monte Carlo calculations for a few benchmark problems.
 
 Another example of more effective methods is HEXPEDITE \cite{fitzpatrick_hexpedite_1992}.
 HEXPEDITE uses the \gls{TIP} formulation to derive a pseudo-one-dimensional equation.
 The resulting differential equation is solved analytically.
-The difference from HEXNOD is that HEXPEDITE uses a different coupling scheme that is simpler and more efficient.
+The difference from HEXNOD is that HEXPEDITE uses a simpler and more efficient coupling scheme.
 Different works \cite{fitzpatrick_hexpedite_1992}\cite{fitzpatrick_developments_1995} on the HEXPEDITE methodology tested the approach against the \gls{NEM} and the \gls{FDM}.
 These studies established HEXPEDITE’s superiority in terms of accuracy and runtime.
 HEXPEDITE's use prevailed in the analysis of \glspl{HTGR} until recently.
-In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against the diffusion codes JAR, CITATION, and CRONOS2, as well as the Monte Carlo codes MCNP5 and Serpent.
+In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against several diffusion codes, as well as the Monte Carlo codes MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003} and Serpent \cite{leppanen_serpent_2015}.
+% In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against the diffusion codes JAR, CITATION, and CRONOS2, as well as the Monte Carlo codes MCNP5 and Serpent.
 
-DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are examples of other nodal diffusion codes whose use has prevailed until the present.
+DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are other examples of nodal diffusion codes whose use has prevailed until the present.
 DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
 % VARIANT: variational nodal \cite{palmiotti_variant_1995}
-PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport Simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
+PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
 
 % from ortensi_deterministic_2010-1 and wang_modified_2018
 Nodal methods solve relatively coarse meshes for approximate solutions.
@@ -64,13 +65,14 @@ In successive years, \gls{FEM} became the most extensively used technique in alm
 \glspl{FEM} have several advantages over the nodal methods.
 It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to the multi-group application, and high computational efficiency \cite{lee_development_2008}.
 
+% left here in the review
 In 1973, Kang et al. \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
 The fundamental motivation for this development was the impractical application of the \gls{FDM} to three-dimensional problems.
 In this early work, the author compared different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
 The studies showed a higher order of convergence achieved by the \gls{FEM}.
 
 Throughout the last four decades, many codes utilized the \gls{FEM} to solve the diffusion equation.
-Some of the most recent software for simulations are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
+Some of the most recent software for diffusion simulations are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
 The list of \gls{FEM} diffusion solvers is more extensive, but we focus on the best-documented software in the open literature.
 We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
 
@@ -168,7 +170,7 @@ Another finding was that the accuracy of the diffusion calculation is sensitive 
 % han_sensitivity_2008
 Han's MS thesis \cite{han_sensitivity_2008} focused on selecting energy groups for the reactor analysis of the \gls{PBMR}.
 The author used COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross-section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
-The author compared the results against reference results obtained with MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003}.
+The author compared the results against reference results obtained with MCNP5.
 To simplify the setup, the model used uniformly distributed isotopes in the fuel.
 The study performed the calculations at 300 and 1000 K.
 To arrive at an optimal group structure, the author compared many combinations of group structures using a trial and error strategy.
