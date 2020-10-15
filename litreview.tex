@@ -65,7 +65,6 @@ In successive years, \gls{FEM} became the most extensively used technique in alm
 \glspl{FEM} have several advantages over the nodal methods.
 It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to the multi-group application, and high computational efficiency \cite{lee_development_2008}.
 
-% left here in the review
 In 1973, Kang et al. \cite{kang_finite_1973} described the first application of \gls{FEM} to the neutron diffusion theory.
 The fundamental motivation for this development was the impractical application of the \gls{FDM} to three-dimensional problems.
 In this early work, the author compared different \gls{FEM} approaches to the \gls{FDM} in one-dimensional and two-dimensional problems.
@@ -74,44 +73,43 @@ The studies showed a higher order of convergence achieved by the \gls{FEM}.
 Throughout the last four decades, many codes utilized the \gls{FEM} to solve the diffusion equation.
 Some of the most recent software for diffusion simulations are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
 The list of \gls{FEM} diffusion solvers is more extensive, but we focus on the best-documented software in the open literature.
-We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
+% We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
 
 % CRONOS
 \gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
-It allows for solving steady-state and transient multi-group calculations, taking into account thermal-hydraulic feedback effects.
-CRONOS2 solves either the diffusion equation or the transport equation through the SN method.
+It solves steady-state and transient multi-group calculations, taking into account thermal-fluids feedback effects.
+CRONOS2 solves either the diffusion equation or the transport equation through the S$_N$ method.
 In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
-For such a study, the authors developed the code suit NEPTHIS/CAST3M.
-NEPHTIS uses a transport-diffusion calculation scheme that relies on CRONOS2.
+For such a study, the authors developed the code suit NEPTHIS/CAST3M which relied on CRONOS2.
 
 % CAPP
 In 2008, the \gls{KAERI} published an article \cite{lee_development_2008} that presented CAPP.
 Its purposes are to conduct steady-state core physics analysis, core depletion analysis, and core transient analysis.
 The article validated the code with two benchmark problems: the IAEA PWR benchmark problem, and Phase I Exercise 1 of the OECD/NEA PBMR-400 Benchmark \cite{reitsma_oecd-neansc_2008}.
-The calculations of both problems changed the number of elements and the orders of shape functions.
+The calculations of both problems changed the number of finite elements and the orders of shape functions.
 
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
-To validate their model, the authors solved a two-dimensional model of the PMR-200 at the beginning of equilibrium cycle.
+To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
+To validate their model, the authors solved a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
 The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
-Their validation compared the results against the HELIOS\cite{stammler_helios_1998} results, concluding with a strong accuracy.
-Moreover, the authors implemented a depletion solver based on the one-group flux determined by the neutron flux solver.
+Their validation compared the results against HELIOS\cite{stammler_helios_1998}, concluding with a strong accuracy.
+Moreover, the authors implemented a depletion solver based on the one-group flux determined by the diffusion solver.
 The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
-They compared the results against the results obtained with HELIOS.
+They compared the results against HELIOS.
 The maximum error was less than 200 pcm.
 
 Tak et al. \cite{tak_cappgamma_2016} developed a coupling between CAPP and GAMMA+ \cite{lim_gamma_2006}.
-GAMMA+ is a system code for thermal-hydraulics analysis and system transients.
-In such a study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
-They conducted several studies, such as a core depletion calculation with and without a critical control rod position search and the analysis of the bypass flow effects on the coupled calculations.
+GAMMA+ is a system code for thermal-fluids analysis and system transients.
+In such a study, they studied the steady-state performance of the PMR-200.
+The authors conducted several studies, such as a core depletion calculation with and without a critical control rod position search and the analysis of the bypass flow effects on the coupled calculations.
 Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.
 
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
 This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
-The primary motivation behind this feature is to enable the code to perform reactivity insertion accidents.
-Additionally, the article introduces a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
-% To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
-The new method integrates over partially rodded computation nodes, and they called it iPRN.
+The primary motivation behind this feature was to perform reactivity insertion accidents.
+Additionally, the article introduced a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
+% To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
+The new method integrates over partially rodded computation nodes, and the article referred to it as iPRN.
 To test its accuracy, the authors conducted two exercises with several techniques that reduce the rod cusping effect.
 The authors used the mesh reconstruction method to obtain the reference results, as such a method eliminates the rod cusping effect by updating the mesh at every time step.
 The iPRN technique showed higher accuracy than the other methods.
@@ -120,8 +118,8 @@ Both showed similar results.
 
 % Proghorn and Rattlesnake
 RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the transport equation.
-\gls{INL} had initially developed the Pronghorn code to model \glspl{PBMR}.
-The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models initially in Pronghorn \cite{strydom_inl_2013}.
+\gls{INL} had initially developed Pronghorn \cite{strydom_inl_2013} to model \glspl{PBMR}.
+The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models initially in Pronghorn.
 Currently, RattleSnake is the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on Yak's use.
 Various solvers are available under RattleSnake, including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport, all solved with the \gls{FEM}.
 % Both RattleSnake and Pronghorn yielded the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RattleSnake.
@@ -129,7 +127,7 @@ Various solvers are available under RattleSnake, including low-order multigroup 
 % j_ortensi_relap-7_2012 j_ortensi_initial_2012
 In 2012, \gls{INL} published a study \cite{j_ortensi_initial_2012} that coupled Pronghorn and RELAP-7 \cite{andrs_relap-7_2012}.
 Pronghorn solved the coupled equations defining the neutron diffusion, fluid flow, and heat transfer in a three-dimensional model.
-RELAP-7, a MOOSE-based system code, solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
+RELAP-7 is a MOOSE-based system code and solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
 It was responsible for simulating the plant system layout, including the hot and cold ducts, the helium circulator, and the steam generator.
 % This study integrated PRONGHORN and RELAP-7 with the operator split approach (or loose coupling) where each application used an independent mesh.
 To test the coupling, INL's team carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_coupled_2020}.
@@ -142,11 +140,11 @@ The authors concluded that the coupling between Pronghorn and RELAP-7 was succes
 
 % strydom_inl_2013
 In 2013, \gls{INL} conducted the OECD/NEA MHTGR-350 Benchmark \cite{strydom_inl_2013} without further simplifications.
-The \gls{INL} team solved Exercise 1 of Phase I using INSTANT-P1 \cite{wang_krylov_2011}, Pronghorn, and RattleSnake.
+The \gls{INL} team solved Phase I Exercise 1 using INSTANT-P1 \cite{wang_krylov_2011}, Pronghorn, and RattleSnake.
 % They also solved exercises 2 and 3 using RELAP5-3D and PHISICS/RELAP5-3D code suit.
 INSTANT-P1 is a transport solver that relies on the spherical harmonics discretization of angles.
-The results for Pronghorn and RattleSnake are identical.
-By modifying the cross-sections, INSTANT-P1 returns the diffusion solution.
+The results for Pronghorn and RattleSnake were identical.
+By modifying the cross-sections, INSTANT-P1 returned the diffusion solution.
 Its results were within 30 pcm from Pronghorn and RattleSnake results.
 All presented results exhibited good agreement with the benchmark results.
 
@@ -170,7 +168,7 @@ Another finding was that the accuracy of the diffusion calculation is sensitive 
 % han_sensitivity_2008
 Han's MS thesis \cite{han_sensitivity_2008} focused on selecting energy groups for the reactor analysis of the \gls{PBMR}.
 The author used COMBINE6 \cite{grimesey_combinepc-portable_1994} for cross-section generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
-The author compared the results against reference results obtained with MCNP5.
+The author compared the results against MCNP5 reference results.
 To simplify the setup, the model used uniformly distributed isotopes in the fuel.
 The study performed the calculations at 300 and 1000 K.
 To arrive at an optimal group structure, the author compared many combinations of group structures using a trial and error strategy.
@@ -182,10 +180,11 @@ ANL's team conducted the study at 300 K - not in the operational range of any \g
 On the contrary, Han's thesis included an analysis at 1000 K, and his results showed that the temperature changes have a non-negligible impact.
 Additionally, ANL's study used the simplified model of the homogenized fuel compact.
 Han highlighted that homogenized fuel models of the \gls{PBMR} underestimate criticality calculations.
-In 2015, \gls{INL} presented their results \cite{strydom_results_2015} for an \gls{IAEA} \gls{CRP} \cite{tyobeka_htgr_2011} and showed that the homogenization of the compact material notably underestimates the eigenvalue.
+In 2015, \gls{INL} presented their results \cite{strydom_results_2015} for an \gls{IAEA} \gls{CRP} \cite{tyobeka_htgr_2011} and showed that the homogenization of the compact material notably underestimates the multiplication factor.
 On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross-sections.
 
-\section{Prismatic HTGR Thermal-hydraulics}
+% left here in the review
+\section{Prismatic HTGR Thermal-fluids}
 
 % sort of motivation
 Thermal-hydraulic calculations enable the correct design of \glspl{HTGR}.
@@ -382,27 +381,27 @@ Additionally, a coupled analysis with a reactor physics code requires a full cor
 \section{Prismatic HTGR Multi-physics}
 
 % sort of intro
-Historically, stand-alone simulations have solved the neutronics and thermal-hydraulics of \glspl{HTGR}.
+Historically, stand-alone simulations have solved the neutronics and thermal-fluids of \glspl{HTGR}.
 Nonetheless, these physical aspects describe processes that rely heavily on one another.
-Hence, a coupled analysis is necessary to consider the interaction between the neutronics and thermal-hydraulics behavior \cite{tak_cappgamma_2016}.
+Hence, a coupled analysis is necessary to consider the interaction between the neutronics and thermal-fluids behavior \cite{tak_cappgamma_2016}.
 
 % damian_vhtr_2008
 In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed to understand the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
-They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-hydraulics.
+They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-fluids.
 The first part of the assessment concerns thermal calculations on steady-state core configurations.
-Such a study used CAST3M \cite{studer_cast3marcturus_2007} to solve the three-dimensional heat conduction in the solid coupled with the one-dimensional thermal-hydraulic equations in the coolant.
+Such a study used CAST3M \cite{studer_cast3marcturus_2007} to solve the three-dimensional heat conduction in the solid coupled with the one-dimensional thermal-fluids equations in the coolant.
 % The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
 % An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
 The second part of the assessment used the transport code APOLLO2 \cite{sanchez_apollo2_1999} on a two-dimensional core configuration to minimize the radial power peaking factor.
 The analysis included the variation of several parameters, such as fuel enrichment, fuel loading, and the fuel management scheme.
 The fuel enrichment variation had the most substantial impact.
 The last part of the study analyzed a three-dimensional core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
-NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-hydraulics, respectively.
+NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-fluids, respectively.
 NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2.
 CRONOS2 solves either the diffusion equation or the even parity transport equation using an \gls{FDM} or a \gls{FEM} discretization.
 The CAST3M/Arcturus model uses a two-level approach.
 On the first level, the porous media model solves the homogenized system and the coolant.
-On the second level, CAST3M solves the thermal-hydraulics on the homogenized geometry.
+On the second level, CAST3M solves the thermal-fluids on the homogenized geometry.
 The authors conducted several parametric studies and assessed their impact on the power distribution.
 The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
 One of their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
@@ -410,7 +409,7 @@ Another result showed that using magnesium oxide as the reflector material yield
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-hydraulics tool.
+To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool.
 This tool divides a fuel column into six triangular prisms.
 Each of them hosts a representative coolant channel.
 The code calculates the axial coolant temperature distribution solving the energy equation.
@@ -423,7 +422,7 @@ They compared the results against the HELIOS reference results.
 The results showed good accuracy.
 
 % tak_coupled_2016
-Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-hydraulics coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
+Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
 DeCART is a whole-core neutron transport code, and it was responsible for calculating the power distribution and the fast neutron fluence.
 CORONA calculated the temperature distribution.
 To validate the new code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
@@ -448,7 +447,7 @@ On the other hand, the power density changes were not appreciable.
 
 % yuk_time-dependent_2020
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to CAPP.
-To take into account the thermal feedback, the authors developed a simplified thermal-hydraulics analysis tool.
+To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
 The tool divides a fuel column into six triangular prisms.
 Each of them hosts a representative coolant channel.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
@@ -468,20 +467,20 @@ The purpose of this benchmarking exercise is to compare various coupled reactor 
 The MHTGR design serves as a basis for this benchmark.
 The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-hydraulic analysis, and (2) to test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
 The OECD/NEA MHTGR-350 MW benchmark subdivides the coupled system calculation into three phases.
-Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling, as well as the coupled neutronics/thermal-hydraulics steady-state modeling.
+Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling, as well as the coupled neutronics/thermal-fluids steady-state modeling.
 Phase II consists of transient cases.
 Phase III focuses on lattice depletion calculations.
 
 % tyobeka_htgr_2011 / strydom_results_2015
-Sensitivity analysis and uncertainty analysis methods can assess the predictive capabilities of coupled neutronics/thermal-hydraulics simulations.
+Sensitivity analysis and uncertainty analysis methods can assess the predictive capabilities of coupled neutronics/thermal-fluids simulations.
 In 2013, the IAEA launched a \gls{CRP} \cite{tyobeka_htgr_2011} on the \gls{HTGR} Uncertainty Analysis in Modeling.
-The \gls{CRP} objective was to determine the uncertainty in \gls{HTGR} calculations at all stages of coupled reactor physics/thermal-hydraulics and depletion calculations.
+The \gls{CRP} objective was to determine the uncertainty in \gls{HTGR} calculations at all stages of coupled reactor physics/thermal-fluids and depletion calculations.
 This \gls{CRP} is a natural continuation of the previous IAEA and OECD/NEA international activities \cite{iaea_evaluation_2003}\cite{reitsma_oecd-neansc_2008} on Verification and Validation of available \gls{HTGR} simulations capabilities.
 The technical approach is to establish and utilize a benchmark for uncertainty analysis.
 The benchmark defines a series of well-defined problems with complete sets of input specifications and reference experimental data.
 The CRP adopted the MHTGR-350 as the reference design and the GT-MHR as a second reference design.
 The design specification uses the OECD/NEA MHTGR-350 MW benchmark \cite{oecd_nea_benchmark_2017} code design specifications.
 The CRP subdivides the coupled system calculation into three phases.
-Phase I corresponds to the stand-alone neutronics and thermal-hydraulics modeling.
-Phase II consists of design calculations, coupled with steady-state neutronics/thermal-hydraulics calculations with and without a depletion calculation.
+Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling.
+Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without a depletion calculation.
 Phase III focuses on safety calculations.
