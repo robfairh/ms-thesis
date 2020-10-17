@@ -128,6 +128,11 @@ Equations \ref{eq:tempsolid} to \ref{eq:heatsource2} allow for solving the tempe
 % equations 8-10 tak_practical_2012
 The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:convection} \cite{white_viscous_2006}\cite{tak_practical_2012}.
 
+
+% Citation ?
+We calculate the heat transfer coefficient $h$ using the well-known Dittus-Boelter equation \ref{eq:dittus}.
+
+
 \begin{align}
  	\frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) &= 0 \label{eq:continuity} \\
   \rho_c \left(\frac{\partial}{\partial t} u + u\frac{\partial}{\partial z}u \right) &= - \frac{\partial}{\partial z}p - \tau \frac{\varepsilon}{A} - \rho_c g \label{eq:momentum} \\
@@ -149,6 +154,21 @@ The governing equation of the coolant is the one-dimensional form of the continu
   f &= \mbox{friction factor} \notag \\
   h &= \mbox{heat transfer coefficient} \notag \\
   T_i &= \mbox{solid temperature.} \notag
+\end{align}
+
+\begin{align}
+  f &= 8\left[ \left( \frac{8}{Re_{D_h}} \right)^12 + \frac{1}{(A+B)^{3/2}} \right]^{1/12} \label{eq:churchill} \\
+  A &= \{ 2.457 ln \left( \frac{1}{(\frac{7}{Re_{D_h}})^{0.9}+0.27\frac{\varepsilon}{D_h}} \right) \}^16
+  B &= \{ \frac{37530}{Re_{D_h}} \}^16
+  \intertext{where}
+  \varepsilon &= \mbox{Surface roughness.} \notag
+\end{align}
+
+\begin{align}
+  Nu &= \frac{h D_h}{k} = 0.023 Re_{D_h}^0.8 Pr^0.4 \label{eq:dittus}
+  \intertext{where}
+  Nu &= \mbox{Nusselt number} \notag \\
+  D_h &= \mbox{hydraulic diameter.} \notag
 \end{align}
 
 \section{OECD/NEA MHTGR-350 MW Benchmark}
