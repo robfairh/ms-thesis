@@ -183,18 +183,17 @@ Han highlighted that homogenized fuel models of the \gls{PBMR} underestimate cri
 In 2015, \gls{INL} presented their results \cite{strydom_results_2015} for an \gls{IAEA} \gls{CRP} \cite{tyobeka_htgr_2011} and showed that the homogenization of the compact material notably underestimates the multiplication factor.
 On the other hand, the open literature has not investigated the impact of such simplification over the homogenized cross-sections.
 
-% left here in the review
 \section{Prismatic HTGR Thermal-fluids}
 
 % sort of motivation
-Thermal-hydraulic calculations enable the correct design of \glspl{HTGR}.
+Thermal-fluid calculations enable the correct design of \glspl{HTGR}.
 Predicting the maximum fuel temperature at a steady-state is of paramount importance to succeed in such a task.
 We emphasize this statement in the case that hydrogen production is desirable.
-Efficient hydrogen production requires higher coolant temperatures, which increases the temperature of the fuel and the reactor pressure vessel.
+Efficient hydrogen production requires higher coolant temperatures, leading to high fuel and reactor vessel temperatures.
 
 % sort of intro to simplified models
 The complex geometry of the hexagonal fuel assembly requires elaborate numerical calculations for obtaining accurate evaluations.
-Thermal-hydraulic studies for early \glspl{HTGR} consisted mainly of support calculations for \gls{NRC} safety analysis reports.
+Thermal-fluids studies for early \glspl{HTGR} consisted mainly of support calculations for \gls{NRC} safety analysis reports.
 The analyses employed sets of independent codes that relied on simplistic approximations.
 Simplified models help understand some fundamental aspects of prismatic \glspl{HTGR} and have the advantage of reducing the computational expense of the calculations.
 
@@ -212,7 +211,7 @@ It solves the steady-state mass and momentum conservation equations for parallel
 \item DEMISE: It determines the steady-state three-dimensional temperature distribution in a standard element.
 It solves the temperature in a network model.
 
-\item TAC2D: It is a general-purpose two-dimensional thermal analysis code.
+\item TAC2D: It is a general-purpose thermal analysis code.
 It solves the two-dimensional heat conduction equation.
 \end{itemize}
 
@@ -231,7 +230,7 @@ The investigation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and
 Among the simplified approaches, we differentiate the flow network, equivalent cylindrical model, and unit cell model.
 % flow network model
 % reza_design_2006
-Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-hydraulic study of the GT-MHR.
+Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-fluids study of the GT-MHR.
 Reza et al. increased the reactor outlet temperature to enable hydrogen production.
 Additionally, they evaluated alternative coolant inflow paths in an attempt to reduce the reactor vessel temperatures.
 After finding an optimal configuration, they evaluated the fuel and the reactor vessel's maximum temperatures during the \gls{LPCC} and the \gls{HPCC} events.
@@ -239,7 +238,7 @@ After finding an optimal configuration, they evaluated the fuel and the reactor 
 % equivalent cylindrical model
 % no_multi-component_2007
 An example of codes using the equivalent cylindrical approach is GAMMA \cite{no_multi-component_2007}.
-Its main objective is simlating the air ingress event following a LOCA.
+Its main objective is simulating the air ingress event following a LOCA.
 Following the depressurization of helium in the core, there exists the potential for air to enter the core through the break and oxidize the in-core graphite structure.
 The oxidation of graphite leads to exothermic chemical reactions and, thus, it is a significant concern.
 GAMMA solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
@@ -248,7 +247,7 @@ Together with the multi-dimensional analysis feature, GAMMA has a one-dimensiona
 
 % takada_core_2004
 Takada et al. \cite{takada_core_2004} carried out another study using the flow network and the equivalent cylindrical model.
-Focusing on the \gls{HTTR}, they developed a thermal-hydraulic design code.
+Focusing on the \gls{HTTR}, they developed a thermal-fluids design code.
 This used the flow network analysis code FLOWNET \cite{maruyama_verification_1988} for calculating the coolant flow and temperature distributions.
 TEMDIM \cite{maruyama_verification_1988} solved the fuel temperatures using the equivalent cylindrical model.
 Finally, the authors validated the calculation scheme by comparing its results with the experimental data from the \gls{HTTR}.
@@ -256,9 +255,9 @@ Finally, the authors validated the calculation scheme by comparing its results w
 % unit cell model
 % nakano_conceptual_2008
 Nakano et al. \cite{nakano_conceptual_2008} studied different fuel assembly configurations using several simplistic approximations.
-For determining the fuel temperature, they used the TAC2D.
-A previous nuclear analysis calculated the power density.
-Moreover, a previous study calculated the flow distribution using FLOWNET.
+For determining the fuel temperature, they used TAC2D.
+% A previous nuclear analysis calculated the power density.
+A previous study calculated the flow distribution using FLOWNET.
 The fuel temperature calculation used the equivalent cylindrical model for a hot channel unit cell.
 However, the asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block.
 The equivalent cylindrical model fails to capture this behavior.
@@ -268,42 +267,42 @@ In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed an
 The objective of the study was to predict the maximum fuel temperature at steady-state.
 The analysis focused on the GT-MHR 600 at the end of the equilibrium cycle.
 The CFD code CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
-In such a study, the results showed that the maximum fuel temperature surpassed the design limits, so the authors proposed a countermeasure accordingly.
+The results showed that the maximum fuel temperature surpassed the design limits, so the authors proposed a countermeasure accordingly.
 
 % more detailed calculations
 Such simplified approaches are helpful to understand essential aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
-More detailed thermal-hydraulic evaluations were rare in the open literature until the last 15 years.
+More detailed thermal-fluid evaluations were rare in the open literature until the last 15 years.
 
 % cioni_3d_2005
 Cioni et al. \cite{cioni_3d_2005} presented an article in 2005 in which they conducted three-dimensional simulations of fuel assemblies of an \gls{HTGR}.
 The study's objective was to investigate an emergency situation due to the blocking of cooling channels in the core.
 They used the \gls{CFD} code Trio\_U \cite{bieder_priceles_2000} to carry out the analysis.
-The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the coolant's one-dimensional thermal-hydraulic equations.
-In the preliminary work, the authors conducted a study of the bypass flow's influence on the maximum coolant and fuel temperature.
-Another preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
-A central blockage exhibits a stronger influence over the assembly's maximum temperatures compared to a peripheral blockage.
+The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the coolant's one-dimensional thermal-fluid equations.
+% In the preliminary work, the authors conducted a study of the bypass flow's influence on the maximum coolant and fuel temperature.
+A preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
+A central blockage exhibited a stronger influence over the assembly's maximum temperatures compared to a peripheral blockage.
 Last, they investigated two configurations.
 First, six fuel elements surrounded the fuel element with the blockage.
 Second, five fuel elements and one reflector element surrounded the fuel element with the blockage.
-The results suggest that the blockage increases the temperature on the blocked fuel assembly only, and it does not affect the surrounding elements due to the bypass flow.
+The blockage increased the temperature on the blocked fuel assembly only and it did not affect the surrounding elements due to the bypass flow.
 The results also show that the fuel temperature surpassed the design limits and that the reactor operators should counteract these effects with active systems.
 
 % simoneau_three-dimensional_2007
 Simoneau et al. \cite{simoneau_three-dimensional_2007} analyzed the transient behavior of an \gls{HTGR} during the \gls{DCC} and \gls{HPCC} event.
 The CFD code STAR-CD \cite{computational_dynamics_limited_star-cd_2004} performed the calculations.
 It solved conductive, convective, and radiation heat transfer in a 30$^{\circ}$ section of the core and reactor vessel.
-It uses the porous media model to accommodate the different spatial scales.
-The model does not resolve the boundary layer, and the use of coefficients prescribe the solid-fluid heat transfer and pressure drop across the core.
+It used the porous media model to accommodate the different spatial scales.
+The model did not resolve the boundary layer, and the use of coefficients prescribed the solid-fluid heat transfer and pressure drop across the core.
 The authors validated their model against explicit calculations using a single fuel block.
-One of their results shows that the maximum temperature in the \gls{HPCC} event is lower than in the \gls{DCC} event.
-However, the extra convective heat transfer causes a thermal stratification in the surrounding air, causing higher temperatures in the upper reactor structures.
+One of their results showed that the maximum temperature in the \gls{HPCC} event is lower than in the \gls{DCC} event.
+However, the extra convective heat transfer caused a thermal stratification in the surrounding air, causing higher temperatures in the upper reactor structures.
 
 % tak_numerical_2008
 In 2008, an article by Tak et al. \cite{tak_numerical_2008} conducted  a three-dimensional \gls{CFD} analysis on a typical prismatic \gls{HTGR} fuel column.
 The commercial code CFX 11 \cite{ansys_incorporated_cfx_2006} performed the calculations.
 The fuel column under study was from the PMR-600, a pre-conceptual reactor designed by \gls{KAERI} whose reference design is the GT-MHR.
 The study considered a one-twelfth section of the fuel due to its symmetry.
-The model determined the coolant distribution using the one-dimensional thermal-hydraulic equations.
+The model determined the coolant distribution using the one-dimensional thermal-fluid equations.
 Such coolant distribution served as input to the CFD code.
 The friction in the channels is dependent on the viscosity, which is highly dependent on the temperature.
 Therefore, obtaining the mass flow rates from a separate solver may introduce errors \cite{sato_computational_2010}.
@@ -316,6 +315,8 @@ The results of this study indicate that the accuracy of the unit cell worsens fo
 Another study imposed different radial peaking factors for the different fuel channels.
 Such a study showed the effects of considering a non-flat radial power distribution.
 The authors considered a radial power distribution that did not strongly impact on the maximum fuel temperature.
+
+% left here in the review
 
 % sato_computational_2010
 Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
