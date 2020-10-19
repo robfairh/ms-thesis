@@ -101,7 +101,8 @@ In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, e
 \label{eq:vacuumbc1}
 \end{align}
 
-\subsection{Thermal-hydraulics}
+\subsection{Thermal-fluids}
+\label{ch3:th}
 
 The governing equation for the temperature of the solids is the three-dimensional heat conduction equation \cite{melese_thermal_1984}.
 Equations \ref{eq:tempsolid} to \ref{eq:heatsource2} allow for solving the temperature in the fuel, moderator, and reflector.
@@ -126,6 +127,8 @@ Equations \ref{eq:tempsolid} to \ref{eq:heatsource2} allow for solving the tempe
 % section 2-5.2 white_viscous_2006
 % equations 8-10 tak_practical_2012
 The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:convection} \cite{white_viscous_2006}\cite{tak_practical_2012}.
+We determine the friction factor $f$ using equation \ref{eq:churchill} \cite{churchill_friction-factor_1977}.
+We calculate the heat transfer coefficient $h$ using the well-known Dittus-Boelter correlation \ref{eq:dittus}.
 
 \begin{align}
  	\frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) &= 0 \label{eq:continuity} \\
@@ -148,6 +151,21 @@ The governing equation of the coolant is the one-dimensional form of the continu
   f &= \mbox{friction factor} \notag \\
   h &= \mbox{heat transfer coefficient} \notag \\
   T_i &= \mbox{solid temperature.} \notag
+\end{align}
+
+\begin{align}
+  f &= 8\left[ \left( \frac{8}{Re_{D_h}} \right)^{12} + \frac{1}{(A+B)^{3/2}} \right]^{1/12} \notag \\
+  A &= \left\{ 2.457 \quad ln \left( \frac{1}{\left(\frac{7}{Re_{D_h}}\right)^{0.9}+0.27\frac{\varepsilon}{D_h}} \right) \right\}^{16} \label{eq:churchill} \\
+  B &= \left\{ \frac{37530}{Re_{D_h}} \right\}^{16} \notag
+  \intertext{where}
+  \varepsilon &= \mbox{surface roughness.} \notag
+\end{align}
+
+\begin{align}
+  Nu &= \frac{h D_h}{k} = 0.023 Re_{D_h}^{0.8} Pr^{0.4} \label{eq:dittus}
+  \intertext{where}
+  Nu &= \mbox{Nusselt number} \notag \\
+  D_h &= \mbox{hydraulic diameter.} \notag
 \end{align}
 
 \section{OECD/NEA MHTGR-350 MW Benchmark}
