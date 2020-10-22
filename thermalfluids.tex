@@ -83,6 +83,19 @@ Intends to reproduce \cite{in_three-dimensional_2006}.
 Missing material properties come from \cite{tak_numerical_2008}.
 The material properties vary with the temperature (both in In et al and my simulation).
 
+Figure \ref{fig:th-val-unit-model} displays the model geometry.
+Figure \ref{fig:th-val-unit-results} shows the temperature profiles.
+
+Add table
+% Table with expected results
+Tcoolmax = 1144C
+Tmodmax = 1250C
+Tfuelmax = 1295C
+% Table with my results
+Tcoolmax = 1140C
+Tmodmax = 1259C
+Tfuelmax = 1317C
+
 \begin{table}[htbp!]
 \centering
       \caption{characteristics.}
@@ -122,7 +135,20 @@ The material properties vary with the temperature (both in In et al and my simul
     }
 	\hfill
     \caption{.}
-	\label{fig:th-val-uni-results}
+	\label{fig:th-val-unit-model}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Maximum fuel, moderator, and bulk coolant axial temperatures.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/in-2006-5-axial}
+    }
+    \subfloat[Outlet plane temperature z=793 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermalval-unit-outlet-plane}
+    }
+  \hfill
+    \caption{Temperature profiles.}
+  \label{fig:th-val-unit-results}
 \end{figure}
 
 \section{Fuel assembly}
@@ -132,9 +158,6 @@ This section will calculate the heat profile of a fuel assembly of a HTGR.
 \section{Full core}
 
 This section will extend the methodology to a full-ore problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
-
-
-
 
 \section{Neutronics and Thermal-fluids Coupling}
 
