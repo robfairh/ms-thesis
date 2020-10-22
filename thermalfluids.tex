@@ -24,18 +24,31 @@ We calculated the coolant radius by preserving the coolant channel volume.
     \toprule
     \multicolumn{1}{c}{Parameter} & multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & multicolumn{1}{c}{Reference} \\
     \midrule
-  Average power density & q$_{ave}$ & 35      & W/cm$^3$ & \cite{in_three-dimensional_2006} \\
   Fuel compact radius   & R$_f$     & 0.6225  & cm       & \cite{in_three-dimensional_2006} \\
   Fuel channel radius   & R$_g$     & 0.6350  & cm       & \cite{in_three-dimensional_2006} \\
-
   Coolant channel radius    & - 	& 0.7950  & cm       & \cite{in_three-dimensional_2006} \\
-  Calculated coolant radius & R$_c$ & 0.6350  & cm       & - \\
-  % material properties from \cite{tak_numerical_2008}
+  Fuel/coolant pitch    & -			& 
+  Fuel column height	& L 		& 793 	  & cm 		 & \cite{in_three-dimensional_2006} \\
+  Coolant mass flow rate & $\dot{m}$ & 0.0176 & kg/s 	 & \cite{in_three-dimensional_2006} \\
+  Average power density & q$_{ave}$ & 35      & W/cm$^3$ & \cite{in_three-dimensional_2006} \\
+  Coolant inlet temperature 	& $T_{in}$ & 400  & $^{\circ}C$ & \cite{in_three-dimensional_2006} \\
+  Helium inlet pressure & P 		& 70      & bar 	 & \cite{in_three-dimensional_2006} \\
+  Helium density		& $\rho_c$  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity  & c$_{p,c}$	& 5.188 $\times 10^{3}$ & J/kg/K  & \cite{nist_thermophysical_2020} \\
+  Fuel compact thermal conductivity & k$_f$ & 0.07    & W/cm/K & \cite{tak_numerical_2008} \\
+  Gap thermal conductivity & k$_g$ & 3 \times 10^{-3} & W/cm/K & \cite{tak_numerical_2008} \\
+  Moderator thermal conductivity & k$_m$ & 0.30 & W/cm/K 	& \cite{tak_numerical_2008} \\
+    \midrule
+  \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
+    \midrule
+  Calculated moderator radius 	& R$_m$ & 1.08  		& cm     & - \\
+  Coolant film radius   		& R$_i$ & 1.09  		& cm     & - \\
+  Calculated coolant radius 	& R$_c$ & 1.349  		& cm     & - \\
+  Coolant average velocity  	& v     & 1794.33 		& cm/s   & - \\
+  Film thermal conductivity  	& k$_i$ & 1.722 $\times 10^{-3}$ & W/cm/K & - \\
   \bottomrule
   \end{tabular}
 \end{table}
-
-
 
 Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles.
 Both analytical and numerical solutions exhibit good agreement.
@@ -70,7 +83,6 @@ Intends to reproduce \cite{in_three-dimensional_2006}.
 Missing material properties come from \cite{tak_numerical_2008}.
 The material properties vary with the temperature (both in In et al and my simulation).
 
-
 \begin{table}[htbp!]
 \centering
       \caption{characteristics.}
@@ -81,37 +93,37 @@ The material properties vary with the temperature (both in In et al and my simul
     \midrule
   Fuel compact radius       & R$_f$ & 0.6225    & cm   & \cite{in_three-dimensional_2006} \\
   Fuel channel radius       & R$_g$ & 0.6350    & cm   & \cite{in_three-dimensional_2006} \\
-  Coolant film radius       & R$_i$ & 0.7950    & cm   & \cite{in_three-dimensional_2006} \\
   Coolant channel radius    & R$_c$ & 0.7950    & cm   & \cite{in_three-dimensional_2006} \\
   Fuel/coolant pitch        & p     & 1.885     & cm   & \cite{in_three-dimensional_2006} \\
   Fuel column height        & L     & 793       & cm   & \cite{in_three-dimensional_2006} \\
   % input parameter characteristics
+  Coolant channel mass flow rate & $\dot{m}$ & 0.0176 & kg/s & \cite{in_three-dimensional_2006} \\
   Average power density     & q$_{ave}$ & 35    & W/cm$^3$   & \cite{in_three-dimensional_2006} \\
   Inlet coolant temperature & T$_{in}$  & 400   & $^{\circ}$C  & \cite{in_three-dimensional_2006} \\
-  Coolant channel mass flow rate & $\dot{m}$ & 0.0176 & kg/s & \cite{in_three-dimensional_2006} \\
   Helium inlet pressure & P & 70 & bar & \cite{in_three-dimensional_2006} \\
-  Helium density        & \rho  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist} \\
-  Helium heat capacity  & c$_p$ & 5188 & J/kg/K & \cite{nist} \\
+  Helium density        & \rho  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity  & c$_p$ & 5188 & J/kg/K & \cite{nist_thermophysical_2020} \\
+    \midrule
+  \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
+    \midrule
+  Coolant film radius       & R$_i$ & 0.8050    & cm   & -\\
   Film thermal conductivity & k_$i$ & 0.001731 & W/cm/K & - \\
   \bottomrule
   \end{tabular}
 \end{table}
 
-\begin{table}[htbp!]
-  \centering
-  \caption{Material properties.}
-  \begin{tabular}{llll}
-  \toprule
-  Parameter                  & Symbol & 400$^{\circ}$C & 400$^{\circ}$C \\
-  \midrule
-  Fuel compact thermal conductivity & k_f & 
-  Helium gap thermal conductivity   & k_g & 
-  Moderator thermal conductivity    & k_m & 
-
-  \bottomrule
-  \end{tabular}
-  \label{tab:maincharac}
-\end{table}
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Model geometry.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/3D-unitcell-mesh}
+    }
+    \subfloat[Material properties.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-matprop}
+    }
+	\hfill
+    \caption{.}
+	\label{fig:th-val-uni-results}
+\end{figure}
 
 \section{Fuel assembly}
 
