@@ -5,16 +5,23 @@ This section carries out some preliminary studies using Moltres and MOOSE heat c
 \subsection{Verification of the thermal-fluids model}
 
 To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know.
-The model assumes a sinusoidal power profile in the $z$-direction.
 Section \ref{appendix:ver} presents the analytical solution of the problem.
-Moltres/MOOSE obtained the numerical solution of equations in Section \ref{ch3:th}.
+Moltres/MOOSE obtained the numerical solution of the thermal-fluid equations from Section \ref{ch3:th}.
 
-Figure \ref{fig:th-ver-mesh} displays the model geometry.
-The model differentiates 5 subregions: fuel compact, helium gap, moderator, film, and coolant.
+Figure \ref{fig:th-ver-mesh} displays the model geometry, which differentiates five subregions: fuel compact, helium gap, moderator, film, and coolant.
 Table \ref{tab:th-ver-char} summarizes the geometry dimensions and the input parameters.
-Data for a VHTR based on the GT-MHR.
-The moderator thickness is the VHTR unit cell minimum distance between fuel and coolant channels.
-We calculated the coolant radius by preserving the coolant channel volume.
+The model reference design was the GT-MHR.
+The calculated moderator radius is the fuel/coolant pitch minus the fuel compact and coolant channel radii, which is the minimum distance between the fuel and coolant channels in the unit cell.
+We obtained the calculated coolant radius by preserves the coolant channel volume.
+The model assumed a sinusoidal power profile in the $z$-direction.
+
+\begin{figure}[htbp!]
+	\centering
+	\includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
+	\hfill
+	\caption{Scaled-down version of the model geometry.}
+	\label{fig:th-ver-mesh}
+\end{figure}
 
 \begin{table}[htbp!]
 \centering
@@ -27,8 +34,8 @@ We calculated the coolant radius by preserving the coolant channel volume.
     \midrule
   Fuel compact radius   & R$_f$     & 0.6225  & cm       & \cite{in_three-dimensional_2006} \\
   Fuel channel radius   & R$_g$     & 0.6350  & cm       & \cite{in_three-dimensional_2006} \\
-  Coolant channel radius    & - 	  & 0.7950  & cm       & \cite{in_three-dimensional_2006} \\
-  Fuel/coolant pitch    & -			    & 1.8850  & cm       & \cite{in_three-dimensional_2006} \\
+  Coolant channel radius   & - 		& 0.7950  & cm       & \cite{in_three-dimensional_2006} \\
+  Fuel/coolant pitch    & -			& 1.8850  & cm       & \cite{in_three-dimensional_2006} \\
   Fuel column height	& L 		& 793 	  & cm 		 & \cite{in_three-dimensional_2006} \\
   Coolant mass flow rate & $\dot{m}$ & 0.0176 & kg/s 	 & \cite{in_three-dimensional_2006} \\
   Average power density & q$_{ave}$ & 35      & W/cm$^3$ & \cite{in_three-dimensional_2006} \\
@@ -42,9 +49,9 @@ We calculated the coolant radius by preserving the coolant channel volume.
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
-  Calculated moderator radius & R$_m$ & 1.080  		& cm     & - \\
-  Coolant film radius   		  & R$_i$ & 1.090  		& cm     & - \\
-  Calculated coolant radius 	& R$_c$ & 1.349  		& cm     & - \\
+  Calculated moderator radius 	& R$_m$ & 1.080  	& cm     & - \\
+  Coolant film radius   		& R$_i$ & 1.090  	& cm     & - \\
+  Calculated coolant radius 	& R$_c$ & 1.349  	& cm     & - \\
   Coolant average velocity  	& v$_c$ & 1794.33 	& cm/s   & - \\
   Film thermal conductivity  	& k$_i$ & 1.722 $\times 10^{-3}$ & W/cm/K & - \\
   \bottomrule
@@ -54,19 +61,11 @@ We calculated the coolant radius by preserving the coolant channel volume.
 Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles.
 Both analytical and numerical solutions exhibit good agreement.
 The outlet coolant temperature is 770.2 $^{\circ}$C whereas the average outlet coolant temperature of the VHTR is 950 $^{\circ}$C.
-Note that this is a simplified model only for verification purposes, and it considers only one fuel channel while in the GT-MHR unit cell two fuel channels deposit their heat in one coolant channel.
+Note that this is a simplified model only for verification purposes, and it considers only one fuel channel while in the GT-MHR unit cell two fuel channels deposit their heat into one coolant channel.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
-	\hfill
-	\caption{Scaled-down version of the model geometry.}
-	\label{fig:th-ver-mesh}
-\end{figure}
-
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Fuel centerline and bulk coolant axial temperatures. \label{fig:th-ver-results-a}]{
+    \subfloat[Fuel centerline and bulk coolant axial temperatures.]{
         \includegraphics[width=0.45\textwidth]{figures-thermal/2D-preliminar-axial}
     }
     \subfloat[Radial temperature at z=L/2=396.5 cm.]{
@@ -79,14 +78,14 @@ Note that this is a simplified model only for verification purposes, and it cons
 
 \section{Unit cell problem}
 
-This section will solve the unit cell problem in the hot spot of an HTGR.
-Intends to reproduce \cite{in_three-dimensional_2006}.
-Missing material properties come from \cite{tak_numerical_2008}.
-The material properties vary with the temperature (both in In et al and my simulation).
-
-Figure \ref{fig:th-val-unit-model} displays the model geometry and the model material properties that depend on the temperature.
-Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
-Table \ref{fig:th-val-unit-results} summarizes the results.
+This section solved the unit cell problem in the hot spot of an HTGR.
+We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} in an effort for validating the model.
+We chose this article as it solves a three-dimensional unit-cell model gives one of the most complete descriptions in the open literature.
+Table \ref{tab:th-val-unit-char} presents the problem characteristics.
+The material properties specification of the solids is missing in the article, and we replaced them with parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
+Figure \ref{fig:th-val-unit-model} displays a $XY$-plane of the model geometry and the material properties that depend on the temperature.
+Additionally, In et al. used a chopped cosine as the power profile.
+To simplify the analysis, we used the average value of the power profile.
 
 \begin{table}[htbp!]
 \centering
@@ -100,7 +99,7 @@ Table \ref{fig:th-val-unit-results} summarizes the results.
   Fuel compact radius       & R$_f$ & 0.6225    & cm   & \cite{in_three-dimensional_2006} \\
   Fuel channel radius       & R$_g$ & 0.6350    & cm   & \cite{in_three-dimensional_2006} \\
   Coolant channel radius    & R$_c$ & 0.7950    & cm   & \cite{in_three-dimensional_2006} \\
-  Fuel/coolant pitch        & p     & 1.8850     & cm   & \cite{in_three-dimensional_2006} \\
+  Fuel/coolant pitch        & p     & 1.8850    & cm   & \cite{in_three-dimensional_2006} \\
   Fuel column height        & L     & 793       & cm   & \cite{in_three-dimensional_2006} \\
   % input parameter characteristics
   Coolant channel mass flow rate & $\dot{m}$ & 0.0176 & kg/s & \cite{in_three-dimensional_2006} \\
@@ -130,6 +129,21 @@ Table \ref{fig:th-val-unit-results} summarizes the results.
 	\hfill
 	\label{fig:th-val-unit-model}
 \end{figure}
+
+Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
+The axial temperatures increase from the top to the bottom of the reactor.
+The moderator and coolant temperatures are parallel as the model assumes a film thermal conductivity independent of the temperature.
+The fuel and moderator temperature difference decreases.
+As the thermal conductivities of the different materials increase with temperature, the thermal resistance between the moderator and the fuel decreases.
+Table \ref{fig:th-val-unit-results} summarizes the results.
+Moltres/MOOSE coolant temperature is smaller by 4$^{\circ}$C.
+The moderator temperature is larger by 9$^{\circ}$C.
+The fuel temperature is larger by 22$^{\circ}$C.
+The cause of this is the power profile simplification.
+For a sinusoidal power profile the fuel-to-coolant temperature difference is small in the outlet, as we have seen in the previous section.
+The opposite scenario is the uniform power profile, where the fuel-to-coolant temperature difference is larger.
+In et al. used a chopped cosine power profile which we can think of it as the case in between a uniform and a sinusoidal power profile.
+Overall, our model results showed good agreement with In et al. results.
 
 \begin{figure}[htbp!]
   \centering
