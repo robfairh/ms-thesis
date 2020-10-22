@@ -18,33 +18,34 @@ We calculated the coolant radius by preserving the coolant channel volume.
 
 \begin{table}[htbp!]
 \centering
-      \caption{characteristics.}
+      \caption{Problem characteristics.}
       \label{tab:th-ver-char}
-    \begin{tabular}{@{}l c S[table-format=2.2] c c}
+    % \begin{tabular}{@{}l c S[table-format=2.2] c c}
+    \begin{tabular}{@{}l c c c c}
     \toprule
-    \multicolumn{1}{c}{Parameter} & multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & multicolumn{1}{c}{Reference} \\
+    \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\
     \midrule
   Fuel compact radius   & R$_f$     & 0.6225  & cm       & \cite{in_three-dimensional_2006} \\
   Fuel channel radius   & R$_g$     & 0.6350  & cm       & \cite{in_three-dimensional_2006} \\
-  Coolant channel radius    & - 	& 0.7950  & cm       & \cite{in_three-dimensional_2006} \\
-  Fuel/coolant pitch    & -			& 
+  Coolant channel radius    & - 	  & 0.7950  & cm       & \cite{in_three-dimensional_2006} \\
+  Fuel/coolant pitch    & -			    & 1.8850  & cm       & \cite{in_three-dimensional_2006} \\
   Fuel column height	& L 		& 793 	  & cm 		 & \cite{in_three-dimensional_2006} \\
   Coolant mass flow rate & $\dot{m}$ & 0.0176 & kg/s 	 & \cite{in_three-dimensional_2006} \\
   Average power density & q$_{ave}$ & 35      & W/cm$^3$ & \cite{in_three-dimensional_2006} \\
   Coolant inlet temperature 	& $T_{in}$ & 400  & $^{\circ}C$ & \cite{in_three-dimensional_2006} \\
   Helium inlet pressure & P 		& 70      & bar 	 & \cite{in_three-dimensional_2006} \\
-  Helium density		& $\rho_c$  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
-  Helium heat capacity  & c$_{p,c}$	& 5.188 $\times 10^{3}$ & J/kg/K  & \cite{nist_thermophysical_2020} \\
+  Helium density		& $\rho_c$  & 4.940 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity  & c$_{p,c}$	& 5188 & J/kg/K  & \cite{nist_thermophysical_2020} \\
   Fuel compact thermal conductivity & k$_f$ & 0.07    & W/cm/K & \cite{tak_numerical_2008} \\
-  Gap thermal conductivity & k$_g$ & 3 \times 10^{-3} & W/cm/K & \cite{tak_numerical_2008} \\
+  Gap thermal conductivity & k$_g$ & 3 $\times 10^{-3}$ & W/cm/K & \cite{tak_numerical_2008} \\
   Moderator thermal conductivity & k$_m$ & 0.30 & W/cm/K 	& \cite{tak_numerical_2008} \\
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
-  Calculated moderator radius 	& R$_m$ & 1.08  		& cm     & - \\
-  Coolant film radius   		& R$_i$ & 1.09  		& cm     & - \\
+  Calculated moderator radius & R$_m$ & 1.080  		& cm     & - \\
+  Coolant film radius   		  & R$_i$ & 1.090  		& cm     & - \\
   Calculated coolant radius 	& R$_c$ & 1.349  		& cm     & - \\
-  Coolant average velocity  	& v     & 1794.33 		& cm/s   & - \\
+  Coolant average velocity  	& v$_c$ & 1794.33 	& cm/s   & - \\
   Film thermal conductivity  	& k$_i$ & 1.722 $\times 10^{-3}$ & W/cm/K & - \\
   \bottomrule
   \end{tabular}
@@ -57,7 +58,7 @@ Note that this is a simplified model only for verification purposes, and it cons
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.3\linewidth]{figures-thermal/2D-preliminar-mesh2}
+	\includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
 	\hfill
 	\caption{Scaled-down version of the model geometry.}
 	\label{fig:th-ver-mesh}
@@ -68,8 +69,8 @@ Note that this is a simplified model only for verification purposes, and it cons
     \subfloat[Fuel centerline and bulk coolant axial temperatures. \label{fig:th-ver-results-a}]{
         \includegraphics[width=0.45\textwidth]{figures-thermal/2D-preliminar-axial}
     }
-    \subfloat[Radial temperature at z=396.5 cm.]{
-        \includegraphics[width=0.45\textwidth]{figures-thermal/2D-preliminar-radial}
+    \subfloat[Radial temperature at z=L/2=396.5 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/2D-preliminar-radial2}
     }
 	\hfill
     \caption{Temperature profiles.}
@@ -83,44 +84,37 @@ Intends to reproduce \cite{in_three-dimensional_2006}.
 Missing material properties come from \cite{tak_numerical_2008}.
 The material properties vary with the temperature (both in In et al and my simulation).
 
-Figure \ref{fig:th-val-unit-model} displays the model geometry.
-Figure \ref{fig:th-val-unit-results} shows the temperature profiles.
-
-Add table
-% Table with expected results
-Tcoolmax = 1144C
-Tmodmax = 1250C
-Tfuelmax = 1295C
-% Table with my results
-Tcoolmax = 1140C
-Tmodmax = 1259C
-Tfuelmax = 1317C
+Figure \ref{fig:th-val-unit-model} displays the model geometry and the model material properties that depend on the temperature.
+Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
+Table \ref{fig:th-val-unit-results} summarizes the results.
 
 \begin{table}[htbp!]
 \centering
-      \caption{characteristics.}
-      \label{tab:th-ver-char}
-    \begin{tabular}{@{}l c S[table-format=2.2] c c}
+      \caption{Problem characteristics.}
+      \label{tab:th-val-unit-char}
+    % \begin{tabular}{@{}l c S[table-format=2.2] c c}
+    \begin{tabular}{@{}l c c c c}
     \toprule
-    \multicolumn{1}{c}{Parameter} & multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & multicolumn{1}{c}{Reference} \\
+    \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\
     \midrule
   Fuel compact radius       & R$_f$ & 0.6225    & cm   & \cite{in_three-dimensional_2006} \\
   Fuel channel radius       & R$_g$ & 0.6350    & cm   & \cite{in_three-dimensional_2006} \\
   Coolant channel radius    & R$_c$ & 0.7950    & cm   & \cite{in_three-dimensional_2006} \\
-  Fuel/coolant pitch        & p     & 1.885     & cm   & \cite{in_three-dimensional_2006} \\
+  Fuel/coolant pitch        & p     & 1.8850     & cm   & \cite{in_three-dimensional_2006} \\
   Fuel column height        & L     & 793       & cm   & \cite{in_three-dimensional_2006} \\
   % input parameter characteristics
   Coolant channel mass flow rate & $\dot{m}$ & 0.0176 & kg/s & \cite{in_three-dimensional_2006} \\
   Average power density     & q$_{ave}$ & 35    & W/cm$^3$   & \cite{in_three-dimensional_2006} \\
   Inlet coolant temperature & T$_{in}$  & 400   & $^{\circ}$C  & \cite{in_three-dimensional_2006} \\
   Helium inlet pressure & P & 70 & bar & \cite{in_three-dimensional_2006} \\
-  Helium density        & \rho  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium density        & $\rho$  & 4.94 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
   Helium heat capacity  & c$_p$ & 5188 & J/kg/K & \cite{nist_thermophysical_2020} \\
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
-  Coolant film radius       & R$_i$ & 0.8050    & cm   & -\\
-  Film thermal conductivity & k_$i$ & 0.001731 & W/cm/K & - \\
+  Coolant film radius       & R$_i$ & 0.8050    & cm     & -  \\
+  Coolant average velocity  & v$_c$ & 1794.33   & cm/s   & -  \\
+  Film thermal conductivity & k$_i$ & 1.731 $\times 10^{-3}$ & W/cm/K & -  \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -128,13 +122,12 @@ Tfuelmax = 1317C
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Model geometry.]{
-        \includegraphics[width=0.45\textwidth]{figures-thermal/3D-unitcell-mesh}
+        \includegraphics[width=0.40\textwidth]{figures-thermal/3D-unitcell-mesh}
     }
     \subfloat[Material properties.]{
-        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-matprop}
+        \includegraphics[width=0.50\textwidth]{figures-thermal/val-unit-matprop}
     }
 	\hfill
-    \caption{.}
 	\label{fig:th-val-unit-model}
 \end{figure}
 
@@ -144,20 +137,126 @@ Tfuelmax = 1317C
         \includegraphics[width=0.45\textwidth]{figures-thermal/in-2006-5-axial}
     }
     \subfloat[Outlet plane temperature z=793 cm.]{
-        \includegraphics[width=0.45\textwidth]{figures-thermalval-unit-outlet-plane}
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-outlet-plane}
     }
   \hfill
     \caption{Temperature profiles.}
-  \label{fig:th-val-unit-results}
+  \label{fig:th-val-unit-temps}
 \end{figure}
+
+\begin{table}[htbp!]
+\centering
+      \caption{Maximum temperatures.}
+      \label{tab:th-val-unit-results}
+    \begin{tabular}{@{}l c c}
+    \toprule
+  Parameter   & In et al. 2006 \cite{in_three-dimensional_2006} & Moltres/MOOSE \\
+    \midrule
+  Maximum coolant temperature [$^{\circ}$C]   & 1144 & 1140 \\
+  Maximum moderator temperature [$^{\circ}$C] & 1250 & 1259 \\
+  Maximum fuel temperature [$^{\circ}$C]      & 1295 & 1317 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Fuel assembly}
 
-This section will calculate the heat profile of a fuel assembly of a HTGR.
+This section aims to reproduce some of the analyses in Sato et al. 2010 \cite{sato_computational_2010}.
+The study uses the GT-MHR as the reference reactor for the calculations.
+The GT-MHR shares the geometry specifications with the MHTGR.
+Table \ref{tab:element-characteristics} specifies the fuel element geometry.
+
+Material properties from \cite{johnson_cfd_2009}.
+
+The moderator is graphite H-451.
+Fuel compact and moderator thermal conductivities displayed in \ref{tab:th-val-assem-mat}.
+Helium thermal conductivity from \cite{nist_thermophysical_2020}.
+
+Figure \ref{fig:th-val-assem-model} displays the model geometry and the model material properties that depend on the temperature.
+
+\begin{table}[htbp!]
+\centering
+      \caption{Problem characteristics.}
+      \label{tab:th-val-unit-char}
+    % \begin{tabular}{@{}l c S[table-format=2.2] c c}
+    \begin{tabular}{@{}l c c c c}
+    \toprule
+    \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\
+    \midrule
+  Inlet coolant temperature & T$_{in}$  & 490   & $^{\circ}$C  & \cite{sato_computational_2010} \\
+  Helium inlet pressure & P & 70 & bar & \cite{sato_computational_2010} \\
+  Helium density        & $\rho$  & 4.37 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity  & c$_p$ & 5188 & J/kg/K & \cite{nist_thermophysical_2020} \\
+  Average power density     & q$_{ave}$ & 27.88 & W/cm$^3$   & \cite{sato_computational_2010} \\
+    \midrule
+  \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
+    \midrule
+  Coolant film radius       & R$_i$ & 0.804    & cm     & -  \\
+  Film thermal conductivity & k$_i$ & 2.09 $\times 10^{-3}$ & W/cm/K & -  \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp!]
+\centering
+  \caption{characteristics.}
+  \label{tab:th-val-assem-mat} 
+  \begin{tabular}{c|ccc|c}
+\toprule
+                          & \multicolumn{3}{c|}{Moderator}         & Fuel compact \\ \hline
+Temperature range {[}K{]} & 255.6-816 & 816-1644.4 & 1644.4-1922.2 & 255.6-2200   \\
+\midrule
+A1                        & 28.6      & 1.24E+2    & 41.5          & 3.94         \\
+A2                        & -         & -3.32E-1   & -             & 3.59E-3      \\
+A3                        & -         & 4.09E-4    & -             & -1.98E-9     \\
+A4                        & -         & -2.11E-7   & -             & 3.19E-12     \\
+A5                        & -         & 4.02E-11   & -             & -9.77E-16    \\
+\bottomrule
+  \end{tabular}
+\end{table}
+
+% \begin{figure}[htbp!]
+%   \centering
+%     \subfloat[Model geometry.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/assembly-mesh}
+%     }
+%     \subfloat[Material properties.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-matprop}
+%     }
+%   \hfill
+%   \label{fig:th-val-assem-model}
+% \end{figure}
+
+Add results from:
+Add mass flow rates in the figure.
+
+- No gap: mass flow values from sato
+
+
+- Gap: mass flow values from sato
+
+Add mass flow rates in the figure.
+
+\subsection{Flow distribution analysis}
+
+Talk about the necessity for this capability.
+Also mention the different exercises from the benchmark.
+
+Compares:
+- sato et al
+- incompressible
+- acceleration term
+
+This simplified algorithms allow for solving the mass flow rate distribution in the core for steady-state cases, and for transient cases as an approximation.
+However, in coupled analyses, the flow distribution depends on the temperature and will change along time.
+This creates the necessity for developing tools integrated into Moltres.
+Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
+Integrating that module into the solver could improve the accuracy.
+This task will be part of the future work.
 
 \section{Full core}
 
-This section will extend the methodology to a full-ore problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
+This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
 
 \section{Neutronics and Thermal-fluids Coupling}
 
@@ -165,5 +264,3 @@ This section will extend the methodology to a full-ore problem and it will inten
 - Heterogeneous model
 - Homogenized media and sub-channel unit cell model: how does it solve advection ?
 - Porous media model
-
-
