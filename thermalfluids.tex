@@ -121,7 +121,7 @@ To simplify the analysis, we used the average value of the power profile.
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Model geometry.]{
-        \includegraphics[width=0.40\textwidth]{figures-thermal/3D-unitcell-mesh}
+        \includegraphics[width=0.40\textwidth]{figures-thermal/val-unit-mesh}
     }
     \subfloat[Material properties.]{
         \includegraphics[width=0.50\textwidth]{figures-thermal/val-unit-matprop}
@@ -187,6 +187,7 @@ Fuel compact and moderator thermal conductivities displayed in \ref{tab:th-val-a
 Helium thermal conductivity from \cite{nist_thermophysical_2020}.
 
 Figure \ref{fig:th-val-assem-model} displays the model geometry and the model material properties that depend on the temperature.
+Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each coolant channel.
 
 \begin{table}[htbp!]
 \centering
@@ -197,11 +198,11 @@ Figure \ref{fig:th-val-assem-model} displays the model geometry and the model ma
     \toprule
     \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c}{Symbol} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\
     \midrule
-  Inlet coolant temperature & T$_{in}$  & 490   & $^{\circ}$C  & \cite{sato_computational_2010} \\
-  Helium inlet pressure & P & 70 & bar & \cite{sato_computational_2010} \\
-  Helium density        & $\rho$  & 4.37 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
-  Helium heat capacity  & c$_p$ & 5188 & J/kg/K & \cite{nist_thermophysical_2020} \\
-  Average power density     & q$_{ave}$ & 27.88 & W/cm$^3$   & \cite{sato_computational_2010} \\
+  Inlet coolant temperature & T$_{in}$  & 490   & $^{\circ}$C   & \cite{sato_computational_2010} \\
+  Helium inlet pressure     & P         & 70    & bar           & \cite{sato_computational_2010} \\
+  Helium density            & $\rho$    & 4.37 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity      & c$_p$     & 5188  & J/kg/K        & \cite{nist_thermophysical_2020} \\
+  Average power density     & q$_{ave}$ & 27.88 & W/cm$^3$      & \cite{sato_computational_2010} \\
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
@@ -213,7 +214,7 @@ Figure \ref{fig:th-val-assem-model} displays the model geometry and the model ma
 
 \begin{table}[htbp!]
 \centering
-  \caption{characteristics.}
+  \caption{Thermal conductivity coefficients.}
   \label{tab:th-val-assem-mat} 
   \begin{tabular}{c|ccc|c}
 \toprule
@@ -229,35 +230,84 @@ A5                        & -         & 4.02E-11   & -             & -9.77E-16  
   \end{tabular}
 \end{table}
 
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Model geometry.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-mesh}
+    }
+    \subfloat[Material properties.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-matprop}
+    }
+  \hfill
+  \label{fig:th-val-assem-model}
+\end{figure}
+
+\begin{table}[htbp!]
+\centering
+  \caption{Mass flow rate [g/s]. Values form \cite{sato_computational_2010}.}
+  \label{tab:th-val-assem-massflow}
+  \begin{tabular}{lllllllllllllll}
+\toprule
+Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & Gap \\
+\midrule
+No gap  & 6.18 & 11.34 & 11.37 & 11.38 & 11.43 & 11.33 & 22.70 & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
+3mm gap & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 16.56 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:th-val-assem-results}
+Figure \ref{fig:th-val-assem-temps}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Maximum temperatures.}
+  \label{tab:th-val-assem-results}
+\begin{tabular}{l|ll|ll}
+\toprule
+                                   & \multicolumn{2}{l|}{No gap} & \multicolumn{2}{l}{3mm gap} \\ \midrule
+                                   & Sato et al. & Moltres/MOOSE & Sato et al. & Moltres/MOOSE \\ \midrule
+Maximum fuel temperature           & 1090    & 1094              & 1115     & 1114             \\
+Maximum outlet coolant temperature & 985     & 983               & 1007     & 1005               
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Line A-B.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-lineAB}
+    }
+    \subfloat[Line A-C.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-lineAC}
+    }
+  \hfill
+  \caption{Outlet plane temperature along the line A-B and line A-C.}
+  \label{fig:th-val-assem-temps}
+\end{figure}
+
 % \begin{figure}[htbp!]
 %   \centering
-%     \subfloat[Model geometry.]{
-%         \includegraphics[width=0.45\textwidth]{figures-thermal/assembly-mesh}
+%     \subfloat[No gap.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-input}
 %     }
-%     \subfloat[Material properties.]{
-%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-matprop}
+%     \subfloat[3mm gap.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-input}
 %     }
 %   \hfill
-%   \label{fig:th-val-assem-model}
+%   \caption{Outlet plane temperature profile.}
+%   \label{fig:th-val-assem-temps}
 % \end{figure}
 
-Add results from:
-Add mass flow rates in the figure.
-
-- No gap: mass flow values from sato
-
-
-- Gap: mass flow values from sato
-
-Add mass flow rates in the figure.
 
 \subsection{Flow distribution analysis}
 
 Talk about the necessity for this capability.
 Also mention the different exercises from the benchmark.
 
-Compares:
+Compares mass flow and max coolant and fuel temperatures: w/ no gap (it would be better with the gap, but the previous analysis is still wrong sooooo)
 - sato et al
+- flat (same velocity across all the channels)
 - incompressible
 - acceleration term
 
