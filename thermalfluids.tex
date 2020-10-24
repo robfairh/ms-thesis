@@ -318,6 +318,47 @@ Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equa
 Integrating that module into the solver could improve the accuracy.
 This task will be part of the future work.
 
+\section{Mesh convergence analysis}
+% I might not include this in the final document
+
+Figure \ref{fig:th-full-assem-mesh} displays the model geometry.
+Table \ref{tab:th-full-assem-results} presents the results.
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
+  \hfill
+  \caption{Scaled-down version of the model geometry.}
+  \label{fig:th-full-assem-mesh}
+\end{figure}
+
+% \begin{figure}[htbp!]
+%   \centering
+%     \subfloat[Model geometry.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/full-assem-mesh2}
+%     }
+%     \subfloat[Mesh convergence analysis.]{
+%         \includegraphics[width=0.45\textwidth]{figures-thermal/full-assem-convergence}
+%     }
+%   \hfill
+%   \caption{Model geometry and mesh convergence analysis results.}
+%   \label{fig:th-full-assem}
+% \end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Maximum temperatures.}
+  \label{tab:th-full-assem-results}
+\begin{tabular}{l|lllll}
+\toprule
+Number of elements [$\times 10^{6}$]  & 1.025 & 1.306 & 1.833 & 2.596 & 3.006 \\
+Number of DoFs [$\times 10^{6}$]      & 0.524 & 0.666 & 0.932 & 1.317 & 1.525 \\
+Maximum coolant temperature & 1060.41 & 1062.23 & 1064.00 & 1065.13 & 1065.32 \\
+Maximum fuel temperature    & 1204.49 & 1217.32 & 1225.57 & 1233.44 & 1234.93
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Full core}
 
 This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
