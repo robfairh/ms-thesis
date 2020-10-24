@@ -246,7 +246,7 @@ A5                        & -         & 4.02E-11   & -             & -9.77E-16  
 \centering
   \caption{Mass flow rate [g/s]. Values form \cite{sato_computational_2010}.}
   \label{tab:th-val-assem-massflow}
-  \begin{tabular}{lllllllllllllll}
+  \begin{tabular}{l|llllllllllllll}
 \toprule
 Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & Gap \\
 \midrule
@@ -317,6 +317,48 @@ This creates the necessity for developing tools integrated into Moltres.
 Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
 Integrating that module into the solver could improve the accuracy.
 This task will be part of the future work.
+
+\begin{itemize}
+    \item Case 1: uses the mass flow distribution from Sato et al.
+    \item Case 2: uses a flat velocity profile. Every channel has the same velocity.
+    \item Case 3: Incompressible
+    \item Case 4: Incompressible with temperature dependent viscosity.
+    \item Case 5: Incompressible with temperature dependent viscosity and acceleration term.
+\end{itemize}
+
+Table \ref{tab:th-assem-flow-massflow} displays the mass flow rates.
+Table \ref{tab:th-full-assem-results} summarizes the maximum temperatures.
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Mass flow rates [g/s].}
+  \label{tab:th-assem-flow-massflow}
+  \begin{tabular}{l|llllllllllllll}
+\toprule
+Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & Half-gap \\
+\midrule
+Case 1  & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 8.28 \\
+Case 2  & 6.66 & 10.41 & 10.41 & 10.41 & 10.41 & 10.41 & 20.82 & 20.82 & 20.82 & 10.41 & 20.82 & 20.82 & 10.41 & 8.20 \\
+Case 3  & 5.98 & 10.91 & 10.91 & 10.91 & 10.91 & 10.91 & 21.82 & 21.82 & 21.82 & 10.91 & 21.82 & 21.82 & 10.91 & 8.55 \\
+Case 4  & 5.97 & 10.90 & 10.90 & 10.91 & 10.92 & 10.90 & 21.80 & 21.81 & 21.83 & 10.91 & 21.82 & 21.85 & 10.92 & 8.55 \\
+Case 5  & 5.83 & 10.75 & 10.81 & 10.90 & 11.09 & 10.73 & 21.58 & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{Maximum temperatures.}
+  \label{tab:th-full-assem-results}
+\begin{tabular}{l|lllll}
+\toprule
+Model                       & Case 1 & Case 2 & Case 3 & Case 4 & Case 5 \\
+\midrule
+Maximum coolant temperature & 1005   &  994   &  999 & 1000 & 1007 \\
+Maximum fuel temperature    & 1114   & 1116   & 1109 & 1110 & 1116
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Mesh convergence analysis}
 % I might not include this in the final document
