@@ -127,6 +127,7 @@ To simplify the analysis, we used the average value of the power profile.
         \includegraphics[width=0.50\textwidth]{figures-thermal/val-unit-matprop}
     }
 	\hfill
+  \caption{Moltres/MOOSE input parameters.}
 	\label{fig:th-val-unit-model}
 \end{figure}
 
@@ -135,7 +136,7 @@ The axial temperatures increase from the top to the bottom of the reactor.
 The moderator and coolant temperatures are parallel as the model assumes a film thermal conductivity independent of the temperature.
 The fuel and moderator temperature difference decreases.
 As the thermal conductivities of the different materials increase with temperature, the thermal resistance between the moderator and the fuel decreases.
-Table \ref{fig:th-val-unit-results} summarizes the results.
+Table \ref{tab:th-val-unit-results} summarizes the results.
 Moltres/MOOSE coolant temperature is smaller by 4$^{\circ}$C.
 The moderator temperature is larger by 9$^{\circ}$C.
 The fuel temperature is larger by 22$^{\circ}$C.
@@ -154,14 +155,14 @@ Overall, our model results showed good agreement with In et al. results.
         \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-outlet-plane}
     }
   \hfill
-    \caption{Temperature profiles.}
+  \caption{Temperature profiles.}
   \label{fig:th-val-unit-temps}
 \end{figure}
 
 \begin{table}[htbp!]
 \centering
-      \caption{Maximum temperatures.}
-      \label{tab:th-val-unit-results}
+    \caption{Maximum temperatures.}
+    \label{tab:th-val-unit-results}
     \begin{tabular}{@{}l c c}
     \toprule
   Parameter   & In et al. 2006 \cite{in_three-dimensional_2006} & Moltres/MOOSE \\
@@ -189,7 +190,7 @@ Table \ref{tab:element-characteristics} specifies the fuel element geometry.
 
 Equation \ref{eq:matcoeff} describes the solid material properties \cite{johnson_cfd_2009}.
 Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator thermal conductivities coefficients.
-The helium properties come from \cite{nist_thermophysical_2020}.
+Table \ref{tab:th-val-assem-char} lists several input parameters, including the helium properties.
 Figure \ref{fig:th-val-assem-model-b} shows the temperature dependent material properties.
 
 \begin{align}
@@ -203,7 +204,7 @@ Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
 \begin{table}[htbp!]
 \centering
       \caption{Problem characteristics.}
-      \label{tab:th-val-unit-char}
+      \label{tab:th-val-assem-char}
     % \begin{tabular}{@{}l c S[table-format=2.2] c c}
     \begin{tabular}{@{}l c c c c}
     \toprule
@@ -391,7 +392,7 @@ Case 3 and 4 barely differ.
 Not taking into account the temperature dependency of the viscosity yields a simpler method and the accuracy loss is negligible.
 Case 5 arrives to the closest values to the reference solution.
 
-Table \ref{tab:th-full-assem-results} summarizes the maximum temperatures.
+Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
 For the maximum coolant temperature. case 2 yields the largest difference which is smaller than less than 10$^{\circ}$C.
 Case 5 yields the best result.
 For the maximum fuel temperature, case 2 and 5 yield the best results.
@@ -431,7 +432,7 @@ Case 5  & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 \\
 \begin{table}[htbp!]
   \centering
   \caption{Maximum temperatures.}
-  \label{tab:th-full-assem-results}
+  \label{tab:th-assem-flow-results}
 \begin{tabular}{l|lllll}
 \toprule
                             & Case 1 & Case 2 & Case 3 & Case 4 & Case 5 \\
@@ -471,7 +472,7 @@ For this reason, the next section intends to solve the full scale problem using 
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/full-assem-mesh2}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/full-assem-mesh2}
   \hfill
   \caption{Full fuel column model geometry.}
   \label{fig:th-full-assem-mesh}
