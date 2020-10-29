@@ -57,15 +57,14 @@ This arrangement is around 38\% efficient \cite{breeze_nuclear_2014}.
 However, the steam cycle requires a steam generator and also a gas circulator \cite{no_review_2007}.
 This requirement increases the capital cost of power plant, and it creates a risk of a water ingress event.
 The Brayton cycle is a better option because the helium coolant can directly drive a gas turbine in a closed cycle.
-A closed cycle eliminates the need for a steam generator and a gas ciculator.
+A closed cycle eliminates the need for a steam generator and a gas circulator.
 Additionally, it removes external sources of contamination of the nuclear circuit, reducing the need for on-line cleanup systems \cite{iaea_current_2001}.
 With the Brayton cycle, the system can achieve an energy conversion efficiency of around 48\% \cite{breeze_nuclear_2014}.
 
-Higher outlet temperatures and increased cycle efficiencies in HTGRs enable a wide range of process heat applications.
-Some applications use steam for coal gasification processes, oil refinery processes, and production of synthesis gas, methanol, and hydrogen.
-Hydrogen can be a decisive response to energy and climate challenges, as it can decarbonize the transport and power sectors \cite{nagashima_japans_2018}.
-Several hydrogen production processes benefit from high temperatures, such as high-temperature electrolysis or thermochemical water splitting.
-Utilizing the \gls{HTGR} as the energy source of the process eliminates the need to burn fossil fuels to generate the steam those processes require \cite{iaea_current_2001}.
+Higher outlet temperatures and increased thermal conversion efficiencies in HTGRs enable a wide range of process heat applications, such as coal gasification processes, oil refinery processes, and production of synthesis gas, methanol, and hydrogen.
+Hydrogen offers a solution to energy and climate challenges, decarbonizing the transport and power sectors \cite{nagashima_japans_2018}.
+Several hydrogen production processes benefit from high temperatures, such as high-temperature electrolysis \cite{doenitz_hydrogen_1980} or thermochemical water-splitting \cite{yildiz_efficiency_2006}.
+Utilizing the \gls{HTGR} as the process energy source eliminates the need to burn fossil fuels to generate the steam those processes require \cite{iaea_current_2001}.
 
 % Maybe this paragraph should be in objectives
 This thesis focuses primarily on the \gls{MHTGR}-350 \cite{neylan_modular_1988} \cite{silady_licensing_1988}.
@@ -80,60 +79,58 @@ The team completed in 1986 the preliminary safety information document for the M
 \section{Motivation}
 
 This work's ultimate goal is to support the development of \gls{HTGR} technology.
-More specifically, we focus on the development of computational methods for modeling \glspl{HTGR} with \textit{Moltres} as our primary analysis tool.
+More specifically, we focus on the development of computational methods for modeling \glspl{HTGR} with \textit{Moltres} \cite{lindsay_introduction_2018} as our primary analysis tool.
 
 % Why do we focus on HTGRs?
 The Generation IV Roadmap project identified reactor concepts that could meet the future's energy demands in an efficient, economical, and environmentally safe manner \cite{macdonald_ngnp_2003}.
 One of these reactor concepts is the \gls{VHTR}.
-The \gls{VHTR} is distinct from the \gls{HTGR} as its coolant outlet temperature reaches higher temperatures.
-However, the literature often uses these terms interchangeably.
-In this work, the term \gls{HTGR} encompasses both terms.
+A \gls{VHTR} is a type of HTGR whose core outlet temperatures are between 700 and 950 $^{\circ}$C \cite{gif_gif_2019}.
 The \gls{DOE} selected this reactor concept for the \gls{NGNP} Project.
 This project intended to demonstrate emissions-free nuclear-assisted electricity and hydrogen production by 2015.
 
-Although the \gls{DOE} canceled the \gls{NGNP} Project, \glspl{HTGR} may become a reality in the near term.
-Some microreactor designs embody this type of technology and may be operational before 2030.
-Additionally, as Section \ref{sec:pmr} has already described, the \gls{HTGR} technology has several favorable characteristics.
+Although the \gls{DOE} canceled the \gls{NGNP} Project, the large scale deployment of HTGRs may become a reality in the near term.
+Some microreactor designs embody this type of reactor technology and may be operational before 2030.
+Additionally, as Section \ref{sec:pmr} has already described, HTGR technology has several favorable characteristics.
 To recapitulate the most relevant features, the \gls{HTGR} relies on passive heat transfer mechanisms, uses TRISO particles as its fuel which inhibits proliferation, achieves high temperatures, and benefits from increased cycle efficiencies.
 Another beneficial characteristic is that high temperatures enable a wide range of process heat applications, among which we find hydrogen production.
 
 %Why is computational modeling important?
 Modeling and prediction of core thermal-hydraulic behavior is necessary for assessing the safety characteristics of a reactor.
 Determining the temperature inside a reactor, for both normal and transient operation, is of paramount importance as several materials' integrity depends on it.
-Undesirably high temperatures endanger the TRISO particles' integrity and, consequently, jeopardize a fission product release \cite{tak_numerical_2008}.
+Undesirably high temperatures endanger the TRISO particles' integrity and, consequently, jeopardize the fission product containment \cite{tak_numerical_2008}.
 % The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce stmctural material weakness, and lead to excessive chemical reaction rates.
-Furthermore, the fuel blocks' complex geometry hinders accurate calculations of the fuel temperatures requiring elaborate numerical calculations.
+Furthermore, the complex fuel blocks geometry requires numerical calculations for obtaining the fuel temperatures.
 
 The characteristics of an \gls{HTGR} are different from those of conventional \glspl{LWR}.
-Such differences demand for new reactor analysis tools.
-These new tools should take into account the following peculiarities of \glspl{HTGR} \cite{rohde_development_2012}\cite{bostelmann_criticality_2016}:
+Such differences demand reactor analysis tools that capture the following peculiarities of \glspl{HTGR} \cite{rohde_development_2012}\cite{bostelmann_criticality_2016}:
 \begin{itemize}
-\item Hexagonal structure: the shape of the fuel blocks hinders conformity to any orthogonal coordinate system.
+% \item Hexagonal structure: the shape of the fuel blocks hinders conformity to any orthogonal coordinate system.
 \item Double heterogeneity: the TRISO particles form the first heterogeneity level, consisting of four
 layers.
 The second level arises from the fuel elements, as they encompass the compacts, the coolant, and the moderator.
-\item Strong temperature dependence: the fuel temperatures have a large effect on the neutron spectrum and the macroscopic cross-sections.
+\item Strong temperature dependence: the fuel temperatures have a significant effect on the neutron spectrum and the transient feedbacks.
+\item High temperature gradient: the temperature difference between the fuel and the moderator is large during the course of transients.
 \item High thermal inertia: the large graphite structures cause long transients.
 \end{itemize}
 
 %Why use Moltres?
 Historically, linking a stand-alone neutronics solver to a thermal-hydraulics solver allowed for simulating an entire reactor.
-The coupling of the programs occurred in a black-box fashion, such that one code's output served as the other's input and vice versa.
+The connection of the programs occurred in a loose-coupling fashion, such that one code's output served as the other's input and vice versa.
 This coupling technique is commonly known as the operator-splitting technique \cite{ragusa_consistent_2009}.
-In such an approach, each individual physics isolates the action of the governing equations upon the variables.
+In such an approach, each program uses a physical model that solves some of the problem variables while assuming constant the rest of them.
 Nonetheless, these physical models describe processes that rely heavily on the solution of one another's.
 The neutron flux determines the power distribution, and the power distribution strongly influences the temperature field.
-Due to the \gls{HTGR} strong temperature feedback, the temperature affects the neutron flux distribution in the core.
-Because of a time-scale separation between the different phenomena, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{ragusa_consistent_2009} \cite{park_tightly_2010}.
+Due to the \gls{HTGR} temperature feedback, the temperature affects the neutron flux distribution in the core.
+Because of a strong temperature feedback, multiphysics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{park_tightly_2010}\cite{ragusa_consistent_2009}.
 
 \gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
 All the software built on the \gls{MOOSE} framework shares a joint code base.
 These features facilitate relatively easy coupling between separate phenomena and allow for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
 Additionally, all programs use \gls{MPI} for parallel communication and allow for deployment on massively-parallel cluster-computing platforms.
 
-\textit{Moltres} \cite{lindsay_introduction_2018} is an open source, \gls{FEM} simulation code built within the \gls{MOOSE} framework.
-\textit{Moltres} solves arbitrary-group neutron diffusion, precursor, and temperature governing equations.
-All these characteristics make \textit{Moltres} suitable for solving the type of physical phenomena described above.
+\textit{Moltres} is an open source, \gls{FEM} application built within the \gls{MOOSE} framework.
+\textit{Moltres} solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
+All these characteristics, plus some modifications that this work intends to implement, make \textit{Moltres} suitable for solving the type of physical phenomena described above.
 
 \section{Objectives}
 
