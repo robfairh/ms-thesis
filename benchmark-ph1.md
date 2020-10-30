@@ -57,11 +57,18 @@ Reporting:
 - fuel temperature
 	- average
 	- max
-- heat flux (RPV): all the sur
+- heat flux (RPV): all surrounding surfaces
 - fluid temperature
-- mass flow rate 
+	- channels: average and max
+	- bypass: average
+	- average outlet helium temp
+- mass flow rate distribution in channels and bypass
 - moderator temperature
-
+	- average
+- reflector temperature
+	- average
+- RPV temperature
+	- max
 
 
 Benchmark-Ph1Ex3:
