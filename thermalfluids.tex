@@ -528,14 +528,19 @@ Four sub-cases compose exercise 2:
   \item Exercise 2d: Bypass flow type II and variable thermophysical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
-Modeling details/simplifications
-* Mesh figure
-* All the graphite regions assume the grade H-451 graphite material properties.
+* What should be reported ?
 
+
+Modeling details/simplifications
+* Trying \cite{stainsby_investigation_2008} approach.
+* Mesh figure
+* Table \ref{tab:th-ex2a} presents the material properties and geometry specification.
+All the graphite regions assume the grade H-451 graphite material properties.
+* 
 
 \begin{table}[htbp!]
 \centering
-      \caption{Material properties.}
+      \caption{Problem characteristics.}
       \label{tab:th-ex2a}
       \begin{tabular}{@{}l c S[table-format=2.2] c}
     \toprule
@@ -559,8 +564,21 @@ Modeling details/simplifications
   \end{tabular}
 \end{table}
 
-
-Trying \cite{stainsby_investigation_2008} approach.
+\begin{table}[htbp!]
+\centering
+      \caption{First bottom core level average temperatures.}
+      \label{tab:th-ex2a-results}
+    \toprule
+\begin{tabular}{l|c|c|c|c|c|c}
+          & \multicolumn{2}{l|}{Ring 1} & \multicolumn{2}{l|}{Ring 2} & \multicolumn{2}{l}{Ring 3} \\ \cline{2-7} 
+          & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
+    \midrule
+Coolant   & 797     &                   & 636     &                   & 673       &               \\
+Moderator & 843     &                   & 672     &                   & Not shown &               \\
+Fuel      & 863     &                   & 688     &                   & 722       &               \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Neutronics and Thermal-fluids Coupling}
 
