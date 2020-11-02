@@ -507,11 +507,79 @@ Maximum fuel temperature    & 1204.49 & 1217.32 & 1225.57 & 1233.44 & 1234.93 \\
 \end{tabular}
 \end{table}
 
-\section{Full-core}
+% \section{Full-core 3D}
+% This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
+% Trying \cite{stainsby_investigation_2008} approach.
 
-This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
+\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 2}
 
-Trying \cite{stainsby_investigation_2008} approach.
+This section conducted Phase I Exercise 2 of the benchamrk with Moltres/MOOSE.
+OECD/NEA did not publish this exercise's results.
+This section compares the results to INL's benchmark results \cite{strydom_inl_2013}.
+Phase I Exercise 2 defines a thermal-fluids standalone calculation.
+The benchmark specified the power density of each fuel region.
+The exercise purpose is to ensure that the thermal-fluid model differences between participants are negligible and that they will not affect the coupled exercises.
+
+Four sub-cases compose exercise 2:
+\begin{itemize}
+  \item Exercise 2a: No bypass flow and fixed thermophysical properties. No bypass flow modeled. The thermo-physical properties are constant.
+  \item Exercise 2b: Bypass flow type I and fixed thermophysical properties. This exercise prescribes the bypass flow distribution. The thermo-physical properties are constant.
+  \item Exercise 2c: Bypass flow type I and variable thermophysical properties. This exercise prescribes the bypass flow distribution. The thermo-physical properties depend on different simulation parameters.
+  \item Exercise 2d: Bypass flow type II and variable thermophysical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
+\end{itemize}
+
+* What should be reported ?
+
+
+Modeling details/simplifications
+* Trying \cite{stainsby_investigation_2008} approach.
+* Mesh figure
+* Table \ref{tab:th-ex2a} presents the material properties and geometry specification.
+All the graphite regions assume the grade H-451 graphite material properties.
+* 
+
+\begin{table}[htbp!]
+\centering
+      \caption{Problem characteristics.}
+      \label{tab:th-ex2a}
+      % \begin{tabular}{@{}l S[table-format=3.5] c c}
+      \begin{tabular}{@{}l c c c}
+    \toprule
+  \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\    
+    \midrule
+  Fuel compact thermal conductivity & 20    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  Fuel block thermal conductivity   & 37    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  Graphite thermal conductivity     & 66    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  \gls{RPV} thermal conductivity    & 40    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  Coolant thermal conductivity      & 0.41  & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  Air thermal conductivity          & 0.068 & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
+  Helium density                    & 5.703 & $\times 10^{-6}$ kg/cm$^3$  & \cite{nist_thermophysical_2020} \\
+  % Helium density                    & 5.703 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity              & 5188  & J/kg/K  & \cite{nist_thermophysical_2020} \\
+    \midrule
+  \multicolumn{1}{c}{Calculated parameters} &  &  & \\  
+    \midrule
+  Coolant film radius               & 0.804 & cm      & -  \\
+  Film thermal conductivity         & 2.09  & $\times 10^{-3}$ W/cm/K & -  \\
+  \bottomrule
+  \end{tabular}
+\end{table}
+
+% \begin{table}[htbp!]
+% \centering
+%       \caption{First bottom core level average temperatures.}
+%       \label{tab:th-ex2a-results}
+%     \toprule
+% \begin{tabular}{l|c|c|c|c|c|c}
+%           & \multicolumn{2}{l|}{Ring 1} & \multicolumn{2}{l|}{Ring 2} & \multicolumn{2}{l}{Ring 3} \\ \cline{2-7} 
+%           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
+%     \midrule
+% Coolant   & 797     &                   & 636     &                   & 673       &               \\
+% Moderator & 843     &                   & 672     &                   & Not shown &               \\
+% Fuel      & 863     &                   & 688     &                   & 722       &               \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 
 \section{Neutronics and Thermal-fluids Coupling}
 
