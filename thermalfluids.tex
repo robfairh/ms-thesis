@@ -542,7 +542,8 @@ All the graphite regions assume the grade H-451 graphite material properties.
 \centering
       \caption{Problem characteristics.}
       \label{tab:th-ex2a}
-      \begin{tabular}{@{}l c S[table-format=2.2] c}
+      % \begin{tabular}{@{}l S[table-format=3.5] c c}
+      \begin{tabular}{@{}l c c c}
     \toprule
   \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\    
     \midrule
@@ -552,33 +553,33 @@ All the graphite regions assume the grade H-451 graphite material properties.
   \gls{RPV} thermal conductivity    & 40    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
   Coolant thermal conductivity      & 0.41  & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
   Air thermal conductivity          & 0.068 & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Helium density                    & $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
+  Helium density                    & 5.703 & $\times 10^{-6}$ kg/cm$^3$  & \cite{nist_thermophysical_2020} \\
+  % Helium density                    & 5.703 $\times 10^{-6}$ & kg/cm$^3$ & \cite{nist_thermophysical_2020} \\
   Helium heat capacity              & 5188  & J/kg/K  & \cite{nist_thermophysical_2020} \\
-
     \midrule
-  \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
+  \multicolumn{1}{c}{Calculated parameters} &  &  & \\  
     \midrule
-  Coolant film radius       & R$_i$ & 0.804    & cm     & -  \\
-  Film thermal conductivity & k$_i$ & 2.09 $\times 10^{-3}$ & W/cm/K & -  \\
+  Coolant film radius               & 0.804 & cm      & -  \\
+  Film thermal conductivity         & 2.09  & $\times 10^{-3}$ W/cm/K & -  \\
   \bottomrule
   \end{tabular}
 \end{table}
 
-\begin{table}[htbp!]
-\centering
-      \caption{First bottom core level average temperatures.}
-      \label{tab:th-ex2a-results}
-    \toprule
-\begin{tabular}{l|c|c|c|c|c|c}
-          & \multicolumn{2}{l|}{Ring 1} & \multicolumn{2}{l|}{Ring 2} & \multicolumn{2}{l}{Ring 3} \\ \cline{2-7} 
-          & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
-    \midrule
-Coolant   & 797     &                   & 636     &                   & 673       &               \\
-Moderator & 843     &                   & 672     &                   & Not shown &               \\
-Fuel      & 863     &                   & 688     &                   & 722       &               \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+% \begin{table}[htbp!]
+% \centering
+%       \caption{First bottom core level average temperatures.}
+%       \label{tab:th-ex2a-results}
+%     \toprule
+% \begin{tabular}{l|c|c|c|c|c|c}
+%           & \multicolumn{2}{l|}{Ring 1} & \multicolumn{2}{l|}{Ring 2} & \multicolumn{2}{l}{Ring 3} \\ \cline{2-7} 
+%           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
+%     \midrule
+% Coolant   & 797     &                   & 636     &                   & 673       &               \\
+% Moderator & 843     &                   & 672     &                   & Not shown &               \\
+% Fuel      & 863     &                   & 688     &                   & 722       &               \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table}
 
 \section{Neutronics and Thermal-fluids Coupling}
 
