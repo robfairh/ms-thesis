@@ -517,10 +517,10 @@ This section conducted Phase I Exercise 2 of the benchamrk with Moltres/MOOSE.
 OECD/NEA did not publish this exercise's results.
 This section compares the results to INL's benchmark results \cite{strydom_inl_2013}.
 Phase I Exercise 2 defines a thermal-fluids standalone calculation.
-The benchmark specified the power density of each fuel region.
+The benchmark specifies the power density of each fuel region.
 The exercise purpose is to ensure that the thermal-fluid model differences between participants are negligible and that they will not affect the coupled exercises.
 
-Four sub-cases compose exercise 2:
+Four sub-cases compose Exercise 2:
 \begin{itemize}
   \item Exercise 2a: No bypass flow and fixed thermophysical properties. No bypass flow modeled. The thermo-physical properties are constant.
   \item Exercise 2b: Bypass flow type I and fixed thermophysical properties. This exercise prescribes the bypass flow distribution. The thermo-physical properties are constant.
@@ -528,7 +528,11 @@ Four sub-cases compose exercise 2:
   \item Exercise 2d: Bypass flow type II and variable thermophysical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
-* What should be reported ?
+The exercise requires the reporting of the average and maximum values of the reflector, \gls{RPV}, fuel, moderator, and coolant temperatures.
+It also requires the reporting of the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
+This data is helpful to trace the source of possible differences in the primary parameters.
+This section compares Moltres/MOOSE results to INL's results, and presents only a subset of available data that illustrate the main characteristics of the exercise.
+
 
 
 Modeling details/simplifications
@@ -599,3 +603,20 @@ We chose:
 One of the major improvements of the coupling model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.' \cite{damian_vhtr_2008}.
 
 Future work will analyze the possibility of using porous media in Moltres.
+
+
+\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
+
+This section sets the road-map for conducting Phase I Exercise 3 of the benchamrk with Moltres/MOOSE.
+Exercise 3 combines all the data from the first two exercises, and the participants need to determine a coupled neutronic and thermal-fluids solution.
+The benchmark specifies the group constants required to conduct the exercise.
+The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
+In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
+
+Two sub-cases compose Exercise 3:
+\begin{itemize}
+  \item Exercise 3a: It uses the same thermal-fluids problem definition from Exercise 2c.
+  \item Exercise 3b: It uses the same thermal-fluids problem definition from Exercise 2d.
+\end{itemize}
+
+This exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
