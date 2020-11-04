@@ -43,3 +43,12 @@ This section introduces some possible future work as a continuation of this thes
 
 % Hydrogen extensions
 - HTE with steam temperature boosting
+
+
+% Thermal-fluids
+This simplified algorithms allow for solving the mass flow rate distribution in the core for steady-state cases, and for transient cases as an approximation.
+However, in coupled analyses, the flow distribution depends on the temperature and will change with respect to time.
+This creates the necessity for developing tools integrated into Moltres.
+Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
+Integrating that module into the solver could improve the accuracy.
+This task will be part of the future work.
