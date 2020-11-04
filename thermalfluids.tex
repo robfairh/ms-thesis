@@ -458,7 +458,7 @@ The coolant temperature converges for the fifth mesh.
 The fuel temperature did not reach convergence.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
 
-This analysis reveals a problem.
+This analysis reveals a potential problem.
 The high level of detail in our geometry requires a large number of elements in the mesh.
 Moving forward, the problem dimensions will increase and the number of elements in the mesh will do so too.
 Potentially, this method will not be able to solve the three-dimensional full scale problem due to a high memory requirement.
@@ -544,8 +544,15 @@ Future works will focus on adding the capability to model such heat transfer mec
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
 The model uses a global model to obtain the coolant temperatures in the core and then it uses a sub-channel approach to obtain the fuel and moderator average temperatures.
 Figure \ref{fig:ex2a-2nd-model} displays the model geometry.
+The model uses three rings to define the core solid structures and other three for the coolant flow in the core.
+We calculated the rings radii by preserving the assemblies volume.
+The inner and outer rings represent the inner and outer reflectors.
+The middle ring defines the fuel rings, which are three (see Figure \cite{oecd_nea_benchmark_2017}).
+The coolant ring thicknesses preserve the coolant volume in each of the fuel rings.
 
-Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures.
+The model uses the material properties from Table \ref{tab:th-ex2a}.
+
+Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different rings.
 
 Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
 
