@@ -78,6 +78,7 @@ Also, the model considers only one fuel channel while in the GT-MHR unit cell, t
 \end{figure}
 
 \section{Unit cell problem}
+\label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of an HTGR.
 We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} in an effort to validate the unit-cell model.
@@ -344,6 +345,7 @@ Fuel    & 1090    & 1094              & 1115     & 1114             \\
 % \end{figure}
 
 \subsection{Flow distribution analysis}
+\label{sec:flowdistrib}
 
 As described in Section \ref{sec:litrev-thermalf}, several authors calculate the flow distribution using various methods.
 This section compares the effects of different methods on the results.
@@ -539,25 +541,7 @@ In other words, the heat transfer from the fuel rings to the rest of the core st
 For that reason, the reflector temperatures are too low and the coolant temperatures are too high.
 These results indicate that Moltres model fails to capture some heat transfer mechanism that INL's model captures.
 The most notorious difference between the models is the inclusion of the radiative heat transfer.
-Future works will focus on adding the capability to model such heat transfer mechanism.
-
-To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
-The model uses a global model to obtain the coolant temperatures in the core and then it uses a sub-channel approach to obtain the fuel and moderator average temperatures.
-Figure \ref{fig:ex2a-2nd-model} displays the model geometry.
-The model uses three rings to define the core solid structures and other three for the coolant flow in the core.
-We calculated the rings radii by preserving the assemblies volume.
-The middle ring defines the fuel rings, which are three (see Figure \cite{oecd_nea_benchmark_2017}).
-The coolant ring thicknesses preserve the coolant volume in each of the fuel rings.
-The model uses the material properties from Table \ref{tab:th-ex2a}.
-
-Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different rings.
-The coolant temperature increases from the top to the bottom of the core.
-The temperature is constant in the bottom and top reflector regions, and it increases in the active core region.
-The highest coolant temperature is in fuel ring 1.
-
-The fuel temperature is 
-
-Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
+Future works will focus on confirming this supposition and also on adding the capability to model the radiative heat transfer.
 
 % model H figure
 \begin{figure}[htbp!]
@@ -593,8 +577,8 @@ Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
 \centering
       \caption{First bottom core level average temperatures.}
       \label{tab:th-ex2a-1st-results}
-    \toprule
 \begin{tabular}{l|ccc|ccc}
+    \toprule
               & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c|}{Coolant} \\ \cline{2-7} 
               & Ring 1   & Ring 2   & Ring 3   & Ring 4   & Ring 5  & Ring 6  \\
     \midrule
@@ -611,6 +595,39 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
   \caption{Model geometry.}
   \label{fig:ex2a-1st-model-across}
 \end{figure}
+
+To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
+The calculation uses a global model to obtain the coolant temperature in the core and then it uses a sub-channel model to obtain the fuel and moderator average temperature.
+Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
+The sub-channel model uses half of the unit cell in Section \ref{sec:unitcell}.
+The global model uses three rings to define the core solid structures and other three for the coolant flow in the core.
+We calculated the rings radii by preserving the assemblies volume.
+The middle ring defines the fuel rings, which emcompasses three fuel rings (see Figure \cite{oecd_nea_benchmark_2017}).
+The coolant ring volumes preserve the coolant volume in each of the fuel rings.
+The model uses the material properties from Table \ref{tab:th-ex2a}.
+
+Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
+The coolant temperature increases from the top to the bottom of the core.
+The temperature is constant in the bottom and top reflector regions, and it increases in the active core region.
+The highest coolant, fuel, and moderator temperatures are in fuel ring 1.
+
+Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
+We focus on the coolant temperature of the different rings.
+Moltres predicts a smaller temperature in fuel ring 1 while it predicts higher temperatures in fuel rings 2 and 3.
+For some reason, the global model fails to distribute properly the heat produced in the fuel rings into the coolant rings.
+A possible cause of this discrepancy is the flat velocity approximation.
+Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model.
+However, one of the assumptions of that model was that the power density is uniform.
+In this exercise, the power density is not uniform, and that could be causing the discrepancies.
+Further studies will study the cause of the discrepancies.
+
+Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for fuel rings 1 and 2.
+The largest discrepancy is in fuel ring 1.
+INL's model coolant-to-moderator temperature difference is 46$^{\circ}$C while Moltres/MOOSE predicts a difference of 30$^{\circ}$C.
+The flat velocity approximation might be again the source of these discrepancies.
+Finally, The moderator-to-fuel temperature difference from INL and Moltres/MOOSE are close.
+In fuel ring 1, it is 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
+In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
 
 % model G figure
 \begin{figure}[htbp!]
@@ -639,9 +656,9 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
 \centering
       \caption{First bottom core level average temperatures.}
       \label{tab:th-ex2a-results}
-    \toprule
 \begin{tabular}{l|c|c|c|c|c|c}
-          & \multicolumn{2}{l|}{Ring 1} & \multicolumn{2}{l|}{Ring 2} & \multicolumn{2}{l}{Ring 3} \\ \cline{2-7} 
+    \toprule
+          & \multicolumn{2}{l|}{Fuel ring 1} & \multicolumn{2}{l|}{fuel ring 2} & \multicolumn{2}{l}{fuel ring 3} \\ \cline{2-7} 
           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
     \midrule
 Coolant   & 797     & 718               & 636     & 646               & 673       & 696           \\
