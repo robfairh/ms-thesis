@@ -77,7 +77,7 @@ Also, the model considers only one fuel channel while in the GT-MHR unit cell, t
 	\label{fig:th-ver-results}
 \end{figure}
 
-\section{Unit cell problem}
+\subsection{Unit cell problem}
 \label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of an HTGR.
@@ -648,7 +648,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
         \includegraphics[width=0.45\textwidth]{figures-thermal/ex2a-solid}
     }
   \hfill
-  \caption{Axial temperature.}
+  \caption{Axial temperatures.}
   \label{fig:ex2a-temps}
 \end{figure}
 
@@ -668,28 +668,9 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
   \end{tabular}
 \end{table}
 
-\section{Neutronics and Thermal-fluids Coupling}
-
-Follow \cite{j_ortensi_initial_2012}.
-
-3 options:
-- Heterogeneous model
-- Homogenized media and sub-channel unit cell model
-- Porous media model
-
-We chose:
-- Heterogeneous model is computationally expensive
-
-- Homogenized media and sub-channel unit cell model
-
-'The initial coupling model was unable to correctly calculate the thermal coefficient in the fuel because it did not take into account the difference between the moderator and the fissile isotopes temperatures.
-One of the major improvements of the coupling model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.' \cite{damian_vhtr_2008}.
-
-Future work will analyze the possibility of using porous media in Moltres.
-
-
 \section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
 
+% description of the exercise
 This section sets the road-map for conducting Phase I Exercise 3 of the benchamrk with Moltres/MOOSE.
 Exercise 3 combines all the data from the first two exercises, and the participants need to determine a coupled neutronic and thermal-fluids solution.
 The benchmark specifies the group constants required to conduct the exercise.
@@ -703,3 +684,16 @@ Two sub-cases compose Exercise 3:
 \end{itemize}
 
 This exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
+
+% the model
+
+
+% for the end
+Follow \cite{j_ortensi_initial_2012}.
+'The initial coupling model was unable to correctly calculate the thermal coefficient in the fuel because it did not take into account the difference between the moderator and the fissile isotopes temperatures.
+One of the major improvements of the coupling model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.' \cite{damian_vhtr_2008}.
+
+
+\section{Conclusions}
+
+The preliminary studies focused on the verification of the thermal-fluids model and the validation of the unit-cell model.
