@@ -5,13 +5,13 @@ This section carries out some preliminary studies using Moltres and MOOSE heat c
 \subsection{Verification of the thermal-fluids model}
 
 To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know.
-Section \ref{appendix:ver} presents the analytical solution of the problem.
+Section \ref{appendix:ver} presents the problem's analytical solution.
 Moltres/MOOSE obtained the numerical solution of the thermal-fluid equations from Section \ref{ch3:th}.
 
 Figure \ref{fig:th-ver-mesh} displays the model geometry, which differentiates five subregions: fuel compact, helium gap, moderator, film, and coolant.
 Table \ref{tab:th-ver-char} summarizes the geometry dimensions and the input parameters.
 The model reference design was the GT-MHR.
-The calculated moderator radius is the fuel/coolant pitch minus the fuel compact and coolant channel radii, which is the minimum distance between the fuel and coolant channels in the unit cell.
+The calculated moderator radius is the fuel/coolant pitch minus the fuel compact and coolant channel radii --- the minimum distance between the fuel and coolant channels in the unit cell.
 We obtained the calculated coolant radius by preserving the coolant channel volume.
 The model assumed a sinusoidal power profile in the $z$-direction.
 
@@ -60,9 +60,9 @@ The model assumed a sinusoidal power profile in the $z$-direction.
 
 Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles.
 Both analytical and numerical solutions exhibit good agreement.
-The outlet coolant temperature is 770.2 $^{\circ}$C whereas the average outlet coolant temperature of the reference reactor is 950 $^{\circ}$C.
+The outlet coolant temperature is 770.2 $^{\circ}$C, whereas the average outlet coolant temperature of the reference reactor is 950 $^{\circ}$C.
 Note that this is a simplified model only for verifying that the numerical solution agrees with the analytical solution.
-Also, the model considers only one fuel channel while in the GT-MHR unit cell, two fuel channels deposit their heat into one coolant channel.
+The model also considers only one fuel channel, while in the GT-MHR unit cell, two fuel channels deposit their heat into one coolant channel.
 
 \begin{figure}[htbp!]
 	\centering
@@ -81,11 +81,11 @@ Also, the model considers only one fuel channel while in the GT-MHR unit cell, t
 \label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of an HTGR.
-We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} in an effort to validate the unit-cell model.
-We chose this article as it solves a three-dimensional unit-cell model and gives one of the most complete descriptions in the open literature.
+We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
+We chose this article because it solves a three-dimensional unit-cell model and gives one of the most thorough descriptions in the open literature.
 Table \ref{tab:th-val-unit-char} presents the problem characteristics.
-The material properties specification of the solids is missing in the article, and we replaced them with parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
-Figure \ref{fig:th-val-unit-model} displays a $XY$-plane of the model geometry and the material properties that depend on the temperature.
+The article does not specify the solid's material properties, and we replaced them with parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
+Figure \ref{fig:th-val-unit-model} displays an $XY$-plane of the model geometry and the material properties that depend on the temperature.
 Additionally, In et al. used a chopped cosine as the power profile.
 To simplify the analysis, we used the average value of the power profile.
 
@@ -137,16 +137,15 @@ Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
 The axial temperatures increase from the top to the bottom of the reactor.
 The moderator and coolant temperatures are parallel as the model assumes a film thermal conductivity independent of the temperature.
 The fuel and moderator temperature difference decreases.
-As the thermal conductivities of the different materials increase with temperature, the thermal resistance between the moderator and the fuel decreases.
+As the different materials' thermal conductivity increases with temperature, the thermal resistance between the moderator and the fuel decreases.
 Table \ref{tab:th-val-unit-results} summarizes the results.
 Moltres/MOOSE coolant temperature is smaller by 4$^{\circ}$C.
 The moderator temperature is larger by 9$^{\circ}$C.
 The fuel temperature is larger by 22$^{\circ}$C.
 The cause of the fuel temperature discrepancy is the power profile simplification.
-For a sinusoidal power profile the fuel-to-coolant temperature difference is small in the outlet, as we have seen in the previous section.
+As we have seen in the previous section, the fuel-to-coolant temperature difference is small in the outlet for a sinusoidal power profile. 
 The opposite extreme scenario is the uniform power profile, where the fuel-to-coolant temperature difference is larger.
-In et al. used a chopped cosine power profile.
-This is the case in between a uniform and a sinusoidal power profile.
+In et al. used a chopped cosine power profile, which is the case in between a uniform and a sinusoidal power profile.
 Hence, our model yields a larger fuel-to-coolant temperature at the outlet.
 Overall, our model results showed good agreement with In et al. results.
 
@@ -182,8 +181,8 @@ Overall, our model results showed good agreement with In et al. results.
 \label{sec:fuelcol}
 
 This section solved an HTGR fuel column.
-It aimed to reproduce some of the analyses in Sato et al. 2010 \cite{sato_computational_2010} in an effort to validate the fuel column model.
-We chose this article as it gives a thorough description of the problem making it easier to reproduce.
+It aimed to reproduce some of Sato et al. 2010 \cite{sato_computational_2010} analyses to validate the fuel column model.
+We chose this article because it gives a thorough description of the problem, making it easier to reproduce.
 First, we analyzed a column with no bypass-gap.
 Second, we studied a column with a 3mm-gap.
 
@@ -193,9 +192,9 @@ The model included only a one-twelfth portion of the column due to symmetry.
 The GT-MHR shares the geometry dimensions with the MHTGR, which Table \ref{tab:element-characteristics} specifies.
 
 Equation \ref{eq:matcoeff} evaluates the solid material properties \cite{johnson_cfd_2009}.
-Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator thermal conductivities coefficients.
+Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator thermal conductivity coefficients.
 Table \ref{tab:th-val-assem-char} lists the helium properties and several input parameters.
-Figure \ref{fig:th-val-assem-model-b} shows the temperature dependent material properties.
+Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material properties.
 
 \begin{align}
   \phi(T) = A_1 + A_2 T + A_3 T^2 + A_4 T^3 + A_5 T^4  \label{eq:matcoeff}
@@ -295,8 +294,8 @@ No gap  & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
 \end{table}
 
 Table \ref{tab:th-val-assem-results} compares Moltres/MOOSE results to Sato's results.
-In the no gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower and the maximum fuel temperature is 4$^{\circ}$C higher.
-In the 3mm-gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower and the maximum fuel temperature is 1$^{\circ}$C lower.
+In the no gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 4$^{\circ}$C higher.
+In the 3mm-gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 1$^{\circ}$C lower.
 The results showed good agreement.
 
 Figure \ref{fig:th-val-assem-temps} displays the outlet temperature along lines A-B and A-C from Figure \ref{fig:th-val-assem-model-a}.
@@ -349,8 +348,8 @@ Fuel    & 1090    & 1094              & 1115     & 1114             \\
 \label{sec:flowdistrib}
 
 As described in Section \ref{sec:litrev-thermalf}, several authors calculate the flow distribution using various methods.
-This section compares the effects of different methods on the results.
-To carry out such comparison, the chosen metrics are the maximum coolant and fuel temperatures and the mass flow distribution.
+This section compares the different method results.
+The comparison chosen metrics are the maximum coolant and fuel temperatures and the mass flow distribution
 The model assigns a number to each coolant channel and the bypass-gap, see Figure \ref{fig:th-val-assem-model-a}.
 Note that channel 1 is a small coolant channel while channels 2 to 13 are large coolant channels.
 
@@ -358,8 +357,8 @@ We analyzed the following cases:
 \begin{itemize}
     \item Case 1: uses the mass flow distribution from Sato et al.
     \item Case 2: uses a flat velocity profile (every channel and gap have the same velocity).
-    \item Case 3: uses the incompressible flow model with a temperature independent helium viscosity.
-    \item Case 4: uses the incompressible flow model with a temperature dependent helium viscosity.
+    \item Case 3: uses the incompressible flow model with a temperature-independent helium viscosity.
+    \item Case 4: uses the incompressible flow model with a temperature-dependent helium viscosity.
     \item Case 5: uses the low-Mach number model with a temperature dependent helium viscosity.
 \end{itemize}
 
@@ -372,7 +371,7 @@ For cases 3 to 5, the pressure drop is proportional to the channel mass flow, eq
 Equations \ref{eq:case3mdot} and \ref{eq:case5mdot} calculated $B_i$.
 Equations \ref{eq:itersolver2} and \ref{eq:itersolver3} \cite{melese_thermal_1984} solved the mass flow distribution iteratively.
 As cases 4 and 5 mass flow distributions depend on the temperature, the calculations required another level of iterations to obtain the final mass flow distribution.
-The convergence criteria was 1$^{\circ}$C for the maximum coolant and fuel temperatures.
+The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 
 \begin{align}
   \dot{m}_i &= \frac{A_i}{\sum_j A_j} \label{eq:case2mdot} \\
@@ -392,19 +391,19 @@ The convergence criteria was 1$^{\circ}$C for the maximum coolant and fuel tempe
 
 Table \ref{tab:th-assem-flow-massflow} displays the results for the mass flow rates.
 % Case 4 and case 5 converged after two and three iterations, respectively.
-Case 2 yields the largest small coolant channel mass flow, and the smallest large coolant channel mass flow.
+Case 2 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
 Case 3 and 4 barely differ.
-Not taking into account the temperature dependency of the viscosity yields a simpler method and the accuracy loss is negligible.
-Case 5 arrives to the closest values to the reference solution.
+Not considering the viscosity's temperature dependency yields a more straightforward method and the accuracy loss is negligible.
+Case 5 arrives at the closest values to the reference solution.
 
 Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
-For the maximum coolant temperature. case 2 yields the largest difference which is less than 10$^{\circ}$C.
+Case 2 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
 Case 5 yields the closest results to the reference values.
 For the maximum fuel temperature, case 2 and 5 yield the best results.
 Again, case 3 and 4 barely differ.
 
 The low-Mach number model yielded the closest results to the reference solution.
-However, such method required two levels of an iterative solver.
+However, such a method required a two-level iterative solver.
 From a computational point of view, case 2 model is the simplest method as it does not require an iterative solver.
 Additionally, case 2 model yields the simplest Moltres input file.
 For these reasons, the rest of the thesis uses case 2 model for the fluid flow distribution.
@@ -639,7 +638,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
 % model G figure
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-meshC2}
+  \includegraphics[width=0.4\linewidth]{figures-thermal/ex2a-meshC2}
   \hfill
   \caption{Model geometry.}
   \label{fig:ex2a-2nd-model}
@@ -686,8 +685,8 @@ In addition to this data, the benchmark provides fluence maps to determine the t
 
 Two sub-cases compose Exercise 3:
 \begin{itemize}
-  \item Exercise 3a: It uses the same thermal-fluids problem definition from Exercise 2c.
-  \item Exercise 3b: It uses the same thermal-fluids problem definition from Exercise 2d.
+  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c.
+  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d.
 \end{itemize}
 
 This exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
