@@ -179,6 +179,7 @@ Overall, our model results showed good agreement with In et al. results.
 \end{table}
 
 \section{Fuel column}
+\label{sec:fuelcol}
 
 This section solved an HTGR fuel column.
 It aimed to reproduce some of the analyses in Sato et al. 2010 \cite{sato_computational_2010} in an effort to validate the fuel column model.
@@ -448,6 +449,7 @@ Fuel    & 1114   & 1116   & 1109 & 1110 & 1116 \\
 \end{table}
 
 \section{Mesh convergence analysis}
+\label{sec:meshconverge}
 % I might not include this in the final document
 
 The remainder of this Chapter intends to solve the full-core problem.
@@ -456,7 +458,7 @@ This section conducts a mesh convergence analysis of the full-fuel column proble
 Figure \ref{fig:th-full-assem-mesh} displays the model geometry.
 Table \ref{tab:th-full-assem-results} presents the results.
 The convergence criteria was 1$^{\circ}$C for the maximum coolant and fuel temperatures.
-The coolant temperature converges for the fifth mesh.
+The coolant temperature converged for the fifth mesh.
 The fuel temperature did not reach convergence.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
 
@@ -465,6 +467,11 @@ The high level of detail in our geometry requires a large number of elements in 
 Moving forward, the problem dimensions will increase and the number of elements in the mesh will do so too.
 Potentially, this method will not be able to solve the three-dimensional full scale problem due to a high memory requirement.
 For this reason, the next section intends to solve the full scale problem using a two-dimensional cylindrical model.
+
+% Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
+% However, the coolant channel mesh requires enough points in the circle to properly model the heat transfer between the solid and the coolant.
+% The ideal mesh would have many points in the boundary of the cylinder and one point in the cylinder center.
+% But that is not numerically good, as the jacobian of those triangles is too as mall and could cause issues on the simulations.
 
 \begin{figure}[htbp!]
   \centering
@@ -492,9 +499,9 @@ Maximum fuel temperature    & 1204.49 & 1217.32 & 1225.57 & 1233.44 & 1234.93 \\
 
 % \section{Full-core 3D}
 % This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
-% Trying \cite{stainsby_investigation_2008} approach.
 
 \section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 2}
+\label{sec:ph1ex2}
 
 This section conducted Phase I Exercise 2 of the benchamrk with Moltres/MOOSE.
 Phase I Exercise 2 defines a thermal-fluids standalone calculation.
@@ -546,7 +553,7 @@ Future works will focus on confirming this supposition and also on adding the ca
 % model H figure
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/ex2a-meshD2}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-meshD2}
   \hfill
   \caption{Model geometry.}
   \label{fig:ex2a-1st-model}
@@ -579,7 +586,7 @@ Future works will focus on confirming this supposition and also on adding the ca
       \label{tab:th-ex2a-1st-results}
 \begin{tabular}{l|ccc|ccc}
     \toprule
-              & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c|}{Coolant} \\ \cline{2-7} 
+              & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c}{Coolant} \\ \cline{2-7} 
               & Ring 1   & Ring 2   & Ring 3   & Ring 4   & Ring 5  & Ring 6  \\
     \midrule
 INL           & 790      & 794      & 802      & 797      & 636     & 673     \\
@@ -590,7 +597,7 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/ex2a-across}
+  \includegraphics[width=0.35\linewidth]{figures-thermal/ex2a-across}
   \hfill
   \caption{Model geometry.}
   \label{fig:ex2a-1st-model-across}
@@ -632,7 +639,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
 % model G figure
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/ex2a-meshC2}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-meshC2}
   \hfill
   \caption{Model geometry.}
   \label{fig:ex2a-2nd-model}
@@ -697,3 +704,53 @@ One of the major improvements of the coupling model is a de-homogenization calcu
 \section{Conclusions}
 
 The preliminary studies focused on the verification of the thermal-fluids model and the validation of the unit-cell model.
+The verification of the thermal-fluids model studied a simplified cylindrical model comparing the Moltres/MOOSE numerical solution to the problem analytical solution.
+Both solutions were in agreement.
+This study set the basis for the unit cell problem set-up.
+The unit cell problem use thermal-fluids model from the previous verification.
+In an effort to validate the unit cell model, Section \ref{sec:unitcell} compared Moltres/MOOSE results to In et al. \cite{in_three-dimensional_2006}.
+The results present some discrepancies.
+The outlet coolant and moderator temperatures differ by less than 10$^{\circ}$C while the fuel temperature differs by 22$^{\circ}$C.
+We expected some variability in the results as some of our simulation parameters may differ from the original study.
+In's article is missing the materials definition and Section \ref{sec:unitcell} adopted the material properties from Tak et al. \cite{tak_numerical_2008}.
+Additionally, In uses a chopped cosine power profile and Section \ref{sec:unitcell} model simplifies the calculation using a uniform power density.
+
+The following section's focus of analysis was a one-twelfth section of an HTGR fuel column.
+In an effort to validate the model, Section \ref{sec:fuelcol} intended to reproduce some of Sato et al. \cite{sato_computational_2010} results.
+Section \ref{sec:fuelcol} conducted two studies: one with no bypass-gap, and one with a 3mm-bypass-gap.
+To simplify the analysis, our model adopted the coolant channel mass flow rates from Sato's article.
+For both case studies, the maximum temperatures in the coolant and the fuel showed good agreement.
+Section \ref{sec:fuelcol} also presented the temperature profile in two of the edges of the geometry.
+Such analysis exhibits the effects of the bypass flow on the temperature.
+The presence of the gap makes the center temperature rise while it reduces the peripheral temperature.
+The overall consequence is an increase in the temperature gradient inside the column.
+
+The next analysis studied different mass flow distribution in the coolant channels and bypass-gap of the fuel column.
+Section \ref{sec:flowdistrib} adopted Sato's mass flow distribution as the reference value and calculated the mass flow distribution using four different methods.
+From case 2 to case 5, the complexity of the methods increases as some of the them require iterative solvers.
+Overall, case 2 proved to be the simplest method and its application does not considerably deteriorate the results' accuracy.
+For that reason, the following studies adopted case 2 mass flow distribution method.
+
+Keeping in mind that the ultimate objective of this work is to conduct full-scale simulations, Section \ref{sec:meshconverge} studied the feasibility of extending this methodology to larger meshes.
+Section \ref{sec:meshconverge} conducted a mesh convergence analysis on the full-fuel column problem.
+As the model uses the one-dimensional coolant equations, the coolant temperature converges relatively fast compared to the fuel temperature.
+The fuel temperature did not reach convergence in this analysis as the increase in the mesh discretization imposed a high memory requirement on the simulations.
+This analysis concluded that modeling the thermal-fluids with such a level of detail is computationally too expensive, and it suggests searching for other methods.
+The following sections adopted a two-dimensional cylindrical model for the full-core analyses.
+
+Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark.
+This exercise encompasses four sub-cases with different definitions of bypass-flow and material properties.
+The simplest exercise is \textit{2a}, as it does not model the bypass flow and provides the definition of the material properties.
+Section \ref{sec:ph1ex2} used Moltres/MOOSE to conduct it.
+As OECD/NEA did not publish this exercise’s results, Section \ref{sec:ph1ex2} compared Moltres/MOOSE results to INL results \cite{strydom_inl_2013}.
+Additionally, this thermal-fluids model bases its definition on INL's model.
+However, the large discrepancies between Moltres/MOOSE results suggest that our model does not capture some heat transfer mechanism that INL model does.
+One of the known differences between the models is the inclusion of the radiative heat transfer mechanism.
+As Moltres does not model that mechanism, it could be the cause of the differences.
+To circumvent this drawback, Section \ref{sec:ph1ex2} used a global and a unit cell model based on Stainsby's approach \cite{stainsby_investigation_2008}.
+The global model is responsible for calculating the coolant temperature while the unit cell model focuses on the moderator and fuel temperatures.
+With this approach, Moltres/MOOSE results were closer to INL results.
+The results showed some discrepancies which indicates that some assumption/model simplification is not accurate enough.
+A flat velocity approximation might be the cause of such discrepancies.
+Further studies should analyze the origin of the discrepancies.
+
