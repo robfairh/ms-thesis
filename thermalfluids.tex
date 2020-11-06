@@ -503,52 +503,53 @@ Maximum fuel temperature    & 1204.49 & 1217.32 & 1225.57 & 1233.44 & 1234.93 \\
 \section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 2}
 \label{sec:ph1ex2}
 
-This section conducted Phase I Exercise 2 of the benchamrk with Moltres/MOOSE.
-Phase I Exercise 2 defines a thermal-fluids standalone calculation.
-The exercise purpose is to ensure that the thermal-fluid model differences between participants are negligible and that they will not affect the coupled exercises.
+This section conducted Phase I Exercise 2 of the benchmark with Moltres/MOOSE.
+Phase I Exercise 2 defines a thermal-fluid standalone calculation.
+The exercise purpose is to ensure that the thermal-fluid model differences between participants are negligible and will not affect the coupled exercises.
 The benchmark specifies the power density of each fuel region and defines the mass flow distribution and material properties for four sub-cases:
 \begin{itemize}
-  \item Exercise 2a: No bypass flow and fixed thermophysical properties. The model does not account for the bypass flow and the thermo-physical properties are constant.
-  \item Exercise 2b: Bypass flow type I and fixed thermophysical properties. This exercise prescribes the bypass flow distribution and the thermo-physical properties are constant.
-  \item Exercise 2c: Bypass flow type I and variable thermophysical properties. This exercise prescribes the bypass flow distribution and the thermo-physical properties depend on different simulation parameters.
-  \item Exercise 2d: Bypass flow type II and variable thermophysical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
+  \item Exercise 2a: No bypass flow and fixed thermo-physical properties. The model does not account for the bypass flow, and the thermo-physical properties are constant.
+  \item Exercise 2b: Bypass flow type I and fixed thermo-physical properties. This exercise prescribes the bypass flow distribution, and the thermo-physical properties are constant.
+  \item Exercise 2c: Bypass flow type I and variable thermo-physical properties. This exercise prescribes the bypass flow distribution and the thermo-physical properties depend on different simulation parameters.
+  \item Exercise 2d: Bypass flow type II and variable thermo-physical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
-The exercise requires the reporting of the average and maximum values of the reflector, \gls{RPV}, fuel, moderator, and coolant temperatures.
-It also requires the reporting of the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
-This data is helpful to trace the source of possible differences in the primary parameters between participants.
+The exercise requires reporting the average and maximum values of the reflector, \gls{RPV}, fuel, moderator, and coolant temperatures.
+It also requires reporting the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
+These data are helpful to trace the source of possible differences in the primary parameters between participants.
 OECD/NEA did not publish this exercise's results.
-This section compares Moltres/MOOSE results to INL's benchmark results \cite{strydom_inl_2013}, and presents only a subset of available data that illustrate the main characteristics of the exercise.
+This section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
+It presents only a subset of available data that illustrates the main characteristics of the exercise.
 
 Figure \ref{fig:ex2a-1st-model} displays the model geometry.
 To simplify the simulation of the exercise, the model uses several simplifications.
 In the axial direction, it does not consider the upper plenum and the outlet plenum.
-The axial boundaries are the upper face of the top reflector and the lower face of the bottom reflector.
-The upper face of the top reflector and the inlet coolant flow are at 259 $^{\circ}$C.
-The lower face of the bottom reflector is adiabatic.
+The axial boundaries are the top reflector's upper face and the bottom reflector's lower face.
+The top reflector's upper face and the inlet coolant flow are at 259 $^{\circ}$C.
+The bottom reflector's lower face is adiabatic.
 The outlet coolant uses an outflow boundary condition.
 In the radial direction, the model does not consider the core barrel and the helium gap.
-After the outer reflector comes the RPV and after it the outside air.
+After the outer reflector is the RPV, and after it, the outside air
 The outer boundary of the air region is at 30 $^{\circ}$C.
 
 The core model geometry uses INL's model as the reference design.
-Nine rings define the core solid structures and other nine rings the coolant flow in the core.
-We calculated the rings radii by preserving the assemblies volume.
+Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
+We calculated the radii of the rings by preserving the assemblies' volume.
 The coolant thickness is constant for all the rings and preserves the coolant volume in the core.
 % missing description of the power density distribution
 Table \ref{tab:th-ex2a} presents the material properties.
 All the graphite regions assume the grade H-451 graphite material properties.
 
-Table \ref{tab:th-ex2a-1st-results} displays some of the results.
+Table \ref{tab:th-ex2a-1st-results} displays the results.
 Our model considerably under-predicts the inner reflector rings temperature, while it over-predicts the coolant rings temperature.
 With the purpose of better understanding this behavior, Figure \ref{fig:ex2a-1st-model-across} shows the temperature across the reactor on the bottom of the active core (z=200 cm).
-This figure exposes that the temperatures in the core are well above the other region temperatures.
-Although such a behavior is normal, the temperature profile reveals some heat transfer disconnection between the different rings.
-In other words, the heat transfer from the fuel rings to the rest of the core structures seems to be small compared to the heat transfer to the coolant rings.
-For that reason, the reflector temperatures are too low and the coolant temperatures are too high.
-These results indicate that Moltres model fails to capture some heat transfer mechanism that INL's model captures.
+This figure exposes that the temperatures in the active core are well above the other region temperatures.
+Although such a behavior is normal; the temperature profile reveals some heat transfer disconnection between the different rings.
+In other words, the heat transfer from the fuel rings to the rest of the core structures is smaller than the heat transfer to the coolant rings in the active core region.
+This thermal disconnection causes the reflector temperatures to be too low and the coolant temperatures too high.
+These results indicate that Moltres model fails to capture some heat transfer mechanisms that INL's model captures.
 The most notorious difference between the models is the inclusion of the radiative heat transfer.
-Future works will focus on confirming this supposition and also on adding the capability to model the radiative heat transfer.
+Future works will focus on confirming this supposition and adding the capability to model the radiative heat transfer.
 
 % model H figure
 \begin{figure}[htbp!]
@@ -603,6 +604,7 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
   \label{fig:ex2a-1st-model-across}
 \end{figure}
 
+% left here on grammarly review
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
 The calculation uses a global model to obtain the coolant temperature in the core and then it uses a sub-channel model to obtain the fuel and moderator average temperature.
 Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
@@ -665,7 +667,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
       \label{tab:th-ex2a-results}
 \begin{tabular}{l|c|c|c|c|c|c}
     \toprule
-          & \multicolumn{2}{l|}{Fuel ring 1} & \multicolumn{2}{l|}{fuel ring 2} & \multicolumn{2}{l}{fuel ring 3} \\ \cline{2-7} 
+          & \multicolumn{2}{c|}{Fuel ring 1} & \multicolumn{2}{c|}{Fuel ring 2} & \multicolumn{2}{c}{Fuel ring 3} \\ \cline{2-7} 
           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
     \midrule
 Coolant   & 797     & 718               & 636     & 646               & 673       & 696           \\
