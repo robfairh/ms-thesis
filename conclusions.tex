@@ -23,12 +23,20 @@ Moltres can solve systems of equations in a fully-coupled way or solve systems o
 This work extends Moltres modeling capabilities to prismatic HTGRs.
 % left here
 
-% Neutronics
-% Thermal-fluids
+% Ch4: Neutronics
 
-% Hydrogen
-Additionally, this work studied different hydrogen production that can be coupled to a nuclear power plant.
 
+% Ch5: Thermal-fluids
+
+
+% Ch6: Hydrogen
+World-wide climate change demands a large scale deployment of \gls{CO2}-free energy sources.
+UIUC is fighting climate change by actively reducing GHG emissions on its campus.
+This work comprises efforts that align with UIUC's goals to reduce \gls{CO2} emissions from the electricity generation and the transportation sectors.
+This work proposed an alternative: the deployment of a nuclear reactor and hydrogen production.
+Regarding hydrogen production methods, we surveyed three different processes: LTE, HTE, and SI.
+We developed a tool to calculate their energy requirements, regarding electricity and heat, and hydrogen production rates.
+This tool is applicable to a stand-alone hydrogen plant and a nuclear power plant that produces both electricity and hydrogen.
 
 \section{Future Work}
 
@@ -41,10 +49,6 @@ This section introduces some possible future work as a continuation of this thes
 - Multi-physics
 - Thermo-mechanics
 
-% Hydrogen extensions
-- HTE with steam temperature boosting
-
-
 % Thermal-fluids
 This simplified algorithms allow for solving the mass flow rate distribution in the core for steady-state cases, and for transient cases as an approximation.
 However, in coupled analyses, the flow distribution depends on the temperature and will change with respect to time.
@@ -52,3 +56,20 @@ This creates the necessity for developing tools integrated into Moltres.
 Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
 Integrating that module into the solver could improve the accuracy.
 This task will be part of the future work.
+
+
+
+% Ch4: Neutronics
+
+
+% Ch6: Hydrogen
+As \ref{ch:hydro} mentioned, high temperatures enable efficient hydrogen production.
+However, the current fleet of nuclear reactors are LWRs with outlet temperatures around 300$^{\circ}$C.
+Additionally, HTE and SI are viable processes for temperatures well above 300$^{\circ}$C.
+In the short term, the development of hydrogen economies demand mature technologies.
+Related future work will study the steam reforming method, which could use or not carbon-capture sequestration systems.
+The future work will analyze the feasibility of using a carbon-capture sequestration system from an economics perspective.
+For the case the process does not use a carbon-capture sequestration system, we will compare the \gls{CO2} savings versus the \gls{CO2} production.
+Moreover, related future work will study the viability of combining LWRs to HTE and SI processes via steam boosting systems.
+These systems rely on the use of electric heaters to enhance the steam temperature.
+These steam boosting systems could enable the coupling of hydrogen plants to the LWR fleet, and it is a promising short term solution to ease climate change.
