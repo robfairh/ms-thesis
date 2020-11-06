@@ -1,27 +1,17 @@
 \section{Contribution}
 
 % Ch1: prismatic htgrs
-The development of the HTGR technology begun almost 60 years ago.
 HTGRs have several desirable features that make them a good candidate for deployment in the near-term.
 Some of those features are reliance on passive heat transfer mechanisms, use of TRISO particles, and high operating temperatures.
-Higher temperatures offer increased cycle efficiencies and enable a wide range of process heat applications, such as hydrogen production.
+Higher temperatures offer increased thermal cycle efficiencies and enable a wide range of process heat applications, such as hydrogen production.
 Hydrogen can be a decisive response to energy and climate challenges, as it can decarbonize the transport and power sectors.
-Several hydrogen production processes benefit from high temperatures, such as high-temperature electrolysis or thermochemical water splitting.
-Utilizing high-temperature nuclear power plants as the energy source of the process eliminates the need to burn fossil fuels.
 
 % Ch1: motivation
-To support the evolution of the HTGR technology, this work focused on the extension of Moltres capabilities to prismatic HTGRs.
-Modeling and prediction of core thermal-hydraulic behavior is necessary for assessing the safety characteristics of a reactor.
-The fuel blocks’ complex geometry requires elaborate numerical calculations.
-The characteristics of an HTGR are different from those of conventional Light Water Reactors (LWRs).
-Such differences demand for new reactor analysis tools.
-Historically, the operator-splitting technique allowed for coupling stand-alone neutronics solver to a thermal-hydraulics solver and modeling a reactor.
-However, solving the fully-coupled system is preferable over using the operator-splitting technique.
-Moltres can solve systems of equations in a fully-coupled way or solve systems of equations independently. This feature makes Moltres suitable for solving multi-physics problems and a wide range of nuclear engineering problems.
-
-% Ch1: Objectives
-This work extends Moltres modeling capabilities to prismatic HTGRs.
-% left here
+To support the evolution of the HTGR technology, this work focused on the modeling of prismatic HTGRs.
+Modeling the multi-physics of prismatic HTGRs enables the prediction of the reactor thermal-fluid behavior which is necessary for assessing the safety characteristics of the reactor.
+The HTGR complex geometry requires numerical tools to conduct the analyses.
+Moltres is a simulation tool suitable for multi-physics problems.
+Although its original development targeted MSRs, this work studied its applicability to prismatic HTGRs.
 
 % Ch4: Neutronics
 Multi-physics simulators need to resolve the double heterogeneities present in the prismatic HTGR fuel assemblies.
@@ -33,7 +23,7 @@ Nonetheless, HTGRs require a higher level of homogenization making Moltres not e
 This work studied using Moltres as a homogeneous solver for carrying out neutronics stand-alone simulations of prismatic HTGRs.
 The first study comprised an analysis of the effects of the energy group structure on the simulations of a fuel column.
 Such a study compared Moltres results to Serpent results.
-Based on that study, the following section conducted a full-core simulation in Moltres using a 15-energy group tructure.
+Based on that study, the following section conducted a full-core simulation in Moltres using a 15-energy group structure.
 We compared Moltres results to Serpent results, and overall, the results showed good agreement.
 Finally, Moltres carried out Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
 The exercise provides the group constants which required the development of a tool to adapt them to Moltres format.
@@ -74,31 +64,33 @@ This tool is applicable to a stand-alone hydrogen plant and a nuclear power plan
 
 This section introduces some possible future work as a continuation of this thesis.
 
-% Moltres extensions
-- 3D Thermal-fluids
-	- radiative heat transfer
-	- porous media model
-- Multi-physics
-- Thermo-mechanics
-
-% Thermal-fluids
-This simplified algorithms allow for solving the mass flow rate distribution in the core for steady-state cases, and for transient cases as an approximation.
-However, in coupled analyses, the flow distribution depends on the temperature and will change with respect to time.
-This creates the necessity for developing tools integrated into Moltres.
-Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
-Integrating that module into the solver could improve the accuracy.
-This task will be part of the future work.
-
 % Ch4: Neutronics
 As mentioned earlier, the periodic boundary conditions impose a high memory requirement on Moltres simulations.
 Moltres relies on PetSc routines for solving the equation systems.
-Future work will look for a PetSc routine to enable the exact modeling of Phase I Exerise 1 of the benchmark, i.e. conduct the simulations with the periodic boundary conditions.
+Future work will look for a PetSc routine to enable the exact modeling of Phase I Exercise 1 of the benchmark, i.e. conduct the simulations with the periodic boundary conditions.
 
 % Ch5: Thermal-fluids
+The right modeling of Phase I Exercise 2 of the benchmark ensures the right modeling of the coupled exercises.
+Moltres results for exercise 2a showed some discrepancies to INL benchmark results.
+As discussed earlier, the flat flow approximation may be the cause.
 Future work will add mass flow distribution capabilities to Moltres.
+% This simplified algorithms allow for solving the mass flow rate distribution in the core for steady-state cases, and for transient cases as an approximation.
+% However, in coupled analyses, the flow distribution depends on the temperature and will change with respect to time.
+% This creates the necessity for developing tools integrated into Moltres.
+% Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equations.
+% Integrating that module into the solver could improve the accuracy.
+% This task will be part of the future work.
+Additionally, Section \ref{sec:ph1ex2} first analysis intended to reproduce INL results.
+That analysis reveals that Moltres modeling fails to capture the right heat transfer between different assemblies.
+Not modeling the radiative heat transfer between elements might be causing this behavior.
+Future analyses will try add the radiate heat transfer modeling capabilities to Moltres.
 
-Future work will include radiate heat transfer modeling capabilities to Moltres.
+% Ch5: thermal-fluids
+- 3D Thermal-fluids
+	- porous media model
+	- Multi-physics
 
+% Thermo-mechanics capabilities in Moltres
 
 % Ch6: Hydrogen
 As \ref{ch:hydro} mentioned, high temperatures enable efficient hydrogen production.
