@@ -608,37 +608,37 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
 
 % left here on grammarly review
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
-The calculation uses a global model to obtain the coolant temperature in the core and then it uses a sub-channel model to obtain the fuel and moderator average temperature.
+The calculation used a global model to obtain the coolant temperature in the core and then a sub-channel model to get the fuel and moderator average temperatures.
 Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
-The sub-channel model uses half of the unit cell in Section \ref{sec:unitcell}.
-The global model uses three rings to define the core solid structures and other three for the coolant flow in the core.
-We calculated the rings radii by preserving the assemblies volume.
-The middle ring defines the fuel rings, which emcompasses three fuel rings (see Figure \cite{oecd_nea_benchmark_2017}).
+The sub-channel model used half of the unit cell from Section \ref{sec:unitcell}.
+Three rings defined the solid structures in the global model, and another three, the coolant flow in the core.
+We calculated the radii of the rings by preserving the assemblies' volume.
+The middle ring defines the fuel rings, which encompasses three rings.
 The coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
 Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
-The coolant temperature increases from the top to the bottom of the core.
-The temperature is constant in the bottom and top reflector regions, and it increases in the active core region.
+The temperature is constant in the bottom and top reflector regions.
+The coolant temperature increases from the top to the bottom of the active core.
 The highest coolant, fuel, and moderator temperatures are in fuel ring 1.
 
 Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
 We focus on the coolant temperature of the different rings.
-Moltres predicts a smaller temperature in fuel ring 1 while it predicts higher temperatures in fuel rings 2 and 3.
-For some reason, the global model fails to distribute properly the heat produced in the fuel rings into the coolant rings.
+Moltres predicts smaller values in fuel ring 1, while it predicts higher values in fuel rings 2 and 3.
+For some reason, the global model fails to correctly distribute into the coolant rings the heat produced in the fuel rings.
 A possible cause of this discrepancy is the flat velocity approximation.
 Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model.
 However, one of the assumptions of that model was that the power density is uniform.
 In this exercise, the power density is not uniform, and that could be causing the discrepancies.
-Further studies will study the cause of the discrepancies.
+Further studies should study the cause of them.
 
 Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for fuel rings 1 and 2.
-The largest discrepancy is in fuel ring 1.
+The most considerable discrepancy is in fuel ring 1.
 INL's model coolant-to-moderator temperature difference is 46$^{\circ}$C while Moltres/MOOSE predicts a difference of 30$^{\circ}$C.
 The flat velocity approximation might be again the source of these discrepancies.
-Finally, The moderator-to-fuel temperature difference from INL and Moltres/MOOSE are close.
+Finally, the moderator-to-fuel temperature differences from INL and Moltres/MOOSE are close.
 In fuel ring 1, it is 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
-In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
+In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results.
 
 % model G figure
 \begin{figure}[htbp!]
