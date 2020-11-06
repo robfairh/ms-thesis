@@ -44,7 +44,22 @@ We also analyzed the effects of such an approximation as some discrepancies in t
 We concluded that the boundary condition approximation was responsible for causing such discrepancies.
 
 % Ch5: Thermal-fluids
-
+Multi-physics simulators need to resolve the temperature in the different regions of the reactor.
+Moltres is a MSR simulator, and its thermal-fluids kernels applicability to prismatic HTGRs is not straightforward.
+Chapter \ref{ch:thermalfluids} focused on developing a thermal-fluids model for Moltres.
+A first preliminary study verified the proposed model by comparing the numerical solution to a known analytical solution.
+A second preliminary study applied the thermal-fluids model to a unit cell problem and compared Moltres results to published article.
+Both preliminary studies showed good results.
+Another study demonstrated the use of Moltres on a larger-scale problem, a fuel column.
+We compared Moltres results to a published article for two cases, a no-bypass-gap case and a 3mm-bypass-gap case.
+Both cases exhibited good results.
+As part of the study, two analyses focused on different aspects of the simulations.
+The first analysis studied the modeling of the mass flow distribution of the coolant in the different coolant paths.
+The second analysis studied the mesh convergence of the full-fuel column problem.
+This analysis exposes that a high level of detail in our model may restrict the model's applicability to a full-core problem.
+The next study used a different approach for the thermal-fluids modeling of the MHTGR-350.
+This study solved Phase I Exercise 2 of OECD/NEA MHTGR-350 MW Benchmark.
+The exercise revealed that a more accurate mass flow distribution and the consideration of the radiative heat transfer mechanism are necessary for the correct modeling of prismatic HTGRs.
 
 % Ch6: Hydrogen
 World-wide climate change demands a large scale deployment of \gls{CO2}-free energy sources.
@@ -74,9 +89,15 @@ Currently, MOOSE has a module for modeling the incompressible Navier-Stokes equa
 Integrating that module into the solver could improve the accuracy.
 This task will be part of the future work.
 
-
-
 % Ch4: Neutronics
+As mentioned earlier, the periodic boundary conditions impose a high memory requirement on Moltres simulations.
+Moltres relies on PetSc routines for solving the equation systems.
+Future work will look for a PetSc routine to enable the exact modeling of Phase I Exerise 1 of the benchmark, i.e. conduct the simulations with the periodic boundary conditions.
+
+% Ch5: Thermal-fluids
+Future work will add mass flow distribution capabilities to Moltres.
+
+Future work will include radiate heat transfer modeling capabilities to Moltres.
 
 
 % Ch6: Hydrogen
