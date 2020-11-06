@@ -451,21 +451,22 @@ Fuel    & 1114   & 1116   & 1109 & 1110 & 1116 \\
 \label{sec:meshconverge}
 % I might not include this in the final document
 
-The remainder of this Chapter intends to solve the full-core problem.
-This section aims to identify some possible problems introduced by the large mesh size requirement of the full-core problem.
+The remainder of this chapter intends to solve the full-core problem.
+This section aims to identify some possible
+problems introduced by the full-core problem's large mesh size requirement.
 This section conducts a mesh convergence analysis of the full-fuel column problem.
 Figure \ref{fig:th-full-assem-mesh} displays the model geometry.
 Table \ref{tab:th-full-assem-results} presents the results.
-The convergence criteria was 1$^{\circ}$C for the maximum coolant and fuel temperatures.
+The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 The coolant temperature converged for the fifth mesh.
 The fuel temperature did not reach convergence.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
 
 This analysis reveals a potential problem.
 The high level of detail in our geometry requires a large number of elements in the mesh.
-Moving forward, the problem dimensions will increase and the number of elements in the mesh will do so too.
-Potentially, this method will not be able to solve the three-dimensional full scale problem due to a high memory requirement.
-For this reason, the next section intends to solve the full scale problem using a two-dimensional cylindrical model.
+In the full-scale problem the dimensions increase, and the number of elements in the mesh do so too.
+Potentially, this method will not be able to solve the three-dimensional full-scale problem due to a high memory requirement.
+For this reason, the next section intends to solve the full-scale problem using a two-dimensional cylindrical model.
 
 % Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
 % However, the coolant channel mesh requires enough points in the circle to properly model the heat transfer between the solid and the coolant.
