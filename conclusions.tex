@@ -24,7 +24,24 @@ This work extends Moltres modeling capabilities to prismatic HTGRs.
 % left here
 
 % Ch4: Neutronics
-
+Multi-physics simulators need to resolve the double heterogeneities present in the prismatic HTGR fuel assemblies.
+Monte Carlo simulators are capable of explicitly modeling TRISO particles.
+Although using such a capability is computationally expensive, Chapter \ref{ch:neutronics} proved it necessary for obtaining group constants for diffusion solvers.
+Diffusion solvers rely on different levels of homogenization.
+Moltres previous work focused on MSRs which allow for a more heterogeneous homogenization.
+Nonetheless, HTGRs require a higher level of homogenization making Moltres not easily applicable to HTGRs.
+This work studied using Moltres as a homogeneous solver for carrying out neutronics stand-alone simulations of prismatic HTGRs.
+The first study comprised an analysis of the effects of the energy group structure on the simulations of a fuel column.
+Such a study compared Moltres results to Serpent results.
+Based on that study, the following section conducted a full-core simulation in Moltres using a 15-energy group tructure.
+We compared Moltres results to Serpent results, and overall, the results showed good agreement.
+Finally, Moltres carried out Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
+The exercise provides the group constants which required the development of a tool to adapt them to Moltres format.
+The exercise models one-third of the MHTGR-350 and uses periodic boundary conditions on the sides.
+Imposing those boundary conditions in Moltres was not possible because of the simulation high memory requirements.
+To circumvent this barrier, Moltres conducted the exercise using reflective boundary conditions.
+We also analyzed the effects of such an approximation as some discrepancies in the results arose.
+We concluded that the boundary condition approximation was responsible for causing such discrepancies.
 
 % Ch5: Thermal-fluids
 
