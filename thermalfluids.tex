@@ -679,30 +679,48 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
   \end{tabular}
 \end{table}
 
-\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
+% \section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
 
-% description of the exercise
-This section sets the road-map for conducting Phase I Exercise 3 of the benchamrk with Moltres/MOOSE.
-Exercise 3 combines all the data from the first two exercises, and the participants need to determine a coupled neutronic and thermal-fluids solution.
-The benchmark specifies the group constants required to conduct the exercise.
-The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
-In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
+% % description of the exercise
+% This section sets the road-map for conducting Phase I Exercise 3 of the benchamrk with Moltres/MOOSE.
+% Exercise 3 combines all the data from the first two exercises, and the participants need to determine a coupled neutronic and thermal-fluids solution.
+% The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
+% The benchmark specifies the group constants required to conduct the exercise.
+% The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
+% In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
 
-Two sub-cases compose Exercise 3:
-\begin{itemize}
-  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c.
-  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d.
-\end{itemize}
-
-This exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
-
-% the model
+% Two sub-cases compose Exercise 3:
+% \begin{itemize}
+%   \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c.
+%   \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d.
+% \end{itemize}
 
 
-% for the end
-Follow \cite{j_ortensi_initial_2012}.
-'The initial coupling model was unable to correctly calculate the thermal coefficient in the fuel because it did not take into account the difference between the moderator and the fissile isotopes temperatures.
-One of the major improvements of the coupling model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.' \cite{damian_vhtr_2008}.
+% % initial coupling:
+% Describe what I've done
+
+
+% % Heterogeneous modeling dilema
+% % explanation of what the model needs
+% Moltres is a heterogeneous solver.
+% In a heterogenous solver, each node of the mesh holds the information of each variable.
+% In a diffusion simulation, the homogenization should occur for all the variables.
+% The thermal-fluids solver should obtain the moderator and the fuel temperature in the assembly.
+% A heterogenous strategy solves the thermal-fluids in an HTGR, however, each node in the mesh holds the information of the temperature in that node only.
+% A node in the fuel holds the information of the homogenized group constants but it holds only the temperature of the fuel.
+% In order for the simulation to be accurate, the heterogeneous temperature solver should average the temprature in the assembly and provide that information to the diffusion solver.
+
+% As Damian \cite{damian_vhtr_2008} mentioned, a coupling model is unable to correctly calculate the thermal feedback if it does not take into account the difference between the moderator and the fissile isotopes temperatures.
+% de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel
+
+% % problem about using ex2a model
+
+
+
+
+
+% 'The initial coupling model was unable to correctly calculate the thermal coefficient in the fuel because it did not take into account the difference between the moderator and the fissile isotopes temperatures.
+% One of the major improvements of the coupling model is a de-homogenization calculation which guarantees a better description of the local thermal calculation in the fuel.' \cite{damian_vhtr_2008}.
 
 
 \section{Conclusions}
