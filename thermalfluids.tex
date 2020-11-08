@@ -706,7 +706,42 @@ To solve exercise 3, we created a different model that homogenizes the fuel and 
 The solution did not differentiate between moderator and fuel temperatures requiring the simulation of only the global model.
 
 % describe the model
+We calculated the radii of the rings by preserving the assemblies' volume.
+The coolant ring pitch is the coolant channel pitch in a fuel assembly.
 
+
+The simulations used a three energy-group structure.
+% energy group structure table
+
+% make axial view mesh model geometry
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
+  \hfill
+  \caption{Scaled-down version of the model geometry.}
+  \label{fig:th-coupled-mesh}
+\end{figure}
+
+
+Figure \ref{fig:th-coupled-results} displays the results.
+% Analysis goes here
+
+
+% axial temperature - decoupled1 + decoupled2 + coupled
+% radial temperature - decoupled1 + decoupled2 + coupled
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial temperature at r= ?? cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/}
+    }
+  \hfill
+    \caption{Temperature profiles.}
+  \label{fig:th-coupled-results}
+\end{figure}
 
 \subsection{Discussion}
 
