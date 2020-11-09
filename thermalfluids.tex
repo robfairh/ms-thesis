@@ -732,7 +732,7 @@ The whole radial temperature profile moves up because of the power shit towards 
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/ex3-mesh}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/ex3-mesh}
   \hfill
   \caption{Model geometry.}
   \label{fig:coupled-mesh}
@@ -744,13 +744,13 @@ The whole radial temperature profile moves up because of the power shit towards 
       \label{tab:coupled-rz}
     \begin{tabular}{l c}
   \toprule
-  Homogenized region & Benchmark sub-domains \\
+  Model homogenized region & Benchmark sub-domains \\
   \midrule
   Fuel               & 1-220   \\
   Bottom reflector   & 221-224 \\
   Top reflector      & 228-231 \\
   Inner reflector    & 225     \\
-  Inner reflector    & 226-227 \\
+  Outer reflector    & 226-227 \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -759,9 +759,9 @@ The whole radial temperature profile moves up because of the power shit towards 
 \centering
       \caption{Energy group condensation scheme.}
       \label{tab:coupled-eg}
-    \begin{tabular}{l c}
+    \begin{tabular}{c c}
   \toprule
-  Group number & Benchmark group number \\
+  Model group number & Benchmark group number \\
   \midrule
   1 & 1-4   \\
   2 & 5-15  \\
@@ -797,6 +797,7 @@ The whole radial temperature profile moves up because of the power shit towards 
 \end{figure}
 
 \subsection{Discussion}
+\label{sec:discuss}
 
 This section analyzes Moltres flaws at conducting prismatic HTGR coupled simulations.
 % Describe moltres heterogenous capabilities as an MSR solver
@@ -871,7 +872,6 @@ The fuel temperature did not reach convergence in this analysis as the mesh disc
 This analysis concluded that modeling the thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other methods.
 The following sections adopted a two-dimensional cylindrical model for the full-core analyses.
 
-% left here to review
 Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark.
 This exercise encompasses four sub-cases with different definitions of bypass-flow and material properties.
 The simplest exercise is \textit{2a}, as it does not model the bypass flow and provides the definition of the material properties.
@@ -889,3 +889,7 @@ The results showed some discrepancies, which indicates that some assumption/mode
 A flat velocity approximation might be the cause of such discrepancies.
 Further studies should analyze the origin of the discrepancies.
 
+Section \ref{sec:ph1ex3} developed a global model to solve a simplified version of Phase 1 Exercise 3 of the OECD/NEA benchmark.
+Although the model was very simple, it allowed to visualize some of the basic characteristics of a prismatic HTGR multi-physic simulation in Moltres.
+This exercise lead to Section \ref{sec:discuss} which described some of the flaws found in the model.
+This exercise also sets the basis for future work that Section \ref{ref:futwork} will introduce.
