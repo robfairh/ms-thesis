@@ -683,10 +683,10 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
 \label{sec:ph1ex3}
 
 % description of the exercise
-This section conducted Phase I Exercise 3 of the benchamrk with Moltres/MOOSE.
-Exercise 3 combines all the data from the first two exercises, and the participants need to determine a coupled neutronic and thermal-fluids solution.
+This section conducted Phase I Exercise 3 of the benchmark with Moltres/MOOSE.
+Exercise 3 combines all the data from the first two exercises, in which the participants need to determine a coupled neutronic and thermal-fluids solution.
 The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
-The benchmark specifies the group constants required to conduct the exercise.
+The benchmark specifies the group constants necessary to conduct the exercise.
 The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
 In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
 
@@ -698,37 +698,38 @@ Two sub-cases compose Exercise 3:
 
 % initial coupling: description of what I've done
 Section \ref{sec:ph1ex2} solved the thermal-fluids standalone problem using a global and a sub-channel model.
-Those simulations required running two separate input files, where the output of the global model served as input of the sub-channel model.
+Those simulations required running two separate input files, where the output of the global model served as an input to the sub-channel model.
 Exercise 3 requires modeling the temperature feedback.
 Using Section \ref{sec:ph1ex2} approach for the temperature feedback would require the fully-coupled simulation of both input files.
-However, MOOSE framework does not count with the capability to couple this specific problem input files at the moment.
+However, MOOSE framework does not count with the capability to couple this specific problem input files.
 To solve exercise 3, we created a different model that homogenizes the fuel and moderator materials.
-The solution did not differentiate between moderator and fuel requiring the simulation of only the global model.
+The solution did not differentiate between moderator and fuel, requiring the simulation of only the global model.
 
 % describe the model
 Figure \ref{fig:coupled-mesh} presents the model geometry.
 The model includes 28 fuel and 29 coolant rings.
 We calculated the radii of the rings by preserving the assemblies' and the coolant volume.
 The coolant ring pitch is the coolant channel pitch in a fuel assembly.
-Exercise 3a requires using the material properties from Exercise 2c.
-This section used a simplified model that used the material properties from Exercise 2a, shown in Table \ref{tab:th-ex2a}.
+Exercise 3a requires using material properties from Exercise 2c.
+The simplified model used the material properties from Exercise 2a, shown in Table \ref{tab:th-ex2a}.
 The benchmark prescribes the group constants of 232 regions in the reactor.
-Table \ref{tab:coupled-rz} shows what benchmark sub-domains integrate each model regions.
+Table \ref{tab:coupled-rz} shows what benchmark sub-domains integrate each model region.
+The model did not include the control rod region (sub-domain 232).
 The simulations used a three energy-group structure.
-Table \ref{tab:coupled-eg} what benchmark group numbers integrate each model group.
+Table \ref{tab:coupled-eg} indicates what benchmark group numbers integrate each model group.
 Conducting this exercise required the development of a tool to translate the benchmark group constants to Moltres format.
-The tool was responsible for homogenizing and collapsing the cross sections as well.
+The tool was responsible for homogenizing and collapsing the group constants as well.
 The problem assumed the same boundary conditions from Section \ref{sec:ph1ex2}.
 
-Moltres has the capability to decouple the neutronics from the thermal-fluids effects.
+Moltres can decouple the neutronics from the thermal-fluid effects.
 For the sake of comparison, we conducted the exercise with and without thermal feedback.
-The calculations without thermal feedback assumed the material group constants at 550 $^{\circ}$C.
+The calculations without thermal feedback assumed the group constants at 550 $^{\circ}$C.
 Figure \ref{fig:coupled-results-flux} and \ref{fig:coupled-results-th} display the results on two arbitrary located lines across the core.
-The thermal feedback affects the flux which consequently affects the thermal-fluids.
+The thermal feedback affects the flux, which consequently affects the thermal-fluids.
 The axial flux peak moves towards the reactor top, where the temperatures are lower than the bottom.
-Consequently, the heat production shifts towards the reactor top and the temperatures near the reactor outlet decrease.
-The radial flux does not change considerably, hence the temperature profile does not change considerably either.
-The whole radial temperature profile moves up because of the power shit towards the top.
+Thus, the heat production shifts towards the reactor top, and the temperatures near the reactor outlet decrease.
+The radial flux does not change considerably; hence the temperature profile does not change much either.
+The thermal feedback moves the radial temperature profile up because of the heat production shift towards the top.
 
 \begin{figure}[htbp!]
   \centering
@@ -799,41 +800,41 @@ The whole radial temperature profile moves up because of the power shit towards 
 \subsection{Discussion}
 \label{sec:discuss}
 
-This section analyzes Moltres flaws at conducting prismatic HTGR coupled simulations.
+This section analyzes Moltres' flaws at conducting prismatic HTGR coupled simulations.
 % Describe moltres heterogenous capabilities as an MSR solver
-Moltres initial development targeted MSRs, allowing it to rely on heterogeneous diffusion calculations.
+Moltres' initial development targeted MSRs, allowing it to rely on heterogeneous diffusion calculations.
 In a heterogeneous solver, each mesh node holds the information of each variable.
 In an MSR simulation, Moltres defines the neutron flux and the temperature on each node.
 Each node uses its temperature to compute the thermal feedback on the neutron flux.
 
 % Moltres should use average temperatures
 As discussed in \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
-Because of the homogenization, a mesh node holds the combined information of the group constants from the different materials in the assembly --- only the fuel and the moderator as the coolant does not contribute considerably.
-As the fuel group constants depended on the fuel temperature and the moderator group constants depended on the moderator temperature, the thermal feedback depends on both temperatures.
+Because of the homogenization, a mesh node holds the group constants' combined information from the different materials in the assembly --- only the fuel and the moderator as the coolant does not contribute considerably.
+As the fuel group constants depended on the fuel temperature, and the moderator group constants depended on the moderator temperature, the thermal feedback depends on both temperatures.
 Hence, a mesh node should hold both temperatures.
 
-Section \ref{sec:ph1ex3} used a heterogeneous thermal-fluids model to solve the temperature in the reactor.
-The problem of using a heterogeneous model is that each node holds the value of the temperature in that particular material.
-A coolant node holds the information of the coolant temperature and computes the thermal feedback with such information instead of the moderator and fuel temperature.
+Section \ref{sec:ph1ex3} used a heterogeneous thermal-fluid model to solve the temperature in the reactor.
+The problem of using a heterogeneous model is that each node only holds the temperature's value in that particular material.
+A coolant node holds the coolant temperature information and computes the thermal feedback with such information instead of the moderator and fuel temperature.
 For this reason, Moltres should use the average assembly-level fuel and moderator temperatures instead of the point-wise temperature to compute the thermal feedback.
 
 % Moltres should differentiate Tmod and Tfuel
 Section \ref{sec:ph1ex3} thermal-fluids model homogenized the fuel and the moderator into one material.
 Consequently, the model does not differentiate the fuel from the moderator temperature.
 Such homogenization assumes that both moderator and fuel are in thermal equilibrium and hence have the same temperature.
-However, a coupling model is unable to correctly calculate the thermal feedback if it does not take into account the difference between the moderator and the fuel temperatures \cite{damian_vhtr_2008}.
+However, a coupling model cannot correctly calculate the thermal feedback if it does not differentiate between the moderator and the fuel temperatures \cite{damian_vhtr_2008}.
 
 We denominate this issue as the 'Homogenization dilemma.'
-To properly compute neutronics, the diffusion solver must use homogenized parameters.
-On the other hand, to properly compute the thermal feedback, the mesh node requires the moderator and fuel temperatures which requires a heterogeneous calculation in the thermal-fluids model.
+To correctly compute neutronics, the diffusion solver must use homogenized parameters.
+On the other hand, to accurately calculate the thermal feedback, the mesh node requires the moderator and fuel temperatures, which require a heterogeneous calculation in the thermal-fluids model.
 
 % Wrap-up
-A heterogeneous calculation is valid, but the thermal feedback should use fuel and moderator average temperatures instead.
-Another approach would be to homogenize the materials in the fuel assembly and calculating an homogeneous temperature for each material.
+A thermal-fluid heterogeneous calculation is still valid, but the thermal feedback should use fuel and moderator average temperatures instead.
+Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material.
 Such implementation would be more straightforward than using a heterogeneous solver and then averaging the temperatures.
-An approach with this characteristics is the porous media model.
-In such model, the same mesh node holds the information of the fluid and solid temperatures simultaneously.
-However, the use of such model in the open literature is not always correct as many articles do not differentiate between moderator and fuel temperatures.
+An approach with these characteristics is the porous media model.
+In such a model, the same mesh node holds the fluid and solid temperatures simultaneously.
+However, the use of such a model in the open literature is not always correct, as many articles do not differentiate between moderator and fuel temperatures.
 
 \section{Conclusions}
 
@@ -890,6 +891,6 @@ A flat velocity approximation might be the cause of such discrepancies.
 Further studies should analyze the origin of the discrepancies.
 
 Section \ref{sec:ph1ex3} developed a global model to solve a simplified version of Phase 1 Exercise 3 of the OECD/NEA benchmark.
-Although the model was very simple, it allowed to visualize some of the basic characteristics of a prismatic HTGR multi-physic simulation in Moltres.
-This exercise lead to Section \ref{sec:discuss} which described some of the flaws found in the model.
-This exercise also sets the basis for future work that Section \ref{ref:futwork} will introduce.
+Although the model was simple, it allowed visualizing some of the essential aspects of a prismatic HTGR multi-physics simulation in Moltres.
+This exercise led to Section \ref{sec:discuss}, which described some of the flaws found in the model.
+This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.
