@@ -35,7 +35,6 @@ We also analyzed the effects of such an approximation as some discrepancies in t
 Section \ref{sec:ph1e1} concluded that the boundary condition approximation was responsible for causing such discrepancies.
 
 % Ch5: Thermal-fluids
-Multi-physics simulators need to resolve the temperature in the different regions of the reactor.
 Moltres is a MSR simulator, and its thermal-fluids kernels applicability to prismatic HTGRs is not straightforward.
 Chapter \ref{ch:thermalfluids} focused on developing a thermal-fluids model for Moltres.
 A first preliminary study verified the proposed model by comparing the numerical solution to a known analytical solution.
@@ -51,8 +50,10 @@ This analysis exposed that a high level of detail in our model might restrict th
 The next study relied on different approach for the thermal-fluids modeling of the MHTGR-350 to circumvent the high memory requirement restriction.
 This study solved Phase I Exercise 2 of OECD/NEA MHTGR-350 MW Benchmark.
 The exercise revealed that a more accurate mass flow distribution and the consideration of the radiative heat transfer mechanism are necessary for the correct modeling of prismatic HTGRs.
-
-
+Chapter \ref{ch:thermalfluids} also focused on studying Moltres applicability to prismatic HTGR multi-physics simulations.
+Section \ref{sec:ph1ex3} used a simplfied model to solve Phase I Exercise 3 of OECD/NEA MHTGR-350 MW Benchmark.
+Although the model was simple, it allowed visualizing some of the essential aspects of prismatic HTGR multi-physics simulations.
+Conducting this exercise helped to identify Moltres flaws and sets the basis for future work.
 
 % Ch6: Hydrogen
 World-wide climate change demands a large scale deployment of \gls{CO2}-free energy sources.
@@ -92,15 +93,11 @@ Section \ref{sec:ph1ex2} first analysis intended to reproduce INL results.
 That analysis reveals that Moltres modeling fails to capture the right heat transfer between different assemblies.
 Not modeling the radiative heat transfer between elements might be causing this behavior.
 Future analyses will add the radiate heat transfer modeling capability to Moltres.
+Additionally, interfacing the neutronics and the thermal-fluids is a crutial step in the multi-physics modeling.
+Future work will focus on enabling the use of assembly-level average temperatures to properly model thermal feedback.
 
 % turbulence modeling
-
-% Ch5: thermal-fluids
-% - 3D Thermal-fluids
-% 	- porous media model
-% 	- Multi-physics
-
-% Thermo-mechanics capabilities in Moltres
+% thermo-mechanics capabilities in Moltres
 
 % Ch6: Hydrogen
 As \ref{ch:hydro} mentioned, high temperatures enable efficient hydrogen production.
