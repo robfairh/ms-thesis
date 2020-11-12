@@ -18,7 +18,7 @@ The model assumed a sinusoidal power profile in the $z$-direction.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.25\linewidth]{figures-thermal/ver-mesh2}
+	\includegraphics[width=0.40\linewidth]{figures-thermal/ver-mesh2}
 	\hfill
 	\caption{Model geometry axial layout.}
 	\label{fig:th-ver-mesh}
@@ -121,13 +121,13 @@ Additionally, In et al. used a chopped cosine as the power profile, which we use
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Model geometry.]{
-        \includegraphics[width=0.40\textwidth]{figures-thermal/val-unit-mesh}
+        \includegraphics[width=0.40\textwidth]{figures-thermal/unitcell2}
     }
     \subfloat[Material properties.]{
-        \includegraphics[width=0.50\textwidth]{figures-thermal/val-unit-matprop}
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-matprop}
     }
 	\hfill
-  \caption{Moltres/MOOSE input parameters.}
+  \caption{Input file definition.}
 	\label{fig:th-val-unit-model}
 \end{figure}
 
@@ -251,6 +251,7 @@ A5                        & -         & 4.02E-11   & -             & -9.77E-16  
         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-matprop}
     }
   \hfill
+  \caption{Input file definition.}
   \label{fig:th-val-assem-model}
 \end{figure}
 
@@ -379,7 +380,7 @@ The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temp
   \Delta P &= \mbox{pressure drop} \notag \\
   T_i &= \mbox{channel inlet coolant temperature} \notag \\
   T_o &= \mbox{channel outlet coolant temperature} \notag \\
-  \dot{m}_T &= \mbox{total mass flow rate} \notag \\
+  \dot{m}_T &= \mbox{total mass flow rate} \notag
 \end{align}
 
 Table \ref{tab:th-assem-flow-massflow} displays the results for the mass flow rates.
@@ -662,7 +663,11 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
   \end{tabular}
 \end{table}
 
-\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
+\section{Coupled simulations}
+
+This section sets the road-map for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
+
+\subsection{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
 \label{sec:ph1ex3}
 
 % description of the exercise
@@ -762,7 +767,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radial}
     }
   \hfill
-  \caption{Flux profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Flux profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-flux}
 \end{figure}
 
@@ -775,7 +780,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radialT}
     }
   \hfill
-  \caption{Temperature profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Temperature profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-th}
 \end{figure}
 
@@ -811,12 +816,64 @@ To correctly compute neutronics, the diffusion solver must use homogenized param
 Simultaneously, to accurately calculate the thermal feedback, a mesh node should differentiate the moderator temperature from the fuel temperature, which require a heterogeneous calculation in the thermal-fluids model.
 A thermal-fluid heterogeneous calculation is still valid, but the thermal feedback should use fuel and moderator average temperatures instead.
 
-% this will go into chapter 7 into future work
-Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material (still differentiating them).
-Such implementation would be more straightforward than using a heterogeneous solver and then averaging the temperatures.
-An approach with these characteristics is the porous media model.
-In such a model, the same mesh node holds the fluid and solid temperatures.
-However, the use of such a model in the open literature is not always correct, as many articles do not differentiate between moderator and fuel temperatures.
+\section{Coupled exercise with average temperature thermal feedback}
+\label{sec:coupled-average}
+
+The previous discussion led to the development of this section.
+This section conducted Section \ref{sec:ph1ex3} analysis calculating the thermal feedback with the solid average temperatures.
+Section \ref{sec:ph1ex3} calculated the thermal feedback using the point-wise temperatures.
+This section compares the results from both approaches.
+
+Figure \ref{fig:coupled-ave-results-th2} exhibits the point-wise temperature and the average temperatures across the reactor.
+The model used the average temperatures to compute the thermal feedback in the core.
+The simulations did not compute the average temperature in the RPV and the outside air.
+Figure \ref{fig:coupled-ave-results-flux} displays the neutron flux profiles, and Figure \ref{fig:coupled-ave-results-th}, the temperature profiles.
+The results are almost identical.
+The only noticeable difference is in the axial temperature profiles, which differ by less than 3$^{\circ}$C.
+
+This analysis expected more variations in the results.
+The point-wise approach arrived at similar results because the difference between the solid and coolant temperature is small (less than 100$^{\circ}$C).
+However, in transient analyses, the temperature difference between the fuel and the coolant may increase, causing more variability in the results.
+Although using the point-wise approach is easier for the input file definition, its use is not correct, and future users should refrain from using it.
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Temperature profile.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-temp}
+    }
+    \subfloat[Average temperature in each assembly.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-auxtemp}
+    }
+  \hfill
+  \caption{Temperature maps.}
+  \label{fig:coupled-ave-results-th2}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial flux over the line at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axial}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radial}
+    }
+  \hfill
+  \caption{Flux profile comparison.}
+  \label{fig:coupled-ave-results-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial temperature at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axialT}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radialT}
+    }
+  \hfill
+  \caption{Temperature profile comparison.}
+  \label{fig:coupled-ave-results-th}
+\end{figure}
 
 \section{Conclusions}
 
@@ -873,4 +930,5 @@ Further studies should analyze the origin of the discrepancies.
 Section \ref{sec:ph1ex3} developed a global model to solve a simplified version of Phase 1 Exercise 3 of the OECD/NEA benchmark.
 Although the model was simple, it allowed visualizing some of the essential aspects of a prismatic HTGR multi-physics simulation in Moltres.
 This exercise led to Section \ref{sec:discuss}, which described some of the flaws found in the model.
-This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.
+Additionally, Section \ref{sec:coupled-average} addressed some of the flaws found in the model and set the basis for conducting prismatic HTGR coupled exercises in Moltres.
+% This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.
