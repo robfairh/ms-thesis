@@ -2,12 +2,11 @@
 
 \section{Preliminary studies}
 
-This section carries out some preliminary studies using Moltres and MOOSE heat conduction module to solve the prismatic HTGR thermal-fluids.
+This section carries out various preliminary studies using Moltres and MOOSE heat conduction modules (Moltres/MOOSE) to solve the prismatic HTGR thermal-fluids.
 
 \subsection{Verification of the thermal-fluids model}
 
-To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know.
-Section \ref{appendix:ver} presents the problem's analytical solution.
+To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know (see Section \ref{appendix:ver} for a description on this solution).
 Moltres/MOOSE obtained the numerical solution of the thermal-fluid equations from Section \ref{ch3:th}.
 
 Figure \ref{fig:th-ver-mesh} displays the model geometry, which differentiates five subregions: fuel compact, helium gap, moderator, film, and coolant.
@@ -19,9 +18,9 @@ The model assumed a sinusoidal power profile in the $z$-direction.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
+	\includegraphics[width=0.25\linewidth]{figures-thermal/ver-mesh2}
 	\hfill
-	\caption{Scaled-down version of the model geometry.}
+	\caption{Model geometry axial layout.}
 	\label{fig:th-ver-mesh}
 \end{figure}
 
@@ -60,11 +59,9 @@ The model assumed a sinusoidal power profile in the $z$-direction.
   \end{tabular}
 \end{table}
 
-Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles.
-Both analytical and numerical solutions exhibit good agreement.
-The outlet coolant temperature is 770.2 $^{\circ}$C, whereas the average outlet coolant temperature of the reference reactor is 950 $^{\circ}$C.
 Note that this is a simplified model only for verifying that the numerical solution agrees with the analytical solution.
-The model also considers only one fuel channel, while in the GT-MHR unit cell, two fuel channels deposit their heat into one coolant channel.
+Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles and demonstrates that both the analytical and numerical solutions exhibit good agreement.
+The outlet coolant temperature is 770.2 $^{\circ}$C, whereas maximum fuel temperature is 874.7 $^{\circ}$C.
 
 \begin{figure}[htbp!]
 	\centering
@@ -83,7 +80,7 @@ The model also considers only one fuel channel, while in the GT-MHR unit cell, t
 \label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of an HTGR.
-We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
+We intended to reproduce the results found by In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
 We chose this article because it solves a three-dimensional unit-cell model and gives one of the most thorough descriptions in the open literature.
 Table \ref{tab:th-val-unit-char} presents the problem characteristics.
 The article does not specify the solid's material properties, and we replaced them with parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
