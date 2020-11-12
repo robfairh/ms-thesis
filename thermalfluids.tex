@@ -363,7 +363,7 @@ Equation \ref{eq:case5mdot} \cite{melese_thermal_1984} calculated the pressure d
 For Cases 3 to 5, the pressure drop is proportional to the channel mass flow (Equation \ref{eq:itersolver1}).
 Equations \ref{eq:case3mdot} and \ref{eq:case5mdot} calculated $B_i$.
 Equations \ref{eq:itersolver2} and \ref{eq:itersolver3} \cite{melese_thermal_1984} solved the mass flow distribution iteratively.
-As the mass flow distributions in Cases 4 and 5 depend on the temperature, the calculations required another level of iterations to obtain the final mass flow distribution.
+As the mass flow distributions in Cases 4 and 5 depend on the temperature, the calculations required a second level of iterations to obtain the final mass flow distribution.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 
 \begin{align}
@@ -385,21 +385,20 @@ The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temp
 Table \ref{tab:th-assem-flow-massflow} displays the results for the mass flow rates.
 % Case 4 and case 5 converged after two and three iterations, respectively.
 Case 2 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
-Case 3 and 4 barely differ.
-Not considering the viscosity's temperature dependency yields a more straightforward method and the accuracy loss is negligible.
+Case 3 and 4 barely differ, which proves that not considering the viscosity's temperature dependency yields a more straightforward method with an acceptable accuracy.
 Case 5 arrives at the closest values to the reference solution.
 
 Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
 Case 2 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
 Case 5 yields the closest results to the reference values.
-For the maximum fuel temperature, case 2 and 5 yield the best results.
-Again, case 3 and 4 barely differ.
+For the maximum fuel temperature, Case 2 and 5 yield the best results.
+Again, Case 3 and 4 barely differ.
 
-The low-Mach number model yielded the closest results to the reference solution.
+The low-Mach number model (Case 5) yielded the closest results to the reference solution.
 However, such a method required a two-level iterative solver.
-From a computational point of view, case 2 model is the simplest method as it does not require an iterative solver.
-Additionally, case 2 model yields the simplest Moltres input file.
-For these reasons, the rest of the thesis uses case 2 model for the fluid flow distribution.
+From a computational point of view, the Case 2 model is the simplest method as it does not require an iterative solver.
+Additionally, the Case 2 model yields the simplest Moltres input file.
+For these reasons, the rest of the thesis uses the Case 2 model for the fluid flow distribution.
 
 \begin{table}[htbp!]
   \centering
@@ -445,20 +444,17 @@ Fuel    & 1114   & 1116   & 1109 & 1110 & 1116 \\
 % I might not include this in the final document
 
 The remainder of this chapter intends to solve the full-core problem.
-This section aims to identify some possible
-problems introduced by the full-core problem's large mesh size requirement.
-This section conducts a mesh convergence analysis of the full-fuel column problem.
-Figure \ref{fig:th-full-assem-mesh} displays the model geometry.
-Table \ref{tab:th-full-assem-results} presents the results.
+This section aims to identify some possible problems introduced by the full-core problem's large mesh size requirement.
+To do so, this section conducts a mesh convergence analysis of the full-fuel column problem.
+Figure \ref{fig:th-full-assem-mesh} displays the model geometry, and Table \ref{tab:th-full-assem-results} presents the results.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
-The coolant temperature converged for the fifth mesh.
-The fuel temperature did not reach convergence.
+The coolant temperature converged for the fifth mesh, but the fuel temperature did not reach convergence.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
 
 This analysis reveals a potential problem.
 The high level of detail in our geometry requires a large number of elements in the mesh.
-In the full-scale problem the dimensions increase, and the number of elements in the mesh do so too.
-Potentially, this method will not be able to solve the three-dimensional full-scale problem due to a high memory requirement.
+In the full-scale problem the dimensions, and the number of elements in the mesh both increase.
+Potentially, this method will be unable to solve the three-dimensional full-scale problem due to a high memory requirement.
 For this reason, the next section intends to solve the full-scale problem using a two-dimensional cylindrical model.
 
 % Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
@@ -507,23 +503,20 @@ The benchmark specifies the power density of each fuel region and defines the ma
   \item Exercise 2d: Bypass flow type II and variable thermo-physical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
-The exercise requires reporting the average and maximum values of the reflector, \gls{RPV}, fuel, moderator, and coolant temperatures.
+The exercise requires reporting the average and maximum temperature values of the reflector, \gls{RPV}, fuel, moderator, and coolant.
 It also requires reporting the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
 These data are helpful to trace the source of possible differences in the primary parameters between participants.
-OECD/NEA did not publish this exercise's results.
-This section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
-It presents only a subset of available data that illustrates the main characteristics of the exercise.
+Since OECD/NEA did not publish the results for this exercise, this section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
+This section presents only a subset of available data that illustrates the main characteristics of the exercise.
 
 Figure \ref{fig:ex2a-1st-model} displays the model geometry.
-To simplify the simulation of the exercise, the model uses several simplifications.
-In the axial direction, it does not consider the upper plenum and the outlet plenum.
-The axial boundaries are the top reflector's upper face and the bottom reflector's lower face.
-The top reflector's upper face and the inlet coolant flow are at 259 $^{\circ}$C.
-The bottom reflector's lower face is adiabatic.
+The model uses several simplifications to conduct the exercise.
+In the axial direction, it does not consider the upper plenum and the outlet plenum, and the axial boundaries are the top reflector's upper face and the bottom reflector's lower face.
+The top reflector's upper face and the inlet coolant flow are at 259 $^{\circ}$C, while the bottom reflector's lower face is adiabatic.
 The outlet coolant uses an outflow boundary condition.
 In the radial direction, the model does not consider the core barrel and the helium gap.
-After the outer reflector is the RPV, and after it, the outside air
-The outer boundary of the air region is at 30 $^{\circ}$C.
+After the outer reflector is the RPV, followed by the outside air.
+The outside air region outer boundary is at 30 $^{\circ}$C.
 
 The core model geometry uses INL's model as the reference design.
 Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
@@ -537,11 +530,11 @@ Table \ref{tab:th-ex2a-1st-results} displays the results.
 Our model considerably under-predicts the inner reflector rings temperature, while it over-predicts the coolant rings temperature.
 With the purpose of better understanding this behavior, Figure \ref{fig:ex2a-1st-model-across} shows the temperature across the reactor on the bottom of the active core (z=200 cm).
 This figure exposes that the temperatures in the active core are well above the other region temperatures.
-Although such a behavior is normal; the temperature profile reveals some heat transfer disconnection between the different rings.
+Although such a behavior is normal, the temperature profile reveals some heat transfer disconnection between the different rings.
 In other words, the heat transfer from the fuel rings to the rest of the core structures is smaller than the heat transfer to the coolant rings in the active core region.
 This thermal disconnection causes the reflector temperatures to be too low and the coolant temperatures too high.
 These results indicate that Moltres model fails to capture some heat transfer mechanisms that INL's model captures.
-The most notorious difference between the models is the inclusion of the radiative heat transfer.
+The most obvious difference between the models is the inclusion of the radiative heat transfer.
 Future works will focus on confirming this supposition and adding the capability to model the radiative heat transfer.
 
 % model H figure
@@ -597,14 +590,14 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
   \label{fig:ex2a-1st-model-across}
 \end{figure}
 
-% left here on grammarly review
+% left here on review
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
 The calculation used a global model to obtain the coolant temperature in the core and then a sub-channel model to get the fuel and moderator average temperatures.
 Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
 The sub-channel model used half of the unit cell from Section \ref{sec:unitcell}.
-Three rings defined the solid structures in the global model, and another three, the coolant flow in the core.
+Three rings defined the solid structures in the global model, and another three defined the coolant flow in the core.
 We calculated the radii of the rings by preserving the assemblies' volume.
-The middle ring defines the fuel rings, which encompasses three rings.
+The middle ring defines the fuel rings, which repreent the three rings of fuel assemblies in the MHTGR-350 (see Figure \ref{fig:layout}).
 The coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
