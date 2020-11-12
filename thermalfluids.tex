@@ -584,45 +584,44 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.35\linewidth]{figures-thermal/ex2a-across}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-across}
   \hfill
-  \caption{Model geometry.}
+  \caption{Radial temperature at the bottom of the active core (z=200 cm).}
   \label{fig:ex2a-1st-model-across}
 \end{figure}
 
 % left here on review
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
+% which defines only one coolant ring for each fuel ring.
 The calculation used a global model to obtain the coolant temperature in the core and then a sub-channel model to get the fuel and moderator average temperatures.
-Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
 The sub-channel model used half of the unit cell from Section \ref{sec:unitcell}.
-Three rings defined the solid structures in the global model, and another three defined the coolant flow in the core.
+Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
+Three fuel rings represent the three rings of fuel assemblies in the MHTGR-350 (see Figure \ref{fig:layout}).
+In the middle of each fuel ring, a coolant ring defines the coolant flow in that fuel ring.
 We calculated the radii of the rings by preserving the assemblies' volume.
-The middle ring defines the fuel rings, which repreent the three rings of fuel assemblies in the MHTGR-350 (see Figure \ref{fig:layout}).
 The coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
 Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
-The temperature is constant in the bottom and top reflector regions.
-The coolant temperature increases from the top to the bottom of the active core.
-The highest coolant, fuel, and moderator temperatures are in fuel ring 1.
+The coolant temperature increases from the top to the bottom of the active core and, it is constant in the bottom and top reflector regions.
+The highest coolant, fuel, and moderator temperatures are in Fuel Ring 1.
 
 Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
 We focus on the coolant temperature of the different rings.
-Moltres predicts smaller values in fuel ring 1, while it predicts higher values in fuel rings 2 and 3.
-For some reason, the global model fails to correctly distribute into the coolant rings the heat produced in the fuel rings.
+Moltres predicts a smaller value in Fuel Ring 1, but predicts a higher value in Fuel Rings 2 and 3.
+For some reason, the global model fails to correctly distribute the heat produced in the fuel rings into the coolant rings.
 A possible cause of this discrepancy is the flat velocity approximation.
-Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model.
-However, one of the assumptions of that model was that the power density is uniform.
-In this exercise, the power density is not uniform, and that could be causing the discrepancies.
-Further studies should study the cause of them.
+Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model; However, one of the assumptions of that model was that the power density is uniform.
+In this exercise, the power density is not uniform, which could explain the discrepancies.
+Further studies might confirm the cause of them.
 
-Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for fuel rings 1 and 2.
-The most considerable discrepancy is in fuel ring 1.
+Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for Fuel Rings 1 and 2.
+The most considerable discrepancy is in Fuel Ring 1.
 INL's model coolant-to-moderator temperature difference is 46$^{\circ}$C while Moltres/MOOSE predicts a difference of 30$^{\circ}$C.
 The flat velocity approximation might be again the source of these discrepancies.
 Finally, the moderator-to-fuel temperature differences from INL and Moltres/MOOSE are close.
-In fuel ring 1, it is 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
-In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results.
+In Fuel Ring 1, the differences are 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
+In fuel ring 2, the differences are 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results.
 
 % model G figure
 \begin{figure}[htbp!]
@@ -653,7 +652,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
       \label{tab:th-ex2a-results}
 \begin{tabular}{l|c|c|c|c|c|c}
     \toprule
-          & \multicolumn{2}{c|}{Fuel ring 1} & \multicolumn{2}{c|}{Fuel ring 2} & \multicolumn{2}{c}{Fuel ring 3} \\ \cline{2-7} 
+          & \multicolumn{2}{c|}{Fuel Ring 1} & \multicolumn{2}{c|}{Fuel Ring 2} & \multicolumn{2}{c}{Fuel Ring 3} \\ \cline{2-7} 
           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
     \midrule
 Coolant   & 797     & 718               & 636     & 646               & 673       & 696           \\
@@ -672,12 +671,12 @@ Exercise 3 combines all the data from the first two exercises, in which the part
 The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
 The benchmark specifies the group constants necessary to conduct the exercise.
 The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
-In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
+In addition to these data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
 
 Two sub-cases compose Exercise 3:
 \begin{itemize}
-  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c.
-  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d.
+  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c. This exercise prescribes the bypass flow distribution and the thermo-physical properties depend on different simulation parameters.
+  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
 % initial coupling: description of what I've done
@@ -685,9 +684,9 @@ Section \ref{sec:ph1ex2} solved the thermal-fluids standalone problem using a gl
 Those simulations required running two separate input files, where the output of the global model served as an input to the sub-channel model.
 Exercise 3 requires modeling the temperature feedback.
 Using Section \ref{sec:ph1ex2} approach for the temperature feedback would require the fully-coupled simulation of both input files.
-However, MOOSE framework does not count with the capability to couple this specific problem input files.
-To solve exercise 3, we created a different model that homogenizes the fuel and moderator materials.
-The solution did not differentiate between moderator and fuel, requiring the simulation of only the global model.
+However, MOOSE framework does not have the capability to couple these specific problem input files.
+To solve Exercise 3, we created a different model that homogenizes the fuel and moderator materials.
+The solution did not differentiate between moderator and fuel, thus requiring the simulation of only the global model.
 
 % describe the model
 Figure \ref{fig:coupled-mesh} presents the model geometry.
@@ -695,7 +694,7 @@ The model includes 28 fuel and 29 coolant rings.
 We calculated the radii of the rings by preserving the assemblies' and the coolant volume.
 The coolant ring pitch is the coolant channel pitch in a fuel assembly.
 Exercise 3a requires using material properties from Exercise 2c.
-The simplified model used the material properties from Exercise 2a, shown in Table \ref{tab:th-ex2a}.
+The simplified model used the material properties from Exercise 2a, as shown in Table \ref{tab:th-ex2a}.
 The benchmark prescribes the group constants of 232 regions in the reactor.
 Table \ref{tab:coupled-rz} shows what benchmark sub-domains integrate each model region.
 The model did not include the control rod region (sub-domain 232).
@@ -705,14 +704,13 @@ Conducting this exercise required the development of a tool to translate the ben
 The tool was responsible for homogenizing and collapsing the group constants as well.
 The problem assumed the same boundary conditions from Section \ref{sec:ph1ex2}.
 
-Moltres can decouple the neutronics from the thermal-fluid effects.
-For the sake of comparison, we conducted the exercise with and without thermal feedback.
+Because Moltres can decouple the neutronics from the thermal-fluid effects, for the sake of comparison, we conducted the exercise with and without thermal feedback.
 The calculations without thermal feedback assumed the group constants at 550 $^{\circ}$C.
 Figure \ref{fig:coupled-results-flux} and \ref{fig:coupled-results-th} display the results on two arbitrary located lines across the core.
 The thermal feedback affects the flux, which consequently affects the thermal-fluids.
 The axial flux peak moves towards the reactor top, where the temperatures are lower than the bottom.
 Thus, the heat production shifts towards the reactor top, and the temperatures near the reactor outlet decrease.
-The radial flux does not change considerably; hence the temperature profile does not change much either.
+The radial flux does not change considerably, hence the temperature profile does not change much either.
 The thermal feedback moves the radial temperature profile up because of the heat production shift towards the top.
 
 \begin{figure}[htbp!]
@@ -792,32 +790,31 @@ In an MSR simulation, Moltres defines the neutron flux and the temperature on ea
 Each node uses its temperature to compute the thermal feedback on the neutron flux.
 
 % Moltres should use average temperatures
-As discussed in \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
+As discussed in Chapter \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
 Because of the homogenization, a mesh node holds the group constants' combined information from the different materials in the assembly --- only the fuel and the moderator as the coolant does not contribute considerably.
 As the fuel group constants depended on the fuel temperature, and the moderator group constants depended on the moderator temperature, the thermal feedback depends on both temperatures.
 Hence, a mesh node should hold both temperatures.
 
 Section \ref{sec:ph1ex3} used a heterogeneous thermal-fluid model to solve the temperature in the reactor.
-The problem of using a heterogeneous model is that each node only holds the temperature's value in that particular material.
+The problem with using a heterogeneous model is that each node only holds the temperature's value in that particular material.
 A coolant node holds the coolant temperature information and computes the thermal feedback with such information instead of the moderator and fuel temperature.
 For this reason, Moltres should use the average assembly-level fuel and moderator temperatures instead of the point-wise temperature to compute the thermal feedback.
 
 % Moltres should differentiate Tmod and Tfuel
-Section \ref{sec:ph1ex3} thermal-fluids model homogenized the fuel and the moderator into one material.
-Consequently, the model does not differentiate the fuel from the moderator temperature.
-Such homogenization assumes that both moderator and fuel are in thermal equilibrium and hence have the same temperature.
+The thermal-fluids model in Section \ref{sec:ph1ex3} homogenized the fuel and the moderator into one material.
+Such homogenization assumes that both the moderator and fuel are in thermal equilibrium, and therefore have the same temperature.
+Consequently, the model does not differentiate the fuel temperature from the moderator temperature.
 However, a coupling model cannot correctly calculate the thermal feedback if it does not differentiate between the moderator and the fuel temperatures \cite{damian_vhtr_2008}.
 
-We denominate this issue as the 'Homogenization dilemma.'
-To correctly compute neutronics, the diffusion solver must use homogenized parameters.
-On the other hand, to accurately calculate the thermal feedback, the mesh node requires the moderator and fuel temperatures, which require a heterogeneous calculation in the thermal-fluids model.
-
-% Wrap-up
+We denominate this issue as the 'homogenization dilemma.'
+To correctly compute neutronics, the diffusion solver must use homogenized parameters which depend on both moderator and fuel temperatures.
+Simultaneously, to accurately calculate the thermal feedback, a mesh node should differentiate the moderator temperature from the fuel temperature, which require a heterogeneous calculation in the thermal-fluids model.
 A thermal-fluid heterogeneous calculation is still valid, but the thermal feedback should use fuel and moderator average temperatures instead.
-Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material.
+
+Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material (still differentiating them).
 Such implementation would be more straightforward than using a heterogeneous solver and then averaging the temperatures.
 An approach with these characteristics is the porous media model.
-In such a model, the same mesh node holds the fluid and solid temperatures simultaneously.
+In such a model, the same mesh node holds the fluid and solid temperatures.
 However, the use of such a model in the open literature is not always correct, as many articles do not differentiate between moderator and fuel temperatures.
 
 \section{Conclusions}
