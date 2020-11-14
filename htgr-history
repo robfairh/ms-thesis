@@ -1,16 +1,10 @@
-Other nations
 New HTGRs
-HTR designs
-Modular
-VHTR
-NGNP
-Micro-HTGRs
+- Micro-HTGRs
 - USNC - UIUC
 
-Development history of the gas turbine modular high temperature reactor.
-------------------------------------------------------------------------
+brey_development_2001
+---------------------
 
-Brey
 In 1969, the Japan Atomic Energy Research Institute initiated studies on the VHTR.
 
 * HTGR prototype plants
@@ -82,3 +76,64 @@ GTHTR-300
 Cycle configuration simpler compared to the GT-MHR, eliminates a compressor unit and the intercooler
 
 A modular HTGR has never before been constructed ....
+
+
+ballinger_balance_2004
+----------------------
+
+* Japan's HTTR
+
+The Japanese test reactor HTTR reached first criticality in 1998 and reached full power in 2001.
+It is a 30 MWth prismatic core HTGR design with outlet temperature 850°C.
+
+* Modular
+
+With a deliberate decrease in the power level and reconfiguring of the reactor, the modular type HTGR concept was proposed in the early 1980s.
+The modular type HTGR provides the extra unique characteristic that the fuel temperature will not exceed the failure temperature following postulated accidents just by using passive heat transfer mechanisms.
+
+* GT-MHR
+
+a joint United States – Russian Federation program developed the GT-MHR project for burning weapon-grade plutonium
+
+
+iaea_current_2001
+-----------------
+Contents p. 6
+
+* HTTR 
+In June 1987, the Japanese Atomic Energy Commission (JAEC) suggested that Japan should proceed to develop more advanced reactor technologies in parallel with the upgrading of existing nuclear reactors.
+
+A special committee investigating the HTGR R&D plan for the JAEC stated that the reactor outlet coolant temperature should be 950°C, which was the highest temperature attainable considering the current technology level.
+They proposed a prismatic block type core structure with a power rating of 30 MWth.
+
+The Japanese government approved proceeding with the HTTR in its 1989 fiscal year budget. Construction began in March 1991.
+
+The reactor outlet coolant temperature at the full power is set at both 850° and 950°C.
+The reactor operational mode at 850°C is defined as "rated operation" and at 950°C is "high temperature test operation" because the HTTR is not allowed to be operated at 950°C for the full life of the initial core.
+
+The plant is now engaged in a comprehensive testing programme associated with evaluation of the HTGR.
+This programme is divided into six major categories; safety, thermal hydraulics, fuel, high temperature components, core physics and control/instrumentation.
+These tests basically focus on evaluation and confirmation of the safety of the HTGR through actual demonstration on the HTTR.
+
+
+shimizu_operation_2014
+----------------------
+
+* HTTR
+JAEA has been establishing a database of operation and maintenance experience from the HTTR. The purpose of this database is to share information regarding operation and maintenance experience and to use the knowledge gained in the design, construction, and operation of future HTGRs.
+
+Significant lessons learned from operation and maintenance:
+* performance degradation of helium gas compressors
+* malfunction of reserverd shutdown system
+* problems with the emergency gas turbine generators
+* experience from the Great East Japan Earthquake
+
+kadak_status_2016
+-----------------
+
+In addition to government-sponsored research, several privately funded gas reactor projects are underway.
+StarCore Nuclear is a 50 MW th HTGR being developed in Canada for electricity (20 MWe) and 10 MWth of thermal energy for use in process heat applications.
+
+The General Atomics Energy Multiplier Module (EM2) is a helium-cooled fast reactor with a net power output of 265 MWe.
+As a fast reactor, it uses the breed-and-burn principle that allows for a theoretical 30-year life without refueling or reshuffling.
+
