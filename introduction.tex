@@ -138,17 +138,14 @@ All these characteristics, plus some modifications that this work intends to imp
 As mentioned earlier, the ultimate goal of this work is to support the development of \gls{HTGR} technology.
 The following list of main objectives expands on that goal.
 
-\paragraph{Extend Moltres modeling capabilities to \glspl{HTGR}.}
-Moltres is a multi-physics solver of \glspl{MSR}.
-Enhancing Moltres will allow it to model \glspl{HTGR} as well.
+\paragraph{Determine prismatic \glspl{HTGR} key physics.}
+Prismatic HTGRs have inherent physics phenomena unique to their design.
+This thesis intends to determine which are those inherent physics crucial for their accurate modeling.
 
-\paragraph{Couple the different physics phenomena present in an HTGR.}
-Moltres's current capabilities allow for solving some of the physics in the HTGR design.
-Nevertheless, the solver needs to capture the inherent physics in an HTGR and adequately integrate them into the current capabilities.
-
-\paragraph{Develop safety analysis capabilities in Moltres.}
-Steady-state simulations help understand the fundamental behavior of an HTGR and, like transient simulations, assist in reactor design. 
-Transient simulations also assess the reactor response in design basis events.
+\paragraph{Extend Moltres modeling capabilities to prismatic \glspl{HTGR}.}
+Moltres is a multi-physics solver designed to capture key physics in \glspl{MSR}.
+Moltres's current capabilities allow for solving some of the physics in the prismatic HTGR design.
+Nevertheless, the solver needs to capture the missing physics in prismatic HTGRs and adequately integrate them into the current capabilities.
 
 \paragraph{Understand \gls{HTGR} contribution to stopping climate change.}
 HTGRs are an attractive technology due to attaining high temperatures.
@@ -158,26 +155,33 @@ With such high temperatures, the efficiency of hydrogen production increases.
 The main objectives are somewhat broad.
 The following list presents secondary objectives which will lead to the fulfillment of the main objectives:
 
-\paragraph{Predict neutronics.}
-Moltres should have the ability to carry out eigenvalue calculations appropriately.
-Additionally, Moltres should predict the flux shape and magnitude accurately, during steady-state and transient simulations.
+\paragraph{Demonstrate Moltres' ability to predict HTGR neutronics.}
+A neutronics solver should predict the flux shape and magnitude accurately, during steady-state and transient simulations.
+Previous work demonstrated Moltres' ability to solve MSR neutronics.
+Chapter \ref{ch:neutronics} demonstrates such an ability for prismatic HTGRs.
 
-\paragraph{Understand the impact of some simulation parameters.}
+\paragraph{Understand the impact of the group constants energy group structure on the HTGR diffusion calculations.}
 The underlying physics of \glspl{HTGR} differ from the physics of other reactors.
 Consequently, the simulation results will be sensitive to different parameters from other reactor type simulations.
-This work will focus on the energy group structure and its effects on the diffusion calculations.
-We will also assess how such parameters affect the performance of the simulations. 
+Chapter \ref{ch:neutronics} studies the impact of the group constants energy group structure on the diffusion calculations.
 
 \paragraph{Calculate power distribution correctly.}
-The value of an accurate neutronics behavior prediction lies in the accurate prediction of the power distribution.
 The power distribution is the most influential parameter over the thermal-hydraulics as it determines the temperature profile in the reactor.
+Previous work demonstrated Moltres ability to calculate the power distribution in MSRs.
+Chapter \ref{ch:neutronics} evinces such an ability for prismatic HTGRs.
 
-\paragraph{Predict temperature profile accurately.}
-Undesirably high temperatures endanger the integrity of the TRISO particles.
+\paragraph{Predict prismatic HTGRs temperature profile accurately.}
+Undesirably high temperatures endanger the integrity of the reactor structures, and most importantly, the TRISO particles.
 Additionally, the temperature influences the neutronics.
-Hence, an accurate neutronics calculation will be inaccurate without a correct thermal-hydraulics calculation and vice versa. 
+Hence, an accurate neutronics calculation will be inaccurate without a correct thermal-hydraulics calculation. 
+Previous work demonstrated Moltres ability to predict the temperature profile in MSRs.
+Chapter \ref{ch:thermalfluids} examines Moltres ability to accurately predict the temperature profile in prismatic HTGRs.
 
-\paragraph{Develop a hydrogen production calculation tool.}
+\paragraph{Coupled simulations
+Accurately model the thermal feedback on the neutronics.
+Chapter \ref{ch:thermalfluids}
+
+\paragraph{Techno-economic analysis of hydrogen production with HTGRs.}
 High temperatures enable high-efficiency hydrogen production methods.
 Most of them have different energy requirements and production rates.
-We will develop a tool to determine such quantities.
+Chapter \ref{ch:hydro} analyses such quantities.
