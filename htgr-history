@@ -1,7 +1,3 @@
-New HTGRs
-- Micro-HTGRs
-- USNC - UIUC
-
 brey_development_2001
 ---------------------
 
@@ -33,16 +29,13 @@ One of the early gas turbine designs was the HTGR-GT by Generat Atomics.
 Size 2000 MWt/800 MWe. Tout = 850C.
 Interest from utilities from the potential of the HTGR-GT for improved efficiencies at high core outlet temperatures, simplicity of the gas turbine cycle, low water requirements, and attractive co-generation characteristics.
 
-Modular HTGR steam cycle plant development
+* Modular HTGR steam cycle plant development
 
-The overall good safety characteristics of all HTGRs are due to: the high heat capacity of the graphite core; the high temperature capability of the core components; the chemical stability and inertness of the fuel, coolant, and moderator; the high retention of fission products by the fuel coatings, the single phase characteristics of helium coolant; and the inherent negativetemperature coefficient of reactivity of the core.
+The overall good safety characteristics of all HTGRs are due to: the high heat capacity of the graphite core; the high temperature capability of the core components; the chemical stability and inertness of the fuel, coolant, and moderator; the high retention of fission products by the fuel coatings, the single phase characteristics of helium coolant; and the inherent negative temperature coefficient of reactivity of the core.
 
 The modular HTGR adds the unique characteristic of being able to cool the reactor entirely by passive heat transfer mechanisms following postulated accidents without exceeding the failure temperature of the coated particles.
 
-This characteristic has been achieved by deliberately
-decreasing the core power level and configuring the reactor so that natural heat removal
-processes can limit fuel temperatures to levels at which the release of fission products from
-the reactor system to the environment is insignificant for postulated accidents.
+This characteristic has been achieved by deliberately decreasing the core power level and configuring the reactor so that natural heat removal processes can limit fuel temperatures to levels at which the release of fission products from the reactor system to the environment is insignificant for postulated accidents.
 
 * HTR modul
 
@@ -55,7 +48,7 @@ Developed in the early 1980s.
 
 1983
 selection of the modular HTGR in 1985
-The basic moudle was designed to deliver superheat steam at 17.3 MPa and 538 C.
+The basic module was designed to deliver superheat steam at 17.3 MPa and 538 C.
 An initial module power of 250 MWt was selected.
 Subsequent safety analyses showed that the power level could be increased to 350 MWt by using an annular core.
 
@@ -64,6 +57,16 @@ The MHTGR forms the basis for the GT-MHR reactor design.
 HTTR - High Temperature Engineering Test Reactor (HTTR)
 
 * Modular HTGR gas turbine plant development
+
+Subsequent technological advancements in the design and operation of these
+components, coupled with the international capability for their fabrication and testing has
+resulted in renewed interest in this HTGR concept.
+This advanced nuclear power plant is unique in its use of the Brayton cycle to obtain a net
+electrical efficiency approaching 50%.
+The possibilities presented by the gas turbine modular HTGR for substantial improvement in
+nuclear power plant efficiency coupled with the potential for significant gains in lowering
+capital and operating costs due to plant simplification have brought about an increasing
+interest by international research organizations and plant developers.
 
 GT-MHR development program in the early 1993.
 Conceptual design completed: 600 MWt/293MWe plant.
@@ -166,8 +169,3 @@ The proposed Project will involve the site preparation, construction, operation,
 15 MWth
 20 years life span.
 
-
-
-
-
-Other Micro-reactors ...

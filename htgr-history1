@@ -1,0 +1,59 @@
+* Gas turbine HTGR
+
+In the early 1980s, General Atomics introduced a gas turbine HTGR, the HTGR-GT.
+Early assessments determined its development risk to be higher than the steam-cycle HTGR.
+However, the potential of the gas turbine HTGR for higher temperatures, improved thermal efficiencies, and low water use requirements, continued to engender interest from utilities.
+
+* Steam cycle modular HTGR
+
+The overall good safety characteristics of all HTGRs are due to: the high heat capacity of the graphite core; the high temperature capability of the core components; the chemical stability and inertness of the fuel, coolant, and moderator; the high retention of fission products by the fuel coatings, the single phase characteristics of helium coolant; and the inherent negative temperature coefficient of reactivity of the core.
+
+The modular HTGR has a small core power density compared to HTGRs.
+This characteristic provides the modular HTGR the ability to cool down entirely by passive heat transfer mechanisms following postulated accidents without exceeding the failure temperature of the coated particles.
+
+* MHTGR
+
+Under the sponsorship of the US Department of Energy (DOE), a team consisting of General Atomics, Combustion Engineering, General Electric, Bechtel National, Stone & Webster Engineering, and Oak Ridge National Laboratory (ORNL) developed the MHTGR.
+They designed the basic module to deliver superheated steam at 17.3 MPa and 538 C.
+Based on both economic and technological considerations, the optimal configuration was a 350 MWth modular reactor with an annular core.
+The team completed in 1986 the preliminary safety information document for the MHTGR and the
+complete draft pre-application in 1989.
+The MHTGR formed the basis for the GT-MHR reactor design.
+
+* Gas turbine modular HTGR
+
+Subsequent technological advancements and the addition of an international capability for the fabrication and testing of the reactor components renewed the interest in this HTGR concept.
+
+* GT-MHR (Gas Turbine-Modular Helium Reactor)
+
+Renewed interest in the US resulted in the GT-MHR development program beginning in 1993.
+General Atomics (US) and MINATOM (Russia) would cooperate to develop, construct, test, and operate a prototype.
+FRAMATOME and Fuji Electric joined the program in 1996 and 1997, respectively.
+
+The final conceptual design was a 600 MWth/293MWe plant.
+Its purpose was to burn weapons plutonium, with the long term goal of commercial development.
+
+* HTTR
+
+In 1987, a special committee investigating the HTGR for JAEC developed the High-Temperature engineering Test Reactor (HTTR) \cite{iaea_current_2001}.
+They proposed a prismatic block type core structure with a power rating of 30 MWth.
+
+The Japanese government approved proceeding with the HTTR in its 1989 fiscal year and construction began in March 1991.
+The reactor reached first criticality in 1998 and reached full power in 2001.
+The HTTR has two operational modes, which their outlet coolant temperatures are 850° and 950°C.
+
+The HTTR program evaluated six major categories of the HTGR concept: safety, thermal hydraulics, fuel, high temperature components, core physics and control/instrumentation.
+With the HTTR program, JAEA established a database of operation and maintenance experience.
+The purpose of this database is to share information and to use the knowledge gained in the operation of future HTGRs \cite{shimizu_operation_2014}.
+
+* Modern concepts
+
+In addition to government-sponsored research, several privately funded gas reactor projects are underway.
+
+StarCore Nuclear \cite{star_core_nuclear_star_2015} (Canada) is developing a 50 MWth HTGR that will produced electricity (20 MWe) and thermal energy (10 MWth) for use in process heat applications.
+
+Ultra Safe Nuclear Corporation (USNC)(US) is developing the Micro Modular Reactor (MMR), a 15 or 30 MWth HTGR.
+The MMR Energy System works as standalone power plant or as part of microgrids, or to provide process heat for industrial applications \cite{world_nuclear_news_micro_2020}.
+
+USNC has partnered with Ontario Power Generation, INL, and UIUC.
+Through the partnerships, USNC proposes to deploy its MMR at sites in Ontario, Canada, Idaho, US, and Illinois, US.
