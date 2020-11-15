@@ -2,12 +2,11 @@
 
 \section{Preliminary studies}
 
-This section carries out some preliminary studies using Moltres and MOOSE heat conduction module to solve the prismatic HTGR thermal-fluids.
+This section carries out various preliminary studies using Moltres and MOOSE heat conduction modules (Moltres/MOOSE) to solve the prismatic HTGR thermal-fluids.
 
 \subsection{Verification of the thermal-fluids model}
 
-To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know.
-Section \ref{appendix:ver} presents the problem's analytical solution.
+To verify our methodology, this section solved a simplified cylindrical model whose analytical solution we know (see Section \ref{appendix:ver} for a description on this solution).
 Moltres/MOOSE obtained the numerical solution of the thermal-fluid equations from Section \ref{ch3:th}.
 
 Figure \ref{fig:th-ver-mesh} displays the model geometry, which differentiates five subregions: fuel compact, helium gap, moderator, film, and coolant.
@@ -19,9 +18,9 @@ The model assumed a sinusoidal power profile in the $z$-direction.
 
 \begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.25\linewidth]{figures-thermal/2D-preliminar-mesh2}
+	\includegraphics[width=0.40\linewidth]{figures-thermal/ver-mesh2}
 	\hfill
-	\caption{Scaled-down version of the model geometry.}
+	\caption{Model geometry axial layout.}
 	\label{fig:th-ver-mesh}
 \end{figure}
 
@@ -60,11 +59,9 @@ The model assumed a sinusoidal power profile in the $z$-direction.
   \end{tabular}
 \end{table}
 
-Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles.
-Both analytical and numerical solutions exhibit good agreement.
-The outlet coolant temperature is 770.2 $^{\circ}$C, whereas the average outlet coolant temperature of the reference reactor is 950 $^{\circ}$C.
 Note that this is a simplified model only for verifying that the numerical solution agrees with the analytical solution.
-The model also considers only one fuel channel, while in the GT-MHR unit cell, two fuel channels deposit their heat into one coolant channel.
+Figure \ref{fig:th-ver-results} shows the axial and radial temperature profiles and demonstrates that both the analytical and numerical solutions exhibit good agreement.
+The outlet coolant temperature is 770.2 $^{\circ}$C, whereas maximum fuel temperature is 874.7 $^{\circ}$C.
 
 \begin{figure}[htbp!]
 	\centering
@@ -83,13 +80,12 @@ The model also considers only one fuel channel, while in the GT-MHR unit cell, t
 \label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of an HTGR.
-We intended to reproduce In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
+We intended to reproduce the results found by In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
 We chose this article because it solves a three-dimensional unit-cell model and gives one of the most thorough descriptions in the open literature.
 Table \ref{tab:th-val-unit-char} presents the problem characteristics.
-The article does not specify the solid's material properties, and we replaced them with parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
+The article does not specify the solid's material properties, so we used parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
 Figure \ref{fig:th-val-unit-model} displays an $XY$-plane of the model geometry and the material properties that depend on the temperature.
-Additionally, In et al. used a chopped cosine as the power profile.
-To simplify the analysis, we used the average value of the power profile.
+Additionally, In et al. used a chopped cosine as the power profile, which we used the average value of to simplify the analysis.
 
 \begin{table}[htbp!]
 \centering
@@ -125,31 +121,31 @@ To simplify the analysis, we used the average value of the power profile.
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Model geometry.]{
-        \includegraphics[width=0.40\textwidth]{figures-thermal/val-unit-mesh}
+        \includegraphics[width=0.40\textwidth]{figures-thermal/unitcell2}
     }
     \subfloat[Material properties.]{
-        \includegraphics[width=0.50\textwidth]{figures-thermal/val-unit-matprop}
+        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-matprop}
     }
 	\hfill
-  \caption{Moltres/MOOSE input parameters.}
+  \caption{Input file definition.}
 	\label{fig:th-val-unit-model}
 \end{figure}
 
 Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
-The axial temperatures increase from the top to the bottom of the reactor.
-The moderator and coolant temperatures are parallel as the model assumes a film thermal conductivity independent of the temperature.
-The fuel and moderator temperature difference decreases.
-As the different materials' thermal conductivity increases with temperature, the thermal resistance between the moderator and the fuel decreases.
+From the top to the bottom of the reactor, the axial temperatures increase, the moderator and coolant temperatures remain parallel,
+and the difference between the fuel and moderator temperatures decreases.
+The model assumes a film thermal conductivity independent of the temperature, thus the moderator and coolant temperature difference is constant.
+The solids' thermal conductivity increases with temperature, the thermal resistance between the moderator and the fuel decreases, so their difference decreases.
+
 Table \ref{tab:th-val-unit-results} summarizes the results.
-Moltres/MOOSE coolant temperature is smaller by 4$^{\circ}$C.
-The moderator temperature is larger by 9$^{\circ}$C.
-The fuel temperature is larger by 22$^{\circ}$C.
+Small discrepancies arise in the results: Moltres/MOOSE coolant temperature is smaller than In's by 4$^{\circ}$C.
+The moderator temperature is larger by 9$^{\circ}$C, and the fuel temperature is larger by 22$^{\circ}$C.
 The cause of the fuel temperature discrepancy is the power profile simplification.
 As we have seen in the previous section, the fuel-to-coolant temperature difference is small in the outlet for a sinusoidal power profile. 
 The opposite extreme scenario is the uniform power profile, where the fuel-to-coolant temperature difference is larger.
-In et al. used a chopped cosine power profile, which is the case in between a uniform and a sinusoidal power profile.
-Hence, our model yields a larger fuel-to-coolant temperature at the outlet.
-Overall, our model results showed good agreement with In et al. results.
+In et al. used a chopped cosine power profile, which is between the two former cases.
+Hence, our model yields a fuel-to-coolant temperature difference at the outlet larger than In et al.
+Overall, our results are close to In et al. results.
 
 \begin{figure}[htbp!]
   \centering
@@ -182,28 +178,24 @@ Overall, our model results showed good agreement with In et al. results.
 \section{Fuel column}
 \label{sec:fuelcol}
 
-This section solved an HTGR fuel column.
-It aimed to reproduce some of Sato et al. 2010 \cite{sato_computational_2010} analyses to validate the fuel column model.
+This section analyzed an HTGR fuel column and aimed to reproduce some of Sato et al. 2010 \cite{sato_computational_2010} analyses to validate the fuel column model.
 We chose this article because it gives a thorough description of the problem, making it easier to reproduce.
 First, we analyzed a column with no bypass-gap.
-Second, we studied a column with a 3mm-gap.
+Second, we studied a column with a 3mm-gap between assemblies.
 
-The study used the GT-MHR as the reference reactor for the calculations.
-Figure \ref{fig:th-val-assem-model-a} exhibits the model geometry.
-The model included only a one-twelfth portion of the column due to symmetry.
+The study used the GT-MHR as the reference reactor for the calculations; Figure \ref{fig:th-val-assem-model-a} exhibits the model geometry.
+The model only needed to include a one-twelfth portion of the column due to symmetry.
 The GT-MHR shares the geometry dimensions with the MHTGR, which Table \ref{tab:element-characteristics} specifies.
 
 Equation \ref{eq:matcoeff} evaluates the solid material properties \cite{johnson_cfd_2009}.
-Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator thermal conductivity coefficients.
-Table \ref{tab:th-val-assem-char} lists the helium properties and several input parameters.
-Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material properties.
+Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator thermal conductivity coefficients, Table \ref{tab:th-val-assem-char} lists the helium properties and several input parameters, and Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material properties.
 
 \begin{align}
   \phi(T) = A_1 + A_2 T + A_3 T^2 + A_4 T^3 + A_5 T^4  \label{eq:matcoeff}
 \end{align}
 
-The model assigns a number to each coolant channel and the bypass-gap, see Figure \ref{fig:th-val-assem-model-a}.
-In this exercise, we use the mass flow distribution from Sato et al.
+The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
+In this exercise, we used the mass flow distribution from Sato et al.
 Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
 
 \begin{table}[htbp!]
@@ -259,6 +251,7 @@ A5                        & -         & 4.02E-11   & -             & -9.77E-16  
         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-matprop}
     }
   \hfill
+  \caption{Input file definition.}
   \label{fig:th-val-assem-model}
 \end{figure}
 
@@ -298,12 +291,11 @@ No gap  & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
 Table \ref{tab:th-val-assem-results} compares Moltres/MOOSE results to Sato's results.
 In the no gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 4$^{\circ}$C higher.
 In the 3mm-gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 1$^{\circ}$C lower.
-The results showed good agreement.
+The results showed good agreement with Sato's.
 
 Figure \ref{fig:th-val-assem-temps} displays the outlet temperature along lines A-B and A-C from Figure \ref{fig:th-val-assem-model-a}.
-The temperature is higher closer to the column center.
-The bypass-flow causes the temperature in the center to rise while reducing the peripheral temperature.
-The presence of the gap produces a larger temperature gradient in the assembly.
+The temperature is higher closer to the column center, because the bypass-flow causes the temperature in the center to rise while reducing the peripheral temperature.
+The presence of the gap between assemblies produces a larger temperature gradient in the assembly.
 
 \begin{table}[htbp!]
   \centering
@@ -352,8 +344,8 @@ Fuel    & 1090    & 1094              & 1115     & 1114             \\
 As described in Section \ref{sec:litrev-thermalf}, several authors calculate the flow distribution using various methods.
 This section compares the different method results.
 The comparison chosen metrics are the maximum coolant and fuel temperatures and the mass flow distribution
-The model assigns a number to each coolant channel and the bypass-gap, see Figure \ref{fig:th-val-assem-model-a}.
-Note that channel 1 is a small coolant channel while channels 2 to 13 are large coolant channels.
+The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
+Note that Channel 1 is a small coolant channel while Channels 2 to 13 are large coolant channels.
 
 We analyzed the following cases:
 \begin{itemize}
@@ -365,14 +357,14 @@ We analyzed the following cases:
 \end{itemize}
 
 To calculate the different flow distributions, we used the following equations.
-Equation \ref{eq:case2mdot} calculated the flow distribution in case 1.
-Equation \ref{eq:case3mdot} \cite{melese_thermal_1984} calculated the pressure drop in cases 3 and 4.
-Case 4 differs from case 3 as the friction factor $f$ depends on the average channel temperature.
-Equation \ref{eq:case5mdot} \cite{melese_thermal_1984} calculated the pressure drop in case 5.
-For cases 3 to 5, the pressure drop is proportional to the channel mass flow, equation \ref{eq:itersolver1}.
+Equation \ref{eq:case2mdot} calculated the flow distribution in Case 1.
+Equation \ref{eq:case3mdot} \cite{melese_thermal_1984} calculated the pressure drop in Cases 3 and 4.
+Case 4 differs from Case 3 as the friction factor $f$ depends on the average channel temperature.
+Equation \ref{eq:case5mdot} \cite{melese_thermal_1984} calculated the pressure drop in Case 5.
+For Cases 3 to 5, the pressure drop is proportional to the channel mass flow (Equation \ref{eq:itersolver1}).
 Equations \ref{eq:case3mdot} and \ref{eq:case5mdot} calculated $B_i$.
 Equations \ref{eq:itersolver2} and \ref{eq:itersolver3} \cite{melese_thermal_1984} solved the mass flow distribution iteratively.
-As cases 4 and 5 mass flow distributions depend on the temperature, the calculations required another level of iterations to obtain the final mass flow distribution.
+As the mass flow distributions in Cases 4 and 5 depend on the temperature, the calculations required a second level of iterations to obtain the final mass flow distribution.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 
 \begin{align}
@@ -388,27 +380,26 @@ The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temp
   \Delta P &= \mbox{pressure drop} \notag \\
   T_i &= \mbox{channel inlet coolant temperature} \notag \\
   T_o &= \mbox{channel outlet coolant temperature} \notag \\
-  \dot{m}_T &= \mbox{total mass flow rate} \notag \\
+  \dot{m}_T &= \mbox{total mass flow rate} \notag
 \end{align}
 
 Table \ref{tab:th-assem-flow-massflow} displays the results for the mass flow rates.
 % Case 4 and case 5 converged after two and three iterations, respectively.
 Case 2 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
-Case 3 and 4 barely differ.
-Not considering the viscosity's temperature dependency yields a more straightforward method and the accuracy loss is negligible.
+Case 3 and 4 barely differ, which proves that not considering the viscosity's temperature dependency yields a more straightforward method with an acceptable accuracy.
 Case 5 arrives at the closest values to the reference solution.
 
 Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
 Case 2 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
 Case 5 yields the closest results to the reference values.
-For the maximum fuel temperature, case 2 and 5 yield the best results.
-Again, case 3 and 4 barely differ.
+For the maximum fuel temperature, Case 2 and 5 yield the best results.
+Again, Case 3 and 4 barely differ.
 
-The low-Mach number model yielded the closest results to the reference solution.
+The low-Mach number model (Case 5) yielded the closest results to the reference solution.
 However, such a method required a two-level iterative solver.
-From a computational point of view, case 2 model is the simplest method as it does not require an iterative solver.
-Additionally, case 2 model yields the simplest Moltres input file.
-For these reasons, the rest of the thesis uses case 2 model for the fluid flow distribution.
+From a computational point of view, the Case 2 model is the simplest method as it does not require an iterative solver.
+Additionally, the Case 2 model yields the simplest Moltres input file.
+For these reasons, the rest of the thesis uses the Case 2 model for the fluid flow distribution.
 
 \begin{table}[htbp!]
   \centering
@@ -454,20 +445,17 @@ Fuel    & 1114   & 1116   & 1109 & 1110 & 1116 \\
 % I might not include this in the final document
 
 The remainder of this chapter intends to solve the full-core problem.
-This section aims to identify some possible
-problems introduced by the full-core problem's large mesh size requirement.
-This section conducts a mesh convergence analysis of the full-fuel column problem.
-Figure \ref{fig:th-full-assem-mesh} displays the model geometry.
-Table \ref{tab:th-full-assem-results} presents the results.
+This section aims to identify some possible problems introduced by the full-core problem's large mesh size requirement.
+To do so, this section conducts a mesh convergence analysis of the full-fuel column problem.
+Figure \ref{fig:th-full-assem-mesh} displays the model geometry, and Table \ref{tab:th-full-assem-results} presents the results.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
-The coolant temperature converged for the fifth mesh.
-The fuel temperature did not reach convergence.
+The coolant temperature converged for the fifth mesh, but the fuel temperature did not reach convergence.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
 
 This analysis reveals a potential problem.
 The high level of detail in our geometry requires a large number of elements in the mesh.
-In the full-scale problem the dimensions increase, and the number of elements in the mesh do so too.
-Potentially, this method will not be able to solve the three-dimensional full-scale problem due to a high memory requirement.
+In the full-scale problem the dimensions, and the number of elements in the mesh both increase.
+Potentially, this method will be unable to solve the three-dimensional full-scale problem due to a high memory requirement.
 For this reason, the next section intends to solve the full-scale problem using a two-dimensional cylindrical model.
 
 % Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
@@ -516,23 +504,20 @@ The benchmark specifies the power density of each fuel region and defines the ma
   \item Exercise 2d: Bypass flow type II and variable thermo-physical properties. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
-The exercise requires reporting the average and maximum values of the reflector, \gls{RPV}, fuel, moderator, and coolant temperatures.
+The exercise requires reporting the average and maximum temperature values of the reflector, \gls{RPV}, fuel, moderator, and coolant.
 It also requires reporting the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
 These data are helpful to trace the source of possible differences in the primary parameters between participants.
-OECD/NEA did not publish this exercise's results.
-This section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
-It presents only a subset of available data that illustrates the main characteristics of the exercise.
+Since OECD/NEA did not publish the results for this exercise, this section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
+This section presents only a subset of available data that illustrates the main characteristics of the exercise.
 
 Figure \ref{fig:ex2a-1st-model} displays the model geometry.
-To simplify the simulation of the exercise, the model uses several simplifications.
-In the axial direction, it does not consider the upper plenum and the outlet plenum.
-The axial boundaries are the top reflector's upper face and the bottom reflector's lower face.
-The top reflector's upper face and the inlet coolant flow are at 259 $^{\circ}$C.
-The bottom reflector's lower face is adiabatic.
+The model uses several simplifications to conduct the exercise.
+In the axial direction, it does not consider the upper plenum and the outlet plenum, and the axial boundaries are the top reflector's upper face and the bottom reflector's lower face.
+The top reflector's upper face and the inlet coolant flow are at 259 $^{\circ}$C, while the bottom reflector's lower face is adiabatic.
 The outlet coolant uses an outflow boundary condition.
 In the radial direction, the model does not consider the core barrel and the helium gap.
-After the outer reflector is the RPV, and after it, the outside air
-The outer boundary of the air region is at 30 $^{\circ}$C.
+After the outer reflector is the RPV, followed by the outside air.
+The outside air region outer boundary is at 30 $^{\circ}$C.
 
 The core model geometry uses INL's model as the reference design.
 Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
@@ -546,11 +531,11 @@ Table \ref{tab:th-ex2a-1st-results} displays the results.
 Our model considerably under-predicts the inner reflector rings temperature, while it over-predicts the coolant rings temperature.
 With the purpose of better understanding this behavior, Figure \ref{fig:ex2a-1st-model-across} shows the temperature across the reactor on the bottom of the active core (z=200 cm).
 This figure exposes that the temperatures in the active core are well above the other region temperatures.
-Although such a behavior is normal; the temperature profile reveals some heat transfer disconnection between the different rings.
+Although such a behavior is normal, the temperature profile reveals some heat transfer disconnection between the different rings.
 In other words, the heat transfer from the fuel rings to the rest of the core structures is smaller than the heat transfer to the coolant rings in the active core region.
 This thermal disconnection causes the reflector temperatures to be too low and the coolant temperatures too high.
 These results indicate that Moltres model fails to capture some heat transfer mechanisms that INL's model captures.
-The most notorious difference between the models is the inclusion of the radiative heat transfer.
+The most obvious difference between the models is the inclusion of the radiative heat transfer.
 Future works will focus on confirming this supposition and adding the capability to model the radiative heat transfer.
 
 % model H figure
@@ -600,45 +585,44 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[width=0.35\linewidth]{figures-thermal/ex2a-across}
+  \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-across}
   \hfill
-  \caption{Model geometry.}
+  \caption{Radial temperature at the bottom of the active core (z=200 cm).}
   \label{fig:ex2a-1st-model-across}
 \end{figure}
 
-% left here on grammarly review
+% left here on review
 To circumvent this barrier, we developed a second model based on Stainsby's approach \cite{stainsby_investigation_2008}.
+% which defines only one coolant ring for each fuel ring.
 The calculation used a global model to obtain the coolant temperature in the core and then a sub-channel model to get the fuel and moderator average temperatures.
-Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
 The sub-channel model used half of the unit cell from Section \ref{sec:unitcell}.
-Three rings defined the solid structures in the global model, and another three, the coolant flow in the core.
+Figure \ref{fig:ex2a-2nd-model} displays the global model geometry.
+Three fuel rings represent the three rings of fuel assemblies in the MHTGR-350 (see Figure \ref{fig:layout}).
+In the middle of each fuel ring, a coolant ring defines the coolant flow in that fuel ring.
 We calculated the radii of the rings by preserving the assemblies' volume.
-The middle ring defines the fuel rings, which encompasses three rings.
 The coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
 Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
-The temperature is constant in the bottom and top reflector regions.
-The coolant temperature increases from the top to the bottom of the active core.
-The highest coolant, fuel, and moderator temperatures are in fuel ring 1.
+The coolant temperature increases from the top to the bottom of the active core and, it is constant in the bottom and top reflector regions.
+The highest coolant, fuel, and moderator temperatures are in Fuel Ring 1.
 
 Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
 We focus on the coolant temperature of the different rings.
-Moltres predicts smaller values in fuel ring 1, while it predicts higher values in fuel rings 2 and 3.
-For some reason, the global model fails to correctly distribute into the coolant rings the heat produced in the fuel rings.
+Moltres predicts a smaller value in Fuel Ring 1, but predicts a higher value in Fuel Rings 2 and 3.
+For some reason, the global model fails to correctly distribute the heat produced in the fuel rings into the coolant rings.
 A possible cause of this discrepancy is the flat velocity approximation.
-Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model.
-However, one of the assumptions of that model was that the power density is uniform.
-In this exercise, the power density is not uniform, and that could be causing the discrepancies.
-Further studies should study the cause of them.
+Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model; However, one of the assumptions of that model was that the power density is uniform.
+In this exercise, the power density is not uniform, which could explain the discrepancies.
+Further studies might confirm the cause of them.
 
-Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for fuel rings 1 and 2.
-The most considerable discrepancy is in fuel ring 1.
+Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for Fuel Rings 1 and 2.
+The most considerable discrepancy is in Fuel Ring 1.
 INL's model coolant-to-moderator temperature difference is 46$^{\circ}$C while Moltres/MOOSE predicts a difference of 30$^{\circ}$C.
 The flat velocity approximation might be again the source of these discrepancies.
 Finally, the moderator-to-fuel temperature differences from INL and Moltres/MOOSE are close.
-In fuel ring 1, it is 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
-In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results.
+In Fuel Ring 1, the differences are 20$^{\circ}$C and 22$^{\circ}$C for INL and Moltres/MOOSE results, respectively.
+In fuel ring 2, the differences are 16$^{\circ}$C and 17$^{\circ}$C for INL and Moltres/MOOSE results.
 
 % model G figure
 \begin{figure}[htbp!]
@@ -669,7 +653,7 @@ In fuel ring 2, the difference is 16$^{\circ}$C and 17$^{\circ}$C for INL and Mo
       \label{tab:th-ex2a-results}
 \begin{tabular}{l|c|c|c|c|c|c}
     \toprule
-          & \multicolumn{2}{c|}{Fuel ring 1} & \multicolumn{2}{c|}{Fuel ring 2} & \multicolumn{2}{c}{Fuel ring 3} \\ \cline{2-7} 
+          & \multicolumn{2}{c|}{Fuel Ring 1} & \multicolumn{2}{c|}{Fuel Ring 2} & \multicolumn{2}{c}{Fuel Ring 3} \\ \cline{2-7} 
           & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
     \midrule
 Coolant   & 797     & 718               & 636     & 646               & 673       & 696           \\
@@ -679,7 +663,11 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
   \end{tabular}
 \end{table}
 
-\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
+\section{Coupled simulations}
+
+This section sets the road-map for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
+
+\subsection{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
 \label{sec:ph1ex3}
 
 % description of the exercise
@@ -688,12 +676,12 @@ Exercise 3 combines all the data from the first two exercises, in which the part
 The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
 The benchmark specifies the group constants necessary to conduct the exercise.
 The group constants depend on four state parameters: moderator and fuel temperature and xenon-135 and hydrogen concentration.
-In addition to this data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
+In addition to these data, the benchmark provides fluence maps to determine the thermal conductivity of graphite.
 
 Two sub-cases compose Exercise 3:
 \begin{itemize}
-  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c.
-  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d.
+  \item Exercise 3a: Same thermal-fluids problem definition from Exercise 2c. This exercise prescribes the bypass flow distribution and the thermo-physical properties depend on different simulation parameters.
+  \item Exercise 3b: Same thermal-fluids problem definition from Exercise 2d. This exercise solves the bypass flow distribution through the explicit modeling of the bypass gaps. The thermo-physical properties depend on different simulation parameters.
 \end{itemize}
 
 % initial coupling: description of what I've done
@@ -701,9 +689,9 @@ Section \ref{sec:ph1ex2} solved the thermal-fluids standalone problem using a gl
 Those simulations required running two separate input files, where the output of the global model served as an input to the sub-channel model.
 Exercise 3 requires modeling the temperature feedback.
 Using Section \ref{sec:ph1ex2} approach for the temperature feedback would require the fully-coupled simulation of both input files.
-However, MOOSE framework does not count with the capability to couple this specific problem input files.
-To solve exercise 3, we created a different model that homogenizes the fuel and moderator materials.
-The solution did not differentiate between moderator and fuel, requiring the simulation of only the global model.
+However, MOOSE framework does not have the capability to couple these specific problem input files.
+To solve Exercise 3, we created a different model that homogenizes the fuel and moderator materials.
+The solution did not differentiate between moderator and fuel, thus requiring the simulation of only the global model.
 
 % describe the model
 Figure \ref{fig:coupled-mesh} presents the model geometry.
@@ -711,7 +699,7 @@ The model includes 28 fuel and 29 coolant rings.
 We calculated the radii of the rings by preserving the assemblies' and the coolant volume.
 The coolant ring pitch is the coolant channel pitch in a fuel assembly.
 Exercise 3a requires using material properties from Exercise 2c.
-The simplified model used the material properties from Exercise 2a, shown in Table \ref{tab:th-ex2a}.
+The simplified model used the material properties from Exercise 2a, as shown in Table \ref{tab:th-ex2a}.
 The benchmark prescribes the group constants of 232 regions in the reactor.
 Table \ref{tab:coupled-rz} shows what benchmark sub-domains integrate each model region.
 The model did not include the control rod region (sub-domain 232).
@@ -721,14 +709,13 @@ Conducting this exercise required the development of a tool to translate the ben
 The tool was responsible for homogenizing and collapsing the group constants as well.
 The problem assumed the same boundary conditions from Section \ref{sec:ph1ex2}.
 
-Moltres can decouple the neutronics from the thermal-fluid effects.
-For the sake of comparison, we conducted the exercise with and without thermal feedback.
+Because Moltres can decouple the neutronics from the thermal-fluid effects, for the sake of comparison, we conducted the exercise with and without thermal feedback.
 The calculations without thermal feedback assumed the group constants at 550 $^{\circ}$C.
 Figure \ref{fig:coupled-results-flux} and \ref{fig:coupled-results-th} display the results on two arbitrary located lines across the core.
 The thermal feedback affects the flux, which consequently affects the thermal-fluids.
 The axial flux peak moves towards the reactor top, where the temperatures are lower than the bottom.
 Thus, the heat production shifts towards the reactor top, and the temperatures near the reactor outlet decrease.
-The radial flux does not change considerably; hence the temperature profile does not change much either.
+The radial flux does not change considerably, hence the temperature profile does not change much either.
 The thermal feedback moves the radial temperature profile up because of the heat production shift towards the top.
 
 \begin{figure}[htbp!]
@@ -780,7 +767,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radial}
     }
   \hfill
-  \caption{Flux profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Flux profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-flux}
 \end{figure}
 
@@ -793,7 +780,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radialT}
     }
   \hfill
-  \caption{Temperature profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Temperature profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-th}
 \end{figure}
 
@@ -808,50 +795,100 @@ In an MSR simulation, Moltres defines the neutron flux and the temperature on ea
 Each node uses its temperature to compute the thermal feedback on the neutron flux.
 
 % Moltres should use average temperatures
-As discussed in \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
+As discussed in Chapter \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
 Because of the homogenization, a mesh node holds the group constants' combined information from the different materials in the assembly --- only the fuel and the moderator as the coolant does not contribute considerably.
 As the fuel group constants depended on the fuel temperature, and the moderator group constants depended on the moderator temperature, the thermal feedback depends on both temperatures.
 Hence, a mesh node should hold both temperatures.
 
 Section \ref{sec:ph1ex3} used a heterogeneous thermal-fluid model to solve the temperature in the reactor.
-The problem of using a heterogeneous model is that each node only holds the temperature's value in that particular material.
+The problem with using a heterogeneous model is that each node only holds the temperature's value in that particular material.
 A coolant node holds the coolant temperature information and computes the thermal feedback with such information instead of the moderator and fuel temperature.
 For this reason, Moltres should use the average assembly-level fuel and moderator temperatures instead of the point-wise temperature to compute the thermal feedback.
 
 % Moltres should differentiate Tmod and Tfuel
-Section \ref{sec:ph1ex3} thermal-fluids model homogenized the fuel and the moderator into one material.
-Consequently, the model does not differentiate the fuel from the moderator temperature.
-Such homogenization assumes that both moderator and fuel are in thermal equilibrium and hence have the same temperature.
+The thermal-fluids model in Section \ref{sec:ph1ex3} homogenized the fuel and the moderator into one material.
+Such homogenization assumes that both the moderator and fuel are in thermal equilibrium, and therefore have the same temperature.
+Consequently, the model does not differentiate the fuel temperature from the moderator temperature.
 However, a coupling model cannot correctly calculate the thermal feedback if it does not differentiate between the moderator and the fuel temperatures \cite{damian_vhtr_2008}.
 
-We denominate this issue as the 'Homogenization dilemma.'
-To correctly compute neutronics, the diffusion solver must use homogenized parameters.
-On the other hand, to accurately calculate the thermal feedback, the mesh node requires the moderator and fuel temperatures, which require a heterogeneous calculation in the thermal-fluids model.
-
-% Wrap-up
+We denominate this issue as the 'homogenization dilemma.'
+To correctly compute neutronics, the diffusion solver must use homogenized parameters which depend on both moderator and fuel temperatures.
+Simultaneously, to accurately calculate the thermal feedback, a mesh node should differentiate the moderator temperature from the fuel temperature, which require a heterogeneous calculation in the thermal-fluids model.
 A thermal-fluid heterogeneous calculation is still valid, but the thermal feedback should use fuel and moderator average temperatures instead.
-Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material.
-Such implementation would be more straightforward than using a heterogeneous solver and then averaging the temperatures.
-An approach with these characteristics is the porous media model.
-In such a model, the same mesh node holds the fluid and solid temperatures simultaneously.
-However, the use of such a model in the open literature is not always correct, as many articles do not differentiate between moderator and fuel temperatures.
+
+\section{Coupled exercise with average temperature thermal feedback}
+\label{sec:coupled-average}
+
+The previous discussion led to the development of this section.
+This section conducted Section \ref{sec:ph1ex3} analysis calculating the thermal feedback with the solid average temperatures.
+Section \ref{sec:ph1ex3} calculated the thermal feedback using the point-wise temperatures.
+This section compares the results from both approaches.
+
+Figure \ref{fig:coupled-ave-results-th2} exhibits the point-wise temperature and the average temperatures across the reactor.
+The model used the average temperatures to compute the thermal feedback in the core.
+The simulations did not compute the average temperature in the RPV and the outside air.
+Figure \ref{fig:coupled-ave-results-flux} displays the neutron flux profiles, and Figure \ref{fig:coupled-ave-results-th}, the temperature profiles.
+The results are almost identical.
+The only noticeable difference is in the axial temperature profiles, which differ by less than 3$^{\circ}$C.
+
+This analysis expected more variations in the results.
+The point-wise approach arrived at similar results because the difference between the solid and coolant temperature is small (less than 100$^{\circ}$C).
+However, in transient analyses, the temperature difference between the fuel and the coolant may increase, causing more variability in the results.
+Although using the point-wise approach is easier for the input file definition, its use is not correct, and future users should refrain from using it.
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Temperature profile.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-temp}
+    }
+    \subfloat[Average temperature in each assembly.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-auxtemp}
+    }
+  \hfill
+  \caption{Temperature maps.}
+  \label{fig:coupled-ave-results-th2}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial flux over the line at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axial}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radial}
+    }
+  \hfill
+  \caption{Flux profile comparison.}
+  \label{fig:coupled-ave-results-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial temperature at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axialT}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radialT}
+    }
+  \hfill
+  \caption{Temperature profile comparison.}
+  \label{fig:coupled-ave-results-th}
+\end{figure}
 
 \section{Conclusions}
 
 The preliminary studies focused on the verification of the thermal-fluids model and the validation of the unit-cell model.
-The verification of the thermal-fluids model studied a simplified cylindrical model comparing the Moltres/MOOSE numerical solution to the problem analytical solution.
-Both solutions were in agreement.
+The verification of the thermal-fluids model studied a simplified cylindrical model comparing the Moltres/MOOSE numerical solution to the problem analytical solution - both solutions were in agreement.
 This study set the basis for the unit cell problem set-up.
 % The unit cell problem use thermal-fluids model from the previous verification.
-To validate the unit cell model, Section \ref{sec:unitcell} compared Moltres/MOOSE results to In et al. \cite{in_three-dimensional_2006} results.
-The results presented some discrepancies.
-The outlet coolant and moderator temperatures differ by less than 10$^{\circ}$C, while the fuel temperature differs by 22$^{\circ}$C.
-We expected some variability in the results as some of our simulation parameters may vary from the original study.
-In's article is missing the materials definition and Section \ref{sec:unitcell} adopted the material properties from Tak et al. \cite{tak_numerical_2008}.
-Additionally, In used a chopped cosine power profile and Section \ref{sec:unitcell} model simplified the calculation using a uniform power density.
+To validate the unit cell model, Section \ref{sec:unitcell} compared Moltres/MOOSE results to the results of In et al. \cite{in_three-dimensional_2006}.
+The results presented some discrepancies: the outlet coolant and moderator temperatures differed by less than 10$^{\circ}$C, while the fuel temperature differed by 22$^{\circ}$C.
+We expected some variability in the results as some of our simulation parameters may have varied from the original study.
+In's article is missing the materials definition, so Section \ref{sec:unitcell} adopted the material properties from Tak et al. \cite{tak_numerical_2008}.
+Additionally, In used a chopped cosine power profile, while the Section \ref{sec:unitcell} model simplified the calculation using a uniform power density.
 
-The following section's focus of the analysis was a one-twelfth section of an HTGR fuel column.
-To validate the model, Section \ref{sec:fuelcol} intended to reproduce some of Sato et al. \cite{sato_computational_2010} results.
+The Section \ref{sec:fuelcol} focus of the analysis was a one-twelfth section of an HTGR fuel column.
+To validate the model, Section \ref{sec:fuelcol} intended to reproduce Sato et al. \cite{sato_computational_2010} results.
 Section \ref{sec:fuelcol} conducted two studies: one with no bypass-gap, and one with a 3mm-bypass-gap.
 To simplify the analysis, our model adopted the mass flow rates from Sato's article.
 For both case studies, the maximum temperatures in the coolant and the fuel showed good agreement.
@@ -862,21 +899,21 @@ The overall consequence is an increase in the temperature gradient inside the co
 
 The next analysis studied different calculation methods for the mass flow distribution in the fuel column.
 Section \ref{sec:flowdistrib} adopted Sato's mass flow distribution as the reference value and calculated the mass flow distribution using four different methods.
-From case 2 to case 5, the methods' complexity increases as some require iterative solvers.
-Overall, case 2 proved to be the simplest method, and its application did not considerably deteriorate the results' accuracy.
-For that reason, the following studies adopted the case 2 mass flow distribution method.
+From Case 2 to Case 5, the methods' complexity increased as some required iterative solvers.
+Overall, Case 2 proved to be the simplest method, and its application did not considerably deteriorate the results' accuracy.
+For that reason, the following studies adopted the Case 2 mass flow distribution method.
 
 Keeping in mind that the ultimate objective of this work is to conduct full-scale simulations, Section \ref{sec:meshconverge} studied the feasibility of extending this methodology to larger meshes.
 Section \ref{sec:meshconverge} conducted a mesh convergence analysis on the full-fuel column problem.
 As the model uses the one-dimensional coolant equations, the coolant temperature converges relatively fast compared to the fuel temperature.
 The fuel temperature did not reach convergence in this analysis as the mesh discretization increase imposed a high memory requirement on the simulations.
-This analysis concluded that modeling the thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other methods.
+This analysis concluded that modeling thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other methods.
 The following sections adopted a two-dimensional cylindrical model for the full-core analyses.
 
 Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark.
 This exercise encompasses four sub-cases with different definitions of bypass-flow and material properties.
-The simplest exercise is \textit{2a}, as it does not model the bypass flow and provides the definition of the material properties.
-Section \ref{sec:ph1ex2} used Moltres/MOOSE to conduct it.
+The simplest exercise is Exercise 2a, as it does not model the bypass flow and provides the definition of the material properties.
+Section \ref{sec:ph1ex2} used Moltres/MOOSE to conduct Exercise 2a.
 Additionally, the Moltres thermal-fluids model bases its definition on INL's model.
 As OECD/NEA did not publish this exercise’s results, Section \ref{sec:ph1ex2} compared Moltres/MOOSE results to INL benchmark results \cite{strydom_inl_2013}.
 The large discrepancies between Moltres/MOOSE and INL results suggest that our model does not capture some heat transfer mechanism that the INL model does.
@@ -884,7 +921,7 @@ One of the known differences between the models is the inclusion of the radiativ
 As Moltres does not model that mechanism, it could be the cause of the differences.
 
 Section \ref{sec:ph1ex2} used a global and a unit cell model based on Stainsby's approach \cite{stainsby_investigation_2008} to circumvent this drawback.
-The global model is responsible for calculating the coolant temperature while the unit cell model focuses on the moderator and fuel temperatures.
+The global model is responsible for calculating the coolant temperature, while the unit cell model focuses on the moderator and fuel temperatures.
 With this approach, Moltres/MOOSE results were closer to INL results.
 The results showed some discrepancies, which indicates that some assumption/model simplification is not accurate enough.
 A flat velocity approximation might be the cause of such discrepancies.
@@ -893,4 +930,5 @@ Further studies should analyze the origin of the discrepancies.
 Section \ref{sec:ph1ex3} developed a global model to solve a simplified version of Phase 1 Exercise 3 of the OECD/NEA benchmark.
 Although the model was simple, it allowed visualizing some of the essential aspects of a prismatic HTGR multi-physics simulation in Moltres.
 This exercise led to Section \ref{sec:discuss}, which described some of the flaws found in the model.
-This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.
+Additionally, Section \ref{sec:coupled-average} addressed some of the flaws found in the model and set the basis for conducting prismatic HTGR coupled exercises in Moltres.
+% This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.

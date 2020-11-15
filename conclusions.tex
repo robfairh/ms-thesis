@@ -98,6 +98,13 @@ Section \ref{sec:ph1ex3} set the basis for prismatic HTGR multi-physics simulati
 Such a section revealed that interfacing the neutronics and the thermal-fluids is crucial in multi-physics modeling. 
 Future work will focus on enabling the use of assembly-level average temperatures to model the thermal feedback properly.
 
+% this will go into chapter 7 into future work
+% Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material (still differentiating them).
+% Such implementation would be more straightforward than using a heterogeneous solver and then averaging the temperatures.
+% An approach with these characteristics is the porous media model.
+% In such a model, the same mesh node holds the fluid and solid temperatures.
+% However, the use of such a model in the open literature is not always correct, as many articles do not differentiate between moderator and fuel temperatures.
+
 % turbulence modeling
 % thermo-mechanics capabilities in Moltres
 
