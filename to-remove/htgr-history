@@ -1,0 +1,171 @@
+brey_development_2001
+---------------------
+
+In 1969, the Japan Atomic Energy Research Institute initiated studies on the VHTR.
+
+* HTGR prototype plants
+
+Dragon reactor (UK)
+First operated in July 1965.
+Full operation by April 1966.
+Terminated in March 1976.
+
+Peach Bottom (US)
+Initial criticality in March 3, 1966.
+Into commercial operation in June 1967.
+Shut down for decomissioning in October 1974.
+
+* HTGR demonstration plants and large plant designs
+
+FSV
+Power generation achieved in December 1976.
+Full power operation reachead in November 1981.
+Finantial concerns by the utilities lead to the premature shutdown of the plant 1989.
+
+* Early gas turbine HTGR assesment
+
+Early 1980s
+One of the early gas turbine designs was the HTGR-GT by Generat Atomics.
+Size 2000 MWt/800 MWe. Tout = 850C.
+Interest from utilities from the potential of the HTGR-GT for improved efficiencies at high core outlet temperatures, simplicity of the gas turbine cycle, low water requirements, and attractive co-generation characteristics.
+
+* Modular HTGR steam cycle plant development
+
+The overall good safety characteristics of all HTGRs are due to: the high heat capacity of the graphite core; the high temperature capability of the core components; the chemical stability and inertness of the fuel, coolant, and moderator; the high retention of fission products by the fuel coatings, the single phase characteristics of helium coolant; and the inherent negative temperature coefficient of reactivity of the core.
+
+The modular HTGR adds the unique characteristic of being able to cool the reactor entirely by passive heat transfer mechanisms following postulated accidents without exceeding the failure temperature of the coated particles.
+
+This characteristic has been achieved by deliberately decreasing the core power level and configuring the reactor so that natural heat removal processes can limit fuel temperatures to levels at which the release of fission products from the reactor system to the environment is insignificant for postulated accidents.
+
+* HTR modul
+
+80 MWe HTR-MODUL concept was the first modular type HTGR concept proposed.
+Siemens/Interatom.
+Developed in the early 1980s.
+(Pebble bed reactor)
+
+* MHTGR
+
+1983
+selection of the modular HTGR in 1985
+The basic module was designed to deliver superheat steam at 17.3 MPa and 538 C.
+An initial module power of 250 MWt was selected.
+Subsequent safety analyses showed that the power level could be increased to 350 MWt by using an annular core.
+
+The MHTGR forms the basis for the GT-MHR reactor design.
+
+HTTR - High Temperature Engineering Test Reactor (HTTR)
+
+* Modular HTGR gas turbine plant development
+
+Subsequent technological advancements in the design and operation of these
+components, coupled with the international capability for their fabrication and testing has
+resulted in renewed interest in this HTGR concept.
+This advanced nuclear power plant is unique in its use of the Brayton cycle to obtain a net
+electrical efficiency approaching 50%.
+The possibilities presented by the gas turbine modular HTGR for substantial improvement in
+nuclear power plant efficiency coupled with the potential for significant gains in lowering
+capital and operating costs due to plant simplification have brought about an increasing
+interest by international research organizations and plant developers.
+
+GT-MHR development program in the early 1993.
+Conceptual design completed: 600 MWt/293MWe plant.
+
+* Other plants:
+
+In Japan
+GTHTR-300
+600 MWt
+Cycle configuration simpler compared to the GT-MHR, eliminates a compressor unit and the intercooler
+
+A modular HTGR has never before been constructed ....
+
+
+ballinger_balance_2004
+----------------------
+
+* Japan's HTTR
+
+The Japanese test reactor HTTR reached first criticality in 1998 and reached full power in 2001.
+It is a 30 MWth prismatic core HTGR design with outlet temperature 850°C.
+
+* Modular
+
+With a deliberate decrease in the power level and reconfiguring of the reactor, the modular type HTGR concept was proposed in the early 1980s.
+The modular type HTGR provides the extra unique characteristic that the fuel temperature will not exceed the failure temperature following postulated accidents just by using passive heat transfer mechanisms.
+
+* GT-MHR
+
+a joint United States – Russian Federation program developed the GT-MHR project for burning weapon-grade plutonium
+
+
+iaea_current_2001
+-----------------
+Contents p. 6
+
+* HTTR 
+In June 1987, the Japanese Atomic Energy Commission (JAEC) suggested that Japan should proceed to develop more advanced reactor technologies in parallel with the upgrading of existing nuclear reactors.
+
+A special committee investigating the HTGR R&D plan for the JAEC stated that the reactor outlet coolant temperature should be 950°C, which was the highest temperature attainable considering the current technology level.
+They proposed a prismatic block type core structure with a power rating of 30 MWth.
+
+The Japanese government approved proceeding with the HTTR in its 1989 fiscal year budget. Construction began in March 1991.
+
+The reactor outlet coolant temperature at the full power is set at both 850° and 950°C.
+The reactor operational mode at 850°C is defined as "rated operation" and at 950°C is "high temperature test operation" because the HTTR is not allowed to be operated at 950°C for the full life of the initial core.
+
+The plant is now engaged in a comprehensive testing programme associated with evaluation of the HTGR.
+This programme is divided into six major categories; safety, thermal hydraulics, fuel, high temperature components, core physics and control/instrumentation.
+These tests basically focus on evaluation and confirmation of the safety of the HTGR through actual demonstration on the HTTR.
+
+
+shimizu_operation_2014
+----------------------
+
+* HTTR
+JAEA has been establishing a database of operation and maintenance experience from the HTTR. The purpose of this database is to share information regarding operation and maintenance experience and to use the knowledge gained in the design, construction, and operation of future HTGRs.
+
+Significant lessons learned from operation and maintenance:
+* performance degradation of helium gas compressors
+* malfunction of reserverd shutdown system
+* problems with the emergency gas turbine generators
+* experience from the Great East Japan Earthquake
+
+kadak_status_2016
+-----------------
+
+In addition to government-sponsored research, several privately funded gas reactor projects are underway.
+StarCore Nuclear is a 50 MW th HTGR being developed in Canada for electricity (20 MWe) and 10 MWth of thermal energy for use in process heat applications.
+
+The General Atomics Energy Multiplier Module (EM2) is a helium-cooled fast reactor with a net power output of 265 MWe.
+As a fast reactor, it uses the breed-and-burn principle that allows for a theoretical 30-year life without refueling or reshuffling.
+
+
+
+world_nuclear_news_micro_2020
+-----------------------------
+
+* USNC - MMR
+
+Ultra Safe Nuclear Corporation (USNC) is proposing to deploy its Micro Modular Reactor (MMR) at sites in Idaho and Illinois by 2026 through partnerships with Idaho National Laboratory (INL) and the University of Illinois at Urbana-Champaign (UIUC).
+
+The proposals are part of the US Department of Energy's Advanced Reactor Demonstration Program, which aims to accelerate the demonstration of advanced reactors through cost-shared partnerships with US industry. The programme, which was launched in May, will provide USD160 million for initial funding to build two demonstration advanced reactors that can be operational within the next five to seven years.
+
+The University of Illinois plans to demonstrate a single MMR, which will be operated as a training, research and test reactor, and will also partially re-power an existing coal-fired power plant, providing carbon-free district heating and power to the UIUC campus. A proposed microreactor power plant  - the MMR Energy System - at INL Laboratory would be used to demonstrate integrated energy systems with renewables and other clean energy technologies at INL.
+
+The MMR is a small high-temperature gas-cooled reactor generating 15 or 30 MW (thermal).
+Nuclear heat is transferred to a molten salt energy storage unit that decouples the nuclear system from the power conversion system.
+The MMR Energy System can be used as a standalone power plant or as part of microgrids that include intermittent renewables such as solar or wind, or to provide process heat for co-located industrial applications or hydrogen production.
+
+Earlier this year USNC and Ontario Power Generation formed a joint venture to build, own and operate a proposed MMR at the Chalk River Laboratories site in Canada.
+
+global_first_power_project_2019
+-------------------------------
+
+* USNC - MMR
+
+The proposed Project will involve the site preparation, construction, operation, and decommissioning of one MMR nuclear reactor and supporting infrastructure on a Project site within the CRL property.
+
+15 MWth
+20 years life span.
+
