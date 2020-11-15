@@ -1,4 +1,3 @@
-
 \section{Coupled simulations}
 
 This section sets the road-map for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
@@ -103,7 +102,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radial}
     }
   \hfill
-  \caption{Flux profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Flux profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-flux}
 \end{figure}
 
@@ -116,7 +115,7 @@ The thermal feedback moves the radial temperature profile up because of the heat
         \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-3G-radialT}
     }
   \hfill
-  \caption{Temperature profiles. F: thermal feedback, NF: no thermal feedback.}
+  \caption{Temperature profile comparison. F: thermal feedback, NF: no thermal feedback.}
   \label{fig:coupled-results-th}
 \end{figure}
 
@@ -155,4 +154,58 @@ A thermal-fluid heterogeneous calculation is still valid, but the thermal feedba
 \section{Coupled exercise with average temperature thermal feedback}
 \label{sec:coupled-average}
 
-This section conducted 
+The previous discussion led to the development of this section.
+This section conducted Section \ref{sec:ph1ex3} analysis calculating the thermal feedback with the solid average temperatures.
+Section \ref{sec:ph1ex3} calculated the thermal feedback using the point-wise temperatures.
+This section compares the results from both approaches.
+
+Figure \ref{fig:coupled-ave-results-th2} exhibits the point-wise temperature and the average temperatures across the reactor.
+The model used the average temperatures to compute the thermal feedback in the core.
+The simulations did not compute the average temperature in the RPV and the outside air.
+Figure \ref{fig:coupled-ave-results-flux} displays the neutron flux profiles, and Figure \ref{fig:coupled-ave-results-th}, the temperature profiles.
+The results are almost identical.
+The only noticeable difference is in the axial temperature profiles, which differ by less than 3$^{\circ}$C.
+
+This analysis expected more variations in the results.
+The point-wise approach arrived at similar results because the difference between the solid and coolant temperature is small (less than 100$^{\circ}$C).
+However, in transient analyses, the temperature difference between the fuel and the coolant may increase, causing more variability in the results.
+Although using the point-wise approach is easier for the input file definition, its use is not correct, and future users should refrain from using it.
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Temperature profile.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-temp}
+    }
+    \subfloat[Average temperature in each assembly.]{
+        \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-auxtemp}
+    }
+  \hfill
+  \caption{Temperature maps.}
+  \label{fig:coupled-ave-results-th2}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial flux over the line at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axial}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radial}
+    }
+  \hfill
+  \caption{Flux profile comparison.}
+  \label{fig:coupled-ave-results-flux}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Axial temperature at r=85 cm.]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-axialT}
+    }
+    \subfloat[Radial temperature at z=L/2=556.5 cm]{
+        \includegraphics[width=0.45\textwidth]{figures-thermal/coupledD-H-radialT}
+    }
+  \hfill
+  \caption{Temperature profile comparison.}
+  \label{fig:coupled-ave-results-th}
+\end{figure}
