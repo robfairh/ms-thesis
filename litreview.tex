@@ -95,23 +95,24 @@ The calculations of both problems changed the number of finite elements and the 
 
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
 To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
-To validate their model, the authors solved a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
+To validate their model, the authors simulated a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
 The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
-Their validation compared the results against HELIOS\cite{stammler_helios_1998}, concluding with a strong accuracy.
-Moreover, the authors implemented a depletion solver based on the one-group flux determined by the diffusion solver.
+Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
+Moreover, the authors implemented a depletion solver based on the one-group flux determined by CAPP's diffusion solver.
 The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
 They compared the results against HELIOS.
 The maximum error was less than 200 pcm.
 
-Tak et al. \cite{tak_cappgamma_2016} developed a coupling between CAPP and GAMMA+ \cite{lim_gamma_2006}.
+Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+ \cite{lim_gamma_2006}.
 GAMMA+ is a system code for thermal-fluids analysis and system transients.
-In such a study, they studied the steady-state performance of the PMR-200.
+They studied the steady-state performance of the PMR-200.
 The authors conducted several studies, such as a core depletion calculation with and without a critical control rod position search and the analysis of the bypass flow effects on the coupled calculations.
 Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.
+These results proved the importance of the right modeling of the thermal-fluids in prismatic HTGRs.
 
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
 This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
-The primary motivation behind this feature was to perform reactivity insertion accidents.
+The primary motivation behind this feature was to perform reactivity insertion accident simulations.
 Additionally, the article introduced a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
 % To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
 The new method integrates over partially rodded computation nodes, and the article referred to it as iPRN.
