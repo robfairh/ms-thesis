@@ -1,36 +1,19 @@
-# ms-thesis
+Huff-1: Done
+-------
 
-Chapter 1: Introduction
-* HTGRs
-* Motivation
-* Objectives
+- Contains comments on Ch1, 2, and 4.
+- I have addressed comments on Ch1 and 2.
+- I have ignored the comments on Ch4 as the following document has the same comments.
 
-Chapter 2: Lit. Review
-* Neutronics
-* Thermal-hydraulics
-* Multi-physics
+Huff-2:
+-------
 
-Chapter 3: Methods
-* MOOSE
-* Moltres
-* Serpent
+- Contains comments on Ch1, 2, and 4.
+- I have ignored the comments on Ch1 and 2 as the previous document has the same comments.
 
-Chapter 4: Results
-* Neutronics from Serpent
-* Neutronics in Moltres
-* OECD/NEA MHTGR 350 Bechmark
+Huff-3:
+-------
 
-Chapter 5: Results
-* Moltres thermo-hydraulics
-* Moltres coupled simulations
-
-Chapter 6: Hydrogen
-* Introduction
-* Hydrogen production methods
-* Results:
-	- Hydrogen requirements in UC
-	- Duck curve
-
-Chapter 7: Conclusions
-* Contribution
-* Future work
+- Contains comments on Ch1, 2, 3, 4, 5, 6, 7.
+- I have addresses comments on Ch1.
+- 
