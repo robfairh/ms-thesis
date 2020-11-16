@@ -1,17 +1,15 @@
 \section{Contribution}
 
 % Ch1: prismatic htgrs
-HTGRs have several desirable features that make them the right candidate for large-scale deployment in the near-term.
-Some of those features are reliance on passive heat transfer mechanisms, use of TRISO particles, and high operating temperatures.
-Higher temperatures offer increased thermal cycle efficiencies and enable a wide range of process heat applications, such as hydrogen production.
-Hydrogen can be a decisive response to energy and climate challenges, decarbonizing the transport and power sectors.
+HTGRs have several desirable features that make them ideal candidates for large-scale deployment in the near future, including their reliance on passive heat transfer mechanisms and use of TRISO particles.
+Additionally, higher temperatures offer increased thermal cycle efficiencies and enable a wide range of process heat applications, such as hydrogen production.
+Implementing hydrogen economies can be a decisive response to energy and climate challenges by decarbonizing the transport and power sectors.
 
 % Ch1: motivation
 To support the evolution of the HTGR technology, this work focused on modeling prismatic HTGRs.
-Modeling the multi-physics of prismatic HTGRs enables predicting the reactor thermal-fluid behavior, which is necessary for assessing their safety characteristics.
-The HTGR complex geometry requires numerical tools to conduct the analyses.
-Moltres is a simulation tool suitable for multi-physics problems.
-Although its original development targeted MSRs, this work studied its applicability to prismatic HTGRs.
+Modeling the multi-physics of prismatic HTGRs enables predicting the reactor thermal-fluid behavior, which is necessary for assessing HTGR's safety characteristics.
+HTGRs' complex geometry requires numerical tools to conduct the analyses, such as Moltres --- a simulation tool suitable for multi-physics problems.
+Although its original development targeted MSRs, this work studied Moltres applicability to prismatic HTGRs.
 
 % Ch4: Neutronics
 Multi-physics simulators need to resolve the double heterogeneities present in the prismatic HTGR fuel assemblies.
@@ -19,14 +17,14 @@ Moltres relies on Monte Carlo solvers for obtaining group constants that it uses
 Monte Carlo solvers are capable of explicitly modeling TRISO particles.
 Although using such a capability is computationally expensive, Chapter \ref{ch:neutronics} proved it necessary for obtaining group constants for diffusion solvers.
 Additionally, Chapter \ref{ch:neutronics} introduced a discussion on different levels of homogenization that diffusion solvers rely on.
-Moltres previous work focused on MSRs, which allow for 'more heterogeneous' homogenizations.
-Nonetheless, HTGRs require a higher level of homogenization, making Moltres not readily applicable to HTGRs.
-This work studied using Moltres as a homogeneous solver for carrying out neutronics stand-alone simulations of prismatic HTGRs.
-The first study analyzed the energy group structure effects on the simulation of a fuel column.
-Such a study compared Moltres and Serpent results.
+Moltres previous work focused on MSRs, which allow for more heterogeneous homogenizations.
+Still, HTGRs require a higher level of homogenization than MSRs, making Moltres not readily applicable to them.
+This work used Moltres as a homogeneous solver for carrying out neutronics stand-alone simulations of prismatic HTGRs.
+The first study analyzed the energy group structure effects on the simulation of a fuel column, then compared Moltres and Serpent results.
 Based on those results, the following section conducted a full-core simulation in Moltres using a 15-energy group structure.
-We compared Moltres results to Serpent results, and overall, the results showed good agreement.
-Finally, Moltres carried out Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
+The comparison between Moltres and Serpent showed good agreement overall.
+Finally, Moltres carried out Phase I, Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
+
 The exercise specifies the necessary group constants which required the development of a tool to adapt them to Moltres format.
 The exercise models one-third of the MHTGR-350 and uses periodic boundary conditions on the sides.
 Imposing those boundary conditions in Moltres was not possible because of the high memory requirements of the simulation.
