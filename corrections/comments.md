@@ -1,5 +1,14 @@
 Literature Review:
 
+* codes:
+
+the checklist doesn't suggest how to properly use the word code.
+
+"Other misused/overused words include: code, input, output, different, value, amount, model."
+
+
+
+
 * thermal feedback:
 
 damian_vhtr_2008
