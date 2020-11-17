@@ -109,6 +109,7 @@ The authors conducted several studies, such as a core depletion calculation with
 Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.
 These results prove the importance of the right modeling of the thermal-fluids in prismatic HTGRs.
 
+% yuk_time-dependent_2020
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
 This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
 The primary motivation behind this feature was to perform reactivity insertion accident simulations.
@@ -123,7 +124,7 @@ This article highlights the importance of developing transient analysis capabili
 
 % Proghorn and Rattlesnake
 RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the transport equation.
-\gls{INL} had initially developed Pronghorn \cite{strydom_inl_2013} to model \glspl{PBMR}.
+\gls{INL} had initially developed Pronghorn \cite{novak_pronghorn_2018} to model \glspl{PBMR} \cite{strydom_inl_2013}.
 The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models initially in Pronghorn.
 Currently, RattleSnake is the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on Yak.
 Various solvers are available under RattleSnake, including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport, all solved with the \gls{FEM}.
@@ -446,7 +447,7 @@ This result highlights the importance of the integration of both neutronics and 
 
 % tak_cappgamma_2016
 Another article \cite{tak_cappgamma_2016} introduced a coupling between CAPP and GAMMA+.
-GAMMA+'s primary motivation was to analyze the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
+GAMMA+'s primary motivation was to analyze the air ingress accident and thermo-fluid transients in HTGRs.
 It uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the fluid's flow and temperature distribution.
 For solids, it uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
 In this study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
@@ -470,13 +471,13 @@ Both methods showed similar results.
 
 % Benchmarks Intro
 The prismatic HTGR tools available have lagged behind tools and methods developed for \glspl{LWR}.
-This delay drives the development of more accurate and efficient tools to simulate HTGRs.
-In addition to the development of new methods, it is essential to define appropriate benchmarks to compare various tools' capabilities.
+The evolution of the HTGR technology drives the development of more accurate and efficient simulation tools.
+Additionally, the definition appropriate benchmarks is essential to compare various tools' capabilities.
 % oecd_nea_coupled_2020
 In 2012, the \gls{OECD}/\gls{NEA} defined a benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
-The purpose of this benchmarking exercise is to compare various coupled reactor physics and thermal-fluid analysis methods.
-The MHTGR design serves as a basis for this benchmark.
-The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-fluid analysis, and (2) to test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
+The purpose of this benchmarking exercise is to compare various reactor physics and thermal-fluid analysis methods.
+The MHTGR-350 design serves as a basis for this benchmark.
+The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-fluid analysis, and (2) to test the depletion capabilities of various lattice physics tools available for prismatic \glspl{HTGR}.
 The OECD/NEA MHTGR-350 MW benchmark subdivides the coupled system calculation into three phases.
 Phase I corresponds to the steady-state modeling of the stand-alone neutronics and thermal-fluids, as well as the coupling between them.
 Phase II consists of transient cases.
@@ -493,8 +494,8 @@ The coordinated research project adopted the MHTGR-350 as the reference design a
 The design specification uses the OECD/NEA MHTGR-350 MW benchmark \cite{oecd_nea_benchmark_2017} code design specifications.
 The coordinated research project subdivides the coupled system calculation into three phases.
 Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling.
-Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without a depletion calculation.
+Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without depletion calculations.
 Phase III focuses on safety calculations.
 
-\section{Chapter Summary}
-\label{sec:litreview-summary}
+% \section{Chapter Summary}
+% \label{sec:litreview-summary}
