@@ -94,7 +94,6 @@ The article validated the code with two benchmark problems: the IAEA PWR benchma
 The calculations of both problems changed the number of finite elements and the orders of shape functions.
 
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
 To validate their model, the authors simulated a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
 The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
 Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
@@ -277,25 +276,24 @@ However, the asymmetry of the unit cell configuration makes the temperature dist
 The equivalent cylindrical model fails to capture this behavior.
 
 % in_three-dimensional_2006
-In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of an \gls{HTGR}.
-The objective of the study was to predict the maximum fuel temperature at steady-state.
-The analysis focused on the GT-MHR 600 at the end of the equilibrium cycle.
+In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of the GT-MHR 600, which is the spot with the largest power density.
+The objective of the study was to predict the maximum fuel temperature at steady-state at the end of the equilibrium cycle.
 The CFD code CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
-The results showed that the maximum fuel temperature surpassed the design limits, so the authors proposed a countermeasure accordingly.
+The results showed that the maximum fuel temperature surpassed the design limits, so the authors proposed decreasing the power density or the axial power peak as countermeasures.
 
 % more detailed calculations
-Such simplified approaches are helpful to understand essential aspects of prismatic \glspl{HTGR} but they may affect the temperature distribution.
+Such simplified approaches are helpful to understand essential aspects of prismatic HTGRs but they may yield inaccurate temperature distributions \cite{tak_numerical_2008}.
 More detailed thermal-fluids evaluations were rare in the open literature until the last 15 years.
 
 % cioni_3d_2005
-Cioni et al. \cite{cioni_3d_2005} presented an article in 2005 in which they conducted three-dimensional simulations of fuel assemblies of an \gls{HTGR}.
-The study's objective was to investigate an emergency situation due to the blocking of cooling channels in the core.
-They used the \gls{CFD} code Trio\_U \cite{bieder_priceles_2000} to carry out the analysis.
+Cioni et al. \cite{cioni_3d_2005} presented an article in 2005 in which they conducted three-dimensional simulations of HTGR fuel assemblies.
+The study's objective was to investigate an emergency situation due to the blockage of cooling channels in the core.
+They used the \gls{CFD} tool Trio\_U \cite{bieder_priceles_2000} to carry out the analysis.
 The numerical scheme solved the three-dimensional conduction equation in the solid coupled to the coolant's one-dimensional thermal-fluid equations.
 % In the preliminary work, the authors conducted a study of the bypass flow's influence on the maximum coolant and fuel temperature.
 A preliminary study analyzed the consequences of two different blocking in a portion of a fuel assembly.
 A central blockage exhibited a stronger influence over the assembly's maximum temperatures compared to a peripheral blockage.
-Last, they investigated two configurations.
+In this context, they investigated two configurations.
 First, six fuel elements surrounded the fuel element with the blockage.
 Second, five fuel elements and one reflector element surrounded the fuel element with the blockage.
 The blockage increased the temperature on the blocked fuel assembly only and it did not affect the surrounding elements due to the bypass flow.
@@ -327,18 +325,15 @@ Tak et al. conducted a parametric study that analyzed the bypass gap size's impa
 By increasing the bypass gap, the maximum fuel temperature grows.
 The results of this study indicate that the accuracy of the unit cell worsens for larger gaps.
 Another study imposed different radial peaking factors for the different fuel channels.
-Such a study showed the effects of considering a non-flat radial power distribution.
-The authors considered a radial power distribution that did not strongly impact on the maximum fuel temperature.
-
-% left here in the review
+The results suggested that a non-uniform power density dig not strongly impact on the maximum fuel temperature.
 
 % sato_computational_2010
-Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial code FLUENT \cite{fluent_inc_fluent_2006}.
-Their modeled a one-twelfth section of the fuel column of the GT-MHR.
+Another article \cite{sato_computational_2010} carried out \gls{CFD} calculations of a typical prismatic \gls{HTGR} with the commercial tool FLUENT \cite{fluent_inc_fluent_2006}.
+They modeled a ${1}{12^{th}}$ section of the fuel column of the GT-MHR.
 The authors conducted parametric studies changing several factors, such as bypass gap-width, turbulence model, axial heat generation profile, and geometry changes due to irradiation.
 Their most relevant results show that the bypass flow causes a large lateral temperature gradient in the block.
 Large temperature gradients cause excessive thermal stresses, which raise potential structural issues.
-The authors compared the results from different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
+The authors compared the results from two different turbulence models: $k \sim \varepsilon$ and $k \sim \omega$.
 The $k \sim \omega$ model predicted bulk temperatures that are considerably lower than those from the $k \sim \varepsilon$ model.
 The maximum temperature difference was 49$^{\circ}$C.
 The overall mass flow rate was about 10$\%$ greater for the $k \sim \omega$ model.
@@ -370,7 +365,7 @@ To enhance practicability, the code adopts a basic unit cell concept, which elim
 The basic unit cell concept is an extension of the traditional unit cell method, which uses a single triangular unit cell.
 This method considers various shapes of unit cells as well as the heat transfer between them.
 The method provides a way for fast generating computational grids for modeling the solid regions.
-To validate CORONA, the authors compared its results against CFX and experimental results.
+To validate CORONA, the authors analyzed a fuel column and compared their results against CFX and experimental results.
 The validation results showed that CORONA provided reasonably accurate results.
 
 % end of section
@@ -397,37 +392,32 @@ Additionally, a coupled analysis with a reactor physics code requires a full-cor
 \label{sec:litreview-multi}
 
 % sort of intro
-Historically, stand-alone simulations have solved the neutronics and thermal-fluids of \glspl{HTGR}.
-Nonetheless, these physical aspects describe processes that rely heavily on one another.
+Historically, stand-alone simulations have solved the neutronics and thermal-fluids of HTGRs separately.
+Nonetheless, these physical phenomena rely heavily on one another.
 Hence, a coupled analysis is necessary to consider the interaction between the neutronics and thermal-fluids behavior \cite{tak_cappgamma_2016}.
 
 % damian_vhtr_2008
-In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed to understand the physical aspects of the annular core and the passive safety features of a prismatic \gls{HTGR}.
+In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed to understand the passive safety features of a prismatic \gls{HTGR}.
 They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-fluids.
-The first part of the assessment concerns thermal calculations on steady-state core configurations.
-Such a study used CAST3M \cite{studer_cast3marcturus_2007} to solve the three-dimensional heat conduction in the solid coupled with the one-dimensional thermal-fluid equations in the coolant.
-% The authors conducted a parametric study on the maximum fuel temperature by modifying the fuel compact and the fuel element geometries.
-% An annular fuel compact and the reduction of the number of fuel compacts in the outer ring yielded the best performance.
+The first part of the assessment concerns thermal calculations on steady-state core configurations and used CAST3M \cite{studer_cast3marcturus_2007} to solve the three-dimensional heat conduction equation in the solid and the one-dimensional thermal-fluid equations in the coolant.
 The second part of the assessment used the transport code APOLLO2 \cite{sanchez_apollo2_1999} on a two-dimensional core configuration to minimize the radial power peaking factor.
 The analyses included the variation of several parameters, such as fuel enrichment, fuel loading, and the fuel management scheme.
 The fuel enrichment variation had the most substantial impact.
-The last part of the study analyzed a three-dimensional core model using the coupled codes NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus.
-NEPTHIS and CAST3M/Arcturus calculate the neutronics and the thermal-fluids, respectively.
-NEPHTIS uses a transport-diffusion calculation scheme that relies on APOLLO2 and the diffusion code CRONOS2.
-The CAST3M/Arcturus model uses a two-level approach.
-On the first level, the porous media model solves the homogenized system and the coolant.
-On the second level, CAST3M solves the thermal-fluids on the homogenized geometry.
+The last part of the study analyzed a three-dimensional core model using the coupled software NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids.
+NEPHTIS used a transport-diffusion calculation scheme that relied on APOLLO2 and the diffusion code CRONOS2.
+The CAST3M/Arcturus model used a two-level approach.
+On the first level, the porous media model solved the homogenized system and the coolant.
+On the second level, CAST3M solved the thermal-fluids on the homogenized geometry.
 The authors conducted several parametric studies and assessed their impact on the power distribution.
 The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
-One of their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
-Another result showed that using magnesium oxide as the reflector material yields lower temperatures for normal operation and transients.
+Their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
 To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool.
 This tool divides a fuel column into six triangular prisms.
 Each of them hosts a representative coolant channel.
-The code calculates the axial coolant temperature distribution solving the energy equation.
+The tool calculates the axial coolant temperature distribution solving the energy equation.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
 Through a TRISO particle conduction model, the model obtains the fuel temperature.
 Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
@@ -445,14 +435,14 @@ The exercise's main objective was to validate the code and identify technical ch
 The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
 The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.
-Such a result highlights the importance of the integration of both neutronics and thermal-fluid solvers.
+This result highlights the importance of the integration of both neutronics and thermal-fluid solvers.
 
 % tak_cappgamma_2016
 Another article \cite{tak_cappgamma_2016} introduced a coupling between CAPP and GAMMA+.
 GAMMA+'s primary motivation was to analyze the air ingress accident and thermo-fluid transients in \glspl{HTGR}.
 It uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the fluid's flow and temperature distribution.
 For solids, it uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
-In such a study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
+In this study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
 They analyzed the bypass flow effects on the coupled calculations.
 Some of their most relevant results showed that the maximum fuel temperature reaches a peak near the middle of the equilibrium cycle.
 Another result revealed that neglecting the bypass flow decreases the active core temperatures and increases the reflector temperatures.
@@ -472,7 +462,7 @@ They compared the results to those from the coupled CAPP/GAMMA+ code.
 Both methods showed similar results.
 
 % Benchmarks Intro
-The prismatic \gls{HTGR} tools available have lagged behind state of the art compared to \glspl{LWR}.
+The prismatic \gls{HTGR} tools available have lagged behind tools and methods developed for \glspl{LWR}.
 This delay drives the development of more accurate and efficient tools to analyze the reactor behavior for design and safety evaluations.
 In addition to the development of new methods, it is essential to define appropriate benchmarks to compare various tools' capabilities.
 % oecd_nea_coupled_2020
