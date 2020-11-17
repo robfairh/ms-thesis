@@ -8,6 +8,8 @@ the checklist doesn't suggest how to properly use the word code.
 
 
 
+Should the summary be for each section or for the full chapter?
+
 
 * thermal feedback:
 
