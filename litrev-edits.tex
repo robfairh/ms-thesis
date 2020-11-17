@@ -1,7 +1,4 @@
 Neutronics:
-- CRONOS
-lautard_cronos_1990
-damian_vhtr_2008
 
 - CAPP
 lee_development_2008
@@ -10,7 +7,6 @@ lee_development_2011
 stammler_helios_1998
 tak_cappgamma_2016
 lim_gamma_2006
-yuk_time-dependent_2020
 
 - Pronghorn and rattlesnake
 wang_rattlesnake_2019
@@ -26,7 +22,6 @@ Thermal-fluids
 
 
 Multi-physics:
-- damian_vhtr_2008
 - studer_cast3marcturus_2007
 - sanchez_apollo2_1999
 - cavalier_presentation_2005
@@ -34,30 +29,14 @@ Multi-physics:
 - tak_coupled_2016
 - kaeri_decart_2007
 - tak_cappgamma_2016
-- yuk_time-dependent_2020
 
-% CRONOS
-\gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
-It conducts steady-state and transient multi-group calculations, taking into account thermal-fluids feedback effects.
-CRONOS2 solves either the diffusion equation or the transport equation using the S$_N$ method and an \gls{FDM} or a \gls{FEM} discretization.
-In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the physical aspects of the annular core and the passive safety features of a standard block type \gls{HTGR}.
-For the study, the authors developed the code suite NEPTHIS/CAST3M, which relied on CRONOS2.
 
-% damian_vhtr_2008
-In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed to understand the passive safety features of a prismatic \gls{HTGR}.
-They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-fluids.
-The first part of the assessment concerns thermal calculations on steady-state core configurations and used CAST3M \cite{studer_cast3marcturus_2007} to solve the three-dimensional heat conduction equation in the solid and the one-dimensional thermal-fluid equations in the coolant.
-The second part of the assessment used the transport code APOLLO2 \cite{sanchez_apollo2_1999} on a two-dimensional core configuration to minimize the radial power peaking factor.
-The analyses included the variation of several parameters, such as fuel enrichment, fuel loading, and the fuel management scheme.
-The fuel enrichment variation had the most substantial impact.
-The last part of the study analyzed a three-dimensional core model using the coupled software NEPTHIS \cite{cavalier_presentation_2005} and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids.
-NEPHTIS used a transport-diffusion calculation scheme that relied on APOLLO2 and the diffusion code CRONOS2.
-The CAST3M/Arcturus model used a two-level approach.
-On the first level, the porous media model solved the homogenized system and the coolant.
-On the second level, CAST3M solved the thermal-fluids on the homogenized geometry.
-The authors conducted several parametric studies and assessed their impact on the power distribution.
-The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
-Their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
+
+
+
+
+
+
 
 
 
