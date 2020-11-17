@@ -59,33 +59,18 @@ The authors conducted several parametric studies and assessed their impact on th
 The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
 Their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
 
-% yuk_time-dependent_2020
-A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
-This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
-The primary motivation behind this feature was to perform reactivity insertion accident simulations.
-To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool based on Stainsby's approach \cite{stainsby_investigation_2008}.
-This approach solves the temperature distribution on different lenght scales.
 
 
-The tool divides a fuel column into six triangular prisms.
-Each of them hosts a representative coolant channel.
-After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
-
-To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of the CAPP/GAMMA+ coupled code.
-Both showed similar results.
-This article highlights the importance of developing transient analysis capabilities to conduct accident simulations.
-
-% yuk_time-dependent_2020
-CAPP code uses predetermined tables of thermal conductivity for each material.
-For a given fast neutron fluence and temperature, it obtains the thermal conductivity by interpolation.
-To test the new transient capabilities, they analyzed two control rod ejection scenarios.
-They compared the results to those from the coupled CAPP/GAMMA+ code.
-Both methods showed similar results.
 
 
+
+
+
+
+Stainsby's approach
 % stainsby_investigation_2008
 based on Stainsby's approach \cite{stainsby_investigation_2008}.
-This approach solves the temperature distribution on different lenght scales.
+This approach uses different lenght scale models to solve the temperature distribution.
 
 
 Why the temperature has to be averaged:

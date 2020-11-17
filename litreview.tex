@@ -109,19 +109,6 @@ The authors conducted several studies, such as a core depletion calculation with
 Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.
 These results prove the importance of the right modeling of the thermal-fluids in prismatic HTGRs.
 
-% yuk_time-dependent_2020
-A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
-This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
-The primary motivation behind this feature was to perform reactivity insertion accident simulations.
-% Additionally, the article introduced a new method to resolve the control rod cusping effect \cite{joo_resolution_1984}.
-% The new method integrates over partially rodded computation nodes, and the article referred to it as iPRN.
-% To test its accuracy, the authors conducted two exercises with several techniques that reduce the rod cusping effect.
-% The authors used the mesh reconstruction method to obtain the reference results, as such a method eliminates the rod cusping effect by updating the mesh at every time step.
-% The iPRN technique showed higher accuracy than the other methods.
-To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of the CAPP/GAMMA+ coupled code.
-Both showed similar results.
-This article highlights the importance of developing transient analysis capabilities to conduct accident simulations.
-
 % Proghorn and Rattlesnake
 RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the transport equation.
 \gls{INL} had initially developed Pronghorn \cite{novak_pronghorn_2018} to model \glspl{PBMR} \cite{strydom_inl_2013}.
@@ -458,16 +445,15 @@ Consequently, the multiplication factor increased by approximately 300 pcm.
 On the other hand, the power density changes were not appreciable.
 
 % yuk_time-dependent_2020
-A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added the capability to conduct transient analyses to CAPP.
-To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool.
-The tool divides a fuel column into six triangular prisms.
-Each of them hosts a representative coolant channel.
+A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
+This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
+The primary motivation behind this feature was to perform reactivity insertion accident simulations.
+To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool based on Stainsby's approach.
+The tool divides a fuel column into six triangular prisms, each of them hosting a representative coolant channel.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
-CAPP code uses predetermined tables of thermal conductivity for each material.
-For a given fast neutron fluence and temperature, it obtains the thermal conductivity by interpolation.
-To test the new transient capabilities, they analyzed two control rod ejection scenarios.
-They compared the results to those from the coupled CAPP/GAMMA+ code.
-Both methods showed similar results.
+To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of the CAPP/GAMMA+ coupled code.
+Both showed similar results.
+This article highlights the importance of developing transient analysis capabilities to conduct accident simulations.
 
 % Benchmarks Intro
 The prismatic HTGR tools available have lagged behind tools and methods developed for \glspl{LWR}.
