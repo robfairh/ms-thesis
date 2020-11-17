@@ -88,24 +88,12 @@ In 2008, Damian et al. \cite{damian_vhtr_2008} presented the code suite NEPTHIS\
 % CAPP
 In 2008, the \gls{KAERI} published an article \cite{lee_development_2008} that presented CAPP.
 Its purposes are to conduct steady-state core physics analysis, core depletion analysis, and core transient analysis.
-The article validated the code with two benchmark problems: the IAEA PWR benchmark problem, and Phase I Exercise 1 of the OECD/NEA PBMR-400 Benchmark \cite{reitsma_oecd-neansc_2008}.
-The calculations of both problems changed the number of finite elements and the orders of shape functions.
-
-In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
-To validate their model, the authors simulated a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
-The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
-Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
-Moreover, the authors implemented a depletion solver based on the one-group flux determined by CAPP's diffusion solver.
-The authors validated the depletion solver by calculating the multiplication factor as a burnup function of a single fuel block of the PMR-200.
-They compared the results against HELIOS.
-The maximum error was less than 200 pcm.
-
-Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+ \cite{lim_gamma_2006}.
-GAMMA+ is a system code for thermal-fluids analysis and system transients.
-They studied the steady-state performance of the PMR-200.
-The authors conducted several studies, such as a core depletion calculation with and without a critical control rod position search and the analysis of the bypass flow effects on the coupled calculations.
-Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.
-These results prove the importance of the right modeling of the thermal-fluids in prismatic HTGRs.
+The article validated the software with two benchmark problems: the IAEA PWR benchmark problem, and Phase I Exercise 1 of the OECD/NEA PBMR-400 Benchmark \cite{reitsma_oecd-neansc_2008}.
+In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic HTGRs.
+To validate CAPP, they had to add to CAPP a simplified thermal-fluids tool.
+Section \ref{sec:litreview-multi} describes the thermal-fluids tool and their coupling.
+Another article \cite{tak_cappgamma_2016} introduced a coupling between CAPP and GAMMA+.
+Section \ref{sec:litreview-multi} also discusses that coupling scheme.
 
 % Proghorn and Rattlesnake
 RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} based application for simulating the transport equation.
@@ -393,7 +381,7 @@ Hence, a coupled analysis is necessary to consider the interaction between the n
 In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the passive safety features of a prismatic \gls{HTGR}.
 They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-fluids.
 The last part of the study analyzed a three-dimensional core model using the coupled software NEPTHIS and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids.
-NEPHTIS used a transport-diffusion calculation scheme that relied on APOLLO2 and the diffusion code CRONOS2.
+NEPHTIS used a transport-diffusion calculation scheme that relied on APOLLO2 \cite{sanchez_apollo2_1999} and the diffusion code CRONOS2.
 The CAST3M/Arcturus model used a two-level approach.
 On the first level, the porous media model solved the homogenized system and the coolant.
 On the second level, CAST3M solved the thermal-fluids on the homogenized geometry.
@@ -403,40 +391,39 @@ Their results exhibited that with the reduction of the bypass fraction, the aver
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
-To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool.
-This tool divides a fuel column into six triangular prisms.
-Each of them hosts a representative coolant channel.
+To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool based on Stainsby's approach \cite{stainsby_investigation_2008}.
+This approach uses different lenght scale models to solve the temperature distribution.
+The model divides a fuel column into six triangular prisms, each of them hosting a representative coolant channel.
 The tool calculates the axial coolant temperature distribution solving the energy equation.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
 Through a TRISO particle conduction model, the model obtains the fuel temperature.
 Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
-% The cross-sections are a function of burnup, moderator temperature, and fuel temperature.
 To validate this model, the authors solved a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
-They compared the results against HELIOS reference results.
-The results showed good accuracy.
+The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
+Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
 
 % tak_coupled_2016
-Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled code using DeCART \cite{kaeri_decart_2007} and CORONA.
-DeCART is a whole-core neutron transport code, and it was responsible for calculating the power distribution and the fast neutron fluence.
+Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled software using DeCART \cite{kaeri_decart_2007} and CORONA.
+DeCART is a whole-core neutron transport tool, and it was responsible for calculating the power distribution and the fast neutron fluence.
 CORONA calculated the temperature distribution.
 To validate the code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
 The exercise's main objective was to validate the code and identify technical challenges for future development.
 The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
 The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.
-This result highlights the importance of the integration of both neutronics and thermal-fluid solvers.
+This study highlights the importance of the integration of both neutronics and thermal-fluid solvers.
 
 % tak_cappgamma_2016
-Another article \cite{tak_cappgamma_2016} introduced a coupling between CAPP and GAMMA+.
+Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+ \cite{lim_gamma_2006}.
+GAMMA+ is a system code for thermal-fluids analysis and system transients.
 GAMMA+'s primary motivation was to analyze the air ingress accident and thermo-fluid transients in HTGRs.
 It uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the fluid's flow and temperature distribution.
 For solids, it uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
 In this study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
 They analyzed the bypass flow effects on the coupled calculations.
 Some of their most relevant results showed that the maximum fuel temperature reaches a peak near the middle of the equilibrium cycle.
-Another result revealed that neglecting the bypass flow decreases the active core temperatures and increases the reflector temperatures.
-Consequently, the multiplication factor increased by approximately 300 pcm.
-On the other hand, the power density changes were not appreciable.
+Their results revealed that neglecting the bypass flow decreases the active core temperatures; consequently, the multiplication factor increases by approximately 300 pcm.Consequently, the multiplication factor increased by approximately 300 pcm.
+These results prove the importance of the right modeling of the thermal-fluids in prismatic HTGRs.
 
 % yuk_time-dependent_2020
 A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the capability to conduct transient analyses.
