@@ -240,10 +240,17 @@ Other studies focused on the dimensions of the reactor and their impact on the m
 Using POKE and TAC2D, the authors investigated taller and higher power reactor cores.
 The investigation included a 10-block-high 600 MWt, a 12-block-high 720 MWt, and 14-block-high 840 MWt.
 
-Among the simplified approaches, this thesis differentiates the flow network, equivalent cylindrical model, and unit cell model.
+Among the simplified approaches, this thesis differentiates the \texit{flow network}, \texit{equivalent cylindrical}, and \texit{unit cell} model.
+The flow network model treats the coolant flow paths in the core as a cross-connected flow network \cite{shenoy_htgr_1974}.
+Constant pressure nodes connected to flow branches make up the network.
+The model uses the one-dimensional conservation momentum equations to solve the pressure loss and coolant temperature in each network node.
+The equivalent cylinder model uses a geometrically simpler one-dimensional or two-dimensional design model \cite{shenoy_htgr_1974}\cite{tak_numerical_2008}.
+The unit cell model divides the fuel blocks into triangular-shaped unit cells.
+The model assumes that the unit cell is a symmetry section such that the coolant removes all the heat generated in the cell \cite{tak_numerical_2008}.
+
 % flow network model
 % reza_design_2006
-Using the network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-fluids study of the GT-MHR.
+Using the flow network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-fluids study of the GT-MHR.
 Reza et al. increased the reactor outlet temperature to enable hydrogen production.
 Additionally, they evaluated alternative coolant inlet flow configurations in an attempt to reduce the reactor vessel temperatures.
 After finding an optimal configuration, they evaluated the fuel and the reactor vessel's maximum temperatures during the \gls{LPCC} and the \gls{HPCC} events.
@@ -491,4 +498,3 @@ Phase III focuses on safety calculations.
 
 \section{Chapter Summary}
 \label{sec:litreview-summary}
-
