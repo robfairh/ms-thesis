@@ -186,13 +186,13 @@ Chapter \ref{ch:neutronics} studies the accuracy of the diffusion calculations f
 % sort of motivation
 Thermal-fluids calculations enable the correct design of \glspl{HTGR}.
 Predicting the maximum fuel temperature at steady-state is of paramount importance to succeed in such a task.
-We emphasize this statement in the case that hydrogen production is desirable, as that process requires higher coolant temperatures, leading to high fuel and reactor vessel temperatures.
+I emphasize this statement in the case that hydrogen production is desirable, as that process requires higher coolant temperatures, leading to high fuel and reactor vessel temperatures.
 
 % sort of intro to simplified models
 The complex geometry of the hexagonal fuel assembly requires numerical calculations for obtaining accurate evaluations.
 Thermal-fluids studies for early \glspl{HTGR} consisted mainly of support calculations for \gls{NRC} safety analysis reports.
 The analyses employed sets of independent solvers that relied on simplified approximations.
-Simplified models help understand some fundamental aspects of prismatic \glspl{HTGR} and have the advantage of reducing the computational expense of the calculations.
+Simplified models help understand some fundamental aspects of prismatic HTGRs and have the advantage of reducing the computational expense of the calculations.
 
 % shenoy_htgr_1974
 General Atomics \cite{shenoy_htgr_1974} developed the first set of software libraries that relied on simplified approximations.
@@ -359,25 +359,27 @@ The method provides a way for fast generating computational grids for modeling t
 To validate CORONA, the authors analyzed a fuel column and compared their results against CFX and experimental results.
 The validation results showed that CORONA provided reasonably accurate results.
 
-% end of section
-CFD techniques allow the detailed temperature profile over local models to be computed.
-The fine mesh requirement imposes high computational costs for a whole-core CFD analysis, restricting such methods.
+\subsection{Summary of Prismatic HTGR Thermal-fluids}
+
+Section \ref{sec:litrev-thermalf} summarizes previous work on the thermal-fluids modeling of prismatic HTGRs.
+Although CFD techniques compute detailed temperature profiles, their fine mesh requirement restricts the use of such methods to studies of the local behavior of a fuel column.
 However, a whole-core thermal analysis has many advantages over local models.
 In general, the problem set up includes more accurate boundary conditions.
 Without whole-core modeling, the local models' mass flow distributions are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
 This simplification leads to under-predicted fuel temperatures for the assemblies with a lower flow rate than the average.
 Additionally, a coupled analysis with a reactor physics code requires a full-core model \cite{tak_practical_2012}.
+An alternative for an explicit whole-core analysis are system codes that use simplified models.
+Nevertheless, the simplification of the geometries reduces the fuel block temperature resolution.
 
-% this might appear in a summary of the chapter: see travis_thermalhydraulics_2013 / tak_practical_2012 / tak_development_2014 
-% The fine mesh requirement for a whole core CFD analysis restricts the use of such methods.
-% Most of the CFD studies limit their application to the local behavior of a fuel column.
-% The alternative for an explicit whole-core analysis are system codes that use simplified models.
-% However, the simplification of the geometries reduces the fuel block temperature resolution.
-% The present method intends to overcome the difficulties in CFD calculation as well as in system calculations.
-% The computational expense of a solid heat conduction equation is much less than that of fluid conservation equations in CFD analyses .
-% This requirement is mostly due to the three-dimensional CFD simulation of the coolant flow.
-% The methodology provides good predictions of the global parameters such as the three-dimensional spatial temperature distribution and the axial variation of the helium bulk temperature \cite{travis_thermalhydraulics_2013}.
-% The fluid one-dimensional approximation avoids finer meshes near the walls as well as turbulence conservation equations \cite{tak_development_2014}.
+% porous media
+% disadvantages ?
+
+The high computational expense of CFD analysis is mostly due to the three-dimensional CFD simulation of the coolant flow \cite{travis_thermalhydraulics_2013}.
+Another alternative is to combine the three-dimensional heat conduction equation for the solid structures to the one-dimensional fluid conservation equations.
+The one-dimensional fluid approximation avoids finer meshes near the walls as well as turbulence conservation equations \cite{tak_development_2014}.
+Chapter \ref{ch:thermalfluids} studies the implementation of this alternative in Moltres for studying the thermal-fluids of prismatic HTGRs.
+Additionally, Chapter \ref{ch:thermalfluids} follows Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark for studying the full-core thermal-fluids modeling of prismatic HTGRs using Moltres.
+
 
 \section{Prismatic HTGR Multi-physics}
 \label{sec:litreview-multi}
@@ -411,17 +413,6 @@ Finally, a three-dimensional conduction model based on the \gls{FDM} allows for 
 To validate this model, the authors solved a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
 The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
 Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
-
-% tak_coupled_2016
-Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled software using DeCART \cite{kaeri_decart_2007} and CORONA.
-DeCART is a whole-core neutron transport tool, and it was responsible for calculating the power distribution and the fast neutron fluence.
-CORONA calculated the temperature distribution.
-To validate the code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
-The exercise's main objective was to validate the code and identify technical challenges for future development.
-The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
-The difference in the multiplication factor was as high as 2597 pcm.
-The axial offset and maximum fuel temperature exhibited significant differences as well.
-This study highlights the importance of the integration of both neutronics and thermal-fluid solvers.
 
 % tak_cappgamma_2016
 Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+ \cite{lim_gamma_2006}.
@@ -474,6 +465,17 @@ In this study, a two-dimensional cylindrical model replaced the three-dimensiona
 The integrated system testing included two stages: (1) both stand-alone codes underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
 The authors concluded that the coupling between Pronghorn and RELAP-7 was successful.
 
+% tak_coupled_2016
+Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled software using DeCART \cite{kaeri_decart_2007} and CORONA.
+DeCART is a whole-core neutron transport tool, and it was responsible for calculating the power distribution and the fast neutron fluence.
+CORONA calculated the temperature distribution.
+To validate the code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
+The exercise's main objective was to validate the code and identify technical challenges for future development.
+The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
+The difference in the multiplication factor was as high as 2597 pcm.
+The axial offset and maximum fuel temperature exhibited significant differences as well.
+This study highlights the importance of the integration of both neutronics and thermal-fluid solvers.
+
 % tyobeka_htgr_2011 / strydom_results_2015
 Sensitivity analysis and uncertainty analysis methods assess the predictive capabilities of coupled neutronics/thermal-fluids simulations.
 In 2013, the IAEA launched a coordinated research project \cite{tyobeka_htgr_2011} on the HTGR Uncertainty Analysis in Modeling.
@@ -488,5 +490,11 @@ Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling.
 Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without depletion calculations.
 Phase III focuses on safety calculations.
 
-% \section{Chapter Summary}
-% \label{sec:litreview-summary}
+\subsection{Summary of Prismatic HTGR Multi-physics}
+
+Section \ref{sec:litreview-multi} introduced several prior studies of prismatic HTGR multi-physics.
+This studies highlight the importance of the proper integration of the neutronics and thermal-fluids in HTGR modeling.
+The neutronics and thermal-fluids physical phenomena rely heavily on each other.
+Hence, a coupled analysis is necessary to capture the interaction between the neutronics and the thermal-fluids.
+Chapter \ref{ch:thermalfluids} discusses a coupling strategy for the neutronics and thermal-fluids phenomena in Moltres.
+For that exercise, Section \ref{sec:coupled-average} follows a simplified version of Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark.
