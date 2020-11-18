@@ -157,9 +157,6 @@ Moltres and MOOSE heat conduction module translate these equations into kernels.
 
 % coolant
 The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:convection} \cite{white_viscous_2006}\cite{tak_practical_2012}.
-Equation \ref{eq:churchill} \cite{churchill_friction-factor_1977} determines the friction factor $f$.
-The well-known Dittus-Boelter correlation, described in equation \ref{eq:dittus}, calculates the heat transfer coefficient $h$.
-
 
 \begin{align}
  	\frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) &= 0 \label{eq:continuity} \\
@@ -168,21 +165,23 @@ The well-known Dittus-Boelter correlation, described in equation \ref{eq:dittus}
   \tau &= \frac{f}{2} \rho_c u^2 \label{eq:friction} \\
   q'''_{conv} &= h\frac{\varepsilon}{A} (T_i-T_c) \label{eq:convection}
   \intertext{where}
-  \rho_c &= \mbox{coolant density} \notag \\
-  u &= \mbox{coolant velocity} \notag \\
-  p &= \mbox{coolant pressure} \notag \\
-  \tau &= \mbox{shear stress} \notag \\
-  \varepsilon &= \mbox{wetted perimeter} \notag \\
-  A &= \mbox{cross-sectional area} \notag \\
-  g &= \mbox{gravity} \notag \\
-  c_{p,c} &= \mbox{coolant specific heat capacity} \notag \\
-  T_c &= \mbox{coolant temperature} \notag \\
-  k_c &= \mbox{coolant thermal conductivity} \notag \\
-  q'''_{conv} &= \mbox{convective heat transfer} \notag \\
-  f &= \mbox{friction factor} \notag \\
-  h &= \mbox{heat transfer coefficient} \notag \\
-  T_i &= \mbox{solid temperature.} \notag
+  \rho_c &= \mbox{coolant density} [kg/cm^3] \notag \\
+  u &= \mbox{coolant velocity} [cm/s] \notag \\
+  p &= \mbox{coolant pressure} [\times 10^{-2} Pa] \notag \\
+  \tau &= \mbox{shear stress} [\times 10^{-2} Pa] \notag \\
+  \varepsilon &= \mbox{wetted perimeter} [cm] \notag \\
+  A &= \mbox{cross-sectional area} [cm^2] \notag \\
+  g &= \mbox{gravity} [m/s^2] \notag \\
+  c_{p,c} &= \mbox{coolant specific heat capacity} [J/kg/K] \notag \\
+  T_c &= \mbox{coolant temperature} [^{\circ}C] \notag \\
+  k_c &= \mbox{coolant thermal conductivity} [W/cm/K] \notag \\
+  q'''_{conv} &= \mbox{convective heat transfer} [W/cm^3] \notag \\
+  f &= \mbox{friction factor} [-] \notag \\
+  h &= \mbox{heat transfer coefficient} [W/cm^2/K] \notag \\
+  T_i &= \mbox{solid temperature.} [^{\circ}C] \notag
 \end{align}
+
+Equation \ref{eq:churchill} \cite{churchill_friction-factor_1977} determines the friction factor $f$.
 
 \begin{align}
   f &= 8\left[ \left( \frac{8}{Re_{D_h}} \right)^{12} + \frac{1}{(A+B)^{3/2}} \right]^{1/12} \notag \\
@@ -192,11 +191,20 @@ The well-known Dittus-Boelter correlation, described in equation \ref{eq:dittus}
   \varepsilon &= \mbox{surface roughness.} \notag
 \end{align}
 
+The well-known Dittus-Boelter correlation, described in equation \ref{eq:dittus}, calculates the heat transfer coefficient $h$.
+Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \cite{melese_thermal_1984}.
+
 \begin{align}
-  Nu &= \frac{h D_h}{k} = 0.023 Re_{D_h}^{0.8} Pr^{0.4} \label{eq:dittus}
+  & Nu = \frac{h D_h}{k_c} = 0.023 Re_{D_h}^{0.8} Pr^{0.4} \label{eq:dittus} \\
+  & k_f = h R_f ln(R_f/R_c) \label{eq:film-conduc}
   \intertext{where}
-  Nu &= \mbox{Nusselt number} \notag \\
-  D_h &= \mbox{hydraulic diameter.} \notag
+  & Nu = \mbox{Nusselt number} \notag \\
+  & Pr = \mbox{Prandtl number} \notag \\
+  & k_c = \mbox{coolant thermal conductivity} \notag \\
+  & D_h = \mbox{hydraulic diameter} \notag \\
+  & k_f = \mbox{film thermal conductivity} \notag \\
+  & R_f = \mbox{film radius} \notag \\
+  & R_c = \mbox{coolant channel radius.} \notag
 \end{align}
 
 \section{OECD/NEA MHTGR-350 MW Benchmark}
