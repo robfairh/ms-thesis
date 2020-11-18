@@ -54,30 +54,37 @@ Based on these results, Serpent models the TRISO particles explicitly in the fol
 Diffusion calculations necessitate a spatial homogenization of the group constants.
 Depending on the desired level of detail, the type of homogenization could vary.
 For example, in PWR core calculations, the homogenization in space could be per assembly or pin-by-pin \cite{krebs_calculational_1990}.
-In a per assembly homogenization, the diffusion code models a global neutronic representation of the assembly (we will refer to diffusion calculations using this type as homogeneous calculations).
-A pin-by-pin homogenization treats the pin or assembly heterogeneities, yielding a detailed neutronic representation of the fuel pins (we will refer to diffusion calculations of this type as heterogeneous calculations).
+In a per-assembly homogenization, the diffusion solver represents the assembly as a single material neutronically (we will refer to diffusion calculations using this type as homogeneous calculations).
+A pin-by-pin homogenization treats the pin or assembly heterogeneities, yielding a more detailed neutronic representation of the fuel assembly (we will refer to diffusion calculations of this type as heterogeneous calculations).
 
 % Previous works using Moltres
-Previous works \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} have used Moltres, a heterogeneous solver, for the analysis of \glspl{MSR}.
+Previous work \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} used Moltres for simulating \glspl{MSR}, which allow for heterogeneous calculations.
 In such calculations, Moltres input files defined two materials: the moderator and the fuel.
-For such a configuration, a node in the mesh representing the moderator holds the neutronics and temperature information only for the moderator.
+For such a configuration, a moderator mesh node holds the neutronics and temperature information only of the moderator.
 The same is true in the fuel.
-A homogeneous calculation would not differentiate between moderator and fuel and would hold the information of both materials in each node.
+% On the other hand, a homogeneous calculation would not differentiate between moderator and fuel and would hold the information of both materials in each node.
 
 % What I did in this section:
-Keeping in mind Moltres previous works, this worked aimed for a heterogeneous calculation in a prismatic \gls{HTGR}.
-We modeled a fuel column of the MHTGR-350 and generated the group constants using Serpent.
+Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous calculation in a prismatic \gls{HTGR}.
+For this study, Serpent modeled a fuel column of the MHTGR-350 and generated the group constants.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
-We obtained the group constants for three materials: moderator, coolant, and fuel compact.
-Serpent ran 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles for the calculations.
+Serpent obtained the group constants for three materials: moderator, coolant, and fuel compact.
+The simulation using Serpent included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles.
 % The \gls{Keff} was 1.41933.
-Taking advantage of the problem's symmetry, Moltres modeled only one-twelfth of the fuel column shown in Figure \ref{fig:fuelcolumn}.
-We made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
-The diffusion calculation had 183667 \glspl{DoF}/energy-group.
-Moltres input file set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
-The calculation used a two energy group structure with a thermal cutoff at 0.625eV.
+Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the fuel column shown in Figure \ref{fig:fuelcolumn}.
+I made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
+The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF}/energy-group.
+Moltres input file set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$, see equation \ref{eq:moltres-tol}.
+The calculation used a two energy groups with the following structure [0, 0.625eV, 20MeV].
 The eigenvalue calculation did not converge.
 Although several factors could contribute to this behavior, we focused on the validity of the diffusion calculations in such a system.
+
+\begin{align}
+   & \frac{k^{(n)}-k^{(n-1)}}{k^{(n)}} < \varepsilon \label{eq:moltres-tol} \\
+   \intertext{where}
+   & k^{(n) = \mbox{eigenvalue at iteration $n$} [-] \notag \\
+   & \varepsilon = \mbox{convergence tolerance.} [-] \notag
+\end{align}
 
 % \begin{figure}[htbp!]
 % 	\centering
@@ -101,13 +108,22 @@ Although several factors could contribute to this behavior, we focused on the va
 \end{figure}
 
 % Diffusion validity see bu1/tools-bu.txt
-The diffusion theory considers that the current density is proportional to the gradient of the flux \cite{leppanen_development_2007}.
+In diffusion theory, the current density $J$ is proportional to the gradient of the flux, see equation \ref{eq:diff} \cite{leppanen_development_2007}.
+
+\begin{align}
+   & J = - D \nabla \phi \label{eq:diff} \\
+   \intertext{where}
+   & J = \mbox{current density} [n/cm^2/s] \notag \\
+   & D = \mbox{diffusion coefficient} [cm] \notag \\
+   & \phi = \mbox{neutron flux.} [n/cm^2/s] \notag
+\end{align}
+
 Such an approximation relies on the following assumptions:
 \begin{itemize}
 	\item The angular flux does not depend strongly on the angular variables.
 	\item The fission source is isotropic.
 	\item The time derivative of the current density is small compared to the mean collision time.
-	\item The anisotropic energy-transfer is negligible in group-to-group scattering.
+	\item The anisotropic energy-transfer due to scattering is negligible in group-to-group scattering.
 \end{itemize}
 
 More detailed studies of the transport equation indicate that the following cases violate the assumption of a weak angular dependence \cite{duderstadt_nuclear_1976}:
@@ -122,7 +138,7 @@ This is the case for material regions whose geometrical scales are considerably 
 For this reason, we compared the neutron mean free path in the different fuel assembly materials, Table \ref{tab:mfp}.
 The mean free path in the fuel compact and the moderator are in the order of the centimeters.
 In the coolant, the mean free path magnitude is comparable to the fuel column dimensions.
-These results suggest that a heterogeneous diffusion calculation of the prismatic fuel column violates the diffusion theory assumptions.
+These results suggest that a heterogeneous diffusion calculation of the prismatic fuel column challenges the limitations of the diffusion theory.
 
 \begin{table}[htbp!]
   \centering
@@ -140,7 +156,7 @@ These results suggest that a heterogeneous diffusion calculation of the prismati
 \end{table}
 
 Next, we conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
-Serpent calculated the homogeneous group constants of the fuel assembly.
+Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion}.
 We homogenized the fuel, coolant, and moderator to create a 'homogeneous fuel.'
 This material's mean free path is in the order of the centimeters, Table \ref{tab:mfp}.
 Next, Moltres used the homogeneous group constants to carry out an eigenvalue calculation.
@@ -154,14 +170,14 @@ The fluxes are similar in shape and magnitude.
 % Conclusion
 We empathize that this was a feasibility study.
 The following sections make a more in-depth analysis of more detailed results.
-Based on these results and discussion, we use Moltres for carrying out homogeneous calculations in the following sections.
+Based on these results and discussion, we carry out homogeneous calculations with Moltres in the following sections.
 
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Serpent.]{
+    \subfloat[Serpent flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/standard-column-detector-Axial}
     }
-    \subfloat[Moltres.]{
+    \subfloat[Moltres flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/homo-fuel}
     }
 	\hfill
