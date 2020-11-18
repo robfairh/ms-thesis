@@ -16,14 +16,26 @@ Section \ref{sec:setup} analyzes different ways to set up Moltres input files.
 
 This section discusses a study with the objective to determine the proper way to treat the fuel compact heterogeneities in Serpent.
 This study modeled in Serpent two different material distributions in a fuel compact: a homogeneous distribution of the isotopes and a heterogeneous distribution that explicitly modeled the TRISO particles.
-
-The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite.
+The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite, exhibited in Figure \ref{fig:compact-model}.
 Table \ref{tab:compact} specifies the model input parameters.
 The material temperature was 1200K, a case that represents the \gls{HFP} core state.
 Serpent ran 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles for the calculations.
 The homogeneous distribution simulation took 1.73 and the heterogeneous distribution simulation 2.21 minutes using 256 cores --- the heterogeneous calculation took 28$\%$ longer.
 
-The \gls{Keff} was 1.17523 for the homogeneous distribution and 1.25106 for the heterogeneous distribution.
+\begin{figure}[htbp!]
+  \centering
+    \subfloat[Homogeneous isotope distribution in the fuel compact.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/compact-homo}
+    }
+    \subfloat[Explicit model of the TRISO particles in the fuel compact.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/compact}
+    }
+  \hfill
+  \caption{Comparison of different Serpent models of the fuel compact.}
+  \label{fig:compact-model}
+\end{figure}
+
+The \gls{Keff} was 1.17527 $\pm$ 0.00021 for the homogeneous distribution and 1.25107 $\pm$ 0.00020 for the heterogeneous distribution.
 Using the heterogeneous distribution as a reference, we calculated the relative error of some of the group constants in an eigenvalue calculation.
 Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
 The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion}).
@@ -82,8 +94,8 @@ Although several factors could contribute to this behavior, we focused on the va
 \begin{align}
    & \frac{k^{(n)}-k^{(n-1)}}{k^{(n)}} < \varepsilon \label{eq:moltres-tol}
    \intertext{where}
-   & k^{(n)} = \mbox{eigenvalue at iteration $n$} [-] \notag \\
-   & \varepsilon = \mbox{convergence tolerance.} [-] \notag
+   & k^{(n)} = \mbox{eigenvalue at iteration $n$ } [-] \notag \\
+   & \varepsilon = \mbox{convergence tolerance } [-]. \notag
 \end{align}
 
 % \begin{figure}[htbp!]
@@ -113,9 +125,9 @@ In diffusion theory, the current density $J$ is proportional to the gradient of 
 \begin{align}
    & J = - D \nabla \phi \label{eq:diff} \\
    \intertext{where}
-   & J = \mbox{current density} [n/cm^2/s] \notag \\
-   & D = \mbox{diffusion coefficient} [cm] \notag \\
-   & \phi = \mbox{neutron flux.} [n/cm^2/s] \notag
+   & J = \mbox{current density } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+   & D = \mbox{diffusion coefficient } [cm] \notag \\
+   & \phi = \mbox{neutron flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
 \end{align}
 
 Such an approximation relies on the following assumptions:
@@ -149,39 +161,38 @@ These results suggest that a heterogeneous diffusion calculation of the prismati
   \midrule
   Fast  		& 2.71 & 2.70 & 1137.31 & 3.37 \\
   Thermal		& 2.22 & 2.36 & 1945.49 & 2.89 \\
-
   \bottomrule
   \end{tabular}
   \label{tab:mfp}
 \end{table}
 
-Next, we conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
+Next, I conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
 Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion}.
 We homogenized the fuel, coolant, and moderator to create a 'homogeneous fuel.'
 This material's mean free path is in the order of the centimeters, Table \ref{tab:mfp}.
 Next, Moltres used the homogeneous group constants to carry out an eigenvalue calculation.
-Comparing Moltres results with Serpent results, Serpent's \gls{Keff} was 1.41933 while Moltres' was 1.4078788.
+Comparing Moltres results with Serpent results, Serpent's \gls{Keff} was 1.41942 $\pm$ 0.00007 while Moltres' was 1.40788.
 Moltres eigenvalue is smaller than Serpent's eigenvalue.
 % This difference is possibly due to the lack of treatment of the anisotropic term in the scattering cross-section.
 Additionally, Figure \ref{fig:prelim} displays a comparison between the axial flux in the fuel column obtained with serpent versus Moltres.
-Serpent's flux is the average flux over the fuel column volume; Moltres flux is the point-wise flux over the $z$-axis.
+Serpent's detector had multiple bins in the $z$-axis, and its flux is the average value of the flux in each bin, while Moltres flux is the point-wise flux over the $z$-axis.
 The fluxes are similar in shape and magnitude.
 
 % Conclusion
-We empathize that this was a feasibility study.
+I empathize that this was a feasibility study.
 The following sections make a more in-depth analysis of more detailed results.
 Based on these results and discussion, we carry out homogeneous calculations with Moltres in the following sections.
 
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Serpent flux.]{
+    \subfloat[Serpent axial flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/standard-column-detector-Axial}
     }
-    \subfloat[Moltres flux.]{
+    \subfloat[Moltres axial flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/homo-fuel}
     }
 	\hfill
-  \caption{Two group axial flux comparison.}
+  \caption{Comparison of the two group axial flux in the fuel column.}
 	\label{fig:prelim}
 \end{figure}
 
