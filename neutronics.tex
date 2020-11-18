@@ -1,13 +1,23 @@
 \label{ch:neutronics}
 
+This chapter presents several studies that use Moltres as a stand-alone neutronics solver.
+The objective of the chapter is to validate Moltres calculation scheme by comparing Moltres results to Serpent and the OECD/NEA MHTGR-350 MW Benchmark.
+This chapter comprehends the following sections: Section \ref{sec:neut-prelim} describes some preliminary studies that help set up Serpent and Moltres simulations, Section \ref{sec:neut-serpent} presents several studies comparing Moltres and Serpent results, and Section \ref{sec:ph1e1} discusses Moltres results of Phase I Exercise 1 of the Benchmark.
+
 \section{Preliminary studies}
+\label{sec:neut-prelim}
+
+This section's purpose is to find the right set up of Serpent and Moltres input files.
+Section \ref{sec:homo-hetero} focuses on the materials definition in Serpent input file for obtaining the group constants for Moltres.
+Section \ref{sec:setup} analyzes different ways to set up Moltres input files.
 
 \subsection{Homogeneous vs. heterogeneous isotope distribution}
+\label{sec:homo-hetero}
 
-This section conducted a study to determine the proper way to treat the fuel compact heterogeneities in Serpent.
-This study modeled two different isotope distributions in a fuel compact: a homogeneous distribution of the isotopes and a heterogeneous distribution, in which we explicitly modeled the TRISO particles.
+This section discusses a study with the objective to determine the proper way to treat the fuel compact heterogeneities in Serpent.
+This study modeled in Serpent two different material distributions in a fuel compact: a homogeneous distribution of the isotopes and a heterogeneous distribution that explicitly modeled the TRISO particles.
 
-We used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite.
+The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite.
 Table \ref{tab:compact} specifies the model input parameters.
 The material temperature was 1200K, a case that represents the \gls{HFP} core state.
 Serpent ran 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles for the calculations.
@@ -38,6 +48,7 @@ The impact on the group constants does not seem to be substantial; however, the 
 Based on these results, Serpent models the TRISO particles explicitly in the following sections.
 
 \subsection{Problem set-up}
+\label{sec:setup}
 
 % Diffusion calculations: homo vs hetero in LWRs
 Diffusion calculations necessitate a spatial homogenization of the group constants.
@@ -159,6 +170,7 @@ Based on these results and discussion, we use Moltres for carrying out homogeneo
 \end{figure}
 
 \section{Serpent-Moltres comparison}
+\label{sec:neut-serpent}
 
 \subsection{Fuel column}
 
