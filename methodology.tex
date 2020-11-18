@@ -210,32 +210,32 @@ Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \ci
 \section{OECD/NEA MHTGR-350 MW Benchmark}
 \label{sec:ch3-bench}
 
-The deterministic neutronic thermal-fluids and transient analysis methods available for prismatic \glspl{HTGR} lag behind the state-of-the-art technologies of other reactors.
-This delay has motivated the development of more accurate tools for the design and safety evaluations of \glspl{HTGR}.
-In addition to the development of new methods, it is essential to define appropriate benchmarks to compare these new methods' capabilities.
-The \gls{OECD}/\gls{NEA} defined such a benchmark \cite{oecd_nea_benchmark_2017} using the \gls{MHTGR}-350 MW reactor \cite{silady_licensing_1988} as the reference design.
-The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
+Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} conduct several exercises of the benchmark \cite{oecd_nea_benchmark_2017} using Moltres.
+The \gls{OECD}/\gls{NEA} defined such a benchmark using the \gls{MHTGR}-350 reactor \cite{silady_licensing_1988} as the reference design.
+The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics codes available for prismatic HTGRs.
+The benchmark defines several phases and exercises, summarized in Table \ref{tab:benchmark}.
 
-The benchmark defines several Phases and Exercises:
-
-\begin{itemize}
-        \item Phase I: Steady State
-        \begin{enumerate}
-            \item Neutronics solution with fixed cross-sections. 
-            \item Thermal fluids solution with given heat sources.
-            \item Coupled neutronics-thermal fluids steady state solution.
-        \end{enumerate}
-
-        \item Phase II: Transient Cases
-        \begin{enumerate}
-            \item Depressurized Conduction Cooldown without reactor trip.
-            \item Pressurized Conduction Cooldown with reactor trip.
-            \item Water ingress with reactor trip.
-            \item Power 100-80-100 load follow.
-        \end{enumerate}
-
-        \item Phase III: Lattice Depletion Case
-\end{itemize}
+\begin{table}[htbp!]
+  \centering
+  \caption{Description of the OECD/NEA MHTGR-350 MW Benchmark phases and exercises.}
+  \begin{tabular}{lcl}
+\toprule
+Phase               & Exercise & Description                                             \\
+\midrule
+\multirow{3}{*}{I}  & 1        & Neutronics solution with fixed cross-sections           \\
+                    & 2        & Thermal fluids solution with given heat sources         \\
+                    & 3        & Coupled neutronics-thermal fluids steady state solution \\
+\midrule
+\multirow{4}{*}{II} & 1        & Depressurized Conduction Cooldown without reactor trip  \\
+                    & 2        & Pressurized Conduction Cooldown with reactor trip       \\
+                    & 3        & Water ingress with reactor trip                         \\
+                    & 4        & Power 100-80-100 load follow                            \\
+\midrule
+III                 & -        & Lattice Depletion Calculation                           \\
+\bottomrule
+  \end{tabular}
+  \label{tab:benchmark}
+\end{table}
 
 \section{MHTGR-350 Reactor Description}
 \label{sec:ch3-mhtgr}
