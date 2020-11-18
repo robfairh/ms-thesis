@@ -2,11 +2,7 @@ Chapter 1, Introduction:
 
 * History:
 
-
-
-
 * Order:
-
 
 
 I started with the history cause I wanted to have a starting point.
