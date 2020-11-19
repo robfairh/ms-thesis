@@ -164,7 +164,7 @@ Overall, Moltres results are close to In's results as the maximum difference bet
         \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-outlet-plane}
     }
   \hfill
-  \caption{Temperature profiles.}
+  \caption{Unit cell temperature profiles.}
   \label{fig:th-val-unit-temps}
 \end{figure}
 
@@ -188,12 +188,22 @@ Overall, Moltres results are close to In's results as the maximum difference bet
 
 This section discusses an HTGR fuel column analysis aimed to validate the fuel column model by reproducing some of Sato et al. 2010 \cite{sato_computational_2010} analyses.
 I chose this article because it gives a thorough description of the problem, making it easier to reproduce.
-The first analysis studied a column with no bypass-gap.
-The second analysis studied a column with a 3mm-bypass-gap between assemblies.
+The first analysis studied a column with no bypass-gap between assemblies.
+The second analysis studied a column with a 3mm bypass-gap between assemblies.
 
-The study used the GT-MHR as the reference reactor for the calculations; Figure \ref{fig:th-val-assem-model-a} exhibits the model geometry.
+The study used the GT-MHR as the reference reactor for the calculations; 
+
+Figure \ref{fig:th-val-assem-model-a} exhibits the model geometry.
 The model only needed to include a $1/12^{th}$ portion of the column due to symmetry.
 The GT-MHR shares the geometry dimensions with the MHTGR, which Table \ref{tab:element-characteristics} specifies.
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.25\linewidth]{figures-thermal/val-assem-mesh}
+  \hfill
+  \caption{Model geometry axial layout.}
+  \label{fig:th-val-assem-model-a}
+\end{figure}
 
 Equation \ref{eq:matcoeff} evaluates the solid material properties \cite{johnson_cfd_2009}
 \begin{align}
@@ -201,11 +211,7 @@ Equation \ref{eq:matcoeff} evaluates the solid material properties \cite{johnson
 \end{align}
 
 Table \ref{tab:th-val-assem-mat} displays the fuel compact and moderator coefficients of equation \ref{eq:matcoeff}.
-Table \ref{tab:th-val-assem-char} lists the helium properties and several input parameters, and Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material properties.
-
-The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
-In this exercise, we used the mass flow distribution from Sato et al.
-Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
+Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material properties.
 
 \begin{table}[htbp!]
 \centering
@@ -226,9 +232,22 @@ A5                        &          & 4.02e-11   &              & -9.77e-16    
   \end{tabular}
 \end{table}
 
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.45\linewidth]{figures-thermal/val-assem-matprop}
+  \hfill
+  \caption{Temperature dependent material properties \cite{johnson_cfd_2009}.}
+  \label{fig:th-val-assem-model-b}
+\end{figure}
+
+Table \ref{tab:th-val-assem-char} lists the remaining input parameters.
+The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
+the calculations used the mass flow distribution from Sato et al \cite{sato_computational_2010}.
+Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
+
 \begin{table}[htbp!]
 \centering
-      \caption{Problem characteristics.}
+      \caption{Constant problem characteristics.}
       \label{tab:th-val-assem-char}
     % \begin{tabular}{@{}l c S[table-format=2.2] c c}
     \begin{tabular}{@{}l c c c c}
@@ -249,22 +268,6 @@ A5                        &          & 4.02e-11   &              & -9.77e-16    
   \end{tabular}
 \end{table}
 
-\begin{figure}[htbp!]
-  \centering
-  \includegraphics[width=0.25\linewidth]{figures-thermal/val-assem-mesh}
-  \hfill
-  \caption{Model geometry axial layout.}
-  \label{fig:th-val-assem-model-a}
-\end{figure}
-
-\begin{figure}[htbp!]
-  \centering
-  \includegraphics[width=0.45\linewidth]{figures-thermal/val-assem-matprop}
-  \hfill
-  \caption{Temperature dependent material properties \cite{johnson_cfd_2009}.}
-  \label{fig:th-val-assem-model-b}
-\end{figure}
-
 \begin{table}[htbp!]
 \centering
   \caption{Mass flow rate determined from Sato calculation \cite{sato_computational_2010}. Values expressed in [g/s].}
@@ -273,21 +276,21 @@ A5                        &          & 4.02e-11   &              & -9.77e-16    
 \toprule
 Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 \midrule
-No gap  & 6.18 & 11.34 & 11.37 & 11.38 & 11.43 & 11.33 & 22.70 \\
-3mm gap & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 \\
+No bypass-gap  & 6.18 & 11.34 & 11.37 & 11.38 & 11.43 & 11.33 & 22.70 \\
+3mm bypass-gap & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 \\
 \midrule
 Channel & 8 & 9 & 10 & 11 & 12 & 13 & Gap \\
 \midrule
-No gap  & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
-3mm gap & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 16.56 \\
+No bypass-gap  & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
+3mm bypass-gap & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 16.56 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Table \ref{tab:th-val-assem-results} compares Moltres/MOOSE results to Sato's results.
-In the no gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 4$^{\circ}$C higher.
-In the 3mm-gap case, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 1$^{\circ}$C lower.
-The results showed good agreement with Sato's.
+Table \ref{tab:th-val-assem-results} compares the results determined in this thesis using Moltres/MOOSE to Sato's results \cite{sato_computational_2010}.
+In the case with no bypass-gap, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 4$^{\circ}$C higher.
+In the case with a 3mm bypass-gap, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 1$^{\circ}$C lower.
+The results showed good agreement with those in \cite{sato_computational_2010}.
 
 Figure \ref{fig:th-val-assem-temps} displays the outlet temperature along lines A-B and A-C from Figure \ref{fig:th-val-assem-model-a}.
 The temperature is higher closer to the column center, because the bypass-flow causes the temperature in the center to rise while reducing the peripheral temperature.
@@ -321,35 +324,22 @@ Fuel    & 1090    & 1094              & 1115     & 1114             \\
   \label{fig:th-val-assem-temps}
 \end{figure}
 
-% \begin{figure}[htbp!]
-%   \centering
-%     \subfloat[No gap.]{
-%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-input}
-%     }
-%     \subfloat[3mm gap.]{
-%         \includegraphics[width=0.45\textwidth]{figures-thermal/val-assem-input}
-%     }
-%   \hfill
-%   \caption{Outlet plane temperature profile.}
-%   \label{fig:th-val-assem-temps}
-% \end{figure}
-
 \subsection{Flow distribution analysis}
 \label{sec:flowdistrib}
 
-As described in Section \ref{sec:litrev-thermalf}, several authors calculate the flow distribution using various methods.
-This section compares the different method results.
-The comparison chosen metrics are the maximum coolant and fuel temperatures and the mass flow distribution
+As described in Section \ref{sec:litrev-thermalf}, several methods are available to calculate the flow distribution in prismatic HTGRs.
+This section compares a few such methods.
+The metrics chosen for this comparison are the maximum coolant and fuel temperatures and the mass flow distribution.
 The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
 Note that Channel 1 is a small coolant channel while Channels 2 to 13 are large coolant channels.
 
-We analyzed the following cases:
+I analyzed the following cases:
 \begin{itemize}
-    \item Case 1: uses the mass flow distribution from Sato et al.
-    \item Case 2: uses a flat velocity profile (every channel and gap have the same velocity).
-    \item Case 3: uses the incompressible flow model with a temperature-independent helium viscosity.
-    \item Case 4: uses the incompressible flow model with a temperature-dependent helium viscosity.
-    \item Case 5: uses the low-Mach number model with a temperature dependent helium viscosity.
+    \item Reference: uses the mass flow distribution from Sato et al \cite{sato_computational_2010}.
+    \item Case 1: uses a flat velocity profile (every channel and gap have the same velocity).
+    \item Case 2: uses the incompressible flow model with temperature-independent helium viscosity.
+    \item Case 3: uses the incompressible flow model with a temperature-dependent helium viscosity.
+    \item Case 4: uses the low-Mach number model with a temperature dependent helium viscosity.
 \end{itemize}
 
 To calculate the different flow distributions, we used the following equations.
@@ -364,60 +354,61 @@ As the mass flow distributions in Cases 4 and 5 depend on the temperature, the c
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 
 \begin{align}
-  \dot{m}_i &= \frac{A_i}{\sum_j A_j} \label{eq:case2mdot} \\
-  \Delta P &= \frac{1}{\rho} \left( \frac{\dot{m}_i}{A_i} \right)^2 f \frac{2 L}{D_h} \label{eq:case3mdot} \\
-  \Delta P &= \frac{\dot{m}_i^2}{2 \rho A_i^2} \left[ \frac{4 f L (T_i+T_o)}{2 D T_i} + \frac{T_o-T_i}{T_i} \right]  \label{eq:case5mdot} \\
-  \Delta P &= B_i \dot{m}_i^2 \label{eq:itersolver1} \\
-  \Delta P &= \left( \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i}}} \right)^2 \label{eq:itersolver2} \\
-  \dot{m}_i &= \sqrt{\Delta P / B_i} \label{eq:itersolver3}
+  & \dot{m}_i = \frac{A_i}{\sum_j A_j} \label{eq:case2mdot} \\
+  & \Delta P = \frac{1}{\rho_i} \left( \frac{\dot{m}_i}{A_i} \right)^2 f \frac{2 L}{D_h} \label{eq:case3mdot} \\
+  & \Delta P = \frac{\dot{m}_i^2}{2 \rho_i A_i^2} \left[ \frac{4 f L (T_i+T_o)}{2 D T_i} + \frac{T_o-T_i}{T_i} \right]  \label{eq:case5mdot} \\
+  & \Delta P = B_i \dot{m}_i^2 \label{eq:itersolver1} \\
+  & \Delta P = \left( \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i}}} \right)^2 \label{eq:itersolver2} \\
+  & \dot{m}_i = \sqrt{\Delta P / B_i} \label{eq:itersolver3}
   \intertext{where}
-  \dot{m}_i &= \mbox{channel $i$ mass flow rate} \notag \\
-  A_i &= \mbox{channel $i$ cross-sectional area} \notag \\
-  \Delta P &= \mbox{pressure drop} \notag \\
-  T_i &= \mbox{channel inlet coolant temperature} \notag \\
-  T_o &= \mbox{channel outlet coolant temperature} \notag \\
-  \dot{m}_T &= \mbox{total mass flow rate} \notag
+  & \dot{m}_i = \mbox{channel $i$ mass flow rate} [kg \cdot s^{-1}] \notag \\
+  & A_i = \mbox{channel $i$ cross-sectional area} [cm^2] \notag \\
+  & \Delta P = \mbox{pressure drop} [Pa] \notag \\
+  & \rho_i = \mbox{channel inlet coolant density} [kg \cdot m^{-3}] \notag \\
+  & T_i = \mbox{channel inlet coolant temperature} [^{\circ}C] \notag \\
+  & T_o = \mbox{channel outlet coolant temperature} [^{\circ}C] \notag \\
+  & \dot{m}_T = \mbox{total mass flow rate} [kg \cdot s^{-1}]. \notag
 \end{align}
 
-Table \ref{tab:th-assem-flow-massflow} displays the results for the mass flow rates.
+Table \ref{tab:th-assem-flow-massflow} displays the results achieved in this thesis for the mass flow rates.
 % Case 4 and case 5 converged after two and three iterations, respectively.
-Case 2 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
-Case 3 and 4 barely differ, which proves that not considering the viscosity's temperature dependency yields a more straightforward method with an acceptable accuracy.
-Case 5 arrives at the closest values to the reference solution.
+Case 1 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
+Case 2 and 3 barely differ, which proves that not considering the viscosity's temperature dependency yields a more straightforward method with an acceptable accuracy.
+Case 4 arrives at the values closest to the reference solution.
 
 Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
-Case 2 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
-Case 5 yields the closest results to the reference values.
-For the maximum fuel temperature, Case 2 and 5 yield the best results.
-Again, Case 3 and 4 barely differ.
+Case 1 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
+Case 4 yields the results closest to the reference values.
+For the maximum fuel temperature, Case 1 and 4 yield the best results.
+Again, Case 2 and 3 barely differ.
 
-The low-Mach number model (Case 5) yielded the closest results to the reference solution.
+The low-Mach number model (Case 4) yielded the closest results to the reference solution.
 However, such a method required a two-level iterative solver.
-From a computational point of view, the Case 2 model is the simplest method as it does not require an iterative solver.
+From a computational point of view, the Case 1 model is the simplest method as it does not require an iterative solver.
 Additionally, the Case 2 model yields the simplest Moltres input file.
-For these reasons, the rest of the thesis uses the Case 2 model for the fluid flow distribution.
+For these reasons, the rest of the thesis uses the Case 1 model for the fluid flow distribution.
 
 \begin{table}[htbp!]
   \centering
-  \caption{Mass flow rates [g/s].}
+  \caption{Comparison between the calculated flow rates and the reference values \cite{sato_computational_2010}. Values expressed in [g/s].}
   \label{tab:th-assem-flow-massflow}
   \begin{tabular}{l|ccccccc}
 \toprule
 Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
 \midrule
-Case 1  & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 \\
-Case 2  & 6.66 & 10.41 & 10.41 & 10.41 & 10.41 & 10.41 & 20.82 \\
-Case 3  & 5.98 & 10.91 & 10.91 & 10.91 & 10.91 & 10.91 & 21.82 \\
-Case 4  & 5.97 & 10.90 & 10.90 & 10.91 & 10.92 & 10.90 & 21.80 \\
-Case 5  & 5.83 & 10.75 & 10.81 & 10.90 & 11.09 & 10.73 & 21.58 \\
+Reference  & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 \\
+Case 1  & 6.66 & 10.41 & 10.41 & 10.41 & 10.41 & 10.41 & 20.82 \\
+Case 2  & 5.98 & 10.91 & 10.91 & 10.91 & 10.91 & 10.91 & 21.82 \\
+Case 3  & 5.97 & 10.90 & 10.90 & 10.91 & 10.92 & 10.90 & 21.80 \\
+Case 4  & 5.83 & 10.75 & 10.81 & 10.90 & 11.09 & 10.73 & 21.58 \\
 \midrule
 Channel & 8 & 9 & 10 & 11 & 12 & 13 & Half-gap \\
 \midrule
-Case 1  & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 8.28 \\
-Case 2  & 20.82 & 20.82 & 10.41 & 20.82 & 20.82 & 10.41 & 8.20 \\
-Case 3  & 21.82 & 21.82 & 10.91 & 21.82 & 21.82 & 10.91 & 8.55 \\
-Case 4  & 21.81 & 21.83 & 10.91 & 21.82 & 21.85 & 10.92 & 8.55 \\
-Case 5  & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 \\
+Reference  & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 8.28 \\
+Case 1  & 20.82 & 20.82 & 10.41 & 20.82 & 20.82 & 10.41 & 8.20 \\
+Case 2  & 21.82 & 21.82 & 10.91 & 21.82 & 21.82 & 10.91 & 8.55 \\
+Case 3  & 21.81 & 21.83 & 10.91 & 21.82 & 21.85 & 10.92 & 8.55 \\
+Case 4  & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -428,10 +419,10 @@ Case 5  & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 \\
   \label{tab:th-assem-flow-results}
 \begin{tabular}{l|ccccc}
 \toprule
-        & Case 1 & Case 2 & Case 3 & Case 4 & Case 5 \\
+        & Reference & Case 1 & Case 2 & Case 3 & Case 4 \\
 \midrule
-Coolant & 1005   &  994   &  999 & 1000 & 1007 \\
-Fuel    & 1114   & 1116   & 1109 & 1110 & 1116 \\
+Coolant & 1005    &  994   &  999   & 1000  & 1007 \\
+Fuel    & 1114    & 1116   & 1109   & 1110  & 1116 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -445,25 +436,14 @@ This section aims to identify some possible problems introduced by the full-core
 To do so, this section conducts a mesh convergence analysis of the full-fuel column problem.
 Figure \ref{fig:th-full-assem-mesh} displays the model geometry, and Table \ref{tab:th-full-assem-results} presents the results.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
-The coolant temperature converged for the fifth mesh, but the fuel temperature did not reach convergence.
+The coolant temperature converged for the fifth mesh, but the fuel temperature did not converge.
 Further refinement of the mesh was not possible as the simulation memory requirements were too high.
-
-This analysis reveals a potential problem.
-The high level of detail in our geometry requires a large number of elements in the mesh.
-In the full-scale problem the dimensions, and the number of elements in the mesh both increase.
-Potentially, this method will be unable to solve the three-dimensional full-scale problem due to a high memory requirement.
-For this reason, the next section intends to solve the full-scale problem using a two-dimensional cylindrical model.
-
-% Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
-% However, the coolant channel mesh requires enough points in the circle to properly model the heat transfer between the solid and the coolant.
-% The ideal mesh would have many points in the boundary of the cylinder and one point in the cylinder center.
-% But that is not numerically good, as the jacobian of those triangles is too as mall and could cause issues on the simulations.
 
 \begin{figure}[htbp!]
   \centering
   \includegraphics[width=0.45\linewidth]{figures-thermal/full-assem-mesh2}
   \hfill
-  \caption{Full fuel column model geometry.}
+  \caption{Axial view of the full fuel column model geometry.}
   \label{fig:th-full-assem-mesh}
 \end{figure}
 
@@ -483,15 +463,26 @@ Maximum fuel temperature    & 1204.49 & 1217.32 & 1225.57 & 1233.44 & 1234.93 \\
 \end{tabular}
 \end{table}
 
+This analysis reveals a potential problem.
+The high level of detail in our geometry requires a large number of elements in the mesh.
+In the full-scale problem the dimensions, and the number of elements in the mesh both increase.
+Potentially, this method will be unable to solve the three-dimensional full-scale problem due to a high memory requirement.
+For this reason, the next section intends to solve the full-scale problem using a two-dimensional cylindrical model.
+
+% Maybe talk about that the number of nodes in the coolant channels could be reduced as we are using the fluid 1D equations.
+% However, the coolant channel mesh requires enough points in the circle to properly model the heat transfer between the solid and the coolant.
+% The ideal mesh would have many points in the boundary of the cylinder and one point in the cylinder center.
+% But that is not numerically good, as the jacobian of those triangles is too as mall and could cause issues on the simulations.
+
 % \section{Full-core 3D}
 % This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
 
 \section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 2}
 \label{sec:ph1ex2}
 
-This section conducted Phase I Exercise 2 of the benchmark with Moltres/MOOSE.
+This section describes Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark \cite{oecd_nea_benchmark_2017} and the undertaking as part of this thesis to conduct it using Moltres and MOOSE.
 Phase I Exercise 2 defines a thermal-fluid standalone calculation.
-The exercise purpose is to ensure that the thermal-fluid model differences between participants are negligible and will not affect the coupled exercises.
+The exercise aims to ensure that the thermal-fluid model differences between participants are negligible and will not affect the coupled exercises.
 The benchmark specifies the power density of each fuel region and defines the mass flow distribution and material properties for four sub-cases:
 \begin{itemize}
   \item Exercise 2a: No bypass flow and fixed thermo-physical properties. The model does not account for the bypass flow, and the thermo-physical properties are constant.
@@ -504,7 +495,7 @@ The exercise requires reporting the average and maximum temperature values of th
 It also requires reporting the RPV heat flux and the mass flow rate distribution in the coolant channels and the bypass gaps.
 These data are helpful to trace the source of possible differences in the primary parameters between participants.
 Since OECD/NEA did not publish the results for this exercise, this section compares Moltres/MOOSE results against INL's benchmark results \cite{strydom_inl_2013}.
-This section presents only a subset of available data that illustrates the main characteristics of the exercise.
+This section presents only a subset of available data that illustrate the main characteristics of the exercise.
 
 Figure \ref{fig:ex2a-1st-model} displays the model geometry.
 The model uses several simplifications to conduct the exercise.
