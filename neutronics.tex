@@ -39,25 +39,21 @@ The \gls{Keff} was 1.17527 $\pm$ 0.00021 for the homogeneous distribution and 1.
 Using the heterogeneous distribution as a reference, we calculated the relative error of some of the group constants in an eigenvalue calculation.
 Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
 The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion}).
-Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ (REMXS) and $\nu\Sigma^f_g$ (NSF), which were the group constants that changed the most.
+Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
 The figure does not include $D_g$ and $\chi^t_g$ because their relative errors were less than 1$\%$.
 The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
-
-% \cite{strydom_results_2015}
-% The low multiplication factor in the homogeneous case is due to the fuel self-shielding .
-% In the heterogeneous compact, the fuel self-shielding leads to a significantly decreased U-238 neutron absorption compared to the homogeneous fuel compact.
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.43\linewidth]{figures-neutronics/param-comparison}
 	\hfill
-	\caption{Relative error of the group constants generated with a homogeneous isotope distribution.}
+	\caption{Relative error of the group constants generated with a homogeneous isotope distribution vs explicit TRISO modeling.}
 	\label{fig:param-comparison}
 \end{figure}
 
 The results show that the homogenization of the fuel compact isotopes decreases the multiplication factor considerably.
 The impact on the group constants does not seem to be substantial; however, the multiplication factor's considerable difference suggests that the combined effect of the small variations in the group constants is significant.
-Based on these results, Serpent models the TRISO particles explicitly in the following sections.
+Based on these results, Serpent models the TRISO particles explicitly for generating the group constants in the following sections.
 
 \subsection{Problem set-up}
 \label{sec:setup}
@@ -71,25 +67,23 @@ A pin-by-pin homogenization treats the pin or assembly heterogeneities, yielding
 
 % Previous works using Moltres
 Previous work \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} used Moltres for simulating \glspl{MSR}, which allow for heterogeneous calculations.
-In such calculations, Moltres input files defined two materials: the moderator and the fuel.
+In those calculations, the authors defined two materials in Moltres input files: the moderator and the fuel.
 For such a configuration, a moderator mesh node holds the neutronics and temperature information only of the moderator.
 The same is true in the fuel.
 % On the other hand, a homogeneous calculation would not differentiate between moderator and fuel and would hold the information of both materials in each node.
 
 % What I did in this section:
-Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous calculation in a prismatic \gls{HTGR}.
+Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous calculation of a prismatic \gls{HTGR}.
 For this study, Serpent modeled a fuel column of the MHTGR-350 and generated the group constants.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
-Serpent obtained the group constants for three materials: moderator, coolant, and fuel compact.
+Serpent generated the group constants for three materials: moderator, coolant, and fuel compact.
 The simulation using Serpent included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles.
 % The \gls{Keff} was 1.41933.
 Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the fuel column shown in Figure \ref{fig:fuelcolumn}.
 I made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
-The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF}/energy-group.
-Moltres input file set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$, see equation \ref{eq:moltres-tol}.
-The calculation used a two energy groups with the following structure [0, 0.625eV, 20MeV].
-The eigenvalue calculation did not converge.
-Although several factors could contribute to this behavior, we focused on the validity of the diffusion calculations in such a system.
+The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF} per energy-group.
+
+Moltres simulation obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-8}$, defined by equation \ref{eq:moltres-tol}
 
 \begin{align}
    & \frac{k^{(n)}-k^{(n-1)}}{k^{(n)}} < \varepsilon \label{eq:moltres-tol}
@@ -97,6 +91,11 @@ Although several factors could contribute to this behavior, we focused on the va
    & k^{(n)} = \mbox{eigenvalue at iteration $n$ } [-] \notag \\
    & \varepsilon = \mbox{convergence tolerance } [-]. \notag
 \end{align}
+
+The calculation used a two energy groups with the structure [0, 0.625eV, 20MeV].
+The eigenvalue calculation did not converge.
+Although several factors could contribute to this behavior, we focused on the validity of the diffusion calculations in this system.
+
 
 % \begin{figure}[htbp!]
 % 	\centering
@@ -130,27 +129,27 @@ In diffusion theory, the current density $J$ is proportional to the gradient of 
    & \phi = \mbox{neutron flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
 \end{align}
 
-Such an approximation relies on the following assumptions:
+This approximation relies on the following assumptions:
 \begin{itemize}
-	\item The angular flux does not depend strongly on the angular variables.
-	\item The fission source is isotropic.
-	\item The time derivative of the current density is small compared to the mean collision time.
-	\item The anisotropic energy-transfer due to scattering is negligible in group-to-group scattering.
+	\item the angular flux does not depend strongly on the angular variables,
+	\item the fission source is isotropic,
+	\item the time derivative of the current density is small compared to the mean collision time,
+	\item and the anisotropic energy-transfer due to scattering is negligible in group-to-group scattering.
 \end{itemize}
 
 More detailed studies of the transport equation indicate that the following cases violate the assumption of a weak angular dependence \cite{duderstadt_nuclear_1976}:
 \begin{itemize}
-    \item Regions near vacuum boundaries and low-density material regions.
-    \item Regions near strongly absorbing media.
-    \item Regions near localized sources.
+    \item regions near vacuum boundaries and low-density material regions,
+    \item regions near strongly absorbing media,
+    \item and egions near localized sources.
 \end{itemize}
 
 The diffusion theory applies best to geometries consisting of large homogeneous regions where the flux gradient is small.
 This is the case for material regions whose geometrical scales are considerably larger than the neutron mean free path.
-For this reason, we compared the neutron mean free path in the different fuel assembly materials, Table \ref{tab:mfp}.
+For this reason, Table \ref{tab:mfp} compares the neutron mean free path in the different fuel assembly materials.
 The mean free path in the fuel compact and the moderator are in the order of the centimeters.
 In the coolant, the mean free path magnitude is comparable to the fuel column dimensions.
-These results suggest that a heterogeneous diffusion calculation of the prismatic fuel column challenges the limitations of the diffusion theory.
+These results suggest that a heterogeneous diffusion calculation of the prismatic fuel column challenges some of the diffusion theory assumptions.
 
 \begin{table}[htbp!]
   \centering
@@ -167,8 +166,7 @@ These results suggest that a heterogeneous diffusion calculation of the prismati
 \end{table}
 
 Next, I conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
-Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion}.
-We homogenized the fuel, coolant, and moderator to create a 'homogeneous fuel.'
+Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion}, by homogenizing the fuel, coolant, and moderator.
 This material's mean free path is in the order of the centimeters, Table \ref{tab:mfp}.
 Next, Moltres used the homogeneous group constants to carry out an eigenvalue calculation.
 Comparing Moltres results with Serpent results, Serpent's \gls{Keff} was 1.41942 $\pm$ 0.00007 while Moltres' was 1.40788.
@@ -176,6 +174,7 @@ Moltres eigenvalue is smaller than Serpent's eigenvalue.
 % This difference is possibly due to the lack of treatment of the anisotropic term in the scattering cross-section.
 Additionally, Figure \ref{fig:prelim} displays a comparison between the axial flux in the fuel column obtained with serpent versus Moltres.
 Serpent's flux is the average value of the flux in each bin, while Moltres flux is the point-wise flux over the $z$-axis
+
 \begin{align}
   & \phi_s(z) = \frac{\int_{\Delta V} \phi(x,y,z) dV}{\Delta V} \label{eq:serpent-flux} \\
   & \phi_m(z) = \phi_m(x,y,z)   \label{eq:moltres-flux}
@@ -187,9 +186,9 @@ Serpent's flux is the average value of the flux in each bin, while Moltres flux 
 
 The fluxes are similar in shape and magnitude.
 % Conclusion
-I empathize that this was a feasibility study.
-The following sections make a more in-depth analysis of more detailed results.
-Based on these results and discussion, we carry out homogeneous calculations with Moltres in the following sections.
+I emphasize that this was a feasibility study.
+The following sections present a more in-depth analysis of more detailed results.
+Based on these results and discussion, I conducted homogeneous calculations using Moltres in the following sections.
 
 \begin{figure}[htbp!]
 	\centering
