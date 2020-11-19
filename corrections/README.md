@@ -5,7 +5,7 @@ Huff-1: Done
 - I have addressed comments on Ch1 and 2.
 - I have ignored the comments on Ch4 as the following document has the same comments.
 
-Huff-2:
+Huff-2: Done
 -------
 
 - Contains comments on Ch1, 2, and 4.
@@ -17,5 +17,9 @@ Huff-3:
 
 - Contains comments on Ch1, 2, 3, 4, 5, 6, 7.
 - I have addressed comments on Ch1, 2.
-- Working on Ch3 comments 
+- Working on Ch3 comments
+- Working on Ch5 comments
 
+
+Add to appendix:
+- Cross section homogenization and condensation formulas.
