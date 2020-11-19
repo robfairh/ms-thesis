@@ -241,16 +241,31 @@ III                 & -        & Lattice Depletion Calculation                  
 \label{sec:ch3-mhtgr}
 
 This section describes the \gls{MHTGR}-350 reactor.
-Table \ref{tab:maincharac} lists its main characteristics.
-The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, Figure \ref{fig:layout}.
+The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, pictured in Figure \ref{fig:layout}.
 Nineteen graphite replaceable reflector elements compose the inner reflector region.
 A ring of identically sized graphite replaceable reflector elements surrounds the fuel elements.
 Then, a region of permanent reflector elements surrounds the replaceable reflectors.
 The reactor vessel encases all the elements.
+Ten layers of fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
+Figure \ref{fig:layoutb} shows an axial view of the reactor.
+Table \ref{tab:maincharac} summarizes the reactor main characteristics.
+
+\begin{figure}[htbp!]
+    \centering
+    \subfloat[Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.]{
+        \includegraphics[width=0.45\textwidth]{figures/radial-layout.png}
+    }
+    \subfloat[Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.\label{fig:layoutb}]{
+        \includegraphics[width=0.45\textwidth]{figures/axial-layout.png}
+    }
+    \hfill
+    \caption{MHTGR-350 reactor layout.}
+    \label{fig:layout}
+\end{figure}
 
 \begin{table}[htbp!]
   \centering
-    \caption{MHTGR-350 Characteristics \cite{oecd_nea_benchmark_2017}.}
+  \caption{MHTGR-350 Characteristics \cite{oecd_nea_benchmark_2017}.}
   \begin{tabular}{lc}
   \toprule
   Characteristics                   & Value               \\ \midrule
@@ -272,39 +287,6 @@ The reactor vessel encases all the elements.
   \label{tab:maincharac}
 \end{table}
 
-\begin{figure}[htbp!]
-    \centering
-    \subfloat[Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.]{
-        \includegraphics[width=0.45\textwidth]{figures/radial-layout.png}
-    }
-    \subfloat[Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.\label{fig:layoutb}]{
-        \includegraphics[width=0.45\textwidth]{figures/axial-layout.png}
-    }
-    \hfill
-    \caption{MHTGR-350 reactor layout.}
-    \label{fig:layout}
-\end{figure}
-
-% \begin{figure}[htbp!]
-%   \centering
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=0.95\linewidth]{figures/radial-layout.png}
-%     \caption{Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
-%   \end{subfigure}
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=0.95\linewidth]{figures/axial-layout.png}
-%     \caption{Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
-%     \label{fig:layoutb}
-%   \end{subfigure}
-%   \hfill
-%   \caption{MHTGR reactor layout.}
-%   \label{fig:layout}
-% \end{figure}
-
-Ten layers of fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
-Figure \ref{fig:layoutb} shows an axial view of the reactor.
 The core has two types of fuel elements: a standard element and a reserve shutdown element that contains a channel for Reserve Shutdown Control, Figure \ref{fig:fuelassembly}.
 Table \ref{tab:element-characteristics} specifies the details of the MHTGR-350 fuel elements.
 Twelve columns in the core contain Reserve Shutdown Control channels for borated graphite pellets.
@@ -432,7 +414,18 @@ Six are for reactor start-up and are in the inner reflector, while the remaining
 
 \section{Simulations Organization}
 
-This thesis divides Moltres simulation results into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
-Chapter \ref{ch:neutronics} focuses on neutronics stand-alone simulations.
-Chapter \ref{ch:thermalfluids} focuses on thermal-fluids stand-alone and neutronics/thermal-fluid simulations.
+This thesis divides the description of Moltres simulations into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
+Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations, discussing two main validation exercises.
+The first exercise compares a Serpent and Moltres model of the MHTGR-350.
+The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
+In the first exercise, Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
+Serpent also generates the groups constants of the MHTGR-350 that serve as an input for Moltres simulations.
+In the second exercise, the benchmark exercise specifies the group constants that Moltres uses in the simulations.
+Moltres simulations use equations \ref{eq:diffusion} and \ref{eq:precursors} to calculate the multiplication factor, the neutron flux, and the radial power distribution in the core.
 
+Chapter \ref{ch:thermalfluids} focuses on stand-alone thermal-fluids and coupled neutronics/thermal-fluid simulations.
+Chapter \ref{ch:thermalfluids} discusses several exercises to validate Moltres thermal-fluids model.
+The first validation exercises study the accuracy of the thermal-fluids model in several configurations.
+The following validation exercise follow Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
+Moltres simulations use equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures and the coolant flow distribution.
+Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
