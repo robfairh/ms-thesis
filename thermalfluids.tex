@@ -146,6 +146,14 @@ The model assumes a film thermal conductivity independent of the temperature, th
 The solids' thermal conductivity increases with temperature, see Figure \ref{fig:th-val-unit-model-b}, the thermal resistance between the moderator and the fuel decreases, so their temperature difference decreases as well.
 
 Table \ref{tab:th-val-unit-results} summarizes the results.
+Equation \ref{eq:rel-error} evaluates the relative difference to the reference results
+\begin{align}
+  & \Delta_T = \left| \frac{T-T_{ref}}{T_{ref}} \right|  \label{eq:rel-error}
+  \intertext{where}
+  & T = \mbox{temperature determined by this work} [^{\circ}C] \notag \\
+  & T_{ref} = \mbox{reference temperature} [^{\circ}C]. \notag
+\end{align}
+
 Small discrepancies arise in the results: Moltres/MOOSE coolant temperature is smaller than In's by 4$^{\circ}$C.
 The moderator temperature is larger by 9$^{\circ}$C, and the fuel temperature is larger by 22$^{\circ}$C.
 The cause of the fuel temperature discrepancy is the power profile simplification.
@@ -170,15 +178,15 @@ Overall, Moltres results are close to In's results as the maximum difference bet
 
 \begin{table}[htbp!]
 \centering
-    \caption{Comparison between In et al. and Moltres/MOOSE results.}
+    \caption{Comparison between In et al. \cite{in_three-dimensional_2006} and Moltres/MOOSE results.}
     \label{tab:th-val-unit-results}
-    \begin{tabular}{@{}l c c}
+    \begin{tabular}{@{}l c c c}
     \toprule
-  Parameter                                   & In et al. & Moltres/MOOSE \\
+  Parameter                      & In et al. [$^{\circ}$C] & Moltres/MOOSE [$^{\circ}$C] & $\Delta_T$ [\%]\\
     \midrule
-  Maximum coolant temperature [$^{\circ}$C]   & 1144      & 1140    \\
-  Maximum moderator temperature [$^{\circ}$C] & 1250      & 1259    \\
-  Maximum fuel temperature [$^{\circ}$C]      & 1295      & 1317    \\
+  Maximum coolant temperature    & 1144      & 1140          & 0.3 \\
+  Maximum moderator temperature  & 1250      & 1259          & 0.7 \\
+  Maximum fuel temperature       & 1295      & 1317          & 1.7 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -506,25 +514,6 @@ In the radial direction, the model does not consider the core barrel and the hel
 After the outer reflector is the RPV, followed by the outside air.
 The outside air region outer boundary is at 30 $^{\circ}$C.
 
-The core model geometry uses INL's model as the reference design.
-Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
-We calculated the radii of the rings by preserving the assemblies' volume.
-The coolant thickness is constant for all the rings and preserves the coolant volume in the core.
-% missing description of the power density distribution
-Table \ref{tab:th-ex2a} presents the material properties.
-All the graphite regions assume the grade H-451 graphite material properties.
-
-Table \ref{tab:th-ex2a-1st-results} displays the results.
-Our model considerably under-predicts the inner reflector rings temperature, while it over-predicts the coolant rings temperature.
-With the purpose of better understanding this behavior, Figure \ref{fig:ex2a-1st-model-across} shows the temperature across the reactor on the bottom of the active core (z=200 cm).
-This figure exposes that the temperatures in the active core are well above the other region temperatures.
-Although such a behavior is normal, the temperature profile reveals some heat transfer disconnection between the different rings.
-In other words, the heat transfer from the fuel rings to the rest of the core structures is smaller than the heat transfer to the coolant rings in the active core region.
-This thermal disconnection causes the reflector temperatures to be too low and the coolant temperatures too high.
-These results indicate that Moltres model fails to capture some heat transfer mechanisms that INL's model captures.
-The most obvious difference between the models is the inclusion of the radiative heat transfer.
-Future works will focus on confirming this supposition and adding the capability to model the radiative heat transfer.
-
 % model H figure
 \begin{figure}[htbp!]
   \centering
@@ -533,6 +522,14 @@ Future works will focus on confirming this supposition and adding the capability
   \caption{Model geometry.}
   \label{fig:ex2a-1st-model}
 \end{figure}
+
+The core model geometry uses INL's model as the reference design.
+Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
+I calculated the radii of the rings by preserving the assemblies' volume.
+The coolant thickness is constant for all the rings and preserves the coolant volume in the core.
+% missing description of the power density distribution
+Table \ref{tab:th-ex2a} presents the material properties.
+All the graphite regions assume the grade H-451 graphite material properties.
 
 \begin{table}[htbp!]
 \centering
@@ -543,29 +540,41 @@ Future works will focus on confirming this supposition and adding the capability
     \toprule
   \multicolumn{1}{c}{Parameter} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} & \multicolumn{1}{c}{Reference} \\    
     \midrule
-  Fuel compact thermal conductivity & 20    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Fuel block thermal conductivity   & 37    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Graphite thermal conductivity     & 66    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  \gls{RPV} thermal conductivity    & 40    & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Coolant thermal conductivity      & 0.41  & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Air thermal conductivity          & 0.068 & W/m/K   & \cite{oecd_nea_benchmark_2017} \\
-  Helium density                    & 5.703 & $\times 10^{-6}$ kg/cm$^3$  & \cite{nist_thermophysical_2020} \\
-  Helium heat capacity              & 5188  & J/kg/K  & \cite{nist_thermophysical_2020} \\
+  Fuel compact thermal conductivity & 20    & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  Fuel block thermal conductivity   & 37    & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  Graphite thermal conductivity     & 66    & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  \gls{RPV} thermal conductivity    & 40    & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  Coolant thermal conductivity      & 0.41  & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  Air thermal conductivity          & 0.068 & W $\cdot m^{-1} \cdot K^{-1}$ & \cite{oecd_nea_benchmark_2017} \\
+  Helium density                    & 5.703 & $\times 10^{-6}$ kg $\cdot cm^{-3}$  & \cite{nist_thermophysical_2020} \\
+  Helium heat capacity              & 5188  & J $\cdot kg^{-1} \cdot K^{-1}$  & \cite{nist_thermophysical_2020} \\
   \bottomrule
   \end{tabular}
 \end{table}
 
+Table \ref{tab:th-ex2a-1st-results} displays the results.
+The model considerably under-predicts the inner reflector rings temperature, while it over-predicts the coolant rings temperature.
+With the purpose of better understanding this behavior, Figure \ref{fig:ex2a-1st-model-across} shows the temperature across the reactor on the bottom of the active core (z=200 cm).
+This figure exposes that the temperatures in the active core are well above the other region temperatures.
+Although such behavior is expected, the temperature profile reveals some heat transfer disconnection between the different rings.
+In other words, the heat transfer from the fuel rings to the rest of the core structures is smaller than the heat transfer to the coolant rings in the active core region.
+This thermal disconnection causes the reflector temperatures to be too low and the coolant temperatures too high.
+These results indicate that Moltres model fails to capture some heat transfer mechanisms that INL's model captures.
+The most obvious difference between the models is the inclusion of the radiative heat transfer.
+Future Moltres development effort will focus on confirming this supposition and adding the capability to model the radiative heat transfer.
+
 \begin{table}[htbp!]
 \centering
-      \caption{First bottom core level average temperatures.}
+      \caption{Comparison of this work and INL \cite{strydom_inl_2013} first bottom core level average temperatures.}
       \label{tab:th-ex2a-1st-results}
 \begin{tabular}{l|ccc|ccc}
     \toprule
-              & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c}{Coolant} \\ \cline{2-7} 
-              & Ring 1   & Ring 2   & Ring 3   & Ring 4   & Ring 5  & Ring 6  \\
+                & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c}{Coolant} \\ \cline{2-7} 
+                & Ring 1   & Ring 2   & Ring 3   & Ring 4   & Ring 5  & Ring 6  \\
     \midrule
-INL           & 790      & 794      & 802      & 797      & 636     & 673     \\
-Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
+INL [$^{\circ}C$]           & 790    & 794     & 802     & 797     & 636     & 673     \\
+Moltres/MOOSE [$^{\circ}C$] & 268    & 313     & 769     & 1424    & 1597    & 1157    \\
+$\Delta_T$ [\%]    & 66       & 61     & 4       & 79      & 151     & 72      \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -574,7 +583,7 @@ Moltres/MOOSE & 268      & 313      & 769      & 1424     & 1597    & 1157    \\
   \centering
   \includegraphics[width=0.45\linewidth]{figures-thermal/ex2a-across}
   \hfill
-  \caption{Radial temperature at the bottom of the active core (z=200 cm).}
+  \caption{Radial temperature at the bottom of the active core (z=200 cm) determined by Moltres.}
   \label{fig:ex2a-1st-model-across}
 \end{figure}
 
@@ -591,17 +600,16 @@ The coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
 Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
-The coolant temperature increases from the top to the bottom of the active core and, it is constant in the bottom and top reflector regions.
+The coolant temperature increases from the top to the bottom of the active core, and it is constant in the bottom and top reflector regions.
 The highest coolant, fuel, and moderator temperatures are in Fuel Ring 1.
 
-Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's.
-We focus on the coolant temperature of the different rings.
-Moltres predicts a smaller value in Fuel Ring 1, but predicts a higher value in Fuel Rings 2 and 3.
+Table \ref{tab:th-ex2a-results} compares Moltres/MOOSE results to INL's \cite{strydom_inl_2013}.
+For the coolant temperature, Moltres predicts a smaller value in Fuel Ring 1, but predicts a higher value in Fuel Rings 2 and 3.
 For some reason, the global model fails to correctly distribute the heat produced in the fuel rings into the coolant rings.
 A possible cause of this discrepancy is the flat velocity approximation.
-Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model; However, one of the assumptions of that model was that the power density is uniform.
+Section \ref{sec:flowdistrib} showed that a flat velocity distribution of the coolant is reasonable in the fuel column model; however, one of the assumptions of that model was a uniform power density.
 In this exercise, the power density is not uniform, which could explain the discrepancies.
-Further studies might confirm the cause of them.
+Further studies might confirm their cause.
 
 Additionally, Moltres predicts a smaller coolant-to-moderator temperature difference for Fuel Rings 1 and 2.
 The most considerable discrepancy is in Fuel Ring 1.
@@ -630,22 +638,22 @@ In fuel ring 2, the differences are 16$^{\circ}$C and 17$^{\circ}$C for INL and 
         \includegraphics[width=0.45\textwidth]{figures-thermal/ex2a-solid}
     }
   \hfill
-  \caption{Axial temperatures.}
+  \caption{Axial temperatures determined by Moltres.}
   \label{fig:ex2a-temps}
 \end{figure}
 
 \begin{table}[htbp!]
 \centering
-      \caption{First bottom core level average temperatures.}
+      \caption{Comparison of this work and INL \cite{strydom_inl_2013} first bottom core level average temperatures.}
       \label{tab:th-ex2a-results}
-\begin{tabular}{l|c|c|c|c|c|c}
+  \begin{tabular}{l|ccc|ccc|ccc}
     \toprule
-          & \multicolumn{2}{c|}{Fuel Ring 1} & \multicolumn{2}{c|}{Fuel Ring 2} & \multicolumn{2}{c}{Fuel Ring 3} \\ \cline{2-7} 
-          & INL     & Moltres/MOOSE     & INL     & Moltres/MOOSE     & INL       & Moltres/MOOSE \\
+          & \multicolumn{3}{c|}{Fuel Ring 1} & \multicolumn{3}{c|}{Fuel Ring 2} & \multicolumn{3}{c}{Fuel Ring 3} \\ \cline{2-10} 
+          & Coolant & Moderator & Fuel & Coolant & Moderator & Fuel & Coolant & Moderator & Fuel \\
     \midrule
-Coolant   & 797     & 718               & 636     & 646               & 673       & 696           \\
-Moderator & 843     & 748               & 672     & 669               & Not shown & 721           \\
-Fuel      & 863     & 770               & 688     & 686               & 722       & 739           \\
+INL [$^{\circ}$C]         & 797  & 843  & 863  & 636  & 672  & 688  & 673  & Not shown  & 722  \\
+This thesis [$^{\circ}$C] & 718  & 748  & 770  & 646  & 669  & 686  & 696  & 721        & 739  \\
+$\Delta_T$ [\%]           & 9.9  & 11.3 & 10.8 & 1.6  & 0.4  & 0.3  & 3.4  & -          & 2.4  \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -653,13 +661,13 @@ Fuel      & 863     & 770               & 688     & 686               & 722     
 \section{Coupled simulations}
 \label{sec:thermal-coupling}
 
-This section sets the road-map for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
+This section sets the roadmap for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
 
 \subsection{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
 \label{sec:ph1ex3}
 
 % description of the exercise
-This section conducted Phase I Exercise 3 of the benchmark with Moltres/MOOSE.
+This section describes Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark as conducted for this thesis with Moltres/MOOSE.
 Exercise 3 combines all the data from the first two exercises, in which the participants need to determine a coupled neutronic and thermal-fluids solution.
 The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
 The benchmark specifies the group constants necessary to conduct the exercise.
