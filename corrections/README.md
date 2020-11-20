@@ -16,9 +16,9 @@ Huff-3:
 -------
 
 - Contains comments on Ch1, 2, 3, 4, 5, 6, 7.
-- I have addressed comments on Ch1.
-- Working on Ch2 comments
-- Working on Ch3 comments
+- I have addressed comments on Ch1, 2, 3
+- Working on Ch4 comments
 - Working on Ch5 comments
+- Working on Ch6 comments
 
 
