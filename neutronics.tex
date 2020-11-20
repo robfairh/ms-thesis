@@ -362,8 +362,7 @@ Equation \ref{eq:delta-rho} calculates the reactivity difference ($\Delta \rho$)
 \end{align}
 
 Table \ref{tab:keff} exhibits the eigenvalues calculated by Serpent and $\Delta \rho$ for the different energy group structures.
-The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
-Overall, the reactivity difference is less than 50 pcm.
+The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent, and overall, the reactivity difference is less than 50 pcm.
 The number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
 
 \begin{table}[htbp!]
@@ -391,52 +390,51 @@ Considering the 26 group structure as the reference value, equation \ref{eq:l2no
   & \Delta_{L_2} = \mbox{L$_2$-norm relative difference } [-] \notag \\
   & \phi_G(z) = \mbox{$G$-energy groups axial flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
   & \phi_{ref}(z) = \mbox{reference axial flux} [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
-  & L_a = \mbox{active core lenght} [cm]. \notag
+  & L_a = \mbox{active core length} [cm]. \notag
 \end{align}
 
-Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm of the relative error for the different energy group structures.
-The no LBP case's relative error is smaller than the LBP case's relative error.
+Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show $\Delta_{L-2}$ for the various energy group structures.
 Overall, the relative error decreases with an increase in the number of energy groups.
 Nonetheless, this is not always the case.
-For example, in Figure \ref{fig:assembly-noLBP-er-b}, going from 12 to 15 groups, the thermal flux improves, but the fast flux worsens.
-Additionally, we observe that a low number of energy groups yields more than 100$\%$ error.
-In which case, we can conclude that the solution is wrong.
+For example, in Figure \ref{fig:assembly-noLBP-er-b}, from 12 to 15-energy groups, the thermal flux agreement improves, but the fast flux agreement worsens.
+Additionally, the relative error of the cases with no burnable poisons is smaller than the relative error of the cases with burnable poison.
+The treatment of the burnable poisons challenges the accuracy of the homogenized simulations in Moltres.
+For example, a three-energy group structure yields more than 100$\%$ error when treating the burnable poison, Figure \ref{fig:assembly-LBP-er}.
 
 % No LBP
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[600K.]{
+    \subfloat[Operational case 1: 600K.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/noLBP-600-er-final}
     }
-    \subfloat[1200K.\label{fig:assembly-noLBP-er-b}]{
+    \subfloat[Operational case 2: 1200K.\label{fig:assembly-noLBP-er-b}]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/noLBP-1200-er-final}
     }
 	\hfill
-    \caption{No LBP case. L$_2$-norm relative error for different number of energy group structures.}
+    \caption{L$_2$-norm relative error for different number of energy group structures for the operational cases with no burnable poisons.}
 	\label{fig:assembly-noLBP-er}
 \end{figure}
 
 % LBP
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[600K.]{
+    \subfloat[Operational case 3: 600K.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/LBP-600-er-final}
     }
-    \subfloat[1200K.]{
+    \subfloat[Operational case 4: 1200K.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/LBP-1200-er-final}
     }
 	\hfill
-    \caption{LBP case. L$_2$-norm relative error for different number of energy group structures.}
+    \caption{LBP case. L$_2$-norm relative error for different number of energy group structures for the operational cases with burnable poisons.}
 	\label{fig:assembly-LBP-er}
 \end{figure}
 
-We added to the analysis the computational time and the peak memory usage during the simulations, Figure \ref{fig:assembly-time}.
+The analysis also included the computational time and the peak memory usage during the simulations, as shown in Figure \ref{fig:assembly-time}.
 All the simulations used 128 cores.
-We present only the cases at 600K because the impact of the temperature change was not significant.
+This section presents only the cases at 600K because the impact of the temperature change was not significant.
 The computational requirements rise with an increase in the number of energy groups.
-As the geometry uses a constant number of elements, the DoFs/energy-group is constant for all the simulations.
-Thus, the total number of DoFs is proportional to the number of energy groups.
-We also discern that the overall time of the LBP cases is higher than the no LBP cases.
+As the geometry uses a constant number of elements, the number of DoFs per energy-group remains constant for all the simulations.
+Figure \ref{fig:assembly-time} also shows that the overall time of the cases with burnable poison is higher than the cases without them.
 
 % Time and memory
 \begin{figure}[htbp!]
@@ -452,16 +450,26 @@ We also discern that the overall time of the LBP cases is higher than the no LBP
 	\label{fig:assembly-time}
 \end{figure}
 
-Finally, we analyzed the impact of changing the energy group structure for a constant number of energy groups.
-We chose 15 energy groups, as it yields a good overall accuracy and a not so high computational expense.
-Table \ref{tab:energygroups} holds the different energy group structures.
-Table \ref{tab:accuracy15} exhibits the $L_2$-norm of the relative error for the different energy group structures.
-The energy group structure has an impact on accuracy.
+The last study analyzed the impact of the energy group structure on the flux accuracy for a constant number of energy groups.
+We chose 15 energy groups, as it yields a good overall accuracy and a practical computational expense.
+Table \ref{tab:energygroups} defines the various energy group structures.
+Table \ref{tab:accuracy15} exhibits the $L_2$-norm of the relative error for the various energy group structures.
 Some energy group structures yield better results for some cases while giving worse results for others.
-For example, the structure $15d$ gives better results for the LBP at 600K case than for the no LBP case at 600K.
-To choose the best performing structure, we used a weighted average for the different groups.
+For example, the $15d$ structure gives better results at 600K with burnable poisons than without them.
+To choose the best performing structure, equation \label{eq:weighted-ave} calculated a weighted average for the different groups
+\begin{align}
+  & WA = w_{th} \Delta_{th} + w_{epi} \Delta_{epi} + w_{f} \Delta_{f} \label{eq:weighted-ave}
+  \intertext{where}
+  & w_{th} = \mbox{thermal flux weight } [-] \notag \\
+  & w_{epi} = \mbox{epipthermal flux weight } [-] \notag \\
+  & w_{f} = \mbox{fast flux weight } [-] \notag \\
+  & \Delta_{th} = \mbox{L$_2$-norm relative difference of the thermal flux } [-] \notag \\
+  & \Delta_{epi} = \mbox{L$_2$-norm relative difference of the epithermal flux } [-] \notag \\
+  & \Delta_{f} = \mbox{L$_2$-norm relative difference of the fast flux } [-]. \notag
+\end{align}
+
 We arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
-Using this averaging scheme, we determined the group structure $15d$ to be the best one.
+For this averaging scheme, the energy group structure $15d$ is the best one.
 
 \begin{table}[htbp!]
   \centering
