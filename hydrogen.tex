@@ -1,12 +1,9 @@
 \label{ch:hydro}
 
 Two characteristics of HTGRs, high-temperature and high thermal conversion efficiency, motivated the development of this chapter.
-Those characteristics enable efficient hydrogen production processes.
-
-Efficient hydrogen production by \glspl{HTGR} motivates the last chapter of the thesis.
-We analyze several hydrogen production methods coupled to different nuclear reactor desings.
-In order to find the most efficient method, we not only consider \glspl{HTGR} but also other type of reactors.
-
+Those two characteristics enable highly-efficient hydrogen production.
+This chapter analyzes several hydrogen production processes coupled to various nuclear reactor desings.
+To find the most efficient strategy, I not only consider HTGRs but also other type of reactors.
 This chapter comprehends the following sections:
 Section \ref{sec:hydro-intro} discusses several energy challenges and introduces an alternative based on nuclear reactors and a hydrogen economy,
 Section \ref{sec:hydro-objectives} summarizes the specific objectives of this chapter,
@@ -329,12 +326,12 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the various
 \section{Results}
 \label{sec:hydro-results}
 
-This section holds the results of the multiple analyses.
+This section holds the results of the Transportation sector analysis, Section \ref{sec:results-transport}, and the Energy Generation analysis, Section \ref{sec:results-electric}.
 
 \subsection{Transportation}
 \label{sec:results-transport}
 
-This subsection centers its focus on the transportation sector.
+This section centers its focus on the transportation sector.
 Figure \ref{fig:fuel} displays the fuel consumed per day by \gls{MTD} and \gls{UIUC} fleet.
 Using the values shown in Table \ref{tab:equiv}, we calculated the \gls{H2} requirement for MTD and UIUC fleets, Figure \ref{fig:hydro-fleet}.
 Table \ref{tab:hydro-fleet} summarizes the results.
@@ -447,14 +444,15 @@ Note that the \gls{SI} process's required high temperatures allow for the coupli
 	\end{figure}
 
 \subsection{Electricity Generation}
+\label{sec:results-electric}
 
-This subsection centers its focus on the electricity generation sector and the duck curve problem.
+This section focuses on the electricity generation sector and the duck curve problem.
 To quantify the duck curve's magnitude, we have to predict the \gls{UIUC} grid's load and the expected electricity production from solar. 
 As the \gls{icap}'s main objective is to become carbon neutral before 2050, we make our prediction for that year.
 \gls{UIUC} solar farm is relatively new, and more data is necessary to produce a reliable forecast.
 To go around this barrier, we use the available data for the whole \gls{US}.
 Figure \ref{fig:prediction} displays the prediction for 2050.
-We carry out the prediction using a linear regression that produces the worst-case scenario.
+The prediction uses the linear regression that produces the worst-case scenario.
 In such a scenario, the total load increases minimally, whereas the solar generation increases considerably.
 
 \begin{figure}[htbp!]
@@ -470,12 +468,11 @@ In such a scenario, the total load increases minimally, whereas the solar genera
     \label{fig:prediction}
 \end{figure}
 
-The next step was to apply the same growth factor from the predictions to the \gls{UIUC} grid's load and solar electricity.
-To obtain a prediction for 2050, we applied the growth factor to the hourly data.
-We chose a spring day when solar production is higher, as it is sunny, but the total load is low since people are less likely to use electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
-Finally, we subtracted the solar production from the total load, obtaining the net load or demand ($D_{NET}$).
-
-We narrowed our analysis' focus to April 4th, when the net demand reached the lowest value in the 2019's spring.
+The next step applied the same growth factor from the predictions to the \gls{UIUC} grid's load and solar electricity.
+To obtain a prediction for 2050, the growth factor scales up the hourly data.
+I chose a spring day when solar production is higher, as it is sunny, but the total load is low since people are less likely to use electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
+Finally, subtracting the solar production from the total load gives the net load or demand ($D_{NET}$).
+The net demand reached the lowest value in the 2019's spring on April 4th.
 Figure \ref{fig:uiuc-duck1} shows these results.
 In 2050, the peak net demand will be 46.9 MWh at 5 PM.
 The lowest net demand will be 15 MWh at 11 AM.
@@ -483,7 +480,7 @@ These results yield a demand ramp of 31.9 MWh in 4 hours.
 These results show that the grid requires an available capacity of dispatchable sources of at least 31.9 MW.
 
 \begin{figure}[htbp!]
-		\centering
+	\centering
 	\includegraphics[height=7cm]{figures-hydro/uiuc-duck}
 	\hfill
 	\caption{Prediction of the UIUC's net demand for 2050.}
@@ -491,19 +488,19 @@ These results show that the grid requires an available capacity of dispatchable 
 \end{figure}
 
 % Big part of this should go in the methodology section
-Once we calculated the net demand, the next step was to figure the over-generated electricity.
+The next step calculated the over-generated electricity.
 For that purpose, we arbitrarily chose a reactor of 25 MW.
 For the \gls{LTE} case, any reactor is a valid option.
-We chose an $\eta$ of 33$\%$, which yields a reactor power of 75.8 MWt.
+The choice of an $\eta$ of 33$\%$, which yields a reactor power of 75.8 MWt.
 For the \gls{HTE} case, the reactor's choice is an HTGR with an outlet temperature of 850$^{\circ}$C.
-We consider an $\eta$ of 49.8$\%$, which yields a reactor of 50.2 MWt.
+Considering an $\eta$ of 49.8$\%$, yields a reactor of 50.2 MWt.
 
 The reactor operates at full capacity at all times.
 However, the reactor electricity ($P_{E}$) equals the net demand ($D_{NET}$) once smaller than 25 MW.
 Note that $P_{E}$ has power units while $D_{NET}$ has energy units.
-We chose time steps of 1 hour for our analysis, hence $P_{E}$ and $D_{NET}$ differ by the constant $h$.
+The choice of 1 hour time steps in our analysis make $P_{E}$ and $D_{NET}$ differ by the constant $h$.
 As $P_{E}$ is lower than 25 MW, and the reactor is at full thermal capacity, the hydrogen plant takes the excess of thermal energy.
-We used equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen3} to calculate the hydrogen produced.
+The calculating of the hydrogen produced used equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen3}.
 Figure \ref{fig:uiuc-duck2} displays the results.
 The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{HTE}, and \gls{SI}.
 
@@ -527,13 +524,13 @@ The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{
 \end{figure}
 
 % This should definitely be in Methodology
-Our analysis' last step is to calculate the peak demand reduction by using the hydrogen to produce electricity.
+The analysis' last step was to calculate the peak demand reduction by using the hydrogen to produce electricity.
 The energy produced by hydrogen is $285 kJ/mol$, equal to 40 kWh/kg \cite{ursua_hydrogen_2012}.
 However, conventional fuel cells can use up to 60$\%$ of that energy \cite{doe_energy_efficiency_and_renewable_energy_fuel_2015}.
-Knowing the mass of hydrogen produced, we calculated the total electricity produced.
-We reduced the peak demand by distributing the electricity over a specific range of hours.
-We chose to distribute the electricity for over 6 hours.
-We calculated the new peak using equation \ref{eq:newpeak}.
+Knowing the mass of hydrogen produced, I calculated the total electricity produced.
+The distribution of the electricity over a specific range of hours reduces the peak demand.
+I chose to distribute the electricity for over 6 hours.
+I calculated the new peak using equation \ref{eq:newpeak}.
 Figure \ref{fig:uiuc-duck3} shows these results.
 The different \gls{H2} processes can generate 15.84 MWh, 24.2 MWh, and 19.6 MWh, respectively.
 This generation accounts for a peak reduction of 5 MW, 6.4 MW, and 5.6 MW, respectively.
@@ -582,10 +579,10 @@ Finally, we chose several microreactor designs, and we calculated their hydrogen
 The microreactors that can meet both fleet hydrogen needs are the MMR, ST-OTTO, U-battery, and Starcore.
 The Starcore design is the only one that could use the \gls{SI} process.
 
-In the electricity generation sector analysis, we predicted the duck curves' magnitude in UIUC's grid in 2050.
+The electricity generation analysis predicted the duck curves' magnitude in UIUC's grid in 2050.
 This result exhibits how an increased solar penetration into the grid worsens the duck curve.
-We proposed a mitigation strategy that uses a microreactor of 25 MWe.
-For such a reactor, we calculated the mass of hydrogen produced by the different methods during the day.
+This thesis proposed a mitigation strategy that uses a microreactor of 25 MWe.
+For such a reactor, this thesis quantified the mass of hydrogen produced by the different methods during the day.
 Finally, we estimated a peak demand reduction by using the hydrogen produced during the day.
 This last result highlights that hydrogen introduces a means to store energy that reduces the reliance on dispatchable sources.
-This analysis emphasizes how nuclear energy and hydrogen production are an approach to mitigate climate change.
+This analysis emphasizes how nuclear energy and hydrogen production can potentially mitigate climate change.
