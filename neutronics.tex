@@ -19,7 +19,7 @@ This study modeled in Serpent two different material distributions in a fuel com
 The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite, exhibited in Figure \ref{fig:compact-model}.
 Table \ref{tab:compact} specifies the model input parameters.
 The material temperature was 1200K, a case that represents the \gls{HFP} core state.
-Serpent ran 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles for the calculations.
+The serpent simulations included 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles.
 The homogeneous distribution simulation took 1.73 and the heterogeneous distribution simulation 2.21 minutes using 256 cores --- the heterogeneous calculation took 28$\%$ longer.
 
 \begin{figure}[htbp!]
@@ -77,7 +77,7 @@ Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous
 For this study, Serpent modeled a fuel column of the MHTGR-350 and generated the group constants.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
 Serpent generated the group constants for three materials: moderator, coolant, and fuel compact.
-The simulation using Serpent included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles.
+The Serpent simulations included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles.
 % The \gls{Keff} was 1.41933.
 Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the fuel column shown in Figure \ref{fig:fuelcolumn}.
 I made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
@@ -226,7 +226,7 @@ Some reactors have burnable poisons in the rings closer to the reflectors, and n
 This characteristic motivated the analysis of two cases: one fuel column that does not have burnable poisons and one that does.
 The burnable poisons' locations are the six corners of the fuel assembly, Figure \ref{fig:fuelassembly}.
 The material temperatures were 600 and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
-The simulation using Serpent included 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
+The Serpent simulations included 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
 Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the homogenized fuel column.
 I made the geometry and mesh, which had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes, using Gmsh.
@@ -500,15 +500,16 @@ For this averaging scheme, the energy group structure $15d$ is the best one.
 
 \subsection{Full-core}
 
-This section compared the results from Serpent and Moltres for a full-core simulation.
-The first step in the calculation was to obtain the group constants using Serpent.
-Figure \ref{fig:fullcoremodel} displays the $xy$-plane of the model, which includes the bottom and top reflectors.
+This section compared the results from Serpent and Moltres simulations of a full-core model.
+Figure \ref{fig:fullcoremodel} displays a $xy$-plane of the model, which includes the bottom and top reflectors.
+Due to symmetry, Moltres model included only a $1/6^{th}$ of the reactor.
+The first step in the calculation obtained the group constants using Serpent.
 Tables \ref{tab:maincharac}, \ref{tab:element-characteristics}, and \ref{tab:compact} specify the model input parameters.
-For simplicity, all the fuel columns were standard.
-The model considered a fresh core, and it did not include the fuel handling holes nor the bottom and top reflectors' coolant channels.
+For simplicity, standard fuel assemblies compose all the fuel column.
+The model considered a fresh core, and it did not include the fuel handling holes nor the bottom and top reflector coolant channels.
 Based on the previous section analyses, we chose the energy group structure $15d$ in Table \ref{tab:energygroups}.
 The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
-Serpent ran 8$\times 10^5$ neutrons per cycle, 500 active cycles, and 100 inactive cycles for the calculations.
+The Serpent simulations included 8$\times 10^5$ neutrons per cycle, 500 active cycles, and 100 inactive cycles.
 
 % Geometries
 \begin{figure}[htbp!]
@@ -520,25 +521,23 @@ Serpent ran 8$\times 10^5$ neutrons per cycle, 500 active cycles, and 100 inacti
         \includegraphics[width=0.49\textwidth]{figures-neutronics/3D-fullcore-60-homo-meshB2}
     }
 	\hfill
-  \caption{MHTGR-350 full-core models.}
+  \caption{MHTGR-350 full-core model layout.}
 	\label{fig:fullcoremodel}
 \end{figure}
 
-Taking advantage of the problem's symmetry, Moltres modeled only one-twelfth of the fuel column, Figure \ref{fig:fullcoremodel}.
-We made the geometry and mesh, which had 300,720 elements and 160,035 nodes, using Gmsh.
-The diffusion calculations had 160,035 \glspl{DoF}/energy-group and a total of 2,400,525 DoFs.
+Moltres model geometry and mesh, which had 3.0 $\times 10^5$ elements and 1.60 $\times 1-^5$ nodes, using Gmsh.
+The diffusion calculations had 1.60 $\times 10^5$ \glspl{DoF} per energy-group and a total of 2.4 $\times 10^6$ DoFs.
 The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
 
 % Keff
 Between Serpent and Moltres, we compared the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor.
 Table \ref{tab:full-keff} exhibits the \gls{Keff} from Serpent and Moltres.
-Moltres values are larger than Serpent's.
-The values are within a 300 pcm difference.
+The differences between the eigenvalues calculated by Moltres and Serpent are smaller than 300 pcm.
 
 \begin{table}[htbp!]
   \centering
-  \caption{Serpent and Moltres eigenvalues.}
-  \begin{tabular}{l|lll}
+  \caption{Comparison between Serpent and Moltres eigenvalues.}
+  \begin{tabular}{lccc}
   \toprule
               & Serpent			& Moltres  & $\Delta \rho$ [pcm] 	\\
   \midrule
@@ -554,36 +553,35 @@ The values are within a 300 pcm difference.
 Figures \ref{fig:fullcore-600-power} and \ref{fig:fullcore-1200-power} show Serpent and Moltres radial power distributions.
 The following analysis applies to both temperatures.
 Regarding the power distribution, the results are symmetric with respect to a 60$^{\circ}$ line.
-This suggests that we could reduce the mesh size by almost half by considering only one-twelfth of the reactor.
+This suggests that we could reduce the mesh size by almost half by considering only $1/12^{th}$ of the reactor.
 Next, we observe that Moltres result exhibits a higher power density than Serpent in the inner and outer rings but a lower power density in the middle ring.
-The largest difference occurs at 600K, Figure \ref{fig:fullcore-600-power}.
-It is in the inner ring and has a magnitude of 0.29 MW.
+The largest difference occurs at 600K, shown Figure \ref{fig:fullcore-600-power}, in the inner ring and has a magnitude of 0.29 MW.
 
 %Power distribution at 600K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-power}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent radial power distribution.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-power}
     }
+    \subfloat[Moltres radial power distribution.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-power}
+    }
 	\hfill
-	\caption{Radial power distribution at 600 K.}
+	\caption{Comparison of the MHTGR-350 radial power distribution at 600 K calculated with Serpent and Moltres.}
 	\label{fig:fullcore-600-power}
 \end{figure}
 
 %Power distribution at 1200K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-power}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent radial power distribution.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-power}
     }
+    \subfloat[Moltres radial power distribution.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-power}
+    }
 	\hfill
-	\caption{Radial power distribution at 1200 K.}
+	\caption{Comparison of the MHTGR-350 radial power distribution at 1200 K calculated with Serpent and Moltres.}
 	\label{fig:fullcore-1200-power}
 \end{figure}
 
@@ -599,7 +597,7 @@ The axial epithermal and thermal fluxes are closer in magnitude in the active co
 In Figure \ref{fig:fullcore-600-radial1}, Serpent fluxes present some 'noise.'
 A higher number of generations per cycle in Serpent simulations or using a detector with a larger volume would eliminate this.
 Additionally, the radial flux in Serpent reveals the location of the burnable poisons in the fuel assemblies.
-A diffusion solver fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
+This diffusion simulation fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
 The radial fast flux in Moltres is larger, while the radial epithermal and thermal fluxes have almost the same magnitudes.
 Figures \ref{fig:fullcore-1200-axial1} and \ref{fig:fullcore-1200-radial1} display the fluxes at 1200K, which differ from the 600K case.
 Still, we observe the same behavior for both axial and radial fluxes.
@@ -608,11 +606,11 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 %Detectors
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres model.]{
-        \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
-    }
-    \subfloat[Serpent model.]{
+    \subfloat[Flux detectors in Serpent model.]{
         \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
+    }
+    \subfloat[Flux detectors in Moltres model.]{
+        \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
     }
 	\hfill
 	\caption{Axial view of the flux detector locations.}
@@ -622,61 +620,61 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 % Axial flux1 at 600K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-axial1}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent axial detector flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-collapse-Axial1}
     }
+    \subfloat[Moltres axial detector flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-axial1}
+    }
 	\hfill
-	\caption{Axial flux at 600 K.}
+	\caption{Comparison of the axial detector flux calculated with Serpent and Moltres at 600 K.}
 	\label{fig:fullcore-600-axial1}
 \end{figure}
 
 %Radial flux at 600 K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-radial1}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent radial detector flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-collapse-Radial}
     }
+    \subfloat[Moltres radial detector flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-radial1}
+    }
 	\hfill
-	\caption{Radial flux at 600 K.}
+	\caption{Comparison of the radial detector flux calculated with Serpent and Moltres at 600 K.}
 	\label{fig:fullcore-600-radial1}
 \end{figure}
 
 % Axial flux1 at 1200K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-axial1}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent axial detector flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-collapse-Axial1}
     }
+    \subfloat[Moltres axial detector flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-axial1}
+    }
 	\hfill
-	\caption{Axial flux at 1200 K.}
+	\caption{Comparison of the axial detector flux calculated with Serpent and Moltres at 1200 K.}
 	\label{fig:fullcore-1200-axial1}
 \end{figure}
 
 %Radial flux at 1200 K
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-radial1}
-    }
-    \subfloat[Serpent.]{
+    \subfloat[Serpent radial detector flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-collapse-Radial}
     }
+    \subfloat[Moltres radial detector flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-radial1}
+    }
 	\hfill
-	\caption{Radial flux at 1200 K.}
+	\caption{Comparison of the radial detector flux calculated with Serpent and Moltres at 1200 K.}
 	\label{fig:fullcore-1200-radial1}
 \end{figure}
 
 
-\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 1}
+\section{OECD/NEA MHTGR-350 Benchmark: Phase I Exercise 1}
 \label{sec:ph1e1}
 
 % Exercise description
