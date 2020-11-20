@@ -60,10 +60,10 @@ The model assumed a sinusoidal power profile in the $z$-direction.
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
   Calculated moderator radius  & R$_m$ & 1.080  	& cm    & - \\
-  Coolant film radius   		   & R$_i$ & 1.090  	& cm    & - \\
+  Coolant film radius   		   & R$_{cf}$ & 1.090  	& cm    & - \\
   Calculated coolant radius 	 & R$_c$ & 1.349  	& cm    & - \\
   Coolant average velocity  	 & v$_c$ & 1794.33 	& cm $\cdot s^{-1}$ & - \\
-  Film thermal conductivity  	 & k$_i$ & 1.722 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & - \\
+  Film thermal conductivity  	 & k$_{cf}$ & 1.722 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & - \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -120,9 +120,9 @@ Additionally, In et al. used a chopped cosine as the power profile, which the mo
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
-  Coolant film radius       & R$_i$ & 0.8050    & cm     & -  \\
+  Coolant film radius       & R$_{cf}$ & 0.8050    & cm     & -  \\
   Coolant average velocity  & v$_c$ & 1794.33   & cm $\cdot s^{-1}$   & -  \\
-  Film thermal conductivity & k$_i$ & 1.731 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & -  \\
+  Film thermal conductivity & k$_{cf}$ & 1.731 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & -  \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -200,10 +200,9 @@ I chose this article because it gives a thorough description of the problem, mak
 The first analysis studied a column with no bypass-gap between assemblies.
 The second analysis studied a column with a 3mm bypass-gap between assemblies.
 
-The study used the GT-MHR as the reference reactor for the calculations; 
-
 Figure \ref{fig:th-val-assem-model-a} exhibits the model geometry.
 The model only needed to include a $1/12^{th}$ portion of the column due to symmetry.
+The study used the GT-MHR as the reference reactor for the calculations.
 The GT-MHR shares the geometry dimensions with the MHTGR, which Table \ref{tab:element-characteristics} specifies.
 
 \begin{figure}[htbp!]
@@ -271,8 +270,8 @@ Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
     \midrule
   \multicolumn{1}{c}{Calculated parameters} &  &  &  & \\  
     \midrule
-  Coolant film radius       & R$_i$ & 0.804     & cm     & -  \\
-  Film thermal conductivity & k$_i$ & 2.09 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & -  \\
+  Coolant film radius       & R$_{cf}$ & 0.804     & cm     & -  \\
+  Film thermal conductivity & k$_{cf}$ & 2.09 $\times 10^{-3}$ & W $\cdot cm^{-1} \cdot K^{-1}$ & -  \\
   \bottomrule
   \end{tabular}
 \end{table}
@@ -370,13 +369,14 @@ The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temp
   & \Delta P = \left( \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i}}} \right)^2 \label{eq:itersolver2} \\
   & \dot{m}_i = \sqrt{\Delta P / B_i} \label{eq:itersolver3}
   \intertext{where}
-  & \dot{m}_i = \mbox{channel $i$ mass flow rate} [kg \cdot s^{-1}] \notag \\
-  & A_i = \mbox{channel $i$ cross-sectional area} [cm^2] \notag \\
-  & \Delta P = \mbox{pressure drop} [Pa] \notag \\
-  & \rho_i = \mbox{channel inlet coolant density} [kg \cdot m^{-3}] \notag \\
-  & T_i = \mbox{channel inlet coolant temperature} [^{\circ}C] \notag \\
-  & T_o = \mbox{channel outlet coolant temperature} [^{\circ}C] \notag \\
-  & \dot{m}_T = \mbox{total mass flow rate} [kg \cdot s^{-1}]. \notag
+  & \dot{m}_i = \mbox{channel $i$ mass flow rate } [kg \cdot s^{-1}] \notag \\
+  & A_i = \mbox{channel $i$ cross-sectional area } [cm^2] \notag \\
+  & \Delta P = \mbox{pressure drop } [Pa] \notag \\
+  & \rho_i = \mbox{channel inlet coolant density } [kg \cdot m^{-3}] \notag \\
+  & f = \mbox{friction factor } [-] \notag \\
+  & T_i = \mbox{channel inlet coolant temperature } [^{\circ}C] \notag \\
+  & T_o = \mbox{channel outlet coolant temperature } [^{\circ}C] \notag \\
+  & \dot{m}_T = \mbox{total mass flow rate } [kg \cdot s^{-1}]. \notag
 \end{align}
 
 Table \ref{tab:th-assem-flow-massflow} displays the results achieved in this thesis for the mass flow rates.

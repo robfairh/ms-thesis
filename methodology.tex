@@ -78,7 +78,8 @@ Although the particles' explicit modeling is time-consuming, costly, and impract
 \label{sec:ch3-math}
 
 The last section introduced Moltres as the primary computational tool utilized in this thesis.
-This section presents this thesis' mathematical basis, which are the equations that describe the neutronics and thermal-fluids of prismatic HTGRs.
+This section presents this thesis' mathematical basis, which are the equations that describe the neutronics and thermal-fluids of prismatic HTGRs in the steady-state limit.
+For a more detailed explanation refer to Section \ref{appendix:equations}.
 Moltres and MOOSE heat conduction module translate these equations into kernels.
 
 \subsection{Diffusion and precursors equations}
@@ -129,7 +130,7 @@ The three-dimensional steady-state heat conduction equation solves the temperatu
 \begin{align}
   & k_i \nabla^2 T_i + Q_i = 0 \label{eq:tempsolid} \\
   \intertext{where}
-  & i = \mbox{f (fuel), g (helium gap), m (moderator), f (coolant film), r (reflector)} \notag \\
+  & i = \mbox{f (fuel), g (helium gap), m (moderator), cf (coolant film), r (reflector)} \notag \\
   & k_i = \mbox{material $i$ thermal conductivity  } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
   & T_i = \mbox{material $i$ temperature } [^{\circ}C] \notag \\
   & Q_i = \mbox{material $i$ volumetric heat source } [W \cdot cm^{-3}] \notag
@@ -140,7 +141,7 @@ Equations \ref{eq:heatsource1} and \ref{eq:heatsource2} define the heat source i
 \begin{align}
   & Q_f = Q_0 \label{eq:heatsource1} \\
   & Q_f = \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource2} \\
-  & Q_g = Q_m = Q_f = Q_r = 0 \label{eq:heatsource3}
+  & Q_g = Q_m = Q_{cf} = Q_r = 0 \label{eq:heatsource3}
   \intertext{where}
   & Q_i = \mbox{material $i$ volumetric heat source } [W \cdot cm^{-3}] \notag \\
   & \epsilon_g^f = \mbox{energy released per fission } [J] \notag \\
@@ -171,7 +172,7 @@ Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \ci
 \begin{align}
   & Nu = 0.023 Re^{0.8} Pr^{0.4} \label{eq:dittus} \\
   & h = \frac{Nu \cdot k_c}{D_h}  \\
-  & k_f = h R_f ln(R_f/R_c) \label{eq:film-conduc}
+  & k_f = h R_{cf} ln(R_{cf}/R_c) \label{eq:film-conduc}
   \intertext{where}
   & Nu = \mbox{Nusselt number } [-] \notag \\
   & Re = \mbox{Reynolds number } [-] \notag \\
@@ -179,8 +180,8 @@ Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \ci
   & h = \mbox{heat transfer coefficient } [W \cdot cm^{-2} \cdot s^{-1}] \notag \\
   & D_h = \mbox{hydraulic diameter } [cm] \notag \\
   & k_c = \mbox{coolant thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
-  & k_f = \mbox{film thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
-  & R_f = \mbox{film radius } [cm] \notag \\
+  & k_{cf} = \mbox{coolant film thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+  & R_{cf} = \mbox{coolant film radius } [cm] \notag \\
   & R_c = \mbox{coolant channel radius } [cm]. \notag
 \end{align}
 

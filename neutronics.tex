@@ -38,7 +38,7 @@ The homogeneous distribution simulation took 1.73 and the heterogeneous distribu
 The \gls{Keff} was 1.17527 $\pm$ 0.00021 for the homogeneous distribution and 1.25107 $\pm$ 0.00020 for the heterogeneous distribution.
 Using the heterogeneous distribution as a reference, we calculated the relative error of some of the group constants in an eigenvalue calculation.
 Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
-The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion}).
+The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion-eig}).
 Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
 The figure does not include $D_g$ and $\chi^t_g$ because their relative errors were less than 1$\%$.
 The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
@@ -166,15 +166,14 @@ These results suggest that a heterogeneous diffusion calculation of the prismati
 \end{table}
 
 Next, I conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
-Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion}, by homogenizing the fuel, coolant, and moderator.
+Serpent calculated the homogeneous group constants of the fuel assembly, see equation \ref{eq:diffusion-eig}, by homogenizing the fuel, coolant, and moderator.
 This material's mean free path is in the order of the centimeters, Table \ref{tab:mfp}.
 Next, Moltres used the homogeneous group constants to carry out an eigenvalue calculation.
 Comparing Moltres results with Serpent results, Serpent's \gls{Keff} was 1.41942 $\pm$ 0.00007 while Moltres' was 1.40788.
 Moltres eigenvalue is smaller than Serpent's eigenvalue.
 % This difference is possibly due to the lack of treatment of the anisotropic term in the scattering cross-section.
-Additionally, Figure \ref{fig:prelim} displays a comparison between the axial flux in the fuel column obtained with serpent versus Moltres.
+Additionally, Figure \ref{fig:prelim} displays a comparison between the axial flux in the fuel column obtained with Serpent vs. Moltres.
 Serpent's flux is the average value of the flux in each bin, while Moltres flux is the point-wise flux over the $z$-axis
-
 \begin{align}
   & \phi_s(z) = \frac{\int_{\Delta V} \phi(x,y,z) dV}{\Delta V} \label{eq:serpent-flux} \\
   & \phi_m(z) = \phi_m(x,y,z)   \label{eq:moltres-flux}
@@ -237,37 +236,37 @@ Moltres calculations used the different energy group structures listed in Table 
 \begin{table}[htbp!]
   \centering
   \caption{Energy group structure \cite{iaea_evaluation_2003}.}
-  \begin{tabular}{c|llllllllllll}
+  \begin{tabular}{S[table-format=2.2e-1]|llllllllllll}
   \toprule
                       & \multicolumn{12}{c}{Group structure} \\
-  Upper boundary [eV] & 26    & 21   & 18   & 15a & 15b & 15c & 15d & 15e   & 12  & 9  & 6  & 3 \\
+  \multicolumn{1}{c|}{Upper boundary [eV]} & 26    & 21   & 18   & 15a & 15b & 15c & 15d & 15e   & 12  & 9  & 6  & 3 \\
   \midrule
-  1.49E+07            & 1     & 1    & 1    & 1   & 1   & 1   & 1   & 1     & 1   & 1  & 1  & 1 \\ 
-  7.41E+06            & 2     &      &      &     &     &     &     &       &     &    &    &   \\ 
-  3.68E+06            & 3     & 2    & 2    & 2   & 2   & 2   & 2   & 2     & 2   &    &    &   \\ 
-  6.72E+05            & 4     &      &      &     &     &     &     &       &     &    &    &   \\ 
-  1.11E+05            & 5     & 3    & 3    & 3   & 3   & 3   & 3   & 3     & 3   & 2  & 2  & 2 \\ 
-  1.93E+04            & 6     & 4    & 4    & 4   & 4   &     &     &       & 4   &    &    &   \\ 
-  3.35E+03            & 7     &      &      &     &     &     &     &       &     &    &    &   \\ 
-  1.58E+03            & 8     & 5    & 5    &     &     & 4   &     &       &     &    &    &   \\ 
-  7.48E+02            & 9     & 6    & 6    & 5   & 5   &     & 4   & 4     & 5   & 3  &    &   \\ 
-  2.75E+02            & 10    & 7    & 7    & 6   & 6   & 5   &     &       & 6   & 4  &    &   \\ 
-  1.30E+02            & 11    & 8    & 8    & 7   & 7   &     & 5   & 5     & 7   & 5  & 3  &   \\ 
-  6.14E+01            & 12    & 9    &      &     & 8   & 6   &     &       &     &    &    &   \\ 
-  2.90E+01            & 13    & 10   & 9    & 8   & 9   &     & 6   & 6     &     &    &    &   \\ 
-  1.37E+01            & 14    & 11   & 10   & 9   &     &     &     &       & 8   & 6  &    &   \\ 
-  8.32E+00            & 15    & 12   & 11   & 10  & 10  & 7   & 7   & 7     & 9   &    &    &   \\ 
-  5.04E+00            & 16    &      &      &     &     &     &     &       &     &    &    &   \\ 
-  2.38E+00            & 17    & 13   & 12   & 11  & 11  & 8   & 8   & 8     & 10  & 7  & 4  & 3 \\ 
-  1.29E+00            & 18    & 14   &      &     &     &     &     &       &     &    &    &   \\ 
-  6.50E-01            & 19    & 15   & 13   & 12  & 12  & 9   & 9   & 9     & 11  & 8  & 5  &   \\ 
-  3.50E-01            & 20    & 16   &      &     &     & 10  & 10  &       &     &    &    &   \\ 
-  2.00E-01            & 21    & 17   & 14   & 13  & 13  & 11  & 11  & 10    &     &    &    &   \\ 
-  1.20E-01            & 22    &      &      &     &     &     &     & 11    &     &    &    &   \\ 
-  8.00E-02            & 23    & 18   & 15   & 14  & 14  & 12  & 12  & 12    &     &    &    &   \\ 
-  5.00E-02            & 24    & 19   & 16   &     &     & 13  & 13  & 13    &     &    &    &   \\ 
-  2.00E-02            & 25    & 20   & 17   & 15  & 15  & 14  & 14  & 14    & 12  & 9  & 6  &   \\ 
-  1.00E-02            & 26    & 21   & 18   &     &     & 15  & 15  & 15    &     &    &    &   \\ 
+  1.49e+07            & 1     & 1    & 1    & 1   & 1   & 1   & 1   & 1     & 1   & 1  & 1  & 1 \\ 
+  7.41e+06            & 2     &      &      &     &     &     &     &       &     &    &    &   \\ 
+  3.68e+06            & 3     & 2    & 2    & 2   & 2   & 2   & 2   & 2     & 2   &    &    &   \\ 
+  6.72e+05            & 4     &      &      &     &     &     &     &       &     &    &    &   \\ 
+  1.11e+05            & 5     & 3    & 3    & 3   & 3   & 3   & 3   & 3     & 3   & 2  & 2  & 2 \\ 
+  1.93e+04            & 6     & 4    & 4    & 4   & 4   &     &     &       & 4   &    &    &   \\ 
+  3.35e+03            & 7     &      &      &     &     &     &     &       &     &    &    &   \\ 
+  1.58e+03            & 8     & 5    & 5    &     &     & 4   &     &       &     &    &    &   \\ 
+  7.48e+02            & 9     & 6    & 6    & 5   & 5   &     & 4   & 4     & 5   & 3  &    &   \\ 
+  2.75e+02            & 10    & 7    & 7    & 6   & 6   & 5   &     &       & 6   & 4  &    &   \\ 
+  1.30e+02            & 11    & 8    & 8    & 7   & 7   &     & 5   & 5     & 7   & 5  & 3  &   \\ 
+  6.14e+01            & 12    & 9    &      &     & 8   & 6   &     &       &     &    &    &   \\ 
+  2.90e+01            & 13    & 10   & 9    & 8   & 9   &     & 6   & 6     &     &    &    &   \\ 
+  1.37e+01            & 14    & 11   & 10   & 9   &     &     &     &       & 8   & 6  &    &   \\ 
+  8.32e+00            & 15    & 12   & 11   & 10  & 10  & 7   & 7   & 7     & 9   &    &    &   \\ 
+  5.04e+00            & 16    &      &      &     &     &     &     &       &     &    &    &   \\ 
+  2.38e+00            & 17    & 13   & 12   & 11  & 11  & 8   & 8   & 8     & 10  & 7  & 4  & 3 \\ 
+  1.29e+00            & 18    & 14   &      &     &     &     &     &       &     &    &    &   \\ 
+  6.50e-01            & 19    & 15   & 13   & 12  & 12  & 9   & 9   & 9     & 11  & 8  & 5  &   \\ 
+  3.50e-01            & 20    & 16   &      &     &     & 10  & 10  &       &     &    &    &   \\ 
+  2.00e-01            & 21    & 17   & 14   & 13  & 13  & 11  & 11  & 10    &     &    &    &   \\ 
+  1.20e-01            & 22    &      &      &     &     &     &     & 11    &     &    &    &   \\ 
+  8.00e-02            & 23    & 18   & 15   & 14  & 14  & 12  & 12  & 12    &     &    &    &   \\ 
+  5.00e-02            & 24    & 19   & 16   &     &     & 13  & 13  & 13    &     &    &    &   \\ 
+  2.00e-02            & 25    & 20   & 17   & 15  & 15  & 14  & 14  & 14    & 12  & 9  & 6  &   \\ 
+  1.00e-02            & 26    & 21   & 18   &     &     & 15  & 15  & 15    &     &    &    &   \\ 
   \bottomrule
   \end{tabular}
   \label{tab:energygroups}
@@ -305,7 +304,7 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-600-26G}
     }
 	\hfill
-  \caption{Operational case 1: fuel column with no burnable poisons at 600K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
+  \caption{Operational case 1: fuel column with no burnable poisons at 600K. Comparison of Serpent and Moltres-derived 3-group axial neutron fluxes.}
 	\label{fig:assembly-noLBP-600-flux}
 \end{figure}
 
@@ -319,7 +318,7 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-1200-26G}
     }
   \hfill
-  \caption{Operational case 2: fuel column with no burnable poisons at 1200K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
+  \caption{Operational case 2: fuel column with no burnable poisons at 1200K. Comparison of Serpent and Moltres-derived 3-group axial neutron fluxes.}
   \label{fig:assembly-noLBP-1200-flux}
 \end{figure}
 
@@ -333,7 +332,7 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-600-26G}
     }
   \hfill
-  \caption{Operational case 3: fuel column with burnable poisons at 600K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
+  \caption{Operational case 3: fuel column with burnable poisons at 600K. Comparison of Serpent and Moltres-derived 3-group axial neutron fluxes.}
   \label{fig:assembly-LBP-600-flux}
 \end{figure}
 
@@ -347,15 +346,14 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-1200-26G}
     }
   \hfill
-  \caption{Operational case 4: fuel column with burnable poisons at 1200K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
+  \caption{Operational case 4: fuel column with burnable poisons at 1200K. Comparison of Serpent and Moltres-derived 3-group axial neutron fluxes.}
   \label{fig:assembly-LBP-1200-flux}
 \end{figure}
 
 % eigenvalues
 Equation \ref{eq:delta-rho} calculates the reactivity difference ($\Delta \rho$) between the eigenvalues calculated by Serpent and Moltres
 \begin{align}
-	& \Delta \rho = \left| \rho_1 - \rho_2 \right| = \left| \frac{k_1-1}{k_1} - \frac{k_2-1}{k_2} \right| \\
-  & \Delta \rho = \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
+	& \Delta \rho = \left| \rho_1 - \rho_2 \right| = \left| \frac{k_1-1}{k_1} - \frac{k_2-1}{k_2} \right| = \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho} \\
   \intertext{where}
   & k_1 = \mbox{Serpent-derived eigenvalue} [-] \notag \\
   & k_2 = \mbox{Moltres-derived eigenvalue} [-]. \notag
@@ -385,15 +383,15 @@ Operational case  & Serpent       & \multicolumn{8}{c}{$\Delta \rho$ [pcm]}     
 The last analysis is for the Moltres axial flux.
 Considering the 26 group structure as the reference value, equation \ref{eq:l2norm} obtained the $L_2$-norm of the active core's axial flux relative difference
 \begin{align}
-  & \Delta_{L_2} = \left\| \frac{\phi_G(z)-\phi_ref(z)}{\phi_ref(z)} \right\|  \quad \wedge \quad z\quad \in \quad L_a \label{eq:l2norm}
+  & \Delta_{L_2} = \left\| \frac{\phi_G(z)-\phi_{ref}(z)}{\phi_{ref}(z)} \right\|  \quad \wedge \quad z\quad \in \quad L_a \label{eq:l2norm}
   \intertext{where}
   & \Delta_{L_2} = \mbox{L$_2$-norm relative difference } [-] \notag \\
   & \phi_G(z) = \mbox{$G$-energy groups axial flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
-  & \phi_{ref}(z) = \mbox{reference axial flux} [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
-  & L_a = \mbox{active core length} [cm]. \notag
+  & \phi_{ref}(z) = \mbox{reference axial flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & L_a = \mbox{active core length } [cm]. \notag
 \end{align}
 
-Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show $\Delta_{L-2}$ for the various energy group structures.
+Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show $\Delta_{L_2}$ for the various energy group structures.
 Overall, the relative error decreases with an increase in the number of energy groups.
 Nonetheless, this is not always the case.
 For example, in Figure \ref{fig:assembly-noLBP-er-b}, from 12 to 15-energy groups, the thermal flux agreement improves, but the fast flux agreement worsens.
@@ -439,10 +437,10 @@ Figure \ref{fig:assembly-time} also shows that the overall time of the cases wit
 % Time and memory
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[No LBP and 600 K.]{
+    \subfloat[No burnable poisons at 600 K.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/time-noLBP-600}
     }
-    \subfloat[LBP and 600 K.]{
+    \subfloat[Burnable poisons at 600 K.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/time-LBP-600}
     }
 	\hfill
@@ -458,8 +456,9 @@ Some energy group structures yield better results for some cases while giving wo
 For example, the $15d$ structure gives better results at 600K with burnable poisons than without them.
 To choose the best performing structure, equation \label{eq:weighted-ave} calculated a weighted average for the different groups
 \begin{align}
-  & WA = w_{th} \Delta_{th} + w_{epi} \Delta_{epi} + w_{f} \Delta_{f} \label{eq:weighted-ave}
+  & W_{ave} = w_{th} \Delta_{th} + w_{epi} \Delta_{epi} + w_{f} \Delta_{f} \label{eq:weighted-ave}
   \intertext{where}
+  & W_{ave} = \mbox{weighted average } [-] \notag \\
   & w_{th} = \mbox{thermal flux weight } [-] \notag \\
   & w_{epi} = \mbox{epipthermal flux weight } [-] \notag \\
   & w_{f} = \mbox{fast flux weight } [-] \notag \\
@@ -474,9 +473,9 @@ For this averaging scheme, the energy group structure $15d$ is the best one.
 \begin{table}[htbp!]
   \centering
   \caption{Axial flux relative difference $L_2$-norm for various energy group structures. Values expressed in percentages.}
-  \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
+  \begin{tabular}{@{}l|c|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
   \toprule
-	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
+	Burnable poisons     & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
 	\midrule
 	\multirow{6}{*}{No}  & \multirow{3}{*}{600}  & Fast       & 7.9  & 8.0  & 8.2  & 8.1  & 9.1  \\
 	                     &                       & Epithermal & 6.6  & 6.5  & 8.6  & 8.2  & 9.2  \\
@@ -536,14 +535,13 @@ The differences between the eigenvalues calculated by Moltres and Serpent are sm
 
 \begin{table}[htbp!]
   \centering
-  \caption{Comparison between Serpent and Moltres eigenvalues.}
-  \begin{tabular}{lccc}
+  \caption{Comparison between Serpent and Moltres-derived eigenvalues.}
+  \begin{tabular}{cccc}
   \toprule
-              & Serpent			& Moltres  & $\Delta \rho$ [pcm] 	\\
+  Temperature [K] & Serpent			     & Moltres  & $\Delta \rho$ [pcm] 	\\
   \midrule
-			 600K  	& 1.10869     & 1.11150	 &	228		\\
-			1200K 	& 1.06138     & 1.06468	 &	292   \\
-
+			 600  	    & 1.10869 $\pm$ 0.00006  & 1.11150	 &	228		\\
+			1200 	      & 1.06138 $\pm$ 0.00006  & 1.06468	 &	292   \\
   \bottomrule
   \end{tabular}
   \label{tab:full-keff}
@@ -567,7 +565,7 @@ The largest difference occurs at 600K, shown Figure \ref{fig:fullcore-600-power}
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-power}
     }
 	\hfill
-	\caption{Comparison of the MHTGR-350 radial power distribution at 600 K calculated with Serpent and Moltres.}
+	\caption{Comparison of the MHTGR-350 radial power distribution at 600 K calculated by Serpent and Moltres.}
 	\label{fig:fullcore-600-power}
 \end{figure}
 
@@ -581,7 +579,7 @@ The largest difference occurs at 600K, shown Figure \ref{fig:fullcore-600-power}
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-power}
     }
 	\hfill
-	\caption{Comparison of the MHTGR-350 radial power distribution at 1200 K calculated with Serpent and Moltres.}
+	\caption{Comparison of the MHTGR-350 radial power distribution at 1200 K calculated by Serpent and Moltres.}
 	\label{fig:fullcore-1200-power}
 \end{figure}
 
@@ -627,7 +625,7 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-axial1}
     }
 	\hfill
-	\caption{Comparison of the axial detector flux calculated with Serpent and Moltres at 600 K.}
+	\caption{Comparison of the axial detector flux calculated by Serpent and Moltres at 600 K.}
 	\label{fig:fullcore-600-axial1}
 \end{figure}
 
@@ -641,7 +639,7 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-radial1}
     }
 	\hfill
-	\caption{Comparison of the radial detector flux calculated with Serpent and Moltres at 600 K.}
+	\caption{Comparison of the radial detector flux calculated by Serpent and Moltres at 600 K.}
 	\label{fig:fullcore-600-radial1}
 \end{figure}
 
@@ -655,7 +653,7 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-axial1}
     }
 	\hfill
-	\caption{Comparison of the axial detector flux calculated with Serpent and Moltres at 1200 K.}
+	\caption{Comparison of the axial detector flux calculated by Serpent and Moltres at 1200 K.}
 	\label{fig:fullcore-1200-axial1}
 \end{figure}
 
@@ -669,7 +667,7 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-radial1}
     }
 	\hfill
-	\caption{Comparison of the radial detector flux calculated with Serpent and Moltres at 1200 K.}
+	\caption{Comparison of the radial detector flux calculated by Serpent and Moltres at 1200 K.}
 	\label{fig:fullcore-1200-radial1}
 \end{figure}
 
@@ -735,7 +733,7 @@ The benchmark exercise specifies the group constants and a map with their locati
 The benchmark definition used DRAGON-4 \cite{marleau_user_2016} to obtain the group constants from a full block configuration.
 The dataset contains 26 energy groups.
 Because the benchmark group constant format differs from the Moltres format, I made a Python script to handle the differences as part of this thesis.
-The benchmark specifies the following group constants: $\Sigma_g^t$, $D_g$, $\nu\Sigma_g^f$, $\Sigma_g^f$, $\chi_g^t$, and $\Sigma_{g'\rightarrow g}^s$ (see equation \ref{eq:diffusion}).
+The benchmark specifies the following group constants: $\Sigma_g^t$, $D_g$, $\nu\Sigma_g^f$, $\Sigma_g^f$, $\chi_g^t$, and $\Sigma_{g'\rightarrow g}^s$ (see equation \ref{eq:diffusion-eig}).
 
 The benchmark exercise sets periodic \glspl{BC} on the sides of the geometry; however, a memory issue did not allow for implementing those BCs in our 26-group Moltres input file.
 We approximated the periodic BC with the reflective BC.
@@ -819,8 +817,8 @@ The BC approximation barely affects the axial offset.
 
 \begin{table}[htbp!]
   \centering
-  \caption{Global parameters comparison for different types of BCs.}
-  \begin{tabular}{llcccc}
+  \caption{Global parameter comparison for different types of BCs.}
+  \begin{tabular}{clcccc}
   \toprule
   Energy groups       & Type of BCs & k$_{eff, out}$ & k$_{eff, in}$ & $\Delta \rho_{CR}$ [pcm] & AO \\
   \midrule
