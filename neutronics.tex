@@ -208,37 +208,38 @@ Based on these results and discussion, I conducted homogeneous calculations usin
 
 In this section, Serpent modeled a fuel column and the full-core of the MHTGR-350.
 Serpent obtained the homogenized group constants that served as input to Moltres.
-The following sections compare Moltres and Serpent results.
+The following sections compare Moltres and Serpent results as a validation exercise.
 
 \subsection{Fuel column}
 
-This section investigated the effects of the energy group structure on the diffusion simulations.
-We conducted two analyses: first, we varied the number of energy groups, second, we varied the energy group structures with a constant number of energy groups.
+This section investigats the effects of the energy group structure on the diffusion simulations.
+I conducted two analyses: first, I varied the number of energy groups, second, I varied the energy group structures with a constant number of energy groups.
 To reduce the computational expense, we narrowed down our focus to a fuel column of the MHTGR-350, Figure \ref{fig:fuelcolumn}.
 % The fuel column includes the bottom and top reflectors.
 Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
 
 The first step in the calculation was to obtain the group constants using Serpent.
-Figure \ref{fig:fuelcolumn} displays a $xy$-plane of the model.
-To simplify Serpent's model, we did not consider the fuel handling holes or the bottom and top reflectors' coolant channels.
-\glspl{HTGR} use burnable poisons to reduce the power peaking factors in different regions of the active core.
-Some reactors could have burnable poisons in the rings closer to the reflectors, and no burnable poisons in the middle rings.
+Figure \ref{fig:fuelcolumn} displays the axial layout of the model.
+Serpent's model did not consider the fuel handling holes or the bottom and top reflectors' coolant channels for simplicity.
+\glspl{HTGR} use burnable poisons to reduce the power peaking factors in various active core regions.
+Some reactors have burnable poisons in the rings closer to the reflectors, and no burnable poisons in the middle rings.
 This characteristic motivated the analysis of two cases: one fuel column that does not have burnable poisons and one that does.
 The burnable poisons' locations are the six corners of the fuel assembly, Figure \ref{fig:fuelassembly}.
 The material temperatures were 600 and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
 The simulation using Serpent included 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
-Taking advantage of the problem's symmetry, Moltres modeled only one-twelfth of the fuel column.
-We made the geometry and mesh, which had 37,120 elements and 22,862 nodes, using Gmsh.
-The diffusion calculations had 22,862 \glspl{DoF}/energy-group.
+Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the homogenized fuel column.
+I made the geometry and mesh, which had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes, using Gmsh.
+The diffusion calculations had 2.29 $\times 10^4$ \glspl{DoF} per energy-group.
 The Moltres input files set an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
-Moltres calculations used different energy group structures listed in Table \ref{tab:energygroups}.
+Moltres calculations used the different energy group structures listed in Table \ref{tab:energygroups}.
 
 \begin{table}[htbp!]
   \centering
   \caption{Energy group structure \cite{iaea_evaluation_2003}.}
   \begin{tabular}{c|llllllllllll}
   \toprule
+                      & \multicolumn{12}{c}{Group structure} \\
   Upper boundary [eV] & 26    & 21   & 18   & 15a & 15b & 15c & 15d & 15e   & 12  & 9  & 6  & 3 \\
   \midrule
   1.49E+07            & 1     & 1    & 1    & 1   & 1   & 1   & 1   & 1     & 1   & 1  & 1  & 1 \\ 
@@ -272,13 +273,6 @@ Moltres calculations used different energy group structures listed in Table \ref
   \label{tab:energygroups}
 \end{table}
 
-% This is very important and I should review it carefully
-To compare the results from Serpent and Moltres, we present a comparison of the three-group axial fluxes.
-Moltres ran the calculations for 26 energy groups and collapsed the results into three energy groups to facilitate the results' visualization.
-Another figure compares the eigenvalue from Serpent and eigenvalues from Moltres for the different energy group structures.
-The last analysis is for the Moltres axial flux.
-Considering the 26 group structure as the reference value, we obtained the $L_2$-norm of the active core's axial flux relative error.
-
 % Fluxes
 To recapitulate, we simulated four operational cases: 
 \begin{itemize}
@@ -288,6 +282,9 @@ To recapitulate, we simulated four operational cases:
   \item Operational case 4: fuel with burnable poisons at 1200K.
 \end{itemize}
 
+% This is very important and I should review it carefully
+To compare the results from Serpent and Moltres, we review the three-group axial fluxes found by each of them.
+Moltres ran the calculations for 26 energy groups and collapsed the results into three energy groups to facilitate the results' visualization.
 Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
 For the operational case 1, the fluxes are close in shape and magnitude.
 For the operational case 2, the fluxes look similar.
@@ -301,11 +298,11 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 % No LBP 600
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Moltres neutron flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-600-26G}
-    }
     \subfloat[Serpent neutron flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-noLBP-600-collapse}
+    }
+    \subfloat[Moltres neutron flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-600-26G}
     }
 	\hfill
   \caption{Operational case 1: fuel column with no burnable poisons at 600K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
@@ -315,11 +312,11 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 % No LBP 1200
 \begin{figure}[htbp!]
   \centering
-    \subfloat[Moltres neutron flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-1200-26G}
-    }
     \subfloat[Serpent neutron flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-noLBP-1200-collapse}
+    }
+    \subfloat[Moltres neutron flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-noLBP-1200-26G}
     }
   \hfill
   \caption{Operational case 2: fuel column with no burnable poisons at 1200K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
@@ -329,11 +326,11 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 % LBP 600 
 \begin{figure}[htbp!]
   \centering
-    \subfloat[Moltres neutron flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-600-26G}
-    }
     \subfloat[Serpent neutron flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-LBP-600-collapse}
+    }
+    \subfloat[Moltres neutron flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-600-26G}
     }
   \hfill
   \caption{Operational case 3: fuel column with burnable poisons at 600K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
@@ -343,11 +340,11 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 % LBP 1200
 \begin{figure}[htbp!]
   \centering
-    \subfloat[Moltres neutron flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-1200-26G}
-    }
     \subfloat[Serpent neutron flux.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-LBP-1200-collapse}
+    }
+    \subfloat[Moltres neutron flux.]{
+        \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-assembly-LBP-1200-26G}
     }
   \hfill
   \caption{Operational case 4: fuel column with burnable poisons at 1200K. Comparison of Serpent and Moltres 3-group axial neutron fluxes.}
@@ -355,26 +352,27 @@ Overall, the fluxes in Moltres and Serpent are close in shape and magnitude.
 \end{figure}
 
 % eigenvalues
-Table \ref{tab:keff} exhibits the reactivity difference ($\Delta \rho$) between the Serpent and Moltres eigenvalues.
-We used equation \ref{eq:delta-rho} to obtain $\Delta \rho$.
+Equation \ref{eq:delta-rho} calculates the reactivity difference ($\Delta \rho$) between the eigenvalues calculated by Serpent and Moltres
+\begin{align}
+	& \Delta \rho = \left| \rho_1 - \rho_2 \right| = \left| \frac{k_1-1}{k_1} - \frac{k_2-1}{k_2} \right| \\
+  & \Delta \rho = \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
+  \intertext{where}
+  & k_1 = \mbox{Serpent-derived eigenvalue} [-] \notag \\
+  & k_2 = \mbox{Moltres-derived eigenvalue} [-]. \notag
+\end{align}
+
+Table \ref{tab:keff} exhibits the eigenvalues calculated by Serpent and $\Delta \rho$ for the different energy group structures.
 The eigenvalues in Moltres differ slightly from the eigenvalues in Serpent.
 Overall, the reactivity difference is less than 50 pcm.
-We note that the number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
-
-\begin{align}
-	\Delta \rho &= \left| \frac{k_1-k_2}{k_1 k_2} \right| \label{eq:delta-rho}
-  \intertext{where}
-  k_1 &= \mbox{Serpent eigenvalue} \notag \\
-  k_2 &= \mbox{Moltres eigenvalue.} \notag
-\end{align}
+The number of energy groups does not affect the accuracy of the eigenvalue calculations in Moltres.
 
 \begin{table}[htbp!]
   \centering
-  \caption{Serpent eigenvalues and reactivity difference between Moltres and Serpent eigenvalues, see equation \ref{eq:delta-rho}. }
+  \caption{Eigenvalues calculated by Serpent and reactivity difference between eigenvalues calculated by Moltres and Serpent, see equation \ref{eq:delta-rho}, for the different energy group structures.}
   \begin{tabular}{c|c|cccccccc}
   \toprule
-Operational case  & Serpent & \multicolumn{8}{c}{$\Delta \rho$ [pcm]}            \\ \cline{3-10} 
-                  &         & 3   & 6   & 9   & 12   & 15   & 18   & 21   & 26   \\
+Operational case  & Serpent       & \multicolumn{8}{c}{$\Delta \rho$ [pcm]}            \\ \cline{3-10} 
+                  & eigenvalues   & 3   & 6   & 9   & 12   & 15   & 18   & 21   & 26   \\
   \midrule
 1 & 1.43800 $\pm$ 0.00008 & 10  & 7   & 6   & 6    & 5    & 6    & 6    & 12   \\
 2 & 1.37771 $\pm$ 0.00008 & 23  & 15  & 4   & 3    & 2    & 2    & 1    & 11   \\
@@ -384,6 +382,17 @@ Operational case  & Serpent & \multicolumn{8}{c}{$\Delta \rho$ [pcm]}           
   \end{tabular}
   \label{tab:keff}
 \end{table}
+
+The last analysis is for the Moltres axial flux.
+Considering the 26 group structure as the reference value, equation \ref{eq:l2norm} obtained the $L_2$-norm of the active core's axial flux relative difference
+\begin{align}
+  & \Delta_{L_2} = \left\| \frac{\phi_G(z)-\phi_ref(z)}{\phi_ref(z)} \right\|  \quad \wedge \quad z\quad \in \quad L_a \label{eq:l2norm}
+  \intertext{where}
+  & \Delta_{L_2} = \mbox{L$_2$-norm relative difference } [-] \notag \\
+  & \phi_G(z) = \mbox{$G$-energy groups axial flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & \phi_{ref}(z) = \mbox{reference axial flux} [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & L_a = \mbox{active core lenght} [cm]. \notag
+\end{align}
 
 Figures \ref{fig:assembly-noLBP-er} and \ref{fig:assembly-LBP-er} show the $L_2$-norm of the relative error for the different energy group structures.
 The no LBP case's relative error is smaller than the LBP case's relative error.
@@ -456,7 +465,7 @@ Using this averaging scheme, we determined the group structure $15d$ to be the b
 
 \begin{table}[htbp!]
   \centering
-  \caption{Axial flux relative error $L_2$-norm for various energy group structures. Values expressed in percentage.}
+  \caption{Axial flux relative difference $L_2$-norm for various energy group structures. Values expressed in percentages.}
   \begin{tabular}{@{}l|l|l| S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] S[table-format=2.1] }
   \toprule
 	LBP                  & Temperature {[}K{]}   & Flux       & \multicolumn{1}{c@{}}{15a} & \multicolumn{1}{c@{}}{15b}  & \multicolumn{1}{c@{}}{15c}  & \multicolumn{1}{c@{}}{15d}  & \multicolumn{1}{c@{}}{15e}  \\
