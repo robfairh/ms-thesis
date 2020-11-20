@@ -1,4 +1,28 @@
-\section{Equations}
-\label{appendix:equations}
+
+\section{Neutron flux equations}
+\label{appendix:equations-n}
 
 
+\begin{align}
+  \chi_g^t &= \chi_g^p (1 - \beta) + \chi_g^d \sum_i^I \beta_i  \label{eq:chit} \\
+  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
+  \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:eigenvalue}
+\end{align}
+
+\section{Thermal-fluids equations}
+\label{appendix:equations-th}
+
+
+
+% In the steady-state limit, the continuity equation becomes:
+% \begin{align}
+%   \rho_c u & = \frac{\dot{m}}{A} = \mbox{constant} \label{eq:continuity2}
+%   \intertext{where}
+%   \dot{m} &= \mbox{mass flow rate} \notag
+% \end{align}
+
+% Introducing equation \ref{eq:continuity2} into \ref{eq:temperature} gives:
+% \begin{align}
+%   c_{p,c} \frac{\dot{m}}{A} \frac{\partial}{\partial z} T_c = q'''_{conv}
+%   \label{eq:temperature2}
+% \end{align}
