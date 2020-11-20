@@ -350,29 +350,22 @@ Nonetheless, these physical phenomena rely heavily on one another.
 Hence, a coupled analysis is necessary to consider the interaction between the neutronics and thermal-fluids behavior \cite{tak_cappgamma_2016}.
 
 % damian_vhtr_2008
-In 2008, Damian et al. \cite{damian_vhtr_2008} conducted a study aimed at understanding the passive safety features of a prismatic \gls{HTGR}.
-They performed analyses on various geometrical scales, including: unit cell and fuel columns located at the core hot-spot and two-dimensional and three-dimensional core configurations, including the coupling between neutronics and thermal-fluids.
-The last part of the study analyzed a three-dimensional core model using the coupled software NEPTHIS and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids.
+In 2008, Damian et al. \cite{damian_vhtr_2008} studied the passive safety features of a prismatic HTGR using the coupled software NEPTHIS/CAST3M.
+The study analyzed a three-dimensional core model using the software libraries NEPTHIS and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids, respectively.
 NEPHTIS used a transport-diffusion calculation scheme that relied on APOLLO2 \cite{sanchez_apollo2_1999} and the diffusion code CRONOS2.
-The CAST3M/Arcturus model used a two-level approach.
-On the first level, the porous media model solved the homogenized system and the coolant.
-On the second level, CAST3M solved the thermal-fluids on the homogenized geometry.
-The authors conducted several parametric studies and assessed their impact on the power distribution.
-The studies included the variation of the helium bypass fraction, average power density, core geometry, reflector materials, and fuel loading strategy.
-Their results exhibited that with the reduction of the bypass fraction, the average reflector temperature rises.
+CAST3M/Arcturus solved the thermal-fluids using the porous media model.
+The authors conducted several parametric studies including the variation of the bypass flow, the average power density, the core geometry, and fuel loading strategy.
 
 % CAPP
-In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic \glspl{HTGR}.
+In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic HTGRs.
 To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool based on Stainsby's approach \cite{stainsby_investigation_2008}.
-This approach uses different lenght scale models to solve the temperature distribution.
+This approach uses different length scale models to solve the temperature distribution.
 The model divides a fuel column into six triangular prisms, each of them hosting a representative coolant channel.
 The tool calculates the axial coolant temperature distribution solving the energy equation.
 After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
 Through a TRISO particle conduction model, the model obtains the fuel temperature.
 Finally, a three-dimensional conduction model based on the \gls{FDM} allows for solving the reflector temperature.
-To validate this model, the authors solved a two-dimensional model of the PMR-200 at the beginning of the equilibrium cycle.
-The PMR-200 is a pre-conceptual reactor designed by \gls{KAERI}.
-Their validation compared the results against HELIOS \cite{stammler_helios_1998}, concluding with a strong accuracy.
+To validate this model, the authors solved a two-dimensional model of the PMR-200, pre-conceptual reactor designed by \gls{KAERI}, and compared the results against HELIOS \cite{stammler_helios_1998}.
 
 % tak_cappgamma_2016
 Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+.
@@ -387,37 +380,30 @@ A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the 
 This capability solves the time-dependent neutron diffusion equation with the \gls{FEM}.
 The primary motivation behind this feature was to perform reactivity insertion accident simulations.
 To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool based on Stainsby's approach.
-The tool divides a fuel column into six triangular prisms, each of them hosting a representative coolant channel.
-After calculating the coolant temperature, a two-dimensional conduction model solves the moderator and fuel compact temperatures.
 To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of the CAPP/GAMMA+ coupled code.
-Both showed similar results.
-This article highlights the importance of developing transient analysis capabilities to conduct accident simulations.
+% This article shows the importance of developing transient analysis capabilities to conduct accident simulations.
 
 % Benchmarks Intro
 The prismatic HTGR tools available have lagged behind tools and methods developed for \glspl{LWR}.
-The evolution of the HTGR technology drives the development of more accurate and efficient simulation tools.
-Additionally, the definition appropriate benchmarks is essential to compare various tools' capabilities.
+The evolution of the HTGR technology demands the development of more accurate and efficient simulation tools.
+Additionally, the definition of appropriate benchmarks is essential to compare various tools' capabilities.
 % oecd_nea_coupled_2020
 In 2012, the \gls{OECD}/\gls{NEA} defined a benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
 The purpose of this benchmarking exercise is to compare various reactor physics and thermal-fluid analysis methods.
 The MHTGR-350 design serves as a basis for this benchmark.
-The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-fluid analysis, and (2) to test the depletion capabilities of various lattice physics tools available for prismatic \glspl{HTGR}.
-The OECD/NEA MHTGR-350 MW benchmark subdivides the coupled system calculation into three phases.
-Phase I corresponds to the steady-state modeling of the stand-alone neutronics and thermal-fluids, as well as the coupling between them.
-Phase II consists of transient cases.
-Phase III focuses on lattice depletion calculations.
+The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-fluid analysis, and (2) to test the depletion capabilities of various lattice physics tools available for prismatic HTGRs.
+Section \ref{sec:ch3-bench} describes the benchmark with more detail.
 
 % j_ortensi_relap-7_2012 j_ortensi_initial_2012
 In 2012, \gls{INL} published a study \cite{j_ortensi_initial_2012} that coupled Pronghorn and RELAP-7 \cite{andrs_relap-7_2012}.
-Pronghorn solved the coupled equations defining the neutron diffusion, fluid flow, and heat transfer in a three-dimensional model.
-RELAP-7 is a MOOSE-based system application and solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
-It was responsible for simulating the plant system layout, including the hot and cold ducts, the helium circulator, and the steam generator.
-% This study integrated PRONGHORN and RELAP-7 with the operator split approach (or loose coupling) where each application used an independent mesh.
+Pronghorn solved the coupled equations defining the neutron diffusion, fluid flow, and heat transfer in a three-dimensional model of the core.
+RELAP-7 is a MOOSE-based system application and simulated the plant system layout, including the hot and cold ducts, the helium circulator, and the steam generator.
+It solves the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
 To test the coupling, INL's team carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_coupled_2020}.
 The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
 To simplify the debugging, the authors collapsed the 26 groups into two groups.
 Although using two groups reduces the accuracy of the model, the lower number of groups decreases the calculation time by at least a factor of ten.
-In this study, a two-dimensional cylindrical model replaced the three-dimensional geometry defined by the benchmark.
+In their study, a two-dimensional cylindrical model replaced the three-dimensional geometry defined by the benchmark.
 The integrated system testing included two stages: (1) both stand-alone codes underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
 The authors concluded that the coupling between Pronghorn and RELAP-7 was successful.
 
@@ -440,11 +426,8 @@ This coordinated research project is a natural continuation of the previous IAEA
 The technical approach is to establish and utilize a benchmark for uncertainty analysis.
 The benchmark defines a series of well-defined problems with complete sets of input specifications and reference experimental data.
 The coordinated research project adopted the MHTGR-350 as the reference design and the GT-MHR as a second reference design.
-The design specification uses the OECD/NEA MHTGR-350 MW benchmark \cite{oecd_nea_benchmark_2017} code design specifications.
-The coordinated research project subdivides the coupled system calculation into three phases.
-Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling.
-Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without depletion calculations.
-Phase III focuses on safety calculations.
+The design specification uses the OECD/NEA MHTGR-350 MW Benchmark \cite{oecd_nea_benchmark_2017} design specifications.
+The coordinated research project subdivides the coupled system calculation into three phases: Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling, Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without depletion calculations, and Phase III focuses on safety calculations.
 
 \subsection{Summary of Prismatic HTGR Multi-physics}
 
