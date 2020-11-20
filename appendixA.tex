@@ -2,15 +2,103 @@
 \section{Neutron flux equations}
 \label{appendix:equations-n}
 
+Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent behavior of the neutron flux and the concentration of the delayed neutron precursors.
 
+\begin{align}
+  % diffusion
+  & \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g = \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g +
+  \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} + 
+  \chi_g^d \sum_i^I \lambda_i C_i \label{eq:diffusion} \\
+  % precursors
+  & \frac{\partial}{\partial t} C_i = \sum_{g'= 1}^G \beta_i \nu \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i \label{eq:precursors}
+  \intertext{where}
+  & v_g = \mbox{group $g$ neutron speed } [cm \cdot s^{-1}] \notag \\
+  & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & t = \mbox{time } [s] \notag \\
+  & D_g = \mbox{group $g$ diffusion coefficient } [cm] \notag \\
+  & \Sigma_g^r = \mbox{group $g$ macroscopic removal cross-section } [cm^{-1}] \notag \\
+  & \Sigma_{g'\rightarrow g}^s = \mbox{group $g'$ to group $g$ macroscopic scattering cross-section } [cm^{-1}] \notag \\
+  & \chi_g^p = \mbox{group $g$ prompt fission spectrum } [-] \notag\\
+  & G = \mbox{number of discrete energy groups } [-] \notag \\
+  & \nu = \mbox{number of neutrons produced per fission } [-] \notag \\
+  & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+  & \chi_g^d = \mbox{group $g$ delayed fission spectrum } [-] \notag \\
+  & I = \mbox{number of delayed neutron precursor groups } [-] \notag \\
+  & \beta = \mbox{delayed neutron fraction } [-] \notag \\
+  & \lambda_i = \mbox{average decay constant of delayed neutron precursors in precursor group $i$ } [s^{-1}] \notag \\
+  & C_i = \mbox{concentration of delayed neutron precursors in precursor group $i$ } [cm^{-3}]. \notag
+\end{align}
+
+% Sources ? see github
 \begin{align}
   \chi_g^t &= \chi_g^p (1 - \beta) + \chi_g^d \sum_i^I \beta_i  \label{eq:chit} \\
   \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
   \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:eigenvalue}
 \end{align}
 
-\section{Thermal-fluids equations}
-\label{appendix:equations-th}
+% \section{Thermal-fluids equations}
+% \label{appendix:equations-th}
+
+% The three-dimensional heat conduction equation \cite{melese_thermal_1984}, described by equations \ref{eq:tempsolid} to \ref{eq:heatsource3}, allows for solving the temperature in the fuel, helium gap, moderator, coolant film, and reflector.
+% Equations \ref{eq:heatsource1} and \ref{eq:heatsource2} define the heat source in the stand-alone and coupled calculations, respectively.
+
+% % solids
+% \begin{align}
+%   & \rho_i c_{p,i} \frac{\partial}{\partial t} T_i = k_i \nabla^2 T_i + Q_i \label{eq:tempsolid} \\
+%   & Q_f = Q_0 \label{eq:heatsource1} \\
+%   & Q_f = \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource2} \\
+%   & Q_g = Q_m = Q_f = Q_r = 0 \label{eq:heatsource3}
+%   \intertext{where}
+%   & i = \mbox{f (fuel), g (helium gap), m (moderator), f (coolant film), r (reflector)} \notag \\
+%   & \rho_i = \mbox{material $i$ density } [kg \cdot cm^{-3}] \notag \\
+%   & c_{p,i} = \mbox{material $i$ heat capacity } [J \cdot kg^{-1} \cdot K^{-1}] \notag \\
+%   & k_i = \mbox{material $i$ thermal conductivity  } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+%   & T_i = \mbox{material $i$ temperature } [^{\circ}C] \notag \\
+%   & Q_i = \mbox{material $i$ volumetric heat source } [W \cdot cm^{-3}] \notag \\
+%   & \epsilon_g^f = \mbox{energy released per fission } [J] \notag \\
+%   & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+%   & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
+% \end{align}
+
+% % coolant
+% The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations \cite{white_viscous_2006}\cite{tak_practical_2012}
+
+% \begin{align}
+%     & \frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) = 0 \label{eq:continuity} \\
+%   & \rho_c \left(\frac{\partial}{\partial t} u + u\frac{\partial}{\partial z}u \right) = - \frac{\partial}{\partial z}p - \tau \frac{\varepsilon}{A} - \rho_c g \label{eq:momentum} \\
+%     & \rho_c \left( \frac{\partial}{\partial t} (c_{p,c} T_c) + u\frac{\partial}{\partial z} (c_{p,c} T_c) \right) = \frac{\partial}{\partial t} p + u\frac{\partial}{\partial z} p +  q'''_{conv}  \label{eq:tempcool} \\
+%   & \tau = \frac{f}{2} \rho_c u^2 \label{eq:friction} \\
+%   & q'''_{conv} = h\frac{\varepsilon}{A} (T_i-T_c) \label{eq:convection}
+%   \intertext{where}
+%   & \rho_c = \mbox{coolant density } [kg \cdot cm^{-3}] \notag \\
+%   & u = \mbox{coolant velocity } [cm \cdot s^{-1}] \notag \\
+%   & p = \mbox{coolant pressure } [\times 10^{-2} Pa] \notag \\
+%   & \tau = \mbox{shear stress } [\times 10^{-2} Pa] \notag \\
+%   & \varepsilon = \mbox{wetted perimeter } [cm] \notag \\
+%   & A = \mbox{cross-sectional area } [cm^2] \notag \\
+%   & g = \mbox{gravity } [m \cdot s^{-2}] \notag \\
+%   & c_{p,c} = \mbox{coolant specific heat capacity } [J \cdot kg^{-1} \cdot K^{-1}] \notag \\
+%   & T_c = \mbox{coolant temperature } [^{\circ}C] \notag \\
+%   & k_c = \mbox{coolant thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+%   & q'''_{conv} = \mbox{convective heat transfer } [W \cdot cm^{-3}] \notag \\
+%   & f = \mbox{friction factor } [-] \notag \\
+%   & h = \mbox{heat transfer coefficient } [W \cdot cm^{-2} \cdot K^{-1}] \notag \\
+%   & T_i = \mbox{solid temperature } [^{\circ}C]. \notag
+% \end{align}
+
+% Equation \ref{eq:churchill} \cite{churchill_friction-factor_1977} determines the friction factor $f$
+
+% \begin{align}
+%   & f = 8\left[ \left( \frac{8}{Re_{D_h}} \right)^{12} + \frac{1}{(A+B)^{3/2}} \right]^{1/12} \notag \\
+%   & A = \left\{ 2.457 \quad ln \left( \frac{1}{\left(\frac{7}{Re_{D_h}}\right)^{0.9}+0.27\frac{\varepsilon}{D_h}} \right) \right\}^{16} \label{eq:churchill} \\
+%   & B = \left\{ \frac{37530}{Re_{D_h}} \right\}^{16} \notag
+%   \intertext{where}
+%   & \varepsilon = \mbox{surface roughness } [-] \notag \\
+%   & D_h = \mbox{hydraulic diameter } [cm]. \notag
+% \end{align}
+
+
+
 
 
 
