@@ -4,7 +4,7 @@ This chapter focuses on the thermal-fluids modeling of prismatic HTGRs using Mol
 This chapter comprehends the following sections: 
 Section \ref{sec:thermal-prelim} presents a verification and validation of the model in simplified geometries,
 Section \ref{sec:fuelcol} discusses the implementation of the model in a fuel column of a prismatic HTGR,
-Section \ref{sec:ph1ex2} describes various efforts in conducting Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark, 
+Section \ref{sec:ph1ex2} describes various efforts in conducting Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark, 
 Section \ref{sec:thermal-coupling} introduces a simplified coupling scheme to solve Phase I Exercise 3 of the benchmark,
 and Section \ref{sec:thermal-conc} concludes the chapter with a summary and the main points of the chapter.
 
@@ -486,10 +486,10 @@ For this reason, the next section intends to solve the full-scale problem using 
 % \section{Full-core 3D}
 % This section will extend the methodology to a full-core problem and it will intend to solve Exercise 2 of Phase I of the OECD/NEA MHTGR-350 Benchmark.
 
-\section{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 2}
+\section{OECD/NEA MHTGR-350 Benchmark: Phase I Exercise 2}
 \label{sec:ph1ex2}
 
-This section describes Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark \cite{oecd_nea_benchmark_2017} and the undertaking as part of this thesis to conduct it using Moltres and MOOSE.
+This section describes Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_benchmark_2017} and the undertaking as part of this thesis to conduct it using Moltres and MOOSE.
 Phase I Exercise 2 defines a thermal-fluid standalone calculation.
 The exercise aims to ensure that the thermal-fluid model differences between participants are negligible and will not affect the coupled exercises.
 The benchmark specifies the power density of each fuel region and defines the mass flow distribution and material properties for four sub-cases:
@@ -664,11 +664,11 @@ $\Delta_T$ [\%]           & 9.9  & 11.3 & 10.8 & 1.6  & 0.4  & 0.3  & 3.4  & -  
 
 This section sets the roadmap for conducting neutronics and thermal-fluids coupled simulations of prismatic HTGRs in Moltres.
 
-\subsection{OECD/NEA MHTGR-350 MW Benchmark: Phase I Exercise 3}
+\subsection{OECD/NEA MHTGR-350 Benchmark: Phase I Exercise 3}
 \label{sec:ph1ex3}
 
 % description of the exercise
-This section describes Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark as conducted for this thesis with Moltres/MOOSE.
+This section describes Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark as conducted for this thesis with Moltres/MOOSE.
 Exercise 3 combines all the data from the first two exercises, in which the participants need to determine a coupled neutronic and thermal-fluids solution.
 The exercise requires the reporting of the same parameters reported in Exercises 1 and 2 combined.
 The benchmark specifies the group constants necessary to conduct the exercise.
@@ -915,7 +915,7 @@ The fuel temperature did not reach convergence in this analysis as the mesh disc
 This analysis concluded that modeling thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other methods.
 The following sections adopted a two-dimensional cylindrical model for the full-core analyses.
 
-Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark.
+Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark.
 This exercise encompasses four sub-cases with different definitions of bypass-flow and material properties.
 The simplest exercise is Exercise 2a, as it does not model the bypass flow and provides the definition of the material properties.
 Section \ref{sec:ph1ex2} used Moltres/MOOSE to conduct Exercise 2a.

@@ -1,6 +1,6 @@
 
 This chapter describes the methodology followed in this thesis.
-This chapter comprehends the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 MW Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
+This chapter comprehends the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
 
 \section{Computational tools}
 \label{sec:ch3-tools}
@@ -184,7 +184,7 @@ Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \ci
   & R_c = \mbox{coolant channel radius } [cm]. \notag
 \end{align}
 
-\section{OECD/NEA MHTGR-350 MW Benchmark}
+\section{OECD/NEA MHTGR-350 Benchmark}
 \label{sec:ch3-bench}
 
 Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} conduct several exercises of the benchmark \cite{oecd_nea_benchmark_2017} using Moltres.
@@ -194,7 +194,7 @@ The benchmark defines several phases and exercises, summarized in Table \ref{tab
 
 \begin{table}[htbp!]
   \centering
-  \caption{Description of the OECD/NEA MHTGR-350 MW Benchmark phases and exercises.}
+  \caption{Description of the OECD/NEA MHTGR-350 Benchmark phases and exercises.}
   \begin{tabular}{lcl}
 \toprule
 Phase               & Exercise & Description                                             \\
@@ -394,7 +394,7 @@ Six are for reactor start-up and are in the inner reflector, while the remaining
 This thesis divides the description of Moltres simulations into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
 Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations, discussing two main validation exercises.
 The first exercise compares a Serpent and Moltres model of the MHTGR-350.
-The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
+The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 In the first exercise, Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
 Serpent also generates the groups constants of the MHTGR-350 that serve as an input for Moltres simulations.
 In the second exercise, the benchmark exercise specifies the group constants that Moltres uses in the simulations.
@@ -403,6 +403,6 @@ Moltres simulations use equation \ref{eq:diffusion-eig} to calculate the multipl
 Chapter \ref{ch:thermalfluids} focuses on stand-alone thermal-fluids and coupled neutronics/thermal-fluid simulations.
 Chapter \ref{ch:thermalfluids} discusses several exercises to validate Moltres thermal-fluids model.
 The first validation exercises study the accuracy of the thermal-fluids model in several configurations.
-The following validation exercise follow Phase I Exercise 2 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
+The following validation exercise follow Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 Moltres simulations use equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures and the coolant flow distribution.
-Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark using Moltres.
+Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark using Moltres.

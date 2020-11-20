@@ -6,7 +6,7 @@ This chapter comprehends the following sections: Section \ref{sec:litreview-neut
 \label{sec:litreview-neut}
 
 Currently, several software programs solve the neutronics of prismatic \glspl{HTGR}.
-Most of these codes rely on one of the following methods: stochastic transport (Monte Carlo), deterministic transport, or deterministic diffusion.
+Most of these tools rely on one of the following methods: stochastic transport (Monte Carlo), deterministic transport, or deterministic diffusion.
 This section focuses on the last class.
 % If time permits work on a brief description of the Monte Carlo and deterministic transport maybe.
 % Why? Deterministic diffusion solvers have lower computational requirements than other methods reference ??
@@ -44,10 +44,9 @@ The difference from HEXNOD is that HEXPEDITE uses a simpler and more efficient c
 Different works \cite{fitzpatrick_hexpedite_1992}\cite{fitzpatrick_developments_1995} on the HEXPEDITE methodology tested the approach against the \gls{NEM} and the \gls{FDM}.
 These studies established HEXPEDITE’s superiority in terms of accuracy and runtime.
 HEXPEDITE's use prevailed in the analysis of \glspl{HTGR} until recently.
-In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against several diffusion codes, as well as the Monte Carlo codes MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003} and Serpent \cite{leppanen_serpent_2015}.
-% In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against the diffusion codes JAR, CITATION, and CRONOS2, as well as the Monte Carlo codes MCNP5 and Serpent.
+In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against several diffusion solvers, as well as the Monte Carlo solvers MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003} and Serpent \cite{leppanen_serpent_2015}.
 
-DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are other examples of prevalent nodal diffusion codes.
+DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are other examples of prevalent nodal diffusion tools.
 DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
 % VARIANT: variational nodal \cite{palmiotti_variant_1995}
 PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
@@ -78,7 +77,6 @@ The studies showed a higher order of convergence achieved by the \gls{FEM}.
 Throughout the last four decades, many software programs utilized the \gls{FEM} to solve the diffusion equation.
 Some of the most recent software for diffusion simulations are CRONOS2 \cite{lautard_cronos_1990}, CAPP \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
 The list of \gls{FEM} diffusion solvers is more extensive, but we focus on the best-documented software in the open literature.
-% We also emphasize that most of the \gls{FEM} diffusion solvers for \glspl{HTGR} were born as \gls{LWR} analysis codes.
 
 % CRONOS
 \gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
@@ -103,9 +101,8 @@ Various solvers are available under RattleSnake, including low-order multigroup 
 % Both RattleSnake and Pronghorn yielded the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RattleSnake.
 
 % strydom_inl_2013
-In 2013, \gls{INL} conducted the OECD/NEA MHTGR-350 MW Benchmark \cite{oecd_nea_benchmark_2017}\cite{strydom_inl_2013} without further simplifications.
+In 2013, \gls{INL} conducted the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_benchmark_2017}\cite{strydom_inl_2013} without further simplifications.
 The \gls{INL} team solved Phase I Exercise 1 using INSTANT-P1 \cite{wang_krylov_2011}, Pronghorn, and RattleSnake.
-% They also solved exercises 2 and 3 using RELAP5-3D and PHISICS/RELAP5-3D code suit.
 INSTANT-P1 is a transport solver that relies on the spherical harmonics discretization of angles.
 The results for Pronghorn and RattleSnake were identical.
 By modifying the cross-sections, INSTANT-P1 returned the diffusion solution.
@@ -123,7 +120,7 @@ For this reason, HTGR analyses require more energy groups than conventional \gls
 This section summarizes previous studies on the impact of the energy group structure over the diffusion calculations.
 
 \gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations employing different energy group structures.
-The group constant homogenization used the DRAGON neutron transport solver and the diffusion calculations utilized the code DIF3D.
+The group constant homogenization used the DRAGON neutron transport solver and the diffusion calculations utilized the application DIF3D.
 For the study, the ANL team implemented a one-dimensional fuel-reflector model in which they compared the solution accuracy using 4, 7, 8, 14, and 23 energy groups.
 They also used alternative energy group structures for the same number of groups.
 For simplicity, the authors used the homogenized fuel compact model and generated all the group constant at 300 K.
@@ -140,7 +137,7 @@ Another finding was that the accuracy of the diffusion calculation is sensitive 
 
 % han_sensitivity_2008
 Han's MS thesis \cite{han_sensitivity_2008} focused on selecting energy groups for the reactor analysis of the \gls{PBMR}.
-The author used COMBINE6 \cite{grimesey_combinepc-portable_1994} for group constant generation and the Penn State nodal diffusion code NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
+The author used COMBINE6 \cite{grimesey_combinepc-portable_1994} for group constant generation and the Penn State nodal diffusion tool NEM \cite{bandini_three-dimensional_1990} for the reactor analysis.
 The author compared the results against MCNP5 reference results.
 To simplify the setup, the model used uniformly distributed isotopes in the fuel.
 The study performed the calculations at 300 and 1000 K.
@@ -167,8 +164,8 @@ Moltres relies on the FEM counting with all the advantages of the method.
 
 Section \ref{sec:litreview-neut} summarizes previous efforts in deterministic diffusion solvers of prismatic HTGRs.
 This thesis draws two main conclusions from those earlier efforts.
-The first conclusion is that several authors validated their solvers by comparison to other codes.
-In the context of this thesis, Chapter \ref{ch:neutronics} compares Moltres results to Serpent and the Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
+The first conclusion is that several authors validated their solvers by comparison to other tools.
+In the context of this thesis, Chapter \ref{ch:neutronics} compares Moltres results to Serpent and the describes Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark conducted by Moltres.
 The second conclusion is that several prismatic HTGRs count with integrated thermal-fluids solver.
 Due to a strong thermal feedback, modeling of prismatic HTGRs with Moltres will require the incorporation of a thermal-fluids solver.
 Section \ref{sec:litrev-thermalf} discusses previous work in the thermal-fluids modeling of prismatic HTGRs.
@@ -210,7 +207,7 @@ It solves the steady-state mass and momentum conservation equations for parallel
 \item DEMISE: It determines the steady-state three-dimensional temperature distribution in a standard element.
 It solves the temperature in a network model.
 
-\item TAC2D: It is a general-purpose thermal analysis code.
+\item TAC2D: It is a general-purpose thermal analysis software.
 It solves the two-dimensional heat conduction equation.
 \end{itemize}
 
@@ -238,8 +235,7 @@ After finding an optimal configuration, they evaluated the fuel and the reactor 
 
 % equivalent cylindrical model
 % no_multi-component_2007
-An example of an application using the equivalent cylindrical approach is GAMMA \cite{lim_gamma_2006}\cite{no_multi-component_2007}.
-GAMMA is a system code for thermal-fluids analysis and system transients.
+An example of an application using the equivalent cylindrical approach is GAMMA \cite{lim_gamma_2006}\cite{no_multi-component_2007}, a system thermal-fluids analysis tool.
 GAMMA's primary motivation is simulating the air ingress event following a LOCA.
 Following the depressurization of helium in the core, air could potentially enter the core through the break and oxidize the in-core graphite structure.
 Graphite oxidation is an exothermic chemical reaction and, thus, it is a significant concern.
@@ -426,7 +422,7 @@ This coordinated research project is a natural continuation of the previous IAEA
 The technical approach is to establish and utilize a benchmark for uncertainty analysis.
 The benchmark defines a series of well-defined problems with complete sets of input specifications and reference experimental data.
 The coordinated research project adopted the MHTGR-350 as the reference design and the GT-MHR as a second reference design.
-The design specification uses the OECD/NEA MHTGR-350 MW Benchmark \cite{oecd_nea_benchmark_2017} design specifications.
+The design specification uses the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_benchmark_2017} design specifications.
 The coordinated research project subdivides the coupled system calculation into three phases: Phase I corresponds to the stand-alone neutronics and thermal-fluids modeling, Phase II consists of design calculations, coupled with steady-state neutronics/thermal-fluids calculations with and without depletion calculations, and Phase III focuses on safety calculations.
 
 \subsection{Summary of Prismatic HTGR Multi-physics}
@@ -436,4 +432,4 @@ This studies highlight the importance of the proper integration of the neutronic
 The neutronics and thermal-fluids physical phenomena rely heavily on each other.
 Hence, a coupled analysis is necessary to capture the interaction between the neutronics and the thermal-fluids.
 Chapter \ref{ch:thermalfluids} discusses a coupling strategy for the neutronics and thermal-fluids phenomena in Moltres.
-For that exercise, Section \ref{sec:coupled-average} follows a simplified version of Phase I Exercise 3 of the OECD/NEA MHTGR-350 MW Benchmark.
+For that exercise, Section \ref{sec:coupled-average} follows a simplified version of Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark.

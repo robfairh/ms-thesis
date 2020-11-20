@@ -1,7 +1,7 @@
 \label{ch:neutronics}
 
 This chapter presents several studies that use Moltres as a stand-alone neutronics solver.
-The objective of the chapter is to validate Moltres calculation scheme by comparing Moltres results to Serpent and the OECD/NEA MHTGR-350 MW Benchmark.
+The objective of the chapter is to validate Moltres calculation scheme by comparing Moltres results to Serpent and the OECD/NEA MHTGR-350 Benchmark.
 This chapter comprehends the following sections: Section \ref{sec:neut-prelim} describes some preliminary studies that help set up Serpent and Moltres simulations, Section \ref{sec:neut-serpent} presents several studies comparing Moltres and Serpent results, Section \ref{sec:ph1e1} discusses Moltres results of Phase I Exercise 1 of the Benchmark, and Section \ref{sec:neutr-conc} concludes the chapter with a summary of the chapter and its key points.
 
 \section{Preliminary studies}
@@ -678,67 +678,64 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 \label{sec:ph1e1}
 
 % Exercise description
-This section conducted Phase I Exercise 1 of the benchmark with Moltres and compared the results with those already published \cite{oecd_nea_coupled_2020}.
-The benchmark specifies the group constants required to conduct the exercise.
-The group constants provision ensures a common dataset among various benchmark participants and allows for comparing stand-alone neutronic predictions with no thermal-fluids feedback.
-% What should be reported \cite{oecd_nea_benchmark_2017}
-The exercise requests the reporting of the global parameters: $K_{eff}$, \gls{CR} worth ($\Delta \rho_{CR}$), and axial offset ($AO$).
-% It also requires the reporting of a power distribution and a neutron-flux map \cite{oecd_nea_benchmark_2017}.
-It also requires the reporting of a power distribution map \cite{oecd_nea_benchmark_2017}.
-Equations \ref{eq:controlrod} and \ref{eq:ao} define $\Delta \rho_{CR}$ and $AO$.
+This section discusses Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark conducted with Moltres and compares the results with those already published \cite{oecd_nea_coupled_2020}.
+The benchmark specifies the group constants required to conduct the exercise, ensuring a common dataset among various benchmark participants and allowing stand-alone neutronic comparison without thermal-fluids feedback.
+The exercise requests the reporting of the global parameters: $K_{eff}$, control rod worth ($\Delta \rho_{CR}$), axial offset ($AO$), and the power distribution map \cite{oecd_nea_benchmark_2017}.
+Equations \ref{eq:controlrod} and \ref{eq:ao} define $\Delta \rho_{CR}$ and $AO$
 \begin{align}
-    \Delta \rho_{CR} &= \frac{k_{out}-k_{in}}{k_{out}k_{in}}
-		\label{eq:controlrod}
+    \Delta \rho_{CR} &= \frac{k_{out}-k_{in}}{k_{out}k_{in}} \label{eq:controlrod}
     \intertext{where}
-    k_{out} &= \mbox{eigenvalue with \gls{CR} out (at position 1184.8 cm)} \notag \\
-    k_{in} &= \mbox{eigenvalue with \gls{CR} in (at position 391.81 cm)} \notag
+    \Delta \rho_{CR} &= \mbox{control rod worth} [-] \notag \\
+    k_{out} &= \mbox{eigenvalue with \gls{CR} out (at position z=911.7 cm)} [-] \notag \\
+    k_{in} &= \mbox{eigenvalue with \gls{CR} in (at position z=99 cm)} [-] \notag
 		\intertext{and}
-    AO &= (TP_{top}-TP_{bottom})/(TP_{top}+TP_{bottom})
-		\label{eq:ao}
+    AO &= \frac{P_{top}-P_{bottom}}{P_{top}+P_{bottom}} \label{eq:ao}
     \intertext{where}
-    TP_{top} &= \mbox{total power produced in the top half core} \notag \\
-    TP_{bottom} &= \mbox{total power produced in the bottom half core.} \notag
+    AO &= \mbox{axial offset } [-] \notag \\
+    P_{top} &= \mbox{total power produced in the top half core } [W] \notag \\
+    P_{bottom} &= \mbox{total power produced in the bottom half core } [W]. \notag
 \end{align}
 
-Moltres modeled one-third of the reactor, Figure \ref{fig:bench-mesh}.
-The model included the bottom and top reflectors, and the core comprised 232 hexagonal subdomains for which the benchmark provides group constants.
-Table \ref{tab:mac-region} lists the six macroscopic regions that we can differentiate in the model.
+The Moltres simulation modeled $1/3^{rd}$ of the reactor, shown in Figure \ref{fig:bench-mesh}.
+The model included the bottom and top reflectors
+Two hundred and thirty-two hexagonal subdomains comprised the core, for which the benchmark provides group constants.
+% Table \ref{tab:mac-region} lists the six macroscopic regions that we can differentiate in the model.
 The simulations required two meshes: one for the CR out and one for the CR in.
-The simulation with the CR out had 268,393 \glspl{DoF}/energy-group, and a total of 6,978,218 DoFs.
-The simulation with the CR in had 227,592 \glspl{DoF}/energy-group, and a total of 5,917,392 DoFs.
-The Moltres input files set an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
+The simulation with the CR out had 2.7 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 7.0 $\times 10^6$ DoFs.
+The simulation with the CR in had 2.3 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 5.9 $\times 10^6$ DoFs.
+The Moltres simulations obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
 
 \begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.55\linewidth]{figures-neutronics/oecd-fullcore-legend}
 	\hfill
-	\caption{1/3-rd of the MHTGR-350 geometry.}
+	\caption{Moltres model, $1/3^{rd}$ section of the MHTGR-350.}
 	\label{fig:bench-mesh}
 \end{figure}
 
-\begin{table}[htbp!]
-  \centering
-  \caption{Macroscopic regions.}
-  \label{tab:mac-region}
-  \begin{tabular}{@{}l c}
-  \toprule
-  Macroscopic region    & Subdomains     \\
-  \midrule
-  Fuel              & 1 to 220      \\
-  Bottom reflector  & 221 to 224    \\
-  Inner reflector   & 225           \\
-  Outer reflector   & 226-227       \\
-  Top reflector     & 228 to 231    \\
-  Control Rod       & 232           \\
-  \bottomrule
-  \end{tabular}
-\end{table}
+% \begin{table}[htbp!]
+%   \centering
+%   \caption{Macroscopic regions .}
+%   \label{tab:mac-region}
+%   \begin{tabular}{@{}l c}
+%   \toprule
+%   Macroscopic region    & Subdomains     \\
+%   \midrule
+%   Fuel              & 1 to 220      \\
+%   Bottom reflector  & 221 to 224    \\
+%   Inner reflector   & 225           \\
+%   Outer reflector   & 226-227       \\
+%   Top reflector     & 228 to 231    \\
+%   Control Rod       & 232           \\
+%   \bottomrule
+%   \end{tabular}
+% \end{table}
 
 The benchmark exercise specifies the group constants and a map with their location.
 The benchmark definition used DRAGON-4 \cite{marleau_user_2016} to obtain the group constants from a full block configuration.
 The dataset contains 26 energy groups.
-Because the benchmark group constant format differs from the Moltres format, we made a Python script to handle the differences.
-Among the benchmark group constants, we find $\Sigma_g^t$, $D_g$, $\nu\Sigma_g^f$, $\Sigma_g^f$, $\chi_g^t$, and $\Sigma_{g'\rightarrow g}^s$ (see equation \ref{eq:diffusion}).
+Because the benchmark group constant format differs from the Moltres format, I made a Python script to handle the differences as part of this thesis.
+The benchmark specifies the following group constants: $\Sigma_g^t$, $D_g$, $\nu\Sigma_g^f$, $\Sigma_g^f$, $\chi_g^t$, and $\Sigma_{g'\rightarrow g}^s$ (see equation \ref{eq:diffusion}).
 
 The benchmark exercise sets periodic \glspl{BC} on the sides of the geometry; however, a memory issue did not allow for implementing those BCs in our 26-group Moltres input file.
 We approximated the periodic BC with the reflective BC.
@@ -747,14 +744,14 @@ Section \ref{sec:bench-bcs} discusses further the use of periodic and reflective
 % 4.33 h and 4.11 h
 On average, the simulations took 4.22 hours using 1024 cores.
 Table \ref{tab:globalparam} shows the main results.
-These include: Moltres predicting a \gls{Keff} larger than the reference result, the reactivity difference being 99 pcm, Moltres yielding a smaller control rod worth (difference being 312 pcm), and the axial offset for the Moltres simulation being 4$\%$ higher than the reference result.
+These include: Moltres predicting a \gls{Keff} larger than the reference result, a reactivity disparity of 99 pcm, Moltres yielding a smaller control rod worth (difference being 312 pcm), and the axial offset for the Moltres simulation being 4$\%$ higher than the reference result.
 We attribute the discrepancies to the use of the reflective BCs instead of the periodic BCs.
 Once again, Section \ref{sec:bench-bcs} discusses further the use of periodic and reflective BCs.
 
 \begin{table}[htbp!]
   \centering
   \caption{Global parameters.}
-  \begin{tabular}{l|c|c}
+  \begin{tabular}{lcc}
   \toprule
   Parameter 	&  Benchmark  &  Moltres    \\
   \midrule
@@ -781,7 +778,7 @@ The differences are within 0.25 W/cm$^3$.
         \includegraphics[width=0.47\textwidth]{figures-neutronics/benchmark-axialpower}
     }
 	\hfill
-	\caption{Radially averaged axial power distribution.}
+	\caption{Comparison between the radially averaged axial power distribution calculated by Moltres and the benchmark published result \cite{oecd_nea_coupled_2020}.}
 	\label{fig:axialpower}
 \end{figure}
 
@@ -794,7 +791,7 @@ The differences are within 0.25 W/cm$^3$.
         \includegraphics[width=0.42\textwidth, height=6.2cm]{figures-neutronics/benchmark-radialpower}
     }
 	\hfill
-  \caption{Axially averaged radial power distribution.}
+  \caption{Comparison between the axially averaged radial power distribution calculated by Moltres and the benchmark published result \cite{oecd_nea_coupled_2020}.}
   \label{fig:radialpower}
 \end{figure}
 
