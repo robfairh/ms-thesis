@@ -149,8 +149,9 @@ The solids' thermal conductivity increases with temperature, see Figure \ref{fig
 Table \ref{tab:th-val-unit-results} summarizes the results.
 Equation \ref{eq:rel-error} evaluates the relative difference to the reference results
 \begin{align}
-  & \Delta_T = \left| \frac{T-T_{ref}}{T_{ref}} \right|  \label{eq:rel-error}
+  & \Delta_T = \left| \frac{T-T_{ref}}{T_{ref}} \right| \cdot 100  \label{eq:rel-error}
   \intertext{where}
+  & \Delta_T = \mbox{relative difference } [\%] \notag \\
   & T = \mbox{temperature determined by this work} [^{\circ}C] \notag \\
   & T_{ref} = \mbox{reference temperature} [^{\circ}C]. \notag
 \end{align}
@@ -306,14 +307,16 @@ The presence of the gap between assemblies produces a larger temperature gradien
 
 \begin{table}[htbp!]
   \centering
-  \caption{Maximum temperatures.}
+  \caption{Comparison of the maximum temperatures calculated by this work and the reference values from Sato et al. \cite{sato_computational_2010}. Temperature values expressed in [$^{\circ}$C].}
   \label{tab:th-val-assem-results}
-\begin{tabular}{l|c|c|c|c}
+\begin{tabular}{lcccccc}
 \toprule
-        & \multicolumn{2}{c|}{No gap} & \multicolumn{2}{c}{3mm gap} \\ \cline{2-5}
-        & Sato et al. & Moltres/MOOSE & Sato et al. & Moltres/MOOSE \\ \midrule
-Bulk coolant & 985     & 983               & 1007     & 1005             \\  
-Fuel    & 1090    & 1094              & 1115     & 1114             \\
+        & \multicolumn{3}{c}{No gap} & \multicolumn{3}{c}{3mm gap} \\
+\midrule
+        & $T_{ref}$ & Moltres/MOOSE  & $\Delta_T$ [\%] & $T_{ref}$ & Moltres/MOOSE & $\Delta_T$ [\%] \\
+\midrule
+Coolant & 985       & 983   & 0.2    & 1007      & 1005 & 0.2   \\  
+Fuel    & 1090      & 1094  & 0.4    & 1115      & 1114 & 0.1   \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -398,8 +401,9 @@ These iterative solvers were implemented in a python script external to Moltres.
 Table \ref{tab:th-assem-flow-massflow} displays the results achieved in this thesis for the mass flow rates.
 Equation \ref{eq:rel-error2} evaluates the relative difference to the reference results
 \begin{align}
-  & \Delta_m = \left| \frac{\dot{m}_i-\dot{m}_{r, i}}{\dot{m}_{r, i}} \right|  \label{eq:rel-error2}
+  & \Delta_m = \left| \frac{\dot{m}_i-\dot{m}_{r, i}}{\dot{m}_{r, i}} \right| \cdot 100 \label{eq:rel-error2}
   \intertext{where}
+  & \Delta_m = \mbox{relative difference } [\%] \notag \\
   & \dot{m}_i = \mbox{channel $i$ mass flow rate determined by this work } [g \cdot s^{-1}] \notag \\
   & \dot{m}_{r, i} = \mbox{reference mass flow rate } [g \cdot s^{-1}]. \notag
 \end{align}
@@ -597,9 +601,9 @@ Future Moltres development effort will focus on confirming this supposition and 
 \centering
       \caption{Comparison of this work and INL \cite{strydom_inl_2013} first bottom core level average temperatures.}
       \label{tab:th-ex2a-1st-results}
-\begin{tabular}{l|ccc|ccc}
+\begin{tabular}{lcccccc}
     \toprule
-                & \multicolumn{3}{c|}{Reflector} & \multicolumn{3}{c}{Coolant} \\ \cline{2-7} 
+                & \multicolumn{3}{c}{Reflector} & \multicolumn{3}{c}{Coolant}   \\
                 & Ring 1   & Ring 2   & Ring 3   & Ring 4   & Ring 5  & Ring 6  \\
     \midrule
 INL [$^{\circ}C$]           & 790    & 794     & 802     & 797     & 636     & 673     \\
@@ -674,16 +678,16 @@ In fuel ring 2, the differences are 16$^{\circ}$C and 17$^{\circ}$C for INL and 
 
 \begin{table}[htbp!]
 \centering
-      \caption{Comparison of this work and INL \cite{strydom_inl_2013} first bottom core level average temperatures.}
+      \caption{Comparison of this work and INL \cite{strydom_inl_2013} first bottom core level average temperatures. Temperature values expressed in [$^{\circ}$C].}
       \label{tab:th-ex2a-results}
   \begin{tabular}{l|ccc|ccc|ccc}
     \toprule
-          & \multicolumn{3}{c|}{Fuel Ring 1} & \multicolumn{3}{c|}{Fuel Ring 2} & \multicolumn{3}{c}{Fuel Ring 3} \\ \cline{2-10} 
+          & \multicolumn{3}{c|}{Fuel Ring 1} & \multicolumn{3}{c|}{Fuel Ring 2} & \multicolumn{3}{c}{Fuel Ring 3} \\ %\cline{2-10} 
           & Coolant & Moderator & Fuel & Coolant & Moderator & Fuel & Coolant & Moderator & Fuel \\
     \midrule
-INL [$^{\circ}$C]         & 797  & 843  & 863  & 636  & 672  & 688  & 673  & Not shown  & 722  \\
-This thesis [$^{\circ}$C] & 718  & 748  & 770  & 646  & 669  & 686  & 696  & 721        & 739  \\
-$\Delta_T$ [\%]           & 9.9  & 11.3 & 10.8 & 1.6  & 0.4  & 0.3  & 3.4  & -          & 2.4  \\
+INL          & 797  & 843  & 863  & 636  & 672  & 688  & 673  & Not shown  & 722  \\
+This thesis  & 718  & 748  & 770  & 646  & 669  & 686  & 696  & 721        & 739  \\
+$\Delta_T$ [\%]     & 9.9  & 11.3 & 10.8 & 1.6  & 0.4  & 0.3  & 3.4  & -  & 2.4  \\
     \bottomrule
   \end{tabular}
 \end{table}
