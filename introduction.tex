@@ -167,9 +167,7 @@ Due to the temperature feedback, the temperature affects the neutron flux distri
 Because of a strong temperature coefficient of reactivity present in HTGRs, multi-physics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{park_tightly_2010}\cite{ragusa_consistent_2009}.
 
 \gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
-All the software built on the \gls{MOOSE} framework shares an \gls{API}.
-These features facilitate relatively easy coupling between separate phenomena and allow for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
-Additionally, all programs use \gls{MPI} for parallel communication and allow for deployment on massively-parallel cluster-computing platforms.
+Additionally, MOOSE facilitates relatively easy coupling between separate phenomena and allow for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
 
 \textit{Moltres} is an open-source, \gls{FEM} application built within the \gls{MOOSE} framework.
 Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.

@@ -1,10 +1,12 @@
 \label{appendix:equations}
 
+This appendix describes the most important equations used in this thesis.
+
 \section{Neutron flux equations}
 \label{appendix:equations-n}
 
 Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent behavior of the neutron flux and the concentration of the delayed neutron precursors
-
+duded
 \begin{align}
   % diffusion
   & \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g = \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g +
@@ -40,7 +42,7 @@ The following equation relates $\chi_g^t$ to $\chi_g^p$ and $\chi_g^d$ \cite{het
 The combination of the steady-state of equations \ref{eq:diffusion}, \ref{eq:precursors}, \ref{eq:chit}, and replacing $\nu\Sigma_g^f$ by $\frac{\nu\Sigma_g^f}{k_{eff}}$ yields the eigenvalue equation \cite{duderstadt_nuclear_1976}
 \begin{align}
   \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
-  \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:eigenvalue}
+  \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:app-eigenvalue}
   \intertext{where}
   k_{eff} = \mbox{multiplication factor } [-]. \notag
 \end{align}
@@ -111,12 +113,12 @@ Equation \ref{eq:app-churchill} \cite{churchill_friction-factor_1977} determines
   & D_h = \mbox{hydraulic diameter } [cm]. \notag
 \end{align}
 
-Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \cite{melese_thermal_1984}
+Equation \ref{eq:app-film-conduc} calculates the film thermal conductivity $k_f$ \cite{melese_thermal_1984}
 
 \begin{align}
-  & Nu = 0.023 Re^{0.8} Pr^{0.4} \label{eq:dittus} \\
+  & Nu = 0.023 Re^{0.8} Pr^{0.4} \label{eq:app-dittus} \\
   & h = \frac{Nu \cdot k_c}{D_h}  \\
-  & k_f = h R_{cf} ln(R_{cf}/R_c) \label{eq:film-conduc}
+  & k_f = h R_{cf} ln(R_{cf}/R_c) \label{eq:app-film-conduc}
   \intertext{where}
   & Nu = \mbox{Nusselt number } [-] \notag \\
   & Pr = \mbox{Prandtl number } [-] \notag \\
@@ -175,7 +177,7 @@ Finally, equation \ref{eq:app-itersolver3} gives $\Delta P$
 
 These equations solve $\dot{m}_i$ using an iterative scheme as $B_i$ depends on $\dot{m}_i$ \cite{melese_thermal_1984}
 \begin{align}
-  & B_i^{(n)} = f(\dot{m}_i^{(n)})
-  & \Delta P^{(n)} = \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i^{(n)}}}}
+  & B_i^{(n)} = f(\dot{m}_i^{(n)}) \\
+  & \Delta P^{(n)} = \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i^{(n)}}}} \\
   & \dot{m}_i^{(n+1)} = \sqrt{\frac{\Delta P^{(n)}}{B_i^{(n)}}}.
 \end{align}

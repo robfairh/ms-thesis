@@ -1,5 +1,5 @@
 
-This chapter describes the methodology followed in this thesis.
+This chapter describes the methodology followed in the development of this thesis.
 This chapter comprehends the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
 
 \section{Computational tools}
@@ -27,7 +27,7 @@ Kernels are C++ classes containing methods for computing the residual and Jacobi
 \gls{MOOSE} and LibMesh translate them into residual and Jacobian functions.
 These functions become inputs into PetSc solution routines.
 
-\gls{MOOSE} utilizes the mathematical structure present in \gls{JFNK} methods \cite{knoll_jacobian-free_2004}\cite{gaston_moose_2009}.
+\gls{MOOSE} utilizes the \gls{JFNK} method \cite{knoll_jacobian-free_2004} mathematical structure \cite{gaston_moose_2009}.
 \gls{JFNK} methods are synergistic combinations of Newton-type methods for superlinearly convergence of nonlinear equations and Krylov subspace methods for solving the Newton correction equations.
 The Jacobian-vector product links the two methods.
 JFNK methods compute such products approximately without forming and storing the elements of the true Jacobian.
@@ -45,27 +45,28 @@ Additionally, the framework and its applications use \gls{MPI} for parallel comm
 Moltres inherits all the attributes from MOOSE as its application.
 Moltres is an open source simulation tool that operates under an LGPL.
 It uses \textit{git} for version control, emphasizing its openness and promoting quality through peer review.
-This is an important feature and contrasts previous simulation software, which operated under restrictive licenses.
+This is an important feature and contrasts previous multi-physics applications, which operated under restrictive licenses.
 
 Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
 It can solve the equations in a fully-coupled way or solve each system independently, allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
 
 Moltres is the primary tool in the development of this thesis.
 Its roll is too simulate prismatic HTGRs.
-This work also intends to identify Moltres flaws in such simulations, and sets a basis for future work.
+Chapter \ref{ch:neutronics} and \ref{ch:thermalfluids} compare the results calculated by Moltres and other software to validate Moltres calculation scheme.
+This work also intends to identify Moltres flaws in prismatic HTGR simulations, and sets a basis for future work.
 
 \subsection{Serpent}
 \label{sec:ch3-serpent}
 
-The Serpent Monte Carlo code is a three-dimensional continuous-energy neutron transport code developed by the VTT Technical Research Centre of Finland, and it has been in public distribution since 2009.
-Monte Carlo neutron transport codes have several reactor physics applications related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
+The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_serpent_2015} is a three-dimensional continuous-energy neutron transport application developed by the VTT Technical Research Centre of Finland, and it has been in public distribution since 2009.
+Monte Carlo neutron transport tools have several reactor physics applications related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic solvers.
 The Monte Carlo method's main advantage is its capability to model geometry and interaction physics without significant approximations.
 The main disadvantage is that simulating complex systems is computing-intensive, restricting applications to some extent.
 
 In general, Serpent serves two purposes: (1) reactor modeling and (2) group constant generation.
 In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
-In group constant generation, the transport simulation produces input parameters for a deterministic code.
-Based on a few energy groups, deterministic codes allow for carrying out coupled full-core analyses.
+In group constant generation, the transport simulation produces input parameters for a deterministic solver.
+Based on a few energy groups, deterministic solvers allow for carrying out coupled full-core analyses.
 
 In this work, Serpent produces group constants that serve as an input for Moltres and solves for neutron fluxes in high geometric fidelity and continuous energy cross-sections.
 This last step provides the reference solutions for the validation of the Moltres calculation scheme.
@@ -105,19 +106,28 @@ Moltres translates the multi-group diffusion equations into kernels, equations t
 
 % Boundary conditions
 In different sections of this thesis, Moltres imposes several boundary conditions.
-The vacuum boundary condition, described by equation \ref{eq:vacuumbc} \cite{duderstadt_nuclear_1976}, states that no neutrons penetrate the boundary in the inward direction --- the incoming current density is equal to zero.
-The reflective boundary condition, described by equation \ref{eq:reflecbc}, states that no neutrons penetrate the boundary --- the current density is equal to zero.
-The periodic boundary condition, described by equations \ref{eq:perbc1} and \ref{eq:perbc2}, states that the flux and current density are equal on both sides of the boundary.
-
+The vacuum boundary condition \cite{duderstadt_nuclear_1976} states that no neutrons penetrate the boundary in the inward direction --- the incoming current density is equal to zero
 \begin{align}
    & J^-_g(r_s) = \frac{1}{4} \phi_g(r_s) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi_g(r_s) = 0 \label{eq:vacuumbc} \\
-   & J_g(r_s) = 0 \label{eq:reflecbc} \\
-   & \phi_g(r_{s^-}) = \phi_g(r_{s^+}) \label{eq:perbc1} \\
-   & J_g(r_{s^-}) = J_g(r_{s^+}) \label{eq:perbc2}
    \intertext{where}
    & J^-_g(r) = \mbox{incoming current density } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
    & r_s = \mbox{position of the boundary } [cm] \notag \\
-   & \hat{n_s} = \mbox{normal direction to the boundary } [-] \notag \\
+   & \hat{n_s} = \mbox{normal direction to the boundary } [-]. \notag
+\end{align}
+
+The reflective boundary condition states that no neutrons penetrate the boundary --- the current density is equal to zero 
+\begin{align}
+   & J_g(r_s) = 0 \label{eq:reflecbc}
+   \intertext{where}
+   & r_s = \mbox{position of the boundary } [cm] \notag \\
+   & J_g(r) = \mbox{current density } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
+\end{align}
+
+The periodic boundary condition states that the flux and current density are equal on both sides of the boundary
+\begin{align}
+   & \phi_g(r_{s^-}) = \phi_g(r_{s^+}) \label{eq:perbc1} \\
+   & J_g(r_{s^-}) = J_g(r_{s^+}) \label{eq:perbc2}
+   \intertext{where}
    & J_g(r) = \mbox{current density } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
    & r_{s^\pm} = \mbox{left and right side of $r_s$ boundary } [cm]. \notag
 \end{align}
@@ -149,16 +159,15 @@ Equations \ref{eq:heatsource1} and \ref{eq:heatsource2} define the heat source i
   & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
 \end{align}
 
-Moltres and MOOSE heat conduction module translate these equations into kernels.
 % coolant
 The governing equation of the coolant is the one-dimensional steady-state energy conservation equation \cite{white_viscous_2006}\cite{tak_practical_2012}
 
 \begin{align}
- 	& \rho_c u\frac{\partial}{\partial z} (c_{p,c} T_c) = q'''_{conv} 	\label{eq:tempcool} \\
+ 	& \rho_{c,i} u_i \frac{\partial}{\partial z} (c_{p,c} T_c) = q'''_{conv} 	\label{eq:tempcool} \\
   & q'''_{conv} = h\frac{\varepsilon}{A} (T_i-T_c) \label{eq:convection}
   \intertext{where}
-  & \rho_c = \mbox{coolant density } [kg \cdot cm^{-3}] \notag \\
-  & u = \mbox{coolant velocity } [cm \cdot s^{-1}] \notag \\
+  & \rho_{c, i} = \mbox{inlet coolant density } [kg \cdot cm^{-3}] \notag \\
+  & u_i = \mbox{inlet coolant velocity } [cm \cdot s^{-1}] \notag \\
   & c_{p,c} = \mbox{coolant specific heat capacity } [J \cdot kg^{-1} \cdot K^{-1}] \notag \\
   & T_c = \mbox{coolant temperature } [^{\circ}C] \notag \\
   & q'''_{conv} = \mbox{convective heat transfer } [W \cdot cm^{-3}] \notag \\
@@ -190,7 +199,7 @@ Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \ci
 
 Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} conduct several exercises of the benchmark \cite{oecd_nea_benchmark_2017} using Moltres.
 The \gls{OECD}/\gls{NEA} defined such a benchmark using the \gls{MHTGR}-350 reactor \cite{silady_licensing_1988} as the reference design.
-The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics codes available for prismatic HTGRs.
+The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics tools available for prismatic HTGRs.
 The benchmark defines several phases and exercises, summarized in Table \ref{tab:benchmark}.
 
 \begin{table}[htbp!]
@@ -390,20 +399,19 @@ Six are for reactor start-up and are in the inner reflector, while the remaining
 \end{table}
 
 
-\section{Simulations Organization}
+\section{Organization of the Simulations}
 
-This thesis divides the description of Moltres simulations into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
-Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations, discussing two main validation exercises.
+This thesis separates the description of Moltres simulations into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
+Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations in which Moltres solves equations \ref{eq:diffusion-eig} and \ref{eq:heatsource2} to calculate the multiplication factor, the neutron flux, and the radial power distribution.
+Chapter \ref{ch:neutronics} discusses two main validation exercises.
 The first exercise compares a Serpent and Moltres model of the MHTGR-350.
-The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
-In the first exercise, Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
+Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
 Serpent also generates the groups constants of the MHTGR-350 that serve as an input for Moltres simulations.
-In the second exercise, the benchmark exercise specifies the group constants that Moltres uses in the simulations.
-Moltres simulations use equation \ref{eq:diffusion-eig} to calculate the multiplication factor, the neutron flux, and the radial power distribution in the core.
+The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
+The benchmark exercise specifies the group constants that Moltres uses in the simulations.
 
 Chapter \ref{ch:thermalfluids} focuses on stand-alone thermal-fluids and coupled neutronics/thermal-fluid simulations.
-Chapter \ref{ch:thermalfluids} discusses several exercises to validate Moltres thermal-fluids model.
-The first validation exercises study the accuracy of the thermal-fluids model in several configurations.
-The following validation exercise follow Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
-Moltres simulations use equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures and the coolant flow distribution.
+Chapter \ref{ch:thermalfluids} discusses several exercises to validate the thermal-fluids model, in which Moltres solves equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures.
+The first validation exercises study the accuracy of the thermal-fluids model in several configurations, including a equivalent cylindrical model of a unit cell, a three-dimensional unit cell, and a three-dimensional fuel column.
+The next exercise follows Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark using Moltres.

@@ -1,36 +1,66 @@
+
+This appendix describes the equations for handling the cross-sections in different sections of this thesis.
+
 \section{Group constants homogenization}
 \label{appendix:group-const-homo}
 
+% duderstadt 10-17 and stacey 14.56
+The following relations homogenize the group constants over a certain volume $V_T$ \cite{duderstadt_nuclear_1976}
+
 \begin{align}
-  & \Phi_{g'} = \sum_g \phi_{g}
-  & \Sigma_{g'}^t = \frac{\sum_g \Sigma_g^t \phi_{g}}{\Phi_{g'}}
-  & \nu\Sigma_{g'}^f = \frac{\sum_g \nu\Sigma_g^f \phi_{g}}{\Phi_{g'}}
-  & D_{g'}^t = \frac{\sum_g D_g^t \phi_{g}}{\Phi_{g'}}
-  & \chi_{g'}^t = \frac{\sum_g D_g^t \phi_{g}}{\Phi_{g'}}
-  \intertext{where}
-  & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
-  & t = \mbox{time } [s] \notag \\
-  & D_g = \mbox{group $g$ diffusion coefficient } [cm] \notag \\
-  & \Sigma_g^r = \mbox{group $g$ macroscopic removal cross-section } [cm^{-1}] \notag \\
-  & \Sigma_{g'\rightarrow g}^s = \mbox{group $g'$ to group $g$ macroscopic scattering cross-section } [cm^{-1}] \notag \\
-  & \chi_g^p = \mbox{group $g$ prompt fission spectrum } [-] \notag\\
-  & G = \mbox{number of discrete energy groups } [-] \notag \\
+  & \phi_{g, T} = \frac{\sum_i \phi_{g, i} V_i}{V_T}  \\
+  & \Sigma^t_{g, T} = \frac{\sum_i \Sigma^t_{g, i} \phi_{g, i} V_i}{\phi_g V_T}  \\
+  & \nu\Sigma^f_{g, T} = \frac{\sum_i \nu\Sigma^f_{g, i} \phi_{g, i} V_i}{\phi_g V_T}  \\
+  & \Sigma^s_{g'\rightarrow g, T} = \frac{\sum_i \Sigma^s_{g'\rightarrow g, i} \phi_{g, i} V_i}{\phi_g V_T}  \\
+  & \chi^t_{g, T} = \frac{\sum_i \chi^t_{g, i} \nu\Sigma^f_{g, i} \phi_{g, i} V_i}{\nu\Sigma^f_g \phi_g V_T}  \\
+  & D_{g, T} = \frac{\sum_i D_{g, i} \phi_{g, i} V_i}{\phi_g V_T}
+\intertext{where}
+  & \phi_{g, i} = \mbox{group $g$, region $i$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & V_i = \mbox{region $i$ volume } [cm^{3}] \notag \\
+  & V_T = \mbox{total volume where the homogenization takes place } [cm^{3}] \notag \\
+  & \Sigma^t_{g, i} = \mbox{group $g$, region $i$ macroscopic total cross-section } [cm^{-1}] \notag \\
   & \nu = \mbox{number of neutrons produced per fission } [-] \notag \\
-  & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+  & \Sigma^f_{g, i} = \mbox{group $g$, region $i$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+  & \Sigma^s_{g'\rightarrow g, i} = \mbox{group $g'$ to group $g$, region $i$ macroscopic scattering cross-section } [cm^{-1}] \notag \\  
+  & \chi^t_{g, i} = \mbox{group $g$, region $i$ total fission spectrum } [-] \notag\\
+  & D_{g, i} = \mbox{group $g$, region $i$ diffusion coefficient } [cm]. \notag
 \end{align}
-
-
-
 
 
 \section{Group constants condensation}
 \label{appendix:group-const-condense}
 
+% duderstadt 7-54 and tsoulfiniadis 5.12
+The following equations collapse the group constants \cite{duderstadt_nuclear_1976}
+\begin{align}
+  & \phi_{h} = \sum_g \phi_{g} \\
+  & \chi_{h}^t = \sum_g \chi_g^t \\
+  & D_{h}^t = \frac{\sum_g D_g^t \phi_{g}}{\phi_{g'}} \\
+  & \Sigma_{h}^t = \frac{\sum_g \Sigma_g^t \phi_{g}}{\phi_{g'}} \\
+  & \nu\Sigma_{h}^f = \frac{\sum_g \nu\Sigma_g^f \phi_{g}}{\phi_{g'}} \\
+  & \Sigma_{h'\rightarrow h}^s = \frac{\sum_{g'} \sum_{g} \Sigma_{g'\rightarrow g}^s \phi_{g'}}{\phi_{h'}}
+  \intertext{where}
+  & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & \chi_g^t = \mbox{group $g$ total fission spectrum } [-] \notag\\
+  & D_g = \mbox{group $g$ diffusion coefficient } [cm] \notag \\
+  & \Sigma_g^t = \mbox{group $g$ macroscopic total cross-section } [cm^{-1}] \notag \\
+  & \nu = \mbox{number of neutrons produced per fission } [-] \notag \\
+  & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+  & G = \mbox{original number of energy groups } [-] \notag \\
+  & H = \mbox{new number of energy groups } [-] \notag \\
+  & \Sigma_{g'\rightarrow g}^s = \mbox{group $g'$ to group $g$ macroscopic scattering cross-section } [cm^{-1}]. \notag
+\end{align}
+
 
 \section{Benchmark group constants}
 
-% Maybe ?
-% \begin{align}
-% \Sigma_{r,g} &= \Sigma_{a,g} + \sum_{g' \ne g} \Sigma_{s,g \rightarrow g'} = \Sigma_{t,g} - \Sigma_{s, g \rightarrow g}
-% \label{eq:removal}
-% \end{align}
+The benchmark specifies the following group constants: the normalized neutron flux $\phi_g$, the total fission spectrum $\chi_g^t$, the diffusion coefficient $D_g$, the macroscopic total cross-section $\Sigma_g^t$, number of neutrons produced per fission by the macroscopic fission cross-section $\nu\Sigma_g^f$, the macroscopic fission cross-section $\Sigma_g^f$, and the macroscopic scattering cross-section $\Sigma_{g'\rightarrow g}^s$.
+
+Moltres solves equation \ref{eq:app-eigenvalue}, and requires the following group constants: the diffusion coefficient $D_g$, the macroscopic removal cross-section $\Sigma_g^r$, the macroscopic scattering cross-section $\Sigma_{g'\rightarrow g}^s$, the total fission spectrum $\chi_g^t$, and the number of neutrons produced per fission by the macroscopic fission cross-section $\nu\Sigma_g^f$.
+
+% duderstadt 7-23
+Equation \ref{eq:app-removal} calculates the removal cross-section \cite{duderstadt_nuclear_1976}
+\begin{align}
+% \Sigma_{r,g} &= \Sigma_{a,g} + \sum_{g' \ne g} \Sigma_{s,g \rightarrow g'} = \Sigma_{t,g} - \Sigma_{s, g \rightarrow g} \label{eq:app-removal}
+\Sigma_{r,g} &= \Sigma_{t,g} - \Sigma_{s, g \rightarrow g}. \label{eq:app-removal}
+\end{align}
