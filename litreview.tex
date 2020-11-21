@@ -76,7 +76,7 @@ In this early work, the author compared different \gls{FEM} approaches to the \g
 The studies showed a higher order of convergence achieved by the \gls{FEM}.
 Throughout the last four decades, many software programs utilized the \gls{FEM} to solve the diffusion equation.
 Some of the most recent software for diffusion simulations are CRONOS2 \cite{lautard_cronos_1990}, \gls{CAPP} \cite{lee_development_2011}, and Rattlesnake \cite{wang_rattlesnake_2019}.
-The list of \gls{FEM} diffusion solvers is more extensive, but we focus on the best-documented software in the open literature.
+The list of \gls{FEM} diffusion solvers is more extensive, but this thesis focuses on the best-documented software in the open literature.
 
 % CRONOS
 \gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
@@ -283,7 +283,7 @@ Large temperature gradients cause excessive thermal stresses, which raise potent
 Despite the recent developments in CFD tools, a detailed full-core analysis of prismatic HTGRs still requires a tremendous computational expense.
 This requirement is mostly due to the three-dimensional CFD modeling of the coolant flow.
 This drawback motivated the implementation of simplified methods that reduce the computational time and memory requirements while maintaining accurate results.
-Such methods combine the accuracy from CFD tools and the light computational expense of system analysis codes.
+Such methods combine the accuracy from CFD tools and the light computational expense of system analysis approaches.
 
 % cioni_3d_2005
 Cioni et al. \cite{cioni_3d_2005} presented an article in 2005 in which they conducted three-dimensional simulations of HTGR fuel assemblies.
@@ -321,8 +321,8 @@ However, a whole-core thermal analysis has many advantages over local models.
 In general, the problem set up includes more accurate boundary conditions.
 For example, without whole-core modeling, the local models' mass flow distributions are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
 This simplification leads to under-predicted fuel temperatures for the assemblies with a lower flow rate than the average.
-Additionally, a coupled analysis with a reactor physics code requires a full-core model \cite{tak_practical_2012}.
-An alternative for an explicit whole-core analysis are system codes that combine the accuracy from CFD tools and the light computational expense of system analysis codes.
+Additionally, a coupled analysis with a reactor physics tool requires a full-core model \cite{tak_practical_2012}.
+An alternative for an explicit whole-core analysis are approaches that combine the accuracy from CFD tools and the light computational expense of system analysis applications.
 
 The high computational expense of CFD analyses is mostly due to the three-dimensional CFD simulation of the coolant flow \cite{travis_thermalhydraulics_2013}.
 Section \ref{sec:litrev-thermalf} presents two alternatives: the porous media model or the combination of the three-dimensional heat conduction equation for the solid structures to the one-dimensional thermal-fluid conservation equations for the coolant.
@@ -358,7 +358,7 @@ To validate this model, the authors solved a two-dimensional model of the PMR-20
 Tak et al. \cite{tak_cappgamma_2016} coupled CAPP and GAMMA+.
 GAMMA uses the one-dimensional form of the mass, momentum, energy, and species conservation equations to solve the fluid's flow and temperature distribution.
 For solids, it uses three different models: (1) heat conduction model of a TRISO particle, (2) implicit coupling to consider the heat exchange between a fuel compact and TRISO particle, and (3) multi-dimensional heat conduction model of the hexagonal fuel and reflector blocks.
-In this study, the authors applied the coupled code to study the steady-state performance of the PMR-200.
+In this study, the authors applied the coupled software to study the steady-state performance of the PMR-200.
 Some of their most relevant results revealed that neglecting the bypass flow decreased the active core temperatures; consequently, the multiplication factor increased by approximately 300 pcm.
 These results prove the importance of the right modeling of the thermal-fluids in coupled simulations of prismatic HTGRs.
 
@@ -367,7 +367,7 @@ A recent article by Yuk et al. \cite{yuk_time-dependent_2020} added to CAPP the 
 This capability solved the time-dependent neutron diffusion equation with the \gls{FEM}.
 The primary motivation behind this feature was to perform reactivity insertion accident simulations.
 To take into account the thermal feedback, the authors developed a simplified thermal-fluids analysis tool based on Stainsby's approach.
-To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of the CAPP/GAMMA+ coupled code.
+To test the new transient capabilities, they analyzed two control rod ejection scenarios and compared the results to those of CAPP/GAMMA+.
 
 % Benchmarks Intro
 The prismatic HTGR simulation tools available have lagged behind tools and methods developed for \glspl{LWR}.
@@ -390,15 +390,14 @@ The original benchmark provides a set of 26 neutron energy group and temperature
 To simplify the debugging, the authors collapsed the 26 groups into two groups.
 Although using two groups reduces the accuracy of the model, the lower number of groups decreases the calculation time by at least a factor of ten.
 In their study, a two-dimensional cylindrical model replaced the three-dimensional geometry defined by the benchmark.
-The integrated system testing included two stages: (1) both stand-alone codes underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
+The integrated system testing included two stages: (1) both stand-alone tools underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
 The authors concluded that the coupling between Pronghorn and RELAP-7 was successful.
 
 % tak_coupled_2016
 Tak et al. \cite{tak_coupled_2016} developed a neutronics/thermal-fluids coupled software using DeCART \cite{kaeri_decart_2007} and CORONA.
 DeCART is a whole-core neutron transport tool, and it was responsible for calculating the power distribution and the fast neutron fluence.
 CORONA calculated the temperature distribution.
-To validate the code, the authors conducted the OECD/NEA MHTGR-350 benchmark.
-The exercise's main objective was to validate the code and identify technical challenges for future development.
+The authors conducted the OECD/NEA MHTGR-350 benchmark to validate their software and identify technical challenges for future development.
 The authors presented an interesting analysis in which they compared the coupled simulation results and the stand-alone simulations.
 The difference in the multiplication factor was as high as 2597 pcm.
 The axial offset and maximum fuel temperature exhibited significant differences as well.

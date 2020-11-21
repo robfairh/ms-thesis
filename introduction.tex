@@ -158,7 +158,7 @@ Large temperature gradients translate into large thermal stresses in the reactor
 
 %Why use Moltres?
 Historically, linking a stand-alone neutronics solver to a thermal-fluid solver allowed for simulating an entire reactor.
-The programs' connection occurred in a loose-coupling fashion, such that one code's output served as the other's input and vice versa.
+The programs' connection occurred in a loose-coupling fashion, such that one program's output served as the other's input and vice versa.
 This coupling technique is commonly known as the operator-splitting technique \cite{ragusa_consistent_2009}.
 In such an approach, each program uses a physical model that solves some of the problem variables while assuming constant the rest of them.
 Nonetheless, these physical models describe processes that rely heavily on the solution of one another's.
