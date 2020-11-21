@@ -143,3 +143,39 @@ In the steady-state limit, the temperature equations (equations \ref{eq:app-soli
   & k_i \nabla^2 T_i + Q_i = 0 \\
   & \rho_{c,i} u_i\frac{\partial}{\partial z} (c_{p,c} T_c) = q'''_{conv}.
 \end{align}
+
+
+\section{Coolant distribution equation}
+\label{appendix:equations-fluid}
+
+The pressure drop in a coolant channel is proportinal to the mass flow squared 
+\begin{align}
+  & \Delta P = B_i \dot{m}_i^2 \label{eq:app-itersolver1}
+  \intertext{where}
+  & \Delta P = \mbox{pressure drop } [Pa] \notag \\
+  & \dot{m}_i = \mbox{channel $i$ mass flow rate } [kg \cdot s^{-1}] \notag \\
+  & B_i = \mbox{constant specified by the chosen model, value that depends on $\dot{m}_i$} [kg \cdot m^{-1}] \notag
+\end{align}
+which is equivalent to
+\begin{align}
+  & \dot{m}_i = \sqrt{\frac{\Delta P}{B_i}}. \label{eq:app-itersolver2}
+\end{align}
+
+Assuming constant $\Delta P$ across all coolant paths, and using equation \ref{eq:app-itersolver2}, it is possible to calculate the total mass flow rate $m_T$
+\begin{align}
+  & \dot{m}_T = \sum_i \dot{m}_i = \sum_i \sqrt{\frac{\Delta P}{B_i}} = \Delta P \frac{1}{\sum_i \sqrt{B_i}}
+  \intertext{where}
+  & \dot{m}_T = \mbox{total mass flow rate } [kg \cdot s^{-1}]. \notag
+\end{align}
+
+Finally, equation \ref{eq:app-itersolver3} gives $\Delta P$
+\begin{align}
+  & \Delta P = \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i}}}. \label{eq:app-itersolver3}
+\end{align}
+
+These equations solve $\dot{m}_i$ using an iterative scheme as $B_i$ depends on $\dot{m}_i$ \cite{melese_thermal_1984}
+\begin{align}
+  & B_i^{(n)} = f(\dot{m}_i^{(n)})
+  & \Delta P^{(n)} = \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i^{(n)}}}}
+  & \dot{m}_i^{(n+1)} = \sqrt{\frac{\Delta P^{(n)}}{B_i^{(n)}}}.
+\end{align}

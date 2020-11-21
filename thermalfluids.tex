@@ -169,11 +169,11 @@ Overall, Moltres results are close to In's results as the maximum difference bet
     \subfloat[Maximum fuel, moderator, and bulk coolant axial temperatures.]{
         \includegraphics[width=0.45\textwidth]{figures-thermal/in-2006-5-axial}
     }
-    \subfloat[Outlet plane temperature z=793 cm.]{
+    \subfloat[Outlet plane (z=793 cm) temperature distribution.]{
         \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-outlet-plane}
     }
   \hfill
-  \caption{Unit cell temperature profiles.}
+  \caption{Unit cell temperature profile calculated by Moltres.}
   \label{fig:th-val-unit-temps}
 \end{figure}
 
@@ -225,10 +225,10 @@ Figure \ref{fig:th-val-assem-model-b} shows the temperature-dependent material p
 \centering
   \caption{Thermal conductivity coefficients \cite{johnson_cfd_2009}.}
   \label{tab:th-val-assem-mat} 
-  \begin{tabular}{c| S[table-format=2.2] S[table-format=2.2e-1] S[table-format=2.4] |S[table-format=2.2e-1]}
+  \begin{tabular}{c| S[table-format=2.2] S[table-format=2.2e-1] S[table-format=3.3] |S[table-format=2.2e-1]}
   % \begin{tabular}{c|ccc|c}
 \toprule
-                          & \multicolumn{3}{c|}{Moderator} & \multicolumn{1}{c}{Fuel compact} \\ \hline
+                          & \multicolumn{3}{c|}{Moderator} & \multicolumn{1}{c}{Fuel compact} \\
 Temperature range {[}K{]} & \multicolumn{1}{c}{255.6-816} & \multicolumn{1}{c}{816-1644.4} & \multicolumn{1}{c|}{1644.4-1922.2} & \multicolumn{1}{c}{255.6-2200}   \\
 \midrule
 A1                        & 28.6      & 1.24e+2   & 41.5         & 3.94         \\
@@ -341,51 +341,75 @@ The metrics chosen for this comparison are the maximum coolant and fuel temperat
 The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
 Note that Channel 1 is a small coolant channel while Channels 2 to 13 are large coolant channels.
 
-I analyzed the following cases:
+This study used the mass flow distribution from Sato et al. \cite{sato_computational_2010} and analyzed the following cases:
 \begin{itemize}
-    \item Reference: uses the mass flow distribution from Sato et al \cite{sato_computational_2010}.
     \item Case 1: uses a flat velocity profile (every channel and gap have the same velocity).
     \item Case 2: uses the incompressible flow model with temperature-independent helium viscosity.
     \item Case 3: uses the incompressible flow model with a temperature-dependent helium viscosity.
     \item Case 4: uses the low-Mach number model with a temperature dependent helium viscosity.
 \end{itemize}
 
-To calculate the different flow distributions, we used the following equations.
-Equation \ref{eq:case2mdot} calculated the flow distribution in Case 1.
-Equation \ref{eq:case3mdot} \cite{melese_thermal_1984} calculated the pressure drop in Cases 3 and 4.
-Case 4 differs from Case 3 as the friction factor $f$ depends on the average channel temperature.
-Equation \ref{eq:case5mdot} \cite{melese_thermal_1984} calculated the pressure drop in Case 5.
-For Cases 3 to 5, the pressure drop is proportional to the channel mass flow (Equation \ref{eq:itersolver1}).
-Equations \ref{eq:case3mdot} and \ref{eq:case5mdot} calculated $B_i$.
-Equations \ref{eq:itersolver2} and \ref{eq:itersolver3} \cite{melese_thermal_1984} solved the mass flow distribution iteratively.
-As the mass flow distributions in Cases 4 and 5 depend on the temperature, the calculations required a second level of iterations to obtain the final mass flow distribution.
-The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
-
+Case 1 assumes a flat velocity profile in all coolant paths and calculated the mass flow using equation \ref{eq:case1mdot}
 \begin{align}
-  & \dot{m}_i = \frac{A_i}{\sum_j A_j} \label{eq:case2mdot} \\
-  & \Delta P = \frac{1}{\rho_i} \left( \frac{\dot{m}_i}{A_i} \right)^2 f \frac{2 L}{D_h} \label{eq:case3mdot} \\
-  & \Delta P = \frac{\dot{m}_i^2}{2 \rho_i A_i^2} \left[ \frac{4 f L (T_i+T_o)}{2 D T_i} + \frac{T_o-T_i}{T_i} \right]  \label{eq:case5mdot} \\
-  & \Delta P = B_i \dot{m}_i^2 \label{eq:itersolver1} \\
-  & \Delta P = \left( \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{B_i}}} \right)^2 \label{eq:itersolver2} \\
-  & \dot{m}_i = \sqrt{\Delta P / B_i} \label{eq:itersolver3}
+  & \dot{m}_i = \frac{A_i}{\sum_j A_j} \dot{m}_T \label{eq:case1mdot}
   \intertext{where}
   & \dot{m}_i = \mbox{channel $i$ mass flow rate } [kg \cdot s^{-1}] \notag \\
   & A_i = \mbox{channel $i$ cross-sectional area } [cm^2] \notag \\
-  & \Delta P = \mbox{pressure drop } [Pa] \notag \\
-  & \rho_i = \mbox{channel inlet coolant density } [kg \cdot m^{-3}] \notag \\
-  & f = \mbox{friction factor } [-] \notag \\
-  & T_i = \mbox{channel inlet coolant temperature } [^{\circ}C] \notag \\
-  & T_o = \mbox{channel outlet coolant temperature } [^{\circ}C] \notag \\
   & \dot{m}_T = \mbox{total mass flow rate } [kg \cdot s^{-1}]. \notag
 \end{align}
 
+Case 2 and 3 used equation \ref{eq:case2mdot} \cite{melese_thermal_1984} to calculated the pressure drop
+\begin{align}
+  & \Delta P = \frac{\dot{m}_i^2}{\rho_i A_i^2} f \frac{2 L}{D_h} \label{eq:case2mdot} \\
+  & B_i = \frac{1}{\rho_i A_i^2} f \frac{2 L}{D_h}
+  \intertext{where}
+%  & \dot{m}_i = \mbox{channel $i$ mass flow rate } [kg \cdot s^{-1}] \notag \\
+%  & A_i = \mbox{channel $i$ cross-sectional area } [cm^2] \notag \\
+  & \Delta P = \mbox{pressure drop } [Pa] \notag \\
+  & \rho_i = \mbox{channel inlet coolant density } [kg \cdot m^{-3}] \notag \\
+  & f = \mbox{friction factor } [-] \notag \\
+  & L = \mbox{channel length } [m] \notag \\
+  & D_h = \mbox{hydraulic diameter } [m]. \notag
+\end{align}
+
+Case 3 differs from Case 2 as the friction factor $f$ depends on the average channel temperature.
+Case 4 used equation \ref{eq:case4mdot} \cite{melese_thermal_1984} to calculate the pressure drop
+\begin{align}
+  & \Delta P = \frac{\dot{m}_i^2}{2 \rho_i A_i^2} \left[ \frac{4 f L (T_i+T_o)}{2 D T_i} + \frac{T_o-T_i}{T_i} \right]  \label{eq:case4mdot} \\
+  & B_i = \frac{1}{2 \rho_i A_i^2} \left[ \frac{4 f L (T_i+T_o)}{2 D T_i} + \frac{T_o-T_i}{T_i} \right]
+  \intertext{where}
+  & T_i = \mbox{channel inlet coolant temperature } [^{\circ}C] \notag \\
+  & T_o = \mbox{channel outlet coolant temperature } [^{\circ}C]. \notag \\
+\end{align}
+
+Equations \ref{eq:case2mdot} and \ref{eq:case4mdot} used an iterative solver to obtain $\dot{m}_i$ \cite{melese_thermal_1984}(for further detail refer to Section \ref{appendix:equations-fluid})
+\begin{align}
+  & B_i^{(n)} = f \left(\dot{m}_i^{(n)} \right) \\
+  & \Delta P^{(n)} = \frac{\dot{m}_T}{\sum_i \frac{1}{\sqrt{ B_i^{(n)} }}} \\
+  & \dot{m}_i^{(n+1)} = \sqrt{\frac{\Delta P^{(n)}}{ B_i^{(n)} }}
+  \intertext{with a convergence criteria of}
+  & \left| \Delta P^{(n+1)} - \Delta P^{(n)} \right| < 10^{-4}.
+\end{align}
+
+The solution of Cases 3 and 4 depend on the temperature, requiring a second level of iterations.
+The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
+These iterative solvers were implemented in a python script external to Moltres.
+
 Table \ref{tab:th-assem-flow-massflow} displays the results achieved in this thesis for the mass flow rates.
+Equation \ref{eq:rel-error2} evaluates the relative difference to the reference results
+\begin{align}
+  & \Delta_m = \left| \frac{\dot{m}_i-\dot{m}_{r, i}}{\dot{m}_{r, i}} \right|  \label{eq:rel-error2}
+  \intertext{where}
+  & \dot{m}_i = \mbox{channel $i$ mass flow rate determined by this work } [g \cdot s^{-1}] \notag \\
+  & \dot{m}_{r, i} = \mbox{reference mass flow rate } [g \cdot s^{-1}]. \notag
+\end{align}
+
 % Case 4 and case 5 converged after two and three iterations, respectively.
 Case 1 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
 Case 2 and 3 barely differ, which proves that not considering the viscosity's temperature dependency yields a more straightforward method with an acceptable accuracy.
 Case 4 arrives at the values closest to the reference solution.
 
-Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures.
+Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures and the relative difference to the reference values using equation \ref{eq:rel-error}.
 Case 1 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
 Case 4 yields the results closest to the reference values.
 For the maximum fuel temperature, Case 1 and 4 yield the best results.
@@ -399,39 +423,44 @@ For these reasons, the rest of the thesis uses the Case 1 model for the fluid fl
 
 \begin{table}[htbp!]
   \centering
-  \caption{Comparison between the calculated flow rates and the reference values \cite{sato_computational_2010}. Values expressed in [g/s].}
+  \caption{Comparison of the calculated flow rates and the reference values \cite{sato_computational_2010}. Mass flow rates values expressed in [$g \cdot s^{-1}$].}
   \label{tab:th-assem-flow-massflow}
-  \begin{tabular}{l|ccccccc}
+\begin{tabular}{c S S S S S S S S S}
 \toprule
-Channel & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+         &           & \multicolumn{2}{c}{Case 1} & \multicolumn{2}{c}{Case 2} & \multicolumn{2}{c}{Case 3} & \multicolumn{2}{c}{Case 4} \\
 \midrule
-Reference  & 5.88 & 10.80 & 10.85 & 10.91 & 11.08 & 10.80 & 21.58 \\
-Case 1  & 6.66 & 10.41 & 10.41 & 10.41 & 10.41 & 10.41 & 20.82 \\
-Case 2  & 5.98 & 10.91 & 10.91 & 10.91 & 10.91 & 10.91 & 21.82 \\
-Case 3  & 5.97 & 10.90 & 10.90 & 10.91 & 10.92 & 10.90 & 21.80 \\
-Case 4  & 5.83 & 10.75 & 10.81 & 10.90 & 11.09 & 10.73 & 21.58 \\
+Channel  & \multicolumn{1}{c}{$\dot{m}_{r, i}$} & \multicolumn{1}{c}{$\dot{m}_{i}$} & \multicolumn{1}{c}{$\Delta_m$ [\%]} & \multicolumn{1}{c}{$\dot{m}_{i}$} & \multicolumn{1}{c}{$\Delta_m$ [\%]} & \multicolumn{1}{c}{$\dot{m}_{i}$} & \multicolumn{1}{c}{$\Delta_m$ [\%]} & \multicolumn{1}{c}{$\dot{m}_{i}$} & \multicolumn{1}{c}{$\Delta_m$ [\%]}  \\
 \midrule
-Channel & 8 & 9 & 10 & 11 & 12 & 13 & Half-gap \\
-\midrule
-Reference  & 21.67 & 21.83 & 10.88 & 21.81 & 22.20 & 11.10 & 8.28 \\
-Case 1  & 20.82 & 20.82 & 10.41 & 20.82 & 20.82 & 10.41 & 8.20 \\
-Case 2  & 21.82 & 21.82 & 10.91 & 21.82 & 21.82 & 10.91 & 8.55 \\
-Case 3  & 21.81 & 21.83 & 10.91 & 21.82 & 21.85 & 10.92 & 8.55 \\
-Case 4  & 21.71 & 21.92 & 10.84 & 21.87 & 22.26 & 11.08 & 8.63 \\
+1        & 5.88      & 6.66       & 13.3      & 5.98        & 1.7        & 5.97       & 1.5       & 5.83      & 0.9    \\
+2        & 10.80     & 10.41      & 3.6       & 10.91       & 1.0        & 10.90      & 0.9       & 10.75     & 0.5    \\
+3        & 10.85     & 10.41      & 4.1       & 10.91       & 0.6        & 10.90      & 0.5       & 10.81     & 0.4    \\
+4        & 10.91     & 10.41      & 4.6       & 10.91       & 0.0        & 10.91      & 0.0       & 10.90     & 0.1    \\
+5        & 11.08     & 10.41      & 6.0       & 10.91       & 1.5        & 10.92      & 1.4       & 11.09     & 0.1    \\
+6        & 10.80     & 10.41      & 3.6       & 10.91       & 1.0        & 10.90      & 0.9       & 10.73     & 0.6    \\
+7        & 21.58     & 20.82      & 3.5       & 21.82       & 1.1        & 21.80      & 1.0       & 21.58     & 0.0    \\
+8        & 21.67     & 20.82      & 3.9       & 21.82       & 0.7        & 21.81      & 0.6       & 21.71     & 0.2    \\
+9        & 21.83     & 20.82      & 4.6       & 21.82       & 0.0        & 21.83      & 0.0       & 21.92     & 0.4    \\
+10       & 10.88     & 10.41      & 4.3       & 10.91       & 0.3        & 10.91      & 0.3       & 10.84     & 0.4    \\
+11       & 21.81     & 20.82      & 4.5       & 21.82       & 0.0        & 21.82      & 0.0       & 21.87     & 0.3    \\
+12       & 22.20     & 20.82      & 6.2       & 21.82       & 1.7        & 21.85      & 1.6       & 22.26     & 0.3    \\
+13       & 11.10     & 10.41      & 6.2       & 10.91       & 1.7        & 10.92      & 1.6       & 11.08     & 0.2    \\
+Half-gap & 8.28      & 8.20       & 1.0       & 8.55        & 3.3        & 8.55       & 3.3       & 8.63      & 4.2    \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[htbp!]
   \centering
-  \caption{Comparison of the maximum temperatures that the different cases yield.}
+  \caption{Comparison of the maximum temperatures between Moltres-derived and the reference results. Temperature values expressed in [$^{\circ}$C].}
   \label{tab:th-assem-flow-results}
-\begin{tabular}{l|ccccc}
+\begin{tabular}{l S[table-format=3.0] S[table-format=3.0] S[table-format=1.1] S[table-format=3.0] S[table-format=1.1] S[table-format=3.0] S[table-format=1.1] S[table-format=3.0] S[table-format=1.1]}
 \toprule
-        & Reference & Case 1 & Case 2 & Case 3 & Case 4 \\
+        &  & \multicolumn{2}{c}{Case 1} & \multicolumn{2}{c}{Case 2} & \multicolumn{2}{c}{Case 3} & \multicolumn{2}{c}{Case 4} \\
 \midrule
-Coolant & 1005    &  994   &  999   & 1000  & 1007 \\
-Fuel    & 1114    & 1116   & 1109   & 1110  & 1116 \\
+        & \multicolumn{1}{c}{$T_{ref}$} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{$\Delta_T$ [\%]} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{$\Delta_T$ [\%]} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{$\Delta_T$ [\%]} & \multicolumn{1}{c}{T} & \multicolumn{1}{c}{$\Delta_T$ [\%]} \\
+\midrule
+Coolant & 1005    &  994   & 1.1 &  999  & 0.6 & 1000  & 0.5 & 1007 & 0.2 \\
+Fuel    & 1114    & 1116   & 0.2 & 1109  & 0.4 & 1110  & 0.4 & 1116 & 0.2 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -460,7 +489,7 @@ Further refinement of the mesh was not possible as the simulation memory require
   \centering
   \caption{Maximum temperatures.}
   \label{tab:th-full-assem-results}
-\begin{tabular}{l|ccccc}
+\begin{tabular}{lccccc}
 \toprule
                             & Mesh 1 & Mesh 2 & Mesh 3 & Mesh 4 & Mesh 5 \\
 \midrule
@@ -719,6 +748,7 @@ Figure \ref{fig:coupled-results-flux} and \ref{fig:coupled-results-th} display t
 The thermal feedback affects the flux, which consequently affects the thermal-fluids.
 The axial flux peak moves towards the reactor top, where the temperatures are lower than the bottom.
 Thus, the heat production shifts towards the reactor top, and the temperatures near the reactor outlet decrease.
+The radial temperature profile has a similar shape to the thermal flux, as this group is the main contributor to fission and thus the power profile.
 The radial flux does not change considerably, hence the temperature profile does not change much either.
 The thermal feedback moves the radial temperature profile up because the heat production shifts towards the top.
 
@@ -849,7 +879,7 @@ Although using the point-wise approach is easier for the input file definition, 
         \includegraphics[width=0.40\textwidth]{figures-thermal/coupledH-auxtemp}
     }
   \hfill
-  \caption{Temperature maps.}
+  \caption{Temperature distribution.}
   \label{fig:coupled-ave-results-th2}
 \end{figure}
 
