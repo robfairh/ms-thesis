@@ -14,13 +14,13 @@ Section \ref{sec:setup} analyzes different ways to set up Moltres input files.
 \subsection{Homogeneous vs. heterogeneous isotope distribution}
 \label{sec:homo-hetero}
 
-This section discusses a study with the objective to determine the proper way to treat the fuel compact heterogeneities in Serpent.
+This section determines the proper way to treat the fuel compact heterogeneities in Serpent.
 This study modeled in Serpent two different material distributions in a fuel compact: a homogeneous distribution of the isotopes and a heterogeneous distribution that explicitly modeled the TRISO particles.
 The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite, exhibited in Figure \ref{fig:compact-model}.
 Table \ref{tab:compact} specifies the model input parameters.
 The material temperature was 1200K, a case that represents the \gls{HFP} core state.
-The serpent simulations included 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles.
-The homogeneous distribution simulation took 1.73 and the heterogeneous distribution simulation 2.21 minutes using 256 cores --- the heterogeneous calculation took 28$\%$ longer.
+The Serpent simulations included 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles for the calculations.
+The homogeneous distribution simulation took 1.73 minutes and the heterogeneous distribution simulation 2.21 minutes using 256 cores --- the heterogeneous calculation took 28$\%$ longer.
 
 \begin{figure}[htbp!]
   \centering
@@ -36,8 +36,8 @@ The homogeneous distribution simulation took 1.73 and the heterogeneous distribu
 \end{figure}
 
 The \gls{Keff} was 1.17527 $\pm$ 0.00021 for the homogeneous distribution and 1.25107 $\pm$ 0.00020 for the heterogeneous distribution.
-Using the heterogeneous distribution as a reference, we calculated the relative error of some of the group constants in an eigenvalue calculation.
-Serpent generated the group constants using the three energy group structure in Table \ref{tab:energygroups}.
+Serpent generated the group constants using the three energy group structure [0, 2.38eV, 111keV, 20MeV].
+Using the heterogeneous distribution as the reference, a python script calculated the relative error of some of the group constants in an eigenvalue calculation.
 The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion-eig}).
 Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
 The figure does not include $D_g$ and $\chi^t_g$ because their relative errors were less than 1$\%$.
@@ -77,11 +77,24 @@ Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous
 For this study, Serpent modeled a fuel column of the MHTGR-350 and generated the group constants.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
 Serpent generated the group constants for three materials: moderator, coolant, and fuel compact.
-The Serpent simulations included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles.
+The Serpent simulations included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles for the calculations.
 % The \gls{Keff} was 1.41933.
 Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the fuel column shown in Figure \ref{fig:fuelcolumn}.
 I made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
 The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF} per energy-group.
+
+\begin{figure}[htbp!]
+	\centering
+    \subfloat[Serpent model geometry.]{
+        \includegraphics[width=0.35\textwidth]{figures-neutronics/standard}
+    }
+    \subfloat[Moltres model geometry.]{
+        \includegraphics[width=0.22\textwidth]{figures-neutronics/3D-assembly-30deg-reflec-meshB2}
+    }
+	\hfill
+    \caption{Fuel column of the MHTGR-350. $xy$-plane in the active core region.}
+	\label{fig:fuelcolumn}
+\end{figure}
 
 Moltres simulation obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-8}$, defined by equation \ref{eq:moltres-tol}
 
@@ -92,35 +105,12 @@ Moltres simulation obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-
    & \varepsilon = \mbox{convergence tolerance } [-]. \notag
 \end{align}
 
-The calculation used a two energy groups with the structure [0, 0.625eV, 20MeV].
+The calculation used two energy groups with the structure [0, 0.625eV, 20MeV].
 The eigenvalue calculation did not converge.
-Although several factors could contribute to this behavior, we focused on the validity of the diffusion calculations in this system.
-
-
-% \begin{figure}[htbp!]
-% 	\centering
-% 	\includegraphics[width=0.45\linewidth]{figures-neutronics/oecd-standard-column-legend}
-% 	\hfill
-% 	\caption{Serpent model of a MHTGR-350 fuel column.}
-% 	\label{fig:fuelcolumn}
-% \end{figure}
-
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Serpent model geometry.]{
-        \includegraphics[width=0.35\textwidth]{figures-neutronics/oecd-standard-column-legend}
-    }
-    \subfloat[Moltres model geometry.]{
-        \includegraphics[width=0.22\textwidth]{figures-neutronics/3D-assembly-30deg-reflec-meshB2}
-    }
-	\hfill
-    \caption{Fuel column of the MHTGR-350. $xy$-plane in the active core region.}
-	\label{fig:fuelcolumn}
-\end{figure}
+Although several factors could contribute to this behavior, I focused on the validity of the diffusion calculations in this system.
 
 % Diffusion validity see bu1/tools-bu.txt
 In diffusion theory, the current density $J$ is proportional to the gradient of the flux, see equation \ref{eq:diff} \cite{leppanen_development_2007}.
-
 \begin{align}
    & J = - D \nabla \phi \label{eq:diff} \\
    \intertext{where}
@@ -141,7 +131,7 @@ More detailed studies of the transport equation indicate that the following case
 \begin{itemize}
     \item regions near vacuum boundaries and low-density material regions,
     \item regions near strongly absorbing media,
-    \item and egions near localized sources.
+    \item and regions near localized sources.
 \end{itemize}
 
 The diffusion theory applies best to geometries consisting of large homogeneous regions where the flux gradient is small.
