@@ -285,14 +285,11 @@ The figures also display the difference between Serpent and Moltres results, whe
 
 % left here: analysis
 For all the operational cases, the fluxes from Serpent and Moltres are close in shape and magnitude.
-
-For the operational case 1, the error between the fluxes is .
-For the operational case 2, the fluxes look similar.
-The flux in Moltres has a straighter shape.
-The thermal flux peak in the bottom reflector is bigger.
-For the operational case 3, the flux in Moltres has a larger magnitude.
-Additionally, the shape of the Moltres flux is concave, while the Serpent flux is convex.
-For the operational case 4, the flux in Moltres is larger and more concave than Serpent flux.
+For the operational case 1, the largest error is 1.54 $\times 10^12$ and it is located at the interface between the bottom reflector and the homogeneous fuel.
+For the operational case 2, 3, and 4, the largest error is 3.81 $\times 10^12$, 8.49 $\times 10^12$, and 1.52 $\times 10^13$, respectively.
+The largest error for cases 2, 3, and 4 is located at the bottom reflector close to the interface shared with the homogeneous fuel.
+All the operational cases largest errors occur for the thermal flux.
+This behavior is expected, as the diffusion theory assumptions are weaker at interfaces between different materials.
 
 % No LBP 600
 \begin{figure}[htbp!]
@@ -388,7 +385,7 @@ Nonetheless, this is not always the case.
 For example, in Figure \ref{fig:assembly-noLBP-er-b}, from 12 to 15-energy groups, the thermal flux agreement improves, but the fast flux agreement worsens.
 Additionally, the relative error of the cases with no burnable poisons is smaller than the relative error of the cases with burnable poison.
 The treatment of the burnable poisons challenges the accuracy of the homogenized simulations in Moltres.
-For example, a three-energy group structure yields more than 100$\%$ error when treating the burnable poison, Figure \ref{fig:assembly-LBP-er}.
+Three, six, and nine energy-groups yield more than 50$\%$ error when treating the burnable poison, Figure \ref{fig:assembly-LBP-er}.
 
 % No LBP
 \begin{figure}[htbp!]
