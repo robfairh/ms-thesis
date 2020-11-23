@@ -93,7 +93,49 @@
 %% Note that ProQuest truncates their abstracts at 350 words.
 \begin{abstract}
 
-Abstract.
+% climate change and HTGRs role
+The energy needs of the future require the development of clean energy sources to ease the increasing environmental concerns.
+High-Temperature Gas-cooled Reactors have several desirable features that make them ideal candidates for a near future large-scale deployment.
+Some of these features are a high temperature and high thermal cycle efficiency, which enable a wide range of process heat applications, such as hydrogen production.
+Implementing hydrogen economies can decarbonize the transport and power sectors, offering an alternative to ease climate change.
+
+% what did this work do
+This work uses Moltres as the main simulation tool.
+Although Moltres original development targeted Molten Salt Reactors, this work studied Moltres applicability to multi-physics simulations of prismatic High-Temperature Gas-cooled Reactors.
+Multi-physics simulations are necessary for assessing reactor safety characteristics.
+To ensure Moltres multi-physics modeling capabilities requires the assessment of the independent modeling capabilities of the different involved physical phenomena.
+Therefore, this thesis breaks down the analysis into three parts: stand-alone neutronics, stand-alone thermal-fluids, and coupled neutronics/thermal-fluids.
+
+% results: ch4
+Regarding stand-alone neutronics, several analyses compare the results calculated by Moltres and Serpent on a model of the MHTGR-350.
+The first analysis studied the energy group structure effects on the simulation of a fuel column.
+The results of the study suggest using a 15-energy group structure for attaining a desirable accuracy.
+The following analysis focuses on the full-core problem and compares different aspects of the simulations, concluding that Moltres obtains reasonably accurate results.
+The final study on stand-alone neutronics describes Moltres results of Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark.
+The benchmark exercise proved to be a modeling challenge, requiring the implementation of several approximations.
+For the most part, this thesis demonstrates Moltres capability to simulate stand-alone neutronics of prismatic High-Temperature Gas-cooled Reactors.
+
+% results: ch5
+Regarding stand-alone thermal-fluids, several studies compare Moltres results to previously published results.
+These studies focus on local models such as the unit cell and the fuel column problems, for which Moltres results differ by less 2\% to the published results.
+Further studies analyze the possibility of extending the thermal-fluids model implemented in this problems to a full-core simulation, finding a high memory requirement imposed by the simulations.
+The full-core simulations focus on Phase I Exercise 2 of the benchmark, for which the implementation of a two-level approach in Moltres was necessary.
+The study's results were within a 11.3\% difference to the published results, concluding that further analysis is required.
+
+% results: ch5-coupled
+Regarding coupled neutronics/thermal-fluids, the analysis describes Phase I Exercise 3 of the benchmark.
+The exercise uses a simplified model that help to visualize some of the essential aspects of a multi-physics simulations in Moltres.
+This exercise finds some flaws in Moltres model and sets a basis for future work.
+
+% results: ch 6
+This thesis aligns with the University of Illinois goals to reduce carbon emissions from the electricity and transportation sectors on its campus.
+By introducing a nuclear reactor coupled to a hydrogen plant as a solution, this work quantified carbon savings and the reduction of the reliance on dispatchable sources on campus.
+
+
+
+
+
+This work also introduces some possible future work which will be continued as part of the PhD scope following this MS thesis.
 
 \end{abstract}
 
