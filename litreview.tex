@@ -47,9 +47,9 @@ HEXPEDITE's use prevailed in the analysis of \glspl{HTGR} until recently.
 In 2010, \gls{INL} conducted a study \cite{ortensi_deterministic_2010-1} in which they compared HEXPEDITE's results against several diffusion solvers, as well as the Monte Carlo solvers MCNP5 \cite{rsicc_computer_code_collection_mcnp5_2003} and Serpent \cite{leppanen_serpent_2015}.
 
 DIF3D \cite{lawrence_dif3d_1983} and PARCS \cite{downar_parcs_2004} are other examples of prevalent nodal diffusion tools.
-DIF3D has several solution options such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
+DIF3D has several solution options, such as the diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, and the VARIANT nodal transport method.
 % VARIANT: variational nodal \cite{palmiotti_variant_1995}
-PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multigroup transport simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
+PARCS has several solution options as well, such as a diffusion \gls{FDM}, diffusion \gls{NEM} based on \gls{TIP}, P$_{N}$ transport methods, and the multi-group transport simplified P$_3$ with \gls{FDM} and \gls{NEM} discretizations.
 
 % from ortensi_deterministic_2010-1 and wang_modified_2018
 Nodal methods solve relatively coarse meshes for approximate solutions.
@@ -65,7 +65,7 @@ The FEM is a well-established method in applied mathematics and engineering.
 FEM is a numerical technique for finding approximate solutions to partial differential equations by deriving their weak or variational form.
 Most applications make \gls{FEM} preferable due to its flexibility in the treatment of curved or irregular geometries.
 Also, the use of high order elements attains higher rates of convergence \cite{cavdar_finite_2004}.
-The first engineering application of \gls{FEM} was in the field of structural engineering dating back to 1956.
+The first engineering application of \gls{FEM} was in the field of structural engineering, dating back to 1956.
 In successive years, \gls{FEM} became the most extensively used technique in almost every branch of engineering.
 \glspl{FEM} have several advantages over the nodal methods.
 It provides flexibility in the geometry definition, a firm mathematical basis, ease in extension to the multi-group application, and detailed point-wise accurate solutions \cite{lee_development_2008}.
@@ -80,7 +80,7 @@ The list of \gls{FEM} diffusion solvers is more extensive, but this thesis focus
 
 % CRONOS
 \gls{CEA} developed CRONOS2 \cite{lautard_cronos_1990} as part of the SAPHYR system.
-CRONOS2 conducts steady-state and transient multi-group calculations, based on the diffusion equation or the transport equation using the S$_N$ method and a \gls{FDM} or a \gls{FEM} discretization.
+CRONOS2 conducts steady-state and transient multi-group calculations, based on the diffusion equation or the transport equation using the S$_N$ method and an FDM or a FEM discretization.
 In 2008, Damian et al. \cite{damian_vhtr_2008} presented the code suite NEPTHIS\cite{cavalier_presentation_2005}/CAST3M\cite{studer_cast3marcturus_2007}, software that relied on CRONOS2.
 Section \ref{sec:litreview-multi} describes further the coupling scheme.
 
@@ -88,8 +88,8 @@ Section \ref{sec:litreview-multi} describes further the coupling scheme.
 In 2008, the \gls{KAERI} published an article \cite{lee_development_2008} that presented CAPP.
 Its purposes are to conduct steady-state core physics analysis, core depletion analysis, and core transient analysis.
 The article validated the software with two benchmark problems: the IAEA PWR benchmark problem, and Phase I Exercise 1 of the OECD/NEA PBMR-400 Benchmark \cite{reitsma_oecd-neansc_2008}.
-In 2011, Lee et al. published an article \cite{lee_development_2011} that extended the functionalities of CAPP to prismatic HTGRs.
-To validate CAPP, they had to integrate a simplified thermal-fluids tool to the software.
+In 2011, Lee et al. published an article \cite{lee_development_2011} that extended CAPP's functionalities to prismatic HTGRs.
+To validate CAPP, they had to integrate a simplified thermal-fluids tool into the software.
 Section \ref{sec:litreview-multi} describes the thermal-fluids tool and the coupling scheme.
 
 % Proghorn and Rattlesnake
@@ -97,7 +97,7 @@ RattleSnake \cite{wang_rattlesnake_2019} is the MOOSE \cite{gaston_moose_2009} b
 \gls{INL} had initially developed Pronghorn \cite{novak_pronghorn_2018} to model \glspl{PBMR} \cite{strydom_inl_2013}.
 The MOOSE neutronics kernel library Yak incorporated the neutron diffusion models initially in Pronghorn.
 Currently, RattleSnake is the primary tool for solving the linearized Boltzmann neutron transport equation within MOOSE and relies heavily on Yak.
-Various solvers are available under RattleSnake, including low-order multigroup diffusion, spherical harmonics transport, and discrete ordinates transport, all solved with the \gls{FEM}.
+Various solvers are available under RattleSnake, including low-order multi-group diffusion, spherical harmonics transport, and discrete ordinates transport, all solved with the \gls{FEM}.
 % Both RattleSnake and Pronghorn yielded the same exact results when using the continuous \gls{FEM} multigroup diffusion option in RattleSnake.
 
 % strydom_inl_2013
@@ -111,17 +111,17 @@ The results for Pronghorn and RattleSnake were identical, and all presented resu
 
 % Number of energy groups impact over the calculations
 In the context of this thesis, Moltres uses homogenized group constants previously generated by neutron transport solvers.
-The choice of the energy group structure for the group constant homogenization affects the accuracy of the diffusion calculation.
+The choice of the energy group structure for the group constant homogenization affects the diffusion calculation accuracy.
 The longer neutron mean free path in \glspl{HTGR} compared to \gls{LWR} increases the spectral interactions between elements.
 For this reason, HTGR analyses require more energy groups than conventional \gls{LWR} analyses.
 This section summarizes previous studies on the impact of the energy group structure over the diffusion calculations.
 
 \gls{ANL} directed a study \cite{lee_status_2006} to compare the accuracy of nodal diffusion calculations employing different energy group structures.
-The group constant homogenization used the DRAGON neutron transport solver and the diffusion calculations utilized the application DIF3D.
+The group constant homogenization used the DRAGON neutron transport solver, and the diffusion calculations utilized the application DIF3D.
 For the study, the ANL team implemented a one-dimensional fuel-reflector model in which they compared the solution accuracy using 4, 7, 8, 14, and 23 energy groups.
 They also used alternative energy group structures for the same number of groups.
 For simplicity, the authors used the homogenized fuel compact model and generated all the group constant at 300 K.
-One of their conclusions was that the number of energy groups should be more than 4, and more than 6 would be sufficient for uranium fueled HTGRs.
+One of their conclusions was that the number of energy groups should be more than four, and more than six would be sufficient for uranium fueled HTGRs.
 Another finding was that the accuracy of the diffusion calculation is sensitive to the energy group boundaries.
 % Mention something about the metrics of the study? To asses the accuracy, they compared the multiplication factor.
 
@@ -153,17 +153,17 @@ On the other hand, the open literature has not widely investigated the impact of
 
 Section \ref{sec:litreview-neut} introduced several deterministic diffusion classes, including FDM, nodal methods, and FEM.
 The fundamental motivation for the development of nodal methods and FEM was the impractical application of the \gls{FDM} to three-dimensional problems.
-Section \ref{sec:litreview-neut} also discussed on the main characteristics of these methods, directing the reader's attention to the advantages of the FEM.
-Although nodal methods are efficient, most applications make FEMs preferable due to its flexibility in the treatment of irregular geometries.
+Section \ref{sec:litreview-neut} also discussed the main characteristics of these methods, directing the reader's attention to the advantages of the FEM.
+Although nodal methods are efficient, most applications make FEMs preferable due to their flexibility in the treatment of irregular geometries.
 Additionally, FEMs have a firm mathematical basis, and its formulation eases the extension to multi-group applications.
-Moltres relies on the FEM counting with all the advantages of the method.
+Moltres relies on the FEM, counting with all the advantages of the method.
 
 Section \ref{sec:litreview-neut} summarized previous efforts in deterministic diffusion solvers of prismatic HTGRs.
 This thesis draws two main conclusions from those earlier efforts.
 The first conclusion is that several authors validated their solvers by comparison to other tools.
 In the context of this thesis, Chapter \ref{ch:neutronics} describes two exercises: first, a comparison between Moltres and Serpent-derived results, and second, a comparison between Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark results calculated by Moltres and the exercise's published results.
 The second conclusion is that several prismatic HTGRs count with an integrated thermal-fluids solver.
-Due to a strong thermal feedback, modeling of prismatic HTGRs with Moltres requires the incorporation of a thermal-fluids solver.
+Due to strong thermal feedback, modeling prismatic HTGRs with Moltres requires incorporating a thermal-fluids solver.
 Section \ref{sec:litrev-thermalf} discusses previous work in the thermal-fluids modeling of prismatic HTGRs.
 
 % energy group study
@@ -178,10 +178,10 @@ Chapter \ref{ch:neutronics} studies the accuracy of Moltres diffusion calculatio
 
 % sort of motivation
 This section of the literature review summarizes previous work on the thermal-fluids modeling of prismatic HTGRs.
-Thermal-fluids calculations enable the correct design of \glspl{HTGR}.
+Thermal-fluid calculations enable the correct design of \glspl{HTGR}.
 Predicting the maximum fuel temperature at steady-state is of paramount importance to succeed in that task.
 I emphasize this statement in the case that hydrogen production is desirable, as that process requires higher coolant temperatures, leading to high fuel and reactor vessel temperatures.
-This literature review analyzed several approaches that helped choosing a thermal-fluids model to implement in Moltres simulations.
+This literature review analyzed several approaches that helped to choose a thermal-fluids model to implement in Moltres simulations.
 
 % sort of intro to simplified models
 The complex geometry of the hexagonal fuel assembly requires numerical calculations for obtaining accurate evaluations.
@@ -211,9 +211,9 @@ Several studies have used these software programs.
 % macdonald_ngnp_2003
 For example, \gls{INL} conducted in 2003 a design study \cite{macdonald_ngnp_2003} in support of the \gls{NGNP} project.
 The authors conducted several parametric studies on the GT-MHR \cite{general_atomics_gas_1996}, with the objective of increasing the coolant temperature.
-Using POKE and TAC2D, they evaluated three major design modifications: reducing the bypass flow, controlling the inlet coolant flow distribution, and increasing the height of the reactor.
+Using POKE and TAC2D, they evaluated three major design modifications: reducing the bypass flow, controlling the inlet coolant flow distribution, and increasing the reactor's height.
 
-Among the simplified approaches, this thesis differentiates the \textit{flow network}, \textit{equivalent cylindrical}, and \textit{unit cell} models.
+This thesis differentiates the \textit{flow network}, \textit{equivalent cylindrical}, and \textit{unit cell} models among the simplified approaches.
 The flow network model treats the coolant flow paths in the core as a cross-connected flow network \cite{shenoy_htgr_1974}.
 Constant pressure nodes connected to flow branches make up the network.
 The model uses the one-dimensional conservation equations to solve the pressure loss and coolant temperature in each network node.
@@ -226,13 +226,13 @@ The model assumes that the coolant removes all the heat generated in the cell \c
 Using the flow network analysis tool RELAP5-3D/ATHENA \cite{inl_relap5-3dathena_2005}, Reza et al. \cite{reza_design_2006} conducted a thermal-fluids study of the GT-MHR.
 Reza et al. increased the reactor outlet temperature to enable hydrogen production.
 Additionally, they evaluated alternative inlet coolant flow configurations in an attempt to reduce the reactor vessel temperatures.
-After finding an optimal configuration, they evaluated the fuel and the reactor vessel's maximum temperatures during the \gls{LPCC} and the \gls{HPCC} events.
+After finding an optimal configuration, they assessed the fuel and the reactor vessel's maximum temperatures during the \gls{LPCC} and the \gls{HPCC} events.
 
 % equivalent cylindrical model
 % no_multi-component_2007
 An example of an application using the equivalent cylindrical approach is GAMMA \cite{lim_gamma_2006}\cite{no_multi-component_2007}, a system thermal-fluids analysis tool.
 GAMMA's primary motivation is simulating the air ingress event following a LOCA.
-Following the depressurization of helium in the core, air could potentially enter the core through the break and oxidize the in-core graphite structure.
+Following the depressurization of helium in the core, air could enter the core through the break and oxidize the in-core graphite structure.
 Graphite oxidation is an exothermic chemical reaction and, thus, it is a significant concern.
 GAMMA solves heat conduction, fluid flow, chemical reactions, and multi-component molecular diffusion.
 Together with a multi-dimensional analysis feature, GAMMA has a one-dimensional analysis capability for  modeling a flow network.
@@ -249,10 +249,10 @@ Finally, the authors validated the calculation scheme by comparing its results w
 Nakano et al. \cite{nakano_conceptual_2008} studied different fuel assembly configurations using several simplified approximations.
 The authors used FLOWNET and TAC2D for determining the flow distribution and fuel temperature.
 The fuel temperature calculation used the equivalent cylindrical model of a unit cell.
-However, the asymmetry of the unit cell configuration makes the temperature distribution asymmetric in the graphite block, behavior that the equivalent cylindrical model fails to capture.
+However, the unit cell's asymmetry makes the temperature distribution asymmetric in the graphite block, behavior that the equivalent cylindrical model fails to capture.
 
 % in_three-dimensional_2006
-In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of the GT-MHR 600, which is the spot in the core with the largest power density.
+In 2006, In et al. \cite{in_three-dimensional_2006} conducted a more detailed analysis using a three-dimensional model of the unit cell in the hot-spot of the GT-MHR 600, spot in the core with the largest power density.
 The study predicted the maximum fuel temperature at steady-state at the end of the equilibrium cycle.
 The \gls{CFD} software CFX 10 \cite{ansys_inc_cfx_2006} calculated the three-dimensional temperature profile.
 The results showed that the maximum fuel temperature surpassed the design limits, so the authors proposed decreasing the power density or the axial power peak as countermeasures.
@@ -260,7 +260,7 @@ The results showed that the maximum fuel temperature surpassed the design limits
 % more detailed calculations
 To recapitulate, previous work used simplified approaches to evaluate different aspects of prismatic HTGRs.
 Some of those evaluations include thermal-fluids design, analysis of alternative coolant flow configurations, and accident analysis.
-Such simplified approaches are helpful to understand essential aspects of prismatic HTGRs but they may yield inaccurate temperature distributions \cite{tak_numerical_2008}.
+Such simplified approaches are helpful to understand essential aspects of prismatic HTGRs but may yield inaccurate temperature distributions \cite{tak_numerical_2008}.
 More detailed thermal-fluids evaluations were rare in the open literature until the last 15 years.
 This thesis summarizes some of those evaluations down below.
 
@@ -324,9 +324,9 @@ This simplification leads to under-predicted fuel temperatures for the assemblie
 Additionally, a coupled analysis with a reactor physics tool requires a full-core model \cite{tak_practical_2012}.
 An alternative for an explicit whole-core analysis are approaches that combine the accuracy from CFD tools and the light computational expense of system analysis applications.
 
-The high computational expense of CFD analyses is mostly due to the three-dimensional CFD simulation of the coolant flow \cite{travis_thermalhydraulics_2013}.
+CFD analyses' high computational expense is mostly due to the three-dimensional CFD simulation of the coolant flow \cite{travis_thermalhydraulics_2013}.
 Section \ref{sec:litrev-thermalf} presents two alternatives: the porous media model or the combination of the three-dimensional heat conduction equation for the solid structures to the one-dimensional thermal-fluid conservation equations for the coolant.
-Due to a more extensive use of the second alternative in the open literature, this thesis focuses on it.
+Due to the more extensive use of the second alternative in the open literature, this thesis focuses on it.
 Chapter \ref{ch:thermalfluids} studies the implementation of this alternative in Moltres for studying the thermal-fluids of prismatic HTGRs.
 
 \section{Prismatic HTGR Multi-physics}
@@ -342,11 +342,11 @@ In 2008, Damian et al. \cite{damian_vhtr_2008} studied the passive safety featur
 The study analyzed a three-dimensional core model using the software libraries NEPTHIS and CAST3M/Arcturus for calculating the neutronics and the thermal-fluids, respectively.
 NEPHTIS used a transport-diffusion calculation scheme that relied on the transport application APOLLO2 \cite{sanchez_apollo2_1999} and the diffusion application CRONOS2.
 CAST3M/Arcturus solved the thermal-fluids using the porous media model.
-The authors conducted several parametric studies including the variation of the bypass flow, the average power density, the core geometry, and fuel loading strategy.
+The authors conducted several parametric studies, including the variation of the bypass flow, the average power density, the core geometry, and fuel loading strategy.
 
 % CAPP
 In 2011, Lee et al. published an article \cite{lee_development_2011} in which they extended the functionalities of CAPP to prismatic HTGRs.
-To take into account the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool based on Stainsby's approach \cite{stainsby_investigation_2008}.
+To consider the thermal feedback, the authors integrated into CAPP a simplified thermal-fluids tool based on Stainsby's approach \cite{stainsby_investigation_2008}.
 This approach uses different length scale models to solve the temperature distribution.
 The model divided a fuel column into six triangular prisms, each of them hosting a representative coolant channel, to calculate the axial coolant temperature distribution.
 The coolant temperature served as input to a two-dimensional conduction model that solved the moderator and fuel compact temperatures.
@@ -371,14 +371,14 @@ To test the new transient capabilities, they analyzed two control rod ejection s
 
 % Benchmarks Intro
 The prismatic HTGR simulation tools available have lagged behind tools and methods developed for \glspl{LWR}.
-The evolution of the HTGR technology demands the development of more accurate and efficient simulation tools.
+The evolution of HTGR technology demands the development of more accurate and efficient simulation tools.
 Additionally, the definition of appropriate benchmarks is essential to compare various tools' capabilities.
 % oecd_nea_coupled_2020
 In 2012, the \gls{OECD}/\gls{NEA} defined a benchmark for the \gls{MHTGR}-350 MW reactor \cite{oecd_nea_benchmark_2017}.
 The purpose of this benchmarking exercise is to compare various reactor physics and thermal-fluid analysis methods.
 The MHTGR-350 design serves as a basis for this benchmark.
 The scope of the benchmark is twofold: (1) to establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal-fluid analysis, and (2) to test the depletion capabilities of various lattice physics tools available for prismatic HTGRs.
-Section \ref{sec:ch3-bench} describes the benchmark with more detail.
+Section \ref{sec:ch3-bench} describes the benchmark in more detail.
 
 % j_ortensi_relap-7_2012 j_ortensi_initial_2012
 In 2012, \gls{INL} published a study \cite{j_ortensi_initial_2012} that coupled Pronghorn and RELAP-7 \cite{andrs_relap-7_2012}.
@@ -386,9 +386,9 @@ Pronghorn solved the coupled equations defining the neutron diffusion, fluid flo
 RELAP-7 is a MOOSE-based system application and simulated the plant system layout, including the hot and cold ducts, the helium circulator, and the steam generator.
 It solved the one-dimensional continuity, momentum, and energy equations for a compressible fluid.
 To test the coupling, INL's team carried out the OECD/NEA MHTGR-350 Benchmark \cite{oecd_nea_coupled_2020}.
-The original benchmark provides a set of 26 neutron energy group and temperature dependent cross sections.
+The original benchmark provides a set of 26 neutron energy group and temperature-dependent cross-sections.
 To simplify the debugging, the authors collapsed the 26 groups into two groups.
-Although using two groups reduces the accuracy of the model, the lower number of groups decreases the calculation time by at least a factor of ten.
+Although using two groups reduces the model's accuracy, the lower number of groups decreases the calculation time by at least a factor of ten.
 In their study, a two-dimensional cylindrical model replaced the three-dimensional geometry defined by the benchmark.
 The integrated system testing included two stages: (1) both stand-alone tools underwent several convergence studies, and (2) the integrated system solved the steady-state problem in an integrated manner.
 The authors concluded that the coupling between Pronghorn and RELAP-7 was successful.

@@ -43,17 +43,17 @@ Additionally, the framework and its applications use \gls{MPI} for parallel comm
 
 \textit{Moltres} is a MOOSE-based application initially designed for modeling fluid-fuelled \glspl{MSR}.
 Moltres inherits all the attributes from MOOSE as its application.
-Moltres is an open source simulation tool that operates under an LGPL.
+Moltres is an open-source simulation tool that operates under an LGPL.
 It uses \textit{git} for version control, emphasizing its openness and promoting quality through peer review.
-This is an important feature and contrasts previous multi-physics applications, which operated under restrictive licenses.
+Moltres openness is an important feature and contrasts previous multi-physics applications, which operated under restrictive licenses.
 
 Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
 It can solve the equations in a fully-coupled way or solve each system independently, allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
 
 Moltres is the primary tool in the development of this thesis.
-Its roll is too simulate prismatic HTGRs.
-Chapter \ref{ch:neutronics} and \ref{ch:thermalfluids} compare the results calculated by Moltres and other software to validate Moltres calculation scheme.
-This work also intends to identify Moltres flaws in prismatic HTGR simulations, and sets a basis for future work.
+Its role is to simulate prismatic HTGRs.
+Chapter \ref{ch:neutronics} and \ref{ch:thermalfluids} compare the results calculated by Moltres and other software to validate Moltres' calculation scheme.
+This work also intends to identify Moltres flaws in prismatic HTGR simulations and sets a basis for future work.
 
 \subsection{Serpent}
 \label{sec:ch3-serpent}
@@ -80,7 +80,7 @@ Although the particles' explicit modeling is time-consuming, costly, and impract
 
 The last section introduced Moltres as the primary computational tool utilized in this thesis.
 This section presents this thesis' mathematical basis, which are the equations that describe the neutronics and thermal-fluids of prismatic HTGRs in the steady-state limit.
-For a more detailed explanation refer to Section \ref{appendix:equations}.
+For a more detailed explanation, refer to Section \ref{appendix:equations}.
 Moltres and MOOSE heat conduction module translate these equations into kernels.
 
 \subsection{Diffusion and precursors equations}
@@ -235,7 +235,7 @@ Then, a region of permanent reflector elements surrounds the replaceable reflect
 The reactor vessel encases all the elements.
 Ten layers of fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
 Figure \ref{fig:layoutb} shows an axial view of the reactor.
-Table \ref{tab:maincharac} summarizes the reactor main characteristics.
+Table \ref{tab:maincharac} summarizes the reactor's main characteristics.
 
 \begin{figure}[htbp!]
     \centering
@@ -367,7 +367,7 @@ Table \ref{tab:compact} specifies the details of the TRISO particle and fuel com
 \end{table}
 
 % Reactivity control
-A combination of lumped burnable poison and control rods manage the core reactivity.
+A combination of lumped burnable poison and control rods manages the core reactivity.
 The lumped burnable poison consists of \gls{B4C} granules dispersed in graphite compacts.
 The current design uses six lumped burnable poison rods per element.
 Table \ref{tab:LBP} displays the characteristics of the lumped burnable poison compacts.
@@ -406,12 +406,12 @@ Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations in whi
 Chapter \ref{ch:neutronics} discusses two main validation exercises.
 The first exercise compares a Serpent and Moltres model of the MHTGR-350.
 Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
-Serpent also generates the groups constants of the MHTGR-350 that serve as an input for Moltres simulations.
+Serpent also generates the group constants of the MHTGR-350 that serve as an input for Moltres simulations.
 The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 The benchmark exercise specifies the group constants that Moltres uses in the simulations.
 
 Chapter \ref{ch:thermalfluids} focuses on stand-alone thermal-fluids and coupled neutronics/thermal-fluid simulations.
 Chapter \ref{ch:thermalfluids} discusses several exercises to validate the thermal-fluids model, in which Moltres solves equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures.
-The first validation exercises study the accuracy of the thermal-fluids model in several configurations, including a equivalent cylindrical model of a unit cell, a three-dimensional unit cell, and a three-dimensional fuel column.
+The first validation exercises study the accuracy of the thermal-fluids model in several configurations, including an equivalent cylindrical model of a unit cell, a three-dimensional unit cell, and a three-dimensional fuel column.
 The next exercise follows Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark using Moltres.

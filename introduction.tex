@@ -11,7 +11,7 @@ The reactor operated for 11 years, demonstrating many components' successful ope
 Simultaneously, interest in the \gls{US} led to the 40 MWe \gls{HTGR} Peach Bottom Unit 1.
 This reactor achieved initial criticality in March 1966 and went into commercial operation in June 1967.
 Peach Bottom Unit 1 demonstrated the \gls{HTGR} concept by confirming the core physics calculations, verifying the design analysis methods, and providing a database for further design activities.
-Most importantly, the plant demonstrated that \glspl{HTGR} can load follow \cite{brey_development_2001}.
+Most importantly, the plant demonstrated that \glspl{HTGR} could load follow \cite{brey_development_2001}.
 After the deployment of these two demonstration reactors came the first \gls{HTGR} prototype plant - the Fort St. Vrain Generating Station, shown in Figure \ref{fig:fsv-a}.
 Its electric power generation started in December 1976, reaching full-power operation in November 1981.
 The Fort St. Vrain plant generated 842 MWth to achieve a net output of 330 MWe.
@@ -61,7 +61,7 @@ Moreover, HTGRs have an inherent negative temperature coefficient of reactivity.
 As a result, temperature changes in the core occur slowly and without damage to the core structure during transients.
 
 % Co-generation applications: Rankine vs Bryton
-HTGRs higher operating temperatures offer increased thermal conversion efficiencies.
+HTGRs' higher operating temperatures offer increased thermal conversion efficiencies.
 The early \gls{HTGR} designs converted their heat into electricity using the steam-Rankine cycle \cite{herranz_power_2009}.
 In such a system, the helium coolant passes through a steam generator, and the steam drives a turbine.
 This arrangement is around 38\% efficient \cite{breeze_nuclear_2014}.
@@ -106,7 +106,7 @@ FRAMATOME and Fuji Electric joined the program in 1996 and 1997, respectively.
 The final conceptual design was a 600 MWth/293MWe plant to burn weapons plutonium and the long term goal of commercial deployment.
 
 % HTTR
-In 1987, the Japanese Atomic Energy Commission proposed the construction of the \gls{HTTR}, a prismatic block type core structure with a power rating of 30 MWth \cite{iaea_current_2001}.
+In 1987, the Japanese Atomic Energy Commission proposed constructing the \gls{HTTR}, a prismatic block type core structure with a power rating of 30 MWth \cite{iaea_current_2001}.
 The Japanese government approved proceeding with the HTTR in 1989, and construction began in March 1991.
 The reactor reached first criticality in 1998 and full power in 2001.
 The HTTR has two operational modes, for which the outlet coolant temperatures are 850 and 950 $^{\circ}$C.
@@ -141,7 +141,7 @@ Modeling and prediction of core thermal-fluid behavior are necessary for assessi
 Determining the temperature inside a reactor, for both normal and transient operation, is of paramount importance as several materials' integrity depends on it.
 Most importantly, undesirably high temperatures endanger the TRISO particles' integrity and, consequently, jeopardize the fission product containment \cite{tak_numerical_2008}.
 % The temperatures in the core have to be kept below values that begin to cause damage to fission product barriers, produce stmctural material weakness, and lead to excessive chemical reaction rates.
-Furthermore, the complex fuel blocks geometry requires numerical calculations for obtaining the fuel temperatures.
+Furthermore, the complex fuel block geometry requires numerical calculations for obtaining the fuel temperatures.
 
 The characteristics of an \gls{HTGR} are different from those of conventional \glspl{LWR}.
 Such differences demand reactor analysis tools that capture the following peculiarities of \glspl{HTGR} \cite{rohde_development_2012}\cite{bostelmann_criticality_2016}:
@@ -153,7 +153,7 @@ The second level arises from the fuel elements, as they encompass the compacts, 
 \item Strong temperature dependence: the fuel temperature has a significant effect on the neutron spectrum and the transient feedbacks.
 \item High-temperature gradients: the temperature difference between the fuel and the moderator is large during transients.
 Large temperature gradients translate into large thermal stresses in the reactor structures.
-\item Large time-scale variation: the low heat capacity of the coolant causes short transients while the large heat capacity of the graphite structures causes long ones.
+\item Large time-scale variation: the coolant's low heat capacity causes short transients while the large heat capacity of the graphite structures causes long ones.
 \end{itemize}
 
 %Why use Moltres?
@@ -167,7 +167,7 @@ Due to the temperature feedback, the temperature affects the neutron flux distri
 Because of a strong temperature coefficient of reactivity present in HTGRs, multi-physics transient simulations coupled via the operator-splitting approach may introduce significant numerical errors \cite{park_tightly_2010}\cite{ragusa_consistent_2009}.
 
 \gls{MOOSE} \cite{gaston_moose_2009} is a computational framework targeted at solving fully coupled systems.
-Additionally, MOOSE facilitates relatively easy coupling between separate phenomena and allow for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
+Additionally, MOOSE facilitates relatively easy coupling between separate phenomena and allows for great flexibility, even with a large variance in time scales \cite{novak_pronghorn_2018}.
 
 \textit{Moltres} is an open-source, \gls{FEM} application built within the \gls{MOOSE} framework.
 Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
@@ -189,7 +189,7 @@ Moltres' current capabilities allow for solving some of the physics in the prism
 Nevertheless, the solver needs to capture the missing physics in prismatic HTGRs and adequately integrate them into the current capabilities.
 
 \paragraph{Understand HTGRs' contribution to stopping climate change.}
-HTGRs are an attractive technology due to attaining high temperatures and high thermal conversion efficiencies. These features yield an high hydrogen production efficiency, which can potentially ease climate change.
+HTGRs are an attractive technology due to attaining high temperatures and high thermal conversion efficiencies. These features yield a high hydrogen production efficiency, which can potentially ease climate change.
 
 \vskip 0.6cm
 The main objectives are somewhat broad.
