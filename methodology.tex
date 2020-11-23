@@ -1,222 +1,265 @@
 
+This chapter describes the methodology followed in the development of this thesis.
+This chapter comprehends the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
+
 \section{Computational tools}
+\label{sec:ch3-tools}
+
+The following sections describe the computational tools that participated in the development of this thesis.
+The main computational tool was Moltres \cite{lindsay_introduction_2018}, described in Section \ref{sec:ch3-moltres}.
+However, a description of Moltres is incomplete if not accompanied by an introduction to the underlying framework MOOSE \cite{gaston_moose_2009}, presented in Section \ref{sec:ch3-moose}.
+Additionally, Chapter \ref{ch:neutronics} uses Serpent \cite{leppanen_development_2007}\cite{leppanen_calculation_2014} for obtaining group constants that serve as an input to Moltres. Section \ref{sec:ch3-serpent} summarizes Serpent's most important features.
 
 \subsection{MOOSE}
+\label{sec:ch3-moose}
 
 % intro
-\gls{MOOSE}\cite{gaston_moose_2009} is a computational framework that supports engineering analysis applications.
+MOOSE is a computational framework that supports engineering analysis applications.
 In a nuclear reactor, several partial differential equations describe the physical behavior.
 These equations are typically nonlinear, and they are often strongly coupled to each other.
 \gls{MOOSE} targets such systems and solves them in a fully coupled manner.
 
 % more details about MOOSE
-\gls{MOOSE} is an open-source code under a \gls{LGPL}.
-The code itself relies on LibMesh \cite{kirk_libmesh_2006}, an LGPL finite element library, and PetSc, a \gls{BSD}-licensed toolkit for solving nonlinear equations \cite{balay_petsc_2016}.
-MOOSE applications define weak forms of the governing equations and 
-modularize the physics expressions into "Kernels."
+\gls{MOOSE} is an open-source FEM framework under a \gls{LGPL}.
+The framework itself relies on LibMesh \cite{kirk_libmesh_2006}, an LGPL finite element library, and PetSc, a \gls{BSD}-licensed toolkit for solving nonlinear equations \cite{balay_petsc_2016}.
+MOOSE applications define weak forms of the governing equations and modularize the physics expressions into "Kernels."
 Kernels are C++ classes containing methods for computing the residual and Jacobian contributions of individual pieces of the governing equations.
 \gls{MOOSE} and LibMesh translate them into residual and Jacobian functions.
 These functions become inputs into PetSc solution routines.
 
-\gls{MOOSE} utilizes the mathematical structure present in \gls{JFNK} methods \cite{knoll_jacobian-free_2004}.
+\gls{MOOSE} utilizes the \gls{JFNK} method \cite{knoll_jacobian-free_2004} mathematical structure \cite{gaston_moose_2009}.
 \gls{JFNK} methods are synergistic combinations of Newton-type methods for superlinearly convergence of nonlinear equations and Krylov subspace methods for solving the Newton correction equations.
 The Jacobian-vector product links the two methods.
 JFNK methods compute such products approximately without forming and storing the elements of the true Jacobian.
 The ability to perform a Newton iteration without forming the Jacobian gives JFNK methods potential for application throughout problems governed by nonlinear partial differential equations.
 
-All the software built on the MOOSE framework shares a joint base code.
-The applications, by default, utilize monolithic and implicit methods.
+All the software built on the MOOSE framework shares the same \gls{API}.
+The applications, by default, utilize monolithic and implicit methods \cite{lindsay_introduction_2018}.
 This feature facilitates relatively easy coupling between different phenomena and allows for great flexibility, even with a great variance in time scales \cite{novak_pronghorn_2018}.
-Additionally, all codes use \gls{MPI} for parallel communication and allow deployment on massively-parallel cluster-computing platforms.
+Additionally, the framework and its applications use \gls{MPI} for parallel communication and allow deployment on massively-parallel cluster-computing platforms.
 
 \subsection{Moltres}
+\label{sec:ch3-moltres}
 
-\textit{Moltres} \cite{lindsay_introduction_2018} is a MOOSE-based application initially designed for modeling fluid-fuelled \glspl{MSR}.
-This simulation tool is open source and operates with an LGPL.
+\textit{Moltres} is a MOOSE-based application initially designed for modeling fluid-fuelled \glspl{MSR}.
+Moltres inherits all the attributes from MOOSE as its application.
+Moltres is an open-source simulation tool that operates under an LGPL.
 It uses \textit{git} for version control, emphasizing its openness and promoting quality through peer review.
+Moltres openness is an important feature and contrasts previous multi-physics applications, which operated under restrictive licenses.
 
-Moltres solves arbitrary-group neutron diffusion, precursors, and temperature governing equations.
+Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
 It can solve the equations in a fully-coupled way or solve each system independently, allowing for great flexibility and making it applicable to a wide range of nuclear engineering problems.
 
-\subsection{Serpent}
+Moltres is the primary tool in the development of this thesis.
+Its role is to simulate prismatic HTGRs.
+Chapter \ref{ch:neutronics} and \ref{ch:thermalfluids} compare the results calculated by Moltres and other software to validate Moltres' calculation scheme.
+This work also intends to identify Moltres flaws in prismatic HTGR simulations and sets a basis for future work.
 
-The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_calculation_2014} is a three-dimensional continuous-energy neutron transport code developed by the VTT Technical Research Centre of Finland, and it has been in public distribution since 2009.
-Monte Carlo neutron transport codes have several reactor physics applications related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic transport codes.
+\subsection{Serpent}
+\label{sec:ch3-serpent}
+
+The Serpent Monte Carlo code \cite{leppanen_development_2007} \cite{leppanen_serpent_2015} is a three-dimensional continuous-energy neutron transport application developed by the VTT Technical Research Centre of Finland, and it has been in public distribution since 2009.
+Monte Carlo neutron transport tools have several reactor physics applications related to criticality safety analyses, radiation shielding problems, detector modeling, and validation of deterministic solvers.
 The Monte Carlo method's main advantage is its capability to model geometry and interaction physics without significant approximations.
 The main disadvantage is that simulating complex systems is computing-intensive, restricting applications to some extent.
 
-Serpent serves two primary purposes: (1) reactor modeling, and (2) group constant generation.
+In general, Serpent serves two purposes: (1) reactor modeling and (2) group constant generation.
 In reactor modeling, the Monte Carlo simulation itself represents the solution to the full-scale problem.
-In group constant generation, the transport simulation produces input parameters for a deterministic code.
-Based on a few groups, deterministic codes allow for carrying out coupled full-core analyses.
+In group constant generation, the transport simulation produces input parameters for a deterministic solver.
+Based on a few energy groups, deterministic solvers allow for carrying out coupled full-core analyses.
 
-In this work, Serpent produces group constants that serve as an input for Moltres and solves the heterogeneous system.
+In this work, Serpent produces group constants that serve as an input for Moltres and solves for neutron fluxes in high geometric fidelity and continuous energy cross-sections.
 This last step provides the reference solutions for the validation of the Moltres calculation scheme.
-We used Serpent 2.1.31 and the cross-section library JEFF3.1.2 for the calculations.
-The reason for using Serpent to generate cross-sections is due to its ability to run explicit simulations of randomly located TRISO particles.
-Applying a simple volume homogenization proves inaccurate due to the resonant self-shielding effect of the kernel and coated layers.
+This work used Serpent 2.1.31 and the cross-section library JEFF3.1.2 for the calculations.
+The reason for using Serpent to generate group constants is due to its ability to run explicit simulations of randomly located TRISO particles.
+Applying a simple volume homogenization proves inaccurate due to the resonant self-shielding effect of the kernel and coated layers \cite{strydom_results_2015}.
 Although the particles' explicit modeling is time-consuming, costly, and impractical for most applications, it is necessary.
 
 \section{Mathematical basis}
+\label{sec:ch3-math}
+
+The last section introduced Moltres as the primary computational tool utilized in this thesis.
+This section presents this thesis' mathematical basis, which are the equations that describe the neutronics and thermal-fluids of prismatic HTGRs in the steady-state limit.
+For a more detailed explanation, refer to Section \ref{appendix:equations}.
+Moltres and MOOSE heat conduction module translate these equations into kernels.
 
 \subsection{Diffusion and precursors equations}
 
 % Neutronics
-Equations \ref{eq:diffusion} and \ref{eq:precursors} describe the time dependent behavior of the neutronics.
+Moltres translates the multi-group diffusion equations into kernels, equations that describe the steady-state behavior of the neutron flux and calculates the multiplication factor \cite{duderstadt_nuclear_1976}
 
 \begin{align}
-  % diffusion
-  \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g &= \nabla \cdot D_g \nabla \phi_g -
-  \Sigma_g^r \phi_g + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
-  \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} +
-  \chi_g^d \sum_i^I \lambda_i C_i \label{eq:diffusion} \\
-  % precursors
-  \frac{\partial}{\partial t} C_i &= \sum_{g'= 1}^G \beta_i \nu \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i
-  \label{eq:precursors}
-        \intertext{where}
-        v_g &= \mbox{group $g$ neutron speed} \notag \\
-        \phi_g &= \mbox{group $g$ neutron flux} \notag \\
-        t &= \mbox{time} \notag \\
-        D_g &= \mbox{group $g$ diffusion coefficient} \notag \\
-        \Sigma_g^r &= \mbox{group $g$ macroscopic removal cross-section} \notag \\
-        \Sigma_{g'\rightarrow g}^s &= \mbox{group $g'$ to group $g$ macroscopic scattering cross-section} \notag \\
-        \chi_g^p &= \mbox{group $g$ prompt fission spectrum} \notag\\
-        G &= \mbox{number of discrete energy groups} \notag \\
-        \nu &= \mbox{number of neutrons produced per fission} \notag \\
-        \Sigma_g^f &= \mbox{group $g$ macroscopic fission cross-section} \notag \\
-        \chi_g^d &= \mbox{group $g$ delayed fission spectrum} \notag \\
-        I &= \mbox{number of delayed neutron precursor groups} \notag \\
-        \beta &= \mbox{delayed neutron fraction} \notag \\
-        \lambda_i &= \mbox{average decay constant of delayed neutron precursors in precursor group $i$} \notag \\
-        C_i &= \mbox{concentration of delayed neutron precursors in precursor group $i$.} \notag \\
+  % diffusion-eigenvalue calculation
+  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
+  \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:diffusion-eig}
+  \intertext{where}
+  & D_g = \mbox{group $g$ diffusion coefficient } [cm] \notag \\
+  & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & \Sigma_g^r = \mbox{group $g$ macroscopic removal cross-section } [cm^{-1}] \notag \\
+  & \Sigma_{g'\rightarrow g}^s = \mbox{group $g'$ to group $g$ macroscopic scattering cross-section } [cm^{-1}] \notag \\
+  & \chi_t^p = \mbox{group $g$ total fission spectrum } [-] \notag\\
+  & G = \mbox{number of discrete energy groups } [-] \notag \\
+  & k_{eff} = \mbox{multiplication factor } [-] \notag \\
+  & \nu = \mbox{number of neutrons produced per fission } [-] \notag \\
+  & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}]. \notag
 \end{align}
 
 % Boundary conditions
-We apply the vacuum boundary condition to the diffusion equation.
-The vacuum boundary condition states that no neutrons penetrate the boundary in the inward direction.
-In other words, the incoming current density ($J^-(r_s, t)$) is equal to zero, equation \ref{eq:vacuumbc1} \cite{duderstadt_nuclear_1976}.
-
+In different sections of this thesis, Moltres imposes several boundary conditions.
+The vacuum boundary condition \cite{duderstadt_nuclear_1976} states that no neutrons penetrate the boundary in the inward direction --- the incoming current density is equal to zero
 \begin{align}
-   J^-(r_s, t) = \frac{1}{4} \phi(r_s, t) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi (r_s, t) = 0
-\label{eq:vacuumbc1}
+   & J^-_g(r_s) = \frac{1}{4} \phi_g(r_s) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi_g(r_s) = 0 \label{eq:vacuumbc} \\
+   \intertext{where}
+   & J^-_g(r) = \mbox{incoming current density } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+   & r_s = \mbox{position of the boundary } [cm] \notag \\
+   & \hat{n_s} = \mbox{normal direction to the boundary } [-]. \notag
+\end{align}
+
+The reflective boundary condition states that no neutrons penetrate the boundary --- the current density is equal to zero 
+\begin{align}
+   & J_g(r_s) = 0 \label{eq:reflecbc}
+   \intertext{where}
+   & r_s = \mbox{position of the boundary } [cm] \notag \\
+   & J_g(r) = \mbox{current density } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
+\end{align}
+
+The periodic boundary condition states that the flux and current density are equal on both sides of the boundary
+\begin{align}
+   & \phi_g(r_{s^-}) = \phi_g(r_{s^+}) \label{eq:perbc1} \\
+   & J_g(r_{s^-}) = J_g(r_{s^+}) \label{eq:perbc2}
+   \intertext{where}
+   & J_g(r) = \mbox{current density } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+   & r_{s^\pm} = \mbox{left and right side of $r_s$ boundary } [cm]. \notag
 \end{align}
 
 \subsection{Thermal-fluids}
 \label{ch3:th}
 
-The governing equation for the temperature of the solids is the three-dimensional heat conduction equation \cite{melese_thermal_1984}.
-Equations \ref{eq:tempsolid} to \ref{eq:heatsource2} allow for solving the temperature in the fuel, moderator, and reflector.
+The three-dimensional steady-state heat conduction equation solves the temperature in the fuel, helium gap, moderator, coolant film, and reflector \cite{melese_thermal_1984}
 
 \begin{align}
-    \rho_i c_{p,i} \frac{\partial}{\partial t} T_i &= k_i \nabla^2 T_i + Q_i \label{eq:tempsolid} \\
-    Q_f &= \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource} \\
-    Q_m &= Q_r = 0 \label{eq:heatsource2}
+  & k_i \nabla^2 T_i + Q_i = 0 \label{eq:tempsolid} \\
   \intertext{where}
-  i &= \mbox{f (fuel), m (moderator), r (reflector)} \notag \\
-  \rho_i &= \mbox{material $i$ density} \notag \\
-  c_{p,i} &= \mbox{material $i$ heat capacity} \notag \\
-  k_i &= \mbox{material $i$ thermal conductivity } \notag \\
-  T_i &= \mbox{material $i$ temperature} \notag \\
-  Q_i &= \mbox{material $i$ volumetric heat source} \notag \\
-  \epsilon_g^f &= \mbox{energy released per fission} \notag \\
-  \Sigma_g^f &= \mbox{group $g$ macroscopic fission cross-section} \notag \\
-  \phi_g &= \mbox{group $g$ neutron flux.} \notag
+  & i = \mbox{f (fuel), g (helium gap), m (moderator), cf (coolant film), r (reflector)} \notag \\
+  & k_i = \mbox{material $i$ thermal conductivity  } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+  & T_i = \mbox{material $i$ temperature } [^{\circ}C] \notag \\
+  & Q_i = \mbox{material $i$ volumetric heat source } [W \cdot cm^{-3}]. \notag
+\end{align}
+
+Equations \ref{eq:heatsource1} and \ref{eq:heatsource2} define the heat source in the stand-alone and coupled calculations, respectively
+
+\begin{align}
+  & Q_f = Q_0 \label{eq:heatsource1} \\
+  & Q_f = \sum_{g = 1}^{G} \epsilon_g^f \Sigma_g^f \phi_g \label{eq:heatsource2} \\
+  & Q_g = Q_m = Q_{cf} = Q_r = 0 \label{eq:heatsource3}
+  \intertext{where}
+  & Q_i = \mbox{material $i$ volumetric heat source } [W \cdot cm^{-3}] \notag \\
+  & \epsilon_g^f = \mbox{energy released per fission } [J] \notag \\
+  & \Sigma_g^f = \mbox{group $g$ macroscopic fission cross-section } [cm^{-1}] \notag \\
+  & \phi_g = \mbox{group $g$ neutron flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
 \end{align}
 
 % coolant
-% section 2-5.2 white_viscous_2006
-% equations 8-10 tak_practical_2012
-The governing equation of the coolant is the one-dimensional form of the continuity, momentum, and energy conservation equations, equations \ref{eq:continuity} to \ref{eq:convection} \cite{white_viscous_2006}\cite{tak_practical_2012}.
-We determine the friction factor $f$ using equation \ref{eq:churchill} \cite{churchill_friction-factor_1977}.
-We calculate the heat transfer coefficient $h$ using the well-known Dittus-Boelter correlation \ref{eq:dittus}.
+The governing equation of the coolant is the one-dimensional steady-state energy conservation equation \cite{white_viscous_2006}\cite{tak_practical_2012}
 
 \begin{align}
- 	\frac{\partial}{\partial t} \rho_c + \nabla \cdot (\rho_c u) &= 0 \label{eq:continuity} \\
-  \rho_c \left(\frac{\partial}{\partial t} u + u\frac{\partial}{\partial z}u \right) &= - \frac{\partial}{\partial z}p - \tau \frac{\varepsilon}{A} - \rho_c g \label{eq:momentum} \\
- 	\rho_c \left( \frac{\partial}{\partial t} (c_{p,c} T_c) + u\frac{\partial}{\partial z} (c_{p,c} T_c) \right) &= \frac{\partial}{\partial t} p + u\frac{\partial}{\partial z} p +  q'''_{conv} 	\label{eq:tempcool} \\
-  \tau &= \frac{f}{2} \rho_c u^2 \label{eq:friction} \\
-  q'''_{conv} &= h\frac{\varepsilon}{A} (T_i-T_c) \label{eq:convection}
+ 	& \rho_{c,i} u_i \frac{\partial}{\partial z} (c_{p,c} T_c) = q'''_{conv} 	\label{eq:tempcool} \\
+  & q'''_{conv} = h\frac{\varepsilon}{A} (T_i-T_c) \label{eq:convection}
   \intertext{where}
-  \rho_c &= \mbox{coolant density} \notag \\
-  u &= \mbox{coolant velocity} \notag \\
-  p &= \mbox{coolant pressure} \notag \\
-  \tau &= \mbox{shear stress} \notag \\
-  \varepsilon &= \mbox{wetted perimeter} \notag \\
-  A &= \mbox{cross-sectional area} \notag \\
-  g &= \mbox{gravity} \notag \\
-  c_{p,c} &= \mbox{coolant specific heat capacity} \notag \\
-  T_c &= \mbox{coolant temperature} \notag \\
-  k_c &= \mbox{coolant thermal conductivity} \notag \\
-  q'''_{conv} &= \mbox{convective heat transfer} \notag \\
-  f &= \mbox{friction factor} \notag \\
-  h &= \mbox{heat transfer coefficient} \notag \\
-  T_i &= \mbox{solid temperature.} \notag
+  & \rho_{c, i} = \mbox{inlet coolant density } [kg \cdot cm^{-3}] \notag \\
+  & u_i = \mbox{inlet coolant velocity } [cm \cdot s^{-1}] \notag \\
+  & c_{p,c} = \mbox{coolant specific heat capacity } [J \cdot kg^{-1} \cdot K^{-1}] \notag \\
+  & T_c = \mbox{coolant temperature } [^{\circ}C] \notag \\
+  & q'''_{conv} = \mbox{convective heat transfer } [W \cdot cm^{-3}] \notag \\
+  & A = \mbox{cross-sectional area } [cm^2] \notag \\
+  & h = \mbox{heat transfer coefficient } [W \cdot cm^{-2} \cdot K^{-1}] \notag \\
+  & T_i = \mbox{solid temperature } [^{\circ}C]. \notag
 \end{align}
+
+Equation \ref{eq:film-conduc} calculates the film thermal conductivity $k_f$ \cite{melese_thermal_1984}
 
 \begin{align}
-  f &= 8\left[ \left( \frac{8}{Re_{D_h}} \right)^{12} + \frac{1}{(A+B)^{3/2}} \right]^{1/12} \notag \\
-  A &= \left\{ 2.457 \quad ln \left( \frac{1}{\left(\frac{7}{Re_{D_h}}\right)^{0.9}+0.27\frac{\varepsilon}{D_h}} \right) \right\}^{16} \label{eq:churchill} \\
-  B &= \left\{ \frac{37530}{Re_{D_h}} \right\}^{16} \notag
+  & Nu = 0.023 Re^{0.8} Pr^{0.4} \label{eq:dittus} \\
+  & h = \frac{Nu \cdot k_c}{D_h}  \\
+  & k_f = h R_{cf} ln(R_{cf}/R_c) \label{eq:film-conduc}
   \intertext{where}
-  \varepsilon &= \mbox{surface roughness.} \notag
+  & Nu = \mbox{Nusselt number } [-] \notag \\
+  & Re = \mbox{Reynolds number } [-] \notag \\
+  & Pr = \mbox{Prandtl number } [-] \notag \\
+  & h = \mbox{heat transfer coefficient } [W \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & D_h = \mbox{hydraulic diameter } [cm] \notag \\
+  & k_c = \mbox{coolant thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+  & k_{cf} = \mbox{coolant film thermal conductivity } [W \cdot cm^{-1} \cdot K^{-1}] \notag \\
+  & R_{cf} = \mbox{coolant film radius } [cm] \notag \\
+  & R_c = \mbox{coolant channel radius } [cm]. \notag
 \end{align}
 
-\begin{align}
-  Nu &= \frac{h D_h}{k} = 0.023 Re_{D_h}^{0.8} Pr^{0.4} \label{eq:dittus}
-  \intertext{where}
-  Nu &= \mbox{Nusselt number} \notag \\
-  D_h &= \mbox{hydraulic diameter.} \notag
-\end{align}
+\section{OECD/NEA MHTGR-350 Benchmark}
+\label{sec:ch3-bench}
 
-\section{OECD/NEA MHTGR-350 MW Benchmark}
-
-The deterministic neutronic thermal-fluids and transient analysis methods available for prismatic \glspl{HTGR} lag behind the state-of-the-art technologies of other reactors.
-This delay has motivated the development of more accurate tools for the design and safety evaluations of \glspl{HTGR}.
-In addition to the development of new methods, it is essential to define appropriate benchmarks to compare these new methods' capabilities.
-The \gls{OECD}/\gls{NEA} defined such a benchmark \cite{oecd_nea_benchmark_2017} using the \gls{MHTGR}-350 MW reactor \cite{silady_licensing_1988} as the reference design.
-The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics codes available for prismatic \glspl{HTGR}.
-
-The benchmark defines several Phases and Exercises:
-
-\begin{itemize}
-        \item Phase I: Steady State
-        \begin{enumerate}
-            \item Neutronics solution with fixed cross-sections. 
-            \item Thermal fluids solution with given heat sources.
-            \item Coupled neutronics-thermal fluids steady state solution.
-        \end{enumerate}
-
-        \item Phase II: Transient Cases
-        \begin{enumerate}
-            \item Depressurized Conduction Cooldown without reactor trip.
-            \item Pressurized Conduction Cooldown with reactor trip.
-            \item Water ingress with reactor trip.
-            \item Power 100-80-100 load follow.
-        \end{enumerate}
-
-        \item Phase III: Lattice Depletion Case
-\end{itemize}
-
-\section{MHTGR-350 Reactor Description}
-
-This section describes the \gls{MHTGR}-350 reactor.
-Table \ref{tab:maincharac} lists its main characteristics.
-The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, Figure \ref{fig:layout}.
-Nineteen graphite replaceable reflector elements compose the inner reflector region.
-A ring of identically sized graphite replaceable reflector elements surrounds the fuel elements.
-Then, a region of permanent reflector elements follows the replaceable reflectors.
-The reactor vessel encases all the elements.
+Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} conduct several exercises of the benchmark \cite{oecd_nea_benchmark_2017} using Moltres.
+The \gls{OECD}/\gls{NEA} defined such a benchmark using the \gls{MHTGR}-350 reactor \cite{silady_licensing_1988} as the reference design.
+The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics tools available for prismatic HTGRs.
+The benchmark defines several phases and exercises, summarized in Table \ref{tab:benchmark}.
 
 \begin{table}[htbp!]
   \centering
-    \caption{MHTGR-350 Characteristics \cite{oecd_nea_benchmark_2017}.}
-  \begin{tabular}{ll}
+  \caption{Description of the OECD/NEA MHTGR-350 Benchmark phases and exercises.}
+  \begin{tabular}{lcl}
+\toprule
+Phase               & Exercise & Description                                             \\
+\midrule
+\multirow{3}{*}{I}  & 1        & Neutronics solution with fixed cross-sections           \\
+                    & 2        & Thermal fluids solution with given heat sources         \\
+                    & 3        & Coupled neutronics-thermal fluids steady state solution \\
+\midrule
+\multirow{4}{*}{II} & 1        & Depressurized Conduction Cooldown without reactor trip  \\
+                    & 2        & Pressurized Conduction Cooldown with reactor trip       \\
+                    & 3        & Water ingress with reactor trip                         \\
+                    & 4        & Power 100-80-100 load follow                            \\
+\midrule
+III                 & -        & Lattice Depletion Calculation                           \\
+\bottomrule
+  \end{tabular}
+  \label{tab:benchmark}
+\end{table}
+
+\section{MHTGR-350 Reactor Description}
+\label{sec:ch3-mhtgr}
+
+This section describes the \gls{MHTGR}-350 reactor.
+The core consists of an array of hexagonal fuel elements in a cylindrical arrangement, pictured in Figure \ref{fig:layout}.
+Nineteen graphite replaceable reflector elements compose the inner reflector region.
+A ring of identically sized graphite replaceable reflector elements surrounds the fuel elements.
+Then, a region of permanent reflector elements surrounds the replaceable reflectors.
+The reactor vessel encases all the elements.
+Ten layers of fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
+Figure \ref{fig:layoutb} shows an axial view of the reactor.
+Table \ref{tab:maincharac} summarizes the reactor's main characteristics.
+
+\begin{figure}[htbp!]
+    \centering
+    \subfloat[Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.]{
+        \includegraphics[width=0.45\textwidth]{figures/radial-layout.png}
+    }
+    \subfloat[Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.\label{fig:layoutb}]{
+        \includegraphics[width=0.45\textwidth]{figures/axial-layout.png}
+    }
+    \hfill
+    \caption{MHTGR-350 reactor layout.}
+    \label{fig:layout}
+\end{figure}
+
+\begin{table}[htbp!]
+  \centering
+  \caption{MHTGR-350 Characteristics \cite{oecd_nea_benchmark_2017}.}
+  \begin{tabular}{lc}
   \toprule
   Characteristics                   & Value               \\ \midrule
-  Installed Thermal Capacity        & 350 MWt             \\
+  Installed Thermal Capacity        & 350 MWth            \\
   Installed Electric Capacity       & 165 MWe             \\
-  Core inlet/outlet Temperature     & 259/687$^{\circ}$C  \\
-  Power Density                     & 5.9 MW/m$^3$        \\
+  Core inlet/outlet Temperature     & 259/687 $^{\circ}$C    \\
+  Power Density                     & 5.9 MW$ \cdot m^{-3}$  \\
   Reactor Vessel Outside diam.      & 6.8 m               \\
   Reactor Vessel Height             & 22 m                \\
   Active core radius                & 2.97 m              \\
@@ -231,43 +274,10 @@ The reactor vessel encases all the elements.
   \label{tab:maincharac}
 \end{table}
 
-\begin{figure}[htbp!]
-    \centering
-    \subfloat[Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.]{
-        \includegraphics[width=0.45\textwidth]{figures/radial-layout.png}
-    }
-    \subfloat[Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.\label{fig:layoutb}]{
-        \includegraphics[width=0.45\textwidth]{figures/axial-layout.png}
-    }
-    \hfill
-    \caption{MHTGR reactor layout.}
-    \label{fig:layout}
-\end{figure}
-
-% \begin{figure}[htbp!]
-%   \centering
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=0.95\linewidth]{figures/radial-layout.png}
-%     \caption{Core radial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
-%   \end{subfigure}
-%   \begin{subfigure}[t]{0.4\textwidth}
-%     \centering
-%     \includegraphics[width=0.95\linewidth]{figures/axial-layout.png}
-%     \caption{Core axial layout. Image reproduced from \cite{oecd_nea_benchmark_2017}.}
-%     \label{fig:layoutb}
-%   \end{subfigure}
-%   \hfill
-%   \caption{MHTGR reactor layout.}
-%   \label{fig:layout}
-% \end{figure}
-
-Ten layers of fuel elements stacked on top of each other compose the 66 fuel columns that integrate the active core.
-Figure \ref{fig:layoutb} shows an axial view of the reactor.
-The core has two types of fuel elements: a standard element and a reserve shutdown element that contains a channel for \gls{RSC}, Figure \ref{fig:fuelassembly}.
+The core has two types of fuel elements: a standard element and a reserve shutdown element that contains a channel for Reserve Shutdown Control, Figure \ref{fig:fuelassembly}.
 Table \ref{tab:element-characteristics} specifies the details of the MHTGR-350 fuel elements.
-Twelve columns in the core contain \gls{RSC} channels for reserve shutdown borated graphite pellets.
-Hoppers above the core house the pellets, and if the \glspl{CR} become inoperable, the pellets drop into the channels \cite{oecd_nea_benchmark_2017}.
+Twelve columns in the core contain Reserve Shutdown Control channels for borated graphite pellets.
+Hoppers above the core house the pellets, and if the control rods become inoperable, the pellets drop into the channels \cite{oecd_nea_benchmark_2017}.
 
 \begin{figure}[htbp!]
   \centering
@@ -301,8 +311,8 @@ Hoppers above the core house the pellets, and if the \glspl{CR} become inoperabl
   Compacts per fuel hole           & \multicolumn{1}{c@{}}{15}    & -        \\
   Large coolant hole radius        & 0.794   & cm       \\
   Small coolant hole radius        & 0.635   & cm       \\
-  LBP hole radius                  & 0.635   & cm       \\
-  Block graphite density           & 1.85    & g/cm$^3$ \\
+  Burnable posion hole radius      & 0.635   & cm       \\
+  Block graphite density           & 1.85    & g $\cdot cm^{-3}$ \\
   \midrule
 
       \multicolumn{1}{c}{Standard element} &  &  \\
@@ -331,7 +341,7 @@ Table \ref{tab:compact} specifies the details of the TRISO particle and fuel com
 \centering
     \caption{TRISO and fuel compact characteristics \cite{oecd_nea_benchmark_2017}.}
     \label{tab:compact}
-    \begin{tabular}{@{}l S[table-format=2.1] c}
+    \begin{tabular}{@{}l S[table-format=2.3] c}
     \toprule
     \multicolumn{1}{c}{Characteristic} & \multicolumn{1}{c@{}}{Value} & \multicolumn{1}{c@{}}{Units} \\
     \midrule
@@ -346,28 +356,27 @@ Table \ref{tab:compact} specifies the details of the TRISO particle and fuel com
   Compact radius                   & 0.6225                & cm       \\
   Compact gap radius               & 0.6350                & cm       \\
   Compact length                   & 4.9280                & cm       \\
-  Kernel density                   & 10.50                 & g/cm$^3$ \\
-  Buffer density                   & 1.00                  & g/cm$^3$ \\
-  IPyC density                     & 1.90                  & g/cm$^3$ \\
-  SiC density                      & 3.20                  & g/cm$^3$ \\
-  OPyC density                     & 1.90                  & g/cm$^3$ \\
-  Compact matrix density           & 1.74                  & g/cm$^3$ \\
+  Kernel density                   & 10.50                 & g $\cdot cm^{-3}$ \\
+  Buffer density                   & 1.00                  & g $\cdot cm^{-3}$ \\
+  IPyC density                     & 1.90                  & g $\cdot cm^{-3}$ \\
+  SiC density                      & 3.20                  & g $\cdot cm^{-3}$ \\
+  OPyC density                     & 1.90                  & g $\cdot cm^{-3}$ \\
+  Compact matrix density           & 1.74                  & g $\cdot cm^{-3}$ \\
     \bottomrule
     \end{tabular}
 \end{table}
 
 % Reactivity control
-A combination of \gls{LBP} and \glspl{CR} controls the core reactivity.
-The \gls{LBP} consists of \gls{B4C} granules dispersed in graphite compacts.
-The current design uses six \gls{LBP} rods per element.
-Table \ref{tab:LBP} displays the characteristics of the \gls{LBP} compacts.
-The reactor has 30 \glspl{CR}.
-Six of them are start-up \glspl{CR}, and their location is the inner reflector.
-The remaining 24 are operating \glspl{CR} and control the reactivity during power operation and a reactor trip.
+A combination of lumped burnable poison and control rods manages the core reactivity.
+The lumped burnable poison consists of \gls{B4C} granules dispersed in graphite compacts.
+The current design uses six lumped burnable poison rods per element.
+Table \ref{tab:LBP} displays the characteristics of the lumped burnable poison compacts.
+The reactor has 30 control rods.
+Six are for reactor start-up and are in the inner reflector, while the remaining 24 are operating control rods and manage the reactivity during power operation and reactor trips.
 
 \begin{table}[htbp!]
 \centering
-    \caption{LBP compact characteristics \cite{oecd_nea_benchmark_2017}.}
+    \caption{Burnable poison compact characteristics \cite{oecd_nea_benchmark_2017}.}
     \label{tab:LBP}
     \begin{tabular}{@{}l S[table-format=1.4] c}
     \toprule
@@ -381,10 +390,28 @@ The remaining 24 are operating \glspl{CR} and control the reactivity during powe
   Compact radius                   & 0.5715                & cm        \\
   Compact gap radius               & 0.6350                & cm        \\
   Rod length                       & 72.187                & cm        \\
-  Kernel density                   & 2.47                  & g/cm$^3$  \\
-  Buffer density                   & 1.00                  & g/cm$^3$  \\
-  PyC density                      & 1.87                  & g/cm$^3$  \\
-  Compact matrix density           & 0.94                  & g/cm$^3$ \\
+  Kernel density                   & 2.47                  & g $\cdot cm^{-3}$ \\
+  Buffer density                   & 1.00                  & g $\cdot cm^{-3}$ \\
+  PyC density                      & 1.87                  & g $\cdot cm^{-3}$ \\
+  Compact matrix density           & 0.94                  & g $\cdot cm^{-3}$ \\
     \bottomrule
     \end{tabular}
 \end{table}
+
+
+\section{Organization of the Simulations}
+
+This thesis separates the description of Moltres simulations into Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids}.
+Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations in which Moltres solves equations \ref{eq:diffusion-eig} and \ref{eq:heatsource2} to calculate the multiplication factor, the neutron flux, and the radial power distribution.
+Chapter \ref{ch:neutronics} discusses two main validation exercises.
+The first exercise compares a Serpent and Moltres model of the MHTGR-350.
+Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
+Serpent also generates the group constants of the MHTGR-350 that serve as an input for Moltres simulations.
+The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
+The benchmark exercise specifies the group constants that Moltres uses in the simulations.
+
+Chapter \ref{ch:thermalfluids} focuses on stand-alone thermal-fluids and coupled neutronics/thermal-fluid simulations.
+Chapter \ref{ch:thermalfluids} discusses several exercises to validate the thermal-fluids model, in which Moltres solves equations \ref{eq:tempsolid}-\ref{eq:film-conduc} to calculate the solid and coolant temperatures.
+The first validation exercises study the accuracy of the thermal-fluids model in several configurations, including an equivalent cylindrical model of a unit cell, a three-dimensional unit cell, and a three-dimensional fuel column.
+The next exercise follows Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
+Chapter \ref{ch:thermalfluids} also describes a coupling exercise that follows Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark using Moltres.

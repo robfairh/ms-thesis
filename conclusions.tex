@@ -9,58 +9,61 @@ Implementing hydrogen economies can be a decisive response to energy and climate
 To support the evolution of the HTGR technology, this work focused on modeling prismatic HTGRs.
 Modeling the multi-physics of prismatic HTGRs enables predicting the reactor thermal-fluid behavior, which is necessary for assessing HTGR's safety characteristics.
 HTGRs' complex geometry requires numerical tools to conduct the analyses, such as Moltres --- a simulation tool suitable for multi-physics problems.
-Although its original development targeted MSRs, this work studied Moltres applicability to prismatic HTGRs.
+Although its original development targeted MSRs, this work studied Moltres' applicability to prismatic HTGRs.
 
 % Ch4: Neutronics
 Multi-physics simulators need to resolve the double heterogeneities present in the prismatic HTGR fuel assemblies.
-Moltres relies on Monte Carlo solvers for obtaining group constants that it uses in the simulations.
+Moltres relies on transport solvers for obtaining group constants.
 Monte Carlo solvers are capable of explicitly modeling TRISO particles.
 Although using such a capability is computationally expensive, Chapter \ref{ch:neutronics} proved it necessary for obtaining group constants for diffusion solvers.
 Additionally, Chapter \ref{ch:neutronics} introduced a discussion on different levels of homogenization that diffusion solvers rely on.
-Moltres previous work focused on MSRs, which allow for more heterogeneous homogenizations.
-Still, HTGRs require a higher level of homogenization than MSRs, making Moltres not readily applicable to them.
+Previous work using Moltres focused on MSRs, which allow for heterogeneous calculations.
+% Still, HTGRs require a higher level of homogenization than MSRs, making Moltres not readily applicable to them.
+Still, HTGRs require a higher homogenization level than MSRs, making Moltres application to HTGRs not straightforward.
 This work used Moltres as a homogeneous solver for carrying out neutronics stand-alone simulations of prismatic HTGRs.
-The first study analyzed the energy group structure effects on the simulation of a fuel column, then compared Moltres and Serpent results.
+The first study analyzed the energy group structure effects on a fuel column's simulation, comparing Moltres and Serpent results.
 Based on those results, the following section conducted a full-core simulation in Moltres using a 15-energy group structure.
-The comparison between Moltres and Serpent showed good agreement overall.
+The comparison between Moltres and Serpent showed good agreement overall, demonstrating Moltres' ability to model stand-alone prismatic HTGR neutronics.
 
-Finally, Moltres carried out Phase I Exercise 1 of the OECD/NEA MHTGR-350 MW Benchmark.
-The exercise specifies the necessary group constants, which required the development of a tool to adapt them to Moltres format.
-The exercise models one-third of the MHTGR-350 and uses periodic boundary conditions on the sides.
-Imposing those boundary conditions in Moltres was not possible because of the high memory requirements of the simulation.
-To overcome this issue, Moltres conducted the exercise using reflective boundary conditions.
+Finally, Moltres carried out Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark.
+The exercise specifies the necessary group constants, which required the development of a Python script to adapt them to Moltres format.
+The exercise models $1/3^{rd}$ of the MHTGR-350 and uses periodic boundary conditions on the sides.
+Imposing those boundary conditions in Moltres was not possible because of the high memory requirement of the simulation.
+Moltres conducted the exercise using reflective boundary conditions to reduce the high memory requirement.
 Chapter \ref{ch:neutronics} also analyzed the effects of such an approximation, as some discrepancies in the results arose.
 Section \ref{sec:ph1e1} concluded that the boundary condition approximation was responsible for causing such discrepancies.
 
 % Ch5: Thermal-fluids
-Since Moltres is an MSR simulator, its thermal-fluids kernels' applicability to prismatic HTGRs is not straightforward.
+Since Moltres original development targeted MSR simulations, its thermal-fluids kernels' are not readily applicable to prismatic HTGRs.
 Chapter \ref{ch:thermalfluids} focused on developing a thermal-fluids model for Moltres.
 A first preliminary study verified the proposed model by comparing the numerical solution to a known analytical solution.
 A second preliminary study applied the thermal-fluids model to a unit cell problem and compared Moltres results to a published article's results.
 Both preliminary studies showed good results.
 Another study demonstrated the use of Moltres on a larger-scale problem, a fuel column.
-We compared Moltres results to a published article's results for two cases: a no-bypass-gap case and a 3mm-bypass-gap case.
+The study compared Moltres results to a published article's results for two cases: a no-bypass-gap case and a 3mm-bypass-gap case.
 In both cases, Moltres exhibited good agreement with the published article's results.
-As part of the study, two analyses focused on different aspects of the simulations.
-The first analysis studied the modeling of the coolant's mass flow distribution, while the second analysis studied the mesh convergence of the full-fuel column problem.
-This second analysis exposed that a high level of detail imposes a high memory requirement on the simulations.
-These requirements might restrict the model's applicability to a full-core problem.
-The next study (Section \ref{sec:ph1ex2}) relied on a different approach for modeling the thermal-fluids of the MHTGR-350 to circumvent the high memory requirement restriction.
-This study solved Phase I Exercise 2 of OECD/NEA MHTGR-350 MW Benchmark.
-The exercise revealed that both a more accurate mass flow distribution and the consideration of the radiative heat transfer mechanism are necessary for the correct modeling of prismatic HTGRs.
+As part of the fuel column study, two analyses focused on different aspects of the simulations.
+The first analysis studied the coolant's mass flow distribution modeling, while the second analysis studied the mesh convergence of the full-fuel column problem.
+This second analysis exposed that a high level of detail in the model imposes a high memory requirement on the simulations, which might restrict the model's applicability to a full-core problem.
+Section \ref{sec:ph1ex2} assessed a different approach for modeling the thermal-fluids of the MHTGR-350 to circumvent the high memory requirement restriction.
+This study analyzed Phase I Exercise 2 of OECD/NEA MHTGR-350 Benchmark results calculated by Moltres.
+The exercise revealed that both a more accurate mass flow distribution and considering the radiative heat transfer mechanism are necessary for the correct modeling of prismatic HTGRs.
+This work proved Moltres' capability to conduct steady-state thermal-fluid calculations in local models such as the unit cell and the fuel column problems.
+On the other hand, the full-core results showed several discrepancies that will require further analysis.
+
 Chapter \ref{ch:thermalfluids} also focused on studying Moltres applicability to prismatic HTGR multi-physics simulations.
-Section \ref{sec:ph1ex3} used a simplified model to solve Phase I Exercise 3 of OECD/NEA MHTGR-350 MW Benchmark.
+Section \ref{sec:ph1ex3} used a simplified model to solve Phase I Exercise 3 of OECD/NEA MHTGR-350 Benchmark.
 Although the model was simple, it allowed visualizing some of the essential aspects of prismatic HTGR multi-physics simulations.
-Conducting this exercise helped to identify Moltres flaws and sets a basis for future work.
+Conducting this exercise helped to identify Moltres' flaws and sets a basis for future work.
 
 % Ch6: Hydrogen
 This work aligns with UIUC's goals to reduce \gls{CO2} emissions from the electricity and transportation sectors.
 Worldwide climate change demands a large-scale deployment of \gls{CO2}-free energy sources.
 UIUC is fighting climate change by actively reducing GHG emissions on its campus.
 This work proposed an alternative --- the deployment of a nuclear reactor and a hydrogen production plant.
-Regarding hydrogen production methods, we surveyed three different processes: LTE, HTE, and SI.
-We then developed a tool to calculate the energy requirements and hydrogen production rates of each.
-This tool is applicable to a stand-alone hydrogen plant and to a nuclear power plant that produces both electricity and hydrogen.
+Regarding hydrogen production methods, this work surveyed three different processes: LTE, HTE, and SI.
+The development of a tool was necessary to calculate the energy requirements and hydrogen production rates of each.
+This tool is applicable to a stand-alone hydrogen plant and a nuclear power plant that produces electricity and hydrogen.
 Additionally, Chapter \ref{ch:hydro} characterized MTD and UIUC fleet fuel consumption and calculated the hydrogen needs from both fleets.
 Section \ref{sec:results-transport} identified several microreactor designs that could meet those hydrogen requirements.
 Finally, Chapter \ref{ch:hydro} simulated a scenario where solar production on campus exceeds campus demand and diverts the energy surplus to hydrogen production.
@@ -69,9 +72,11 @@ The produced hydrogen has the potential to reduce campus reliance on fossil fuel
 \section{Future Work}
 \label{sec:futwork}
 
-This section introduces some possible future work as a continuation of this thesis.
-
+This section introduces some possible future work that sets a basis for a Ph.D. as a continuation of this MS thesis.
 % Ch4: Neutronics
+% ASSEMBLY HOMOGENIZATION TECHNIQUES FOR LIGHT WATER REACTOR ANALYSIS
+% Not sure, this paper talks about the homogenization of the group constants, which I generated w/ Serpent, so they are find.
+% Also, I think the method is applicable to nodal methods ??
 As mentioned in Chapter \ref{ch:neutronics}, periodic boundary conditions impose a high memory requirement on Moltres simulations.
 Since Moltres relies on PetSc routines for solving the equation systems, future work will look for a PetSc routine to enable the exact modeling of Phase I Exercise 1 of the benchmark, i.e., conduct the simulations with the periodic boundary conditions.
 
@@ -89,8 +94,10 @@ Thus, future work will add a mass flow distribution capability to Moltres.
 The first analysis of Section \ref{sec:ph1ex2} intended to reproduce INL results, but that analysis revealed that Moltres modeling fails to capture the right heat transfer between different assemblies.
 Not modeling the radiative heat transfer between elements might be causing this behavior.
 Future analyses will add the radiative heat transfer modeling capability to Moltres.
-Section \ref{sec:ph1ex3} set the basis for prismatic HTGR multi-physics simulations in Moltres, and in doing so revealed that interfacing the neutronics and the thermal-fluids is crucial in multi-physics modeling.
-Future work will focus on enabling the use of assembly-level average temperatures to model the thermal feedback properly.
+
+Section \ref{sec:ph1ex3} set the basis for prismatic HTGR multi-physics simulations in Moltres.
+In doing so, it revealed that interfacing the neutronics and the thermal-fluids is crucial in multi-physics modeling.
+Future work will enable the use of the moderator and fuel assembly-level average temperatures to model the thermal feedback properly.
 
 % this will go into chapter 7 into future work
 % Another approach would be to homogenize the fuel assembly materials and calculate a homogeneous temperature for each material (still differentiating them).
@@ -104,11 +111,13 @@ Future work will focus on enabling the use of assembly-level average temperature
 
 % Ch6: Hydrogen
 As described in Chapter \ref{ch:hydro}, high temperatures enable efficient hydrogen production.
-However, the current fleet of nuclear reactors are LWRs with outlet temperatures around only 300$^{\circ}$C.
+However, LWRs integrate the current fleet of nuclear reactors with outlet temperatures around only 300$^{\circ}$C.
+
 HTE and SI are viable processes for temperatures well above 300$^{\circ}$C, but the development of hydrogen economies increasingly demands more mature technologies.
-Related future work will study the steam reforming method, which may use carbon-capture sequestration systems.
-The future work will analyze the feasibility of using a carbon-capture sequestration system from an economic perspective.
-If the process does not use a carbon-capture sequestration system, we will compare the \gls{CO2} savings versus the \gls{CO2} production instead.
-Moreover, related future work will study the viability of coupling LWRs to HTE and SI processes via steam boosting systems.
-These systems rely on electric heaters to enhance the steam temperature, which could enable the coupling of hydrogen plants to the LWR fleet.
-Though not comprehensive, it is a promising short-term mitigation strategy of climate change.
+Related future work will study the \gls{CO2} savings using the steam reforming method, which may use carbon-capture sequestration systems.
+Future work will also analyze the feasibility of using a carbon-capture sequestration system from an economic perspective.
+
+If the process does not use a carbon-capture sequestration system, the analysis will compare the \gls{CO2} savings (from using the \gls{H2} instead of fossil fuel) versus the \gls{CO2} production instead (from producing the \gls{H2} with the steam reforming method).
+Moreover, related future work will study the viability of coupling LWRs to HTE and SI processes via steam temperature boosting systems.
+These systems rely on electric heaters to enhance the steam temperature, enabling the coupling of hydrogen plants to the LWR fleet.
+Though not comprehensive, it is a promising short-term mitigation strategy for climate change.
