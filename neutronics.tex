@@ -86,17 +86,17 @@ The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF} per energy-group.
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Serpent model geometry.]{
-        \includegraphics[width=0.35\textwidth]{figures-neutronics/standard}
+        \includegraphics[width=0.42\textwidth]{figures-neutronics/standard}
     }
     \subfloat[Moltres model geometry.]{
-        \includegraphics[width=0.22\textwidth]{figures-neutronics/3D-assembly-30deg-reflec-meshB2}
+        \includegraphics[width=0.27\textwidth]{figures-neutronics/3D-assembly-30deg-reflec-meshB2}
     }
 	\hfill
     \caption{Fuel column of the MHTGR-350. $xy$-plane in the active core region.}
 	\label{fig:fuelcolumn}
 \end{figure}
 
-Moltres simulation obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-8}$, defined by equation \ref{eq:moltres-tol}
+Moltres simulation obeyed an eigenvalue convergence tolerance of 10$^{-8}$, defined by equation \ref{eq:moltres-tol}
 
 \begin{align}
    & \frac{k^{(n)}-k^{(n-1)}}{k^{(n)}} < \varepsilon \label{eq:moltres-tol}
@@ -226,7 +226,7 @@ The Serpent simulations included 4$\times 10^5$ neutrons/cycle, 360 active cycle
 Taking advantage of the problem's symmetry, Moltres modeled a $1/12^{th}$-section of the homogenized fuel column.
 I made the geometry and mesh, which had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes, using Gmsh.
 The diffusion calculations had 2.29 $\times 10^4$ \glspl{DoF} per energy-group.
-The Moltres simulations obeyed an eigenvalue and a flux convergence tolerance of 1$\times$10$^{-8}$.
+The Moltres simulations obeyed an eigenvalue and a flux convergence tolerance of 10$^{-8}$.
 Moltres calculations used the different energy group structures listed in Table \ref{tab:energygroups}.
 
 \begin{table}[htbp!]
@@ -516,7 +516,7 @@ The Serpent simulations included 8$\times 10^5$ neutrons per cycle, 500 active c
 
 Moltres model mesh had 3.0 $\times 10^5$ elements and 1.60 $\times 10^5$ nodes.
 The diffusion calculations had 1.60 $\times 10^5$ \glspl{DoF} per energy-group and a total of 2.4 $\times 10^6$ DoFs.
-The Moltres simulations obeyed an eigenvalue and flux convergence tolerance of 1$\times$10$^{-8}$.
+The Moltres simulations obeyed an eigenvalue and flux convergence tolerance of 10$^{-8}$.
 
 % Keff
 This study compares the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor calculated by Serpent and Moltres.
@@ -578,13 +578,15 @@ Both the Serpent and Moltres radial detector's axial location was the middle of 
 
 \begin{figure}[htbp!]
 	\centering
-    \subfloat[Flux detectors in Serpent model. 1- Axial detector has the volume of a fuel column. 2- Radial detector has a 2$^{\circ}$-opening an a fuel assembly height.]{
+    \subfloat[Flux detectors in Serpent model. 1- Axial detector has the volume of a fuel column. 2- Radial detector has a 2$^{\circ}$-opening and a fuel assembly height.]{
+        % \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
         \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
     }
+	\hfill
     \subfloat[Flux detectors in Moltres model. Axial detector computes the flux over the line 'Axial'. Radial detector computes the flux over the line 'Radial'.]{
+        % \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
         \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
     }
-	\hfill
 	\caption{Axial view of the flux detector locations.}
 	\label{fig:fullcore-detectors}
 \end{figure}
@@ -722,7 +724,7 @@ Two hundred and thirty-two hexagonal subdomains comprised the core, for which th
 % Table \ref{tab:mac-region} lists the six macroscopic regions that we can differentiate in the model.
 The simulations required two meshes: one for the control rod out and one for the control rod in.
 The control out simulation had 2.7 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 7.0 $\times 10^6$ DoFs, while the control rod in simulation had 2.3 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 5.9 $\times 10^6$ DoFs.
-The Moltres simulations obeyed an eigenvalue convergence tolerance of 1$\times$10$^{-8}$.
+The Moltres simulations obeyed an eigenvalue convergence tolerance of 10$^{-8}$.
 
 \begin{figure}[htbp!]
 	\centering
