@@ -94,7 +94,7 @@ This section intended to reproduce the results found by In et al. 2006 \cite{in_
 I chose this article because it solves a three-dimensional unit-cell model and gives one of the most thorough descriptions in the open literature.
 Table \ref{tab:th-val-unit-char} presents the problem characteristics.
 The article does not specify the solid's material properties, so the model used parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
-Figure \ref{fig:th-val-unit-model} displays the model geometry and the temperature dependent material properties.
+Figure \ref{fig:th-val-unit-model} displays the model geometry and Figure \ref{fig:th-val-unit-model-b} the temperature dependent material properties.
 Additionally, In et al. used a chopped cosine as the power profile, which the model used the average value of to simplify the analysis.
 
 \begin{table}[htbp!]
@@ -129,16 +129,19 @@ Additionally, In et al. used a chopped cosine as the power profile, which the mo
 \end{table}
 
 \begin{figure}[htbp!]
-	\centering
-    \subfloat[Axial layout of the model geometry.]{
-        \includegraphics[width=0.40\textwidth]{figures-thermal/unitcell2}
-    }
-    \subfloat[Temperature dependent material properties \cite{tak_numerical_2008}. \label{fig:th-val-unit-model-b}]{
-        \includegraphics[width=0.45\textwidth]{figures-thermal/val-unit-matprop}
-    }
-	\hfill
-  \caption{Unit cell model input file parameters.}
-	\label{fig:th-val-unit-model}
+  \centering
+  \includegraphics[width=0.40\linewidth]{figures-thermal/unitcell2}
+  \hfill
+  \caption{Axial layout of the model geometry.}
+  \label{fig:th-val-unit-model}
+\end{figure}
+
+\begin{figure}[htbp!]
+  \centering
+  \includegraphics[width=0.40\linewidth]{figures-thermal/val-unit-matprop}
+  \hfill
+  \caption{Temperature dependent material properties \cite{tak_numerical_2008}.}
+  \label{fig:th-val-unit-model-b}
 \end{figure}
 
 Figure \ref{fig:th-val-unit-temps} shows the temperature profiles.
