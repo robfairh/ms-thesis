@@ -571,43 +571,11 @@ The negative values in the figures indicate that Moltres' power density is large
 	\label{fig:fullcore-1200-power}
 \end{figure}
 
-% Fluxes
-The following analysis compares the flux calculated by Serpent and Moltres.
-Section \ref{sec:neut-fuelcol} analysis was able to study the difference between Serpent and Moltres' results because the fuel column problem uses reflective boundary conditions, making the radial profile relatively flat.
-% Consequently, Serpent flux exhibits a relatively flat radial profile, and Moltres exhibits a flat radial profile.
-Given a flat radial profile, Moltres axial flux is independent of the location of the detector.
-In the full core problem, the radial profile is far from being flat, making Moltres axial flux sensitive to the detector's location.
-For this reason, the fluxes comparison remains qualitative.
-
+% Detectors
 The simulations recorded the neutron flux in axial and radial flux detectors in arbitrary regions of the reactor, shown in Figure \ref{fig:fullcore-detectors}.
 Serpent simulation's axial detector has the volume of a fuel column, while the radial detector has a 2$^{\circ}$-opening and a fuel assembly height.
 Both the Serpent and Moltres radial detector's axial location was the middle of the active core's height.
 
-% This section's analysis remains qualitative.
-% Serpent's axial flux is an average over radial direction, while Moltres' flux is the point-wise axial flux.
-% A better comparison would use an axial detector for Serpent simulation with a very small volume centered on the fuel assembly's center.
-% However, Monte Carlo simulations require of 
-% Given the nature of the detectors, in a full core analysis, the 
-% Serpent computes the average flux in the several bins that conform a detector.
-% Moltres notion of a detector is the flux over a line.
-% Note that the flux in Serpent is an average over the fuel column's volume, while the flux in Moltres is the point-wise flux over the fuel column's centerline.
-% \ref{eq:serpent-flux}
-
-% axial flux
-Moltres simulations used 15 energy groups, and a Python script collapsed the results into three groups to facilitate the results' visualization.
-Figures \ref{fig:fullcore-600-axial1} and \ref{fig:fullcore-600-radial1} show the axial and radial fluxes at 600K.
-The axial flux shapes are similar, but Figure \ref{fig:fullcore-600-axial1} shows that the fast and epithermal fluxes in Moltres are larger, while the axial thermal flux is smaller.
-% radial flux
-In Figure \ref{fig:fullcore-600-radial1}, Serpent fluxes present some 'noise.'
-A higher number of generations per cycle in Serpent simulations or using a detector with a larger volume would eliminate this.
-Additionally, the radial flux in Serpent reveals the location of the burnable poisons in the fuel assemblies.
-This diffusion simulation fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
-The fast radial flux in Moltres is larger, while the radial epithermal and thermal fluxes have almost the same magnitudes.
-Figures \ref{fig:fullcore-1200-axial1} and \ref{fig:fullcore-1200-radial1} display the fluxes at 1200K, which differ from the 600K case.
-Still, the 1200K case exhibits the same behavior for both axial and radial fluxes.
-Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
-
-%Detectors
 \begin{figure}[htbp!]
 	\centering
     \subfloat[Flux detectors in Serpent model. 1- Axial detector has the volume of a fuel column. 2- Radial detector has a 2$^{\circ}$-opening an a fuel assembly height.]{
@@ -620,6 +588,27 @@ Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 	\caption{Axial view of the flux detector locations.}
 	\label{fig:fullcore-detectors}
 \end{figure}
+
+The following analysis compares the flux calculated by Serpent and Moltres.
+Section \ref{sec:neut-fuelcol} analysis was able to study the difference between Serpent and Moltres' results because the fuel column problem uses reflective boundary conditions, making the radial profile relatively flat.
+% Consequently, Serpent flux exhibits a relatively flat radial profile, and Moltres exhibits a flat radial profile.
+Given a flat radial profile, Moltres axial flux is independent of the location of the detector.
+In the full core problem, the radial profile is far from being flat, making Moltres axial flux sensitive to the detector's location.
+For this reason, the fluxes comparison remains qualitative.
+
+% axial flux
+Moltres simulations used 15 energy groups, and a Python script collapsed the results into three groups to facilitate the results' visualization.
+Figure \ref{fig:fullcore-600-flux} show the axial and radial fluxes at 600K.
+The fast and epithermal fluxes in Moltres results are larger than Serpent's, while the axial thermal flux is smaller.
+% radial flux
+Serpent's radial flux present some 'noise.'
+A higher number of generations per cycle in Serpent simulations or using a detector with a larger volume would eliminate this.
+Additionally, the radial flux in Serpent reveals the location of the burnable poisons in the fuel assemblies.
+This diffusion simulation fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
+The fast radial flux in Moltres results is larger than Serpent's, while the radial epithermal and thermal fluxes have almost the same magnitudes.
+Figure \ref{fig:fullcore-1200-flux} display the fluxes at 1200K, which differ from the 600K case.
+Still, the 1200K case exhibits the same behavior for both axial and radial fluxes.
+Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 
 % % Axial flux1 at 600K
 % \begin{figure}[htbp!]
