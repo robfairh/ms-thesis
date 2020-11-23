@@ -237,6 +237,9 @@ Finally, equation \ref{eq:sulfur4} determines the thermal power $P_{TH2}$ requir
 \section{Microreactors and Small Modular Reactors}
 \label{sec:reactors}
 
+The typical \gls{UIUC}'s grid demand is smaller than 80 MW \cite{dotson_optimal_2020}.
+Accordingly, the following analyses consider reactors of small capacities, such as microreactors and \glspl{SMR}.
+
 These reactor concepts share several features.
 The reactors require limited on-site preparation as their components are factory-fabricated and shipped out to the generation site.
 This feature reduces up-front capital costs, enables rapid deployment, and expedites start-up times.
@@ -272,13 +275,14 @@ The nuclear reactor supplies the grid with electricity $P_E$ while providing a h
 $\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$
 
 \begin{align}
-	P_{E} &= \eta \beta P_{th} 	\label{eq:cogen1} \\
-	P_{EH2} &= \eta \gamma (1-\beta) P_{th} \label{eq:cogen2} \\
-	P_{TH2} &= (1-\gamma) (1-\beta) P_{th} \label{eq:cogen3}
+	P_{E} &= \eta \beta P_{th} 	\\
+	P_{EH2} &= \eta \gamma (1-\beta) P_{th} \\
+	P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
 	\intertext{where}
-    \eta &= \mbox{thermal-to-electric conversion efficiency} [-] \notag \\
-	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)} \notag \\
-	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}. \notag
+    \eta &= \mbox{thermal-to-electric conversion efficiency} [-] \notag
+    \intertext{giving}
+	\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)} \label{eq:cogen1} \\
+	\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}. \label{eq:cogen2}
 \end{align}
 
 If $\beta = 1$, the reactor only supplies the grid with electricity $P_E$, and the hydrogen plant does not produce \gls{H2}.
@@ -300,9 +304,8 @@ Table \ref{tab:cogen1} summarizes the values that $\gamma$ takes for the various
     \label{tab:cogen1}
 \end{table}
 
-
 This thesis focuses on two areas: transportation and electricity generation on the \gls{UIUC} campus.
-Regarding transportation, Section \ref{sec:results-transport} discusses the conversion of the \gls{UIUC} fleet on campus to \glspl{FCEV}.
+Regarding transportation, Section \ref{sec:results-transport} discusses the conversion of the \gls{UIUC} fleet operating on campus to \glspl{FCEV}.
 The analysis includes the conversion of the \gls{MTD} fleet as well.
 The first step determines the fuel consumed by both fleets and how much \gls{H2} enables the fleets' complete conversion.
 The next step evaluates several reactor designs and analyzes which ones could produce enough \gls{H2} to fulfill both fleet requirements.
@@ -317,10 +320,6 @@ Both studies propose the same solution - a nuclear reactor coupled to a hydrogen
 In terms of electricity generation, this solution decreases the need for dispatchable sources and, consequently, reduces carbon emissions.
 In terms of transportation, it eliminates carbon emissions.
 
-In both analyses, many reactor choices can satisfy our needs.
-The typical \gls{UIUC}'s grid demand is smaller than 80 MW \cite{dotson_optimal_2020}.
-Accordingly, the analyses consider reactors of small capacities, such as microreactors and \glspl{SMR}.
-
 
 \section{Results}
 \label{sec:hydro-results}
@@ -332,7 +331,7 @@ This section holds the results of the transportation sector analysis, Section \r
 
 This section studies the transportation sector fuel requirements.
 Figure \ref{fig:fuel} displays the fuel consumed per day by \gls{MTD} and \gls{UIUC} fleet.
-Using the values shown in Table \ref{tab:equiv}, I calculated the \gls{H2} requirement for MTD and UIUC fleets, shown in Figure \ref{fig:hydro-fleet}.
+The values shown in Table \ref{tab:equiv} allow for calculating the \gls{H2} requirement for MTD and UIUC fleets, shown in Figure \ref{fig:hydro-fleet}.
 Table \ref{tab:hydro-fleet} summarizes the results.
 
 	\begin{figure}[htbp!]
@@ -385,7 +384,7 @@ Table \ref{tab:hydro-fleet} summarizes the results.
         \label{tab:hydro-fleet}
 	\end{table}
 
-Using Table \ref{tab:co2-eq}, I calculated the \gls{CO2} savings caused by replacing all the fossil fuels with \gls{H2}.
+Table \ref{tab:co2-eq} allows for calculating the \gls{CO2} savings caused by converting the fleets to \glspl{FCEV}.
 Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
 
 	\begin{table}[htbp!]
@@ -418,7 +417,7 @@ Table \ref{tab:co2} displays the \gls{CO2} savings for both fleets.
         \label{tab:co2}
 	\end{table}
 
-The analysis determined the \gls{H2} requirement by the fleets, and now it seeks a microreactor design capable of meeting such demand.
+The analysis determined the \gls{H2} requirement by the fleets, and analyses several microreactor designs capable of meeting such demand.
 Table \ref{tab:hydro-micro} summarizes the microreactor designs considered for this analysis.
 Further studies could include other designs as well.
 
@@ -459,7 +458,7 @@ This section describes the analysis of the electricity generation sector and the
 This work predicted the UIUC grid’s load and the expected electricity production from solar to quantify the duck curve’s magnitude.
 As the \gls{icap}'s main objective is to become carbon neutral before 2050, this study made a prediction for that year.
 UIUC's solar farm is relatively new, and more data is necessary to produce a reliable forecast.
-To circumvent this barrier, I used the available data for the whole \gls{US} \cite{us_energy_information_administration_electric_2020}.
+To circumvent this barrier, the analysis used the available data for the whole \gls{US} \cite{us_energy_information_administration_electric_2020}.
 Figure \ref{fig:prediction} displays the prediction for 2050.
 The prediction used the linear regression that produces the worst-case scenario, in which the total load increases minimally, whereas the solar generation rises considerably.
 
@@ -509,9 +508,9 @@ However, the reactor electricity production ($P_{E}$) equals the net demand ($D_
 \end{align}
 
 Note that $P_{E}$ has power units while $D_{NET}$ has energy units.
-The choice of 1 hour time steps in our analysis make $P_{E}$ and $D_{NET}$ differ by the constant $h$.
+The choice of 1 hour time steps in our analysis makes $P_{E}$ and $D_{NET}$ differ by the constant $h$.
 As $P_{E}$ is lower than 25 MWe, and the reactor is at full thermal capacity, the hydrogen plant takes the excess of thermal energy.
-The calculating of the hydrogen produced used equation \ref{eq:demand} with equations \ref{eq:cogen1} to \ref{eq:cogen3}.
+Solving equation \ref{eq:demand} with equations \ref{eq:cogen1} and \ref{eq:cogen2} in combination with each method's respective equations, allow for calculating each method's produciton rate.
 Figure \ref{fig:uiuc-duck2} displays the results.
 The total \gls{H2} production reaches 660, 1009, and 815 kg for \gls{LTE}, \gls{HTE}, and \gls{SI}.
 
@@ -530,8 +529,7 @@ However, conventional fuel cells can use up to 60$\%$ of that energy \cite{doe_e
 Knowing the mass of hydrogen produced, I calculated the total electricity produced.
 The distribution of the electricity over a specific range of hours reduces the peak demand.
 I chose to distribute the electricity for over 6 hours.
-I calculated the new peak using equation
-
+The following equation allowed for calculating the new peak
 \begin{align}
 	NP &= \frac{\sum_{i=0}^{N} D_{NET, i} - TH}{N}  \label{eq:newpeak}
 	\intertext{where}
@@ -543,13 +541,13 @@ I calculated the new peak using equation
 
 Figure \ref{fig:uiuc-duck3} shows these results.
 The different \gls{H2} processes can generate 15.84 MWh, 24.2 MWh, and 19.6 MWh, respectively.
-This generation accounts for a peak reduction of 5 MW, 6.4 MW, and 5.6 MW, respectively.
+This generation accounts for a peak reduction of 5 MW, 6.4 MW, and 5.6 MW.
 
 \begin{figure}[htbp!]
     \centering
 	\includegraphics[height=7cm]{figures-hydro/uiuc-hydro3}
 	\hfill
-	\caption{Peak reduction by using the H$_2$ produced by the different production methods.}
+	\caption{Peak reduction by using the H$_2$ produced by the different production methods. $E_{LTE}$, $E_{HTE}$, and $E_{SI}$ are the generated electricity from the different method's hydrogen production.}
 	\label{fig:uiuc-duck3}
 \end{figure}
 
