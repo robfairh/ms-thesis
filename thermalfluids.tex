@@ -90,7 +90,7 @@ The outlet coolant temperature is 770.2 $^{\circ}$C, whereas the maximum fuel te
 \label{sec:unitcell}
 
 This section solved the unit cell problem in the hot spot of the GT-MHR, which is the spot in the core with the largest power density.
-This section intended to reproduce the results found by In et al. 2006 \cite{in_three-dimensional_2006} to validate the unit-cell model.
+This section intended to reproduce the results found by In et al. \cite{in_three-dimensional_2006} to validate the unit-cell model.
 I chose this article because it solves a three-dimensional unit-cell model and gives one of the most thorough descriptions in the open literature.
 Table \ref{tab:th-val-unit-char} presents the problem characteristics.
 The article does not specify the solid's material properties, so the model used parameters from Tak et al. 2008 \cite{tak_numerical_2008}.
@@ -254,8 +254,7 @@ A5                        &          & 4.02e-11   &              & -9.77e-16    
 
 Table \ref{tab:th-val-assem-char} lists the remaining input parameters.
 The model assigns a number to each coolant channel and the bypass-gap, as shown in Figure \ref{fig:th-val-assem-model-a}.
-The calculations adopted the mass flow distribution from Sato et al \cite{sato_computational_2010}.
-Table \ref{tab:th-val-assem-massflow} shows the mass flow rate in each channel.
+The calculations adopted the mass flow distribution from Sato et al \cite{sato_computational_2010}, shown in Table \ref{tab:th-val-assem-massflow}.
 
 \begin{table}[htbp!]
 \centering
@@ -299,13 +298,13 @@ No bypass-gap  & 22.73 & 22.73 & 11.38 & 22.77 & 22.91 & 11.44 & -     \\
 \end{tabular}
 \end{table}
 
-Table \ref{tab:th-val-assem-results} compares the results determined in this thesis using Moltres/MOOSE to Sato's results \cite{sato_computational_2010}.
+Table \ref{tab:th-val-assem-results} compares the results determined in this work using Moltres/MOOSE to Sato's results \cite{sato_computational_2010}.
 In the case with no bypass-gap, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 4$^{\circ}$C higher.
 In the case with a 3mm bypass-gap, Moltres/MOOSE's maximum coolant temperature is 2 $^{\circ}$C lower, and the maximum fuel temperature is 1$^{\circ}$C lower.
-The results showed good agreement with those in \cite{sato_computational_2010}.
+The results are within the 1\% difference to those in \cite{sato_computational_2010}.
 
 Figure \ref{fig:th-val-assem-temps} displays the outlet temperature along lines A-B and A-C from Figure \ref{fig:th-val-assem-model-a}.
-The temperature is higher closer to the column center because the bypass-flow causes the center's temperature to rise while reducing the peripheral temperature.
+The bypass-flow reduces the peripheral temperature causing the center's temperature to rise.
 The presence of the gap between assemblies produces a larger temperature gradient in the assembly.
 
 \begin{table}[htbp!]
@@ -341,13 +340,12 @@ Fuel    & 1090      & 1094  & 0.4    & 1115      & 1114 & 0.1   \\
 \subsection{Flow distribution analysis}
 \label{sec:flowdistrib}
 
-As described in Section \ref{sec:litrev-thermalf}, several methods are available to calculate the flow distribution in prismatic HTGRs.
+As described in Section \ref{sec:litrev-thermalf}, several methods are available to calculate the coolant flow distribution in prismatic HTGRs.
 This section compares a few such methods.
 The metrics chosen for this comparison are the maximum coolant and fuel temperatures and the mass flow distribution.
 The model assigns a number to each coolant channel and the bypass-gap (see Figure \ref{fig:th-val-assem-model-a}).
 Note that Channel 1 is a small coolant channel while Channels 2 to 13 are large coolant channels.
-
-This study used the mass flow distribution from Sato et al. \cite{sato_computational_2010} and analyzed the following cases:
+This study adopted the mass flow distribution from Sato et al. \cite{sato_computational_2010} as the reference and analyzed the following cases:
 \begin{itemize}
     \item Case 1: uses a flat velocity profile (every channel and gap has the same velocity).
     \item Case 2: uses the incompressible flow model with temperature-independent helium viscosity.
@@ -397,7 +395,7 @@ Equations \ref{eq:case2mdot} and \ref{eq:case4mdot} used an iterative solver to 
   & \left| \Delta P^{(n+1)} - \Delta P^{(n)} \right| < 10^{-4}.
 \end{align}
 
-The solution of Cases 3 and 4 depend on the temperature, requiring a second level of iterations.
+The solution of Cases 3 and 4 depend on the temperature, requiring a second level of iterations that updates the material properties for the computed temperatures.
 The convergence criteria were 1$^{\circ}$C for the maximum coolant and fuel temperatures.
 A Python script external to Moltres holds these iterative solvers.
 
@@ -412,15 +410,16 @@ Equation \ref{eq:rel-error2} evaluates the relative difference to the reference 
 \end{align}
 
 % Case 4 and case 5 converged after two and three iterations, respectively.
-Case 1 yields the largest differences to reference results.
-Additionally, Case 1 yields the largest small coolant channel mass flow and the smallest large coolant channel mass flow.
+Case 1 yields the largest differences to reference results, yielding a 13.3\% difference to the reference small coolant channel mass flow.
+Additionally, Case 1 yields the smallest large coolant channel mass flow, the differences being within 6.2\%.
+Case 2 and 3 results are within the 3.3\% difference to the reference results.
 Case 2 and 3 barely differ, proving that not considering the viscosity's temperature dependency yields a more straightforward method with acceptable accuracy.
 Case 4 results are within 1\% of the reference results except for the gap mass flow that yields a difference of 4.2\%.
 For the most part, Case 4 arrives at the values closest to the reference solution.
 
 Table \ref{tab:th-assem-flow-results} summarizes the maximum temperatures and the relative difference to the reference values using equation \ref{eq:rel-error}.
 Case 1 yields the largest difference for the maximum coolant temperature, which is less than 10$^{\circ}$C.
-Case 4 yields the results closest to the reference values, show a difference of 0.2\%.
+Case 4 yields the results closest to the reference values, showing a difference of 0.2\%.
 For the maximum fuel temperature, Case 1 and 4 yield the best results.
 Again, Case 2 and 3 results barely differ.
 
@@ -564,7 +563,7 @@ The outside air region outer boundary is at 30 $^{\circ}$C.
 
 The core model geometry uses INL's model as the reference design.
 Nine rings define the solid structures in the core, and the other nine rings the coolant flow in the core.
-I calculated the radii of the rings by preserving the assemblies' volume.
+The radii of the rings preserve the assemblies' volume.
 The coolant thickness is constant for all the rings and preserves the coolant volume in the core.
 % missing description of the power density distribution
 Table \ref{tab:th-ex2a} presents the material properties.
@@ -637,7 +636,7 @@ In the middle of each fuel ring, a coolant ring defines the coolant flow in that
 The rings' radii preserve the assemblies' volume, and the coolant ring volumes preserve the coolant volume in each of the fuel rings.
 The model uses the material properties from Table \ref{tab:th-ex2a}.
 
-Figure \ref{fig:ex2a-temps} presents the coolant and solid temperatures in the different fuel rings.
+Figure \ref{fig:ex2a-temps} presents the coolant and average solid temperatures in the different fuel rings.
 The coolant temperature increases from the top to the bottom of the active core, and it is constant in the bottom and top reflector regions.
 The highest coolant, fuel, and moderator temperatures are in Fuel Ring 1.
 
@@ -922,51 +921,47 @@ Further studies should analyze this behavior.
 \section{Conclusions}
 \label{sec:thermal-conc}
 
+This chapter addressed several objectives of this thesis by presenting the results of several stand-alone thermal-fluids simulations of prismatic HTGRs using Moltres.
+
 The preliminary studies focused on the verification of the thermal-fluids model and the validation of the unit-cell model.
 The verification of the thermal-fluids model studied a simplified cylindrical model comparing the Moltres/MOOSE numerical solution to the problem analytical solution - both solutions were in agreement.
-This study set the basis for the unit cell problem set-up.
-% The unit cell problem use thermal-fluids model from the previous verification.
-To validate the unit cell model, Section \ref{sec:unitcell} compared Moltres/MOOSE results to the results of In et al. \cite{in_three-dimensional_2006}.
-The results presented some discrepancies: the outlet coolant and moderator temperatures differed by less than 10$^{\circ}$C, while the fuel temperature differed by 22$^{\circ}$C.
-We expected some variability in the results as some of our simulation parameters may have varied from the original study.
-In's article is missing the materials' definition, so Section \ref{sec:unitcell} adopted the material properties from Tak et al. \cite{tak_numerical_2008}.
-Additionally, In used a chopped cosine power profile, while the Section \ref{sec:unitcell} model simplified the calculation using a uniform power density.
+To validate the unit cell model, Section \ref{sec:unitcell} compared Moltres/MOOSE results to the results from a published article.
+Moltres/MOOSE results presented some discrepancies, being within 2\% of the reference results.
 
 Section \ref{sec:fuelcol} focus of the analysis was a $1/12^{th}$ section of an HTGR fuel column.
-To validate the model, Section \ref{sec:fuelcol} intended to reproduce Sato et al. \cite{sato_computational_2010} results.
-Section \ref{sec:fuelcol} conducted two studies: one with no bypass-gap, and one with a 3mm-bypass-gap.
-To simplify the analysis, our model adopted the mass flow rates from Sato's article.
-For both case studies, the maximum temperatures in the coolant and the fuel showed good agreement.
-Section \ref{sec:fuelcol} also presented the temperature profile in two of the edges of the geometry.
-Such an analysis exhibits the effects of the bypass flow on the temperature.
-The presence of the gap makes the center temperature rise while it reduces the peripheral temperature.
-The overall consequence is an increase in the temperature gradient inside the column.
+To validate the model, Section \ref{sec:fuelcol} analysis reproduced a published article's results.
+The analyses comprised two studies: one with no bypass-gap, and one with a 3mm-bypass-gap.
+To simplify the analysis, the model adopted the mass flow rates from Sato's article.
+For both case studies, the coolant and the fuel's maximum temperatures were within a 1\% difference to the reference temperatures.
+Section \ref{sec:fuelcol} also presented the temperature profile in two of the edges of the geometry, exhibiting the effects of the bypass flow on the temperature distribution.
+The bypass-gap makes the center temperature rise while reducing the peripheral temperature, overall, increasing the temperature gradient inside the column.
 
 The next analysis studied different calculation methods for the mass flow distribution in the fuel column.
-Section \ref{sec:flowdistrib} adopted Sato's mass flow distribution as the reference value and calculated the mass flow distribution using four different methods.
-From Case 2 to Case 5, the methods' complexity increased as some required iterative solvers.
-Overall, Case 2 proved to be the simplest method, and its application did not considerably deteriorate the results' accuracy.
-For that reason, the following studies adopted the Case 2 mass flow distribution method.
+Section \ref{sec:flowdistrib} adopted known mass flow distribution values as a reference and calculated the mass flow distribution using four different methods.
+From Cases 1 to 4, the methods' complexity increased as some required iterative solvers.
+Overall, Case 1 proved to be the simplest method, and its application did not considerably deteriorate the results' accuracy.
+For that reason, the following studies adopted the Case 1 mass flow distribution method.
 
-Section \ref{sec:meshconverge} studied the feasibility of extending this methodology to larger meshes and analyze the possibility of conducting full-scale simulations.
-Section \ref{sec:meshconverge} conducted a mesh convergence analysis on the full-fuel column problem.
+Section \ref{sec:meshconverge} studied the feasibility of extending this methodology to larger meshes and conduct full-scale simulations.
+Section \ref{sec:meshconverge} studied the mesh convergence of the full-fuel column problem.
 As the model uses the one-dimensional coolant equations, the coolant temperature converges relatively fast compared to the fuel temperature.
-The fuel temperature did not reach convergence in this analysis as the mesh discretization increase imposed a high memory requirement on the simulations.
-This analysis concluded that modeling thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other methods.
+The fuel temperature did not reach convergence in this analysis.
+As the mesh discretization increased, it imposed a high memory requirement on the simulations.
+This analysis concluded that modeling thermal-fluids with such a detailed level is computationally too expensive, and it suggests searching for other approaches.
 The following sections adopted a two-dimensional cylindrical model for the full-core analyses.
 
 Section \ref{sec:ph1ex2} described Phase I Exercise 2 of the OECD/NEA MHTGR-350 Benchmark.
 This exercise encompasses four sub-cases with different definitions of bypass-flow and material properties.
-The simplest exercise is Exercise 2a, as it does not model the bypass flow and provides the definition of the material properties.
+The simplest sub-case is Exercise 2a, as it does not model the bypass flow and defines the material properties.
 Section \ref{sec:ph1ex2} used Moltres/MOOSE to conduct Exercise 2a.
-Additionally, the Moltres thermal-fluids model bases its definition on INL's model.
 As OECD/NEA did not publish this exercise’s results, Section \ref{sec:ph1ex2} compared Moltres/MOOSE results to INL benchmark results \cite{strydom_inl_2013}.
+Moltres' thermal-fluids model based its definition on INL's model.
 The large discrepancies between Moltres/MOOSE and INL results suggest that our model does not capture some heat transfer mechanism that the INL model does.
 One of the known differences between the models is the inclusion of the radiative heat transfer mechanism.
-As Moltres does not model that mechanism, it could be the cause of the differences.
+As Moltres does not model that mechanism, it could be the cause of the discrepancies.
 
-Section \ref{sec:ph1ex2} used a global and a unit cell model based on Stainsby's approach \cite{stainsby_investigation_2008} to circumvent this drawback.
-The global model is responsible for calculating the coolant temperature, while the unit cell model focuses on the moderator and fuel temperatures.
+A second study in Section \ref{sec:ph1ex2} used a two-level approach, based on a global and a unit cell model \cite{stainsby_investigation_2008}.
+The global model calculated the coolant temperature, while the unit cell model focused on the moderator and fuel temperatures.
 With this approach, Moltres/MOOSE results were closer to INL results.
 The results showed some discrepancies, which indicates that some assumption/model simplification is not accurate enough.
 A flat velocity approximation might be the cause of such discrepancies.
@@ -976,4 +971,10 @@ Section \ref{sec:ph1ex3} developed a global model to solve a simplified version 
 Although the model was simple, it allowed visualizing some of the essential aspects of a prismatic HTGR multi-physics simulation in Moltres.
 This exercise led to Section \ref{sec:discuss}, which described some of the flaws found in the model.
 Additionally, Section \ref{sec:coupled-average} addressed some of the flaws found in the model and set the basis for conducting prismatic HTGR coupled exercises in Moltres.
-% This exercise also sets the basis for future work that Section \ref{sec:futwork} will introduce.
+
+This chapter met the objective to predict the prismatic HTGRs temperature profile accurately; however, it achieved it partially.
+This work proved Moltres' capability to conduct steady-state thermal-fluid calculations in local models such as the unit cell and the fuel column problems.
+On the other hand, the full-core results showed several discrepancies that will require further analysis.
+This chapter arrives at a similar conclusion for the objective of conducting coupled simulation.
+Nevertheless, an inaccurate thermal-fluids calculation yields inaccurate coupled simulations.
+For this reason, Section \ref{sec:ph1ex3} carried out a simplified exercise with the objective of establishing the roadmap for future simulations.
