@@ -72,6 +72,8 @@
 \usepackage{float}
 \usepackage{enumitem}
 % \usepackage{subcaption}
+% \usepackage[titletoc]{appendix}
+\usepackage{appendix}
 
 %\title{Moltres application to prismatic gas-cooled reactors}
 %\title{Moltres application to prismatic gas-cooled reactors and high-temperature hydrogen production}
@@ -190,23 +192,32 @@ A mi familia, for their unconditional support.
 \chapter{Conclusions}
 \input{conclusions}
 
-\chapter*{Appendix A}
-\setcounter{chapter}{8}
-\setcounter{section}{0}
-\setcounter{equation}{0}
-\input{appendixA}
+\begin{appendices}
+	\chapter{Equations}
+	\input{appendixA}
+	\chapter{Group Constants Handling}
+	\input{appendixB}
+	\chapter{Analytical Solutions}
+	\input{appendixC}
+\end{appendices}
 
-\chapter*{Appendix B}
-\setcounter{chapter}{9}
-\setcounter{section}{0}
-\setcounter{equation}{0}
-\input{appendixB}
+% \chapter*{Appendix A}
+% \setcounter{chapter}{8}
+% \setcounter{section}{0}
+% \setcounter{equation}{0}
+% \input{appendixA}
 
-\chapter*{Appendix C}
-\setcounter{chapter}{10}
-\setcounter{section}{0}
-\setcounter{equation}{0}
-\input{appendixC}
+% \chapter*{Appendix B}
+% \setcounter{chapter}{9}
+% \setcounter{section}{0}
+% \setcounter{equation}{0}
+% \input{appendixB}
+
+% \chapter*{Appendix C}
+% \setcounter{chapter}{10}
+% \setcounter{section}{0}
+% \setcounter{equation}{0}
+% \input{appendixC}
 
 \backmatter
 
