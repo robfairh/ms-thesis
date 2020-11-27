@@ -10,7 +10,7 @@ duded
 \begin{align}
   % diffusion
   & \frac{1}{v_g}\frac{\partial}{\partial t} \phi_g = \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g +
-  \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} + 
+  \sum_{g' \ne g}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} + \chi_g^p \sum_{g' = 1}^G (1 - \beta) \nu \Sigma_{g'}^f \phi_{g'} + 
   \chi_g^d \sum_i^I \lambda_i C_i \label{eq:diffusion} \\
   % precursors
   & \frac{\partial}{\partial t} C_i = \sum_{g'= 1}^G \beta_i \nu \Sigma_{g'}^f \phi_{g'} - \lambda_i C_i \label{eq:precursors}

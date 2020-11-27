@@ -90,7 +90,7 @@ Moltres translates the multi-group diffusion equations into kernels, equations t
 
 \begin{align}
   % diffusion-eigenvalue calculation
-  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g \ne g'}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
+  \nabla \cdot D_g \nabla \phi_g - \Sigma_g^r \phi_g & + \sum_{g' \ne g}^G \Sigma_{g'\rightarrow g}^s \phi_{g'} +
   \chi_g^t \sum_{g' = 1}^G \frac{1}{k_{eff}}\nu \Sigma_{g'}^f \phi_{g'} = 0 \label{eq:diffusion-eig}
   \intertext{where}
   & D_g = \mbox{group $g$ diffusion coefficient } [cm] \notag \\
