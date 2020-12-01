@@ -2,12 +2,12 @@
 
 This chapter presents several studies that use Moltres as a stand-alone neutronics solver.
 The objective of the chapter is to validate Moltres' calculation scheme by comparing Moltres results to Serpent and the OECD/NEA MHTGR-350 Benchmark.
-This chapter comprehends the following sections: Section \ref{sec:neut-prelim} describes some preliminary studies that help set up Serpent and Moltres simulations, Section \ref{sec:neut-serpent} presents several studies comparing Moltres and Serpent results, Section \ref{sec:ph1e1} discusses Moltres results of Phase I Exercise 1 of the benchmark, and Section \ref{sec:neutr-conc} concludes the chapter with a summary of the chapter and its key points.
+This chapter comprehends the following sections: Section \ref{sec:neut-prelim} describes preliminary studies that help set up Serpent and Moltres simulations, Section \ref{sec:neut-serpent} presents several studies comparing Moltres and Serpent results, Section \ref{sec:ph1e1} discusses Moltres results of Phase I Exercise 1 of the benchmark, and Section \ref{sec:neutr-conc} concludes the chapter with a summary of the chapter and its key points.
 
 \section{Preliminary studies}
 \label{sec:neut-prelim}
 
-This section's purpose is to find the right set up of Serpent and Moltres input files.
+This section's purpose is to determine the proper set up of Serpent and Moltres simulations.
 Section \ref{sec:homo-hetero} focuses on the definition of the materials in Serpent input file for obtaining the group constants for Moltres.
 Section \ref{sec:setup} analyzes different ways to set up Moltres input files.
 
@@ -37,11 +37,10 @@ The homogeneous distribution simulation took 1.73 minutes and the heterogeneous 
 
 The \gls{Keff} was 1.17527 $\pm$ 0.00021 for the homogeneous distribution and 1.25107 $\pm$ 0.00020 for the heterogeneous distribution.
 Serpent generated the group constants using the three energy group structure [0, 2.38eV, 111keV, 20MeV].
-Using the heterogeneous distribution as the reference, a Python script calculated the group constants' relative error.
+Figure \ref{fig:param-comparison} displays the group constants' relative error.
 The evaluated parameters were $D_g$, $\Sigma^r_g$, $\nu\Sigma^f_g$, and $\chi^t_g$ (see Equation \ref{eq:diffusion-eig}).
 Figure \ref{fig:param-comparison} displays the relative errors for $\Sigma^r_g$ and $\nu\Sigma^f_g$, which were the group constants that changed the most.
-The figure does not include $D_g$ and $\chi^t_g$ because their relative errors were less than 1$\%$.
-The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
+The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$, while $D_g$ and $\chi^t_g$ relative errors were less than 1$\%$.
 
 \begin{figure}[htbp!]
 	\centering
@@ -52,7 +51,7 @@ The relative errors of $\Sigma^r_g$ and $\nu\Sigma^f_g$ were less than 6$\%$.
 \end{figure}
 
 The results show that the homogenization of the fuel compact isotopes decreases the multiplication factor considerably.
-The impact on the group constants does not seem to be substantial; however, the multiplication factor's considerable difference suggests that the combined effect of the small variations in the group constants is significant.
+Although the group constant variation is smaller than 6\%, it has a significant impact on the multiplication factor.
 Based on these results, Serpent models the TRISO particles explicitly for generating the group constants in the following sections.
 
 \subsection{Problem set-up}
@@ -67,12 +66,6 @@ A pin-by-pin homogenization treats the pin or assembly heterogeneities, yielding
 
 % Previous works using Moltres
 Previous work \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019} used Moltres for simulating \glspl{MSR}, which allow for heterogeneous calculations.
-In those calculations, the authors defined two materials in Moltres input files: the moderator and the fuel.
-For such a configuration, a moderator mesh node holds the neutronics and temperature information only of the moderator.
-The same is true for the fuel.
-% On the other hand, a homogeneous calculation would not differentiate between moderator and fuel and would hold the information of both materials in each node.
-
-% What I did in this section:
 Keeping in mind Moltres proven capabilities, this work aimed for a heterogeneous calculation of a prismatic \gls{HTGR}.
 For this study, Serpent modeled a fuel column of the MHTGR-350 and generated the group constants.
 Figure \ref{fig:fuelcolumn} displays the Serpent model geometry.
@@ -80,7 +73,7 @@ Serpent generated the group constants for three materials: moderator, coolant, a
 The Serpent simulations included 5$\times 10^5$ neutrons per cycle, 400 active cycles, and 100 inactive cycles for the calculations.
 % The \gls{Keff} was 1.41933.
 Taking advantage of the problem's symmetry, Moltres modeled only $1/12^{th}$ of the fuel column, shown in Figure \ref{fig:fuelcolumn}.
-I made the geometry and mesh using Gmsh \cite{geuzaine_gmsh_2020}.
+Gmsh \cite{geuzaine_gmsh_2020} produced the geometry and mesh.
 The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF} per energy-group.
 
 \begin{figure}[htbp!]
@@ -96,7 +89,7 @@ The diffusion calculation had 1.84$\times 10^5$ \glspl{DoF} per energy-group.
 	\label{fig:fuelcolumn}
 \end{figure}
 
-Moltres simulation obeyed an eigenvalue convergence tolerance of 10$^{-8}$, defined by equation \ref{eq:moltres-tol}
+Moltres input files set an eigenvalue convergence tolerance of 10$^{-8}$, defined by equation \ref{eq:moltres-tol}
 
 \begin{align}
    & \frac{k^{(n)}-k^{(n-1)}}{k^{(n)}} < \varepsilon \label{eq:moltres-tol}
@@ -107,7 +100,7 @@ Moltres simulation obeyed an eigenvalue convergence tolerance of 10$^{-8}$, defi
 
 The calculation used two energy groups with the structure [0, 0.625eV, 20MeV].
 The eigenvalue calculation did not converge.
-Although several factors could contribute to this behavior, I focused on the validity of the diffusion calculations in this system.
+Although several factors could contribute to this behavior, this analysis focused on the validity of the diffusion calculations in this system.
 
 % Diffusion validity see bu1/tools-bu.txt
 In diffusion theory, the current density $J$ is proportional to the gradient of the flux \cite{leppanen_development_2007}
@@ -226,7 +219,7 @@ The Serpent simulations included 4$\times 10^5$ neutrons/cycle, 360 active cycle
 Taking advantage of the problem's symmetry, Moltres modeled a $1/12^{th}$-section of the homogenized fuel column.
 I made the geometry and mesh, which had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes, using Gmsh.
 The diffusion calculations had 2.29 $\times 10^4$ \glspl{DoF} per energy-group.
-The Moltres simulations obeyed an eigenvalue and a flux convergence tolerance of 10$^{-8}$.
+The Moltres input files set an eigenvalue and a flux convergence tolerance of 10$^{-8}$.
 Moltres calculations used the different energy group structures listed in Table \ref{tab:energygroups}.
 
 \begin{table}[htbp!]
@@ -516,7 +509,7 @@ The Serpent simulations included 8$\times 10^5$ neutrons per cycle, 500 active c
 
 Moltres model mesh had 3.0 $\times 10^5$ elements and 1.60 $\times 10^5$ nodes.
 The diffusion calculations had 1.60 $\times 10^5$ \glspl{DoF} per energy-group and a total of 2.4 $\times 10^6$ DoFs.
-The Moltres simulations obeyed an eigenvalue and flux convergence tolerance of 10$^{-8}$.
+The Moltres input files set an eigenvalue and flux convergence tolerance of 10$^{-8}$.
 
 % Keff
 This study compares the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor calculated by Serpent and Moltres.
@@ -724,7 +717,7 @@ Two hundred and thirty-two hexagonal subdomains comprised the core, for which th
 % Table \ref{tab:mac-region} lists the six macroscopic regions that we can differentiate in the model.
 The simulations required two meshes: one for the control rod out and one for the control rod in.
 The control out simulation had 2.7 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 7.0 $\times 10^6$ DoFs, while the control rod in simulation had 2.3 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 5.9 $\times 10^6$ DoFs.
-The Moltres simulations obeyed an eigenvalue convergence tolerance of 10$^{-8}$.
+The Moltres input files set an eigenvalue convergence tolerance of 10$^{-8}$.
 
 \begin{figure}[htbp!]
 	\centering
