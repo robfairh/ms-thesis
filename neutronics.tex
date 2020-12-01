@@ -18,7 +18,7 @@ This section determines the proper way to treat the fuel compact heterogeneities
 This study modeled in Serpent two different material distributions in a fuel compact: a homogeneous distribution of the isotopes and a heterogeneous distribution that explicitly modeled the TRISO particles.
 The study used a hexagonal unit cell model that included the fuel compact, a helium gap, and the surrounding graphite, exhibited in Figure \ref{fig:compact-model}.
 Table \ref{tab:compact} specifies the model input parameters.
-The material temperature was 1200K, a case that represents the \gls{HFP} core state.
+The material temperature was 1200K, a case that represents the \gls{HFP} core state \cite{strydom_results_2015}.
 The Serpent simulations included 5$\times 10^4$ neutrons per cycle, 500 active cycles, and 50 inactive cycles for the calculations.
 The homogeneous distribution simulation took 1.73 minutes and the heterogeneous distribution simulation 2.21 minutes using 256 cores --- the heterogeneous calculation took 28$\%$ longer.
 
@@ -146,7 +146,7 @@ These results suggest that a heterogeneous diffusion calculation of the prismati
   \label{tab:mfp}
 \end{table}
 
-Next, I conducted a feasibility study for the homogeneous calculation of the fuel assembly in Moltres.
+Next, the analysis studied a homogeneous calculation of the fuel assembly in Moltres.
 Serpent calculated the fuel assembly's homogeneous group constants by homogenizing the fuel, coolant, and moderator.
 This material's mean free path is in the order of the centimeters, shown in Table \ref{tab:mfp}.
 Next, Moltres simulation used the homogeneous group constants to carry out an eigenvalue calculation.
@@ -174,8 +174,7 @@ Note that Serpent's flux is the average value of the flux in each bin of the det
 
 The fluxes are similar in shape and magnitude.
 % Conclusion
-I emphasize that this was a feasibility study and the analysis remains qualitative.
-The following sections present a more in-depth analysis of more detailed results.
+Emphasizing that this was a feasibility, the analysis remains qualitative and the following sections present a more in-depth analysis of more detailed results.
 Based on these results and discussion, the following sections study homogeneous calculations using Moltres.
 
 \begin{figure}[htbp!]
@@ -202,22 +201,22 @@ The following sections compare Moltres and Serpent results as a validation exerc
 \label{sec:neut-fuelcol}
 
 This section investigates the effects of the energy group structure on the diffusion simulations.
-A first analysis varied the number of energy groups, while a second analysis varied the energy group structures with a constant number of energy groups.
-The analyses focused on a fuel column of the MHTGR-350, shown in Figure \ref{fig:fuelcolumn}, To reduce the computational expense.
+The first analysis varied the number of energy groups, while a second analysis varied the energy group structures with a constant number of energy groups.
+To reduce the computational expense, the analyses focused on a fuel column of the MHTGR-350, shown in Figure \ref{fig:fuelcolumn}.
 % The fuel column includes the bottom and top reflectors.
 Tables \ref{tab:element-characteristics} and \ref{tab:compact} specify the model input parameters.
 
 The first step in the calculation obtained the group constants using Serpent.
-Serpent's model did not consider the fuel handling holes or the bottom and top reflectors' coolant channels for simplicity.
+For simplicity, Serpent's model did not consider the fuel handling holes or the bottom and top reflectors' coolant channels.
 HTGRs use burnable poisons to reduce the power peaking factors in various active core regions.
 Some reactors have burnable poisons in the rings closer to the reflectors and no burnable poisons in the middle rings.
 This characteristic motivated the analysis of two cases: one fuel column that does not have burnable poisons and one that does.
 The burnable poisons' locations are the six corners of the fuel assembly, shown in Figure \ref{fig:fuelassembly}.
-The material temperatures were 600 and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
+The material temperatures were 600 and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states \cite{strydom_results_2015}.
 The Serpent simulations included 4$\times 10^5$ neutrons/cycle, 360 active cycles, and 40 inactive cycles for the calculations.
 
 Taking advantage of the problem's symmetry, Moltres modeled a $1/12^{th}$-section of the homogenized fuel column.
-I made the geometry and mesh, which had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes, using Gmsh.
+The mesh had 3.71 $\times 10^4$ elements and 2.29 $\times 10^4$ nodes.
 The diffusion calculations had 2.29 $\times 10^4$ \glspl{DoF} per energy-group.
 The Moltres input files set an eigenvalue and a flux convergence tolerance of 10$^{-8}$.
 Moltres calculations used the different energy group structures listed in Table \ref{tab:energygroups}.
@@ -271,10 +270,11 @@ Summarizing, the analyses included four operational cases:
 \end{itemize}
 
 % This is very important and I should review it carefully
-To compare the results from Serpent and Moltres, we review the three-group axial fluxes found by each of them.
-Moltres ran the calculations for 26 energy groups and a Python script collapsed the results into three energy groups to facilitate the results' visualization.
+To compare the results from Serpent and Moltres, we compare the axial flux.
+Moltres ran the calculations using 26 energy groups.
+The results present the axial fluxes collapsed into three energy groups to facilitate the results' visualization.
 Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
-The figures also display the difference between Serpent and Moltres results, where $\phi_S$ and $\phi_M$ correspond to the Serpent-derived flux and the Moltres-derived flux.
+The figures also display the difference between Serpent and Moltres results, where $\phi_S$ and $\phi_M$ correspond to Serpent's and Moltres' fluxes.
 The analysis uses the absolute difference instead of the relative difference because the large errors in the reflector hinder the visualization of the errors in the active core.
 
 % left here: analysis
