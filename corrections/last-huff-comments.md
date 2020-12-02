@@ -14,4 +14,5 @@
 	- accurately still not clear enough
 	- 'model the thermal feedback in a way that captures ....'
 
-* some plots have tiny text
+* some plots have tiny text:
+	- which ones: ??
