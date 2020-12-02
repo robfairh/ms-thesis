@@ -833,7 +833,10 @@ This section analyzes Moltres' flaws in conducting prismatic HTGR coupled simula
 % Describe moltres heterogenous capabilities as an MSR solver
 Moltres' initial development targeted MSRs, allowing them to rely on heterogeneous diffusion calculations.
 In a heterogeneous solver, each mesh node holds the information of each variable.
-In an MSR simulation, Moltres defines the neutron flux and the temperature on each node, and each node uses its temperature to compute the thermal feedback for the neutron flux.
+In previous work \cite{lindsay_introduction_2018}\cite{pater_multiphysics_2019}, the authors defined two materials in Moltres input files: the moderator and the fuel.
+For such a configuration, a moderator mesh node holds the neutronics and temperature information only of the moderator.
+The same is true for the fuel.
+For these calculations, Moltres defines the neutron flux and the temperature on each node, and each node uses its temperature to compute the thermal feedback for the neutron flux.
 
 % Moltres should use average temperatures
 As discussed in Chapter \ref{ch:neutronics}, in a prismatic HTGR simulation, the neutronics calculation requires an assembly-level homogenization of the group constants.
@@ -842,8 +845,9 @@ As the fuel group constants depended on the fuel temperature, and the moderator 
 Hence, a mesh node should hold both temperatures.
 
 Section \ref{sec:ph1ex3} used a heterogeneous thermal-fluid model to solve the temperature in the reactor.
-The problem with using a heterogeneous model is that each node only holds the temperature's value in that particular material.
-A coolant node holds the coolant temperature information and computes the thermal feedback with such information instead of the moderator and fuel temperature.
+The problem with using a heterogeneous thermal-fluid model in a coupled simulation is that each node only holds the temperature's value only in that particular material.
+For example, a coolant node holds the coolant temperature information and computes the thermal feedback with such information instead of the moderator and fuel temperatures.
+Computing the thermal feedback with the coolant temperature is essentially wrong, as the group constants do not depend on the coolant temperature.
 For this reason, Moltres should use the average assembly-level fuel and moderator temperatures instead of the point-wise temperature to compute the thermal feedback.
 
 % Moltres should differentiate Tmod and Tfuel
@@ -852,7 +856,7 @@ Such homogenization assumes that both the moderator and fuel are in thermal equi
 Consequently, the model does not differentiate the fuel temperature from the moderator temperature.
 However, a coupling model cannot correctly calculate the thermal feedback if it does not differentiate between the moderator and the fuel temperatures \cite{damian_vhtr_2008}.
 
-I denominate this issue as the 'homogenization dilemma.'
+This thesis denominates this issue as the 'homogenization dilemma.'
 To correctly compute neutronics, the diffusion solver must use homogenized parameters that depend on both moderator and fuel temperatures.
 Simultaneously, to accurately calculate the thermal feedback, a mesh node should differentiate the moderator temperature from the fuel temperature, which requires a heterogeneous calculation in the thermal-fluids model.
 A thermal-fluid heterogeneous calculation is still valid, but the thermal feedback should use fuel and moderator average temperatures instead.
