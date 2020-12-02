@@ -17,7 +17,7 @@ After the deployment of these two demonstration reactors came the first \gls{HTG
 Its electric power generation started in December 1976, reaching full-power operation in November 1981.
 The Fort St. Vrain plant generated 842 MWth to achieve a net output of 330 MWe.
 This reactor laid the foundation for future prismatic designs.
-Beginning with Fort St. Vrain, prismatic HTGRs in the \gls{US} adopted as their fuel large hexagonal-shaped graphite elements with ceramic coated \gls{TRISO} particles embedded within rods \cite{brey_development_2001}, displayed in Figure \ref{fig:fsv-b}.
+Beginning with Fort St. Vrain, prismatic HTGRs in the \gls{US} adopted as their fuel hexagonal graphite elements with rods containing ceramic coated \gls{TRISO} particles \cite{brey_development_2001}, displayed in Figure \ref{fig:fsv-b}.
 
 \begin{figure}[htbp!]
     \centering
@@ -81,7 +81,7 @@ With the Brayton cycle, the system can achieve an energy conversion efficiency o
 	\label{fig:gt-mhr}
 \end{figure}
 
-HTGRs higher outlet temperatures and increased thermal conversion efficiencies enable a wide range of process heat applications, such as coal gasification processes, oil refinery processes, and production of synthesis gas, methanol, and hydrogen.
+HTGRs higher outlet temperatures and increased thermal conversion efficiencies enable a wide range of process heat applications, such as coal gasification processes, oil refinery processes, production of synthesis gas, methanol, and hydrogen.
 Hydrogen offers a solution to energy and climate challenges, decarbonizing the transport and power sectors \cite{nagashima_japans_2018}.
 Several hydrogen production processes benefit from high temperatures, such as high-temperature electrolysis \cite{doenitz_hydrogen_1980} or thermochemical water-splitting \cite{yildiz_efficiency_2006}.
 Utilizing the \gls{HTGR} as the process's energy source eliminates the need to burn fossil fuels to generate the steam those processes require \cite{iaea_current_2001}.
@@ -98,11 +98,12 @@ This characteristic provides the modular HTGR the ability to cool down entirely 
 Under the sponsorship of the \gls{US} \gls{DOE}, a team consisting of General Atomics, Combustion Engineering, General Electric, Bechtel National, Stone \& Webster Engineering, and \gls{ORNL} developed the \gls{MHTGR}-350 \cite{neylan_modular_1988} \cite{silady_licensing_1988}.
 They designed the basic module to deliver superheated steam at 17.3 MPa and 538 $^{\circ}$C.
 Based on both economic and technological considerations, the optimal configuration was a 350 MWth reactor with an annular core.
-The team completed in 1986 the preliminary safety information document for the MHTGR-350 and the complete draft pre-application in 1989 \cite{huning_steady_2014}.
+% The team completed in 1986 the preliminary safety information document for the MHTGR-350 and the complete draft pre-application in 1989 \cite{huning_steady_2014}.
+The team completed the MHTGR Draft Pre-application Safety Report in 1989 \cite{huning_steady_2014} \cite{williams_draft_1989}.
 
 The MHTGR concept formed the basis for the \gls{GT-MHR} reactor design.
 Renewed interest in HTGRs in the US resulted in the GT-MHR development program beginning in 1993.
-General Atomics (US) and MINATOM (Russia) a cooperation agreement to develop a prototype reactor.
+General Atomics (US) and MINATOM (Russia) signed a cooperation agreement to develop a prototype reactor.
 FRAMATOME and Fuji Electric joined the program in 1996 and 1997, respectively.
 The final conceptual design was a 600 MWth/293MWe plant to burn weapons plutonium and the long term goal of commercial deployment.
 
@@ -133,7 +134,7 @@ Through these partnerships, USNC proposes to deploy its MMR at sites in Ontario,
 
 % Why do we focus on HTGRs?
 This work's ultimate goal is to support the development of the HTGR concept.
-As the last section described, HTGRs have several favorable characteristics that make them the right candidate for large scale deployment in the near term.
+As the last section described, HTGRs have several favorable characteristics that make them a good candidate for large scale deployment in the near term.
 For example, some microreactor designs embody this type of reactor technology and may be operational before 2030.
 
 %Why is computational modeling important?
@@ -159,9 +160,9 @@ Large temperature gradients translate into large thermal stresses in the reactor
 
 %Why use Moltres?
 Historically, linking a stand-alone neutronics solver to a thermal-fluid solver allowed for simulating an entire reactor.
-The programs' connection occurred in a loose-coupling fashion, such that one program's output served as the other's input and vice versa.
+The software's connection occurred in a loose-coupling fashion, such that one program's output served as the other's input and vice versa.
 This coupling technique is commonly known as the operator-splitting technique \cite{ragusa_consistent_2009}.
-In such an approach, each program uses a physical model that solves some of the problem variables while assuming constant the rest of them.
+In such an approach, each program uses a physical model that solves some of the problem variables while assuming constant the others.
 Nonetheless, these physical models describe processes that rely heavily on the solution of one another's.
 The neutron flux determines the power distribution, and the power distribution strongly influences the temperature field.
 Due to the temperature feedback, the temperature affects the neutron flux distribution in the core.
@@ -172,7 +173,7 @@ Additionally, MOOSE facilitates relatively easy coupling between separate phenom
 
 \textit{Moltres} is an open-source, \gls{FEM} application built within the \gls{MOOSE} framework.
 Moltres solves arbitrary-group neutron diffusion, delayed neutron precursor concentration, and temperature governing equations.
-These characteristics, plus some modifications that this work intends to implement, make Moltres suitable for solving the type of physical phenomena described above.
+These characteristics, plus some modifications that this work implements, make Moltres suitable for solving the type of physical phenomena described above.
 
 \section{Objectives}
 
@@ -190,7 +191,8 @@ Moltres' current capabilities allow for solving some of the physics in the prism
 Nevertheless, the solver needs to capture the missing physics in prismatic HTGRs and adequately integrate them into the current capabilities.
 
 \paragraph{Understand HTGRs' contribution to stopping climate change.}
-HTGRs are an attractive technology due to attaining high temperatures and high thermal conversion efficiencies. These features yield a high hydrogen production efficiency, which can potentially ease climate change.
+HTGRs are an attractive technology due to their high temperatures and high thermal conversion efficiencies.
+These features yield a high hydrogen production efficiency, which can potentially ease climate change.
 
 \vskip 0.6cm
 The main objectives are somewhat broad.
@@ -203,7 +205,7 @@ Chapter \ref{ch:neutronics} illustrates such a capability for prismatic HTGRs.
 
 \paragraph{Understand the impact of the energy group structure on the HTGR diffusion calculations.}
 The underlying physics of \glspl{HTGR} differs from the physics of other reactors.
-Consequently, the simulation results will be sensitive to different parameters from other reactor type simulations.
+Consequently, the simulation results will be sensitive to different parameters than other reactor type simulations.
 Chapter \ref{ch:neutronics} studies the impact of the energy group structure of the group constants on the diffusion calculations.
 
 \paragraph{Calculate power distribution correctly.}

@@ -1,6 +1,6 @@
 
 This chapter describes the methodology followed in the development of this thesis.
-This chapter comprehends the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
+This chapter comprises the following sections: Section \ref{sec:ch3-tools} describes the computational tools utilized in this work, Section \ref{sec:ch3-math} presents Moltres' mathematical basis, Section \ref{sec:ch3-bench} outlines the organization of the OECD/NEA MHTGR-350 Benchmark, and Section \ref{sec:ch3-mhtgr} summarizes the characteristics of the MHTGR-350.
 
 \section{Computational tools}
 \label{sec:ch3-tools}
@@ -72,7 +72,7 @@ In this work, Serpent produces group constants that serve as an input for Moltre
 This last step provides the reference solutions for the validation of the Moltres calculation scheme.
 This work used Serpent 2.1.31 and the cross-section library JEFF3.1.2 for the calculations.
 The reason for using Serpent to generate group constants is due to its ability to run explicit simulations of randomly located TRISO particles.
-Applying a simple volume homogenization proves inaccurate due to the resonant self-shielding effect of the kernel and coated layers \cite{strydom_results_2015}.
+Applying a simple volume homogenization proves inaccurate due to the resonance self-shielding effect of the kernel and coated layers \cite{strydom_results_2015}.
 Although the particles' explicit modeling is time-consuming, costly, and impractical for most applications, it is necessary.
 
 \section{Mathematical basis}
@@ -105,7 +105,7 @@ Moltres translates the multi-group diffusion equations into kernels, equations t
 \end{align}
 
 % Boundary conditions
-In different sections of this thesis, Moltres imposes several boundary conditions.
+In different sections of this thesis, Moltres simulations apply several boundary conditions.
 The vacuum boundary condition \cite{duderstadt_nuclear_1976} states that no neutrons penetrate the boundary in the inward direction --- the incoming current density is equal to zero
 \begin{align}
    & J^-_g(r_s) = \frac{1}{4} \phi_g(r_s) + \frac{D}{2} \hat{n_s} \cdot \nabla \phi_g(r_s) = 0 \label{eq:vacuumbc} \\
@@ -201,6 +201,7 @@ Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} conduct several exercise
 The \gls{OECD}/\gls{NEA} defined such a benchmark using the \gls{MHTGR}-350 reactor \cite{silady_licensing_1988} as the reference design.
 The scope of the benchmark is twofold: (1) establish a well-defined problem, based on a common given data set, to compare methods and tools in core simulation and thermal fluids analysis, and (2) test the depletion capabilities of various lattice physics tools available for prismatic HTGRs.
 The benchmark defines several phases and exercises, summarized in Table \ref{tab:benchmark}.
+Chapters \ref{ch:neutronics} and \ref{ch:thermalfluids} provide a more detailed description of Phase I Exercises 1, 2, and 3.
 
 \begin{table}[htbp!]
   \centering
@@ -405,7 +406,7 @@ This thesis separates the description of Moltres simulations into Chapters \ref{
 Chapter \ref{ch:neutronics} focuses on stand-alone neutronics simulations in which Moltres solves equations \ref{eq:diffusion-eig} and \ref{eq:heatsource2} to calculate the multiplication factor, the neutron flux, and the radial power distribution.
 Chapter \ref{ch:neutronics} discusses two main validation exercises.
 The first exercise compares a Serpent and Moltres model of the MHTGR-350.
-Serpent obtains the multiplication factor, the neutron flux in arbitrary locations of the reactor, and the radial power distribution in the reactor core.
+Serpent obtains the multiplication factor, the neutron flux distribution, and the radial power distribution in the reactor core.
 Serpent also generates the group constants of the MHTGR-350 that serve as an input for Moltres simulations.
 The second exercise follows Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
 The benchmark exercise specifies the group constants that Moltres uses in the simulations.
