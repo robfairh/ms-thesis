@@ -517,7 +517,8 @@ The diffusion calculations had 1.60 $\times 10^5$ \glspl{DoF} per energy-group a
 The Moltres input files set an eigenvalue and flux convergence tolerance of 10$^{-8}$.
 
 % Keff
-This study compares the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor calculated by Serpent and Moltres.
+% This study compares the \gls{Keff}, the power distribution, and the flux shape and magnitude in different zones of the reactor calculated by Serpent and Moltres.
+This study compares the \gls{Keff} and the radial power distribution of the reactor calculated by Serpent and Moltres.
 Table \ref{tab:full-keff} exhibits the \gls{Keff} calculated by Serpent and Moltres.
 The differences between the eigenvalues calculated by Moltres and Serpent are smaller than 300 pcm.
 
@@ -537,7 +538,7 @@ The differences between the eigenvalues calculated by Moltres and Serpent are sm
 
 % Power distribution
 Figures \ref{fig:fullcore-600-power} and \ref{fig:fullcore-1200-power} show Serpent and Moltres radial power distributions.
-Figures \ref{fig:fullcore-600-power-b} and \ref{fig:fullcore-1200-power-b} display the difference between Serpent and Moltres radial power distributions.
+Figures \ref{fig:fullcore-600-power-b} and \ref{fig:fullcore-1200-power-b} display the relative difference between Serpent and Moltres radial power distributions.
 The largest relative difference is in the middle ring, and it is 6.2\% and 5.8\% MW for 600K and 1200K, respectively.
 The negative values in the figures indicate that Moltres' power density is larger than Serpent's in the inner and outer rings, whereas it is lower in the middle ring, overall.
 
@@ -547,7 +548,7 @@ The negative values in the figures indicate that Moltres' power density is large
     \subfloat[Serpent radial power distribution.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-power}
     }
-    \subfloat[Difference between Serpent and Moltres radial power distributions. \label{fig:fullcore-600-power-b}]{
+    \subfloat[Relative difference between Serpent and Moltres radial power distributions. \label{fig:fullcore-600-power-b}]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-600-error}
     }
 	\hfill
@@ -561,7 +562,7 @@ The negative values in the figures indicate that Moltres' power density is large
     \subfloat[Serpent radial power distribution.]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-power}
     }
-    \subfloat[Difference between Serpent and Moltres radial power distributions. \label{fig:fullcore-1200-power-b}]{
+    \subfloat[Relative difference between Serpent and Moltres radial power distributions. \label{fig:fullcore-1200-power-b}]{
         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-1200-error}
     }
 	\hfill
@@ -570,24 +571,24 @@ The negative values in the figures indicate that Moltres' power density is large
 \end{figure}
 
 % Detectors
-Figure \ref{fig:fullcore-detectors} shows the neutron flux in axial and radial flux detectors in arbitrary regions of the reactor.
-Serpent simulation's axial detector has the volume of a fuel column, while the radial detector has a 2$^{\circ}$-opening and a fuel assembly height.
-Both the Serpent and Moltres radial detector's axial location was the middle of the active core's height.
+% Figure \ref{fig:fullcore-detectors} shows the neutron flux in axial and radial flux detectors in arbitrary regions of the reactor.
+% Serpent simulation's axial detector has the volume of a fuel column, while the radial detector has a 2$^{\circ}$-opening and a fuel assembly height.
+% Both the Serpent and Moltres radial detector's axial location was the middle of the active core's height.
 
-\begin{figure}[htbp!]
-	\centering
-    \subfloat[Flux detectors in Serpent model. 1- Axial detector has the volume of a fuel column. 2- Radial detector has a 2$^{\circ}$-opening and a fuel assembly height.]{
-        % \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
-        \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
-    }
-	\hfill
-    \subfloat[Flux detectors in Moltres model. Axial detector computes the flux over the line 'Axial', corresponding to the centerline of the fuel column. Radial detector computes the flux over the line 'Radial'.]{
-        % \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
-        \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
-    }
-	\caption{Axial view of the flux detector locations.}
-	\label{fig:fullcore-detectors}
-\end{figure}
+% \begin{figure}[htbp!]
+% 	\centering
+%     \subfloat[Flux detectors in Serpent model. 1- Axial detector has the volume of a fuel column. 2- Radial detector has a 2$^{\circ}$-opening and a fuel assembly height.]{
+%         % \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
+%         \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
+%     }
+% 	\hfill
+%     \subfloat[Flux detectors in Moltres model. Axial detector computes the flux over the line 'Axial', corresponding to the centerline of the fuel column. Radial detector computes the flux over the line 'Radial'.]{
+%         % \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
+%         \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
+%     }
+% 	\caption{Axial view of the flux detector locations.}
+% 	\label{fig:fullcore-detectors}
+% \end{figure}
 
 % The following analysis compares the flux calculated by Serpent and Moltres.
 % Section \ref{sec:neut-fuelcol} analysis was able to study the difference between Serpent and Moltres' results because the fuel column problem uses reflective boundary conditions, making the radial profile relatively flat.
@@ -729,7 +730,7 @@ Once again, Section \ref{sec:bench-bcs} discusses further the use of periodic an
 Figure \ref{fig:axialpower} shows the radially averaged axial power distribution.
 Figure \ref{fig:radialpower} shows the axially averaged radial power distribution.
 In both figures, Moltres' values are similar to the reference results.
-Moltres' power distribution largest relative error is 4.5\% and is located in the outer ring.
+Moltres' axially averaged radial power distribution largest relative error is 4.5\% and is located in the outer ring.
 
 \begin{figure}[htbp!]
 	\centering
@@ -749,7 +750,7 @@ Moltres' power distribution largest relative error is 4.5\% and is located in th
     \subfloat[Moltres result.]{
         \includegraphics[width=0.47\textwidth]{figures-neutronics/3D-fullcore26G-radialpower}
     }
-    \subfloat[Benchmark result. Image reproduced from \cite{oecd_nea_coupled_2020}.]{
+    \subfloat[Benchmark result. Values expressed in $MW \cdot m^{-3}$. Image reproduced from \cite{oecd_nea_coupled_2020}.]{
         \includegraphics[width=0.42\textwidth, height=6.2cm]{figures-neutronics/benchmark-radialpower}
     }
 	\hfill
