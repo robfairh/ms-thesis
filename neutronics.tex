@@ -7,7 +7,7 @@ This chapter comprises the following sections: Section \ref{sec:neut-prelim} des
 \section{Preliminary studies}
 \label{sec:neut-prelim}
 
-This section's purpose is to determine the proper set up of Serpent and Moltres simulations.
+This section's purpose is to determine the proper setup of Serpent and Moltres simulations.
 Section \ref{sec:homo-hetero} focuses on the definition of the materials in Serpent input file for obtaining the group constants for Moltres.
 Section \ref{sec:setup} analyzes different ways to set up Moltres input files.
 
@@ -54,7 +54,7 @@ The results show that the homogenization of the fuel compact isotopes decreases 
 Although the group constant variation is smaller than 6\%, it has a significant impact on the multiplication factor.
 Based on these results, Serpent models the TRISO particles explicitly for generating the group constants in the following sections.
 
-\subsection{Problem set-up}
+\subsection{Problem setup}
 \label{sec:setup}
 
 % Diffusion calculations: homo vs hetero in LWRs
@@ -196,6 +196,7 @@ Based on these results and discussion, the following sections study homogeneous 
 In this section, Serpent modeled a fuel column and the full-core of the MHTGR-350.
 Serpent obtained the homogenized group constants that served as input to Moltres.
 The following sections compare Moltres and Serpent results as a validation exercise.
+This exercise demonstrates that Moltres results are comparable to Serpent results, proving that Moltres diffusion solver is applicable to prismatic HTGRs and that Moltres can handle Serpent generated group constants for obtaining the diffusion solution.
 
 \subsection{Fuel column}
 \label{sec:neut-fuelcol}
@@ -807,10 +808,10 @@ The results showed that the fuel compact isotopes' homogenization decreased the 
 These results suggest that although explicit modeling of the TRISO particles is time-consuming, it is necessary.
 
 % Preliminary studies: homogeneous vs heterogeneous diffusion simulation
-The next section studied the problem set-up in Moltres.
+The next section studied the problem setup in Moltres.
 Previous work used Moltres for simulating MSRs, which allow for heterogeneous diffusion calculations.
 This work aimed to use Moltres to solve prismatic HTGRs using a heterogeneous diffusion calculation.
-Nevertheless, the diffusion approximation fails to properly model regions where the mean free path is comparable to the region's dimensions.
+Nevertheless, the diffusion approximation fails to yield accurate results in regions where the mean free path is comparable to its dimensions.
 The presence of helium in the prismatic HTGR fuel assembly challenges some of the diffusion theory assumptions.
 Based on this discussion, this work adopted a homogeneous diffusion calculation scheme for Moltres simulations.
 
@@ -847,4 +848,4 @@ A reflective BC for the \gls{CR} out case did not substantially impact the \gls{
 A reflective BC for the \gls{CR} out case did not substantially impact the \gls{Keff}, whereas it had a significant effect of the control rod in case.
 Their combined effect led to a large error in the control rod worth, while it had only a small influence on the axial offset.
 
-This chapter met several objectives of this thesis by demonstrating Moltres' ability to predict HTGR neutronics, analyzing the impact of the energy group structure on the diffusion calculations, and calculating the power distribution of HTGRs properly.
+This chapter met several objectives of this thesis by demonstrating Moltres' ability to predict HTGR neutronics, analyzing the impact of the energy group structure on the diffusion calculations, and illustrating Moltres' capability to calculate the power distribution of HTGRs.

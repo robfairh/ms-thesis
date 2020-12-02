@@ -320,7 +320,7 @@ Early studies relied on simplified approximations to carry out the simulations.
 These approaches may yield inaccurate temperature distributions requiring more accurate methods, such as CFD techniques.
 Although CFD techniques compute detailed temperature profiles, their fine mesh requirement restricts the use of such methods to studies of the local behavior of a single fuel column.
 However, a whole-core thermal analysis has many advantages over local models.
-In general, the problem set up includes more accurate boundary conditions.
+In general, the problem setup includes more accurate boundary conditions.
 For example, without whole-core modeling, the local models' mass flow distributions are average values of the core flow rate instead of their exact value \cite{huning_novel_2016}.
 This simplification leads to under-predicted fuel temperatures for the assemblies with a lower flow rate than the average.
 Additionally, a coupled analysis with a reactor physics tool requires a full-core model \cite{tak_practical_2012}.
@@ -420,5 +420,8 @@ Section \ref{sec:litreview-multi} introduced several prior studies of prismatic 
 These studies highlight the importance of the proper integration of the neutronics and thermal-fluids in HTGR modeling.
 The neutronics and thermal-fluids physical phenomena rely heavily on each other.
 Hence, a coupled analysis is necessary to capture the interaction between the neutronics and the thermal-fluids.
-Chapter \ref{ch:thermalfluids} discusses a coupling strategy for the neutronics and thermal-fluids phenomena in Moltres.
-For that exercise, Section \ref{sec:coupled-average} follows a simplified version of Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark.
+In the context of this thesis, Chapter \ref{ch:thermalfluids} discusses a coupling strategy for the neutronics and thermal-fluids phenomena in Moltres.
+
+Section \ref{sec:litreview-multi} also summarized different articles focusing on Phase I Exercise 3 of the OECD/NEA MHTGR-350 Benchmark.
+To validate their software and identify technical challenges for future development, the authors of the different articles conducted the benchmark exercise with and without further simplifications.
+For studying the coupling strategy in Moltres, Section \ref{sec:coupled-average} follows a simplified version of the benchmark exercise.
