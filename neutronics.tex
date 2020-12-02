@@ -274,7 +274,7 @@ To compare the results from Serpent and Moltres, we compare the axial flux.
 Moltres ran the calculations using 26 energy groups.
 The results present the axial fluxes collapsed into three energy groups to facilitate the results' visualization.
 Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
-The figures also display the difference between Serpent and Moltres results, where $\phi_S$ and $\phi_M$ correspond to Serpent's and Moltres' fluxes.
+The figures also display the difference between Serpent and Moltres results, where $\phi_S$ and $\phi_M$ correspond to Serpent-calculated and Moltres-calculated fluxes.
 The analysis uses the absolute difference instead of the relative difference because the large errors in the reflector hinder the visualization of the errors in the active core.
 
 % left here: analysis
@@ -431,9 +431,9 @@ Figure \ref{fig:assembly-time} also shows that the overall time of the cases wit
 \end{figure}
 
 The last study analyzed the impact of the energy group structure on the flux accuracy for a constant number of energy groups.
-I chose 15 energy groups, as it yields a good overall accuracy and a practical computational expense.
+Fifteen energy groups are the preferred choice, as it yields a good overall accuracy and a practical computational expense.
 Table \ref{tab:energygroups} defines various energy group structures.
-Table \ref{tab:accuracy15} exhibits the $L_2$-norm of the relative error for the various energy group structures.
+Table \ref{tab:accuracy15} displays the $L_2$-norm of the relative error for the various energy group structures.
 Some energy group structures yield better results for some cases while giving worse results for others.
 For example, the $15d$ structure gives better results at 600K with burnable poisons than without them.
 To choose the best performing structure, equation \ref{eq:weighted-ave} calculated a weighted average for the different groups
@@ -449,8 +449,7 @@ To choose the best performing structure, equation \ref{eq:weighted-ave} calculat
   & \Delta_{f} = \mbox{L$_2$-norm relative difference of the fast flux } [-]. \notag
 \end{align}
 
-I arbitrarily chose the weights to be 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes.
-For this averaging scheme, the energy group structure $15d$ is the best one.
+The arbitrary choice of the weights of 0.5, 0.3, and 0.2 for the thermal, epithermal, and fast fluxes for a weighted average yields the energy group structure $15d$ as the best one.
 
 \begin{table}[htbp!]
   \centering
@@ -490,7 +489,7 @@ Tables \ref{tab:maincharac}, \ref{tab:element-characteristics}, and \ref{tab:com
 For simplicity, the model considered only standard fuel assemblies for all the fuel columns.
 The model considered a fresh core, and it did not include the fuel handling holes nor the bottom and top reflector coolant channels.
 Based on the previous section analyses, this analysis uses the energy group structure $15d$ from Table \ref{tab:energygroups}.
-The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states.
+The material temperatures were 600K and 1200K, cases that represent the \gls{CZP} and the \gls{HFP} core states \cite{strydom_results_2015}.
 The Serpent simulations included 8$\times 10^5$ neutrons per cycle, 500 active cycles, and 100 inactive cycles for the calculations.
 
 % Geometries
@@ -533,8 +532,8 @@ The differences between the eigenvalues calculated by Moltres and Serpent are sm
 % Power distribution
 Figures \ref{fig:fullcore-600-power} and \ref{fig:fullcore-1200-power} show Serpent and Moltres radial power distributions.
 Figures \ref{fig:fullcore-600-power-b} and \ref{fig:fullcore-1200-power-b} display the difference between Serpent and Moltres radial power distributions.
-The largest difference is in the inner ring, and it is 0.29 and 0.27 MW for 600K and 1200K, respectively.
-The negative values in the figures indicate that Moltres' power density is larger than Serpent's in the inner and outer rings, whereas it is lower in the middle ring.
+The largest relative difference is in the middle ring, and it is 6.2\% and 5.8\% MW for 600K and 1200K, respectively.
+The negative values in the figures indicate that Moltres' power density is larger than Serpent's in the inner and outer rings, whereas it is lower in the middle ring, overall.
 
 %Power distribution at 600K
 \begin{figure}[htbp!]
@@ -565,7 +564,7 @@ The negative values in the figures indicate that Moltres' power density is large
 \end{figure}
 
 % Detectors
-The simulations recorded the neutron flux in axial and radial flux detectors in arbitrary regions of the reactor, shown in Figure \ref{fig:fullcore-detectors}.
+Figure \ref{fig:fullcore-detectors} shows the neutron flux in axial and radial flux detectors in arbitrary regions of the reactor.
 Serpent simulation's axial detector has the volume of a fuel column, while the radial detector has a 2$^{\circ}$-opening and a fuel assembly height.
 Both the Serpent and Moltres radial detector's axial location was the middle of the active core's height.
 
@@ -576,7 +575,7 @@ Both the Serpent and Moltres radial detector's axial location was the middle of 
         \includegraphics[width=0.52\textwidth]{figures-neutronics/oecd-fullcore-detectorsC}
     }
 	\hfill
-    \subfloat[Flux detectors in Moltres model. Axial detector computes the flux over the line 'Axial'. Radial detector computes the flux over the line 'Radial'.]{
+    \subfloat[Flux detectors in Moltres model. Axial detector computes the flux over the line 'Axial', corresponding to the centerline of the fuel column. Radial detector computes the flux over the line 'Radial'.]{
         % \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
         \includegraphics[width=0.37\textwidth]{figures-neutronics/3D-fullcore-60-detectors2}
     }
@@ -593,7 +592,7 @@ For this reason, the fluxes comparison remains qualitative.
 
 % axial flux
 Moltres simulations used 15 energy groups, and a Python script collapsed the results into three groups to facilitate the results' visualization.
-Figure \ref{fig:fullcore-600-flux} show the axial and radial fluxes at 600K.
+Figure \ref{fig:fullcore-600-flux} shows the axial and radial fluxes at 600K.
 The fast and epithermal fluxes in Moltres results are larger than Serpent's, while the axial thermal flux is smaller.
 % radial flux
 Serpent's radial flux present some 'noise.'
@@ -716,7 +715,7 @@ The Moltres simulation modeled $1/3^{rd}$ of the reactor, shown in Figure \ref{f
 Two hundred and thirty-two hexagonal subdomains comprised the core, for which the benchmark provides group constants.
 % Table \ref{tab:mac-region} lists the six macroscopic regions that we can differentiate in the model.
 The simulations required two meshes: one for the control rod out and one for the control rod in.
-The control out simulation had 2.7 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 7.0 $\times 10^6$ DoFs, while the control rod in simulation had 2.3 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 5.9 $\times 10^6$ DoFs.
+The control rod out simulation had 2.7 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 7.0 $\times 10^6$ DoFs, while the control rod in simulation had 2.3 $\times 10^5$ \glspl{DoF} per energy-group, and a total of 5.9 $\times 10^6$ DoFs.
 The Moltres input files set an eigenvalue convergence tolerance of 10$^{-8}$.
 
 \begin{figure}[htbp!]
@@ -748,8 +747,8 @@ The Moltres input files set an eigenvalue convergence tolerance of 10$^{-8}$.
 The benchmark exercise specifies the group constants and a map with their location.
 The benchmark definition used DRAGON-4 \cite{marleau_user_2016} to obtain the group constants from a full block configuration.
 The dataset contains 26 energy groups.
-Because the benchmark group constant format differs from the Moltres format, I made a Python script to handle the differences as part of this thesis.
 The benchmark specifies the following group constants: $\Sigma_g^t$, $D_g$, $\nu\Sigma_g^f$, $\Sigma_g^f$, $\chi_g^t$, and $\Sigma_{g'\rightarrow g}^s$ (see equation \ref{eq:diffusion-eig}).
+The benchmark group constants' format differs from the Moltres format, and a script handled the formatting differences.
 
 The benchmark exercise sets periodic \glspl{BC} on the sides of the geometry; however, a memory issue did not allow for implementing those BCs in our 26-group Moltres input file.
 Moltres simulations approximated the periodic BC with the reflective BC.
@@ -758,7 +757,7 @@ Section \ref{sec:bench-bcs} discusses further the use of periodic and reflective
 % 4.33 h and 4.11 h
 On average, the simulations took 4.22 hours using 1024 cores.
 Table \ref{tab:globalparam} shows the main results.
-These include: Moltres predicting a \gls{Keff} larger than the reference result, a reactivity disparity of 99 pcm, Moltres yielding a smaller control rod worth (the difference being 312 pcm), and the axial offset for the Moltres simulation being 4$\%$ higher than the reference result.
+These include: Moltres predicting a \gls{Keff} larger than the reference result, a reactivity discrepancy of 99 pcm, Moltres yielding a smaller control rod worth (the difference being 312 pcm), and the axial offset for the Moltres simulation being 4$\%$ higher than the reference result.
 The use of the reflective BCs instead of the periodic BCs may be the cause of the discrepancies.
 Once again, Section \ref{sec:bench-bcs} discusses further the use of periodic and reflective BCs.
 
@@ -780,8 +779,7 @@ Once again, Section \ref{sec:bench-bcs} discusses further the use of periodic an
 Figure \ref{fig:axialpower} shows the radially averaged axial power distribution.
 Figure \ref{fig:radialpower} shows the axially averaged radial power distribution.
 In both figures, Moltres' values are similar to the reference results.
-Moltres' power distribution in the inner ring is larger.
-The differences are within 0.25 W/cm$^3$.
+Moltres' power distribution largest relative error is 4.5\% and is located in the outer ring.
 
 \begin{figure}[htbp!]
 	\centering
@@ -855,9 +853,7 @@ This chapter addressed several objectives of this thesis by presenting the resul
 The preliminary studies focused on several aspects of the simulations.
 The first aspect was the effect of distributing the fuel compact isotopes homogeneously in the Serpent model.
 The results showed that the fuel compact isotopes' homogenization decreased the multiplication factor considerably and that the heterogeneous calculation took 28$\%$ longer.
-Additionally, the homogeneous distribution appeared not to have a substantial impact on the group constants.
-However, the multiplication factor's considerable difference suggested that the combined effect of the group constants’ small variations was significant.
-Although explicit modeling of the TRISO particles is time-consuming, it is necessary.
+These results suggest that although explicit modeling of the TRISO particles is time-consuming, it is necessary.
 
 % Preliminary studies: homogeneous vs heterogeneous diffusion simulation
 The next section studied the problem set-up in Moltres.
@@ -870,7 +866,7 @@ Based on this discussion, this work adopted a homogeneous diffusion calculation 
 % Serpent-Moltres: Fuel column
 Focusing on a fuel column of the MHTGR-350, Section \ref{sec:neut-fuelcol} investigated the effects of the energy group structure on the diffusion calculations.
 The analysis considered four operational cases: a fuel column without burnable poisons and a fuel column with burnable poisons, both cases at 600K and 1200K.
-The first study compared the Moltres-derived axial flux to Serpent-derived axial flux.
+The first study compared the axial flux calculated by Moltres to axial flux calculated by Serpent.
 Overall, the axial fluxes showed good agreement.
 A different study focused on the effects of the energy group structure on the \gls{Keff}.
 The number of energy groups did not affect the accuracy of the Moltres eigenvalue calculations.
@@ -883,8 +879,8 @@ The analysis concluded that the $15d$ energy group structure was the best-perfor
 % Serpent-Moltres: Full-core
 Section \ref{sec:neut-fullcore} compared Moltres full-core model results to Serpent reference results for two operational temperatures: 600K and 1200K.
 The first analysis compared the eigenvalues calculated by Serpent and Moltres --- Moltres results were bigger, but the overall differences were less than 300 pcm.
-The second analysis compared the radial power distributions from both applications, whose maximum difference was 0.27 MW and located in the inner ring.
-The last analysis of the section compared Moltres and Serpent fluxes in two directions (axial and radial) in arbitrary core regions.
+The second analysis compared the radial power distributions from both applications, whose maximum relative difference was less than 7\% and located in the middle ring.
+The last analysis of the section compared Moltres and Serpent fluxes in two arbitrary core regions.
 The axial fluxes showed small discrepancies, mostly in their magnitude.
 The radial fluxes were close in shape and magnitude; however, the radial flux in the diffusion calculation failed to capture the flux variation near the burnable poisons.
 For the most part, Moltres axial and radial fluxes showed proximity to the Serpent’s results.
@@ -894,9 +890,10 @@ Section \ref{sec:ph1e1} describes the results of Phase I Exercise 1 of the OECD/
 The group constants of the exercise have a 26-energy group structure, and the exercise sets periodic \glspl{BC} on the sides of the geometry.
 The simulation's high memory requirements challenged such implementation in Moltres.
 The simulations approximated the periodic BC with a reflective BC to reduce the memory requirements.
-Two out of three global parameters exhibited good agreement with the reference results; however, the control rod worth presented a large discrepancy, resulting from the BC approximation.
+Two of the global parameters ($k_{eff,out}$ and AO) exhibited good agreement with the reference results; however, the control rod worth presented a large discrepancy, resulting from the BC approximation.
 Reducing the problem's size by collapsing the group constants to 3 and 6-energy groups, we compared the \gls{Keff} using the periodic and reflective BCs.
 A reflective BC for the \gls{CR} out case did not substantially impact the \gls{Keff}, but the BC choice for the control rod in case had a significant effect.
+A reflective BC for the \gls{CR} out case did not substantially impact the \gls{Keff}, whereas it had a significant effect of the control rod in case.
 Their combined effect led to a large error in the control rod worth, while it had only a small influence on the axial offset.
 
 This chapter met several objectives of this thesis by demonstrating Moltres' ability to predict HTGR neutronics, analyzing the impact of the energy group structure on the diffusion calculations, and calculating the power distribution of HTGRs properly.
