@@ -274,16 +274,22 @@ To compare the results from Serpent and Moltres, we compare the axial flux.
 Moltres ran the calculations using 26 energy groups.
 The results present the axial fluxes collapsed into three energy groups to facilitate the results' visualization.
 Figures \ref{fig:assembly-noLBP-600-flux} to \ref{fig:assembly-LBP-1200-flux} display the axial flux from the Serpent and the Moltres simulations for all cases.
-The figures also display the difference between Serpent and Moltres results, where $\phi_S$ and $\phi_M$ correspond to Serpent-calculated and Moltres-calculated fluxes.
-The analysis uses the absolute difference instead of the relative difference because the large errors in the reflector hinder the visualization of the errors in the active core.
+The figures also display the relative difference between Serpent and Moltres results calculated as follows
+\begin{align}
+  & \Delta = \frac{\phi_S-\phi_M}{\phi_S} \cdot 100  \label{eq:rel-error-flux}
+  \intertext{where}
+  & \Delta = \mbox{relative difference } [\%] \notag \\
+  & \phi_S = \mbox{Serpent-calculated flux } [n \cdot cm^{-2} \cdot s^{-1}] \notag \\
+  & \phi_M = \mbox{Moltres-calculated flux } [n \cdot cm^{-2} \cdot s^{-1}]. \notag
+\end{align}
 
-% left here: analysis
-For all the operational cases, the fluxes from Serpent and Moltres are close in shape and magnitude.
-For operational case 1, the largest error is 1.54 $\times 10^{12}$, located at the interface between the bottom reflector and the homogeneous fuel.
-For the operational case 2, 3, and 4, the largest error is 3.81 $\times 10^{12}$, 8.49 $\times 10^{12}$, and 1.52 $\times 10^{13}$, respectively.
-The largest error for cases 2, 3, and 4 occurs in the bottom reflector close to the homogeneous fuel interface.
-In all the operational cases, the largest errors occur for the thermal flux.
-This behavior is expected, as the diffusion theory assumptions are weaker at interfaces between different materials.
+For all the operational cases, the fluxes from Serpent and Moltres look close in shape and magnitude.
+For the operational case 1, 2, 3, and 4, the largest error is 98\%, 167\%, 99\%, and 1720\%, respectively.
+The largest error occurs at the bottom reflector boundary.
+This behavior is expected, as the diffusion theory assumptions are weaker at boundaries.
+Another spot where the diffusion theory assumptions are weaker is the interface between materials.
+At the interfaces between the active core and reflectors, the largest error is 7\%, 8\%, 4\%, and 6\% for the operational case 1, 2, 3, and 4.
+Focusing on the active core region only, the largest error is 1\%, 3\%, 4\%, and 6\% for the operational case 1, 2, 3, and 4.
 
 % No LBP 600
 \begin{figure}[htbp!]
@@ -291,7 +297,7 @@ This behavior is expected, as the diffusion theory assumptions are weaker at int
     \subfloat[Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.51\textwidth]{figures-neutronics/serpent-moltres-noLBP-600-fluxes}
     }
-    \subfloat[Difference between Serpent and Moltres neutron fluxes.]{
+    \subfloat[Relative difference between Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.39\textwidth]{figures-neutronics/serpent-moltres-noLBP-600-error}
     }
 	\hfill
@@ -305,7 +311,7 @@ This behavior is expected, as the diffusion theory assumptions are weaker at int
     \subfloat[Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.51\textwidth]{figures-neutronics/serpent-moltres-noLBP-1200-fluxes}
     }
-    \subfloat[Difference between Serpent and Moltres neutron fluxes.]{
+    \subfloat[Relative difference between Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.39\textwidth]{figures-neutronics/serpent-moltres-noLBP-1200-error}
     }
   \hfill
@@ -319,7 +325,7 @@ This behavior is expected, as the diffusion theory assumptions are weaker at int
     \subfloat[Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.51\textwidth]{figures-neutronics/serpent-moltres-LBP-600-fluxes}
     }
-    \subfloat[Difference between Serpent and Moltres neutron fluxes.]{
+    \subfloat[Relative difference between Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.39\textwidth]{figures-neutronics/serpent-moltres-LBP-600-error}
     }
   \hfill
@@ -333,7 +339,7 @@ This behavior is expected, as the diffusion theory assumptions are weaker at int
     \subfloat[Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.51\textwidth]{figures-neutronics/serpent-moltres-LBP-1200-fluxes}
     }
-    \subfloat[Difference between Serpent and Moltres neutron fluxes.]{
+    \subfloat[Relative difference between Serpent and Moltres neutron fluxes.]{
         \includegraphics[width=0.39\textwidth]{figures-neutronics/serpent-moltres-LBP-1200-error}
     }
   \hfill
@@ -583,110 +589,54 @@ Both the Serpent and Moltres radial detector's axial location was the middle of 
 	\label{fig:fullcore-detectors}
 \end{figure}
 
-The following analysis compares the flux calculated by Serpent and Moltres.
-Section \ref{sec:neut-fuelcol} analysis was able to study the difference between Serpent and Moltres' results because the fuel column problem uses reflective boundary conditions, making the radial profile relatively flat.
-% Consequently, Serpent flux exhibits a relatively flat radial profile, and Moltres exhibits a flat radial profile.
-Given a flat radial profile, Moltres axial flux is independent of the location of the detector.
-In the full core problem, the radial profile is far from being flat, making Moltres axial flux sensitive to the detector's location.
-For this reason, the fluxes comparison remains qualitative.
+% The following analysis compares the flux calculated by Serpent and Moltres.
+% Section \ref{sec:neut-fuelcol} analysis was able to study the difference between Serpent and Moltres' results because the fuel column problem uses reflective boundary conditions, making the radial profile relatively flat.
+% % Consequently, Serpent flux exhibits a relatively flat radial profile, and Moltres exhibits a flat radial profile.
+% Given a flat radial profile, Moltres axial flux is independent of the location of the detector.
+% In the full core problem, the radial profile is far from being flat, making Moltres axial flux sensitive to the detector's location.
+% For this reason, the fluxes comparison remains qualitative.
 
-% axial flux
-Moltres simulations used 15 energy groups, and a Python script collapsed the results into three groups to facilitate the results' visualization.
-Figure \ref{fig:fullcore-600-flux} shows the axial and radial fluxes at 600K.
-The fast and epithermal fluxes in Moltres results are larger than Serpent's, while the axial thermal flux is smaller.
-% radial flux
-Serpent's radial flux present some 'noise.'
-A higher number of generations per cycle in Serpent simulations or using a detector with a larger volume would eliminate this.
-Additionally, the radial flux in Serpent reveals the location of the burnable poisons in the fuel assemblies.
-This diffusion simulation fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
-The fast radial flux in Moltres results is larger than Serpent's, while the radial epithermal and thermal fluxes have almost the same magnitudes.
-Figure \ref{fig:fullcore-1200-flux} display the fluxes at 1200K, which differ from the 600K case.
-Still, the 1200K case exhibits the same behavior for both axial and radial fluxes.
-Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
+% % axial flux
+% Moltres simulations used 15 energy groups, and a Python script collapsed the results into three groups to facilitate the results' visualization.
+% Figure \ref{fig:fullcore-600-flux} shows the axial and radial fluxes at 600K.
+% The fast and epithermal fluxes in Moltres results are larger than Serpent's, while the axial thermal flux is smaller.
+% % radial flux
+% Serpent's radial flux present some 'noise.'
+% A higher number of generations per cycle in Serpent simulations or using a detector with a larger volume would eliminate this.
+% Additionally, the radial flux in Serpent reveals the location of the burnable poisons in the fuel assemblies.
+% This diffusion simulation fails to capture such localized effects as the group constants are homogeneous in the fuel assembly.
+% The fast radial flux in Moltres results is larger than Serpent's, while the radial epithermal and thermal fluxes have almost the same magnitudes.
+% Figure \ref{fig:fullcore-1200-flux} display the fluxes at 1200K, which differ from the 600K case.
+% Still, the 1200K case exhibits the same behavior for both axial and radial fluxes.
+% Overall, Moltres and Serpent fluxes are comparable in magnitude and shape.
 
-% % Axial flux1 at 600K
+% % Flux at 600K
 % \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Serpent axial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-collapse-Axial1}
+%   \centering
+%     \subfloat[Comparison of the axial flux.]{
+%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-axial-600}
 %     }
-%     \subfloat[Moltres axial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-axial1}
+%     \subfloat[Comparison of the radial flux.]{
+%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-radial-600}
 %     }
-% 	\hfill
-% 	\caption{Comparison of the axial detector flux calculated by Serpent and Moltres at 600 K.}
-% 	\label{fig:fullcore-600-axial1}
+%   \hfill
+%   \caption{Comparison of the axial and radial fluxes calculated by Serpent and Moltres at 600 K.}
+%   \label{fig:fullcore-600-flux}
 % \end{figure}
 
-% %Radial flux at 600 K
+% % Flux at 1200 K
 % \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Serpent radial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-600-collapse-Radial}
+%   \centering
+%     \subfloat[Comparison of the axial flux.]{
+%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-axial-1200}
 %     }
-%     \subfloat[Moltres radial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-600-15Gd-radial1}
+%     \subfloat[Comparison of the radial flux.]{
+%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-radial-1200}
 %     }
-% 	\hfill
-% 	\caption{Comparison of the radial detector flux calculated by Serpent and Moltres at 600 K.}
-% 	\label{fig:fullcore-600-radial1}
+%   \hfill
+%   \caption{Comparison of the axial and radial fluxes calculated by Serpent and Moltres at 1200 K.}
+%   \label{fig:fullcore-1200-flux}
 % \end{figure}
-
-% % Axial flux1 at 1200K
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Serpent axial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-collapse-Axial1}
-%     }
-%     \subfloat[Moltres axial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-axial1}
-%     }
-% 	\hfill
-% 	\caption{Comparison of the axial detector flux calculated by Serpent and Moltres at 1200 K.}
-% 	\label{fig:fullcore-1200-axial1}
-% \end{figure}
-
-% %Radial flux at 1200 K
-% \begin{figure}[htbp!]
-% 	\centering
-%     \subfloat[Serpent radial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent26G-1200-collapse-Radial}
-%     }
-%     \subfloat[Moltres radial detector flux.]{
-%         \includegraphics[width=0.45\textwidth]{figures-neutronics/3D-fullcore-1200-15Gc-radial1}
-%     }
-% 	\hfill
-% 	\caption{Comparison of the radial detector flux calculated by Serpent and Moltres at 1200 K.}
-% 	\label{fig:fullcore-1200-radial1}
-% \end{figure}
-
-% Flux at 600K
-\begin{figure}[htbp!]
-  \centering
-    \subfloat[Comparison of the axial flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-axial-600}
-    }
-    \subfloat[Comparison of the radial flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-radial-600}
-    }
-  \hfill
-  \caption{Comparison of the axial and radial fluxes calculated by Serpent and Moltres at 600 K.}
-  \label{fig:fullcore-600-flux}
-\end{figure}
-
-% Flux at 1200 K
-\begin{figure}[htbp!]
-  \centering
-    \subfloat[Comparison of the axial flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-axial-1200}
-    }
-    \subfloat[Comparison of the radial flux.]{
-        \includegraphics[width=0.45\textwidth]{figures-neutronics/serpent-moltres-radial-1200}
-    }
-  \hfill
-  \caption{Comparison of the axial and radial fluxes calculated by Serpent and Moltres at 1200 K.}
-  \label{fig:fullcore-1200-flux}
-\end{figure}
 
 
 \section{OECD/NEA MHTGR-350 Benchmark: Phase I Exercise 1}
@@ -880,10 +830,10 @@ The analysis concluded that the $15d$ energy group structure was the best-perfor
 Section \ref{sec:neut-fullcore} compared Moltres full-core model results to Serpent reference results for two operational temperatures: 600K and 1200K.
 The first analysis compared the eigenvalues calculated by Serpent and Moltres --- Moltres results were bigger, but the overall differences were less than 300 pcm.
 The second analysis compared the radial power distributions from both applications, whose maximum relative difference was less than 7\% and located in the middle ring.
-The last analysis of the section compared Moltres and Serpent fluxes in two arbitrary core regions.
-The axial fluxes showed small discrepancies, mostly in their magnitude.
-The radial fluxes were close in shape and magnitude; however, the radial flux in the diffusion calculation failed to capture the flux variation near the burnable poisons.
-For the most part, Moltres axial and radial fluxes showed proximity to the Serpent’s results.
+% The last analysis of the section compared Moltres and Serpent fluxes in two arbitrary core regions.
+% The axial fluxes showed small discrepancies, mostly in their magnitude.
+% The radial fluxes were close in shape and magnitude; however, the radial flux in the diffusion calculation failed to capture the flux variation near the burnable poisons.
+% For the most part, Moltres axial and radial fluxes showed proximity to the Serpent’s results.
 
 % OECD-Benchmark
 Section \ref{sec:ph1e1} describes the results of Phase I Exercise 1 of the OECD/NEA MHTGR-350 Benchmark using Moltres.
